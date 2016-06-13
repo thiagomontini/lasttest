@@ -1,0 +1,30 @@
+.transition(@t) {
+    -webkit-transition: @t;
+    transition: @t;
+}
+
+// Use this when you need to do a transition on a property that must be prefixed
+.transition-prefixed(@tp) {
+    -webkit-transition: ~"-webkit-@{tp}";
+    transition: @tp;
+}
+
+.perspective(@p) {
+    -webkit-perspective: @p;
+    perspective: @p;
+}
+
+.perspective-origin(@po) {
+    -webkit-perspective-origin: @po;
+    perspective-origin: @po;
+}
+
+.backface-visibility(@bv) {
+    -webkit-backface-visibility: @bv;
+    backface-visibility: @bv;
+}
+
+.transform(@t) {
+    -webkit-transform: @t;
+    transform: @t;
+}

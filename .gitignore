@@ -1,0 +1,8 @@
+#Sublime files
+*.sublime-*
+
+#Local node modules
+node_modules/
+
+#The occasional npm log
+npm-debug.log
