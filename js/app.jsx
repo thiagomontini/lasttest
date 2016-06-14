@@ -19,7 +19,7 @@ var App = React.createClass({
         for (var sceneKey in sceneData) {
             var objects = sceneData[sceneKey]["objects"];
             for (var objectKey in objects) {
-                manifest.push(objects[objectKey]["image"]);
+                manifest = manifest.concat(objects[objectKey]["images"]);
             }
         }
 
@@ -42,12 +42,14 @@ var App = React.createClass({
 
     render: function() {
         var loadingProgress = this.state.loading ? <Preloader progress={this.state.progress} /> : null;
-        var scene = !this.state.loading ? <RioScene imageLoader={this.state.imageLoader} /> : null;
+        var scene = !this.state.loading ? <RioScene imageLoader={this.state.imageLoader} data={sceneData["rio"]} /> : null;
 
         return (
             <div>
                 {loadingProgress}
-                {scene}
+                <div className="scene-container">
+                    {scene}
+                </div>
             </div>
         );
     }

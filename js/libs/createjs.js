@@ -3,5 +3,6 @@
 window.createjs = {};
 
 require('./preloadjs-0.6.2.min.js');
+require('./tweenjs-0.6.2.min.js');
 
 module.exports = window.createjs;

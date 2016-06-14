@@ -1,27 +1,20 @@
 var React = require("react");
-var PIXI = require("pixi.js");
-var SceneMixin = require("./sceneMixin.js");
-var sceneData = require("./sceneData.js");
+var SceneMixin = require("./sceneMixin.jsx");
 
 var RioScene = React.createClass({
     mixins: [SceneMixin],
 
-    componentDidMount: function() {
-        // Initializes the PIXI environment
-        this.initPixi();
+    buildScene: function() {
+        // The background
+        this.stage.addChild(this._buildObject("background"));
 
-        // What to do when the window resizes
-        this.startResizeListener();
+        // The hang glider
+        this.hangGlider = this._buildObject("hangGlider");
+        this.stage.addChild(this.hangGlider);
     },
 
-    componentWillUnmount: function() {
-        // Cleanups
-        this.finishPixi();
-        this.clearResizeListener();
-    },
+    disposeScene: function() {
 
-    render: function() {
-        return <canvas ref="canvas" />;
     }
 });
 
