@@ -1,7 +1,7 @@
 {
   "name": "spin-the-globe",
   "version": "1.0.0",
-  "description": "Spin The Globe projecto for Cheapflighs",
+  "description": "Spin The Globe project for Cheapflighs",
   "scripts": {
     "build:js": "webpack",
     "watch:js": "sh set_title.sh JS WATCHER;webpack --progress --colors --watch",
