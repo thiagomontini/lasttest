@@ -1,6 +1,6 @@
 var React = require("react");
 var sceneData = require("./sceneData.js");
-var createjs = require("./libs/createjs.js");
+var createjs = require("./libs/createjs/createjs.js");
 var Preloader = require("./preloader.jsx");
 var RioScene = require("./rioScene.jsx");
 

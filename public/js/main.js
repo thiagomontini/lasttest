@@ -19670,9 +19670,9 @@
 
 	var React = __webpack_require__(1);
 	var sceneData = __webpack_require__(160);
-	var createjs = __webpack_require__(162);
-	var Preloader = __webpack_require__(166);
-	var RioScene = __webpack_require__(167);
+	var createjs = __webpack_require__(161);
+	var Preloader = __webpack_require__(165);
+	var RioScene = __webpack_require__(166);
 	
 	
 	var App = React.createClass({displayName: "App",
@@ -19807,22 +19807,20 @@
 
 
 /***/ },
-/* 161 */,
-/* 162 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// This is a small hack that allows us to use createjs inside the Webpack/CommonJS environment without
 	// patching the original code
 	window.createjs = {};
 	
-	__webpack_require__(163);
-	__webpack_require__(306);
+	__webpack_require__(162);
 	
 	module.exports = window.createjs;
 
 
 /***/ },
-/* 163 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*!
@@ -19836,12 +19834,12 @@
 	*
 	* This notice shall be included in all copies or substantial portions of the Software.
 	*/
-	this.createjs=this.createjs||{},function(){"use strict";var a=createjs.PreloadJS=createjs.PreloadJS||{};a.version="0.6.2",a.buildDate="Thu, 26 Nov 2015 20:44:31 GMT"}(),this.createjs=this.createjs||{},createjs.extend=function(a,b){"use strict";function c(){this.constructor=a}return c.prototype=b.prototype,a.prototype=new c},this.createjs=this.createjs||{},createjs.promote=function(a,b){"use strict";var c=a.prototype,d=Object.getPrototypeOf&&Object.getPrototypeOf(c)||c.__proto__;if(d){c[(b+="_")+"constructor"]=d.constructor;for(var e in d)c.hasOwnProperty(e)&&"function"==typeof d[e]&&(c[b+e]=d[e])}return a},this.createjs=this.createjs||{},function(){"use strict";createjs.proxy=function(a,b){var c=Array.prototype.slice.call(arguments,2);return function(){return a.apply(b,Array.prototype.slice.call(arguments,0).concat(c))}}}(),this.createjs=this.createjs||{},createjs.indexOf=function(a,b){"use strict";for(var c=0,d=a.length;d>c;c++)if(b===a[c])return c;return-1},this.createjs=this.createjs||{},function(){"use strict";function Event(a,b,c){this.type=a,this.target=null,this.currentTarget=null,this.eventPhase=0,this.bubbles=!!b,this.cancelable=!!c,this.timeStamp=(new Date).getTime(),this.defaultPrevented=!1,this.propagationStopped=!1,this.immediatePropagationStopped=!1,this.removed=!1}var a=Event.prototype;a.preventDefault=function(){this.defaultPrevented=this.cancelable&&!0},a.stopPropagation=function(){this.propagationStopped=!0},a.stopImmediatePropagation=function(){this.immediatePropagationStopped=this.propagationStopped=!0},a.remove=function(){this.removed=!0},a.clone=function(){return new Event(this.type,this.bubbles,this.cancelable)},a.set=function(a){for(var b in a)this[b]=a[b];return this},a.toString=function(){return"[Event (type="+this.type+")]"},createjs.Event=Event}(),this.createjs=this.createjs||{},function(){"use strict";function ErrorEvent(a,b,c){this.Event_constructor("error"),this.title=a,this.message=b,this.data=c}var a=createjs.extend(ErrorEvent,createjs.Event);a.clone=function(){return new createjs.ErrorEvent(this.title,this.message,this.data)},createjs.ErrorEvent=createjs.promote(ErrorEvent,"Event")}(),this.createjs=this.createjs||{},function(){"use strict";function EventDispatcher(){this._listeners=null,this._captureListeners=null}var a=EventDispatcher.prototype;EventDispatcher.initialize=function(b){b.addEventListener=a.addEventListener,b.on=a.on,b.removeEventListener=b.off=a.removeEventListener,b.removeAllEventListeners=a.removeAllEventListeners,b.hasEventListener=a.hasEventListener,b.dispatchEvent=a.dispatchEvent,b._dispatchEvent=a._dispatchEvent,b.willTrigger=a.willTrigger},a.addEventListener=function(a,b,c){var d;d=c?this._captureListeners=this._captureListeners||{}:this._listeners=this._listeners||{};var e=d[a];return e&&this.removeEventListener(a,b,c),e=d[a],e?e.push(b):d[a]=[b],b},a.on=function(a,b,c,d,e,f){return b.handleEvent&&(c=c||b,b=b.handleEvent),c=c||this,this.addEventListener(a,function(a){b.call(c,a,e),d&&a.remove()},f)},a.removeEventListener=function(a,b,c){var d=c?this._captureListeners:this._listeners;if(d){var e=d[a];if(e)for(var f=0,g=e.length;g>f;f++)if(e[f]==b){1==g?delete d[a]:e.splice(f,1);break}}},a.off=a.removeEventListener,a.removeAllEventListeners=function(a){a?(this._listeners&&delete this._listeners[a],this._captureListeners&&delete this._captureListeners[a]):this._listeners=this._captureListeners=null},a.dispatchEvent=function(a,b,c){if("string"==typeof a){var d=this._listeners;if(!(b||d&&d[a]))return!0;a=new createjs.Event(a,b,c)}else a.target&&a.clone&&(a=a.clone());try{a.target=this}catch(e){}if(a.bubbles&&this.parent){for(var f=this,g=[f];f.parent;)g.push(f=f.parent);var h,i=g.length;for(h=i-1;h>=0&&!a.propagationStopped;h--)g[h]._dispatchEvent(a,1+(0==h));for(h=1;i>h&&!a.propagationStopped;h++)g[h]._dispatchEvent(a,3)}else this._dispatchEvent(a,2);return!a.defaultPrevented},a.hasEventListener=function(a){var b=this._listeners,c=this._captureListeners;return!!(b&&b[a]||c&&c[a])},a.willTrigger=function(a){for(var b=this;b;){if(b.hasEventListener(a))return!0;b=b.parent}return!1},a.toString=function(){return"[EventDispatcher]"},a._dispatchEvent=function(a,b){var c,d=1==b?this._captureListeners:this._listeners;if(a&&d){var e=d[a.type];if(!e||!(c=e.length))return;try{a.currentTarget=this}catch(f){}try{a.eventPhase=b}catch(f){}a.removed=!1,e=e.slice();for(var g=0;c>g&&!a.immediatePropagationStopped;g++){var h=e[g];h.handleEvent?h.handleEvent(a):h(a),a.removed&&(this.off(a.type,h,1==b),a.removed=!1)}}},createjs.EventDispatcher=EventDispatcher}(),this.createjs=this.createjs||{},function(){"use strict";function ProgressEvent(a,b){this.Event_constructor("progress"),this.loaded=a,this.total=null==b?1:b,this.progress=0==b?0:this.loaded/this.total}var a=createjs.extend(ProgressEvent,createjs.Event);a.clone=function(){return new createjs.ProgressEvent(this.loaded,this.total)},createjs.ProgressEvent=createjs.promote(ProgressEvent,"Event")}(window),function(){function a(b,d){function f(a){if(f[a]!==q)return f[a];var b;if("bug-string-char-index"==a)b="a"!="a"[0];else if("json"==a)b=f("json-stringify")&&f("json-parse");else{var c,e='{"a":[1,true,false,null,"\\u0000\\b\\n\\f\\r\\t"]}';if("json-stringify"==a){var i=d.stringify,k="function"==typeof i&&t;if(k){(c=function(){return 1}).toJSON=c;try{k="0"===i(0)&&"0"===i(new g)&&'""'==i(new h)&&i(s)===q&&i(q)===q&&i()===q&&"1"===i(c)&&"[1]"==i([c])&&"[null]"==i([q])&&"null"==i(null)&&"[null,null,null]"==i([q,s,null])&&i({a:[c,!0,!1,null,"\x00\b\n\f\r	"]})==e&&"1"===i(null,c)&&"[\n 1,\n 2\n]"==i([1,2],null,1)&&'"-271821-04-20T00:00:00.000Z"'==i(new j(-864e13))&&'"+275760-09-13T00:00:00.000Z"'==i(new j(864e13))&&'"-000001-01-01T00:00:00.000Z"'==i(new j(-621987552e5))&&'"1969-12-31T23:59:59.999Z"'==i(new j(-1))}catch(l){k=!1}}b=k}if("json-parse"==a){var m=d.parse;if("function"==typeof m)try{if(0===m("0")&&!m(!1)){c=m(e);var n=5==c.a.length&&1===c.a[0];if(n){try{n=!m('"	"')}catch(l){}if(n)try{n=1!==m("01")}catch(l){}if(n)try{n=1!==m("1.")}catch(l){}}}}catch(l){n=!1}b=n}}return f[a]=!!b}b||(b=e.Object()),d||(d=e.Object());var g=b.Number||e.Number,h=b.String||e.String,i=b.Object||e.Object,j=b.Date||e.Date,k=b.SyntaxError||e.SyntaxError,l=b.TypeError||e.TypeError,m=b.Math||e.Math,n=b.JSON||e.JSON;"object"==typeof n&&n&&(d.stringify=n.stringify,d.parse=n.parse);var o,p,q,r=i.prototype,s=r.toString,t=new j(-0xc782b5b800cec);try{t=-109252==t.getUTCFullYear()&&0===t.getUTCMonth()&&1===t.getUTCDate()&&10==t.getUTCHours()&&37==t.getUTCMinutes()&&6==t.getUTCSeconds()&&708==t.getUTCMilliseconds()}catch(u){}if(!f("json")){var v="[object Function]",w="[object Date]",x="[object Number]",y="[object String]",z="[object Array]",A="[object Boolean]",B=f("bug-string-char-index");if(!t)var C=m.floor,D=[0,31,59,90,120,151,181,212,243,273,304,334],E=function(a,b){return D[b]+365*(a-1970)+C((a-1969+(b=+(b>1)))/4)-C((a-1901+b)/100)+C((a-1601+b)/400)};if((o=r.hasOwnProperty)||(o=function(a){var b,c={};return(c.__proto__=null,c.__proto__={toString:1},c).toString!=s?o=function(a){var b=this.__proto__,c=a in(this.__proto__=null,this);return this.__proto__=b,c}:(b=c.constructor,o=function(a){var c=(this.constructor||b).prototype;return a in this&&!(a in c&&this[a]===c[a])}),c=null,o.call(this,a)}),p=function(a,b){var d,e,f,g=0;(d=function(){this.valueOf=0}).prototype.valueOf=0,e=new d;for(f in e)o.call(e,f)&&g++;return d=e=null,g?p=2==g?function(a,b){var c,d={},e=s.call(a)==v;for(c in a)e&&"prototype"==c||o.call(d,c)||!(d[c]=1)||!o.call(a,c)||b(c)}:function(a,b){var c,d,e=s.call(a)==v;for(c in a)e&&"prototype"==c||!o.call(a,c)||(d="constructor"===c)||b(c);(d||o.call(a,c="constructor"))&&b(c)}:(e=["valueOf","toString","toLocaleString","propertyIsEnumerable","isPrototypeOf","hasOwnProperty","constructor"],p=function(a,b){var d,f,g=s.call(a)==v,h=!g&&"function"!=typeof a.constructor&&c[typeof a.hasOwnProperty]&&a.hasOwnProperty||o;for(d in a)g&&"prototype"==d||!h.call(a,d)||b(d);for(f=e.length;d=e[--f];h.call(a,d)&&b(d));}),p(a,b)},!f("json-stringify")){var F={92:"\\\\",34:'\\"',8:"\\b",12:"\\f",10:"\\n",13:"\\r",9:"\\t"},G="000000",H=function(a,b){return(G+(b||0)).slice(-a)},I="\\u00",J=function(a){for(var b='"',c=0,d=a.length,e=!B||d>10,f=e&&(B?a.split(""):a);d>c;c++){var g=a.charCodeAt(c);switch(g){case 8:case 9:case 10:case 12:case 13:case 34:case 92:b+=F[g];break;default:if(32>g){b+=I+H(2,g.toString(16));break}b+=e?f[c]:a.charAt(c)}}return b+'"'},K=function(a,b,c,d,e,f,g){var h,i,j,k,m,n,r,t,u,v,B,D,F,G,I,L;try{h=b[a]}catch(M){}if("object"==typeof h&&h)if(i=s.call(h),i!=w||o.call(h,"toJSON"))"function"==typeof h.toJSON&&(i!=x&&i!=y&&i!=z||o.call(h,"toJSON"))&&(h=h.toJSON(a));else if(h>-1/0&&1/0>h){if(E){for(m=C(h/864e5),j=C(m/365.2425)+1970-1;E(j+1,0)<=m;j++);for(k=C((m-E(j,0))/30.42);E(j,k+1)<=m;k++);m=1+m-E(j,k),n=(h%864e5+864e5)%864e5,r=C(n/36e5)%24,t=C(n/6e4)%60,u=C(n/1e3)%60,v=n%1e3}else j=h.getUTCFullYear(),k=h.getUTCMonth(),m=h.getUTCDate(),r=h.getUTCHours(),t=h.getUTCMinutes(),u=h.getUTCSeconds(),v=h.getUTCMilliseconds();h=(0>=j||j>=1e4?(0>j?"-":"+")+H(6,0>j?-j:j):H(4,j))+"-"+H(2,k+1)+"-"+H(2,m)+"T"+H(2,r)+":"+H(2,t)+":"+H(2,u)+"."+H(3,v)+"Z"}else h=null;if(c&&(h=c.call(b,a,h)),null===h)return"null";if(i=s.call(h),i==A)return""+h;if(i==x)return h>-1/0&&1/0>h?""+h:"null";if(i==y)return J(""+h);if("object"==typeof h){for(G=g.length;G--;)if(g[G]===h)throw l();if(g.push(h),B=[],I=f,f+=e,i==z){for(F=0,G=h.length;G>F;F++)D=K(F,h,c,d,e,f,g),B.push(D===q?"null":D);L=B.length?e?"[\n"+f+B.join(",\n"+f)+"\n"+I+"]":"["+B.join(",")+"]":"[]"}else p(d||h,function(a){var b=K(a,h,c,d,e,f,g);b!==q&&B.push(J(a)+":"+(e?" ":"")+b)}),L=B.length?e?"{\n"+f+B.join(",\n"+f)+"\n"+I+"}":"{"+B.join(",")+"}":"{}";return g.pop(),L}};d.stringify=function(a,b,d){var e,f,g,h;if(c[typeof b]&&b)if((h=s.call(b))==v)f=b;else if(h==z){g={};for(var i,j=0,k=b.length;k>j;i=b[j++],h=s.call(i),(h==y||h==x)&&(g[i]=1));}if(d)if((h=s.call(d))==x){if((d-=d%1)>0)for(e="",d>10&&(d=10);e.length<d;e+=" ");}else h==y&&(e=d.length<=10?d:d.slice(0,10));return K("",(i={},i[""]=a,i),f,g,e,"",[])}}if(!f("json-parse")){var L,M,N=h.fromCharCode,O={92:"\\",34:'"',47:"/",98:"\b",116:"	",110:"\n",102:"\f",114:"\r"},P=function(){throw L=M=null,k()},Q=function(){for(var a,b,c,d,e,f=M,g=f.length;g>L;)switch(e=f.charCodeAt(L)){case 9:case 10:case 13:case 32:L++;break;case 123:case 125:case 91:case 93:case 58:case 44:return a=B?f.charAt(L):f[L],L++,a;case 34:for(a="@",L++;g>L;)if(e=f.charCodeAt(L),32>e)P();else if(92==e)switch(e=f.charCodeAt(++L)){case 92:case 34:case 47:case 98:case 116:case 110:case 102:case 114:a+=O[e],L++;break;case 117:for(b=++L,c=L+4;c>L;L++)e=f.charCodeAt(L),e>=48&&57>=e||e>=97&&102>=e||e>=65&&70>=e||P();a+=N("0x"+f.slice(b,L));break;default:P()}else{if(34==e)break;for(e=f.charCodeAt(L),b=L;e>=32&&92!=e&&34!=e;)e=f.charCodeAt(++L);a+=f.slice(b,L)}if(34==f.charCodeAt(L))return L++,a;P();default:if(b=L,45==e&&(d=!0,e=f.charCodeAt(++L)),e>=48&&57>=e){for(48==e&&(e=f.charCodeAt(L+1),e>=48&&57>=e)&&P(),d=!1;g>L&&(e=f.charCodeAt(L),e>=48&&57>=e);L++);if(46==f.charCodeAt(L)){for(c=++L;g>c&&(e=f.charCodeAt(c),e>=48&&57>=e);c++);c==L&&P(),L=c}if(e=f.charCodeAt(L),101==e||69==e){for(e=f.charCodeAt(++L),(43==e||45==e)&&L++,c=L;g>c&&(e=f.charCodeAt(c),e>=48&&57>=e);c++);c==L&&P(),L=c}return+f.slice(b,L)}if(d&&P(),"true"==f.slice(L,L+4))return L+=4,!0;if("false"==f.slice(L,L+5))return L+=5,!1;if("null"==f.slice(L,L+4))return L+=4,null;P()}return"$"},R=function(a){var b,c;if("$"==a&&P(),"string"==typeof a){if("@"==(B?a.charAt(0):a[0]))return a.slice(1);if("["==a){for(b=[];a=Q(),"]"!=a;c||(c=!0))c&&(","==a?(a=Q(),"]"==a&&P()):P()),","==a&&P(),b.push(R(a));return b}if("{"==a){for(b={};a=Q(),"}"!=a;c||(c=!0))c&&(","==a?(a=Q(),"}"==a&&P()):P()),(","==a||"string"!=typeof a||"@"!=(B?a.charAt(0):a[0])||":"!=Q())&&P(),b[a.slice(1)]=R(Q());return b}P()}return a},S=function(a,b,c){var d=T(a,b,c);d===q?delete a[b]:a[b]=d},T=function(a,b,c){var d,e=a[b];if("object"==typeof e&&e)if(s.call(e)==z)for(d=e.length;d--;)S(e,d,c);else p(e,function(a){S(e,a,c)});return c.call(a,b,e)};d.parse=function(a,b){var c,d;return L=0,M=""+a,c=R(Q()),"$"!=Q()&&P(),L=M=null,b&&s.call(b)==v?T((d={},d[""]=c,d),"",b):c}}}return d.runInContext=a,d}var b="function"=="function"&&__webpack_require__(165),c={"function":!0,object:!0},d=c[typeof exports]&&exports&&!exports.nodeType&&exports,e=c[typeof window]&&window||this,f=d&&c[typeof module]&&module&&!module.nodeType&&"object"==typeof global&&global;if(!f||f.global!==f&&f.window!==f&&f.self!==f||(e=f),d&&!b)a(e,d);else{var g=e.JSON,h=e.JSON3,i=!1,j=a(e,e.JSON3={noConflict:function(){return i||(i=!0,e.JSON=g,e.JSON3=h,g=h=null),j}});e.JSON={parse:j.parse,stringify:j.stringify}}b&&!(__WEBPACK_AMD_DEFINE_RESULT__ = function(){return j}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))}.call(this),function(){var a={};a.appendToHead=function(b){a.getHead().appendChild(b)},a.getHead=function(){return document.head||document.getElementsByTagName("head")[0]},a.getBody=function(){return document.body||document.getElementsByTagName("body")[0]},createjs.DomUtils=a}(),function(){var a={};a.parseXML=function(a,b){var c=null;try{if(window.DOMParser){var d=new DOMParser;c=d.parseFromString(a,b)}}catch(e){}if(!c)try{c=new ActiveXObject("Microsoft.XMLDOM"),c.async=!1,c.loadXML(a)}catch(e){c=null}return c},a.parseJSON=function(a){if(null==a)return null;try{return JSON.parse(a)}catch(b){throw b}},createjs.DataUtils=a}(),this.createjs=this.createjs||{},function(){"use strict";function LoadItem(){this.src=null,this.type=null,this.id=null,this.maintainOrder=!1,this.callback=null,this.data=null,this.method=createjs.LoadItem.GET,this.values=null,this.headers=null,this.withCredentials=!1,this.mimeType=null,this.crossOrigin=null,this.loadTimeout=b.LOAD_TIMEOUT_DEFAULT}var a=LoadItem.prototype={},b=LoadItem;b.LOAD_TIMEOUT_DEFAULT=8e3,b.create=function(a){if("string"==typeof a){var c=new LoadItem;return c.src=a,c}if(a instanceof b)return a;if(a instanceof Object&&a.src)return null==a.loadTimeout&&(a.loadTimeout=b.LOAD_TIMEOUT_DEFAULT),a;throw new Error("Type not recognized.")},a.set=function(a){for(var b in a)this[b]=a[b];return this},createjs.LoadItem=b}(),function(){var a={};a.ABSOLUTE_PATT=/^(?:\w+:)?\/{2}/i,a.RELATIVE_PATT=/^[.\/]*?\//i,a.EXTENSION_PATT=/\/?[^\/]+\.(\w{1,5})$/i,a.parseURI=function(b){var c={absolute:!1,relative:!1};if(null==b)return c;var d=b.indexOf("?");d>-1&&(b=b.substr(0,d));var e;return a.ABSOLUTE_PATT.test(b)?c.absolute=!0:a.RELATIVE_PATT.test(b)&&(c.relative=!0),(e=b.match(a.EXTENSION_PATT))&&(c.extension=e[1].toLowerCase()),c},a.formatQueryString=function(a,b){if(null==a)throw new Error("You must specify data.");var c=[];for(var d in a)c.push(d+"="+escape(a[d]));return b&&(c=c.concat(b)),c.join("&")},a.buildPath=function(a,b){if(null==b)return a;var c=[],d=a.indexOf("?");if(-1!=d){var e=a.slice(d+1);c=c.concat(e.split("&"))}return-1!=d?a.slice(0,d)+"?"+this.formatQueryString(b,c):a+"?"+this.formatQueryString(b,c)},a.isCrossDomain=function(a){var b=document.createElement("a");b.href=a.src;var c=document.createElement("a");c.href=location.href;var d=""!=b.hostname&&(b.port!=c.port||b.protocol!=c.protocol||b.hostname!=c.hostname);return d},a.isLocal=function(a){var b=document.createElement("a");return b.href=a.src,""==b.hostname&&"file:"==b.protocol},a.isBinary=function(a){switch(a){case createjs.AbstractLoader.IMAGE:case createjs.AbstractLoader.BINARY:return!0;default:return!1}},a.isImageTag=function(a){return a instanceof HTMLImageElement},a.isAudioTag=function(a){return window.HTMLAudioElement?a instanceof HTMLAudioElement:!1},a.isVideoTag=function(a){return window.HTMLVideoElement?a instanceof HTMLVideoElement:!1},a.isText=function(a){switch(a){case createjs.AbstractLoader.TEXT:case createjs.AbstractLoader.JSON:case createjs.AbstractLoader.MANIFEST:case createjs.AbstractLoader.XML:case createjs.AbstractLoader.CSS:case createjs.AbstractLoader.SVG:case createjs.AbstractLoader.JAVASCRIPT:case createjs.AbstractLoader.SPRITESHEET:return!0;default:return!1}},a.getTypeByExtension=function(a){if(null==a)return createjs.AbstractLoader.TEXT;switch(a.toLowerCase()){case"jpeg":case"jpg":case"gif":case"png":case"webp":case"bmp":return createjs.AbstractLoader.IMAGE;case"ogg":case"mp3":case"webm":return createjs.AbstractLoader.SOUND;case"mp4":case"webm":case"ts":return createjs.AbstractLoader.VIDEO;case"json":return createjs.AbstractLoader.JSON;case"xml":return createjs.AbstractLoader.XML;case"css":return createjs.AbstractLoader.CSS;case"js":return createjs.AbstractLoader.JAVASCRIPT;case"svg":return createjs.AbstractLoader.SVG;default:return createjs.AbstractLoader.TEXT}},createjs.RequestUtils=a}(),this.createjs=this.createjs||{},function(){"use strict";function AbstractLoader(a,b,c){this.EventDispatcher_constructor(),this.loaded=!1,this.canceled=!1,this.progress=0,this.type=c,this.resultFormatter=null,this._item=a?createjs.LoadItem.create(a):null,this._preferXHR=b,this._result=null,this._rawResult=null,this._loadedItems=null,this._tagSrcAttribute=null,this._tag=null}var a=createjs.extend(AbstractLoader,createjs.EventDispatcher),b=AbstractLoader;b.POST="POST",b.GET="GET",b.BINARY="binary",b.CSS="css",b.IMAGE="image",b.JAVASCRIPT="javascript",b.JSON="json",b.JSONP="jsonp",b.MANIFEST="manifest",b.SOUND="sound",b.VIDEO="video",b.SPRITESHEET="spritesheet",b.SVG="svg",b.TEXT="text",b.XML="xml",a.getItem=function(){return this._item},a.getResult=function(a){return a?this._rawResult:this._result},a.getTag=function(){return this._tag},a.setTag=function(a){this._tag=a},a.load=function(){this._createRequest(),this._request.on("complete",this,this),this._request.on("progress",this,this),this._request.on("loadStart",this,this),this._request.on("abort",this,this),this._request.on("timeout",this,this),this._request.on("error",this,this);var a=new createjs.Event("initialize");a.loader=this._request,this.dispatchEvent(a),this._request.load()},a.cancel=function(){this.canceled=!0,this.destroy()},a.destroy=function(){this._request&&(this._request.removeAllEventListeners(),this._request.destroy()),this._request=null,this._item=null,this._rawResult=null,this._result=null,this._loadItems=null,this.removeAllEventListeners()},a.getLoadedItems=function(){return this._loadedItems},a._createRequest=function(){this._request=this._preferXHR?new createjs.XHRRequest(this._item):new createjs.TagRequest(this._item,this._tag||this._createTag(),this._tagSrcAttribute)},a._createTag=function(){return null},a._sendLoadStart=function(){this._isCanceled()||this.dispatchEvent("loadstart")},a._sendProgress=function(a){if(!this._isCanceled()){var b=null;"number"==typeof a?(this.progress=a,b=new createjs.ProgressEvent(this.progress)):(b=a,this.progress=a.loaded/a.total,b.progress=this.progress,(isNaN(this.progress)||1/0==this.progress)&&(this.progress=0)),this.hasEventListener("progress")&&this.dispatchEvent(b)}},a._sendComplete=function(){if(!this._isCanceled()){this.loaded=!0;var a=new createjs.Event("complete");a.rawResult=this._rawResult,null!=this._result&&(a.result=this._result),this.dispatchEvent(a)}},a._sendError=function(a){!this._isCanceled()&&this.hasEventListener("error")&&(null==a&&(a=new createjs.ErrorEvent("PRELOAD_ERROR_EMPTY")),this.dispatchEvent(a))},a._isCanceled=function(){return null==window.createjs||this.canceled?!0:!1},a.resultFormatter=null,a.handleEvent=function(a){switch(a.type){case"complete":this._rawResult=a.target._response;var b=this.resultFormatter&&this.resultFormatter(this);b instanceof Function?b.call(this,createjs.proxy(this._resultFormatSuccess,this),createjs.proxy(this._resultFormatFailed,this)):(this._result=b||this._rawResult,this._sendComplete());break;case"progress":this._sendProgress(a);break;case"error":this._sendError(a);break;case"loadstart":this._sendLoadStart();break;case"abort":case"timeout":this._isCanceled()||this.dispatchEvent(new createjs.ErrorEvent("PRELOAD_"+a.type.toUpperCase()+"_ERROR"))}},a._resultFormatSuccess=function(a){this._result=a,this._sendComplete()},a._resultFormatFailed=function(a){this._sendError(a)},a.buildPath=function(a,b){return createjs.RequestUtils.buildPath(a,b)},a.toString=function(){return"[PreloadJS AbstractLoader]"},createjs.AbstractLoader=createjs.promote(AbstractLoader,"EventDispatcher")}(),this.createjs=this.createjs||{},function(){"use strict";function AbstractMediaLoader(a,b,c){this.AbstractLoader_constructor(a,b,c),this.resultFormatter=this._formatResult,this._tagSrcAttribute="src",this.on("initialize",this._updateXHR,this)}var a=createjs.extend(AbstractMediaLoader,createjs.AbstractLoader);a.load=function(){this._tag||(this._tag=this._createTag(this._item.src)),this._tag.preload="auto",this._tag.load(),this.AbstractLoader_load()},a._createTag=function(){},a._createRequest=function(){this._request=this._preferXHR?new createjs.XHRRequest(this._item):new createjs.MediaTagRequest(this._item,this._tag||this._createTag(),this._tagSrcAttribute)},a._updateXHR=function(a){a.loader.setResponseType&&a.loader.setResponseType("blob")},a._formatResult=function(a){if(this._tag.removeEventListener&&this._tag.removeEventListener("canplaythrough",this._loadedHandler),this._tag.onstalled=null,this._preferXHR){var b=window.URL||window.webkitURL,c=a.getResult(!0);a.getTag().src=b.createObjectURL(c)}return a.getTag()},createjs.AbstractMediaLoader=createjs.promote(AbstractMediaLoader,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";var AbstractRequest=function(a){this._item=a},a=createjs.extend(AbstractRequest,createjs.EventDispatcher);a.load=function(){},a.destroy=function(){},a.cancel=function(){},createjs.AbstractRequest=createjs.promote(AbstractRequest,"EventDispatcher")}(),this.createjs=this.createjs||{},function(){"use strict";function TagRequest(a,b,c){this.AbstractRequest_constructor(a),this._tag=b,this._tagSrcAttribute=c,this._loadedHandler=createjs.proxy(this._handleTagComplete,this),this._addedToDOM=!1,this._startTagVisibility=null}var a=createjs.extend(TagRequest,createjs.AbstractRequest);a.load=function(){this._tag.onload=createjs.proxy(this._handleTagComplete,this),this._tag.onreadystatechange=createjs.proxy(this._handleReadyStateChange,this),this._tag.onerror=createjs.proxy(this._handleError,this);var a=new createjs.Event("initialize");a.loader=this._tag,this.dispatchEvent(a),this._hideTag(),this._loadTimeout=setTimeout(createjs.proxy(this._handleTimeout,this),this._item.loadTimeout),this._tag[this._tagSrcAttribute]=this._item.src,null==this._tag.parentNode&&(window.document.body.appendChild(this._tag),this._addedToDOM=!0)},a.destroy=function(){this._clean(),this._tag=null,this.AbstractRequest_destroy()},a._handleReadyStateChange=function(){clearTimeout(this._loadTimeout);var a=this._tag;("loaded"==a.readyState||"complete"==a.readyState)&&this._handleTagComplete()},a._handleError=function(){this._clean(),this.dispatchEvent("error")},a._handleTagComplete=function(){this._rawResult=this._tag,this._result=this.resultFormatter&&this.resultFormatter(this)||this._rawResult,this._clean(),this._showTag(),this.dispatchEvent("complete")},a._handleTimeout=function(){this._clean(),this.dispatchEvent(new createjs.Event("timeout"))},a._clean=function(){this._tag.onload=null,this._tag.onreadystatechange=null,this._tag.onerror=null,this._addedToDOM&&null!=this._tag.parentNode&&this._tag.parentNode.removeChild(this._tag),clearTimeout(this._loadTimeout)},a._hideTag=function(){this._startTagVisibility=this._tag.style.visibility,this._tag.style.visibility="hidden"},a._showTag=function(){this._tag.style.visibility=this._startTagVisibility},a._handleStalled=function(){},createjs.TagRequest=createjs.promote(TagRequest,"AbstractRequest")}(),this.createjs=this.createjs||{},function(){"use strict";function MediaTagRequest(a,b,c){this.AbstractRequest_constructor(a),this._tag=b,this._tagSrcAttribute=c,this._loadedHandler=createjs.proxy(this._handleTagComplete,this)}var a=createjs.extend(MediaTagRequest,createjs.TagRequest);a.load=function(){var a=createjs.proxy(this._handleStalled,this);this._stalledCallback=a;var b=createjs.proxy(this._handleProgress,this);this._handleProgress=b,this._tag.addEventListener("stalled",a),this._tag.addEventListener("progress",b),this._tag.addEventListener&&this._tag.addEventListener("canplaythrough",this._loadedHandler,!1),this.TagRequest_load()},a._handleReadyStateChange=function(){clearTimeout(this._loadTimeout);var a=this._tag;("loaded"==a.readyState||"complete"==a.readyState)&&this._handleTagComplete()},a._handleStalled=function(){},a._handleProgress=function(a){if(a&&!(a.loaded>0&&0==a.total)){var b=new createjs.ProgressEvent(a.loaded,a.total);this.dispatchEvent(b)}},a._clean=function(){this._tag.removeEventListener&&this._tag.removeEventListener("canplaythrough",this._loadedHandler),this._tag.removeEventListener("stalled",this._stalledCallback),this._tag.removeEventListener("progress",this._progressCallback),this.TagRequest__clean()},createjs.MediaTagRequest=createjs.promote(MediaTagRequest,"TagRequest")}(),this.createjs=this.createjs||{},function(){"use strict";function XHRRequest(a){this.AbstractRequest_constructor(a),this._request=null,this._loadTimeout=null,this._xhrLevel=1,this._response=null,this._rawResponse=null,this._canceled=!1,this._handleLoadStartProxy=createjs.proxy(this._handleLoadStart,this),this._handleProgressProxy=createjs.proxy(this._handleProgress,this),this._handleAbortProxy=createjs.proxy(this._handleAbort,this),this._handleErrorProxy=createjs.proxy(this._handleError,this),this._handleTimeoutProxy=createjs.proxy(this._handleTimeout,this),this._handleLoadProxy=createjs.proxy(this._handleLoad,this),this._handleReadyStateChangeProxy=createjs.proxy(this._handleReadyStateChange,this),!this._createXHR(a)}var a=createjs.extend(XHRRequest,createjs.AbstractRequest);XHRRequest.ACTIVEX_VERSIONS=["Msxml2.XMLHTTP.6.0","Msxml2.XMLHTTP.5.0","Msxml2.XMLHTTP.4.0","MSXML2.XMLHTTP.3.0","MSXML2.XMLHTTP","Microsoft.XMLHTTP"],a.getResult=function(a){return a&&this._rawResponse?this._rawResponse:this._response},a.cancel=function(){this.canceled=!0,this._clean(),this._request.abort()},a.load=function(){if(null==this._request)return void this._handleError();null!=this._request.addEventListener?(this._request.addEventListener("loadstart",this._handleLoadStartProxy,!1),this._request.addEventListener("progress",this._handleProgressProxy,!1),this._request.addEventListener("abort",this._handleAbortProxy,!1),this._request.addEventListener("error",this._handleErrorProxy,!1),this._request.addEventListener("timeout",this._handleTimeoutProxy,!1),this._request.addEventListener("load",this._handleLoadProxy,!1),this._request.addEventListener("readystatechange",this._handleReadyStateChangeProxy,!1)):(this._request.onloadstart=this._handleLoadStartProxy,this._request.onprogress=this._handleProgressProxy,this._request.onabort=this._handleAbortProxy,this._request.onerror=this._handleErrorProxy,this._request.ontimeout=this._handleTimeoutProxy,this._request.onload=this._handleLoadProxy,this._request.onreadystatechange=this._handleReadyStateChangeProxy),1==this._xhrLevel&&(this._loadTimeout=setTimeout(createjs.proxy(this._handleTimeout,this),this._item.loadTimeout));try{this._item.values&&this._item.method!=createjs.AbstractLoader.GET?this._item.method==createjs.AbstractLoader.POST&&this._request.send(createjs.RequestUtils.formatQueryString(this._item.values)):this._request.send()}catch(a){this.dispatchEvent(new createjs.ErrorEvent("XHR_SEND",null,a))}},a.setResponseType=function(a){"blob"===a&&(a=window.URL?"blob":"arraybuffer",this._responseType=a),this._request.responseType=a},a.getAllResponseHeaders=function(){return this._request.getAllResponseHeaders instanceof Function?this._request.getAllResponseHeaders():null},a.getResponseHeader=function(a){return this._request.getResponseHeader instanceof Function?this._request.getResponseHeader(a):null},a._handleProgress=function(a){if(a&&!(a.loaded>0&&0==a.total)){var b=new createjs.ProgressEvent(a.loaded,a.total);this.dispatchEvent(b)}},a._handleLoadStart=function(){clearTimeout(this._loadTimeout),this.dispatchEvent("loadstart")},a._handleAbort=function(a){this._clean(),this.dispatchEvent(new createjs.ErrorEvent("XHR_ABORTED",null,a))},a._handleError=function(a){this._clean(),this.dispatchEvent(new createjs.ErrorEvent(a.message))},a._handleReadyStateChange=function(){4==this._request.readyState&&this._handleLoad()},a._handleLoad=function(){if(!this.loaded){this.loaded=!0;var a=this._checkError();if(a)return void this._handleError(a);if(this._response=this._getResponse(),"arraybuffer"===this._responseType)try{this._response=new Blob([this._response])}catch(b){if(window.BlobBuilder=window.BlobBuilder||window.WebKitBlobBuilder||window.MozBlobBuilder||window.MSBlobBuilder,"TypeError"===b.name&&window.BlobBuilder){var c=new BlobBuilder;c.append(this._response),this._response=c.getBlob()}}this._clean(),this.dispatchEvent(new createjs.Event("complete"))}},a._handleTimeout=function(a){this._clean(),this.dispatchEvent(new createjs.ErrorEvent("PRELOAD_TIMEOUT",null,a))},a._checkError=function(){var a=parseInt(this._request.status);switch(a){case 404:case 0:return new Error(a)}return null},a._getResponse=function(){if(null!=this._response)return this._response;if(null!=this._request.response)return this._request.response;try{if(null!=this._request.responseText)return this._request.responseText}catch(a){}try{if(null!=this._request.responseXML)return this._request.responseXML}catch(a){}return null},a._createXHR=function(a){var b=createjs.RequestUtils.isCrossDomain(a),c={},d=null;if(window.XMLHttpRequest)d=new XMLHttpRequest,b&&void 0===d.withCredentials&&window.XDomainRequest&&(d=new XDomainRequest);else{for(var e=0,f=s.ACTIVEX_VERSIONS.length;f>e;e++){var g=s.ACTIVEX_VERSIONS[e];try{d=new ActiveXObject(g);break}catch(h){}}if(null==d)return!1}null==a.mimeType&&createjs.RequestUtils.isText(a.type)&&(a.mimeType="text/plain; charset=utf-8"),a.mimeType&&d.overrideMimeType&&d.overrideMimeType(a.mimeType),this._xhrLevel="string"==typeof d.responseType?2:1;var i=null;if(i=a.method==createjs.AbstractLoader.GET?createjs.RequestUtils.buildPath(a.src,a.values):a.src,d.open(a.method||createjs.AbstractLoader.GET,i,!0),b&&d instanceof XMLHttpRequest&&1==this._xhrLevel&&(c.Origin=location.origin),a.values&&a.method==createjs.AbstractLoader.POST&&(c["Content-Type"]="application/x-www-form-urlencoded"),b||c["X-Requested-With"]||(c["X-Requested-With"]="XMLHttpRequest"),a.headers)for(var j in a.headers)c[j]=a.headers[j];for(j in c)d.setRequestHeader(j,c[j]);return d instanceof XMLHttpRequest&&void 0!==a.withCredentials&&(d.withCredentials=a.withCredentials),this._request=d,!0},a._clean=function(){clearTimeout(this._loadTimeout),null!=this._request.removeEventListener?(this._request.removeEventListener("loadstart",this._handleLoadStartProxy),this._request.removeEventListener("progress",this._handleProgressProxy),this._request.removeEventListener("abort",this._handleAbortProxy),this._request.removeEventListener("error",this._handleErrorProxy),this._request.removeEventListener("timeout",this._handleTimeoutProxy),this._request.removeEventListener("load",this._handleLoadProxy),this._request.removeEventListener("readystatechange",this._handleReadyStateChangeProxy)):(this._request.onloadstart=null,this._request.onprogress=null,this._request.onabort=null,this._request.onerror=null,this._request.ontimeout=null,this._request.onload=null,this._request.onreadystatechange=null)},a.toString=function(){return"[PreloadJS XHRRequest]"},createjs.XHRRequest=createjs.promote(XHRRequest,"AbstractRequest")}(),this.createjs=this.createjs||{},function(){"use strict";function LoadQueue(a,b,c){this.AbstractLoader_constructor(),this._plugins=[],this._typeCallbacks={},this._extensionCallbacks={},this.next=null,this.maintainScriptOrder=!0,this.stopOnError=!1,this._maxConnections=1,this._availableLoaders=[createjs.ImageLoader,createjs.JavaScriptLoader,createjs.CSSLoader,createjs.JSONLoader,createjs.JSONPLoader,createjs.SoundLoader,createjs.ManifestLoader,createjs.SpriteSheetLoader,createjs.XMLLoader,createjs.SVGLoader,createjs.BinaryLoader,createjs.VideoLoader,createjs.TextLoader],this._defaultLoaderLength=this._availableLoaders.length,this.init(a,b,c)
+	this.createjs=this.createjs||{},function(){"use strict";var a=createjs.PreloadJS=createjs.PreloadJS||{};a.version="0.6.2",a.buildDate="Thu, 26 Nov 2015 20:44:31 GMT"}(),this.createjs=this.createjs||{},createjs.extend=function(a,b){"use strict";function c(){this.constructor=a}return c.prototype=b.prototype,a.prototype=new c},this.createjs=this.createjs||{},createjs.promote=function(a,b){"use strict";var c=a.prototype,d=Object.getPrototypeOf&&Object.getPrototypeOf(c)||c.__proto__;if(d){c[(b+="_")+"constructor"]=d.constructor;for(var e in d)c.hasOwnProperty(e)&&"function"==typeof d[e]&&(c[b+e]=d[e])}return a},this.createjs=this.createjs||{},function(){"use strict";createjs.proxy=function(a,b){var c=Array.prototype.slice.call(arguments,2);return function(){return a.apply(b,Array.prototype.slice.call(arguments,0).concat(c))}}}(),this.createjs=this.createjs||{},createjs.indexOf=function(a,b){"use strict";for(var c=0,d=a.length;d>c;c++)if(b===a[c])return c;return-1},this.createjs=this.createjs||{},function(){"use strict";function Event(a,b,c){this.type=a,this.target=null,this.currentTarget=null,this.eventPhase=0,this.bubbles=!!b,this.cancelable=!!c,this.timeStamp=(new Date).getTime(),this.defaultPrevented=!1,this.propagationStopped=!1,this.immediatePropagationStopped=!1,this.removed=!1}var a=Event.prototype;a.preventDefault=function(){this.defaultPrevented=this.cancelable&&!0},a.stopPropagation=function(){this.propagationStopped=!0},a.stopImmediatePropagation=function(){this.immediatePropagationStopped=this.propagationStopped=!0},a.remove=function(){this.removed=!0},a.clone=function(){return new Event(this.type,this.bubbles,this.cancelable)},a.set=function(a){for(var b in a)this[b]=a[b];return this},a.toString=function(){return"[Event (type="+this.type+")]"},createjs.Event=Event}(),this.createjs=this.createjs||{},function(){"use strict";function ErrorEvent(a,b,c){this.Event_constructor("error"),this.title=a,this.message=b,this.data=c}var a=createjs.extend(ErrorEvent,createjs.Event);a.clone=function(){return new createjs.ErrorEvent(this.title,this.message,this.data)},createjs.ErrorEvent=createjs.promote(ErrorEvent,"Event")}(),this.createjs=this.createjs||{},function(){"use strict";function EventDispatcher(){this._listeners=null,this._captureListeners=null}var a=EventDispatcher.prototype;EventDispatcher.initialize=function(b){b.addEventListener=a.addEventListener,b.on=a.on,b.removeEventListener=b.off=a.removeEventListener,b.removeAllEventListeners=a.removeAllEventListeners,b.hasEventListener=a.hasEventListener,b.dispatchEvent=a.dispatchEvent,b._dispatchEvent=a._dispatchEvent,b.willTrigger=a.willTrigger},a.addEventListener=function(a,b,c){var d;d=c?this._captureListeners=this._captureListeners||{}:this._listeners=this._listeners||{};var e=d[a];return e&&this.removeEventListener(a,b,c),e=d[a],e?e.push(b):d[a]=[b],b},a.on=function(a,b,c,d,e,f){return b.handleEvent&&(c=c||b,b=b.handleEvent),c=c||this,this.addEventListener(a,function(a){b.call(c,a,e),d&&a.remove()},f)},a.removeEventListener=function(a,b,c){var d=c?this._captureListeners:this._listeners;if(d){var e=d[a];if(e)for(var f=0,g=e.length;g>f;f++)if(e[f]==b){1==g?delete d[a]:e.splice(f,1);break}}},a.off=a.removeEventListener,a.removeAllEventListeners=function(a){a?(this._listeners&&delete this._listeners[a],this._captureListeners&&delete this._captureListeners[a]):this._listeners=this._captureListeners=null},a.dispatchEvent=function(a,b,c){if("string"==typeof a){var d=this._listeners;if(!(b||d&&d[a]))return!0;a=new createjs.Event(a,b,c)}else a.target&&a.clone&&(a=a.clone());try{a.target=this}catch(e){}if(a.bubbles&&this.parent){for(var f=this,g=[f];f.parent;)g.push(f=f.parent);var h,i=g.length;for(h=i-1;h>=0&&!a.propagationStopped;h--)g[h]._dispatchEvent(a,1+(0==h));for(h=1;i>h&&!a.propagationStopped;h++)g[h]._dispatchEvent(a,3)}else this._dispatchEvent(a,2);return!a.defaultPrevented},a.hasEventListener=function(a){var b=this._listeners,c=this._captureListeners;return!!(b&&b[a]||c&&c[a])},a.willTrigger=function(a){for(var b=this;b;){if(b.hasEventListener(a))return!0;b=b.parent}return!1},a.toString=function(){return"[EventDispatcher]"},a._dispatchEvent=function(a,b){var c,d=1==b?this._captureListeners:this._listeners;if(a&&d){var e=d[a.type];if(!e||!(c=e.length))return;try{a.currentTarget=this}catch(f){}try{a.eventPhase=b}catch(f){}a.removed=!1,e=e.slice();for(var g=0;c>g&&!a.immediatePropagationStopped;g++){var h=e[g];h.handleEvent?h.handleEvent(a):h(a),a.removed&&(this.off(a.type,h,1==b),a.removed=!1)}}},createjs.EventDispatcher=EventDispatcher}(),this.createjs=this.createjs||{},function(){"use strict";function ProgressEvent(a,b){this.Event_constructor("progress"),this.loaded=a,this.total=null==b?1:b,this.progress=0==b?0:this.loaded/this.total}var a=createjs.extend(ProgressEvent,createjs.Event);a.clone=function(){return new createjs.ProgressEvent(this.loaded,this.total)},createjs.ProgressEvent=createjs.promote(ProgressEvent,"Event")}(window),function(){function a(b,d){function f(a){if(f[a]!==q)return f[a];var b;if("bug-string-char-index"==a)b="a"!="a"[0];else if("json"==a)b=f("json-stringify")&&f("json-parse");else{var c,e='{"a":[1,true,false,null,"\\u0000\\b\\n\\f\\r\\t"]}';if("json-stringify"==a){var i=d.stringify,k="function"==typeof i&&t;if(k){(c=function(){return 1}).toJSON=c;try{k="0"===i(0)&&"0"===i(new g)&&'""'==i(new h)&&i(s)===q&&i(q)===q&&i()===q&&"1"===i(c)&&"[1]"==i([c])&&"[null]"==i([q])&&"null"==i(null)&&"[null,null,null]"==i([q,s,null])&&i({a:[c,!0,!1,null,"\x00\b\n\f\r	"]})==e&&"1"===i(null,c)&&"[\n 1,\n 2\n]"==i([1,2],null,1)&&'"-271821-04-20T00:00:00.000Z"'==i(new j(-864e13))&&'"+275760-09-13T00:00:00.000Z"'==i(new j(864e13))&&'"-000001-01-01T00:00:00.000Z"'==i(new j(-621987552e5))&&'"1969-12-31T23:59:59.999Z"'==i(new j(-1))}catch(l){k=!1}}b=k}if("json-parse"==a){var m=d.parse;if("function"==typeof m)try{if(0===m("0")&&!m(!1)){c=m(e);var n=5==c.a.length&&1===c.a[0];if(n){try{n=!m('"	"')}catch(l){}if(n)try{n=1!==m("01")}catch(l){}if(n)try{n=1!==m("1.")}catch(l){}}}}catch(l){n=!1}b=n}}return f[a]=!!b}b||(b=e.Object()),d||(d=e.Object());var g=b.Number||e.Number,h=b.String||e.String,i=b.Object||e.Object,j=b.Date||e.Date,k=b.SyntaxError||e.SyntaxError,l=b.TypeError||e.TypeError,m=b.Math||e.Math,n=b.JSON||e.JSON;"object"==typeof n&&n&&(d.stringify=n.stringify,d.parse=n.parse);var o,p,q,r=i.prototype,s=r.toString,t=new j(-0xc782b5b800cec);try{t=-109252==t.getUTCFullYear()&&0===t.getUTCMonth()&&1===t.getUTCDate()&&10==t.getUTCHours()&&37==t.getUTCMinutes()&&6==t.getUTCSeconds()&&708==t.getUTCMilliseconds()}catch(u){}if(!f("json")){var v="[object Function]",w="[object Date]",x="[object Number]",y="[object String]",z="[object Array]",A="[object Boolean]",B=f("bug-string-char-index");if(!t)var C=m.floor,D=[0,31,59,90,120,151,181,212,243,273,304,334],E=function(a,b){return D[b]+365*(a-1970)+C((a-1969+(b=+(b>1)))/4)-C((a-1901+b)/100)+C((a-1601+b)/400)};if((o=r.hasOwnProperty)||(o=function(a){var b,c={};return(c.__proto__=null,c.__proto__={toString:1},c).toString!=s?o=function(a){var b=this.__proto__,c=a in(this.__proto__=null,this);return this.__proto__=b,c}:(b=c.constructor,o=function(a){var c=(this.constructor||b).prototype;return a in this&&!(a in c&&this[a]===c[a])}),c=null,o.call(this,a)}),p=function(a,b){var d,e,f,g=0;(d=function(){this.valueOf=0}).prototype.valueOf=0,e=new d;for(f in e)o.call(e,f)&&g++;return d=e=null,g?p=2==g?function(a,b){var c,d={},e=s.call(a)==v;for(c in a)e&&"prototype"==c||o.call(d,c)||!(d[c]=1)||!o.call(a,c)||b(c)}:function(a,b){var c,d,e=s.call(a)==v;for(c in a)e&&"prototype"==c||!o.call(a,c)||(d="constructor"===c)||b(c);(d||o.call(a,c="constructor"))&&b(c)}:(e=["valueOf","toString","toLocaleString","propertyIsEnumerable","isPrototypeOf","hasOwnProperty","constructor"],p=function(a,b){var d,f,g=s.call(a)==v,h=!g&&"function"!=typeof a.constructor&&c[typeof a.hasOwnProperty]&&a.hasOwnProperty||o;for(d in a)g&&"prototype"==d||!h.call(a,d)||b(d);for(f=e.length;d=e[--f];h.call(a,d)&&b(d));}),p(a,b)},!f("json-stringify")){var F={92:"\\\\",34:'\\"',8:"\\b",12:"\\f",10:"\\n",13:"\\r",9:"\\t"},G="000000",H=function(a,b){return(G+(b||0)).slice(-a)},I="\\u00",J=function(a){for(var b='"',c=0,d=a.length,e=!B||d>10,f=e&&(B?a.split(""):a);d>c;c++){var g=a.charCodeAt(c);switch(g){case 8:case 9:case 10:case 12:case 13:case 34:case 92:b+=F[g];break;default:if(32>g){b+=I+H(2,g.toString(16));break}b+=e?f[c]:a.charAt(c)}}return b+'"'},K=function(a,b,c,d,e,f,g){var h,i,j,k,m,n,r,t,u,v,B,D,F,G,I,L;try{h=b[a]}catch(M){}if("object"==typeof h&&h)if(i=s.call(h),i!=w||o.call(h,"toJSON"))"function"==typeof h.toJSON&&(i!=x&&i!=y&&i!=z||o.call(h,"toJSON"))&&(h=h.toJSON(a));else if(h>-1/0&&1/0>h){if(E){for(m=C(h/864e5),j=C(m/365.2425)+1970-1;E(j+1,0)<=m;j++);for(k=C((m-E(j,0))/30.42);E(j,k+1)<=m;k++);m=1+m-E(j,k),n=(h%864e5+864e5)%864e5,r=C(n/36e5)%24,t=C(n/6e4)%60,u=C(n/1e3)%60,v=n%1e3}else j=h.getUTCFullYear(),k=h.getUTCMonth(),m=h.getUTCDate(),r=h.getUTCHours(),t=h.getUTCMinutes(),u=h.getUTCSeconds(),v=h.getUTCMilliseconds();h=(0>=j||j>=1e4?(0>j?"-":"+")+H(6,0>j?-j:j):H(4,j))+"-"+H(2,k+1)+"-"+H(2,m)+"T"+H(2,r)+":"+H(2,t)+":"+H(2,u)+"."+H(3,v)+"Z"}else h=null;if(c&&(h=c.call(b,a,h)),null===h)return"null";if(i=s.call(h),i==A)return""+h;if(i==x)return h>-1/0&&1/0>h?""+h:"null";if(i==y)return J(""+h);if("object"==typeof h){for(G=g.length;G--;)if(g[G]===h)throw l();if(g.push(h),B=[],I=f,f+=e,i==z){for(F=0,G=h.length;G>F;F++)D=K(F,h,c,d,e,f,g),B.push(D===q?"null":D);L=B.length?e?"[\n"+f+B.join(",\n"+f)+"\n"+I+"]":"["+B.join(",")+"]":"[]"}else p(d||h,function(a){var b=K(a,h,c,d,e,f,g);b!==q&&B.push(J(a)+":"+(e?" ":"")+b)}),L=B.length?e?"{\n"+f+B.join(",\n"+f)+"\n"+I+"}":"{"+B.join(",")+"}":"{}";return g.pop(),L}};d.stringify=function(a,b,d){var e,f,g,h;if(c[typeof b]&&b)if((h=s.call(b))==v)f=b;else if(h==z){g={};for(var i,j=0,k=b.length;k>j;i=b[j++],h=s.call(i),(h==y||h==x)&&(g[i]=1));}if(d)if((h=s.call(d))==x){if((d-=d%1)>0)for(e="",d>10&&(d=10);e.length<d;e+=" ");}else h==y&&(e=d.length<=10?d:d.slice(0,10));return K("",(i={},i[""]=a,i),f,g,e,"",[])}}if(!f("json-parse")){var L,M,N=h.fromCharCode,O={92:"\\",34:'"',47:"/",98:"\b",116:"	",110:"\n",102:"\f",114:"\r"},P=function(){throw L=M=null,k()},Q=function(){for(var a,b,c,d,e,f=M,g=f.length;g>L;)switch(e=f.charCodeAt(L)){case 9:case 10:case 13:case 32:L++;break;case 123:case 125:case 91:case 93:case 58:case 44:return a=B?f.charAt(L):f[L],L++,a;case 34:for(a="@",L++;g>L;)if(e=f.charCodeAt(L),32>e)P();else if(92==e)switch(e=f.charCodeAt(++L)){case 92:case 34:case 47:case 98:case 116:case 110:case 102:case 114:a+=O[e],L++;break;case 117:for(b=++L,c=L+4;c>L;L++)e=f.charCodeAt(L),e>=48&&57>=e||e>=97&&102>=e||e>=65&&70>=e||P();a+=N("0x"+f.slice(b,L));break;default:P()}else{if(34==e)break;for(e=f.charCodeAt(L),b=L;e>=32&&92!=e&&34!=e;)e=f.charCodeAt(++L);a+=f.slice(b,L)}if(34==f.charCodeAt(L))return L++,a;P();default:if(b=L,45==e&&(d=!0,e=f.charCodeAt(++L)),e>=48&&57>=e){for(48==e&&(e=f.charCodeAt(L+1),e>=48&&57>=e)&&P(),d=!1;g>L&&(e=f.charCodeAt(L),e>=48&&57>=e);L++);if(46==f.charCodeAt(L)){for(c=++L;g>c&&(e=f.charCodeAt(c),e>=48&&57>=e);c++);c==L&&P(),L=c}if(e=f.charCodeAt(L),101==e||69==e){for(e=f.charCodeAt(++L),(43==e||45==e)&&L++,c=L;g>c&&(e=f.charCodeAt(c),e>=48&&57>=e);c++);c==L&&P(),L=c}return+f.slice(b,L)}if(d&&P(),"true"==f.slice(L,L+4))return L+=4,!0;if("false"==f.slice(L,L+5))return L+=5,!1;if("null"==f.slice(L,L+4))return L+=4,null;P()}return"$"},R=function(a){var b,c;if("$"==a&&P(),"string"==typeof a){if("@"==(B?a.charAt(0):a[0]))return a.slice(1);if("["==a){for(b=[];a=Q(),"]"!=a;c||(c=!0))c&&(","==a?(a=Q(),"]"==a&&P()):P()),","==a&&P(),b.push(R(a));return b}if("{"==a){for(b={};a=Q(),"}"!=a;c||(c=!0))c&&(","==a?(a=Q(),"}"==a&&P()):P()),(","==a||"string"!=typeof a||"@"!=(B?a.charAt(0):a[0])||":"!=Q())&&P(),b[a.slice(1)]=R(Q());return b}P()}return a},S=function(a,b,c){var d=T(a,b,c);d===q?delete a[b]:a[b]=d},T=function(a,b,c){var d,e=a[b];if("object"==typeof e&&e)if(s.call(e)==z)for(d=e.length;d--;)S(e,d,c);else p(e,function(a){S(e,a,c)});return c.call(a,b,e)};d.parse=function(a,b){var c,d;return L=0,M=""+a,c=R(Q()),"$"!=Q()&&P(),L=M=null,b&&s.call(b)==v?T((d={},d[""]=c,d),"",b):c}}}return d.runInContext=a,d}var b="function"=="function"&&__webpack_require__(164),c={"function":!0,object:!0},d=c[typeof exports]&&exports&&!exports.nodeType&&exports,e=c[typeof window]&&window||this,f=d&&c[typeof module]&&module&&!module.nodeType&&"object"==typeof global&&global;if(!f||f.global!==f&&f.window!==f&&f.self!==f||(e=f),d&&!b)a(e,d);else{var g=e.JSON,h=e.JSON3,i=!1,j=a(e,e.JSON3={noConflict:function(){return i||(i=!0,e.JSON=g,e.JSON3=h,g=h=null),j}});e.JSON={parse:j.parse,stringify:j.stringify}}b&&!(__WEBPACK_AMD_DEFINE_RESULT__ = function(){return j}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))}.call(this),function(){var a={};a.appendToHead=function(b){a.getHead().appendChild(b)},a.getHead=function(){return document.head||document.getElementsByTagName("head")[0]},a.getBody=function(){return document.body||document.getElementsByTagName("body")[0]},createjs.DomUtils=a}(),function(){var a={};a.parseXML=function(a,b){var c=null;try{if(window.DOMParser){var d=new DOMParser;c=d.parseFromString(a,b)}}catch(e){}if(!c)try{c=new ActiveXObject("Microsoft.XMLDOM"),c.async=!1,c.loadXML(a)}catch(e){c=null}return c},a.parseJSON=function(a){if(null==a)return null;try{return JSON.parse(a)}catch(b){throw b}},createjs.DataUtils=a}(),this.createjs=this.createjs||{},function(){"use strict";function LoadItem(){this.src=null,this.type=null,this.id=null,this.maintainOrder=!1,this.callback=null,this.data=null,this.method=createjs.LoadItem.GET,this.values=null,this.headers=null,this.withCredentials=!1,this.mimeType=null,this.crossOrigin=null,this.loadTimeout=b.LOAD_TIMEOUT_DEFAULT}var a=LoadItem.prototype={},b=LoadItem;b.LOAD_TIMEOUT_DEFAULT=8e3,b.create=function(a){if("string"==typeof a){var c=new LoadItem;return c.src=a,c}if(a instanceof b)return a;if(a instanceof Object&&a.src)return null==a.loadTimeout&&(a.loadTimeout=b.LOAD_TIMEOUT_DEFAULT),a;throw new Error("Type not recognized.")},a.set=function(a){for(var b in a)this[b]=a[b];return this},createjs.LoadItem=b}(),function(){var a={};a.ABSOLUTE_PATT=/^(?:\w+:)?\/{2}/i,a.RELATIVE_PATT=/^[.\/]*?\//i,a.EXTENSION_PATT=/\/?[^\/]+\.(\w{1,5})$/i,a.parseURI=function(b){var c={absolute:!1,relative:!1};if(null==b)return c;var d=b.indexOf("?");d>-1&&(b=b.substr(0,d));var e;return a.ABSOLUTE_PATT.test(b)?c.absolute=!0:a.RELATIVE_PATT.test(b)&&(c.relative=!0),(e=b.match(a.EXTENSION_PATT))&&(c.extension=e[1].toLowerCase()),c},a.formatQueryString=function(a,b){if(null==a)throw new Error("You must specify data.");var c=[];for(var d in a)c.push(d+"="+escape(a[d]));return b&&(c=c.concat(b)),c.join("&")},a.buildPath=function(a,b){if(null==b)return a;var c=[],d=a.indexOf("?");if(-1!=d){var e=a.slice(d+1);c=c.concat(e.split("&"))}return-1!=d?a.slice(0,d)+"?"+this.formatQueryString(b,c):a+"?"+this.formatQueryString(b,c)},a.isCrossDomain=function(a){var b=document.createElement("a");b.href=a.src;var c=document.createElement("a");c.href=location.href;var d=""!=b.hostname&&(b.port!=c.port||b.protocol!=c.protocol||b.hostname!=c.hostname);return d},a.isLocal=function(a){var b=document.createElement("a");return b.href=a.src,""==b.hostname&&"file:"==b.protocol},a.isBinary=function(a){switch(a){case createjs.AbstractLoader.IMAGE:case createjs.AbstractLoader.BINARY:return!0;default:return!1}},a.isImageTag=function(a){return a instanceof HTMLImageElement},a.isAudioTag=function(a){return window.HTMLAudioElement?a instanceof HTMLAudioElement:!1},a.isVideoTag=function(a){return window.HTMLVideoElement?a instanceof HTMLVideoElement:!1},a.isText=function(a){switch(a){case createjs.AbstractLoader.TEXT:case createjs.AbstractLoader.JSON:case createjs.AbstractLoader.MANIFEST:case createjs.AbstractLoader.XML:case createjs.AbstractLoader.CSS:case createjs.AbstractLoader.SVG:case createjs.AbstractLoader.JAVASCRIPT:case createjs.AbstractLoader.SPRITESHEET:return!0;default:return!1}},a.getTypeByExtension=function(a){if(null==a)return createjs.AbstractLoader.TEXT;switch(a.toLowerCase()){case"jpeg":case"jpg":case"gif":case"png":case"webp":case"bmp":return createjs.AbstractLoader.IMAGE;case"ogg":case"mp3":case"webm":return createjs.AbstractLoader.SOUND;case"mp4":case"webm":case"ts":return createjs.AbstractLoader.VIDEO;case"json":return createjs.AbstractLoader.JSON;case"xml":return createjs.AbstractLoader.XML;case"css":return createjs.AbstractLoader.CSS;case"js":return createjs.AbstractLoader.JAVASCRIPT;case"svg":return createjs.AbstractLoader.SVG;default:return createjs.AbstractLoader.TEXT}},createjs.RequestUtils=a}(),this.createjs=this.createjs||{},function(){"use strict";function AbstractLoader(a,b,c){this.EventDispatcher_constructor(),this.loaded=!1,this.canceled=!1,this.progress=0,this.type=c,this.resultFormatter=null,this._item=a?createjs.LoadItem.create(a):null,this._preferXHR=b,this._result=null,this._rawResult=null,this._loadedItems=null,this._tagSrcAttribute=null,this._tag=null}var a=createjs.extend(AbstractLoader,createjs.EventDispatcher),b=AbstractLoader;b.POST="POST",b.GET="GET",b.BINARY="binary",b.CSS="css",b.IMAGE="image",b.JAVASCRIPT="javascript",b.JSON="json",b.JSONP="jsonp",b.MANIFEST="manifest",b.SOUND="sound",b.VIDEO="video",b.SPRITESHEET="spritesheet",b.SVG="svg",b.TEXT="text",b.XML="xml",a.getItem=function(){return this._item},a.getResult=function(a){return a?this._rawResult:this._result},a.getTag=function(){return this._tag},a.setTag=function(a){this._tag=a},a.load=function(){this._createRequest(),this._request.on("complete",this,this),this._request.on("progress",this,this),this._request.on("loadStart",this,this),this._request.on("abort",this,this),this._request.on("timeout",this,this),this._request.on("error",this,this);var a=new createjs.Event("initialize");a.loader=this._request,this.dispatchEvent(a),this._request.load()},a.cancel=function(){this.canceled=!0,this.destroy()},a.destroy=function(){this._request&&(this._request.removeAllEventListeners(),this._request.destroy()),this._request=null,this._item=null,this._rawResult=null,this._result=null,this._loadItems=null,this.removeAllEventListeners()},a.getLoadedItems=function(){return this._loadedItems},a._createRequest=function(){this._request=this._preferXHR?new createjs.XHRRequest(this._item):new createjs.TagRequest(this._item,this._tag||this._createTag(),this._tagSrcAttribute)},a._createTag=function(){return null},a._sendLoadStart=function(){this._isCanceled()||this.dispatchEvent("loadstart")},a._sendProgress=function(a){if(!this._isCanceled()){var b=null;"number"==typeof a?(this.progress=a,b=new createjs.ProgressEvent(this.progress)):(b=a,this.progress=a.loaded/a.total,b.progress=this.progress,(isNaN(this.progress)||1/0==this.progress)&&(this.progress=0)),this.hasEventListener("progress")&&this.dispatchEvent(b)}},a._sendComplete=function(){if(!this._isCanceled()){this.loaded=!0;var a=new createjs.Event("complete");a.rawResult=this._rawResult,null!=this._result&&(a.result=this._result),this.dispatchEvent(a)}},a._sendError=function(a){!this._isCanceled()&&this.hasEventListener("error")&&(null==a&&(a=new createjs.ErrorEvent("PRELOAD_ERROR_EMPTY")),this.dispatchEvent(a))},a._isCanceled=function(){return null==window.createjs||this.canceled?!0:!1},a.resultFormatter=null,a.handleEvent=function(a){switch(a.type){case"complete":this._rawResult=a.target._response;var b=this.resultFormatter&&this.resultFormatter(this);b instanceof Function?b.call(this,createjs.proxy(this._resultFormatSuccess,this),createjs.proxy(this._resultFormatFailed,this)):(this._result=b||this._rawResult,this._sendComplete());break;case"progress":this._sendProgress(a);break;case"error":this._sendError(a);break;case"loadstart":this._sendLoadStart();break;case"abort":case"timeout":this._isCanceled()||this.dispatchEvent(new createjs.ErrorEvent("PRELOAD_"+a.type.toUpperCase()+"_ERROR"))}},a._resultFormatSuccess=function(a){this._result=a,this._sendComplete()},a._resultFormatFailed=function(a){this._sendError(a)},a.buildPath=function(a,b){return createjs.RequestUtils.buildPath(a,b)},a.toString=function(){return"[PreloadJS AbstractLoader]"},createjs.AbstractLoader=createjs.promote(AbstractLoader,"EventDispatcher")}(),this.createjs=this.createjs||{},function(){"use strict";function AbstractMediaLoader(a,b,c){this.AbstractLoader_constructor(a,b,c),this.resultFormatter=this._formatResult,this._tagSrcAttribute="src",this.on("initialize",this._updateXHR,this)}var a=createjs.extend(AbstractMediaLoader,createjs.AbstractLoader);a.load=function(){this._tag||(this._tag=this._createTag(this._item.src)),this._tag.preload="auto",this._tag.load(),this.AbstractLoader_load()},a._createTag=function(){},a._createRequest=function(){this._request=this._preferXHR?new createjs.XHRRequest(this._item):new createjs.MediaTagRequest(this._item,this._tag||this._createTag(),this._tagSrcAttribute)},a._updateXHR=function(a){a.loader.setResponseType&&a.loader.setResponseType("blob")},a._formatResult=function(a){if(this._tag.removeEventListener&&this._tag.removeEventListener("canplaythrough",this._loadedHandler),this._tag.onstalled=null,this._preferXHR){var b=window.URL||window.webkitURL,c=a.getResult(!0);a.getTag().src=b.createObjectURL(c)}return a.getTag()},createjs.AbstractMediaLoader=createjs.promote(AbstractMediaLoader,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";var AbstractRequest=function(a){this._item=a},a=createjs.extend(AbstractRequest,createjs.EventDispatcher);a.load=function(){},a.destroy=function(){},a.cancel=function(){},createjs.AbstractRequest=createjs.promote(AbstractRequest,"EventDispatcher")}(),this.createjs=this.createjs||{},function(){"use strict";function TagRequest(a,b,c){this.AbstractRequest_constructor(a),this._tag=b,this._tagSrcAttribute=c,this._loadedHandler=createjs.proxy(this._handleTagComplete,this),this._addedToDOM=!1,this._startTagVisibility=null}var a=createjs.extend(TagRequest,createjs.AbstractRequest);a.load=function(){this._tag.onload=createjs.proxy(this._handleTagComplete,this),this._tag.onreadystatechange=createjs.proxy(this._handleReadyStateChange,this),this._tag.onerror=createjs.proxy(this._handleError,this);var a=new createjs.Event("initialize");a.loader=this._tag,this.dispatchEvent(a),this._hideTag(),this._loadTimeout=setTimeout(createjs.proxy(this._handleTimeout,this),this._item.loadTimeout),this._tag[this._tagSrcAttribute]=this._item.src,null==this._tag.parentNode&&(window.document.body.appendChild(this._tag),this._addedToDOM=!0)},a.destroy=function(){this._clean(),this._tag=null,this.AbstractRequest_destroy()},a._handleReadyStateChange=function(){clearTimeout(this._loadTimeout);var a=this._tag;("loaded"==a.readyState||"complete"==a.readyState)&&this._handleTagComplete()},a._handleError=function(){this._clean(),this.dispatchEvent("error")},a._handleTagComplete=function(){this._rawResult=this._tag,this._result=this.resultFormatter&&this.resultFormatter(this)||this._rawResult,this._clean(),this._showTag(),this.dispatchEvent("complete")},a._handleTimeout=function(){this._clean(),this.dispatchEvent(new createjs.Event("timeout"))},a._clean=function(){this._tag.onload=null,this._tag.onreadystatechange=null,this._tag.onerror=null,this._addedToDOM&&null!=this._tag.parentNode&&this._tag.parentNode.removeChild(this._tag),clearTimeout(this._loadTimeout)},a._hideTag=function(){this._startTagVisibility=this._tag.style.visibility,this._tag.style.visibility="hidden"},a._showTag=function(){this._tag.style.visibility=this._startTagVisibility},a._handleStalled=function(){},createjs.TagRequest=createjs.promote(TagRequest,"AbstractRequest")}(),this.createjs=this.createjs||{},function(){"use strict";function MediaTagRequest(a,b,c){this.AbstractRequest_constructor(a),this._tag=b,this._tagSrcAttribute=c,this._loadedHandler=createjs.proxy(this._handleTagComplete,this)}var a=createjs.extend(MediaTagRequest,createjs.TagRequest);a.load=function(){var a=createjs.proxy(this._handleStalled,this);this._stalledCallback=a;var b=createjs.proxy(this._handleProgress,this);this._handleProgress=b,this._tag.addEventListener("stalled",a),this._tag.addEventListener("progress",b),this._tag.addEventListener&&this._tag.addEventListener("canplaythrough",this._loadedHandler,!1),this.TagRequest_load()},a._handleReadyStateChange=function(){clearTimeout(this._loadTimeout);var a=this._tag;("loaded"==a.readyState||"complete"==a.readyState)&&this._handleTagComplete()},a._handleStalled=function(){},a._handleProgress=function(a){if(a&&!(a.loaded>0&&0==a.total)){var b=new createjs.ProgressEvent(a.loaded,a.total);this.dispatchEvent(b)}},a._clean=function(){this._tag.removeEventListener&&this._tag.removeEventListener("canplaythrough",this._loadedHandler),this._tag.removeEventListener("stalled",this._stalledCallback),this._tag.removeEventListener("progress",this._progressCallback),this.TagRequest__clean()},createjs.MediaTagRequest=createjs.promote(MediaTagRequest,"TagRequest")}(),this.createjs=this.createjs||{},function(){"use strict";function XHRRequest(a){this.AbstractRequest_constructor(a),this._request=null,this._loadTimeout=null,this._xhrLevel=1,this._response=null,this._rawResponse=null,this._canceled=!1,this._handleLoadStartProxy=createjs.proxy(this._handleLoadStart,this),this._handleProgressProxy=createjs.proxy(this._handleProgress,this),this._handleAbortProxy=createjs.proxy(this._handleAbort,this),this._handleErrorProxy=createjs.proxy(this._handleError,this),this._handleTimeoutProxy=createjs.proxy(this._handleTimeout,this),this._handleLoadProxy=createjs.proxy(this._handleLoad,this),this._handleReadyStateChangeProxy=createjs.proxy(this._handleReadyStateChange,this),!this._createXHR(a)}var a=createjs.extend(XHRRequest,createjs.AbstractRequest);XHRRequest.ACTIVEX_VERSIONS=["Msxml2.XMLHTTP.6.0","Msxml2.XMLHTTP.5.0","Msxml2.XMLHTTP.4.0","MSXML2.XMLHTTP.3.0","MSXML2.XMLHTTP","Microsoft.XMLHTTP"],a.getResult=function(a){return a&&this._rawResponse?this._rawResponse:this._response},a.cancel=function(){this.canceled=!0,this._clean(),this._request.abort()},a.load=function(){if(null==this._request)return void this._handleError();null!=this._request.addEventListener?(this._request.addEventListener("loadstart",this._handleLoadStartProxy,!1),this._request.addEventListener("progress",this._handleProgressProxy,!1),this._request.addEventListener("abort",this._handleAbortProxy,!1),this._request.addEventListener("error",this._handleErrorProxy,!1),this._request.addEventListener("timeout",this._handleTimeoutProxy,!1),this._request.addEventListener("load",this._handleLoadProxy,!1),this._request.addEventListener("readystatechange",this._handleReadyStateChangeProxy,!1)):(this._request.onloadstart=this._handleLoadStartProxy,this._request.onprogress=this._handleProgressProxy,this._request.onabort=this._handleAbortProxy,this._request.onerror=this._handleErrorProxy,this._request.ontimeout=this._handleTimeoutProxy,this._request.onload=this._handleLoadProxy,this._request.onreadystatechange=this._handleReadyStateChangeProxy),1==this._xhrLevel&&(this._loadTimeout=setTimeout(createjs.proxy(this._handleTimeout,this),this._item.loadTimeout));try{this._item.values&&this._item.method!=createjs.AbstractLoader.GET?this._item.method==createjs.AbstractLoader.POST&&this._request.send(createjs.RequestUtils.formatQueryString(this._item.values)):this._request.send()}catch(a){this.dispatchEvent(new createjs.ErrorEvent("XHR_SEND",null,a))}},a.setResponseType=function(a){"blob"===a&&(a=window.URL?"blob":"arraybuffer",this._responseType=a),this._request.responseType=a},a.getAllResponseHeaders=function(){return this._request.getAllResponseHeaders instanceof Function?this._request.getAllResponseHeaders():null},a.getResponseHeader=function(a){return this._request.getResponseHeader instanceof Function?this._request.getResponseHeader(a):null},a._handleProgress=function(a){if(a&&!(a.loaded>0&&0==a.total)){var b=new createjs.ProgressEvent(a.loaded,a.total);this.dispatchEvent(b)}},a._handleLoadStart=function(){clearTimeout(this._loadTimeout),this.dispatchEvent("loadstart")},a._handleAbort=function(a){this._clean(),this.dispatchEvent(new createjs.ErrorEvent("XHR_ABORTED",null,a))},a._handleError=function(a){this._clean(),this.dispatchEvent(new createjs.ErrorEvent(a.message))},a._handleReadyStateChange=function(){4==this._request.readyState&&this._handleLoad()},a._handleLoad=function(){if(!this.loaded){this.loaded=!0;var a=this._checkError();if(a)return void this._handleError(a);if(this._response=this._getResponse(),"arraybuffer"===this._responseType)try{this._response=new Blob([this._response])}catch(b){if(window.BlobBuilder=window.BlobBuilder||window.WebKitBlobBuilder||window.MozBlobBuilder||window.MSBlobBuilder,"TypeError"===b.name&&window.BlobBuilder){var c=new BlobBuilder;c.append(this._response),this._response=c.getBlob()}}this._clean(),this.dispatchEvent(new createjs.Event("complete"))}},a._handleTimeout=function(a){this._clean(),this.dispatchEvent(new createjs.ErrorEvent("PRELOAD_TIMEOUT",null,a))},a._checkError=function(){var a=parseInt(this._request.status);switch(a){case 404:case 0:return new Error(a)}return null},a._getResponse=function(){if(null!=this._response)return this._response;if(null!=this._request.response)return this._request.response;try{if(null!=this._request.responseText)return this._request.responseText}catch(a){}try{if(null!=this._request.responseXML)return this._request.responseXML}catch(a){}return null},a._createXHR=function(a){var b=createjs.RequestUtils.isCrossDomain(a),c={},d=null;if(window.XMLHttpRequest)d=new XMLHttpRequest,b&&void 0===d.withCredentials&&window.XDomainRequest&&(d=new XDomainRequest);else{for(var e=0,f=s.ACTIVEX_VERSIONS.length;f>e;e++){var g=s.ACTIVEX_VERSIONS[e];try{d=new ActiveXObject(g);break}catch(h){}}if(null==d)return!1}null==a.mimeType&&createjs.RequestUtils.isText(a.type)&&(a.mimeType="text/plain; charset=utf-8"),a.mimeType&&d.overrideMimeType&&d.overrideMimeType(a.mimeType),this._xhrLevel="string"==typeof d.responseType?2:1;var i=null;if(i=a.method==createjs.AbstractLoader.GET?createjs.RequestUtils.buildPath(a.src,a.values):a.src,d.open(a.method||createjs.AbstractLoader.GET,i,!0),b&&d instanceof XMLHttpRequest&&1==this._xhrLevel&&(c.Origin=location.origin),a.values&&a.method==createjs.AbstractLoader.POST&&(c["Content-Type"]="application/x-www-form-urlencoded"),b||c["X-Requested-With"]||(c["X-Requested-With"]="XMLHttpRequest"),a.headers)for(var j in a.headers)c[j]=a.headers[j];for(j in c)d.setRequestHeader(j,c[j]);return d instanceof XMLHttpRequest&&void 0!==a.withCredentials&&(d.withCredentials=a.withCredentials),this._request=d,!0},a._clean=function(){clearTimeout(this._loadTimeout),null!=this._request.removeEventListener?(this._request.removeEventListener("loadstart",this._handleLoadStartProxy),this._request.removeEventListener("progress",this._handleProgressProxy),this._request.removeEventListener("abort",this._handleAbortProxy),this._request.removeEventListener("error",this._handleErrorProxy),this._request.removeEventListener("timeout",this._handleTimeoutProxy),this._request.removeEventListener("load",this._handleLoadProxy),this._request.removeEventListener("readystatechange",this._handleReadyStateChangeProxy)):(this._request.onloadstart=null,this._request.onprogress=null,this._request.onabort=null,this._request.onerror=null,this._request.ontimeout=null,this._request.onload=null,this._request.onreadystatechange=null)},a.toString=function(){return"[PreloadJS XHRRequest]"},createjs.XHRRequest=createjs.promote(XHRRequest,"AbstractRequest")}(),this.createjs=this.createjs||{},function(){"use strict";function LoadQueue(a,b,c){this.AbstractLoader_constructor(),this._plugins=[],this._typeCallbacks={},this._extensionCallbacks={},this.next=null,this.maintainScriptOrder=!0,this.stopOnError=!1,this._maxConnections=1,this._availableLoaders=[createjs.ImageLoader,createjs.JavaScriptLoader,createjs.CSSLoader,createjs.JSONLoader,createjs.JSONPLoader,createjs.SoundLoader,createjs.ManifestLoader,createjs.SpriteSheetLoader,createjs.XMLLoader,createjs.SVGLoader,createjs.BinaryLoader,createjs.VideoLoader,createjs.TextLoader],this._defaultLoaderLength=this._availableLoaders.length,this.init(a,b,c)
 	}var a=createjs.extend(LoadQueue,createjs.AbstractLoader),b=LoadQueue;a.init=function(a,b,c){this.useXHR=!0,this.preferXHR=!0,this._preferXHR=!0,this.setPreferXHR(a),this._paused=!1,this._basePath=b,this._crossOrigin=c,this._loadStartWasDispatched=!1,this._currentlyLoadingScript=null,this._currentLoads=[],this._loadQueue=[],this._loadQueueBackup=[],this._loadItemsById={},this._loadItemsBySrc={},this._loadedResults={},this._loadedRawResults={},this._numItems=0,this._numItemsLoaded=0,this._scriptOrder=[],this._loadedScripts=[],this._lastProgress=0/0},b.loadTimeout=8e3,b.LOAD_TIMEOUT=0,b.BINARY=createjs.AbstractLoader.BINARY,b.CSS=createjs.AbstractLoader.CSS,b.IMAGE=createjs.AbstractLoader.IMAGE,b.JAVASCRIPT=createjs.AbstractLoader.JAVASCRIPT,b.JSON=createjs.AbstractLoader.JSON,b.JSONP=createjs.AbstractLoader.JSONP,b.MANIFEST=createjs.AbstractLoader.MANIFEST,b.SOUND=createjs.AbstractLoader.SOUND,b.VIDEO=createjs.AbstractLoader.VIDEO,b.SVG=createjs.AbstractLoader.SVG,b.TEXT=createjs.AbstractLoader.TEXT,b.XML=createjs.AbstractLoader.XML,b.POST=createjs.AbstractLoader.POST,b.GET=createjs.AbstractLoader.GET,a.registerLoader=function(a){if(!a||!a.canLoadItem)throw new Error("loader is of an incorrect type.");if(-1!=this._availableLoaders.indexOf(a))throw new Error("loader already exists.");this._availableLoaders.unshift(a)},a.unregisterLoader=function(a){var b=this._availableLoaders.indexOf(a);-1!=b&&b<this._defaultLoaderLength-1&&this._availableLoaders.splice(b,1)},a.setUseXHR=function(a){return this.setPreferXHR(a)},a.setPreferXHR=function(a){return this.preferXHR=0!=a&&null!=window.XMLHttpRequest,this.preferXHR},a.removeAll=function(){this.remove()},a.remove=function(a){var b=null;if(a&&!Array.isArray(a))b=[a];else if(a)b=a;else if(arguments.length>0)return;var c=!1;if(b){for(;b.length;){var d=b.pop(),e=this.getResult(d);for(f=this._loadQueue.length-1;f>=0;f--)if(g=this._loadQueue[f].getItem(),g.id==d||g.src==d){this._loadQueue.splice(f,1)[0].cancel();break}for(f=this._loadQueueBackup.length-1;f>=0;f--)if(g=this._loadQueueBackup[f].getItem(),g.id==d||g.src==d){this._loadQueueBackup.splice(f,1)[0].cancel();break}if(e)this._disposeItem(this.getItem(d));else for(var f=this._currentLoads.length-1;f>=0;f--){var g=this._currentLoads[f].getItem();if(g.id==d||g.src==d){this._currentLoads.splice(f,1)[0].cancel(),c=!0;break}}}c&&this._loadNext()}else{this.close();for(var h in this._loadItemsById)this._disposeItem(this._loadItemsById[h]);this.init(this.preferXHR,this._basePath)}},a.reset=function(){this.close();for(var a in this._loadItemsById)this._disposeItem(this._loadItemsById[a]);for(var b=[],c=0,d=this._loadQueueBackup.length;d>c;c++)b.push(this._loadQueueBackup[c].getItem());this.loadManifest(b,!1)},a.installPlugin=function(a){if(null!=a&&null!=a.getPreloadHandlers){this._plugins.push(a);var b=a.getPreloadHandlers();if(b.scope=a,null!=b.types)for(var c=0,d=b.types.length;d>c;c++)this._typeCallbacks[b.types[c]]=b;if(null!=b.extensions)for(c=0,d=b.extensions.length;d>c;c++)this._extensionCallbacks[b.extensions[c]]=b}},a.setMaxConnections=function(a){this._maxConnections=a,!this._paused&&this._loadQueue.length>0&&this._loadNext()},a.loadFile=function(a,b,c){if(null==a){var d=new createjs.ErrorEvent("PRELOAD_NO_FILE");return void this._sendError(d)}this._addItem(a,null,c),this.setPaused(b!==!1?!1:!0)},a.loadManifest=function(a,c,d){var e=null,f=null;if(Array.isArray(a)){if(0==a.length){var g=new createjs.ErrorEvent("PRELOAD_MANIFEST_EMPTY");return void this._sendError(g)}e=a}else if("string"==typeof a)e=[{src:a,type:b.MANIFEST}];else{if("object"!=typeof a){var g=new createjs.ErrorEvent("PRELOAD_MANIFEST_NULL");return void this._sendError(g)}if(void 0!==a.src){if(null==a.type)a.type=b.MANIFEST;else if(a.type!=b.MANIFEST){var g=new createjs.ErrorEvent("PRELOAD_MANIFEST_TYPE");this._sendError(g)}e=[a]}else void 0!==a.manifest&&(e=a.manifest,f=a.path)}for(var h=0,i=e.length;i>h;h++)this._addItem(e[h],f,d);this.setPaused(c!==!1?!1:!0)},a.load=function(){this.setPaused(!1)},a.getItem=function(a){return this._loadItemsById[a]||this._loadItemsBySrc[a]},a.getResult=function(a,b){var c=this._loadItemsById[a]||this._loadItemsBySrc[a];if(null==c)return null;var d=c.id;return b&&this._loadedRawResults[d]?this._loadedRawResults[d]:this._loadedResults[d]},a.getItems=function(a){var b=[];for(var c in this._loadItemsById){var d=this._loadItemsById[c],e=this.getResult(c);(a!==!0||null!=e)&&b.push({item:d,result:e,rawResult:this.getResult(c,!0)})}return b},a.setPaused=function(a){this._paused=a,this._paused||this._loadNext()},a.close=function(){for(;this._currentLoads.length;)this._currentLoads.pop().cancel();this._scriptOrder.length=0,this._loadedScripts.length=0,this.loadStartWasDispatched=!1,this._itemCount=0,this._lastProgress=0/0},a._addItem=function(a,b,c){var d=this._createLoadItem(a,b,c);if(null!=d){var e=this._createLoader(d);null!=e&&("plugins"in e&&(e.plugins=this._plugins),d._loader=e,this._loadQueue.push(e),this._loadQueueBackup.push(e),this._numItems++,this._updateProgress(),(this.maintainScriptOrder&&d.type==createjs.LoadQueue.JAVASCRIPT||d.maintainOrder===!0)&&(this._scriptOrder.push(d),this._loadedScripts.push(null)))}},a._createLoadItem=function(a,b,c){var d=createjs.LoadItem.create(a);if(null==d)return null;var e="",f=c||this._basePath;if(d.src instanceof Object){if(!d.type)return null;if(b){e=b;var g=createjs.RequestUtils.parseURI(b);null==f||g.absolute||g.relative||(e=f+e)}else null!=f&&(e=f)}else{var h=createjs.RequestUtils.parseURI(d.src);h.extension&&(d.ext=h.extension),null==d.type&&(d.type=createjs.RequestUtils.getTypeByExtension(d.ext));var i=d.src;if(!h.absolute&&!h.relative)if(b){e=b;var g=createjs.RequestUtils.parseURI(b);i=b+i,null==f||g.absolute||g.relative||(e=f+e)}else null!=f&&(e=f);d.src=e+d.src}d.path=e,(void 0===d.id||null===d.id||""===d.id)&&(d.id=i);var j=this._typeCallbacks[d.type]||this._extensionCallbacks[d.ext];if(j){var k=j.callback.call(j.scope,d,this);if(k===!1)return null;k===!0||null!=k&&(d._loader=k),h=createjs.RequestUtils.parseURI(d.src),null!=h.extension&&(d.ext=h.extension)}return this._loadItemsById[d.id]=d,this._loadItemsBySrc[d.src]=d,null==d.crossOrigin&&(d.crossOrigin=this._crossOrigin),d},a._createLoader=function(a){if(null!=a._loader)return a._loader;for(var b=this.preferXHR,c=0;c<this._availableLoaders.length;c++){var d=this._availableLoaders[c];if(d&&d.canLoadItem(a))return new d(a,b)}return null},a._loadNext=function(){if(!this._paused){this._loadStartWasDispatched||(this._sendLoadStart(),this._loadStartWasDispatched=!0),this._numItems==this._numItemsLoaded?(this.loaded=!0,this._sendComplete(),this.next&&this.next.load&&this.next.load()):this.loaded=!1;for(var a=0;a<this._loadQueue.length&&!(this._currentLoads.length>=this._maxConnections);a++){var b=this._loadQueue[a];this._canStartLoad(b)&&(this._loadQueue.splice(a,1),a--,this._loadItem(b))}}},a._loadItem=function(a){a.on("fileload",this._handleFileLoad,this),a.on("progress",this._handleProgress,this),a.on("complete",this._handleFileComplete,this),a.on("error",this._handleError,this),a.on("fileerror",this._handleFileError,this),this._currentLoads.push(a),this._sendFileStart(a.getItem()),a.load()},a._handleFileLoad=function(a){a.target=null,this.dispatchEvent(a)},a._handleFileError=function(a){var b=new createjs.ErrorEvent("FILE_LOAD_ERROR",null,a.item);this._sendError(b)},a._handleError=function(a){var b=a.target;this._numItemsLoaded++,this._finishOrderedItem(b,!0),this._updateProgress();var c=new createjs.ErrorEvent("FILE_LOAD_ERROR",null,b.getItem());this._sendError(c),this.stopOnError?this.setPaused(!0):(this._removeLoadItem(b),this._cleanLoadItem(b),this._loadNext())},a._handleFileComplete=function(a){var b=a.target,c=b.getItem(),d=b.getResult();this._loadedResults[c.id]=d;var e=b.getResult(!0);null!=e&&e!==d&&(this._loadedRawResults[c.id]=e),this._saveLoadedItems(b),this._removeLoadItem(b),this._finishOrderedItem(b)||this._processFinishedLoad(c,b),this._cleanLoadItem(b)},a._saveLoadedItems=function(a){var b=a.getLoadedItems();if(null!==b)for(var c=0;c<b.length;c++){var d=b[c].item;this._loadItemsBySrc[d.src]=d,this._loadItemsById[d.id]=d,this._loadedResults[d.id]=b[c].result,this._loadedRawResults[d.id]=b[c].rawResult}},a._finishOrderedItem=function(a,b){var c=a.getItem();if(this.maintainScriptOrder&&c.type==createjs.LoadQueue.JAVASCRIPT||c.maintainOrder){a instanceof createjs.JavaScriptLoader&&(this._currentlyLoadingScript=!1);var d=createjs.indexOf(this._scriptOrder,c);return-1==d?!1:(this._loadedScripts[d]=b===!0?!0:c,this._checkScriptLoadOrder(),!0)}return!1},a._checkScriptLoadOrder=function(){for(var a=this._loadedScripts.length,b=0;a>b;b++){var c=this._loadedScripts[b];if(null===c)break;if(c!==!0){var d=this._loadedResults[c.id];c.type==createjs.LoadQueue.JAVASCRIPT&&createjs.DomUtils.appendToHead(d);var e=c._loader;this._processFinishedLoad(c,e),this._loadedScripts[b]=!0}}},a._processFinishedLoad=function(a,b){if(this._numItemsLoaded++,!this.maintainScriptOrder&&a.type==createjs.LoadQueue.JAVASCRIPT){var c=b.getTag();createjs.DomUtils.appendToHead(c)}this._updateProgress(),this._sendFileComplete(a,b),this._loadNext()},a._canStartLoad=function(a){if(!this.maintainScriptOrder||a.preferXHR)return!0;var b=a.getItem();if(b.type!=createjs.LoadQueue.JAVASCRIPT)return!0;if(this._currentlyLoadingScript)return!1;for(var c=this._scriptOrder.indexOf(b),d=0;c>d;){var e=this._loadedScripts[d];if(null==e)return!1;d++}return this._currentlyLoadingScript=!0,!0},a._removeLoadItem=function(a){for(var b=this._currentLoads.length,c=0;b>c;c++)if(this._currentLoads[c]==a){this._currentLoads.splice(c,1);break}},a._cleanLoadItem=function(a){var b=a.getItem();b&&delete b._loader},a._handleProgress=function(a){var b=a.target;this._sendFileProgress(b.getItem(),b.progress),this._updateProgress()},a._updateProgress=function(){var a=this._numItemsLoaded/this._numItems,b=this._numItems-this._numItemsLoaded;if(b>0){for(var c=0,d=0,e=this._currentLoads.length;e>d;d++)c+=this._currentLoads[d].progress;a+=c/b*(b/this._numItems)}this._lastProgress!=a&&(this._sendProgress(a),this._lastProgress=a)},a._disposeItem=function(a){delete this._loadedResults[a.id],delete this._loadedRawResults[a.id],delete this._loadItemsById[a.id],delete this._loadItemsBySrc[a.src]},a._sendFileProgress=function(a,b){if(!this._isCanceled()&&!this._paused&&this.hasEventListener("fileprogress")){var c=new createjs.Event("fileprogress");c.progress=b,c.loaded=b,c.total=1,c.item=a,this.dispatchEvent(c)}},a._sendFileComplete=function(a,b){if(!this._isCanceled()&&!this._paused){var c=new createjs.Event("fileload");c.loader=b,c.item=a,c.result=this._loadedResults[a.id],c.rawResult=this._loadedRawResults[a.id],a.completeHandler&&a.completeHandler(c),this.hasEventListener("fileload")&&this.dispatchEvent(c)}},a._sendFileStart=function(a){var b=new createjs.Event("filestart");b.item=a,this.hasEventListener("filestart")&&this.dispatchEvent(b)},a.toString=function(){return"[PreloadJS LoadQueue]"},createjs.LoadQueue=createjs.promote(LoadQueue,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function TextLoader(a){this.AbstractLoader_constructor(a,!0,createjs.AbstractLoader.TEXT)}var a=(createjs.extend(TextLoader,createjs.AbstractLoader),TextLoader);a.canLoadItem=function(a){return a.type==createjs.AbstractLoader.TEXT},createjs.TextLoader=createjs.promote(TextLoader,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function BinaryLoader(a){this.AbstractLoader_constructor(a,!0,createjs.AbstractLoader.BINARY),this.on("initialize",this._updateXHR,this)}var a=createjs.extend(BinaryLoader,createjs.AbstractLoader),b=BinaryLoader;b.canLoadItem=function(a){return a.type==createjs.AbstractLoader.BINARY},a._updateXHR=function(a){a.loader.setResponseType("arraybuffer")},createjs.BinaryLoader=createjs.promote(BinaryLoader,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function CSSLoader(a,b){this.AbstractLoader_constructor(a,b,createjs.AbstractLoader.CSS),this.resultFormatter=this._formatResult,this._tagSrcAttribute="href",this._tag=document.createElement(b?"style":"link"),this._tag.rel="stylesheet",this._tag.type="text/css"}var a=createjs.extend(CSSLoader,createjs.AbstractLoader),b=CSSLoader;b.canLoadItem=function(a){return a.type==createjs.AbstractLoader.CSS},a._formatResult=function(a){if(this._preferXHR){var b=a.getTag();if(b.styleSheet)b.styleSheet.cssText=a.getResult(!0);else{var c=document.createTextNode(a.getResult(!0));b.appendChild(c)}}else b=this._tag;return createjs.DomUtils.appendToHead(b),b},createjs.CSSLoader=createjs.promote(CSSLoader,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function ImageLoader(a,b){this.AbstractLoader_constructor(a,b,createjs.AbstractLoader.IMAGE),this.resultFormatter=this._formatResult,this._tagSrcAttribute="src",createjs.RequestUtils.isImageTag(a)?this._tag=a:createjs.RequestUtils.isImageTag(a.src)?this._tag=a.src:createjs.RequestUtils.isImageTag(a.tag)&&(this._tag=a.tag),null!=this._tag?this._preferXHR=!1:this._tag=document.createElement("img"),this.on("initialize",this._updateXHR,this)}var a=createjs.extend(ImageLoader,createjs.AbstractLoader),b=ImageLoader;b.canLoadItem=function(a){return a.type==createjs.AbstractLoader.IMAGE},a.load=function(){if(""!=this._tag.src&&this._tag.complete)return void this._sendComplete();var a=this._item.crossOrigin;1==a&&(a="Anonymous"),null==a||createjs.RequestUtils.isLocal(this._item.src)||(this._tag.crossOrigin=a),this.AbstractLoader_load()},a._updateXHR=function(a){a.loader.mimeType="text/plain; charset=x-user-defined-binary",a.loader.setResponseType&&a.loader.setResponseType("blob")},a._formatResult=function(){return this._formatImage},a._formatImage=function(a,b){var c=this._tag,d=window.URL||window.webkitURL;if(this._preferXHR)if(d){var e=d.createObjectURL(this.getResult(!0));c.src=e,c.addEventListener("load",this._cleanUpURL,!1),c.addEventListener("error",this._cleanUpURL,!1)}else c.src=this._item.src;else;c.complete?a(c):(c.onload=createjs.proxy(function(){a(this._tag)},this),c.onerror=createjs.proxy(function(){b(_this._tag)},this))},a._cleanUpURL=function(a){var b=window.URL||window.webkitURL;b.revokeObjectURL(a.target.src)},createjs.ImageLoader=createjs.promote(ImageLoader,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function JavaScriptLoader(a,b){this.AbstractLoader_constructor(a,b,createjs.AbstractLoader.JAVASCRIPT),this.resultFormatter=this._formatResult,this._tagSrcAttribute="src",this.setTag(document.createElement("script"))}var a=createjs.extend(JavaScriptLoader,createjs.AbstractLoader),b=JavaScriptLoader;b.canLoadItem=function(a){return a.type==createjs.AbstractLoader.JAVASCRIPT},a._formatResult=function(a){var b=a.getTag();return this._preferXHR&&(b.text=a.getResult(!0)),b},createjs.JavaScriptLoader=createjs.promote(JavaScriptLoader,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function JSONLoader(a){this.AbstractLoader_constructor(a,!0,createjs.AbstractLoader.JSON),this.resultFormatter=this._formatResult}var a=createjs.extend(JSONLoader,createjs.AbstractLoader),b=JSONLoader;b.canLoadItem=function(a){return a.type==createjs.AbstractLoader.JSON},a._formatResult=function(a){var b=null;try{b=createjs.DataUtils.parseJSON(a.getResult(!0))}catch(c){var d=new createjs.ErrorEvent("JSON_FORMAT",null,c);return this._sendError(d),c}return b},createjs.JSONLoader=createjs.promote(JSONLoader,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function JSONPLoader(a){this.AbstractLoader_constructor(a,!1,createjs.AbstractLoader.JSONP),this.setTag(document.createElement("script")),this.getTag().type="text/javascript"}var a=createjs.extend(JSONPLoader,createjs.AbstractLoader),b=JSONPLoader;b.canLoadItem=function(a){return a.type==createjs.AbstractLoader.JSONP},a.cancel=function(){this.AbstractLoader_cancel(),this._dispose()},a.load=function(){if(null==this._item.callback)throw new Error("callback is required for loading JSONP requests.");if(null!=window[this._item.callback])throw new Error("JSONP callback '"+this._item.callback+"' already exists on window. You need to specify a different callback or re-name the current one.");window[this._item.callback]=createjs.proxy(this._handleLoad,this),window.document.body.appendChild(this._tag),this._loadTimeout=setTimeout(createjs.proxy(this._handleTimeout,this),this._item.loadTimeout),this._tag.src=this._item.src},a._handleLoad=function(a){this._result=this._rawResult=a,this._sendComplete(),this._dispose()},a._handleTimeout=function(){this._dispose(),this.dispatchEvent(new createjs.ErrorEvent("timeout"))},a._dispose=function(){window.document.body.removeChild(this._tag),delete window[this._item.callback],clearTimeout(this._loadTimeout)},createjs.JSONPLoader=createjs.promote(JSONPLoader,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function ManifestLoader(a){this.AbstractLoader_constructor(a,null,createjs.AbstractLoader.MANIFEST),this.plugins=null,this._manifestQueue=null}var a=createjs.extend(ManifestLoader,createjs.AbstractLoader),b=ManifestLoader;b.MANIFEST_PROGRESS=.25,b.canLoadItem=function(a){return a.type==createjs.AbstractLoader.MANIFEST},a.load=function(){this.AbstractLoader_load()},a._createRequest=function(){var a=this._item.callback;this._request=null!=a?new createjs.JSONPLoader(this._item):new createjs.JSONLoader(this._item)},a.handleEvent=function(a){switch(a.type){case"complete":return this._rawResult=a.target.getResult(!0),this._result=a.target.getResult(),this._sendProgress(b.MANIFEST_PROGRESS),void this._loadManifest(this._result);case"progress":return a.loaded*=b.MANIFEST_PROGRESS,this.progress=a.loaded/a.total,(isNaN(this.progress)||1/0==this.progress)&&(this.progress=0),void this._sendProgress(a)}this.AbstractLoader_handleEvent(a)},a.destroy=function(){this.AbstractLoader_destroy(),this._manifestQueue.close()},a._loadManifest=function(a){if(a&&a.manifest){var b=this._manifestQueue=new createjs.LoadQueue;b.on("fileload",this._handleManifestFileLoad,this),b.on("progress",this._handleManifestProgress,this),b.on("complete",this._handleManifestComplete,this,!0),b.on("error",this._handleManifestError,this,!0);for(var c=0,d=this.plugins.length;d>c;c++)b.installPlugin(this.plugins[c]);b.loadManifest(a)}else this._sendComplete()},a._handleManifestFileLoad=function(a){a.target=null,this.dispatchEvent(a)},a._handleManifestComplete=function(){this._loadedItems=this._manifestQueue.getItems(!0),this._sendComplete()},a._handleManifestProgress=function(a){this.progress=a.progress*(1-b.MANIFEST_PROGRESS)+b.MANIFEST_PROGRESS,this._sendProgress(this.progress)},a._handleManifestError=function(a){var b=new createjs.Event("fileerror");b.item=a.data,this.dispatchEvent(b)},createjs.ManifestLoader=createjs.promote(ManifestLoader,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function SoundLoader(a,b){this.AbstractMediaLoader_constructor(a,b,createjs.AbstractLoader.SOUND),createjs.RequestUtils.isAudioTag(a)?this._tag=a:createjs.RequestUtils.isAudioTag(a.src)?this._tag=a:createjs.RequestUtils.isAudioTag(a.tag)&&(this._tag=createjs.RequestUtils.isAudioTag(a)?a:a.src),null!=this._tag&&(this._preferXHR=!1)}var a=createjs.extend(SoundLoader,createjs.AbstractMediaLoader),b=SoundLoader;b.canLoadItem=function(a){return a.type==createjs.AbstractLoader.SOUND},a._createTag=function(a){var b=document.createElement("audio");return b.autoplay=!1,b.preload="none",b.src=a,b},createjs.SoundLoader=createjs.promote(SoundLoader,"AbstractMediaLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function VideoLoader(a,b){this.AbstractMediaLoader_constructor(a,b,createjs.AbstractLoader.VIDEO),createjs.RequestUtils.isVideoTag(a)||createjs.RequestUtils.isVideoTag(a.src)?(this.setTag(createjs.RequestUtils.isVideoTag(a)?a:a.src),this._preferXHR=!1):this.setTag(this._createTag())}var a=createjs.extend(VideoLoader,createjs.AbstractMediaLoader),b=VideoLoader;a._createTag=function(){return document.createElement("video")},b.canLoadItem=function(a){return a.type==createjs.AbstractLoader.VIDEO},createjs.VideoLoader=createjs.promote(VideoLoader,"AbstractMediaLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function SpriteSheetLoader(a,b){this.AbstractLoader_constructor(a,b,createjs.AbstractLoader.SPRITESHEET),this._manifestQueue=null}var a=createjs.extend(SpriteSheetLoader,createjs.AbstractLoader),b=SpriteSheetLoader;b.SPRITESHEET_PROGRESS=.25,b.canLoadItem=function(a){return a.type==createjs.AbstractLoader.SPRITESHEET},a.destroy=function(){this.AbstractLoader_destroy,this._manifestQueue.close()},a._createRequest=function(){var a=this._item.callback;this._request=null!=a?new createjs.JSONPLoader(this._item):new createjs.JSONLoader(this._item)},a.handleEvent=function(a){switch(a.type){case"complete":return this._rawResult=a.target.getResult(!0),this._result=a.target.getResult(),this._sendProgress(b.SPRITESHEET_PROGRESS),void this._loadManifest(this._result);case"progress":return a.loaded*=b.SPRITESHEET_PROGRESS,this.progress=a.loaded/a.total,(isNaN(this.progress)||1/0==this.progress)&&(this.progress=0),void this._sendProgress(a)}this.AbstractLoader_handleEvent(a)},a._loadManifest=function(a){if(a&&a.images){var b=this._manifestQueue=new createjs.LoadQueue(this._preferXHR,this._item.path,this._item.crossOrigin);b.on("complete",this._handleManifestComplete,this,!0),b.on("fileload",this._handleManifestFileLoad,this),b.on("progress",this._handleManifestProgress,this),b.on("error",this._handleManifestError,this,!0),b.loadManifest(a.images)}},a._handleManifestFileLoad=function(a){var b=a.result;if(null!=b){var c=this.getResult().images,d=c.indexOf(a.item.src);c[d]=b}},a._handleManifestComplete=function(){this._result=new createjs.SpriteSheet(this._result),this._loadedItems=this._manifestQueue.getItems(!0),this._sendComplete()},a._handleManifestProgress=function(a){this.progress=a.progress*(1-b.SPRITESHEET_PROGRESS)+b.SPRITESHEET_PROGRESS,this._sendProgress(this.progress)},a._handleManifestError=function(a){var b=new createjs.Event("fileerror");b.item=a.data,this.dispatchEvent(b)},createjs.SpriteSheetLoader=createjs.promote(SpriteSheetLoader,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function SVGLoader(a,b){this.AbstractLoader_constructor(a,b,createjs.AbstractLoader.SVG),this.resultFormatter=this._formatResult,this._tagSrcAttribute="data",b?this.setTag(document.createElement("svg")):(this.setTag(document.createElement("object")),this.getTag().type="image/svg+xml")}var a=createjs.extend(SVGLoader,createjs.AbstractLoader),b=SVGLoader;b.canLoadItem=function(a){return a.type==createjs.AbstractLoader.SVG},a._formatResult=function(a){var b=createjs.DataUtils.parseXML(a.getResult(!0),"text/xml"),c=a.getTag();return!this._preferXHR&&document.body.contains(c)&&document.body.removeChild(c),null!=b.documentElement?(c.appendChild(b.documentElement),c.style.visibility="visible",c):b},createjs.SVGLoader=createjs.promote(SVGLoader,"AbstractLoader")}(),this.createjs=this.createjs||{},function(){"use strict";function XMLLoader(a){this.AbstractLoader_constructor(a,!0,createjs.AbstractLoader.XML),this.resultFormatter=this._formatResult}var a=createjs.extend(XMLLoader,createjs.AbstractLoader),b=XMLLoader;b.canLoadItem=function(a){return a.type==createjs.AbstractLoader.XML},a._formatResult=function(a){return createjs.DataUtils.parseXML(a.getResult(!0),"text/xml")},createjs.XMLLoader=createjs.promote(XMLLoader,"AbstractLoader")}();
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(164)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(163)(module), (function() { return this; }())))
 
 /***/ },
-/* 164 */
+/* 163 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -19857,7 +19855,7 @@
 
 
 /***/ },
-/* 165 */
+/* 164 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -19865,7 +19863,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 166 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
@@ -19888,11 +19886,12 @@
 
 
 /***/ },
-/* 167 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var SceneMixin = __webpack_require__(305);
+	var SceneMixin = __webpack_require__(167);
+	var TweenLite = __webpack_require__(304);
 	
 	var RioScene = React.createClass({displayName: "RioScene",
 	    mixins: [SceneMixin],
@@ -19915,22 +19914,146 @@
 
 
 /***/ },
-/* 168 */,
-/* 169 */
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+	var PIXI = __webpack_require__(168);
+	var config = __webpack_require__(303);
+	
+	module.exports = {
+	    _computeScale: function() {
+	        return Math.min(window.innerWidth / config.baseWidth, window.innerHeight / config.baseHeight);
+	    },
+	
+	    _buildObjectTextures: function(objectId) {
+	        var images = this.props.data.objects[objectId].images;
+	        return images.map(function(image) {
+	            var imageAsset = this.props.imageLoader.getResult(image);
+	            return new PIXI.Texture(new PIXI.BaseTexture(imageAsset));
+	        }.bind(this));
+	    },
+	
+	    _buildObject: function(objectId) {
+	        var textures = this._buildObjectTextures(objectId);
+	        var object;
+	
+	        if (textures.length > 1) {
+	            object = new PIXI.MovieClip(textures);
+	        }
+	        else {
+	            object = new PIXI.Sprite(textures[0]);
+	        }
+	
+	        var position = this.props.data.objects[objectId].position || [0, 0];
+	        object.x = position[0];
+	        object.y = position[1];
+	
+	        return object;
+	    },
+	
+	    getInitialState: function() {
+	        return {
+	            scale: this._computeScale()
+	        };
+	    },
+	
+	    componentDidMount: function() {
+	        // Creates the hit areas
+	        this.areas = [];
+	        for (var areaId in this.props.data.hitAreas) {
+	            this.areas.push({
+	                id: areaId,
+	                polygon: new PIXI.Polygon(this.props.data.hitAreas[areaId])
+	            });
+	        }
+	
+	        // Create a renderer instance
+	        this.renderer = new PIXI.CanvasRenderer(config.baseWidth, config.baseHeight, { // or autoDetectRenderer
+	            view: this.refs.canvas
+	        });
+	
+	        // The main PIXI container
+	        this.stage = new PIXI.Container();
+	        this.stage.interactive = true;
+	        this.stage.on("mousedown", this.onStageClick);
+	
+	        // Builds the scene
+	        this.buildScene();
+	
+	        // Starts the animation
+	        this.animationTick();
+	
+	        // What to do when the window resizes
+	        window.addEventListener("resize", this.onWindowResize);
+	    },
+	
+	    onStageClick: function(e) {
+	        var clickPos = e.data.getLocalPosition(this.stage);
+	
+	        for (var i=0; i < this.areas.length; i++) {
+	            if (this.areas[i].polygon.contains(clickPos.x, clickPos.y)) {
+	                window.alert(this.areas[i].id);
+	                break;
+	            }
+	        }
+	    },
+	
+	    animationTick: function(timestamp) {
+	        // Renders the PIXI canvas
+	        this.renderer.render(this.stage);
+	
+	        // Request the next frame
+	        this.animationId = requestAnimationFrame(this.animationTick);
+	    },
+	
+	    onWindowResize: function() {
+	        this.setState({
+	            scale: this._computeScale()
+	        });
+	    },
+	
+	    componentWillUnmount: function() {
+	        // Stops the animation
+	        clearAnimationFrame(this.animationId);
+	
+	        // Removes the resize listener
+	        window.removeEventListener("resize", this.onWindowResize);
+	
+	        // Do particular cleanups for a scene, if any
+	        if (this.disposeScene) {
+	            this.disposeScene();
+	        }
+	    },
+	
+	    render: function() {
+	        var style = {
+	            transform: "scale(" + this.state.scale + ")"
+	        };
+	
+	        style.WebkitTransform = style.transform;
+	
+	        return React.createElement("canvas", {className: "scene", style: style, ref: "canvas"});
+	    }
+	};
+
+
+/***/ },
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {// run the polyfills
-	__webpack_require__(170);
+	__webpack_require__(169);
 	
-	var core = module.exports = __webpack_require__(175);
+	var core = module.exports = __webpack_require__(174);
 	
 	// add core plugins.
-	core.extras         = __webpack_require__(237);
-	core.filters        = __webpack_require__(244);
-	core.interaction    = __webpack_require__(272);
-	core.loaders        = __webpack_require__(276);
-	core.mesh           = __webpack_require__(294);
-	core.accessibility  = __webpack_require__(300);
+	core.extras         = __webpack_require__(236);
+	core.filters        = __webpack_require__(243);
+	core.interaction    = __webpack_require__(271);
+	core.loaders        = __webpack_require__(275);
+	core.mesh           = __webpack_require__(293);
+	core.accessibility  = __webpack_require__(299);
 	
 	// export a premade loader instance
 	/**
@@ -19943,7 +20066,7 @@
 	core.loader = new core.loaders.Loader();
 	
 	// mixin the deprecation features.
-	Object.assign(core, __webpack_require__(303));
+	Object.assign(core, __webpack_require__(302));
 	
 	// Always export pixi globally.
 	global.PIXI = core;
@@ -19951,16 +20074,16 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 170 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(171);
+	__webpack_require__(170);
+	__webpack_require__(172);
 	__webpack_require__(173);
-	__webpack_require__(174);
 
 
 /***/ },
-/* 171 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// References:
@@ -19969,12 +20092,12 @@
 	
 	if (!Object.assign)
 	{
-	    Object.assign = __webpack_require__(172);
+	    Object.assign = __webpack_require__(171);
 	}
 
 
 /***/ },
-/* 172 */
+/* 171 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20063,7 +20186,7 @@
 
 
 /***/ },
-/* 173 */
+/* 172 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {// References:
@@ -20136,7 +20259,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 174 */
+/* 173 */
 /***/ function(module, exports) {
 
 	// References:
@@ -20156,7 +20279,7 @@
 
 
 /***/ },
-/* 175 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20170,56 +20293,56 @@
 	 * @namespace PIXI
 	 */
 	// export core and const. We assign core to const so that the non-reference types in const remain in-tact
-	var core = module.exports = Object.assign(__webpack_require__(176), __webpack_require__(177), {
+	var core = module.exports = Object.assign(__webpack_require__(175), __webpack_require__(176), {
 	    // utils
-	    utils: __webpack_require__(186),
-	    ticker: __webpack_require__(191),
+	    utils: __webpack_require__(185),
+	    ticker: __webpack_require__(190),
 	
 	    // display
-	    DisplayObject:          __webpack_require__(193),
-	    Container:              __webpack_require__(205),
+	    DisplayObject:          __webpack_require__(192),
+	    Container:              __webpack_require__(204),
 	
 	    // sprites
-	    Sprite:                 __webpack_require__(206),
-	    ParticleContainer:      __webpack_require__(208),
-	    SpriteRenderer:         __webpack_require__(209),
-	    ParticleRenderer:       __webpack_require__(225),
+	    Sprite:                 __webpack_require__(205),
+	    ParticleContainer:      __webpack_require__(207),
+	    SpriteRenderer:         __webpack_require__(208),
+	    ParticleRenderer:       __webpack_require__(224),
 	
 	    // text
-	    Text:                   __webpack_require__(228),
+	    Text:                   __webpack_require__(227),
 	
 	    // primitives
-	    Graphics:               __webpack_require__(229),
-	    GraphicsData:           __webpack_require__(231),
-	    GraphicsRenderer:       __webpack_require__(232),
+	    Graphics:               __webpack_require__(228),
+	    GraphicsData:           __webpack_require__(230),
+	    GraphicsRenderer:       __webpack_require__(231),
 	
 	    // textures
-	    Texture:                __webpack_require__(196),
-	    BaseTexture:            __webpack_require__(195),
-	    RenderTexture:          __webpack_require__(194),
-	    VideoBaseTexture:       __webpack_require__(197),
-	    TextureUvs:             __webpack_require__(198),
+	    Texture:                __webpack_require__(195),
+	    BaseTexture:            __webpack_require__(194),
+	    RenderTexture:          __webpack_require__(193),
+	    VideoBaseTexture:       __webpack_require__(196),
+	    TextureUvs:             __webpack_require__(197),
 	
 	    // renderers - canvas
-	    CanvasRenderer:         __webpack_require__(235),
-	    CanvasGraphics:         __webpack_require__(230),
-	    CanvasBuffer:           __webpack_require__(204),
+	    CanvasRenderer:         __webpack_require__(234),
+	    CanvasGraphics:         __webpack_require__(229),
+	    CanvasBuffer:           __webpack_require__(203),
 	
 	    // renderers - webgl
-	    WebGLRenderer:          __webpack_require__(211),
-	    WebGLManager:           __webpack_require__(202),
-	    ShaderManager:          __webpack_require__(213),
-	    Shader:                 __webpack_require__(215),
-	    TextureShader:          __webpack_require__(214),
-	    PrimitiveShader:        __webpack_require__(217),
-	    ComplexPrimitiveShader: __webpack_require__(216),
-	    ObjectRenderer:         __webpack_require__(210),
-	    RenderTarget:           __webpack_require__(199),
+	    WebGLRenderer:          __webpack_require__(210),
+	    WebGLManager:           __webpack_require__(201),
+	    ShaderManager:          __webpack_require__(212),
+	    Shader:                 __webpack_require__(214),
+	    TextureShader:          __webpack_require__(213),
+	    PrimitiveShader:        __webpack_require__(216),
+	    ComplexPrimitiveShader: __webpack_require__(215),
+	    ObjectRenderer:         __webpack_require__(209),
+	    RenderTarget:           __webpack_require__(198),
 	
 	    // filters - webgl
-	    AbstractFilter:         __webpack_require__(220),
-	    FXAAFilter:             __webpack_require__(224),
-	    SpriteMaskFilter:       __webpack_require__(219),
+	    AbstractFilter:         __webpack_require__(219),
+	    FXAAFilter:             __webpack_require__(223),
+	    SpriteMaskFilter:       __webpack_require__(218),
 	
 	    /**
 	     * This helper function will automatically detect which renderer you should be using.
@@ -20256,7 +20379,7 @@
 
 
 /***/ },
-/* 176 */
+/* 175 */
 /***/ function(module, exports) {
 
 	/**
@@ -20483,7 +20606,7 @@
 
 
 /***/ },
-/* 177 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20497,20 +20620,20 @@
 	    // to avoid circular dependencies and cut down on
 	    // internal module requires.
 	
-	    Point:      __webpack_require__(178),
-	    Matrix:     __webpack_require__(179),
-	    GroupD8:    __webpack_require__(180),
+	    Point:      __webpack_require__(177),
+	    Matrix:     __webpack_require__(178),
+	    GroupD8:    __webpack_require__(179),
 	
-	    Circle:     __webpack_require__(181),
-	    Ellipse:    __webpack_require__(183),
-	    Polygon:    __webpack_require__(184),
-	    Rectangle:  __webpack_require__(182),
-	    RoundedRectangle: __webpack_require__(185)
+	    Circle:     __webpack_require__(180),
+	    Ellipse:    __webpack_require__(182),
+	    Polygon:    __webpack_require__(183),
+	    Rectangle:  __webpack_require__(181),
+	    RoundedRectangle: __webpack_require__(184)
 	};
 
 
 /***/ },
-/* 178 */
+/* 177 */
 /***/ function(module, exports) {
 
 	/**
@@ -20584,14 +20707,14 @@
 
 
 /***/ },
-/* 179 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// @todo - ignore the too many parameters warning for now
 	// should either fix it or change the jshint config
 	// jshint -W072
 	
-	var Point = __webpack_require__(178);
+	var Point = __webpack_require__(177);
 	
 	/**
 	 * The pixi Matrix class as an object, which makes it a lot faster,
@@ -21028,7 +21151,7 @@
 
 
 /***/ },
-/* 180 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Your friendly neighbour https://en.wikipedia.org/wiki/Dihedral_group of order 16
@@ -21038,7 +21161,7 @@
 	var vx = [0, -1, -1, -1, 0, 1, 1, 1, 0, 1, 1, 1, 0, -1, -1, -1];
 	var vy = [1, 1, 0, -1, -1, -1, 0, 1, -1, -1, 0, 1, 1, 1, 0, -1];
 	var tempMatrices = [];
-	var Matrix = __webpack_require__(179);
+	var Matrix = __webpack_require__(178);
 	
 	var mul = [];
 	
@@ -21196,11 +21319,11 @@
 
 
 /***/ },
-/* 181 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Rectangle = __webpack_require__(182),
-	    CONST = __webpack_require__(176);
+	var Rectangle = __webpack_require__(181),
+	    CONST = __webpack_require__(175);
 	
 	/**
 	 * The Circle object can be used to specify a hit area for displayObjects
@@ -21288,10 +21411,10 @@
 
 
 /***/ },
-/* 182 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var CONST = __webpack_require__(176);
+	var CONST = __webpack_require__(175);
 	
 	/**
 	 * the Rectangle object is an area defined by its position, as indicated by its top-left corner point (x, y) and by its width and its height.
@@ -21386,11 +21509,11 @@
 
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Rectangle = __webpack_require__(182),
-	    CONST = __webpack_require__(176);
+	var Rectangle = __webpack_require__(181),
+	    CONST = __webpack_require__(175);
 	
 	/**
 	 * The Ellipse object can be used to specify a hit area for displayObjects
@@ -21485,11 +21608,11 @@
 
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Point = __webpack_require__(178),
-	    CONST = __webpack_require__(176);
+	var Point = __webpack_require__(177),
+	    CONST = __webpack_require__(175);
 	
 	/**
 	 * @class
@@ -21592,10 +21715,10 @@
 
 
 /***/ },
-/* 185 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var CONST = __webpack_require__(176);
+	var CONST = __webpack_require__(175);
 	
 	/**
 	 * The Rounded Rectangle object is an area that has nice rounded corners, as indicated by its top-left corner point (x, y) and by its width and its height and its radius.
@@ -21688,10 +21811,10 @@
 
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var CONST = __webpack_require__(176);
+	var CONST = __webpack_require__(175);
 	
 	/**
 	 * @namespace PIXI.utils
@@ -21700,9 +21823,9 @@
 	    _uid: 0,
 	    _saidHello: false,
 	
-	    EventEmitter:   __webpack_require__(187),
-	    pluginTarget:   __webpack_require__(188),
-	    async:          __webpack_require__(189),
+	    EventEmitter:   __webpack_require__(186),
+	    pluginTarget:   __webpack_require__(187),
+	    async:          __webpack_require__(188),
 	
 	    /**
 	     * Gets the next unique identifier
@@ -21969,7 +22092,7 @@
 
 
 /***/ },
-/* 187 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22264,7 +22387,7 @@
 
 
 /***/ },
-/* 188 */
+/* 187 */
 /***/ function(module, exports) {
 
 	/**
@@ -22338,7 +22461,7 @@
 
 
 /***/ },
-/* 189 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, setImmediate, process) {/*!
@@ -23607,10 +23730,10 @@
 	
 	}());
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(190).setImmediate, __webpack_require__(4)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(189).setImmediate, __webpack_require__(4)))
 
 /***/ },
-/* 190 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(4).nextTick;
@@ -23689,13 +23812,13 @@
 	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
 	  delete immediateIds[id];
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(190).setImmediate, __webpack_require__(190).clearImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(189).setImmediate, __webpack_require__(189).clearImmediate))
 
 /***/ },
-/* 191 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Ticker = __webpack_require__(192);
+	var Ticker = __webpack_require__(191);
 	
 	/**
 	 * The shared ticker instance used by {@link PIXI.extras.MovieClip}.
@@ -23752,11 +23875,11 @@
 
 
 /***/ },
-/* 192 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var CONST = __webpack_require__(176),
-	    EventEmitter = __webpack_require__(187),
+	var CONST = __webpack_require__(175),
+	    EventEmitter = __webpack_require__(186),
 	    // Internal event used by composed emitter
 	    TICK = 'tick';
 	
@@ -24111,13 +24234,13 @@
 
 
 /***/ },
-/* 193 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var math = __webpack_require__(177),
-	    RenderTexture = __webpack_require__(194),
-	    EventEmitter = __webpack_require__(187),
-	    CONST = __webpack_require__(176),
+	var math = __webpack_require__(176),
+	    RenderTexture = __webpack_require__(193),
+	    EventEmitter = __webpack_require__(186),
+	    CONST = __webpack_require__(175),
 	    _tempMatrix = new math.Matrix(),
 	    _tempDisplayObjectParent = {worldTransform:new math.Matrix(), worldAlpha:1, children:[]};
 	
@@ -24681,16 +24804,16 @@
 
 
 /***/ },
-/* 194 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var BaseTexture = __webpack_require__(195),
-	    Texture = __webpack_require__(196),
-	    RenderTarget = __webpack_require__(199),
-	    FilterManager = __webpack_require__(201),
-	    CanvasBuffer = __webpack_require__(204),
-	    math = __webpack_require__(177),
-	    CONST = __webpack_require__(176),
+	var BaseTexture = __webpack_require__(194),
+	    Texture = __webpack_require__(195),
+	    RenderTarget = __webpack_require__(198),
+	    FilterManager = __webpack_require__(200),
+	    CanvasBuffer = __webpack_require__(203),
+	    math = __webpack_require__(176),
+	    CONST = __webpack_require__(175),
 	    tempMatrix = new math.Matrix();
 	
 	/**
@@ -25164,12 +25287,12 @@
 
 
 /***/ },
-/* 195 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var utils = __webpack_require__(186),
-	    CONST = __webpack_require__(176),
-	    EventEmitter = __webpack_require__(187);
+	var utils = __webpack_require__(185),
+	    CONST = __webpack_require__(175),
+	    EventEmitter = __webpack_require__(186);
 	
 	/**
 	 * A texture stores the information that represents an image. All textures have a base texture.
@@ -25604,15 +25727,15 @@
 
 
 /***/ },
-/* 196 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var BaseTexture = __webpack_require__(195),
-	    VideoBaseTexture = __webpack_require__(197),
-	    TextureUvs = __webpack_require__(198),
-	    EventEmitter = __webpack_require__(187),
-	    math = __webpack_require__(177),
-	    utils = __webpack_require__(186);
+	var BaseTexture = __webpack_require__(194),
+	    VideoBaseTexture = __webpack_require__(196),
+	    TextureUvs = __webpack_require__(197),
+	    EventEmitter = __webpack_require__(186),
+	    math = __webpack_require__(176),
+	    utils = __webpack_require__(185);
 	
 	/**
 	 * A texture stores the information that represents an image or part of an image. It cannot be added
@@ -26060,11 +26183,11 @@
 
 
 /***/ },
-/* 197 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var BaseTexture = __webpack_require__(195),
-	    utils = __webpack_require__(186);
+	var BaseTexture = __webpack_require__(194),
+	    utils = __webpack_require__(185);
 	
 	/**
 	 * A texture of a [playing] Video.
@@ -26301,7 +26424,7 @@
 
 
 /***/ },
-/* 198 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -26329,7 +26452,7 @@
 	
 	module.exports = TextureUvs;
 	
-	var GroupD8 = __webpack_require__(180);
+	var GroupD8 = __webpack_require__(179);
 	
 	/**
 	 * Sets the texture Uvs based on the given frame information
@@ -26384,14 +26507,14 @@
 
 
 /***/ },
-/* 199 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var math = __webpack_require__(177),
-	    utils = __webpack_require__(186),
-	    CONST = __webpack_require__(176),
+	var math = __webpack_require__(176),
+	    utils = __webpack_require__(185),
+	    CONST = __webpack_require__(175),
 	    //StencilManager = require('../managers/StencilManager'),
-	    StencilMaskStack = __webpack_require__(200);
+	    StencilMaskStack = __webpack_require__(199);
 	
 	/**
 	 * @author Mat Groves http://matgroves.com/ @Doormat23
@@ -26710,7 +26833,7 @@
 
 
 /***/ },
-/* 200 */
+/* 199 */
 /***/ function(module, exports) {
 
 	/**
@@ -26747,14 +26870,14 @@
 
 
 /***/ },
-/* 201 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var WebGLManager = __webpack_require__(202),
-	    RenderTarget = __webpack_require__(199),
-	    CONST = __webpack_require__(176),
-	    Quad = __webpack_require__(203),
-	    math =  __webpack_require__(177);
+	var WebGLManager = __webpack_require__(201),
+	    RenderTarget = __webpack_require__(198),
+	    CONST = __webpack_require__(175),
+	    Quad = __webpack_require__(202),
+	    math =  __webpack_require__(176);
 	
 	/**
 	 * @class
@@ -27203,7 +27326,7 @@
 
 
 /***/ },
-/* 202 */
+/* 201 */
 /***/ function(module, exports) {
 
 	/**
@@ -27248,7 +27371,7 @@
 
 
 /***/ },
-/* 203 */
+/* 202 */
 /***/ function(module, exports) {
 
 	/**
@@ -27407,7 +27530,7 @@
 
 
 /***/ },
-/* 204 */
+/* 203 */
 /***/ function(module, exports) {
 
 	/**
@@ -27511,13 +27634,13 @@
 
 
 /***/ },
-/* 205 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var math = __webpack_require__(177),
-	    utils = __webpack_require__(186),
-	    DisplayObject = __webpack_require__(193),
-	    RenderTexture = __webpack_require__(194),
+	var math = __webpack_require__(176),
+	    utils = __webpack_require__(185),
+	    DisplayObject = __webpack_require__(192),
+	    RenderTexture = __webpack_require__(193),
 	    _tempMatrix = new math.Matrix();
 	
 	/**
@@ -28159,15 +28282,15 @@
 
 
 /***/ },
-/* 206 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var math = __webpack_require__(177),
-	    Texture = __webpack_require__(196),
-	    Container = __webpack_require__(205),
-	    CanvasTinter = __webpack_require__(207),
-	    utils = __webpack_require__(186),
-	    CONST = __webpack_require__(176),
+	var math = __webpack_require__(176),
+	    Texture = __webpack_require__(195),
+	    Container = __webpack_require__(204),
+	    CanvasTinter = __webpack_require__(206),
+	    utils = __webpack_require__(185),
+	    CONST = __webpack_require__(175),
 	    tempPoint = new math.Point(),
 	    GroupD8 = math.GroupD8,
 	    canvasRenderWorldTransform = new math.Matrix();
@@ -28731,10 +28854,10 @@
 
 
 /***/ },
-/* 207 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var utils = __webpack_require__(186);
+	var utils = __webpack_require__(185);
 	
 	/**
 	 * Utility methods for Sprite/Texture tinting.
@@ -28987,11 +29110,11 @@
 
 
 /***/ },
-/* 208 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Container = __webpack_require__(205),
-	    CONST = __webpack_require__(176);
+	var Container = __webpack_require__(204),
+	    CONST = __webpack_require__(175);
 	
 	/**
 	 * The ParticleContainer class is a really fast version of the Container built solely for speed,
@@ -29310,12 +29433,12 @@
 
 
 /***/ },
-/* 209 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ObjectRenderer = __webpack_require__(210),
-	    WebGLRenderer = __webpack_require__(211),
-	    CONST = __webpack_require__(176);
+	var ObjectRenderer = __webpack_require__(209),
+	    WebGLRenderer = __webpack_require__(210),
+	    CONST = __webpack_require__(175);
 	
 	/**
 	 * @author Mat Groves
@@ -29787,10 +29910,10 @@
 
 
 /***/ },
-/* 210 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var WebGLManager = __webpack_require__(202);
+	var WebGLManager = __webpack_require__(201);
 	
 	/**
 	 * Base for a common object renderer that can be used as a system renderer plugin.
@@ -29849,20 +29972,20 @@
 
 
 /***/ },
-/* 211 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var SystemRenderer = __webpack_require__(212),
-	    ShaderManager = __webpack_require__(213),
-	    MaskManager = __webpack_require__(218),
-	    StencilManager = __webpack_require__(222),
-	    FilterManager = __webpack_require__(201),
-	    BlendModeManager = __webpack_require__(223),
-	    RenderTarget = __webpack_require__(199),
-	    ObjectRenderer = __webpack_require__(210),
-	    FXAAFilter = __webpack_require__(224),
-	    utils = __webpack_require__(186),
-	    CONST = __webpack_require__(176);
+	var SystemRenderer = __webpack_require__(211),
+	    ShaderManager = __webpack_require__(212),
+	    MaskManager = __webpack_require__(217),
+	    StencilManager = __webpack_require__(221),
+	    FilterManager = __webpack_require__(200),
+	    BlendModeManager = __webpack_require__(222),
+	    RenderTarget = __webpack_require__(198),
+	    ObjectRenderer = __webpack_require__(209),
+	    FXAAFilter = __webpack_require__(223),
+	    utils = __webpack_require__(185),
+	    CONST = __webpack_require__(175);
 	
 	/**
 	 * The WebGLRenderer draws the scene and all its content onto a webGL enabled canvas. This renderer
@@ -30443,13 +30566,13 @@
 
 
 /***/ },
-/* 212 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var utils = __webpack_require__(186),
-	    math = __webpack_require__(177),
-	    CONST = __webpack_require__(176),
-	    EventEmitter = __webpack_require__(187);
+	var utils = __webpack_require__(185),
+	    math = __webpack_require__(176),
+	    CONST = __webpack_require__(175),
+	    EventEmitter = __webpack_require__(186);
 	
 	/**
 	 * The CanvasRenderer draws the scene and all its content onto a 2d canvas. This renderer should be used for browsers that do not support webGL.
@@ -30708,14 +30831,14 @@
 
 
 /***/ },
-/* 213 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var WebGLManager = __webpack_require__(202),
-	    TextureShader = __webpack_require__(214),
-	    ComplexPrimitiveShader = __webpack_require__(216),
-	    PrimitiveShader = __webpack_require__(217),
-	    utils = __webpack_require__(186);
+	var WebGLManager = __webpack_require__(201),
+	    TextureShader = __webpack_require__(213),
+	    ComplexPrimitiveShader = __webpack_require__(215),
+	    PrimitiveShader = __webpack_require__(216),
+	    utils = __webpack_require__(185);
 	
 	/**
 	 * @class
@@ -30881,10 +31004,10 @@
 
 
 /***/ },
-/* 214 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Shader = __webpack_require__(215);
+	var Shader = __webpack_require__(214);
 	
 	/**
 	 * @class
@@ -30996,11 +31119,11 @@
 
 
 /***/ },
-/* 215 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*global console */
-	var utils = __webpack_require__(186);
+	var utils = __webpack_require__(185);
 	
 	/**
 	 * Base shader class for PIXI managed shaders.
@@ -31564,10 +31687,10 @@
 
 
 /***/ },
-/* 216 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Shader = __webpack_require__(215);
+	var Shader = __webpack_require__(214);
 	
 	/**
 	 * This shader is used to draw complex primitive shapes for {@link PIXI.Graphics}.
@@ -31630,10 +31753,10 @@
 
 
 /***/ },
-/* 217 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Shader = __webpack_require__(215);
+	var Shader = __webpack_require__(214);
 	
 	/**
 	 * This shader is used to draw simple primitive shapes for {@link PIXI.Graphics}.
@@ -31697,11 +31820,11 @@
 
 
 /***/ },
-/* 218 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var WebGLManager = __webpack_require__(202),
-	    AlphaMaskFilter = __webpack_require__(219);
+	var WebGLManager = __webpack_require__(201),
+	    AlphaMaskFilter = __webpack_require__(218);
 	
 	/**
 	 * @class
@@ -31816,14 +31939,14 @@
 
 
 /***/ },
-/* 219 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var AbstractFilter = __webpack_require__(220),
-	    math =  __webpack_require__(177);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var AbstractFilter = __webpack_require__(219),
+	    math =  __webpack_require__(176);
 	
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * The SpriteMaskFilter class
@@ -31918,10 +32041,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 220 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var DefaultShader = __webpack_require__(214);
+	var DefaultShader = __webpack_require__(213);
 	
 	/**
 	 * This is the base class for creating a PIXI filter. Currently only WebGL supports filters.
@@ -32034,17 +32157,17 @@
 
 
 /***/ },
-/* 221 */
+/* 220 */
 /***/ function(module, exports) {
 
 
 
 /***/ },
-/* 222 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var WebGLManager = __webpack_require__(202),
-	    utils = __webpack_require__(186);
+	var WebGLManager = __webpack_require__(201),
+	    utils = __webpack_require__(185);
 	
 	/**
 	 * @class
@@ -32390,10 +32513,10 @@
 
 
 /***/ },
-/* 223 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var WebGLManager = __webpack_require__(202);
+	var WebGLManager = __webpack_require__(201);
 	
 	/**
 	 * @class
@@ -32438,12 +32561,12 @@
 
 
 /***/ },
-/* 224 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var AbstractFilter = __webpack_require__(220);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var AbstractFilter = __webpack_require__(219);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 *
@@ -32498,14 +32621,14 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 225 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ObjectRenderer = __webpack_require__(210),
-	    WebGLRenderer = __webpack_require__(211),
-	    ParticleShader = __webpack_require__(226),
-	    ParticleBuffer = __webpack_require__(227),
-	    math            = __webpack_require__(177);
+	var ObjectRenderer = __webpack_require__(209),
+	    WebGLRenderer = __webpack_require__(210),
+	    ParticleShader = __webpack_require__(225),
+	    ParticleBuffer = __webpack_require__(226),
+	    math            = __webpack_require__(176);
 	
 	/**
 	 * @author Mat Groves
@@ -32978,10 +33101,10 @@
 
 
 /***/ },
-/* 226 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var TextureShader = __webpack_require__(214);
+	var TextureShader = __webpack_require__(213);
 	
 	/**
 	 * @class
@@ -33060,7 +33183,7 @@
 
 
 /***/ },
-/* 227 */
+/* 226 */
 /***/ function(module, exports) {
 
 	
@@ -33284,14 +33407,14 @@
 
 
 /***/ },
-/* 228 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Sprite = __webpack_require__(206),
-	    Texture = __webpack_require__(196),
-	    math = __webpack_require__(177),
-	    utils = __webpack_require__(186),
-	    CONST = __webpack_require__(176);
+	var Sprite = __webpack_require__(205),
+	    Texture = __webpack_require__(195),
+	    math = __webpack_require__(176),
+	    utils = __webpack_require__(185),
+	    CONST = __webpack_require__(175);
 	
 	/**
 	 * A Text Object will create a line or multiple lines of text. To split a line you can use '\n' in your text string,
@@ -33985,16 +34108,16 @@
 
 
 /***/ },
-/* 229 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Container = __webpack_require__(205),
-	    Texture = __webpack_require__(196),
-	    CanvasBuffer = __webpack_require__(204),
-	    CanvasGraphics = __webpack_require__(230),
-	    GraphicsData = __webpack_require__(231),
-	    math = __webpack_require__(177),
-	    CONST = __webpack_require__(176),
+	var Container = __webpack_require__(204),
+	    Texture = __webpack_require__(195),
+	    CanvasBuffer = __webpack_require__(203),
+	    CanvasGraphics = __webpack_require__(229),
+	    GraphicsData = __webpack_require__(230),
+	    math = __webpack_require__(176),
+	    CONST = __webpack_require__(175),
 	    tempPoint = new math.Point();
 	
 	/**
@@ -35174,10 +35297,10 @@
 
 
 /***/ },
-/* 230 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var CONST = __webpack_require__(176);
+	var CONST = __webpack_require__(175);
 	
 	/**
 	 * A set of functions used by the canvas renderer to draw the primitive graphics data.
@@ -35532,7 +35655,7 @@
 
 
 /***/ },
-/* 231 */
+/* 230 */
 /***/ function(module, exports) {
 
 	/**
@@ -35629,16 +35752,16 @@
 
 
 /***/ },
-/* 232 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var utils = __webpack_require__(186),
-	    math = __webpack_require__(177),
-	    CONST = __webpack_require__(176),
-	    ObjectRenderer = __webpack_require__(210),
-	    WebGLRenderer = __webpack_require__(211),
-	    WebGLGraphicsData = __webpack_require__(233),
-	    earcut = __webpack_require__(234);
+	var utils = __webpack_require__(185),
+	    math = __webpack_require__(176),
+	    CONST = __webpack_require__(175),
+	    ObjectRenderer = __webpack_require__(209),
+	    WebGLRenderer = __webpack_require__(210),
+	    WebGLGraphicsData = __webpack_require__(232),
+	    earcut = __webpack_require__(233);
 	
 	/**
 	 * Renders the graphics object.
@@ -36538,7 +36661,7 @@
 
 
 /***/ },
-/* 233 */
+/* 232 */
 /***/ function(module, exports) {
 
 	/**
@@ -36660,7 +36783,7 @@
 
 
 /***/ },
-/* 234 */
+/* 233 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37310,14 +37433,14 @@
 
 
 /***/ },
-/* 235 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var SystemRenderer = __webpack_require__(212),
-	    CanvasMaskManager = __webpack_require__(236),
-	    utils = __webpack_require__(186),
-	    math = __webpack_require__(177),
-	    CONST = __webpack_require__(176);
+	var SystemRenderer = __webpack_require__(211),
+	    CanvasMaskManager = __webpack_require__(235),
+	    utils = __webpack_require__(185),
+	    math = __webpack_require__(176),
+	    CONST = __webpack_require__(175);
 	
 	/**
 	 * The CanvasRenderer draws the scene and all its content onto a 2d canvas. This renderer should be used for browsers that do not support webGL.
@@ -37582,10 +37705,10 @@
 
 
 /***/ },
-/* 236 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var CanvasGraphics = __webpack_require__(230);
+	var CanvasGraphics = __webpack_require__(229);
 	
 	/**
 	 * A set of functions used to handle masking.
@@ -37648,7 +37771,7 @@
 
 
 /***/ },
-/* 237 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -37658,25 +37781,25 @@
 	 * @license     {@link https://github.com/pixijs/pixi.js/blob/master/LICENSE|MIT License}
 	 */
 	
+	__webpack_require__(237);
 	__webpack_require__(238);
 	__webpack_require__(239);
-	__webpack_require__(240);
 	
 	/**
 	 * @namespace PIXI.extras
 	 */
 	module.exports = {
-	    MovieClip:      __webpack_require__(241),
-	    TilingSprite:   __webpack_require__(242),
-	    BitmapText:     __webpack_require__(243)
+	    MovieClip:      __webpack_require__(240),
+	    TilingSprite:   __webpack_require__(241),
+	    BitmapText:     __webpack_require__(242)
 	};
 
 
 /***/ },
-/* 238 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175),
+	var core = __webpack_require__(174),
 	    DisplayObject = core.DisplayObject,
 	    _tempMatrix = new core.Matrix();
 	
@@ -37949,10 +38072,10 @@
 
 
 /***/ },
-/* 239 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175);
+	var core = __webpack_require__(174);
 	
 	/**
 	 * The instance name of the object.
@@ -37983,10 +38106,10 @@
 
 
 /***/ },
-/* 240 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175);
+	var core = __webpack_require__(174);
 	
 	/**
 	* Returns the global position of the displayObject
@@ -38017,10 +38140,10 @@
 
 
 /***/ },
-/* 241 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175);
+	var core = __webpack_require__(174);
 	
 	/**
 	 * A MovieClip is a simple way to display an animation depicted by a list of textures.
@@ -38341,13 +38464,13 @@
 	};
 
 /***/ },
-/* 242 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175),
+	var core = __webpack_require__(174),
 	    // a sprite use dfor rendering textures..
 	    tempPoint = new core.Point(),
-	    CanvasTinter = __webpack_require__(207);
+	    CanvasTinter = __webpack_require__(206);
 	
 	/**
 	 * A tiling sprite is a fast way of rendering a tiling image
@@ -38797,10 +38920,10 @@
 
 
 /***/ },
-/* 243 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175);
+	var core = __webpack_require__(174);
 	
 	/**
 	 * A BitmapText object will create a line or multiple lines of text using bitmap font. To
@@ -39189,7 +39312,7 @@
 
 
 /***/ },
-/* 244 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -39203,41 +39326,41 @@
 	 * @namespace PIXI.filters
 	 */
 	module.exports = {
-	    AsciiFilter:        __webpack_require__(245),
-	    BloomFilter:        __webpack_require__(246),
-	    BlurFilter:         __webpack_require__(249),
-	    BlurXFilter:        __webpack_require__(247),
-	    BlurYFilter:        __webpack_require__(248),
-	    BlurDirFilter:      __webpack_require__(250),
-	    ColorMatrixFilter:  __webpack_require__(251),
-	    ColorStepFilter:    __webpack_require__(252),
-	    ConvolutionFilter:  __webpack_require__(253),
-	    CrossHatchFilter:   __webpack_require__(254),
-	    DisplacementFilter: __webpack_require__(255),
-	    DotScreenFilter:    __webpack_require__(256),
-	    GrayFilter:         __webpack_require__(257),
-	    DropShadowFilter:   __webpack_require__(258),
-	    InvertFilter:       __webpack_require__(260),
-	    NoiseFilter:        __webpack_require__(261),
-	    PixelateFilter:     __webpack_require__(262),
-	    RGBSplitFilter:     __webpack_require__(263),
-	    ShockwaveFilter:    __webpack_require__(264),
-	    SepiaFilter:        __webpack_require__(265),
-	    SmartBlurFilter:    __webpack_require__(266),
-	    TiltShiftFilter:    __webpack_require__(267),
-	    TiltShiftXFilter:   __webpack_require__(268),
-	    TiltShiftYFilter:   __webpack_require__(270),
-	    TwistFilter:        __webpack_require__(271)
+	    AsciiFilter:        __webpack_require__(244),
+	    BloomFilter:        __webpack_require__(245),
+	    BlurFilter:         __webpack_require__(248),
+	    BlurXFilter:        __webpack_require__(246),
+	    BlurYFilter:        __webpack_require__(247),
+	    BlurDirFilter:      __webpack_require__(249),
+	    ColorMatrixFilter:  __webpack_require__(250),
+	    ColorStepFilter:    __webpack_require__(251),
+	    ConvolutionFilter:  __webpack_require__(252),
+	    CrossHatchFilter:   __webpack_require__(253),
+	    DisplacementFilter: __webpack_require__(254),
+	    DotScreenFilter:    __webpack_require__(255),
+	    GrayFilter:         __webpack_require__(256),
+	    DropShadowFilter:   __webpack_require__(257),
+	    InvertFilter:       __webpack_require__(259),
+	    NoiseFilter:        __webpack_require__(260),
+	    PixelateFilter:     __webpack_require__(261),
+	    RGBSplitFilter:     __webpack_require__(262),
+	    ShockwaveFilter:    __webpack_require__(263),
+	    SepiaFilter:        __webpack_require__(264),
+	    SmartBlurFilter:    __webpack_require__(265),
+	    TiltShiftFilter:    __webpack_require__(266),
+	    TiltShiftXFilter:   __webpack_require__(267),
+	    TiltShiftYFilter:   __webpack_require__(269),
+	    TwistFilter:        __webpack_require__(270)
 	};
 
 
 /***/ },
-/* 245 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	// TODO (cengler) - The Y is flipped in this shader for some reason.
 	
@@ -39294,12 +39417,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 246 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175),
-	    BlurXFilter = __webpack_require__(247),
-	    BlurYFilter = __webpack_require__(248);
+	var core = __webpack_require__(174),
+	    BlurXFilter = __webpack_require__(246),
+	    BlurYFilter = __webpack_require__(247);
 	
 	/**
 	 * The BloomFilter applies a Gaussian blur to an object.
@@ -39399,12 +39522,12 @@
 
 
 /***/ },
-/* 247 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * The BlurXFilter applies a horizontal Gaussian blur to an object.
@@ -39497,12 +39620,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 248 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * The BlurYFilter applies a horizontal Gaussian blur to an object.
@@ -39588,12 +39711,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 249 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175),
-	    BlurXFilter = __webpack_require__(247),
-	    BlurYFilter = __webpack_require__(248);
+	var core = __webpack_require__(174),
+	    BlurXFilter = __webpack_require__(246),
+	    BlurYFilter = __webpack_require__(247);
 	
 	/**
 	 * The BlurFilter applies a Gaussian blur to an object.
@@ -39702,11 +39825,11 @@
 
 
 /***/ },
-/* 250 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
-	var fs = __webpack_require__(221);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * The BlurDirFilter applies a Gaussian blur toward a direction to an object.
@@ -39849,12 +39972,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 251 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * The ColorMatrixFilter class lets you apply a 5x4 matrix transformation on the RGBA
@@ -40390,12 +40513,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 252 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * This lowers the color depth of your image by the given amount, producing an image with a smaller palette.
@@ -40444,12 +40567,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 253 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * The ConvolutionFilter class applies a matrix convolution filter effect.
@@ -40540,12 +40663,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 254 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * A Cross Hatch effect filter.
@@ -40571,12 +40694,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 255 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * The DisplacementFilter class uses the pixel values from the specified texture (called the displacement map) to perform a displacement of an object.
@@ -40660,12 +40783,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 256 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * @author Mat Groves http://matgroves.com/ @Doormat23
@@ -40737,12 +40860,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 257 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * This greyscales the palette of your Display Objects.
@@ -40791,12 +40914,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 258 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175),
-	    BlurXFilter = __webpack_require__(247),
-	    BlurYTintFilter = __webpack_require__(259);
+	var core = __webpack_require__(174),
+	    BlurXFilter = __webpack_require__(246),
+	    BlurYTintFilter = __webpack_require__(258);
 	
 	/**
 	 * The DropShadowFilter applies a Gaussian blur to an object.
@@ -40988,13 +41111,13 @@
 
 
 /***/ },
-/* 259 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * The BlurYTintFilter applies a vertical Gaussian blur to an object.
@@ -41084,12 +41207,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 260 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * This inverts your Display Objects colors.
@@ -41139,12 +41262,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 261 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * @author Vico @vicocotea
@@ -41199,12 +41322,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 262 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * This filter applies a pixelate effect making display objects appear 'blocky'.
@@ -41255,12 +41378,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 263 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * An RGB Split Filter.
@@ -41346,12 +41469,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 264 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * The ColorMatrixFilter class lets you apply a 4x4 matrix transformation on the RGBA
@@ -41439,12 +41562,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 265 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * This applies a sepia effect to your Display Objects.
@@ -41494,12 +41617,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 266 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * A Smart Blur Filter.
@@ -41529,12 +41652,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 267 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175),
-	    TiltShiftXFilter = __webpack_require__(268),
-	    TiltShiftYFilter = __webpack_require__(270);
+	var core = __webpack_require__(174),
+	    TiltShiftXFilter = __webpack_require__(267),
+	    TiltShiftYFilter = __webpack_require__(269);
 	
 	/**
 	 * @author Vico @vicocotea
@@ -41643,10 +41766,10 @@
 
 
 /***/ },
-/* 268 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var TiltShiftAxisFilter = __webpack_require__(269);
+	var TiltShiftAxisFilter = __webpack_require__(268);
 	
 	/**
 	 * @author Vico @vicocotea
@@ -41685,12 +41808,12 @@
 
 
 /***/ },
-/* 269 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * @author Vico @vicocotea
@@ -41815,10 +41938,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 270 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var TiltShiftAxisFilter = __webpack_require__(269);
+	var TiltShiftAxisFilter = __webpack_require__(268);
 	
 	/**
 	 * @author Vico @vicocotea
@@ -41857,12 +41980,12 @@
 
 
 /***/ },
-/* 271 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(175);
+	/* WEBPACK VAR INJECTION */(function(__dirname) {var core = __webpack_require__(174);
 	// @see https://github.com/substack/brfs/issues/25
-	var fs = __webpack_require__(221);
+	var fs = __webpack_require__(220);
 	
 	/**
 	 * This filter applies a twist effect making display objects appear twisted in the given direction.
@@ -41947,7 +42070,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ },
-/* 272 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -41961,17 +42084,17 @@
 	 * @namespace PIXI.interaction
 	 */
 	module.exports = {
-	    InteractionData:    __webpack_require__(273),
-	    InteractionManager: __webpack_require__(274),
-	    interactiveTarget:  __webpack_require__(275)
+	    InteractionData:    __webpack_require__(272),
+	    InteractionManager: __webpack_require__(273),
+	    interactiveTarget:  __webpack_require__(274)
 	};
 
 
 /***/ },
-/* 273 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175);
+	var core = __webpack_require__(174);
 	
 	/**
 	 * Holds all information related to an Interaction event
@@ -42021,16 +42144,16 @@
 
 
 /***/ },
-/* 274 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175),
-	    InteractionData = __webpack_require__(273);
+	var core = __webpack_require__(174),
+	    InteractionData = __webpack_require__(272);
 	
 	// Mix interactiveTarget into core.DisplayObject.prototype
 	Object.assign(
 	    core.DisplayObject.prototype,
-	    __webpack_require__(275)
+	    __webpack_require__(274)
 	);
 	
 	/**
@@ -42931,7 +43054,7 @@
 
 
 /***/ },
-/* 275 */
+/* 274 */
 /***/ function(module, exports) {
 
 	/**
@@ -42984,7 +43107,7 @@
 
 
 /***/ },
-/* 276 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42998,24 +43121,24 @@
 	 * @namespace PIXI.loaders
 	 */
 	module.exports = {
-	    Loader:             __webpack_require__(277),
+	    Loader:             __webpack_require__(276),
 	
 	    // parsers
-	    bitmapFontParser:   __webpack_require__(293),
-	    spritesheetParser:  __webpack_require__(291),
-	    textureParser:      __webpack_require__(290),
-	    Resource:           __webpack_require__(278).Resource
+	    bitmapFontParser:   __webpack_require__(292),
+	    spritesheetParser:  __webpack_require__(290),
+	    textureParser:      __webpack_require__(289),
+	    Resource:           __webpack_require__(277).Resource
 	};
 
 
 /***/ },
-/* 277 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var ResourceLoader = __webpack_require__(278),
-	    textureParser = __webpack_require__(290),
-	    spritesheetParser = __webpack_require__(291),
-	    bitmapFontParser = __webpack_require__(293);
+	var ResourceLoader = __webpack_require__(277),
+	    textureParser = __webpack_require__(289),
+	    spritesheetParser = __webpack_require__(290),
+	    bitmapFontParser = __webpack_require__(292);
 	
 	/**
 	 *
@@ -43075,31 +43198,31 @@
 
 
 /***/ },
-/* 278 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(279);
+	module.exports = __webpack_require__(278);
 	
-	module.exports.Resource = __webpack_require__(286);
+	module.exports.Resource = __webpack_require__(285);
 	
 	module.exports.middleware = {
 	    caching: {
-	        memory: __webpack_require__(287)
+	        memory: __webpack_require__(286)
 	    },
 	    parsing: {
-	        blob: __webpack_require__(288)
+	        blob: __webpack_require__(287)
 	    }
 	};
 
 
 /***/ },
-/* 279 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var async       = __webpack_require__(280),
-	    urlParser   = __webpack_require__(281),
-	    Resource    = __webpack_require__(286),
-	    EventEmitter = __webpack_require__(187);
+	var async       = __webpack_require__(279),
+	    urlParser   = __webpack_require__(280),
+	    Resource    = __webpack_require__(285),
+	    EventEmitter = __webpack_require__(186);
 	
 	/**
 	 * Manages the state and loading of multiple resources to load.
@@ -43555,7 +43678,7 @@
 
 
 /***/ },
-/* 280 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, setImmediate) {/*!
@@ -44682,10 +44805,10 @@
 	
 	}());
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(190).setImmediate))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(189).setImmediate))
 
 /***/ },
-/* 281 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -44709,7 +44832,7 @@
 	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 	// USE OR OTHER DEALINGS IN THE SOFTWARE.
 	
-	var punycode = __webpack_require__(282);
+	var punycode = __webpack_require__(281);
 	
 	exports.parse = urlParse;
 	exports.resolve = urlResolve;
@@ -44781,7 +44904,7 @@
 	      'gopher:': true,
 	      'file:': true
 	    },
-	    querystring = __webpack_require__(283);
+	    querystring = __webpack_require__(282);
 	
 	function urlParse(url, parseQueryString, slashesDenoteHost) {
 	  if (url && isObject(url) && url instanceof Url) return url;
@@ -45398,7 +45521,7 @@
 
 
 /***/ },
-/* 282 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/*! https://mths.be/punycode v1.3.2 by @mathias */
@@ -45930,20 +46053,20 @@
 	
 	}(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(164)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(163)(module), (function() { return this; }())))
 
 /***/ },
-/* 283 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	exports.decode = exports.parse = __webpack_require__(284);
-	exports.encode = exports.stringify = __webpack_require__(285);
+	exports.decode = exports.parse = __webpack_require__(283);
+	exports.encode = exports.stringify = __webpack_require__(284);
 
 
 /***/ },
-/* 284 */
+/* 283 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -46029,7 +46152,7 @@
 
 
 /***/ },
-/* 285 */
+/* 284 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -46099,11 +46222,11 @@
 
 
 /***/ },
-/* 286 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var EventEmitter = __webpack_require__(187),
-	    _url = __webpack_require__(281),
+	var EventEmitter = __webpack_require__(186),
+	    _url = __webpack_require__(280),
 	    // tests is CORS is supported in XHR, if not we need to use XDR
 	    useXdr = !!(window.XDomainRequest && !('withCredentials' in (new XMLHttpRequest()))),
 	    tempAnchor = null;
@@ -46906,7 +47029,7 @@
 
 
 /***/ },
-/* 287 */
+/* 286 */
 /***/ function(module, exports) {
 
 	// a simple in-memory cache for resources
@@ -46932,11 +47055,11 @@
 
 
 /***/ },
-/* 288 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Resource = __webpack_require__(286),
-	    b64 = __webpack_require__(289);
+	var Resource = __webpack_require__(285),
+	    b64 = __webpack_require__(288);
 	
 	var Url = window.URL || window.webkitURL;
 	
@@ -46996,7 +47119,7 @@
 
 
 /***/ },
-/* 289 */
+/* 288 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -47066,10 +47189,10 @@
 
 
 /***/ },
-/* 290 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175);
+	var core = __webpack_require__(174);
 	
 	module.exports = function ()
 	{
@@ -47092,13 +47215,13 @@
 
 
 /***/ },
-/* 291 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Resource = __webpack_require__(278).Resource,
-	    path = __webpack_require__(292),
-	    core = __webpack_require__(175),
-	    async = __webpack_require__(189);
+	var Resource = __webpack_require__(277).Resource,
+	    path = __webpack_require__(291),
+	    core = __webpack_require__(174),
+	    async = __webpack_require__(188);
 	
 	var BATCH_SIZE = 1000;
 	
@@ -47215,7 +47338,7 @@
 
 
 /***/ },
-/* 292 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -47446,13 +47569,13 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 293 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Resource = __webpack_require__(278).Resource,
-	    core = __webpack_require__(175),
-	    extras = __webpack_require__(237),
-	    path = __webpack_require__(292);
+	var Resource = __webpack_require__(277).Resource,
+	    core = __webpack_require__(174),
+	    extras = __webpack_require__(236),
+	    path = __webpack_require__(291);
 	
 	
 	function parse(resource, texture) {
@@ -47574,7 +47697,7 @@
 
 
 /***/ },
-/* 294 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -47588,19 +47711,19 @@
 	 * @namespace PIXI.mesh
 	 */
 	module.exports = {
-	    Mesh:           __webpack_require__(295),
-	    Plane:           __webpack_require__(296),
-	    Rope:           __webpack_require__(297),
-	    MeshRenderer:   __webpack_require__(298),
-	    MeshShader:     __webpack_require__(299)
+	    Mesh:           __webpack_require__(294),
+	    Plane:           __webpack_require__(295),
+	    Rope:           __webpack_require__(296),
+	    MeshRenderer:   __webpack_require__(297),
+	    MeshShader:     __webpack_require__(298)
 	};
 
 
 /***/ },
-/* 295 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175),
+	var core = __webpack_require__(174),
 	    tempPoint = new core.Point(),
 	    tempPolygon = new core.Polygon();
 	
@@ -48079,10 +48202,10 @@
 
 
 /***/ },
-/* 296 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Mesh = __webpack_require__(295);
+	var Mesh = __webpack_require__(294);
 	
 	/**
 	 * The Plane allows you to draw a texture across several points and them manipulate these points
@@ -48209,11 +48332,11 @@
 
 
 /***/ },
-/* 297 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Mesh = __webpack_require__(295);
-	var core = __webpack_require__(175);
+	var Mesh = __webpack_require__(294);
+	var core = __webpack_require__(174);
 	
 	/**
 	 * The rope allows you to draw a texture across several points and them manipulate these points
@@ -48426,11 +48549,11 @@
 
 
 /***/ },
-/* 298 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175),
-	    Mesh = __webpack_require__(295);
+	var core = __webpack_require__(174),
+	    Mesh = __webpack_require__(294);
 	
 	/**
 	 * @author Mat Groves
@@ -48659,10 +48782,10 @@
 
 
 /***/ },
-/* 299 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175);
+	var core = __webpack_require__(174);
 	
 	/**
 	 * @class
@@ -48724,7 +48847,7 @@
 
 
 /***/ },
-/* 300 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -48738,13 +48861,13 @@
 	 * @namespace PIXI.interaction
 	 */
 	module.exports = {
-	    accessibleTarget:     __webpack_require__(301),
-	    AccessibilityManager: __webpack_require__(302)
+	    accessibleTarget:     __webpack_require__(300),
+	    AccessibilityManager: __webpack_require__(301)
 	};
 
 
 /***/ },
-/* 301 */
+/* 300 */
 /***/ function(module, exports) {
 
 	/**
@@ -48794,15 +48917,15 @@
 
 
 /***/ },
-/* 302 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var core = __webpack_require__(175);
+	var core = __webpack_require__(174);
 	
 	// add some extra variables to the container..
 	Object.assign(
 	    core.DisplayObject.prototype,
-	    __webpack_require__(301)
+	    __webpack_require__(300)
 	);
 	
 	
@@ -49208,14 +49331,14 @@
 
 
 /***/ },
-/* 303 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*global console */
-	var core = __webpack_require__(175),
-	    mesh = __webpack_require__(294),
-	    extras = __webpack_require__(237),
-	    filters = __webpack_require__(244);
+	var core = __webpack_require__(174),
+	    mesh = __webpack_require__(293),
+	    extras = __webpack_require__(236),
+	    filters = __webpack_require__(243);
 	
 	/**
 	 * @class
@@ -49563,7 +49686,7 @@
 
 
 /***/ },
-/* 304 */
+/* 303 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -49573,146 +49696,1906 @@
 
 
 /***/ },
-/* 305 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var PIXI = __webpack_require__(169);
-	var config = __webpack_require__(304);
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
+	 * VERSION: 1.18.5
+	 * DATE: 2016-05-24
+	 * UPDATES AND DOCS AT: http://greensock.com
+	 *
+	 * @license Copyright (c) 2008-2016, GreenSock. All rights reserved.
+	 * This work is subject to the terms at http://greensock.com/standard-license or for
+	 * Club GreenSock members, the software agreement that was issued with your membership.
+	 * 
+	 * @author: Jack Doyle, jack@greensock.com
+	 */
+	(function(window, moduleName) {
 	
-	module.exports = {
-	    _computeScale: function() {
-	        return Math.min(window.innerWidth / config.baseWidth, window.innerHeight / config.baseHeight);
-	    },
+			"use strict";
+			var _exports = {},
+				_globals = window.GreenSockGlobals = window.GreenSockGlobals || window;
+			if (_globals.TweenLite) {
+				return; //in case the core set of classes is already loaded, don't instantiate twice.
+			}
+			var _namespace = function(ns) {
+					var a = ns.split("."),
+						p = _globals, i;
+					for (i = 0; i < a.length; i++) {
+						p[a[i]] = p = p[a[i]] || {};
+					}
+					return p;
+				},
+				gs = _namespace("com.greensock"),
+				_tinyNum = 0.0000000001,
+				_slice = function(a) { //don't use Array.prototype.slice.call(target, 0) because that doesn't work in IE8 with a NodeList that's returned by querySelectorAll()
+					var b = [],
+						l = a.length,
+						i;
+					for (i = 0; i !== l; b.push(a[i++])) {}
+					return b;
+				},
+				_emptyFunc = function() {},
+				_isArray = (function() { //works around issues in iframe environments where the Array global isn't shared, thus if the object originates in a different window/iframe, "(obj instanceof Array)" will evaluate false. We added some speed optimizations to avoid Object.prototype.toString.call() unless it's absolutely necessary because it's VERY slow (like 20x slower)
+					var toString = Object.prototype.toString,
+						array = toString.call([]);
+					return function(obj) {
+						return obj != null && (obj instanceof Array || (typeof(obj) === "object" && !!obj.push && toString.call(obj) === array));
+					};
+				}()),
+				a, i, p, _ticker, _tickerActive,
+				_defLookup = {},
 	
-	    _buildObjectTextures: function(objectId) {
-	        var images = this.props.data.objects[objectId].images;
-	        return images.map(function(image) {
-	            var imageAsset = this.props.imageLoader.getResult(image);
-	            return new PIXI.Texture(new PIXI.BaseTexture(imageAsset));
-	        }.bind(this));
-	    },
+				/**
+				 * @constructor
+				 * Defines a GreenSock class, optionally with an array of dependencies that must be instantiated first and passed into the definition.
+				 * This allows users to load GreenSock JS files in any order even if they have interdependencies (like CSSPlugin extends TweenPlugin which is
+				 * inside TweenLite.js, but if CSSPlugin is loaded first, it should wait to run its code until TweenLite.js loads and instantiates TweenPlugin
+				 * and then pass TweenPlugin to CSSPlugin's definition). This is all done automatically and internally.
+				 *
+				 * Every definition will be added to a "com.greensock" global object (typically window, but if a window.GreenSockGlobals object is found,
+				 * it will go there as of v1.7). For example, TweenLite will be found at window.com.greensock.TweenLite and since it's a global class that should be available anywhere,
+				 * it is ALSO referenced at window.TweenLite. However some classes aren't considered global, like the base com.greensock.core.Animation class, so
+				 * those will only be at the package like window.com.greensock.core.Animation. Again, if you define a GreenSockGlobals object on the window, everything
+				 * gets tucked neatly inside there instead of on the window directly. This allows you to do advanced things like load multiple versions of GreenSock
+				 * files and put them into distinct objects (imagine a banner ad uses a newer version but the main site uses an older one). In that case, you could
+				 * sandbox the banner one like:
+				 *
+				 * <script>
+				 *     var gs = window.GreenSockGlobals = {}; //the newer version we're about to load could now be referenced in a "gs" object, like gs.TweenLite.to(...). Use whatever alias you want as long as it's unique, "gs" or "banner" or whatever.
+				 * </script>
+				 * <script src="js/greensock/v1.7/TweenMax.js"></script>
+				 * <script>
+				 *     window.GreenSockGlobals = window._gsQueue = window._gsDefine = null; //reset it back to null (along with the special _gsQueue variable) so that the next load of TweenMax affects the window and we can reference things directly like TweenLite.to(...)
+				 * </script>
+				 * <script src="js/greensock/v1.6/TweenMax.js"></script>
+				 * <script>
+				 *     gs.TweenLite.to(...); //would use v1.7
+				 *     TweenLite.to(...); //would use v1.6
+				 * </script>
+				 *
+				 * @param {!string} ns The namespace of the class definition, leaving off "com.greensock." as that's assumed. For example, "TweenLite" or "plugins.CSSPlugin" or "easing.Back".
+				 * @param {!Array.<string>} dependencies An array of dependencies (described as their namespaces minus "com.greensock." prefix). For example ["TweenLite","plugins.TweenPlugin","core.Animation"]
+				 * @param {!function():Object} func The function that should be called and passed the resolved dependencies which will return the actual class for this definition.
+				 * @param {boolean=} global If true, the class will be added to the global scope (typically window unless you define a window.GreenSockGlobals object)
+				 */
+				Definition = function(ns, dependencies, func, global) {
+					this.sc = (_defLookup[ns]) ? _defLookup[ns].sc : []; //subclasses
+					_defLookup[ns] = this;
+					this.gsClass = null;
+					this.func = func;
+					var _classes = [];
+					this.check = function(init) {
+						var i = dependencies.length,
+							missing = i,
+							cur, a, n, cl, hasModule;
+						while (--i > -1) {
+							if ((cur = _defLookup[dependencies[i]] || new Definition(dependencies[i], [])).gsClass) {
+								_classes[i] = cur.gsClass;
+								missing--;
+							} else if (init) {
+								cur.sc.push(this);
+							}
+						}
+						if (missing === 0 && func) {
+							a = ("com.greensock." + ns).split(".");
+							n = a.pop();
+							cl = _namespace(a.join("."))[n] = this.gsClass = func.apply(func, _classes);
 	
-	    _buildObject: function(objectId) {
-	        var textures = this._buildObjectTextures(objectId);
-	        var object;
+							//exports to multiple environments
+							if (global) {
+								_globals[n] = cl; //provides a way to avoid global namespace pollution. By default, the main classes like TweenLite, Power1, Strong, etc. are added to window unless a GreenSockGlobals is defined. So if you want to have things added to a custom object instead, just do something like window.GreenSockGlobals = {} before loading any GreenSock files. You can even set up an alias like window.GreenSockGlobals = windows.gs = {} so that you can access everything like gs.TweenLite. Also remember that ALL classes are added to the window.com.greensock object (in their respective packages, like com.greensock.easing.Power1, com.greensock.TweenLite, etc.)
+								hasModule = (typeof(module) !== "undefined" && module.exports);
+								if (!hasModule && "function" === "function" && __webpack_require__(164)){ //AMD
+									!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() { return cl; }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+								} else if (hasModule){ //node
+									if (ns === moduleName) {
+										module.exports = _exports[moduleName] = cl;
+										for (i in _exports) {
+											cl[i] = _exports[i];
+										}
+									} else if (_exports[moduleName]) {
+										_exports[moduleName][n] = cl;
+									}
+								}
+							}
+							for (i = 0; i < this.sc.length; i++) {
+								this.sc[i].check();
+							}
+						}
+					};
+					this.check(true);
+				},
 	
-	        if (textures.length > 1) {
-	            object = new PIXI.MovieClip(textures);
-	        }
-	        else {
-	            object = new PIXI.Sprite(textures[0]);
-	        }
+				//used to create Definition instances (which basically registers a class that has dependencies).
+				_gsDefine = window._gsDefine = function(ns, dependencies, func, global) {
+					return new Definition(ns, dependencies, func, global);
+				},
 	
-	        var position = this.props.data.objects[objectId].position || [0, 0];
-	        object.x = position[0];
-	        object.y = position[1];
+				//a quick way to create a class that doesn't have any dependencies. Returns the class, but first registers it in the GreenSock namespace so that other classes can grab it (other classes might be dependent on the class).
+				_class = gs._class = function(ns, func, global) {
+					func = func || function() {};
+					_gsDefine(ns, [], function(){ return func; }, global);
+					return func;
+				};
 	
-	        return object;
-	    },
+			_gsDefine.globals = _globals;
 	
-	    getInitialState: function() {
-	        return {
-	            scale: this._computeScale()
-	        };
-	    },
 	
-	    componentDidMount: function() {
-	        // Creates the hit areas
-	        this.areas = [];
-	        for (var areaId in this.props.data.hitAreas) {
-	            this.areas.push({
-	                id: areaId,
-	                polygon: new PIXI.Polygon(this.props.data.hitAreas[areaId])
-	            });
-	        }
 	
-	        // Create a renderer instance
-	        this.renderer = new PIXI.CanvasRenderer(config.baseWidth, config.baseHeight, { // or autoDetectRenderer
-	            view: this.refs.canvas
-	        });
+	/*
+	 * ----------------------------------------------------------------
+	 * Ease
+	 * ----------------------------------------------------------------
+	 */
+			var _baseParams = [0, 0, 1, 1],
+				_blankArray = [],
+				Ease = _class("easing.Ease", function(func, extraParams, type, power) {
+					this._func = func;
+					this._type = type || 0;
+					this._power = power || 0;
+					this._params = extraParams ? _baseParams.concat(extraParams) : _baseParams;
+				}, true),
+				_easeMap = Ease.map = {},
+				_easeReg = Ease.register = function(ease, names, types, create) {
+					var na = names.split(","),
+						i = na.length,
+						ta = (types || "easeIn,easeOut,easeInOut").split(","),
+						e, name, j, type;
+					while (--i > -1) {
+						name = na[i];
+						e = create ? _class("easing."+name, null, true) : gs.easing[name] || {};
+						j = ta.length;
+						while (--j > -1) {
+							type = ta[j];
+							_easeMap[name + "." + type] = _easeMap[type + name] = e[type] = ease.getRatio ? ease : ease[type] || new ease();
+						}
+					}
+				};
 	
-	        // The main PIXI container
-	        this.stage = new PIXI.Container();
-	        this.stage.interactive = true;
-	        this.stage.on("mousedown", this.onStageClick);
+			p = Ease.prototype;
+			p._calcEnd = false;
+			p.getRatio = function(p) {
+				if (this._func) {
+					this._params[0] = p;
+					return this._func.apply(null, this._params);
+				}
+				var t = this._type,
+					pw = this._power,
+					r = (t === 1) ? 1 - p : (t === 2) ? p : (p < 0.5) ? p * 2 : (1 - p) * 2;
+				if (pw === 1) {
+					r *= r;
+				} else if (pw === 2) {
+					r *= r * r;
+				} else if (pw === 3) {
+					r *= r * r * r;
+				} else if (pw === 4) {
+					r *= r * r * r * r;
+				}
+				return (t === 1) ? 1 - r : (t === 2) ? r : (p < 0.5) ? r / 2 : 1 - (r / 2);
+			};
 	
-	        // Builds the scene
-	        this.buildScene();
+			//create all the standard eases like Linear, Quad, Cubic, Quart, Quint, Strong, Power0, Power1, Power2, Power3, and Power4 (each with easeIn, easeOut, and easeInOut)
+			a = ["Linear","Quad","Cubic","Quart","Quint,Strong"];
+			i = a.length;
+			while (--i > -1) {
+				p = a[i]+",Power"+i;
+				_easeReg(new Ease(null,null,1,i), p, "easeOut", true);
+				_easeReg(new Ease(null,null,2,i), p, "easeIn" + ((i === 0) ? ",easeNone" : ""));
+				_easeReg(new Ease(null,null,3,i), p, "easeInOut");
+			}
+			_easeMap.linear = gs.easing.Linear.easeIn;
+			_easeMap.swing = gs.easing.Quad.easeInOut; //for jQuery folks
 	
-	        // Starts the animation
-	        this.animationTick();
 	
-	        // What to do when the window resizes
-	        window.addEventListener("resize", this.onWindowResize);
-	    },
+	/*
+	 * ----------------------------------------------------------------
+	 * EventDispatcher
+	 * ----------------------------------------------------------------
+	 */
+			var EventDispatcher = _class("events.EventDispatcher", function(target) {
+				this._listeners = {};
+				this._eventTarget = target || this;
+			});
+			p = EventDispatcher.prototype;
 	
-	    onStageClick: function(e) {
-	        var clickPos = e.data.getLocalPosition(this.stage);
+			p.addEventListener = function(type, callback, scope, useParam, priority) {
+				priority = priority || 0;
+				var list = this._listeners[type],
+					index = 0,
+					listener, i;
+				if (this === _ticker && !_tickerActive) {
+					_ticker.wake();
+				}
+				if (list == null) {
+					this._listeners[type] = list = [];
+				}
+				i = list.length;
+				while (--i > -1) {
+					listener = list[i];
+					if (listener.c === callback && listener.s === scope) {
+						list.splice(i, 1);
+					} else if (index === 0 && listener.pr < priority) {
+						index = i + 1;
+					}
+				}
+				list.splice(index, 0, {c:callback, s:scope, up:useParam, pr:priority});
+			};
 	
-	        for (var i=0; i < this.areas.length; i++) {
-	            if (this.areas[i].polygon.contains(clickPos.x, clickPos.y)) {
-	                window.alert(this.areas[i].id);
-	                break;
-	            }
-	        }
-	    },
+			p.removeEventListener = function(type, callback) {
+				var list = this._listeners[type], i;
+				if (list) {
+					i = list.length;
+					while (--i > -1) {
+						if (list[i].c === callback) {
+							list.splice(i, 1);
+							return;
+						}
+					}
+				}
+			};
 	
-	    animationTick: function(timestamp) {
-	        // Renders the PIXI canvas
-	        this.renderer.render(this.stage);
+			p.dispatchEvent = function(type) {
+				var list = this._listeners[type],
+					i, t, listener;
+				if (list) {
+					i = list.length;
+					t = this._eventTarget;
+					while (--i > -1) {
+						listener = list[i];
+						if (listener) {
+							if (listener.up) {
+								listener.c.call(listener.s || t, {type:type, target:t});
+							} else {
+								listener.c.call(listener.s || t);
+							}
+						}
+					}
+				}
+			};
 	
-	        // Request the next frame
-	        this.animationId = requestAnimationFrame(this.animationTick);
-	    },
 	
-	    onWindowResize: function() {
-	        this.setState({
-	            scale: this._computeScale()
-	        });
-	    },
+	/*
+	 * ----------------------------------------------------------------
+	 * Ticker
+	 * ----------------------------------------------------------------
+	 */
+	 		var _reqAnimFrame = window.requestAnimationFrame,
+				_cancelAnimFrame = window.cancelAnimationFrame,
+				_getTime = Date.now || function() {return new Date().getTime();},
+				_lastUpdate = _getTime();
 	
-	    componentWillUnmount: function() {
-	        // Stops the animation
-	        clearAnimationFrame(this.animationId);
+			//now try to determine the requestAnimationFrame and cancelAnimationFrame functions and if none are found, we'll use a setTimeout()/clearTimeout() polyfill.
+			a = ["ms","moz","webkit","o"];
+			i = a.length;
+			while (--i > -1 && !_reqAnimFrame) {
+				_reqAnimFrame = window[a[i] + "RequestAnimationFrame"];
+				_cancelAnimFrame = window[a[i] + "CancelAnimationFrame"] || window[a[i] + "CancelRequestAnimationFrame"];
+			}
 	
-	        // Removes the resize listener
-	        window.removeEventListener("resize", this.onWindowResize);
+			_class("Ticker", function(fps, useRAF) {
+				var _self = this,
+					_startTime = _getTime(),
+					_useRAF = (useRAF !== false && _reqAnimFrame) ? "auto" : false,
+					_lagThreshold = 500,
+					_adjustedLag = 33,
+					_tickWord = "tick", //helps reduce gc burden
+					_fps, _req, _id, _gap, _nextTime,
+					_tick = function(manual) {
+						var elapsed = _getTime() - _lastUpdate,
+							overlap, dispatch;
+						if (elapsed > _lagThreshold) {
+							_startTime += elapsed - _adjustedLag;
+						}
+						_lastUpdate += elapsed;
+						_self.time = (_lastUpdate - _startTime) / 1000;
+						overlap = _self.time - _nextTime;
+						if (!_fps || overlap > 0 || manual === true) {
+							_self.frame++;
+							_nextTime += overlap + (overlap >= _gap ? 0.004 : _gap - overlap);
+							dispatch = true;
+						}
+						if (manual !== true) { //make sure the request is made before we dispatch the "tick" event so that timing is maintained. Otherwise, if processing the "tick" requires a bunch of time (like 15ms) and we're using a setTimeout() that's based on 16.7ms, it'd technically take 31.7ms between frames otherwise.
+							_id = _req(_tick);
+						}
+						if (dispatch) {
+							_self.dispatchEvent(_tickWord);
+						}
+					};
 	
-	        // Do particular cleanups for a scene, if any
-	        if (this.disposeScene) {
-	            this.disposeScene();
-	        }
-	    },
+				EventDispatcher.call(_self);
+				_self.time = _self.frame = 0;
+				_self.tick = function() {
+					_tick(true);
+				};
 	
-	    render: function() {
-	        var style = {
-	            transform: "scale(" + this.state.scale + ")"
-	        };
+				_self.lagSmoothing = function(threshold, adjustedLag) {
+					_lagThreshold = threshold || (1 / _tinyNum); //zero should be interpreted as basically unlimited
+					_adjustedLag = Math.min(adjustedLag, _lagThreshold, 0);
+				};
 	
-	        style.WebkitTransform = style.transform;
+				_self.sleep = function() {
+					if (_id == null) {
+						return;
+					}
+					if (!_useRAF || !_cancelAnimFrame) {
+						clearTimeout(_id);
+					} else {
+						_cancelAnimFrame(_id);
+					}
+					_req = _emptyFunc;
+					_id = null;
+					if (_self === _ticker) {
+						_tickerActive = false;
+					}
+				};
 	
-	        return React.createElement("canvas", {className: "scene", style: style, ref: "canvas"});
-	    }
-	};
-
-
-/***/ },
-/* 306 */
-/***/ function(module, exports) {
-
-	/*!
-	* @license TweenJS
-	* Visit http://createjs.com/ for documentation, updates and examples.
-	*
-	* Copyright (c) 2011-2015 gskinner.com, inc.
-	*
-	* Distributed under the terms of the MIT license.
-	* http://www.opensource.org/licenses/mit-license.html
-	*
-	* This notice shall be included in all copies or substantial portions of the Software.
-	*/
-	this.createjs=this.createjs||{},createjs.extend=function(a,b){"use strict";function c(){this.constructor=a}return c.prototype=b.prototype,a.prototype=new c},this.createjs=this.createjs||{},createjs.promote=function(a,b){"use strict";var c=a.prototype,d=Object.getPrototypeOf&&Object.getPrototypeOf(c)||c.__proto__;if(d){c[(b+="_")+"constructor"]=d.constructor;for(var e in d)c.hasOwnProperty(e)&&"function"==typeof d[e]&&(c[b+e]=d[e])}return a},this.createjs=this.createjs||{},function(){"use strict";function Event(a,b,c){this.type=a,this.target=null,this.currentTarget=null,this.eventPhase=0,this.bubbles=!!b,this.cancelable=!!c,this.timeStamp=(new Date).getTime(),this.defaultPrevented=!1,this.propagationStopped=!1,this.immediatePropagationStopped=!1,this.removed=!1}var a=Event.prototype;a.preventDefault=function(){this.defaultPrevented=this.cancelable&&!0},a.stopPropagation=function(){this.propagationStopped=!0},a.stopImmediatePropagation=function(){this.immediatePropagationStopped=this.propagationStopped=!0},a.remove=function(){this.removed=!0},a.clone=function(){return new Event(this.type,this.bubbles,this.cancelable)},a.set=function(a){for(var b in a)this[b]=a[b];return this},a.toString=function(){return"[Event (type="+this.type+")]"},createjs.Event=Event}(),this.createjs=this.createjs||{},function(){"use strict";function EventDispatcher(){this._listeners=null,this._captureListeners=null}var a=EventDispatcher.prototype;EventDispatcher.initialize=function(b){b.addEventListener=a.addEventListener,b.on=a.on,b.removeEventListener=b.off=a.removeEventListener,b.removeAllEventListeners=a.removeAllEventListeners,b.hasEventListener=a.hasEventListener,b.dispatchEvent=a.dispatchEvent,b._dispatchEvent=a._dispatchEvent,b.willTrigger=a.willTrigger},a.addEventListener=function(a,b,c){var d;d=c?this._captureListeners=this._captureListeners||{}:this._listeners=this._listeners||{};var e=d[a];return e&&this.removeEventListener(a,b,c),e=d[a],e?e.push(b):d[a]=[b],b},a.on=function(a,b,c,d,e,f){return b.handleEvent&&(c=c||b,b=b.handleEvent),c=c||this,this.addEventListener(a,function(a){b.call(c,a,e),d&&a.remove()},f)},a.removeEventListener=function(a,b,c){var d=c?this._captureListeners:this._listeners;if(d){var e=d[a];if(e)for(var f=0,g=e.length;g>f;f++)if(e[f]==b){1==g?delete d[a]:e.splice(f,1);break}}},a.off=a.removeEventListener,a.removeAllEventListeners=function(a){a?(this._listeners&&delete this._listeners[a],this._captureListeners&&delete this._captureListeners[a]):this._listeners=this._captureListeners=null},a.dispatchEvent=function(a,b,c){if("string"==typeof a){var d=this._listeners;if(!(b||d&&d[a]))return!0;a=new createjs.Event(a,b,c)}else a.target&&a.clone&&(a=a.clone());try{a.target=this}catch(e){}if(a.bubbles&&this.parent){for(var f=this,g=[f];f.parent;)g.push(f=f.parent);var h,i=g.length;for(h=i-1;h>=0&&!a.propagationStopped;h--)g[h]._dispatchEvent(a,1+(0==h));for(h=1;i>h&&!a.propagationStopped;h++)g[h]._dispatchEvent(a,3)}else this._dispatchEvent(a,2);return!a.defaultPrevented},a.hasEventListener=function(a){var b=this._listeners,c=this._captureListeners;return!!(b&&b[a]||c&&c[a])},a.willTrigger=function(a){for(var b=this;b;){if(b.hasEventListener(a))return!0;b=b.parent}return!1},a.toString=function(){return"[EventDispatcher]"},a._dispatchEvent=function(a,b){var c,d=1==b?this._captureListeners:this._listeners;if(a&&d){var e=d[a.type];if(!e||!(c=e.length))return;try{a.currentTarget=this}catch(f){}try{a.eventPhase=b}catch(f){}a.removed=!1,e=e.slice();for(var g=0;c>g&&!a.immediatePropagationStopped;g++){var h=e[g];h.handleEvent?h.handleEvent(a):h(a),a.removed&&(this.off(a.type,h,1==b),a.removed=!1)}}},createjs.EventDispatcher=EventDispatcher}(),this.createjs=this.createjs||{},function(){"use strict";function Ticker(){throw"Ticker cannot be instantiated."}Ticker.RAF_SYNCHED="synched",Ticker.RAF="raf",Ticker.TIMEOUT="timeout",Ticker.useRAF=!1,Ticker.timingMode=null,Ticker.maxDelta=0,Ticker.paused=!1,Ticker.removeEventListener=null,Ticker.removeAllEventListeners=null,Ticker.dispatchEvent=null,Ticker.hasEventListener=null,Ticker._listeners=null,createjs.EventDispatcher.initialize(Ticker),Ticker._addEventListener=Ticker.addEventListener,Ticker.addEventListener=function(){return!Ticker._inited&&Ticker.init(),Ticker._addEventListener.apply(Ticker,arguments)},Ticker._inited=!1,Ticker._startTime=0,Ticker._pausedTime=0,Ticker._ticks=0,Ticker._pausedTicks=0,Ticker._interval=50,Ticker._lastTime=0,Ticker._times=null,Ticker._tickTimes=null,Ticker._timerId=null,Ticker._raf=!0,Ticker.setInterval=function(a){Ticker._interval=a,Ticker._inited&&Ticker._setupTick()},Ticker.getInterval=function(){return Ticker._interval},Ticker.setFPS=function(a){Ticker.setInterval(1e3/a)},Ticker.getFPS=function(){return 1e3/Ticker._interval};try{Object.defineProperties(Ticker,{interval:{get:Ticker.getInterval,set:Ticker.setInterval},framerate:{get:Ticker.getFPS,set:Ticker.setFPS}})}catch(a){console.log(a)}Ticker.init=function(){Ticker._inited||(Ticker._inited=!0,Ticker._times=[],Ticker._tickTimes=[],Ticker._startTime=Ticker._getTime(),Ticker._times.push(Ticker._lastTime=0),Ticker.interval=Ticker._interval)},Ticker.reset=function(){if(Ticker._raf){var a=window.cancelAnimationFrame||window.webkitCancelAnimationFrame||window.mozCancelAnimationFrame||window.oCancelAnimationFrame||window.msCancelAnimationFrame;a&&a(Ticker._timerId)}else clearTimeout(Ticker._timerId);Ticker.removeAllEventListeners("tick"),Ticker._timerId=Ticker._times=Ticker._tickTimes=null,Ticker._startTime=Ticker._lastTime=Ticker._ticks=0,Ticker._inited=!1},Ticker.getMeasuredTickTime=function(a){var b=0,c=Ticker._tickTimes;if(!c||c.length<1)return-1;a=Math.min(c.length,a||0|Ticker.getFPS());for(var d=0;a>d;d++)b+=c[d];return b/a},Ticker.getMeasuredFPS=function(a){var b=Ticker._times;return!b||b.length<2?-1:(a=Math.min(b.length-1,a||0|Ticker.getFPS()),1e3/((b[0]-b[a])/a))},Ticker.setPaused=function(a){Ticker.paused=a},Ticker.getPaused=function(){return Ticker.paused},Ticker.getTime=function(a){return Ticker._startTime?Ticker._getTime()-(a?Ticker._pausedTime:0):-1},Ticker.getEventTime=function(a){return Ticker._startTime?(Ticker._lastTime||Ticker._startTime)-(a?Ticker._pausedTime:0):-1},Ticker.getTicks=function(a){return Ticker._ticks-(a?Ticker._pausedTicks:0)},Ticker._handleSynch=function(){Ticker._timerId=null,Ticker._setupTick(),Ticker._getTime()-Ticker._lastTime>=.97*(Ticker._interval-1)&&Ticker._tick()},Ticker._handleRAF=function(){Ticker._timerId=null,Ticker._setupTick(),Ticker._tick()},Ticker._handleTimeout=function(){Ticker._timerId=null,Ticker._setupTick(),Ticker._tick()},Ticker._setupTick=function(){if(null==Ticker._timerId){var a=Ticker.timingMode||Ticker.useRAF&&Ticker.RAF_SYNCHED;if(a==Ticker.RAF_SYNCHED||a==Ticker.RAF){var b=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame;if(b)return Ticker._timerId=b(a==Ticker.RAF?Ticker._handleRAF:Ticker._handleSynch),void(Ticker._raf=!0)}Ticker._raf=!1,Ticker._timerId=setTimeout(Ticker._handleTimeout,Ticker._interval)}},Ticker._tick=function(){var a=Ticker.paused,b=Ticker._getTime(),c=b-Ticker._lastTime;if(Ticker._lastTime=b,Ticker._ticks++,a&&(Ticker._pausedTicks++,Ticker._pausedTime+=c),Ticker.hasEventListener("tick")){var d=new createjs.Event("tick"),e=Ticker.maxDelta;d.delta=e&&c>e?e:c,d.paused=a,d.time=b,d.runTime=b-Ticker._pausedTime,Ticker.dispatchEvent(d)}for(Ticker._tickTimes.unshift(Ticker._getTime()-b);Ticker._tickTimes.length>100;)Ticker._tickTimes.pop();for(Ticker._times.unshift(b);Ticker._times.length>100;)Ticker._times.pop()};var b=window.performance&&(performance.now||performance.mozNow||performance.msNow||performance.oNow||performance.webkitNow);Ticker._getTime=function(){return(b&&b.call(performance)||(new Date).getTime())-Ticker._startTime},createjs.Ticker=Ticker}(),this.createjs=this.createjs||{},function(){"use strict";function Tween(a,b,c){this.ignoreGlobalPause=!1,this.loop=!1,this.duration=0,this.pluginData=c||{},this.target=a,this.position=null,this.passive=!1,this._paused=!1,this._curQueueProps={},this._initQueueProps={},this._steps=[],this._actions=[],this._prevPosition=0,this._stepPosition=0,this._prevPos=-1,this._target=a,this._useTicks=!1,this._inited=!1,this._registered=!1,b&&(this._useTicks=b.useTicks,this.ignoreGlobalPause=b.ignoreGlobalPause,this.loop=b.loop,b.onChange&&this.addEventListener("change",b.onChange),b.override&&Tween.removeTweens(a)),b&&b.paused?this._paused=!0:createjs.Tween._register(this,!0),b&&null!=b.position&&this.setPosition(b.position,Tween.NONE)}var a=createjs.extend(Tween,createjs.EventDispatcher);Tween.NONE=0,Tween.LOOP=1,Tween.REVERSE=2,Tween.IGNORE={},Tween._tweens=[],Tween._plugins={},Tween.get=function(a,b,c,d){return d&&Tween.removeTweens(a),new Tween(a,b,c)},Tween.tick=function(a,b){for(var c=Tween._tweens.slice(),d=c.length-1;d>=0;d--){var e=c[d];b&&!e.ignoreGlobalPause||e._paused||e.tick(e._useTicks?1:a)}},Tween.handleEvent=function(a){"tick"==a.type&&this.tick(a.delta,a.paused)},Tween.removeTweens=function(a){if(a.tweenjs_count){for(var b=Tween._tweens,c=b.length-1;c>=0;c--){var d=b[c];d._target==a&&(d._paused=!0,b.splice(c,1))}a.tweenjs_count=0}},Tween.removeAllTweens=function(){for(var a=Tween._tweens,b=0,c=a.length;c>b;b++){var d=a[b];d._paused=!0,d.target&&(d.target.tweenjs_count=0)}a.length=0},Tween.hasActiveTweens=function(a){return a?null!=a.tweenjs_count&&!!a.tweenjs_count:Tween._tweens&&!!Tween._tweens.length},Tween.installPlugin=function(a,b){var c=a.priority;null==c&&(a.priority=c=0);for(var d=0,e=b.length,f=Tween._plugins;e>d;d++){var g=b[d];if(f[g]){for(var h=f[g],i=0,j=h.length;j>i&&!(c<h[i].priority);i++);f[g].splice(i,0,a)}else f[g]=[a]}},Tween._register=function(a,b){var c=a._target,d=Tween._tweens;if(b&&!a._registered)c&&(c.tweenjs_count=c.tweenjs_count?c.tweenjs_count+1:1),d.push(a),!Tween._inited&&createjs.Ticker&&(createjs.Ticker.addEventListener("tick",Tween),Tween._inited=!0);else if(!b&&a._registered){c&&c.tweenjs_count--;for(var e=d.length;e--;)if(d[e]==a){d.splice(e,1);break}}a._registered=b},a.wait=function(a,b){if(null==a||0>=a)return this;var c=this._cloneProps(this._curQueueProps);return this._addStep({d:a,p0:c,e:this._linearEase,p1:c,v:b})},a.to=function(a,b,c){return(isNaN(b)||0>b)&&(b=0),this._addStep({d:b||0,p0:this._cloneProps(this._curQueueProps),e:c,p1:this._cloneProps(this._appendQueueProps(a))})},a.call=function(a,b,c){return this._addAction({f:a,p:b?b:[this],o:c?c:this._target})},a.set=function(a,b){return this._addAction({f:this._set,o:this,p:[a,b?b:this._target]})},a.play=function(a){return a||(a=this),this.call(a.setPaused,[!1],a)},a.pause=function(a){return a||(a=this),this.call(a.setPaused,[!0],a)},a.setPosition=function(a,b){0>a&&(a=0),null==b&&(b=1);var c=a,d=!1;if(c>=this.duration&&(this.loop?c%=this.duration:(c=this.duration,d=!0)),c==this._prevPos)return d;var e=this._prevPos;if(this.position=this._prevPos=c,this._prevPosition=a,this._target)if(d)this._updateTargetProps(null,1);else if(this._steps.length>0){for(var f=0,g=this._steps.length;g>f&&!(this._steps[f].t>c);f++);var h=this._steps[f-1];this._updateTargetProps(h,(this._stepPosition=c-h.t)/h.d)}return 0!=b&&this._actions.length>0&&(this._useTicks?this._runActions(c,c):1==b&&e>c?(e!=this.duration&&this._runActions(e,this.duration),this._runActions(0,c,!0)):this._runActions(e,c)),d&&this.setPaused(!0),this.dispatchEvent("change"),d},a.tick=function(a){this._paused||this.setPosition(this._prevPosition+a)},a.setPaused=function(a){return this._paused===!!a?this:(this._paused=!!a,Tween._register(this,!a),this)},a.w=a.wait,a.t=a.to,a.c=a.call,a.s=a.set,a.toString=function(){return"[Tween]"},a.clone=function(){throw"Tween can not be cloned."},a._updateTargetProps=function(a,b){var c,d,e,f,g,h;if(a||1!=b){if(this.passive=!!a.v,this.passive)return;a.e&&(b=a.e(b,0,1,1)),c=a.p0,d=a.p1}else this.passive=!1,c=d=this._curQueueProps;for(var i in this._initQueueProps){null==(f=c[i])&&(c[i]=f=this._initQueueProps[i]),null==(g=d[i])&&(d[i]=g=f),e=f==g||0==b||1==b||"number"!=typeof f?1==b?g:f:f+(g-f)*b;var j=!1;if(h=Tween._plugins[i])for(var k=0,l=h.length;l>k;k++){var m=h[k].tween(this,i,e,c,d,b,!!a&&c==d,!a);m==Tween.IGNORE?j=!0:e=m}j||(this._target[i]=e)}},a._runActions=function(a,b,c){var d=a,e=b,f=-1,g=this._actions.length,h=1;for(a>b&&(d=b,e=a,f=g,g=h=-1);(f+=h)!=g;){var i=this._actions[f],j=i.t;(j==e||j>d&&e>j||c&&j==a)&&i.f.apply(i.o,i.p)}},a._appendQueueProps=function(a){var b,c,d,e,f;for(var g in a)if(void 0===this._initQueueProps[g]){if(c=this._target[g],b=Tween._plugins[g])for(d=0,e=b.length;e>d;d++)c=b[d].init(this,g,c);this._initQueueProps[g]=this._curQueueProps[g]=void 0===c?null:c}else c=this._curQueueProps[g];for(var g in a){if(c=this._curQueueProps[g],b=Tween._plugins[g])for(f=f||{},d=0,e=b.length;e>d;d++)b[d].step&&b[d].step(this,g,c,a[g],f);this._curQueueProps[g]=a[g]}return f&&this._appendQueueProps(f),this._curQueueProps},a._cloneProps=function(a){var b={};for(var c in a)b[c]=a[c];return b},a._addStep=function(a){return a.d>0&&(this._steps.push(a),a.t=this.duration,this.duration+=a.d),this},a._addAction=function(a){return a.t=this.duration,this._actions.push(a),this},a._set=function(a,b){for(var c in a)b[c]=a[c]},createjs.Tween=createjs.promote(Tween,"EventDispatcher")}(),this.createjs=this.createjs||{},function(){"use strict";function Timeline(a,b,c){this.EventDispatcher_constructor(),this.ignoreGlobalPause=!1,this.duration=0,this.loop=!1,this.position=null,this._paused=!1,this._tweens=[],this._labels=null,this._labelList=null,this._prevPosition=0,this._prevPos=-1,this._useTicks=!1,this._registered=!1,c&&(this._useTicks=c.useTicks,this.loop=c.loop,this.ignoreGlobalPause=c.ignoreGlobalPause,c.onChange&&this.addEventListener("change",c.onChange)),a&&this.addTween.apply(this,a),this.setLabels(b),c&&c.paused?this._paused=!0:createjs.Tween._register(this,!0),c&&null!=c.position&&this.setPosition(c.position,createjs.Tween.NONE)}var a=createjs.extend(Timeline,createjs.EventDispatcher);a.addTween=function(a){var b=arguments.length;if(b>1){for(var c=0;b>c;c++)this.addTween(arguments[c]);return arguments[0]}return 0==b?null:(this.removeTween(a),this._tweens.push(a),a.setPaused(!0),a._paused=!1,a._useTicks=this._useTicks,a.duration>this.duration&&(this.duration=a.duration),this._prevPos>=0&&a.setPosition(this._prevPos,createjs.Tween.NONE),a)},a.removeTween=function(a){var b=arguments.length;if(b>1){for(var c=!0,d=0;b>d;d++)c=c&&this.removeTween(arguments[d]);return c}if(0==b)return!1;for(var e=this._tweens,d=e.length;d--;)if(e[d]==a)return e.splice(d,1),a.duration>=this.duration&&this.updateDuration(),!0;return!1},a.addLabel=function(a,b){this._labels[a]=b;var c=this._labelList;if(c){for(var d=0,e=c.length;e>d&&!(b<c[d].position);d++);c.splice(d,0,{label:a,position:b})}},a.setLabels=function(a){this._labels=a?a:{}},a.getLabels=function(){var a=this._labelList;if(!a){a=this._labelList=[];var b=this._labels;for(var c in b)a.push({label:c,position:b[c]});a.sort(function(a,b){return a.position-b.position})}return a},a.getCurrentLabel=function(){var a=this.getLabels(),b=this.position,c=a.length;if(c){for(var d=0;c>d&&!(b<a[d].position);d++);return 0==d?null:a[d-1].label}return null},a.gotoAndPlay=function(a){this.setPaused(!1),this._goto(a)},a.gotoAndStop=function(a){this.setPaused(!0),this._goto(a)},a.setPosition=function(a,b){var c=this._calcPosition(a),d=!this.loop&&a>=this.duration;if(c==this._prevPos)return d;this._prevPosition=a,this.position=this._prevPos=c;for(var e=0,f=this._tweens.length;f>e;e++)if(this._tweens[e].setPosition(c,b),c!=this._prevPos)return!1;return d&&this.setPaused(!0),this.dispatchEvent("change"),d},a.setPaused=function(a){this._paused=!!a,createjs.Tween._register(this,!a)},a.updateDuration=function(){this.duration=0;for(var a=0,b=this._tweens.length;b>a;a++){var c=this._tweens[a];c.duration>this.duration&&(this.duration=c.duration)}},a.tick=function(a){this.setPosition(this._prevPosition+a)},a.resolve=function(a){var b=Number(a);return isNaN(b)&&(b=this._labels[a]),b},a.toString=function(){return"[Timeline]"},a.clone=function(){throw"Timeline can not be cloned."},a._goto=function(a){var b=this.resolve(a);null!=b&&this.setPosition(b)},a._calcPosition=function(a){return 0>a?0:a<this.duration?a:this.loop?a%this.duration:this.duration},createjs.Timeline=createjs.promote(Timeline,"EventDispatcher")}(),this.createjs=this.createjs||{},function(){"use strict";function Ease(){throw"Ease cannot be instantiated."}Ease.linear=function(a){return a},Ease.none=Ease.linear,Ease.get=function(a){return-1>a&&(a=-1),a>1&&(a=1),function(b){return 0==a?b:0>a?b*(b*-a+1+a):b*((2-b)*a+(1-a))}},Ease.getPowIn=function(a){return function(b){return Math.pow(b,a)}},Ease.getPowOut=function(a){return function(b){return 1-Math.pow(1-b,a)}},Ease.getPowInOut=function(a){return function(b){return(b*=2)<1?.5*Math.pow(b,a):1-.5*Math.abs(Math.pow(2-b,a))}},Ease.quadIn=Ease.getPowIn(2),Ease.quadOut=Ease.getPowOut(2),Ease.quadInOut=Ease.getPowInOut(2),Ease.cubicIn=Ease.getPowIn(3),Ease.cubicOut=Ease.getPowOut(3),Ease.cubicInOut=Ease.getPowInOut(3),Ease.quartIn=Ease.getPowIn(4),Ease.quartOut=Ease.getPowOut(4),Ease.quartInOut=Ease.getPowInOut(4),Ease.quintIn=Ease.getPowIn(5),Ease.quintOut=Ease.getPowOut(5),Ease.quintInOut=Ease.getPowInOut(5),Ease.sineIn=function(a){return 1-Math.cos(a*Math.PI/2)},Ease.sineOut=function(a){return Math.sin(a*Math.PI/2)},Ease.sineInOut=function(a){return-.5*(Math.cos(Math.PI*a)-1)},Ease.getBackIn=function(a){return function(b){return b*b*((a+1)*b-a)}},Ease.backIn=Ease.getBackIn(1.7),Ease.getBackOut=function(a){return function(b){return--b*b*((a+1)*b+a)+1}},Ease.backOut=Ease.getBackOut(1.7),Ease.getBackInOut=function(a){return a*=1.525,function(b){return(b*=2)<1?.5*b*b*((a+1)*b-a):.5*((b-=2)*b*((a+1)*b+a)+2)}},Ease.backInOut=Ease.getBackInOut(1.7),Ease.circIn=function(a){return-(Math.sqrt(1-a*a)-1)},Ease.circOut=function(a){return Math.sqrt(1- --a*a)},Ease.circInOut=function(a){return(a*=2)<1?-.5*(Math.sqrt(1-a*a)-1):.5*(Math.sqrt(1-(a-=2)*a)+1)},Ease.bounceIn=function(a){return 1-Ease.bounceOut(1-a)},Ease.bounceOut=function(a){return 1/2.75>a?7.5625*a*a:2/2.75>a?7.5625*(a-=1.5/2.75)*a+.75:2.5/2.75>a?7.5625*(a-=2.25/2.75)*a+.9375:7.5625*(a-=2.625/2.75)*a+.984375},Ease.bounceInOut=function(a){return.5>a?.5*Ease.bounceIn(2*a):.5*Ease.bounceOut(2*a-1)+.5},Ease.getElasticIn=function(a,b){var c=2*Math.PI;return function(d){if(0==d||1==d)return d;var e=b/c*Math.asin(1/a);return-(a*Math.pow(2,10*(d-=1))*Math.sin((d-e)*c/b))}},Ease.elasticIn=Ease.getElasticIn(1,.3),Ease.getElasticOut=function(a,b){var c=2*Math.PI;return function(d){if(0==d||1==d)return d;var e=b/c*Math.asin(1/a);return a*Math.pow(2,-10*d)*Math.sin((d-e)*c/b)+1}},Ease.elasticOut=Ease.getElasticOut(1,.3),Ease.getElasticInOut=function(a,b){var c=2*Math.PI;return function(d){var e=b/c*Math.asin(1/a);return(d*=2)<1?-.5*a*Math.pow(2,10*(d-=1))*Math.sin((d-e)*c/b):a*Math.pow(2,-10*(d-=1))*Math.sin((d-e)*c/b)*.5+1}},Ease.elasticInOut=Ease.getElasticInOut(1,.3*1.5),createjs.Ease=Ease}(),this.createjs=this.createjs||{},function(){"use strict";function MotionGuidePlugin(){throw"MotionGuidePlugin cannot be instantiated."}MotionGuidePlugin.priority=0,MotionGuidePlugin._rotOffS,MotionGuidePlugin._rotOffE,MotionGuidePlugin._rotNormS,MotionGuidePlugin._rotNormE,MotionGuidePlugin.install=function(){return createjs.Tween.installPlugin(MotionGuidePlugin,["guide","x","y","rotation"]),createjs.Tween.IGNORE},MotionGuidePlugin.init=function(a,b,c){var d=a.target;return d.hasOwnProperty("x")||(d.x=0),d.hasOwnProperty("y")||(d.y=0),d.hasOwnProperty("rotation")||(d.rotation=0),"rotation"==b&&(a.__needsRot=!0),"guide"==b?null:c},MotionGuidePlugin.step=function(a,b,c,d,e){if("rotation"==b&&(a.__rotGlobalS=c,a.__rotGlobalE=d,MotionGuidePlugin.testRotData(a,e)),"guide"!=b)return d;var f,g=d;g.hasOwnProperty("path")||(g.path=[]);var h=g.path;if(g.hasOwnProperty("end")||(g.end=1),g.hasOwnProperty("start")||(g.start=c&&c.hasOwnProperty("end")&&c.path===h?c.end:0),g.hasOwnProperty("_segments")&&g._length)return d;var i=h.length,j=10;if(!(i>=6&&(i-2)%4==0))throw"invalid 'path' data, please see documentation for valid paths";g._segments=[],g._length=0;for(var k=2;i>k;k+=4){for(var l,m,n=h[k-2],o=h[k-1],p=h[k+0],q=h[k+1],r=h[k+2],s=h[k+3],t=n,u=o,v=0,w=[],x=1;j>=x;x++){var y=x/j,z=1-y;l=z*z*n+2*z*y*p+y*y*r,m=z*z*o+2*z*y*q+y*y*s,v+=w[w.push(Math.sqrt((f=l-t)*f+(f=m-u)*f))-1],t=l,u=m}g._segments.push(v),g._segments.push(w),g._length+=v}f=g.orient,g.orient=!0;var A={};return MotionGuidePlugin.calc(g,g.start,A),a.__rotPathS=Number(A.rotation.toFixed(5)),MotionGuidePlugin.calc(g,g.end,A),a.__rotPathE=Number(A.rotation.toFixed(5)),g.orient=!1,MotionGuidePlugin.calc(g,g.end,e),g.orient=f,g.orient?(a.__guideData=g,MotionGuidePlugin.testRotData(a,e),d):d},MotionGuidePlugin.testRotData=function(a,b){if(void 0===a.__rotGlobalS||void 0===a.__rotGlobalE){if(a.__needsRot)return;a.__rotGlobalS=a.__rotGlobalE=void 0!==a._curQueueProps.rotation?a._curQueueProps.rotation:b.rotation=a.target.rotation||0}if(void 0!==a.__guideData){var c=a.__guideData,d=a.__rotGlobalE-a.__rotGlobalS,e=a.__rotPathE-a.__rotPathS,f=d-e;if("auto"==c.orient)f>180?f-=360:-180>f&&(f+=360);else if("cw"==c.orient){for(;0>f;)f+=360;0==f&&d>0&&180!=d&&(f+=360)}else if("ccw"==c.orient){for(f=d-(e>180?360-e:e);f>0;)f-=360;0==f&&0>d&&-180!=d&&(f-=360)}c.rotDelta=f,c.rotOffS=a.__rotGlobalS-a.__rotPathS,a.__rotGlobalS=a.__rotGlobalE=a.__guideData=a.__needsRot=void 0}},MotionGuidePlugin.tween=function(a,b,c,d,e,f,g){var h=e.guide;if(void 0==h||h===d.guide)return c;if(h.lastRatio!=f){var i=(h.end-h.start)*(g?h.end:f)+h.start;switch(MotionGuidePlugin.calc(h,i,a.target),h.orient){case"cw":case"ccw":case"auto":a.target.rotation+=h.rotOffS+h.rotDelta*f;break;case"fixed":default:a.target.rotation+=h.rotOffS}h.lastRatio=f}return"rotation"!=b||h.orient&&"false"!=h.orient?a.target[b]:c},MotionGuidePlugin.calc=function(a,b,c){if(void 0==a._segments)throw"Missing critical pre-calculated information, please file a bug";void 0==c&&(c={x:0,y:0,rotation:0});for(var d=a._segments,e=a.path,f=a._length*b,g=d.length-2,h=0;f>d[h]&&g>h;)f-=d[h],h+=2;var i=d[h+1],j=0;for(g=i.length-1;f>i[j]&&g>j;)f-=i[j],j++;var k=j/++g+f/(g*i[j]);h=2*h+2;var l=1-k;return c.x=l*l*e[h-2]+2*l*k*e[h+0]+k*k*e[h+2],c.y=l*l*e[h-1]+2*l*k*e[h+1]+k*k*e[h+3],a.orient&&(c.rotation=57.2957795*Math.atan2((e[h+1]-e[h-1])*l+(e[h+3]-e[h+1])*k,(e[h+0]-e[h-2])*l+(e[h+2]-e[h+0])*k)),c},createjs.MotionGuidePlugin=MotionGuidePlugin}(),this.createjs=this.createjs||{},function(){"use strict";var a=createjs.TweenJS=createjs.TweenJS||{};a.version="0.6.2",a.buildDate="Thu, 26 Nov 2015 20:44:31 GMT"}();
+				_self.wake = function(seamless) {
+					if (_id !== null) {
+						_self.sleep();
+					} else if (seamless) {
+						_startTime += -_lastUpdate + (_lastUpdate = _getTime());
+					} else if (_self.frame > 10) { //don't trigger lagSmoothing if we're just waking up, and make sure that at least 10 frames have elapsed because of the iOS bug that we work around below with the 1.5-second setTimout().
+						_lastUpdate = _getTime() - _lagThreshold + 5;
+					}
+					_req = (_fps === 0) ? _emptyFunc : (!_useRAF || !_reqAnimFrame) ? function(f) { return setTimeout(f, ((_nextTime - _self.time) * 1000 + 1) | 0); } : _reqAnimFrame;
+					if (_self === _ticker) {
+						_tickerActive = true;
+					}
+					_tick(2);
+				};
+	
+				_self.fps = function(value) {
+					if (!arguments.length) {
+						return _fps;
+					}
+					_fps = value;
+					_gap = 1 / (_fps || 60);
+					_nextTime = this.time + _gap;
+					_self.wake();
+				};
+	
+				_self.useRAF = function(value) {
+					if (!arguments.length) {
+						return _useRAF;
+					}
+					_self.sleep();
+					_useRAF = value;
+					_self.fps(_fps);
+				};
+				_self.fps(fps);
+	
+				//a bug in iOS 6 Safari occasionally prevents the requestAnimationFrame from working initially, so we use a 1.5-second timeout that automatically falls back to setTimeout() if it senses this condition.
+				setTimeout(function() {
+					if (_useRAF === "auto" && _self.frame < 5 && document.visibilityState !== "hidden") {
+						_self.useRAF(false);
+					}
+				}, 1500);
+			});
+	
+			p = gs.Ticker.prototype = new gs.events.EventDispatcher();
+			p.constructor = gs.Ticker;
+	
+	
+	/*
+	 * ----------------------------------------------------------------
+	 * Animation
+	 * ----------------------------------------------------------------
+	 */
+			var Animation = _class("core.Animation", function(duration, vars) {
+					this.vars = vars = vars || {};
+					this._duration = this._totalDuration = duration || 0;
+					this._delay = Number(vars.delay) || 0;
+					this._timeScale = 1;
+					this._active = (vars.immediateRender === true);
+					this.data = vars.data;
+					this._reversed = (vars.reversed === true);
+	
+					if (!_rootTimeline) {
+						return;
+					}
+					if (!_tickerActive) { //some browsers (like iOS 6 Safari) shut down JavaScript execution when the tab is disabled and they [occasionally] neglect to start up requestAnimationFrame again when returning - this code ensures that the engine starts up again properly.
+						_ticker.wake();
+					}
+	
+					var tl = this.vars.useFrames ? _rootFramesTimeline : _rootTimeline;
+					tl.add(this, tl._time);
+	
+					if (this.vars.paused) {
+						this.paused(true);
+					}
+				});
+	
+			_ticker = Animation.ticker = new gs.Ticker();
+			p = Animation.prototype;
+			p._dirty = p._gc = p._initted = p._paused = false;
+			p._totalTime = p._time = 0;
+			p._rawPrevTime = -1;
+			p._next = p._last = p._onUpdate = p._timeline = p.timeline = null;
+			p._paused = false;
+	
+	
+			//some browsers (like iOS) occasionally drop the requestAnimationFrame event when the user switches to a different tab and then comes back again, so we use a 2-second setTimeout() to sense if/when that condition occurs and then wake() the ticker.
+			var _checkTimeout = function() {
+					if (_tickerActive && _getTime() - _lastUpdate > 2000) {
+						_ticker.wake();
+					}
+					setTimeout(_checkTimeout, 2000);
+				};
+			_checkTimeout();
+	
+	
+			p.play = function(from, suppressEvents) {
+				if (from != null) {
+					this.seek(from, suppressEvents);
+				}
+				return this.reversed(false).paused(false);
+			};
+	
+			p.pause = function(atTime, suppressEvents) {
+				if (atTime != null) {
+					this.seek(atTime, suppressEvents);
+				}
+				return this.paused(true);
+			};
+	
+			p.resume = function(from, suppressEvents) {
+				if (from != null) {
+					this.seek(from, suppressEvents);
+				}
+				return this.paused(false);
+			};
+	
+			p.seek = function(time, suppressEvents) {
+				return this.totalTime(Number(time), suppressEvents !== false);
+			};
+	
+			p.restart = function(includeDelay, suppressEvents) {
+				return this.reversed(false).paused(false).totalTime(includeDelay ? -this._delay : 0, (suppressEvents !== false), true);
+			};
+	
+			p.reverse = function(from, suppressEvents) {
+				if (from != null) {
+					this.seek((from || this.totalDuration()), suppressEvents);
+				}
+				return this.reversed(true).paused(false);
+			};
+	
+			p.render = function(time, suppressEvents, force) {
+				//stub - we override this method in subclasses.
+			};
+	
+			p.invalidate = function() {
+				this._time = this._totalTime = 0;
+				this._initted = this._gc = false;
+				this._rawPrevTime = -1;
+				if (this._gc || !this.timeline) {
+					this._enabled(true);
+				}
+				return this;
+			};
+	
+			p.isActive = function() {
+				var tl = this._timeline, //the 2 root timelines won't have a _timeline; they're always active.
+					startTime = this._startTime,
+					rawTime;
+				return (!tl || (!this._gc && !this._paused && tl.isActive() && (rawTime = tl.rawTime()) >= startTime && rawTime < startTime + this.totalDuration() / this._timeScale));
+			};
+	
+			p._enabled = function (enabled, ignoreTimeline) {
+				if (!_tickerActive) {
+					_ticker.wake();
+				}
+				this._gc = !enabled;
+				this._active = this.isActive();
+				if (ignoreTimeline !== true) {
+					if (enabled && !this.timeline) {
+						this._timeline.add(this, this._startTime - this._delay);
+					} else if (!enabled && this.timeline) {
+						this._timeline._remove(this, true);
+					}
+				}
+				return false;
+			};
+	
+	
+			p._kill = function(vars, target) {
+				return this._enabled(false, false);
+			};
+	
+			p.kill = function(vars, target) {
+				this._kill(vars, target);
+				return this;
+			};
+	
+			p._uncache = function(includeSelf) {
+				var tween = includeSelf ? this : this.timeline;
+				while (tween) {
+					tween._dirty = true;
+					tween = tween.timeline;
+				}
+				return this;
+			};
+	
+			p._swapSelfInParams = function(params) {
+				var i = params.length,
+					copy = params.concat();
+				while (--i > -1) {
+					if (params[i] === "{self}") {
+						copy[i] = this;
+					}
+				}
+				return copy;
+			};
+	
+			p._callback = function(type) {
+				var v = this.vars;
+				v[type].apply(v[type + "Scope"] || v.callbackScope || this, v[type + "Params"] || _blankArray);
+			};
+	
+	//----Animation getters/setters --------------------------------------------------------
+	
+			p.eventCallback = function(type, callback, params, scope) {
+				if ((type || "").substr(0,2) === "on") {
+					var v = this.vars;
+					if (arguments.length === 1) {
+						return v[type];
+					}
+					if (callback == null) {
+						delete v[type];
+					} else {
+						v[type] = callback;
+						v[type + "Params"] = (_isArray(params) && params.join("").indexOf("{self}") !== -1) ? this._swapSelfInParams(params) : params;
+						v[type + "Scope"] = scope;
+					}
+					if (type === "onUpdate") {
+						this._onUpdate = callback;
+					}
+				}
+				return this;
+			};
+	
+			p.delay = function(value) {
+				if (!arguments.length) {
+					return this._delay;
+				}
+				if (this._timeline.smoothChildTiming) {
+					this.startTime( this._startTime + value - this._delay );
+				}
+				this._delay = value;
+				return this;
+			};
+	
+			p.duration = function(value) {
+				if (!arguments.length) {
+					this._dirty = false;
+					return this._duration;
+				}
+				this._duration = this._totalDuration = value;
+				this._uncache(true); //true in case it's a TweenMax or TimelineMax that has a repeat - we'll need to refresh the totalDuration.
+				if (this._timeline.smoothChildTiming) if (this._time > 0) if (this._time < this._duration) if (value !== 0) {
+					this.totalTime(this._totalTime * (value / this._duration), true);
+				}
+				return this;
+			};
+	
+			p.totalDuration = function(value) {
+				this._dirty = false;
+				return (!arguments.length) ? this._totalDuration : this.duration(value);
+			};
+	
+			p.time = function(value, suppressEvents) {
+				if (!arguments.length) {
+					return this._time;
+				}
+				if (this._dirty) {
+					this.totalDuration();
+				}
+				return this.totalTime((value > this._duration) ? this._duration : value, suppressEvents);
+			};
+	
+			p.totalTime = function(time, suppressEvents, uncapped) {
+				if (!_tickerActive) {
+					_ticker.wake();
+				}
+				if (!arguments.length) {
+					return this._totalTime;
+				}
+				if (this._timeline) {
+					if (time < 0 && !uncapped) {
+						time += this.totalDuration();
+					}
+					if (this._timeline.smoothChildTiming) {
+						if (this._dirty) {
+							this.totalDuration();
+						}
+						var totalDuration = this._totalDuration,
+							tl = this._timeline;
+						if (time > totalDuration && !uncapped) {
+							time = totalDuration;
+						}
+						this._startTime = (this._paused ? this._pauseTime : tl._time) - ((!this._reversed ? time : totalDuration - time) / this._timeScale);
+						if (!tl._dirty) { //for performance improvement. If the parent's cache is already dirty, it already took care of marking the ancestors as dirty too, so skip the function call here.
+							this._uncache(false);
+						}
+						//in case any of the ancestor timelines had completed but should now be enabled, we should reset their totalTime() which will also ensure that they're lined up properly and enabled. Skip for animations that are on the root (wasteful). Example: a TimelineLite.exportRoot() is performed when there's a paused tween on the root, the export will not complete until that tween is unpaused, but imagine a child gets restarted later, after all [unpaused] tweens have completed. The startTime of that child would get pushed out, but one of the ancestors may have completed.
+						if (tl._timeline) {
+							while (tl._timeline) {
+								if (tl._timeline._time !== (tl._startTime + tl._totalTime) / tl._timeScale) {
+									tl.totalTime(tl._totalTime, true);
+								}
+								tl = tl._timeline;
+							}
+						}
+					}
+					if (this._gc) {
+						this._enabled(true, false);
+					}
+					if (this._totalTime !== time || this._duration === 0) {
+						if (_lazyTweens.length) {
+							_lazyRender();
+						}
+						this.render(time, suppressEvents, false);
+						if (_lazyTweens.length) { //in case rendering caused any tweens to lazy-init, we should render them because typically when someone calls seek() or time() or progress(), they expect an immediate render.
+							_lazyRender();
+						}
+					}
+				}
+				return this;
+			};
+	
+			p.progress = p.totalProgress = function(value, suppressEvents) {
+				var duration = this.duration();
+				return (!arguments.length) ? (duration ? this._time / duration : this.ratio) : this.totalTime(duration * value, suppressEvents);
+			};
+	
+			p.startTime = function(value) {
+				if (!arguments.length) {
+					return this._startTime;
+				}
+				if (value !== this._startTime) {
+					this._startTime = value;
+					if (this.timeline) if (this.timeline._sortChildren) {
+						this.timeline.add(this, value - this._delay); //ensures that any necessary re-sequencing of Animations in the timeline occurs to make sure the rendering order is correct.
+					}
+				}
+				return this;
+			};
+	
+			p.endTime = function(includeRepeats) {
+				return this._startTime + ((includeRepeats != false) ? this.totalDuration() : this.duration()) / this._timeScale;
+			};
+	
+			p.timeScale = function(value) {
+				if (!arguments.length) {
+					return this._timeScale;
+				}
+				value = value || _tinyNum; //can't allow zero because it'll throw the math off
+				if (this._timeline && this._timeline.smoothChildTiming) {
+					var pauseTime = this._pauseTime,
+						t = (pauseTime || pauseTime === 0) ? pauseTime : this._timeline.totalTime();
+					this._startTime = t - ((t - this._startTime) * this._timeScale / value);
+				}
+				this._timeScale = value;
+				return this._uncache(false);
+			};
+	
+			p.reversed = function(value) {
+				if (!arguments.length) {
+					return this._reversed;
+				}
+				if (value != this._reversed) {
+					this._reversed = value;
+					this.totalTime(((this._timeline && !this._timeline.smoothChildTiming) ? this.totalDuration() - this._totalTime : this._totalTime), true);
+				}
+				return this;
+			};
+	
+			p.paused = function(value) {
+				if (!arguments.length) {
+					return this._paused;
+				}
+				var tl = this._timeline,
+					raw, elapsed;
+				if (value != this._paused) if (tl) {
+					if (!_tickerActive && !value) {
+						_ticker.wake();
+					}
+					raw = tl.rawTime();
+					elapsed = raw - this._pauseTime;
+					if (!value && tl.smoothChildTiming) {
+						this._startTime += elapsed;
+						this._uncache(false);
+					}
+					this._pauseTime = value ? raw : null;
+					this._paused = value;
+					this._active = this.isActive();
+					if (!value && elapsed !== 0 && this._initted && this.duration()) {
+						raw = tl.smoothChildTiming ? this._totalTime : (raw - this._startTime) / this._timeScale;
+						this.render(raw, (raw === this._totalTime), true); //in case the target's properties changed via some other tween or manual update by the user, we should force a render.
+					}
+				}
+				if (this._gc && !value) {
+					this._enabled(true, false);
+				}
+				return this;
+			};
+	
+	
+	/*
+	 * ----------------------------------------------------------------
+	 * SimpleTimeline
+	 * ----------------------------------------------------------------
+	 */
+			var SimpleTimeline = _class("core.SimpleTimeline", function(vars) {
+				Animation.call(this, 0, vars);
+				this.autoRemoveChildren = this.smoothChildTiming = true;
+			});
+	
+			p = SimpleTimeline.prototype = new Animation();
+			p.constructor = SimpleTimeline;
+			p.kill()._gc = false;
+			p._first = p._last = p._recent = null;
+			p._sortChildren = false;
+	
+			p.add = p.insert = function(child, position, align, stagger) {
+				var prevTween, st;
+				child._startTime = Number(position || 0) + child._delay;
+				if (child._paused) if (this !== child._timeline) { //we only adjust the _pauseTime if it wasn't in this timeline already. Remember, sometimes a tween will be inserted again into the same timeline when its startTime is changed so that the tweens in the TimelineLite/Max are re-ordered properly in the linked list (so everything renders in the proper order).
+					child._pauseTime = child._startTime + ((this.rawTime() - child._startTime) / child._timeScale);
+				}
+				if (child.timeline) {
+					child.timeline._remove(child, true); //removes from existing timeline so that it can be properly added to this one.
+				}
+				child.timeline = child._timeline = this;
+				if (child._gc) {
+					child._enabled(true, true);
+				}
+				prevTween = this._last;
+				if (this._sortChildren) {
+					st = child._startTime;
+					while (prevTween && prevTween._startTime > st) {
+						prevTween = prevTween._prev;
+					}
+				}
+				if (prevTween) {
+					child._next = prevTween._next;
+					prevTween._next = child;
+				} else {
+					child._next = this._first;
+					this._first = child;
+				}
+				if (child._next) {
+					child._next._prev = child;
+				} else {
+					this._last = child;
+				}
+				child._prev = prevTween;
+				this._recent = child;
+				if (this._timeline) {
+					this._uncache(true);
+				}
+				return this;
+			};
+	
+			p._remove = function(tween, skipDisable) {
+				if (tween.timeline === this) {
+					if (!skipDisable) {
+						tween._enabled(false, true);
+					}
+	
+					if (tween._prev) {
+						tween._prev._next = tween._next;
+					} else if (this._first === tween) {
+						this._first = tween._next;
+					}
+					if (tween._next) {
+						tween._next._prev = tween._prev;
+					} else if (this._last === tween) {
+						this._last = tween._prev;
+					}
+					tween._next = tween._prev = tween.timeline = null;
+					if (tween === this._recent) {
+						this._recent = this._last;
+					}
+	
+					if (this._timeline) {
+						this._uncache(true);
+					}
+				}
+				return this;
+			};
+	
+			p.render = function(time, suppressEvents, force) {
+				var tween = this._first,
+					next;
+				this._totalTime = this._time = this._rawPrevTime = time;
+				while (tween) {
+					next = tween._next; //record it here because the value could change after rendering...
+					if (tween._active || (time >= tween._startTime && !tween._paused)) {
+						if (!tween._reversed) {
+							tween.render((time - tween._startTime) * tween._timeScale, suppressEvents, force);
+						} else {
+							tween.render(((!tween._dirty) ? tween._totalDuration : tween.totalDuration()) - ((time - tween._startTime) * tween._timeScale), suppressEvents, force);
+						}
+					}
+					tween = next;
+				}
+			};
+	
+			p.rawTime = function() {
+				if (!_tickerActive) {
+					_ticker.wake();
+				}
+				return this._totalTime;
+			};
+	
+	/*
+	 * ----------------------------------------------------------------
+	 * TweenLite
+	 * ----------------------------------------------------------------
+	 */
+			var TweenLite = _class("TweenLite", function(target, duration, vars) {
+					Animation.call(this, duration, vars);
+					this.render = TweenLite.prototype.render; //speed optimization (avoid prototype lookup on this "hot" method)
+	
+					if (target == null) {
+						throw "Cannot tween a null target.";
+					}
+	
+					this.target = target = (typeof(target) !== "string") ? target : TweenLite.selector(target) || target;
+	
+					var isSelector = (target.jquery || (target.length && target !== window && target[0] && (target[0] === window || (target[0].nodeType && target[0].style && !target.nodeType)))),
+						overwrite = this.vars.overwrite,
+						i, targ, targets;
+	
+					this._overwrite = overwrite = (overwrite == null) ? _overwriteLookup[TweenLite.defaultOverwrite] : (typeof(overwrite) === "number") ? overwrite >> 0 : _overwriteLookup[overwrite];
+	
+					if ((isSelector || target instanceof Array || (target.push && _isArray(target))) && typeof(target[0]) !== "number") {
+						this._targets = targets = _slice(target);  //don't use Array.prototype.slice.call(target, 0) because that doesn't work in IE8 with a NodeList that's returned by querySelectorAll()
+						this._propLookup = [];
+						this._siblings = [];
+						for (i = 0; i < targets.length; i++) {
+							targ = targets[i];
+							if (!targ) {
+								targets.splice(i--, 1);
+								continue;
+							} else if (typeof(targ) === "string") {
+								targ = targets[i--] = TweenLite.selector(targ); //in case it's an array of strings
+								if (typeof(targ) === "string") {
+									targets.splice(i+1, 1); //to avoid an endless loop (can't imagine why the selector would return a string, but just in case)
+								}
+								continue;
+							} else if (targ.length && targ !== window && targ[0] && (targ[0] === window || (targ[0].nodeType && targ[0].style && !targ.nodeType))) { //in case the user is passing in an array of selector objects (like jQuery objects), we need to check one more level and pull things out if necessary. Also note that <select> elements pass all the criteria regarding length and the first child having style, so we must also check to ensure the target isn't an HTML node itself.
+								targets.splice(i--, 1);
+								this._targets = targets = targets.concat(_slice(targ));
+								continue;
+							}
+							this._siblings[i] = _register(targ, this, false);
+							if (overwrite === 1) if (this._siblings[i].length > 1) {
+								_applyOverwrite(targ, this, null, 1, this._siblings[i]);
+							}
+						}
+	
+					} else {
+						this._propLookup = {};
+						this._siblings = _register(target, this, false);
+						if (overwrite === 1) if (this._siblings.length > 1) {
+							_applyOverwrite(target, this, null, 1, this._siblings);
+						}
+					}
+					if (this.vars.immediateRender || (duration === 0 && this._delay === 0 && this.vars.immediateRender !== false)) {
+						this._time = -_tinyNum; //forces a render without having to set the render() "force" parameter to true because we want to allow lazying by default (using the "force" parameter always forces an immediate full render)
+						this.render(Math.min(0, -this._delay)); //in case delay is negative
+					}
+				}, true),
+				_isSelector = function(v) {
+					return (v && v.length && v !== window && v[0] && (v[0] === window || (v[0].nodeType && v[0].style && !v.nodeType))); //we cannot check "nodeType" if the target is window from within an iframe, otherwise it will trigger a security error in some browsers like Firefox.
+				},
+				_autoCSS = function(vars, target) {
+					var css = {},
+						p;
+					for (p in vars) {
+						if (!_reservedProps[p] && (!(p in target) || p === "transform" || p === "x" || p === "y" || p === "width" || p === "height" || p === "className" || p === "border") && (!_plugins[p] || (_plugins[p] && _plugins[p]._autoCSS))) { //note: <img> elements contain read-only "x" and "y" properties. We should also prioritize editing css width/height rather than the element's properties.
+							css[p] = vars[p];
+							delete vars[p];
+						}
+					}
+					vars.css = css;
+				};
+	
+			p = TweenLite.prototype = new Animation();
+			p.constructor = TweenLite;
+			p.kill()._gc = false;
+	
+	//----TweenLite defaults, overwrite management, and root updates ----------------------------------------------------
+	
+			p.ratio = 0;
+			p._firstPT = p._targets = p._overwrittenProps = p._startAt = null;
+			p._notifyPluginsOfEnabled = p._lazy = false;
+	
+			TweenLite.version = "1.18.5";
+			TweenLite.defaultEase = p._ease = new Ease(null, null, 1, 1);
+			TweenLite.defaultOverwrite = "auto";
+			TweenLite.ticker = _ticker;
+			TweenLite.autoSleep = 120;
+			TweenLite.lagSmoothing = function(threshold, adjustedLag) {
+				_ticker.lagSmoothing(threshold, adjustedLag);
+			};
+	
+			TweenLite.selector = window.$ || window.jQuery || function(e) {
+				var selector = window.$ || window.jQuery;
+				if (selector) {
+					TweenLite.selector = selector;
+					return selector(e);
+				}
+				return (typeof(document) === "undefined") ? e : (document.querySelectorAll ? document.querySelectorAll(e) : document.getElementById((e.charAt(0) === "#") ? e.substr(1) : e));
+			};
+	
+			var _lazyTweens = [],
+				_lazyLookup = {},
+				_numbersExp = /(?:(-|-=|\+=)?\d*\.?\d*(?:e[\-+]?\d+)?)[0-9]/ig,
+				//_nonNumbersExp = /(?:([\-+](?!(\d|=)))|[^\d\-+=e]|(e(?![\-+][\d])))+/ig,
+				_setRatio = function(v) {
+					var pt = this._firstPT,
+						min = 0.000001,
+						val;
+					while (pt) {
+						val = !pt.blob ? pt.c * v + pt.s : v ? this.join("") : this.start;
+						if (pt.r) {
+							val = Math.round(val);
+						} else if (val < min) if (val > -min) { //prevents issues with converting very small numbers to strings in the browser
+							val = 0;
+						}
+						if (!pt.f) {
+							pt.t[pt.p] = val;
+						} else if (pt.fp) {
+							pt.t[pt.p](pt.fp, val);
+						} else {
+							pt.t[pt.p](val);
+						}
+						pt = pt._next;
+					}
+				},
+				//compares two strings (start/end), finds the numbers that are different and spits back an array representing the whole value but with the changing values isolated as elements. For example, "rgb(0,0,0)" and "rgb(100,50,0)" would become ["rgb(", 0, ",", 50, ",0)"]. Notice it merges the parts that are identical (performance optimization). The array also has a linked list of PropTweens attached starting with _firstPT that contain the tweening data (t, p, s, c, f, etc.). It also stores the starting value as a "start" property so that we can revert to it if/when necessary, like when a tween rewinds fully. If the quantity of numbers differs between the start and end, it will always prioritize the end value(s). The pt parameter is optional - it's for a PropTween that will be appended to the end of the linked list and is typically for actually setting the value after all of the elements have been updated (with array.join("")).
+				_blobDif = function(start, end, filter, pt) {
+					var a = [start, end],
+						charIndex = 0,
+						s = "",
+						color = 0,
+						startNums, endNums, num, i, l, nonNumbers, currentNum;
+					a.start = start;
+					if (filter) {
+						filter(a); //pass an array with the starting and ending values and let the filter do whatever it needs to the values.
+						start = a[0];
+						end = a[1];
+					}
+					a.length = 0;
+					startNums = start.match(_numbersExp) || [];
+					endNums = end.match(_numbersExp) || [];
+					if (pt) {
+						pt._next = null;
+						pt.blob = 1;
+						a._firstPT = pt; //apply last in the linked list (which means inserting it first)
+					}
+					l = endNums.length;
+					for (i = 0; i < l; i++) {
+						currentNum = endNums[i];
+						nonNumbers = end.substr(charIndex, end.indexOf(currentNum, charIndex)-charIndex);
+						s += (nonNumbers || !i) ? nonNumbers : ","; //note: SVG spec allows omission of comma/space when a negative sign is wedged between two numbers, like 2.5-5.3 instead of 2.5,-5.3 but when tweening, the negative value may switch to positive, so we insert the comma just in case.
+						charIndex += nonNumbers.length;
+						if (color) { //sense rgba() values and round them.
+							color = (color + 1) % 5;
+						} else if (nonNumbers.substr(-5) === "rgba(") {
+							color = 1;
+						}
+						if (currentNum === startNums[i] || startNums.length <= i) {
+							s += currentNum;
+						} else {
+							if (s) {
+								a.push(s);
+								s = "";
+							}
+							num = parseFloat(startNums[i]);
+							a.push(num);
+							a._firstPT = {_next: a._firstPT, t:a, p: a.length-1, s:num, c:((currentNum.charAt(1) === "=") ? parseInt(currentNum.charAt(0) + "1", 10) * parseFloat(currentNum.substr(2)) : (parseFloat(currentNum) - num)) || 0, f:0, r:(color && color < 4)};
+							//note: we don't set _prev because we'll never need to remove individual PropTweens from this list.
+						}
+						charIndex += currentNum.length;
+					}
+					s += end.substr(charIndex);
+					if (s) {
+						a.push(s);
+					}
+					a.setRatio = _setRatio;
+					return a;
+				},
+				//note: "funcParam" is only necessary for function-based getters/setters that require an extra parameter like getAttribute("width") and setAttribute("width", value). In this example, funcParam would be "width". Used by AttrPlugin for example.
+				_addPropTween = function(target, prop, start, end, overwriteProp, round, funcParam, stringFilter) {
+					var s = (start === "get") ? target[prop] : start,
+						type = typeof(target[prop]),
+						isRelative = (typeof(end) === "string" && end.charAt(1) === "="),
+						pt = {t:target, p:prop, s:s, f:(type === "function"), pg:0, n:overwriteProp || prop, r:round, pr:0, c:isRelative ? parseInt(end.charAt(0) + "1", 10) * parseFloat(end.substr(2)) : (parseFloat(end) - s) || 0},
+						blob, getterName;
+					if (type !== "number") {
+						if (type === "function" && start === "get") {
+							getterName = ((prop.indexOf("set") || typeof(target["get" + prop.substr(3)]) !== "function") ? prop : "get" + prop.substr(3));
+							pt.s = s = funcParam ? target[getterName](funcParam) : target[getterName]();
+						}
+						if (typeof(s) === "string" && (funcParam || isNaN(s))) {
+							//a blob (string that has multiple numbers in it)
+							pt.fp = funcParam;
+							blob = _blobDif(s, end, stringFilter || TweenLite.defaultStringFilter, pt);
+							pt = {t:blob, p:"setRatio", s:0, c:1, f:2, pg:0, n:overwriteProp || prop, pr:0}; //"2" indicates it's a Blob property tween. Needed for RoundPropsPlugin for example.
+						} else if (!isRelative) {
+							pt.s = parseFloat(s);
+							pt.c = (parseFloat(end) - pt.s) || 0;
+						}
+					}
+					if (pt.c) { //only add it to the linked list if there's a change.
+						if ((pt._next = this._firstPT)) {
+							pt._next._prev = pt;
+						}
+						this._firstPT = pt;
+						return pt;
+					}
+				},
+				_internals = TweenLite._internals = {isArray:_isArray, isSelector:_isSelector, lazyTweens:_lazyTweens, blobDif:_blobDif}, //gives us a way to expose certain private values to other GreenSock classes without contaminating tha main TweenLite object.
+				_plugins = TweenLite._plugins = {},
+				_tweenLookup = _internals.tweenLookup = {},
+				_tweenLookupNum = 0,
+				_reservedProps = _internals.reservedProps = {ease:1, delay:1, overwrite:1, onComplete:1, onCompleteParams:1, onCompleteScope:1, useFrames:1, runBackwards:1, startAt:1, onUpdate:1, onUpdateParams:1, onUpdateScope:1, onStart:1, onStartParams:1, onStartScope:1, onReverseComplete:1, onReverseCompleteParams:1, onReverseCompleteScope:1, onRepeat:1, onRepeatParams:1, onRepeatScope:1, easeParams:1, yoyo:1, immediateRender:1, repeat:1, repeatDelay:1, data:1, paused:1, reversed:1, autoCSS:1, lazy:1, onOverwrite:1, callbackScope:1, stringFilter:1, id:1},
+				_overwriteLookup = {none:0, all:1, auto:2, concurrent:3, allOnStart:4, preexisting:5, "true":1, "false":0},
+				_rootFramesTimeline = Animation._rootFramesTimeline = new SimpleTimeline(),
+				_rootTimeline = Animation._rootTimeline = new SimpleTimeline(),
+				_nextGCFrame = 30,
+				_lazyRender = _internals.lazyRender = function() {
+					var i = _lazyTweens.length,
+						tween;
+					_lazyLookup = {};
+					while (--i > -1) {
+						tween = _lazyTweens[i];
+						if (tween && tween._lazy !== false) {
+							tween.render(tween._lazy[0], tween._lazy[1], true);
+							tween._lazy = false;
+						}
+					}
+					_lazyTweens.length = 0;
+				};
+	
+			_rootTimeline._startTime = _ticker.time;
+			_rootFramesTimeline._startTime = _ticker.frame;
+			_rootTimeline._active = _rootFramesTimeline._active = true;
+			setTimeout(_lazyRender, 1); //on some mobile devices, there isn't a "tick" before code runs which means any lazy renders wouldn't run before the next official "tick".
+	
+			Animation._updateRoot = TweenLite.render = function() {
+					var i, a, p;
+					if (_lazyTweens.length) { //if code is run outside of the requestAnimationFrame loop, there may be tweens queued AFTER the engine refreshed, so we need to ensure any pending renders occur before we refresh again.
+						_lazyRender();
+					}
+					_rootTimeline.render((_ticker.time - _rootTimeline._startTime) * _rootTimeline._timeScale, false, false);
+					_rootFramesTimeline.render((_ticker.frame - _rootFramesTimeline._startTime) * _rootFramesTimeline._timeScale, false, false);
+					if (_lazyTweens.length) {
+						_lazyRender();
+					}
+					if (_ticker.frame >= _nextGCFrame) { //dump garbage every 120 frames or whatever the user sets TweenLite.autoSleep to
+						_nextGCFrame = _ticker.frame + (parseInt(TweenLite.autoSleep, 10) || 120);
+						for (p in _tweenLookup) {
+							a = _tweenLookup[p].tweens;
+							i = a.length;
+							while (--i > -1) {
+								if (a[i]._gc) {
+									a.splice(i, 1);
+								}
+							}
+							if (a.length === 0) {
+								delete _tweenLookup[p];
+							}
+						}
+						//if there are no more tweens in the root timelines, or if they're all paused, make the _timer sleep to reduce load on the CPU slightly
+						p = _rootTimeline._first;
+						if (!p || p._paused) if (TweenLite.autoSleep && !_rootFramesTimeline._first && _ticker._listeners.tick.length === 1) {
+							while (p && p._paused) {
+								p = p._next;
+							}
+							if (!p) {
+								_ticker.sleep();
+							}
+						}
+					}
+				};
+	
+			_ticker.addEventListener("tick", Animation._updateRoot);
+	
+			var _register = function(target, tween, scrub) {
+					var id = target._gsTweenID, a, i;
+					if (!_tweenLookup[id || (target._gsTweenID = id = "t" + (_tweenLookupNum++))]) {
+						_tweenLookup[id] = {target:target, tweens:[]};
+					}
+					if (tween) {
+						a = _tweenLookup[id].tweens;
+						a[(i = a.length)] = tween;
+						if (scrub) {
+							while (--i > -1) {
+								if (a[i] === tween) {
+									a.splice(i, 1);
+								}
+							}
+						}
+					}
+					return _tweenLookup[id].tweens;
+				},
+				_onOverwrite = function(overwrittenTween, overwritingTween, target, killedProps) {
+					var func = overwrittenTween.vars.onOverwrite, r1, r2;
+					if (func) {
+						r1 = func(overwrittenTween, overwritingTween, target, killedProps);
+					}
+					func = TweenLite.onOverwrite;
+					if (func) {
+						r2 = func(overwrittenTween, overwritingTween, target, killedProps);
+					}
+					return (r1 !== false && r2 !== false);
+				},
+				_applyOverwrite = function(target, tween, props, mode, siblings) {
+					var i, changed, curTween, l;
+					if (mode === 1 || mode >= 4) {
+						l = siblings.length;
+						for (i = 0; i < l; i++) {
+							if ((curTween = siblings[i]) !== tween) {
+								if (!curTween._gc) {
+									if (curTween._kill(null, target, tween)) {
+										changed = true;
+									}
+								}
+							} else if (mode === 5) {
+								break;
+							}
+						}
+						return changed;
+					}
+					//NOTE: Add 0.0000000001 to overcome floating point errors that can cause the startTime to be VERY slightly off (when a tween's time() is set for example)
+					var startTime = tween._startTime + _tinyNum,
+						overlaps = [],
+						oCount = 0,
+						zeroDur = (tween._duration === 0),
+						globalStart;
+					i = siblings.length;
+					while (--i > -1) {
+						if ((curTween = siblings[i]) === tween || curTween._gc || curTween._paused) {
+							//ignore
+						} else if (curTween._timeline !== tween._timeline) {
+							globalStart = globalStart || _checkOverlap(tween, 0, zeroDur);
+							if (_checkOverlap(curTween, globalStart, zeroDur) === 0) {
+								overlaps[oCount++] = curTween;
+							}
+						} else if (curTween._startTime <= startTime) if (curTween._startTime + curTween.totalDuration() / curTween._timeScale > startTime) if (!((zeroDur || !curTween._initted) && startTime - curTween._startTime <= 0.0000000002)) {
+							overlaps[oCount++] = curTween;
+						}
+					}
+	
+					i = oCount;
+					while (--i > -1) {
+						curTween = overlaps[i];
+						if (mode === 2) if (curTween._kill(props, target, tween)) {
+							changed = true;
+						}
+						if (mode !== 2 || (!curTween._firstPT && curTween._initted)) {
+							if (mode !== 2 && !_onOverwrite(curTween, tween)) {
+								continue;
+							}
+							if (curTween._enabled(false, false)) { //if all property tweens have been overwritten, kill the tween.
+								changed = true;
+							}
+						}
+					}
+					return changed;
+				},
+				_checkOverlap = function(tween, reference, zeroDur) {
+					var tl = tween._timeline,
+						ts = tl._timeScale,
+						t = tween._startTime;
+					while (tl._timeline) {
+						t += tl._startTime;
+						ts *= tl._timeScale;
+						if (tl._paused) {
+							return -100;
+						}
+						tl = tl._timeline;
+					}
+					t /= ts;
+					return (t > reference) ? t - reference : ((zeroDur && t === reference) || (!tween._initted && t - reference < 2 * _tinyNum)) ? _tinyNum : ((t += tween.totalDuration() / tween._timeScale / ts) > reference + _tinyNum) ? 0 : t - reference - _tinyNum;
+				};
+	
+	
+	//---- TweenLite instance methods -----------------------------------------------------------------------------
+	
+			p._init = function() {
+				var v = this.vars,
+					op = this._overwrittenProps,
+					dur = this._duration,
+					immediate = !!v.immediateRender,
+					ease = v.ease,
+					i, initPlugins, pt, p, startVars;
+				if (v.startAt) {
+					if (this._startAt) {
+						this._startAt.render(-1, true); //if we've run a startAt previously (when the tween instantiated), we should revert it so that the values re-instantiate correctly particularly for relative tweens. Without this, a TweenLite.fromTo(obj, 1, {x:"+=100"}, {x:"-=100"}), for example, would actually jump to +=200 because the startAt would run twice, doubling the relative change.
+						this._startAt.kill();
+					}
+					startVars = {};
+					for (p in v.startAt) { //copy the properties/values into a new object to avoid collisions, like var to = {x:0}, from = {x:500}; timeline.fromTo(e, 1, from, to).fromTo(e, 1, to, from);
+						startVars[p] = v.startAt[p];
+					}
+					startVars.overwrite = false;
+					startVars.immediateRender = true;
+					startVars.lazy = (immediate && v.lazy !== false);
+					startVars.startAt = startVars.delay = null; //no nesting of startAt objects allowed (otherwise it could cause an infinite loop).
+					this._startAt = TweenLite.to(this.target, 0, startVars);
+					if (immediate) {
+						if (this._time > 0) {
+							this._startAt = null; //tweens that render immediately (like most from() and fromTo() tweens) shouldn't revert when their parent timeline's playhead goes backward past the startTime because the initial render could have happened anytime and it shouldn't be directly correlated to this tween's startTime. Imagine setting up a complex animation where the beginning states of various objects are rendered immediately but the tween doesn't happen for quite some time - if we revert to the starting values as soon as the playhead goes backward past the tween's startTime, it will throw things off visually. Reversion should only happen in TimelineLite/Max instances where immediateRender was false (which is the default in the convenience methods like from()).
+						} else if (dur !== 0) {
+							return; //we skip initialization here so that overwriting doesn't occur until the tween actually begins. Otherwise, if you create several immediateRender:true tweens of the same target/properties to drop into a TimelineLite or TimelineMax, the last one created would overwrite the first ones because they didn't get placed into the timeline yet before the first render occurs and kicks in overwriting.
+						}
+					}
+				} else if (v.runBackwards && dur !== 0) {
+					//from() tweens must be handled uniquely: their beginning values must be rendered but we don't want overwriting to occur yet (when time is still 0). Wait until the tween actually begins before doing all the routines like overwriting. At that time, we should render at the END of the tween to ensure that things initialize correctly (remember, from() tweens go backwards)
+					if (this._startAt) {
+						this._startAt.render(-1, true);
+						this._startAt.kill();
+						this._startAt = null;
+					} else {
+						if (this._time !== 0) { //in rare cases (like if a from() tween runs and then is invalidate()-ed), immediateRender could be true but the initial forced-render gets skipped, so there's no need to force the render in this context when the _time is greater than 0
+							immediate = false;
+						}
+						pt = {};
+						for (p in v) { //copy props into a new object and skip any reserved props, otherwise onComplete or onUpdate or onStart could fire. We should, however, permit autoCSS to go through.
+							if (!_reservedProps[p] || p === "autoCSS") {
+								pt[p] = v[p];
+							}
+						}
+						pt.overwrite = 0;
+						pt.data = "isFromStart"; //we tag the tween with as "isFromStart" so that if [inside a plugin] we need to only do something at the very END of a tween, we have a way of identifying this tween as merely the one that's setting the beginning values for a "from()" tween. For example, clearProps in CSSPlugin should only get applied at the very END of a tween and without this tag, from(...{height:100, clearProps:"height", delay:1}) would wipe the height at the beginning of the tween and after 1 second, it'd kick back in.
+						pt.lazy = (immediate && v.lazy !== false);
+						pt.immediateRender = immediate; //zero-duration tweens render immediately by default, but if we're not specifically instructed to render this tween immediately, we should skip this and merely _init() to record the starting values (rendering them immediately would push them to completion which is wasteful in that case - we'd have to render(-1) immediately after)
+						this._startAt = TweenLite.to(this.target, 0, pt);
+						if (!immediate) {
+							this._startAt._init(); //ensures that the initial values are recorded
+							this._startAt._enabled(false); //no need to have the tween render on the next cycle. Disable it because we'll always manually control the renders of the _startAt tween.
+							if (this.vars.immediateRender) {
+								this._startAt = null;
+							}
+						} else if (this._time === 0) {
+							return;
+						}
+					}
+				}
+				this._ease = ease = (!ease) ? TweenLite.defaultEase : (ease instanceof Ease) ? ease : (typeof(ease) === "function") ? new Ease(ease, v.easeParams) : _easeMap[ease] || TweenLite.defaultEase;
+				if (v.easeParams instanceof Array && ease.config) {
+					this._ease = ease.config.apply(ease, v.easeParams);
+				}
+				this._easeType = this._ease._type;
+				this._easePower = this._ease._power;
+				this._firstPT = null;
+	
+				if (this._targets) {
+					i = this._targets.length;
+					while (--i > -1) {
+						if ( this._initProps( this._targets[i], (this._propLookup[i] = {}), this._siblings[i], (op ? op[i] : null)) ) {
+							initPlugins = true;
+						}
+					}
+				} else {
+					initPlugins = this._initProps(this.target, this._propLookup, this._siblings, op);
+				}
+	
+				if (initPlugins) {
+					TweenLite._onPluginEvent("_onInitAllProps", this); //reorders the array in order of priority. Uses a static TweenPlugin method in order to minimize file size in TweenLite
+				}
+				if (op) if (!this._firstPT) if (typeof(this.target) !== "function") { //if all tweening properties have been overwritten, kill the tween. If the target is a function, it's probably a delayedCall so let it live.
+					this._enabled(false, false);
+				}
+				if (v.runBackwards) {
+					pt = this._firstPT;
+					while (pt) {
+						pt.s += pt.c;
+						pt.c = -pt.c;
+						pt = pt._next;
+					}
+				}
+				this._onUpdate = v.onUpdate;
+				this._initted = true;
+			};
+	
+			p._initProps = function(target, propLookup, siblings, overwrittenProps) {
+				var p, i, initPlugins, plugin, pt, v;
+				if (target == null) {
+					return false;
+				}
+	
+				if (_lazyLookup[target._gsTweenID]) {
+					_lazyRender(); //if other tweens of the same target have recently initted but haven't rendered yet, we've got to force the render so that the starting values are correct (imagine populating a timeline with a bunch of sequential tweens and then jumping to the end)
+				}
+	
+				if (!this.vars.css) if (target.style) if (target !== window && target.nodeType) if (_plugins.css) if (this.vars.autoCSS !== false) { //it's so common to use TweenLite/Max to animate the css of DOM elements, we assume that if the target is a DOM element, that's what is intended (a convenience so that users don't have to wrap things in css:{}, although we still recommend it for a slight performance boost and better specificity). Note: we cannot check "nodeType" on the window inside an iframe.
+					_autoCSS(this.vars, target);
+				}
+				for (p in this.vars) {
+					v = this.vars[p];
+					if (_reservedProps[p]) {
+						if (v) if ((v instanceof Array) || (v.push && _isArray(v))) if (v.join("").indexOf("{self}") !== -1) {
+							this.vars[p] = v = this._swapSelfInParams(v, this);
+						}
+	
+					} else if (_plugins[p] && (plugin = new _plugins[p]())._onInitTween(target, this.vars[p], this)) {
+	
+						//t - target 		[object]
+						//p - property 		[string]
+						//s - start			[number]
+						//c - change		[number]
+						//f - isFunction	[boolean]
+						//n - name			[string]
+						//pg - isPlugin 	[boolean]
+						//pr - priority		[number]
+						this._firstPT = pt = {_next:this._firstPT, t:plugin, p:"setRatio", s:0, c:1, f:1, n:p, pg:1, pr:plugin._priority};
+						i = plugin._overwriteProps.length;
+						while (--i > -1) {
+							propLookup[plugin._overwriteProps[i]] = this._firstPT;
+						}
+						if (plugin._priority || plugin._onInitAllProps) {
+							initPlugins = true;
+						}
+						if (plugin._onDisable || plugin._onEnable) {
+							this._notifyPluginsOfEnabled = true;
+						}
+						if (pt._next) {
+							pt._next._prev = pt;
+						}
+	
+					} else {
+						propLookup[p] = _addPropTween.call(this, target, p, "get", v, p, 0, null, this.vars.stringFilter);
+					}
+				}
+	
+				if (overwrittenProps) if (this._kill(overwrittenProps, target)) { //another tween may have tried to overwrite properties of this tween before init() was called (like if two tweens start at the same time, the one created second will run first)
+					return this._initProps(target, propLookup, siblings, overwrittenProps);
+				}
+				if (this._overwrite > 1) if (this._firstPT) if (siblings.length > 1) if (_applyOverwrite(target, this, propLookup, this._overwrite, siblings)) {
+					this._kill(propLookup, target);
+					return this._initProps(target, propLookup, siblings, overwrittenProps);
+				}
+				if (this._firstPT) if ((this.vars.lazy !== false && this._duration) || (this.vars.lazy && !this._duration)) { //zero duration tweens don't lazy render by default; everything else does.
+					_lazyLookup[target._gsTweenID] = true;
+				}
+				return initPlugins;
+			};
+	
+			p.render = function(time, suppressEvents, force) {
+				var prevTime = this._time,
+					duration = this._duration,
+					prevRawPrevTime = this._rawPrevTime,
+					isComplete, callback, pt, rawPrevTime;
+				if (time >= duration - 0.0000001) { //to work around occasional floating point math artifacts.
+					this._totalTime = this._time = duration;
+					this.ratio = this._ease._calcEnd ? this._ease.getRatio(1) : 1;
+					if (!this._reversed ) {
+						isComplete = true;
+						callback = "onComplete";
+						force = (force || this._timeline.autoRemoveChildren); //otherwise, if the animation is unpaused/activated after it's already finished, it doesn't get removed from the parent timeline.
+					}
+					if (duration === 0) if (this._initted || !this.vars.lazy || force) { //zero-duration tweens are tricky because we must discern the momentum/direction of time in order to determine whether the starting values should be rendered or the ending values. If the "playhead" of its timeline goes past the zero-duration tween in the forward direction or lands directly on it, the end values should be rendered, but if the timeline's "playhead" moves past it in the backward direction (from a postitive time to a negative time), the starting values must be rendered.
+						if (this._startTime === this._timeline._duration) { //if a zero-duration tween is at the VERY end of a timeline and that timeline renders at its end, it will typically add a tiny bit of cushion to the render time to prevent rounding errors from getting in the way of tweens rendering their VERY end. If we then reverse() that timeline, the zero-duration tween will trigger its onReverseComplete even though technically the playhead didn't pass over it again. It's a very specific edge case we must accommodate.
+							time = 0;
+						}
+						if (prevRawPrevTime < 0 || (time <= 0 && time >= -0.0000001) || (prevRawPrevTime === _tinyNum && this.data !== "isPause")) if (prevRawPrevTime !== time) { //note: when this.data is "isPause", it's a callback added by addPause() on a timeline that we should not be triggered when LEAVING its exact start time. In other words, tl.addPause(1).play(1) shouldn't pause.
+							force = true;
+							if (prevRawPrevTime > _tinyNum) {
+								callback = "onReverseComplete";
+							}
+						}
+						this._rawPrevTime = rawPrevTime = (!suppressEvents || time || prevRawPrevTime === time) ? time : _tinyNum; //when the playhead arrives at EXACTLY time 0 (right on top) of a zero-duration tween, we need to discern if events are suppressed so that when the playhead moves again (next time), it'll trigger the callback. If events are NOT suppressed, obviously the callback would be triggered in this render. Basically, the callback should fire either when the playhead ARRIVES or LEAVES this exact spot, not both. Imagine doing a timeline.seek(0) and there's a callback that sits at 0. Since events are suppressed on that seek() by default, nothing will fire, but when the playhead moves off of that position, the callback should fire. This behavior is what people intuitively expect. We set the _rawPrevTime to be a precise tiny number to indicate this scenario rather than using another property/variable which would increase memory usage. This technique is less readable, but more efficient.
+					}
+	
+				} else if (time < 0.0000001) { //to work around occasional floating point math artifacts, round super small values to 0.
+					this._totalTime = this._time = 0;
+					this.ratio = this._ease._calcEnd ? this._ease.getRatio(0) : 0;
+					if (prevTime !== 0 || (duration === 0 && prevRawPrevTime > 0)) {
+						callback = "onReverseComplete";
+						isComplete = this._reversed;
+					}
+					if (time < 0) {
+						this._active = false;
+						if (duration === 0) if (this._initted || !this.vars.lazy || force) { //zero-duration tweens are tricky because we must discern the momentum/direction of time in order to determine whether the starting values should be rendered or the ending values. If the "playhead" of its timeline goes past the zero-duration tween in the forward direction or lands directly on it, the end values should be rendered, but if the timeline's "playhead" moves past it in the backward direction (from a postitive time to a negative time), the starting values must be rendered.
+							if (prevRawPrevTime >= 0 && !(prevRawPrevTime === _tinyNum && this.data === "isPause")) {
+								force = true;
+							}
+							this._rawPrevTime = rawPrevTime = (!suppressEvents || time || prevRawPrevTime === time) ? time : _tinyNum; //when the playhead arrives at EXACTLY time 0 (right on top) of a zero-duration tween, we need to discern if events are suppressed so that when the playhead moves again (next time), it'll trigger the callback. If events are NOT suppressed, obviously the callback would be triggered in this render. Basically, the callback should fire either when the playhead ARRIVES or LEAVES this exact spot, not both. Imagine doing a timeline.seek(0) and there's a callback that sits at 0. Since events are suppressed on that seek() by default, nothing will fire, but when the playhead moves off of that position, the callback should fire. This behavior is what people intuitively expect. We set the _rawPrevTime to be a precise tiny number to indicate this scenario rather than using another property/variable which would increase memory usage. This technique is less readable, but more efficient.
+						}
+					}
+					if (!this._initted) { //if we render the very beginning (time == 0) of a fromTo(), we must force the render (normal tweens wouldn't need to render at a time of 0 when the prevTime was also 0). This is also mandatory to make sure overwriting kicks in immediately.
+						force = true;
+					}
+				} else {
+					this._totalTime = this._time = time;
+	
+					if (this._easeType) {
+						var r = time / duration, type = this._easeType, pow = this._easePower;
+						if (type === 1 || (type === 3 && r >= 0.5)) {
+							r = 1 - r;
+						}
+						if (type === 3) {
+							r *= 2;
+						}
+						if (pow === 1) {
+							r *= r;
+						} else if (pow === 2) {
+							r *= r * r;
+						} else if (pow === 3) {
+							r *= r * r * r;
+						} else if (pow === 4) {
+							r *= r * r * r * r;
+						}
+	
+						if (type === 1) {
+							this.ratio = 1 - r;
+						} else if (type === 2) {
+							this.ratio = r;
+						} else if (time / duration < 0.5) {
+							this.ratio = r / 2;
+						} else {
+							this.ratio = 1 - (r / 2);
+						}
+	
+					} else {
+						this.ratio = this._ease.getRatio(time / duration);
+					}
+				}
+	
+				if (this._time === prevTime && !force) {
+					return;
+				} else if (!this._initted) {
+					this._init();
+					if (!this._initted || this._gc) { //immediateRender tweens typically won't initialize until the playhead advances (_time is greater than 0) in order to ensure that overwriting occurs properly. Also, if all of the tweening properties have been overwritten (which would cause _gc to be true, as set in _init()), we shouldn't continue otherwise an onStart callback could be called for example.
+						return;
+					} else if (!force && this._firstPT && ((this.vars.lazy !== false && this._duration) || (this.vars.lazy && !this._duration))) {
+						this._time = this._totalTime = prevTime;
+						this._rawPrevTime = prevRawPrevTime;
+						_lazyTweens.push(this);
+						this._lazy = [time, suppressEvents];
+						return;
+					}
+					//_ease is initially set to defaultEase, so now that init() has run, _ease is set properly and we need to recalculate the ratio. Overall this is faster than using conditional logic earlier in the method to avoid having to set ratio twice because we only init() once but renderTime() gets called VERY frequently.
+					if (this._time && !isComplete) {
+						this.ratio = this._ease.getRatio(this._time / duration);
+					} else if (isComplete && this._ease._calcEnd) {
+						this.ratio = this._ease.getRatio((this._time === 0) ? 0 : 1);
+					}
+				}
+				if (this._lazy !== false) { //in case a lazy render is pending, we should flush it because the new render is occurring now (imagine a lazy tween instantiating and then immediately the user calls tween.seek(tween.duration()), skipping to the end - the end render would be forced, and then if we didn't flush the lazy render, it'd fire AFTER the seek(), rendering it at the wrong time.
+					this._lazy = false;
+				}
+				if (!this._active) if (!this._paused && this._time !== prevTime && time >= 0) {
+					this._active = true;  //so that if the user renders a tween (as opposed to the timeline rendering it), the timeline is forced to re-render and align it with the proper time/frame on the next rendering cycle. Maybe the tween already finished but the user manually re-renders it as halfway done.
+				}
+				if (prevTime === 0) {
+					if (this._startAt) {
+						if (time >= 0) {
+							this._startAt.render(time, suppressEvents, force);
+						} else if (!callback) {
+							callback = "_dummyGS"; //if no callback is defined, use a dummy value just so that the condition at the end evaluates as true because _startAt should render AFTER the normal render loop when the time is negative. We could handle this in a more intuitive way, of course, but the render loop is the MOST important thing to optimize, so this technique allows us to avoid adding extra conditional logic in a high-frequency area.
+						}
+					}
+					if (this.vars.onStart) if (this._time !== 0 || duration === 0) if (!suppressEvents) {
+						this._callback("onStart");
+					}
+				}
+				pt = this._firstPT;
+				while (pt) {
+					if (pt.f) {
+						pt.t[pt.p](pt.c * this.ratio + pt.s);
+					} else {
+						pt.t[pt.p] = pt.c * this.ratio + pt.s;
+					}
+					pt = pt._next;
+				}
+	
+				if (this._onUpdate) {
+					if (time < 0) if (this._startAt && time !== -0.0001) { //if the tween is positioned at the VERY beginning (_startTime 0) of its parent timeline, it's illegal for the playhead to go back further, so we should not render the recorded startAt values.
+						this._startAt.render(time, suppressEvents, force); //note: for performance reasons, we tuck this conditional logic inside less traveled areas (most tweens don't have an onUpdate). We'd just have it at the end before the onComplete, but the values should be updated before any onUpdate is called, so we ALSO put it here and then if it's not called, we do so later near the onComplete.
+					}
+					if (!suppressEvents) if (this._time !== prevTime || isComplete || force) {
+						this._callback("onUpdate");
+					}
+				}
+				if (callback) if (!this._gc || force) { //check _gc because there's a chance that kill() could be called in an onUpdate
+					if (time < 0 && this._startAt && !this._onUpdate && time !== -0.0001) { //-0.0001 is a special value that we use when looping back to the beginning of a repeated TimelineMax, in which case we shouldn't render the _startAt values.
+						this._startAt.render(time, suppressEvents, force);
+					}
+					if (isComplete) {
+						if (this._timeline.autoRemoveChildren) {
+							this._enabled(false, false);
+						}
+						this._active = false;
+					}
+					if (!suppressEvents && this.vars[callback]) {
+						this._callback(callback);
+					}
+					if (duration === 0 && this._rawPrevTime === _tinyNum && rawPrevTime !== _tinyNum) { //the onComplete or onReverseComplete could trigger movement of the playhead and for zero-duration tweens (which must discern direction) that land directly back on their start time, we don't want to fire again on the next render. Think of several addPause()'s in a timeline that forces the playhead to a certain spot, but what if it's already paused and another tween is tweening the "time" of the timeline? Each time it moves [forward] past that spot, it would move back, and since suppressEvents is true, it'd reset _rawPrevTime to _tinyNum so that when it begins again, the callback would fire (so ultimately it could bounce back and forth during that tween). Again, this is a very uncommon scenario, but possible nonetheless.
+						this._rawPrevTime = 0;
+					}
+				}
+			};
+	
+			p._kill = function(vars, target, overwritingTween) {
+				if (vars === "all") {
+					vars = null;
+				}
+				if (vars == null) if (target == null || target === this.target) {
+					this._lazy = false;
+					return this._enabled(false, false);
+				}
+				target = (typeof(target) !== "string") ? (target || this._targets || this.target) : TweenLite.selector(target) || target;
+				var simultaneousOverwrite = (overwritingTween && this._time && overwritingTween._startTime === this._startTime && this._timeline === overwritingTween._timeline),
+					i, overwrittenProps, p, pt, propLookup, changed, killProps, record, killed;
+				if ((_isArray(target) || _isSelector(target)) && typeof(target[0]) !== "number") {
+					i = target.length;
+					while (--i > -1) {
+						if (this._kill(vars, target[i], overwritingTween)) {
+							changed = true;
+						}
+					}
+				} else {
+					if (this._targets) {
+						i = this._targets.length;
+						while (--i > -1) {
+							if (target === this._targets[i]) {
+								propLookup = this._propLookup[i] || {};
+								this._overwrittenProps = this._overwrittenProps || [];
+								overwrittenProps = this._overwrittenProps[i] = vars ? this._overwrittenProps[i] || {} : "all";
+								break;
+							}
+						}
+					} else if (target !== this.target) {
+						return false;
+					} else {
+						propLookup = this._propLookup;
+						overwrittenProps = this._overwrittenProps = vars ? this._overwrittenProps || {} : "all";
+					}
+	
+					if (propLookup) {
+						killProps = vars || propLookup;
+						record = (vars !== overwrittenProps && overwrittenProps !== "all" && vars !== propLookup && (typeof(vars) !== "object" || !vars._tempKill)); //_tempKill is a super-secret way to delete a particular tweening property but NOT have it remembered as an official overwritten property (like in BezierPlugin)
+						if (overwritingTween && (TweenLite.onOverwrite || this.vars.onOverwrite)) {
+							for (p in killProps) {
+								if (propLookup[p]) {
+									if (!killed) {
+										killed = [];
+									}
+									killed.push(p);
+								}
+							}
+							if ((killed || !vars) && !_onOverwrite(this, overwritingTween, target, killed)) { //if the onOverwrite returned false, that means the user wants to override the overwriting (cancel it).
+								return false;
+							}
+						}
+	
+						for (p in killProps) {
+							if ((pt = propLookup[p])) {
+								if (simultaneousOverwrite) { //if another tween overwrites this one and they both start at exactly the same time, yet this tween has already rendered once (for example, at 0.001) because it's first in the queue, we should revert the values to where they were at 0 so that the starting values aren't contaminated on the overwriting tween.
+									if (pt.f) {
+										pt.t[pt.p](pt.s);
+									} else {
+										pt.t[pt.p] = pt.s;
+									}
+									changed = true;
+								}
+								if (pt.pg && pt.t._kill(killProps)) {
+									changed = true; //some plugins need to be notified so they can perform cleanup tasks first
+								}
+								if (!pt.pg || pt.t._overwriteProps.length === 0) {
+									if (pt._prev) {
+										pt._prev._next = pt._next;
+									} else if (pt === this._firstPT) {
+										this._firstPT = pt._next;
+									}
+									if (pt._next) {
+										pt._next._prev = pt._prev;
+									}
+									pt._next = pt._prev = null;
+								}
+								delete propLookup[p];
+							}
+							if (record) {
+								overwrittenProps[p] = 1;
+							}
+						}
+						if (!this._firstPT && this._initted) { //if all tweening properties are killed, kill the tween. Without this line, if there's a tween with multiple targets and then you killTweensOf() each target individually, the tween would technically still remain active and fire its onComplete even though there aren't any more properties tweening.
+							this._enabled(false, false);
+						}
+					}
+				}
+				return changed;
+			};
+	
+			p.invalidate = function() {
+				if (this._notifyPluginsOfEnabled) {
+					TweenLite._onPluginEvent("_onDisable", this);
+				}
+				this._firstPT = this._overwrittenProps = this._startAt = this._onUpdate = null;
+				this._notifyPluginsOfEnabled = this._active = this._lazy = false;
+				this._propLookup = (this._targets) ? {} : [];
+				Animation.prototype.invalidate.call(this);
+				if (this.vars.immediateRender) {
+					this._time = -_tinyNum; //forces a render without having to set the render() "force" parameter to true because we want to allow lazying by default (using the "force" parameter always forces an immediate full render)
+					this.render(Math.min(0, -this._delay)); //in case delay is negative.
+				}
+				return this;
+			};
+	
+			p._enabled = function(enabled, ignoreTimeline) {
+				if (!_tickerActive) {
+					_ticker.wake();
+				}
+				if (enabled && this._gc) {
+					var targets = this._targets,
+						i;
+					if (targets) {
+						i = targets.length;
+						while (--i > -1) {
+							this._siblings[i] = _register(targets[i], this, true);
+						}
+					} else {
+						this._siblings = _register(this.target, this, true);
+					}
+				}
+				Animation.prototype._enabled.call(this, enabled, ignoreTimeline);
+				if (this._notifyPluginsOfEnabled) if (this._firstPT) {
+					return TweenLite._onPluginEvent((enabled ? "_onEnable" : "_onDisable"), this);
+				}
+				return false;
+			};
+	
+	
+	//----TweenLite static methods -----------------------------------------------------
+	
+			TweenLite.to = function(target, duration, vars) {
+				return new TweenLite(target, duration, vars);
+			};
+	
+			TweenLite.from = function(target, duration, vars) {
+				vars.runBackwards = true;
+				vars.immediateRender = (vars.immediateRender != false);
+				return new TweenLite(target, duration, vars);
+			};
+	
+			TweenLite.fromTo = function(target, duration, fromVars, toVars) {
+				toVars.startAt = fromVars;
+				toVars.immediateRender = (toVars.immediateRender != false && fromVars.immediateRender != false);
+				return new TweenLite(target, duration, toVars);
+			};
+	
+			TweenLite.delayedCall = function(delay, callback, params, scope, useFrames) {
+				return new TweenLite(callback, 0, {delay:delay, onComplete:callback, onCompleteParams:params, callbackScope:scope, onReverseComplete:callback, onReverseCompleteParams:params, immediateRender:false, lazy:false, useFrames:useFrames, overwrite:0});
+			};
+	
+			TweenLite.set = function(target, vars) {
+				return new TweenLite(target, 0, vars);
+			};
+	
+			TweenLite.getTweensOf = function(target, onlyActive) {
+				if (target == null) { return []; }
+				target = (typeof(target) !== "string") ? target : TweenLite.selector(target) || target;
+				var i, a, j, t;
+				if ((_isArray(target) || _isSelector(target)) && typeof(target[0]) !== "number") {
+					i = target.length;
+					a = [];
+					while (--i > -1) {
+						a = a.concat(TweenLite.getTweensOf(target[i], onlyActive));
+					}
+					i = a.length;
+					//now get rid of any duplicates (tweens of arrays of objects could cause duplicates)
+					while (--i > -1) {
+						t = a[i];
+						j = i;
+						while (--j > -1) {
+							if (t === a[j]) {
+								a.splice(i, 1);
+							}
+						}
+					}
+				} else {
+					a = _register(target).concat();
+					i = a.length;
+					while (--i > -1) {
+						if (a[i]._gc || (onlyActive && !a[i].isActive())) {
+							a.splice(i, 1);
+						}
+					}
+				}
+				return a;
+			};
+	
+			TweenLite.killTweensOf = TweenLite.killDelayedCallsTo = function(target, onlyActive, vars) {
+				if (typeof(onlyActive) === "object") {
+					vars = onlyActive; //for backwards compatibility (before "onlyActive" parameter was inserted)
+					onlyActive = false;
+				}
+				var a = TweenLite.getTweensOf(target, onlyActive),
+					i = a.length;
+				while (--i > -1) {
+					a[i]._kill(vars, target);
+				}
+			};
+	
+	
+	
+	/*
+	 * ----------------------------------------------------------------
+	 * TweenPlugin   (could easily be split out as a separate file/class, but included for ease of use (so that people don't need to include another script call before loading plugins which is easy to forget)
+	 * ----------------------------------------------------------------
+	 */
+			var TweenPlugin = _class("plugins.TweenPlugin", function(props, priority) {
+						this._overwriteProps = (props || "").split(",");
+						this._propName = this._overwriteProps[0];
+						this._priority = priority || 0;
+						this._super = TweenPlugin.prototype;
+					}, true);
+	
+			p = TweenPlugin.prototype;
+			TweenPlugin.version = "1.18.0";
+			TweenPlugin.API = 2;
+			p._firstPT = null;
+			p._addTween = _addPropTween;
+			p.setRatio = _setRatio;
+	
+			p._kill = function(lookup) {
+				var a = this._overwriteProps,
+					pt = this._firstPT,
+					i;
+				if (lookup[this._propName] != null) {
+					this._overwriteProps = [];
+				} else {
+					i = a.length;
+					while (--i > -1) {
+						if (lookup[a[i]] != null) {
+							a.splice(i, 1);
+						}
+					}
+				}
+				while (pt) {
+					if (lookup[pt.n] != null) {
+						if (pt._next) {
+							pt._next._prev = pt._prev;
+						}
+						if (pt._prev) {
+							pt._prev._next = pt._next;
+							pt._prev = null;
+						} else if (this._firstPT === pt) {
+							this._firstPT = pt._next;
+						}
+					}
+					pt = pt._next;
+				}
+				return false;
+			};
+	
+			p._roundProps = function(lookup, value) {
+				var pt = this._firstPT;
+				while (pt) {
+					if (lookup[this._propName] || (pt.n != null && lookup[ pt.n.split(this._propName + "_").join("") ])) { //some properties that are very plugin-specific add a prefix named after the _propName plus an underscore, so we need to ignore that extra stuff here.
+						pt.r = value;
+					}
+					pt = pt._next;
+				}
+			};
+	
+			TweenLite._onPluginEvent = function(type, tween) {
+				var pt = tween._firstPT,
+					changed, pt2, first, last, next;
+				if (type === "_onInitAllProps") {
+					//sorts the PropTween linked list in order of priority because some plugins need to render earlier/later than others, like MotionBlurPlugin applies its effects after all x/y/alpha tweens have rendered on each frame.
+					while (pt) {
+						next = pt._next;
+						pt2 = first;
+						while (pt2 && pt2.pr > pt.pr) {
+							pt2 = pt2._next;
+						}
+						if ((pt._prev = pt2 ? pt2._prev : last)) {
+							pt._prev._next = pt;
+						} else {
+							first = pt;
+						}
+						if ((pt._next = pt2)) {
+							pt2._prev = pt;
+						} else {
+							last = pt;
+						}
+						pt = next;
+					}
+					pt = tween._firstPT = first;
+				}
+				while (pt) {
+					if (pt.pg) if (typeof(pt.t[type]) === "function") if (pt.t[type]()) {
+						changed = true;
+					}
+					pt = pt._next;
+				}
+				return changed;
+			};
+	
+			TweenPlugin.activate = function(plugins) {
+				var i = plugins.length;
+				while (--i > -1) {
+					if (plugins[i].API === TweenPlugin.API) {
+						_plugins[(new plugins[i]())._propName] = plugins[i];
+					}
+				}
+				return true;
+			};
+	
+			//provides a more concise way to define plugins that have no dependencies besides TweenPlugin and TweenLite, wrapping common boilerplate stuff into one function (added in 1.9.0). You don't NEED to use this to define a plugin - the old way still works and can be useful in certain (rare) situations.
+			_gsDefine.plugin = function(config) {
+				if (!config || !config.propName || !config.init || !config.API) { throw "illegal plugin definition."; }
+				var propName = config.propName,
+					priority = config.priority || 0,
+					overwriteProps = config.overwriteProps,
+					map = {init:"_onInitTween", set:"setRatio", kill:"_kill", round:"_roundProps", initAll:"_onInitAllProps"},
+					Plugin = _class("plugins." + propName.charAt(0).toUpperCase() + propName.substr(1) + "Plugin",
+						function() {
+							TweenPlugin.call(this, propName, priority);
+							this._overwriteProps = overwriteProps || [];
+						}, (config.global === true)),
+					p = Plugin.prototype = new TweenPlugin(propName),
+					prop;
+				p.constructor = Plugin;
+				Plugin.API = config.API;
+				for (prop in map) {
+					if (typeof(config[prop]) === "function") {
+						p[map[prop]] = config[prop];
+					}
+				}
+				Plugin.version = config.version;
+				TweenPlugin.activate([Plugin]);
+				return Plugin;
+			};
+	
+	
+			//now run through all the dependencies discovered and if any are missing, log that to the console as a warning. This is why it's best to have TweenLite load last - it can check all the dependencies for you.
+			a = window._gsQueue;
+			if (a) {
+				for (i = 0; i < a.length; i++) {
+					a[i]();
+				}
+				for (p in _defLookup) {
+					if (!_defLookup[p].func) {
+						window.console.log("GSAP encountered missing dependency: com.greensock." + p);
+					}
+				}
+			}
+	
+			_tickerActive = false; //ensures that the first official animation forces a ticker.tick() to update the time when it is instantiated
+	
+	})((typeof(module) !== "undefined" && module.exports && typeof(global) !== "undefined") ? global : this || window, "TweenLite");
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }
 /******/ ]);
