@@ -7,18 +7,10 @@ module.exports = {
         return Math.min(window.innerWidth / config.baseWidth, window.innerHeight / config.baseHeight);
     },
 
-    _buildObjectTextures: function(objectId) {
-        var images = this.props.data.objects[objectId].images;
-        return images.map(function(image) {
-            var imageAsset = this.props.imageLoader.getResult(image);
-            return new PIXI.Texture(new PIXI.BaseTexture(imageAsset));
+    _buildObject: function(objectData) {
+        var textures = objectData.images.map(function(x) {
+            return this.props.textureCache[x];
         }.bind(this));
-    },
-
-    _buildObject: function(objectId) {
-        var textures = this._buildObjectTextures(objectId);
-        var object;
-
         if (textures.length > 1) {
             object = new PIXI.MovieClip(textures);
         }
@@ -26,7 +18,7 @@ module.exports = {
             object = new PIXI.Sprite(textures[0]);
         }
 
-        var position = this.props.data.objects[objectId].position || [0, 0];
+        var position = objectData.position || [0, 0];
         object.x = position[0];
         object.y = position[1];
 
@@ -40,14 +32,14 @@ module.exports = {
     },
 
     componentDidMount: function() {
-        // Creates the hit areas
-        this.areas = [];
-        for (var areaId in this.props.data.hitAreas) {
-            this.areas.push({
-                id: areaId,
-                polygon: new PIXI.Polygon(this.props.data.hitAreas[areaId])
-            });
-        }
+        // // Creates the hit areas
+        // this.areas = [];
+        // for (var areaId in this.props.data.hitAreas) {
+        //     this.areas.push({
+        //         id: areaId,
+        //         polygon: new PIXI.Polygon(this.props.data.hitAreas[areaId])
+        //     });
+        // }
 
         // Create a renderer instance
         this.renderer = new PIXI.CanvasRenderer(config.baseWidth, config.baseHeight, { // or autoDetectRenderer
@@ -59,8 +51,19 @@ module.exports = {
         this.stage.interactive = true;
         this.stage.on("mousedown", this.onStageClick);
 
-        // Builds the scene
-        this.buildScene();
+        // Builds the objects from the scene
+        this.objects = {};
+        for (var i=0; i < this.props.data.objects.length; i++) {
+            var o = this.props.data.objects[i];
+            var newObject = this._buildObject(o);
+            this.stage.addChild(newObject);
+            this.objects[o.id] = newObject;
+        }
+
+        // Additional initialization for the scene (fire tweens, etc.), if any
+        if (this.initScene) {
+            this.initScene();
+        }
 
         // Starts the animation
         this.animationTick();
@@ -72,12 +75,12 @@ module.exports = {
     onStageClick: function(e) {
         var clickPos = e.data.getLocalPosition(this.stage);
 
-        for (var i=0; i < this.areas.length; i++) {
-            if (this.areas[i].polygon.contains(clickPos.x, clickPos.y)) {
-                window.alert(this.areas[i].id);
-                break;
-            }
-        }
+        // for (var i=0; i < this.areas.length; i++) {
+        //     if (this.areas[i].polygon.contains(clickPos.x, clickPos.y)) {
+        //         window.alert(this.areas[i].id);
+        //         break;
+        //     }
+        // }
     },
 
     animationTick: function(timestamp) {
