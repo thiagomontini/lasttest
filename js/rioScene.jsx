@@ -66,6 +66,35 @@ Plane.prototype = {
 };
 
 
+var Glider = function(gliderSprite) {
+    this.sprite = gliderSprite;
+    this.sprite.anchor.x = 1.0;
+    this.sprite.anchor.y = 0.0;
+    this.animateGlider();
+};
+
+Glider.prototype = {
+    animateGlider: function() {
+        this.sprite.x = 0;
+        this.meanY = config.rio.glider.YMin + Math.random() * (config.rio.glider.YMax - config.rio.glider.YMin);
+        this.sprite.y = this.meanY;
+        this.tween = TweenLite.to(this.sprite, config.sceneWidth / config.rio.glider.speed, {
+            x: config.sceneWidth + this.sprite.width,
+            ease: "Linear.easeNone",
+            onUpdate: function() {
+                this.sprite.y = this.meanY + config.rio.glider.amplitude * Math.sin(config.rio.glider.frequency * this.sprite.x);
+                this.sprite.rotation = Math.atan(config.rio.glider.amplitude * config.rio.glider.frequency * Math.cos(config.rio.glider.frequency * this.sprite.x));
+            }.bind(this),
+            onComplete: this.animateGlider.bind(this)
+        });
+    },
+
+    dispose: function() {
+        this.tween.kill();
+    }
+};
+
+
 var RioScene = React.createClass({
     mixins: [SceneMixin],
 
@@ -79,6 +108,9 @@ var RioScene = React.createClass({
 
         // Animates the plane
         this.disposables.push(new Plane(this.objects.plane));
+
+        // Animates the glider
+        this.disposables.push(new Glider(this.objects.glider));
     },
 
     disposeScene: function() {
