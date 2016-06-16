@@ -49442,12 +49442,6 @@
 	        },
 	
 	        {
-	            "id": "stadium",
-	            "images": ["img/rio/stadium.png"],
-	            "position": [1142, 852]
-	        },
-	
-	        {
 	            "id": "cableCar01",
 	            "images": ["img/rio/cable-car.png"],
 	            "position": [954, 373]
@@ -49457,6 +49451,12 @@
 	            "id": "cableCar02",
 	            "images": ["img/rio/cable-car.png"],
 	            "position": [1288, 664]
+	        },
+	
+	        {
+	            "id": "stadium",
+	            "images": ["img/rio/stadium.png"],
+	            "position": [1142, 852]
 	        },
 	
 	        {
@@ -49915,12 +49915,12 @@
 	                [851.12, 258.50],
 	                [1080.75, 482.62],
 	                [1307.62, 673.75],
-	                [1513.88, 826.38]
+	                [1404.00, 747.00]
 	            ],
 	            "lengths": [
-	                0.3670842118,
-	                0.3393712489,
-	                0.2935445392
+	                0.4344469626,
+	                0.4016484598,
+	                0.1639045776
 	            ]
 	        }
 	    }

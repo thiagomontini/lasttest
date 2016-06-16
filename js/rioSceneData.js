@@ -18,12 +18,6 @@ module.exports = {
         },
 
         {
-            "id": "stadium",
-            "images": ["img/rio/stadium.png"],
-            "position": [1142, 852]
-        },
-
-        {
             "id": "cableCar01",
             "images": ["img/rio/cable-car.png"],
             "position": [954, 373]
@@ -33,6 +27,12 @@ module.exports = {
             "id": "cableCar02",
             "images": ["img/rio/cable-car.png"],
             "position": [1288, 664]
+        },
+
+        {
+            "id": "stadium",
+            "images": ["img/rio/stadium.png"],
+            "position": [1142, 852]
         },
 
         {
