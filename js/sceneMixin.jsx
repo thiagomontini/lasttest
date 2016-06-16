@@ -32,15 +32,6 @@ module.exports = {
     },
 
     componentDidMount: function() {
-        // // Creates the hit areas
-        // this.areas = [];
-        // for (var areaId in this.props.data.hitAreas) {
-        //     this.areas.push({
-        //         id: areaId,
-        //         polygon: new PIXI.Polygon(this.props.data.hitAreas[areaId])
-        //     });
-        // }
-
         // Create a renderer instance
         this.renderer = new PIXI.CanvasRenderer(config.baseWidth, config.baseHeight, { // or autoDetectRenderer
             view: this.refs.canvas
@@ -60,10 +51,19 @@ module.exports = {
             this.objects[o.id] = newObject;
         }
 
-        // Additional initialization for the scene (fire tweens, etc.), if any
+        // Additional initialization for the scene (start tweens, etc.), if any
         if (this.initScene) {
             this.initScene();
         }
+
+        // Builds the hit areas
+        this.hitAreas = this.props.data.hitAreas.map(function(areaObject) {
+            return {
+                "description": areaObject.description,
+                "object": this.objects[areaObject.object],
+                "polygon": new PIXI.Polygon(areaObject.polygon)
+            }
+        }.bind(this));
 
         // Starts the animation
         this.animationTick();
@@ -75,12 +75,13 @@ module.exports = {
     onStageClick: function(e) {
         var clickPos = e.data.getLocalPosition(this.stage);
 
-        // for (var i=0; i < this.areas.length; i++) {
-        //     if (this.areas[i].polygon.contains(clickPos.x, clickPos.y)) {
-        //         window.alert(this.areas[i].id);
-        //         break;
-        //     }
-        // }
+        for (var i=0; i < this.hitAreas.length; i++) {
+            var area = this.hitAreas[i];
+            if (area.polygon.contains(clickPos.x, clickPos.y)) {
+                window.alert(area.description);
+                break;
+            }
+        }
     },
 
     animationTick: function(timestamp) {
