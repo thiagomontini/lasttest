@@ -4,7 +4,7 @@ var config = require("./config.js");
 
 module.exports = {
     _computeScale: function() {
-        return Math.min(window.innerWidth / config.baseWidth, window.innerHeight / config.baseHeight);
+        return Math.min(window.innerWidth / config.sceneWidth, window.innerHeight / config.sceneHeight);
     },
 
     _buildObject: function(objectData) {
@@ -33,7 +33,7 @@ module.exports = {
 
     componentDidMount: function() {
         // Create a renderer instance
-        this.renderer = new PIXI.CanvasRenderer(config.baseWidth, config.baseHeight, { // or autoDetectRenderer
+        this.renderer = new PIXI.CanvasRenderer(config.sceneWidth, config.sceneHeight, { // or autoDetectRenderer
             view: this.refs.canvas
         });
 
