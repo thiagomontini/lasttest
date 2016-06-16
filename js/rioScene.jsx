@@ -2,6 +2,7 @@ var React = require("react");
 var config = require("./config.js");
 var SceneMixin = require("./sceneMixin.jsx");
 var TweenLite = require("./libs/gsap/TweenLite.js");
+var TimelineMax = require("./libs/gsap/TimelineMax.js");
 
 
 var Cloud = function(cloudSprite) {
@@ -95,6 +96,36 @@ Glider.prototype = {
 };
 
 
+var CableCar = function(cableCarSprite, initialPostion) {
+    var points = config.rio.cableCar.points;
+    var lengths = config.rio.cableCar.lengths;
+
+    this.sprite = cableCarSprite;
+    this.sprite.anchor.x = 0.5;
+    this.sprite.anchor.y = 0.0;
+
+    this.timeline = new TimelineMax();
+    this.timeline.set(this.sprite, {x: points[0][0], y: points[0][1]});
+    for (var i=0; i < points.length - 1; i++) {
+        this.timeline.to(this.sprite, lengths[i] * config.rio.cableCar.tripDuration, {
+            x: points[i+1][0],
+            y: points[i+1][1],
+            ease: "Linear.easeNone"
+        });
+    }
+    this.timeline.repeat(-1);
+    this.timeline.yoyo(true);
+    this.timeline.progress(initialPostion);
+    this.timeline.play();
+}
+
+CableCar.prototype = {
+    dispose: function() {
+        this.timeline.kill();
+    }
+};
+
+
 var RioScene = React.createClass({
     mixins: [SceneMixin],
 
@@ -111,6 +142,10 @@ var RioScene = React.createClass({
 
         // Animates the glider
         this.disposables.push(new Glider(this.objects.glider));
+
+        // Animates the cable car
+        this.disposables.push(new CableCar(this.objects.cableCar01, 0.5 * Math.random()));
+        this.disposables.push(new CableCar(this.objects.cableCar02, 0.5 * Math.random() + 0.5));
     },
 
     disposeScene: function() {

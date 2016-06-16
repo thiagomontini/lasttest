@@ -24,13 +24,13 @@ module.exports = {
         },
 
         {
-            "id": "cable-car01",
+            "id": "cableCar01",
             "images": ["img/rio/cable-car.png"],
             "position": [954, 373]
         },
 
         {
-            "id": "cable-car02",
+            "id": "cableCar02",
             "images": ["img/rio/cable-car.png"],
             "position": [1288, 664]
         },
