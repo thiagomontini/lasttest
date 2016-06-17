@@ -1,0 +1,4 @@
+AuthUserFile /home/zanel/www/clients/wmlabs/spintheglobe/.htpasswd
+AuthType Basic
+AuthName "Please enter your login and password"
+require valid-user
