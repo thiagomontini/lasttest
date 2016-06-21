@@ -3,7 +3,7 @@ module.exports = {
         {
             "id": "background",
             "images": ["img/rio/background.jpg"],
-            "positions": [0, 0]
+            "position": [0, 0]
         },
         {
             "id": "plane",
@@ -90,9 +90,75 @@ module.exports = {
         },
 
         {
-            "id": "redeemer-people",
-            "images": ["img/rio/redeemer-people.png"],
-            "position": [1469, 1131]
+            "id": "redeemer_people01",
+            "images": ["img/rio/redeemer_people_1.png"],
+            "position": [1469, 1164]
+        },
+
+        {
+            "id": "redeemer_people02",
+            "images": ["img/rio/redeemer_people_2.png"],
+            "position": [1518, 1138]
+        },
+
+        {
+            "id": "redeemer_people03",
+            "images": ["img/rio/redeemer_people_3.png"],
+            "position": [1538, 1177]
+        },
+
+        {
+            "id": "redeemer_people04",
+            "images": ["img/rio/redeemer_people_4.png"],
+            "position": [1545, 1135]
+        },
+
+        {
+            "id": "redeemer_people05",
+            "images": ["img/rio/redeemer_people_5.png"],
+            "position": [1594, 1191]
+        },
+
+        {
+            "id": "redeemer_people06",
+            "images": ["img/rio/redeemer_people_6.png"],
+            "position": [1596, 1131]
+        },
+
+        {
+            "id": "redeemer_people07",
+            "images": ["img/rio/redeemer_people_7.png"],
+            "position": [1597, 1245]
+        },
+
+        {
+            "id": "redeemer_people08",
+            "images": ["img/rio/redeemer_people_8.png"],
+            "position": [1646, 1266]
+        },
+
+        {
+            "id": "redeemer_people09",
+            "images": ["img/rio/redeemer_people_9.png"],
+            "position": [1653, 1309]
+        },
+
+        {
+            "id": "redeemer_people10",
+            "images": ["img/rio/redeemer_people_10.png"],
+            "position": [1746, 1329]
+        },
+
+        {
+            "id": "redeemer_people11",
+            "images": ["img/rio/redeemer_people_11.png"],
+            "position": [1908, 1240]
+        },
+
+        {
+            "id": "redeemer_people12",
+            "images": ["img/rio/redeemer_people_11.png"],
+            "position": [1927, 1262]
         }
     ],
 

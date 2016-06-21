@@ -126,6 +126,34 @@ CableCar.prototype = {
 };
 
 
+var Person = function(personSprite, motionRadius) {
+    this.sprite = personSprite;
+    this.centerX = this.sprite.x;
+    this.centerY = this.sprite.y;
+    this.radius = motionRadius || 40;
+    this.animationLoop();
+}
+
+Person.prototype = {
+    animationLoop: function() {
+        var angle = 2*Math.PI*Math.random();
+        var distance = this.radius*Math.random();
+
+        this.tween = TweenLite.to(this.sprite, 1.5 + Math.random(), {
+            x: this.centerX + distance*Math.cos(angle),
+            y: this.centerY + distance*Math.sin(angle) / 2,
+            ease: "Linear.easeNone",
+            delay: 0.4 + 0.4 * Math.random(),
+            onComplete: this.animationLoop.bind(this)
+        });
+    },
+
+    dispose: function() {
+        this.tween.kill();
+    }
+}
+
+
 var RioScene = React.createClass({
     mixins: [SceneMixin],
 
@@ -146,6 +174,14 @@ var RioScene = React.createClass({
         // Animates the cable car
         this.disposables.push(new CableCar(this.objects.cableCar01, 0.5 * Math.random()));
         this.disposables.push(new CableCar(this.objects.cableCar02, 0.5 * Math.random() + 0.5));
+
+        // Animates the people in the Redeemer statue
+        this.disposables.push(new Person(this.objects.redeemer_people03));
+        this.disposables.push(new Person(this.objects.redeemer_people05));
+        this.disposables.push(new Person(this.objects.redeemer_people07));
+        this.disposables.push(new Person(this.objects.redeemer_people08));
+        this.disposables.push(new Person(this.objects.redeemer_people09));
+        this.disposables.push(new Person(this.objects.redeemer_people10));
     },
 
     disposeScene: function() {
