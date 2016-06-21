@@ -41,6 +41,7 @@ module.exports = {
         this.stage = new PIXI.Container();
         this.stage.interactive = true;
         this.stage.on("mousedown", this.onStageClick);
+        this.stage.on("touchstart", this.onStageClick);
 
         // Builds the objects from the scene
         this.objects = {};

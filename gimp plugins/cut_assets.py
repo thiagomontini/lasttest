@@ -52,7 +52,7 @@ def extract_component(pixel_array, width, height, visited, px, py):
     }
 
 
-def cut_assets(img, drw, save_path, base_name):
+def cut_assets(img, drw, save_path, base_name, generate_json):
     base_name = base_name or img.active_layer.name
     file_name_base = base_name + '_{}.png'
     full_path_base = os.path.join(save_path, file_name_base)
@@ -107,10 +107,11 @@ def cut_assets(img, drw, save_path, base_name):
             'global_coords': [component['min_x'] + offset[0], component['min_y'] + offset[1]]
         })
 
-    json_file_name = base_name + '.json'
-    json_full_path = os.path.join(save_path, json_file_name)
-    with open(json_full_path, 'w') as output_file:
-        output_file.write(json.dumps(component_data, sort_keys=True, indent=4, separators=(',', ': ')))
+    if generate_json:
+        json_file_name = base_name + '.json'
+        json_full_path = os.path.join(save_path, json_file_name)
+        with open(json_full_path, 'w') as output_file:
+            output_file.write(json.dumps(component_data, sort_keys=True, indent=4, separators=(',', ': ')))
 
 register(
     'python_fu_cut_assets',
@@ -119,13 +120,14 @@ register(
     'Carlos Zanella',
     'Carlos Zanella',
     'june 2016',
-    'Layer _components...',
+    'Layer c_omponents...',
     'RGBA',
     [
         (PF_IMAGE, 'image', 'Input image', None),
         (PF_DRAWABLE, 'drawable', 'Input drawable', None),
         (PF_DIRNAME, 'save-path', 'Path for file exports', os.getcwd()),
         (PF_STRING, 'base-name', 'Base name for assets (leave blank to use layer name)', ''),
+        (PF_BOOL, 'generate-json', 'Generate a JSON file with the components\' coordinates', True)
     ],
     [],
     cut_assets,
