@@ -6,12 +6,9 @@ import os
 import json
 from collections import defaultdict
 
-def extract_component(pixel_region, visited, px, py):
-    width = pixel_region.w
-    height = pixel_region.h
-    pixel_array = pixel_region[0:width,0:height]
-
+def extract_component(pixel_array, width, height, visited, px, py):
     queue = Queue()
+    visited[px,py] = True
     queue.put((px, py))
 
     min_x = px
@@ -23,27 +20,27 @@ def extract_component(pixel_region, visited, px, py):
 
     while not queue.empty():
         x, y = queue.get()
-        if visited[x,y]:
-            continue
-
-        visited[x,y] = True
         pixel_pos = 4*(x + y*width)
-        pixels[x,y] = pixel_array[pixel_pos:pixel_pos + 4]
+        pixels[x,y] = map(lambda x:x, pixel_array[pixel_pos:pixel_pos + 4])
         min_x = min(min_x, x)
         min_y = min(min_y, y)
         max_x = max(max_x, x)
         max_y = max(max_y, y)
 
         if x > 0 and pixel_array[pixel_pos - 4 + 3] != '\x00' and not visited[x-1,y]:
+            visited[x-1,y] = True
             queue.put((x-1,y))
 
-        if x < pixel_region.w-1 and pixel_array[pixel_pos + 4 + 3] != '\x00' and not visited[x+1,y]:
+        if x < width-1 and pixel_array[pixel_pos + 4 + 3] != '\x00' and not visited[x+1,y]:
+            visited[x+1,y] = True
             queue.put((x+1,y))
 
         if y > 0 and pixel_array[pixel_pos - 4*width + 3] != '\x00' and not visited[x,y-1]:
+            visited[x,y-1] = True
             queue.put((x,y-1))
 
-        if y < pixel_region.h-1 and pixel_array[pixel_pos + 4*width + 3] != '\x00' and not visited[x,y+1]:
+        if y < height-1 and pixel_array[pixel_pos + 4*width + 3] != '\x00' and not visited[x,y+1]:
+            visited[x,y+1] = True
             queue.put((x,y+1))
 
     return {
@@ -63,13 +60,18 @@ def cut_assets(img, drw, save_path, base_name):
     full_path_base = os.path.join(save_path, file_name_base)
     layer = img.active_layer
     pixel_region = layer.get_pixel_rgn(0, 0, layer.width, layer.height)
+    width = pixel_region.w
+    height = pixel_region.h
+    pixel_array = pixel_region[0:width,0:height]
     components = []
     visited = defaultdict(bool)
 
     for x in xrange(0, layer.width):
         for y in xrange(0, layer.height):
-            if pixel_region[x,y][3] != '\x00' and not visited[x,y]:
-                components.append(extract_component(pixel_region, visited, x, y))
+            if pixel_array[4*(x + y*width) + 3] != '\x00' and not visited[x,y]:
+                components.append(extract_component(pixel_array, width, height, visited, x, y))
+
+    pdb.gimp_message("Components found in {} seconds".format(time() - start_time))
 
     component_data = []
     for index, component in enumerate(components):
@@ -81,11 +83,18 @@ def cut_assets(img, drw, save_path, base_name):
         temp_layer = gimp.Layer(temp_image, 'Background', temp_image.width, temp_image.height,
             RGBA_IMAGE, 100, NORMAL_MODE)
 
-        pixel_region = temp_layer.get_pixel_rgn(0, 0, temp_layer.width, temp_layer.height)
+        pixel_array = 4*temp_layer.width*temp_layer.height*['\x00']
         for coords, pixel in component['pixels'].iteritems():
             x, y = coords
-            pixel_region[x - component['min_x'], y - component['min_y']] = pixel
+            x -= component['min_x']
+            y -= component['min_y']
+            pixel_pos = 4*(x + y*temp_layer.width)
+            size_before = len(pixel_array)
+            pixel_array[pixel_pos:pixel_pos + 4] = pixel
+            size_after = len(pixel_array)
 
+        pixel_region = temp_layer.get_pixel_rgn(0, 0, temp_layer.width, temp_layer.height)
+        pixel_region[0:temp_layer.width, 0:temp_layer.height] = ''.join(pixel_array)
         temp_layer.update(0, 0, temp_layer.width, temp_layer.height)
 
         full_path = full_path_base.format(index+1)
