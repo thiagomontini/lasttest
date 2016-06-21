@@ -98,6 +98,7 @@ def cut_assets(img, drw, save_path, base_name, generate_json):
         pdb.file_png_save_defaults(temp_image, temp_layer, full_path, file_name)
 
         pdb.gimp_image_delete(temp_image)
+        pdb.gimp_layer_delete(temp_layer)
 
         offset = layer.offsets
         component_data.append({
