@@ -53,8 +53,6 @@ def extract_component(pixel_array, width, height, visited, px, py):
 
 
 def cut_assets(img, drw, save_path, base_name):
-    from time import time
-    start_time = time()
     base_name = base_name or img.active_layer.name
     file_name_base = base_name + '_{}.png'
     full_path_base = os.path.join(save_path, file_name_base)
@@ -70,8 +68,6 @@ def cut_assets(img, drw, save_path, base_name):
         for y in xrange(0, layer.height):
             if pixel_array[4*(x + y*width) + 3] != '\x00' and not visited[x,y]:
                 components.append(extract_component(pixel_array, width, height, visited, x, y))
-
-    pdb.gimp_message("Components found in {} seconds".format(time() - start_time))
 
     component_data = []
     for index, component in enumerate(components):
@@ -114,9 +110,7 @@ def cut_assets(img, drw, save_path, base_name):
     json_file_name = base_name + '.json'
     json_full_path = os.path.join(save_path, json_file_name)
     with open(json_full_path, 'w') as output_file:
-        output_file.write(json.dumps(component_data))
-
-    pdb.gimp_message("Total time: {}".format(time() - start_time))
+        output_file.write(json.dumps(component_data, sort_keys=True, indent=4, separators=(',', ': ')))
 
 register(
     'python_fu_cut_assets',
