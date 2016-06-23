@@ -34,6 +34,10 @@ var InputSuggest = React.createClass({
             text: text,
             suggestionList: suggestionList
         });
+
+        if (this.props.onChange) {
+            this.props.onChange(this.props.suggestionDict[this.state.text]);
+        }
     },
 
     getTextFromField: function() {

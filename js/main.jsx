@@ -5,10 +5,7 @@ var sceneData = require("./scenes/sceneData.js");
 var RioScene = require("./scenes/rioScene.jsx");
 var createjs = require("./libs/createjs/createjs.js");
 var Preloader = require("./views/preloader.jsx");
-var InputSuggest = require("./utils/inputSuggest.jsx");
-var airportData = require("./data/airports.js");
-var cultureData = require("./data/cultures.js");
-var currencyData = require("./data/currencies.js");
+var FlightsForm = require("./views/flightsForm.jsx");
 
 
 var App = React.createClass({
@@ -73,7 +70,7 @@ var App = React.createClass({
     render: function() {
         var loadingProgress = this.state.loading ? <Preloader progress={this.state.progress} /> : null;
 
-        var homeForm = null;
+        var homeView = null;
         if (!this.state.loading && !this.state.scene) {
             var sceneLinks = [];
             for (var sceneKey in sceneData) {
@@ -83,17 +80,15 @@ var App = React.createClass({
                     </li>
                 );
             }
-            homeForm = (
-                <div>
+            homeView = (
+                <span>
                     Choose a scene:
                     <ul>
                         {sceneLinks}
                     </ul>
-                    <br/>
-                    Airport: <InputSuggest suggestionDict={airportData} /><br/><br/>
-                    Culture: <InputSuggest suggestionDict={cultureData} /><br/><br/>
-                    Currency: <InputSuggest suggestionDict={currencyData} /><br/><br/>
-                </div>
+                    <hr/>
+                    <FlightsForm />
+                </span>
             );
         }
 
@@ -111,7 +106,7 @@ var App = React.createClass({
         return (
             <div>
                 {loadingProgress}
-                {homeForm}
+                {homeView}
                 {scene}
             </div>
         );

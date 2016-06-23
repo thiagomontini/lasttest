@@ -10,7 +10,6 @@
 html, body {
     height: 100%;
     width: 100%;
-    overflow: hidden;
     position: relative;
     font-family: sans-serif;
 }
@@ -23,5 +22,32 @@ html, body {
     }
 }
 
+hr {
+    width: 95%;
+    margin: 15px 5% / 2;
+    height: 2px;
+    background-color: @lightGrey;
+    box-sizing: border-box;
+}
+
+input[type='text'], .static-input, button {
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 20px;
+    border: 1px solid @lightGrey;
+    background-color: @white;
+    display: inline-block;
+    box-sizing: border-box;
+    height: 50px;
+}
+
+button {
+    color: @white;
+    background-color: @lightBlue;
+    cursor: pointer;
+}
+
 @import "scene.less";
 @import "inputSuggest.less";
+@import "inputDate.less";
+@import "flightsForm.less";

@@ -1,0 +1,21 @@
+@import "variables.less";
+@import "mixins.less";
+@import (less) "../node_modules/react-infinite-calendar/styles.css";
+
+.input-date {
+    position: relative;
+    width: 400px;
+    display: inline-block;
+    vertical-align: middle;
+
+    .static-input {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .input-date-picker {
+        position: absolute;
+        left: 0px;
+        top: 100%;
+    }
+}
