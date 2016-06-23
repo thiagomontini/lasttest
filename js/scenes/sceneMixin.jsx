@@ -1,6 +1,6 @@
 var React = require("react");
 var PIXI = require("pixi.js");
-var config = require("./config.js");
+var config = require("../config.js");
 
 module.exports = {
     _computeScale: function() {

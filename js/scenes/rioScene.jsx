@@ -1,8 +1,8 @@
 var React = require("react");
-var config = require("./config.js");
+var config = require("../config.js");
 var SceneMixin = require("./sceneMixin.jsx");
-var TweenLite = require("./libs/gsap/TweenLite.js");
-var TimelineMax = require("./libs/gsap/TimelineMax.js");
+var TweenLite = require("../libs/gsap/TweenLite.js");
+var TimelineMax = require("../libs/gsap/TimelineMax.js");
 
 
 var Cloud = function(cloudSprite) {
