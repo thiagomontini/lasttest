@@ -5,13 +5,18 @@ var sceneData = require("./scenes/sceneData.js");
 var RioScene = require("./scenes/rioScene.jsx");
 var createjs = require("./libs/createjs/createjs.js");
 var Preloader = require("./views/preloader.jsx");
+var InputSuggest = require("./utils/inputSuggest.jsx");
+var airportData = require("./data/airports.js");
+var cultureData = require("./data/cultures.js");
+var currencyData = require("./data/currencies.js");
 
 
 var App = React.createClass({
     getInitialState: function() {
         return {
             progress: 0,
-            loading: true
+            loading: true,
+            sceneSelected: null
         }
     },
 
@@ -59,16 +64,55 @@ var App = React.createClass({
         });
     },
 
+    setScene: function(sceneKey) {
+        this.setState({
+            scene: sceneKey
+        });
+    },
+
     render: function() {
         var loadingProgress = this.state.loading ? <Preloader progress={this.state.progress} /> : null;
-        var scene = !this.state.loading ? <RioScene textureCache={this.textureCache} data={sceneData["rio"]} /> : null;
+
+        var homeForm = null;
+        if (!this.state.loading && !this.state.scene) {
+            var sceneLinks = [];
+            for (var sceneKey in sceneData) {
+                sceneLinks.push(
+                    <li key={sceneKey}>
+                        <span className="scene-link" onClick={this.setScene.bind(this, sceneKey)}>{sceneData[sceneKey].name}</span>
+                    </li>
+                );
+            }
+            homeForm = (
+                <div>
+                    Choose a scene:
+                    <ul>
+                        {sceneLinks}
+                    </ul>
+                    <br/>
+                    Airport: <InputSuggest suggestionDict={airportData} /><br/><br/>
+                    Culture: <InputSuggest suggestionDict={cultureData} /><br/><br/>
+                    Currency: <InputSuggest suggestionDict={currencyData} /><br/><br/>
+                </div>
+            );
+        }
+
+        var scene = null;
+        if (!this.state.loading && this.state.scene) {
+            switch (this.state.scene) {
+                case 'rio':
+                    scene = <RioScene textureCache={this.textureCache} data={sceneData["rio"]} />;
+                    break;
+            }
+
+            scene = <div className="scene-container">{scene}</div>;
+        }
 
         return (
             <div>
                 {loadingProgress}
-                <div className="scene-container">
-                    {scene}
-                </div>
+                {homeForm}
+                {scene}
             </div>
         );
     }

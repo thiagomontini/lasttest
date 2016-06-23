@@ -1,4 +1,5 @@
 module.exports = {
+    "name": "Rio de Janeiro",
     "objects": [
         {
             "id": "background",

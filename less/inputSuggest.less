@@ -1,0 +1,55 @@
+@import "variables.less";
+@import "mixins.less";
+
+@suggestionButtonHeight: 40px;
+
+.input-suggest {
+    position: relative;
+    display: inline-block;
+
+    input[type='text'] {
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 20px;
+        width: 600px;
+    }
+
+    .suggestion-box {
+        z-index: @suggestionBox;
+        position: absolute;
+        left: 0px;
+        top: 100%;
+        width: 100%;
+        max-height: 5 * @suggestionButtonHeight;
+        box-sizing: border-box;
+        border: 1px solid @lightGrey;
+        overflow: auto;
+
+        .suggestion {
+            font-size: 20px;
+            width: 100%;
+            height: @suggestionButtonHeight;
+            padding: 10px;
+            cursor: pointer;
+            color: @black;
+            display: inline-block;
+            box-sizing: border-box;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            background-color: @white;
+            display: block;
+
+            &:hover {
+                color: @white;
+                background-color: @lightBlue;
+            }
+        }
+    }
+
+    &.valid {
+        input[type='text'] {
+            border: 1px solid @lightBlue;
+        }
+    }
+}
