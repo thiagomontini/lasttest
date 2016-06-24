@@ -12,7 +12,7 @@ module.exports = {
             return this.props.textureCache[x];
         }.bind(this));
         if (textures.length > 1) {
-            object = new PIXI.MovieClip(textures);
+            object = new PIXI.extras.MovieClip(textures);
         }
         else {
             object = new PIXI.Sprite(textures[0]);

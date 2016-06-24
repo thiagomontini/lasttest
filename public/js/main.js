@@ -50141,7 +50141,19 @@
 	        },
 	        {
 	            "id": "plane",
-	            "images": ["img/rio/plane.png"],
+	            "images": [
+	                "img/rio/Rio_Plane_00000.png",
+	                "img/rio/Rio_Plane_00001.png",
+	                "img/rio/Rio_Plane_00002.png",
+	                "img/rio/Rio_Plane_00003.png",
+	                "img/rio/Rio_Plane_00004.png",
+	                "img/rio/Rio_Plane_00005.png",
+	                "img/rio/Rio_Plane_00006.png",
+	                "img/rio/Rio_Plane_00007.png",
+	                "img/rio/Rio_Plane_00008.png",
+	                "img/rio/Rio_Plane_00009.png",
+	                "img/rio/Rio_Plane_00010.png"
+	            ],
 	            "position": [1379, 267]
 	        },
 	
@@ -50467,8 +50479,9 @@
 	};
 	
 	
-	var Plane = function(planeSprite) {
-	    this.sprite = planeSprite;
+	var Plane = function(planeMovieClip) {
+	    this.movieClip = planeMovieClip;
+	    this.movieClip.play();
 	    this.moveRight = false;
 	    this.animatePlane();
 	};
@@ -50480,17 +50493,17 @@
 	        this.moveRight = !this.moveRight;
 	
 	        if (this.moveRight) {
-	            this.sprite.x = -this.sprite.width;
-	            this.sprite.scale.x = 1.0;
+	            this.movieClip.x = -this.movieClip.width;
+	            this.movieClip.scale.x = 1.0;
 	            targetX = config.sceneWidth;
 	        }
 	        else {
-	            this.sprite.x = config.sceneWidth;
-	            this.sprite.scale.x = -1.0;
-	            targetX = -this.sprite.width;
+	            this.movieClip.x = config.sceneWidth;
+	            this.movieClip.scale.x = -1.0;
+	            targetX = -this.movieClip.width;
 	        }
-	        this.sprite.y = config.rio.plane.YMin + Math.random() * (config.rio.plane.YMax - config.rio.plane.YMin);
-	        this.tween = TweenLite.to(this.sprite, config.sceneWidth / config.rio.plane.speed, {
+	        this.movieClip.y = config.rio.plane.YMin + Math.random() * (config.rio.plane.YMax - config.rio.plane.YMin);
+	        this.tween = TweenLite.to(this.movieClip, config.sceneWidth / config.rio.plane.speed, {
 	            x: targetX,
 	            y: config.rio.plane.YMin + Math.random() * (config.rio.plane.YMax - config.rio.plane.YMin),
 	            ease: "Linear.easeNone",
@@ -50694,7 +50707,7 @@
 	            return this.props.textureCache[x];
 	        }.bind(this));
 	        if (textures.length > 1) {
-	            object = new PIXI.MovieClip(textures);
+	            object = new PIXI.extras.MovieClip(textures);
 	        }
 	        else {
 	            object = new PIXI.Sprite(textures[0]);
@@ -54083,9 +54096,9 @@
 	var React = __webpack_require__(1);
 	var InputSuggest = __webpack_require__(316);
 	var InputDate = __webpack_require__(317);
-	var airportData = __webpack_require__(318);
-	var cultureData = __webpack_require__(319);
-	var currencyData = __webpack_require__(320);
+	var airportData = __webpack_require__(509);
+	var cultureData = __webpack_require__(510);
+	var currencyData = __webpack_require__(511);
 	
 	var FlightsForm = React.createClass({displayName: "FlightsForm",
 	    getInitialState: function() {
@@ -54210,7 +54223,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var InfiniteCalendar = __webpack_require__(321)['default'];
+	var InfiniteCalendar = __webpack_require__(318)['default'];
 	
 	function dateToText(date) {
 	    return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
@@ -54266,27 +54279,6 @@
 
 /***/ },
 /* 318 */
-/***/ function(module, exports) {
-
-	module.exports = {"Dongshan - Hailar, China": "HLD", "Resolute Bay - Resolute, Canada": "YRB", "Mihail Kogalniceanu - Constanta, Romania": "CND", "Seaplane Base - Winterhaven, United States": "F57", "Mazamet - Castres, France": "DCM", "Carauari Airport - Carauari, Brazil": "CAF", "Treasure Cay - Treasure Cay, Bahamas": "TCB", "Yangyang International Airport - Sokcho / Gangneung, South Korea": "YNY", "Lokichoggio Airport - Lokichoggio, Kenya": "LKG", "Campo Fontenelle - Piracununga, Brazil": "QPS", "Mercer County Airport - Bluefield, United States": "BLF", "Osaka Intl - Osaka, Japan": "ITM", "Maastricht - Maastricht, Netherlands": "MST", "Hooker Creek Airport - Hooker Creek, Australia": "HOK", "Gorna Oryahovitsa - Gorna Orechovica, Bulgaria": "GOZ", "Erie Intl Tom Ridge Fld - Erie, United States": "ERI", "Srinagar - Srinagar, India": "SXR", "Flamingo - Kralendijk, Netherlands Antilles": "BON", "Cluj Napoca - Cluj-napoca, Romania": "CLJ", "Puerto Deseado - Puerto Deseado, Argentina": "PUD", "Gallatin Field - Bozeman, United States": "BZN", "Rurutu - Rurutu, French Polynesia": "RUR", "Khoram Abad Airport - Khorram Abad, Iran": "KHD", "Comodoro Rivadavia - Comodoro Rivadavia, Argentina": "CRD", "Champagne - Reims, France": "RHE", "Altoona Blair Co - Altoona, United States": "AOO", "Whitsunday Airstrip - Airlie Beach, Australia": "WSY", "Lannion - Lannion, France": "LAI", "Etimesgut - Ankara, Turkey": "ANK", "Renmark - Renmark, Australia": "RMK", "Hay River - Hay River, Canada": "YHY", "New Century AirCenter Airport - Olathe, United States": "JCI", "Zhangxiao - Yuncheng, China": "YCU", "Juana Azurduy De Padilla - Sucre, Bolivia": "SRE", "George F L Charles - Castries, Saint Lucia": "SLU", "Eduardo Gomes Intl - Manaus, Brazil": "MAO", "Arctic Village Airport - Arctic Village, United States": "ARC", "Sao Jose Do Rio Preto - Sao Jose Do Rio Preto, Brazil": "SJP", "Diosdado Macapagal International - Angeles City, Philippines": "CRK", "Ventspils International Airport - Ventspils, Latvia": "VTS", "Greenville-Spartanburg International - Greenville, United States": "GSP", "Boryspil Intl - Kiev, Ukraine": "KBP", "Mario Ribeiro - Montes Claros, Brazil": "MOC", "Lowell City Airport - Lowell, United States": "24C", "Gerardo Tobar Lopez - Buenaventura, Colombia": "BUN", "Al Udeid AB - Doha, Qatar": "IUD", "Kaunas Intl - Kaunas, Lithuania": "KUN", "Zoo - Berlin, Germany": "QWC", "Lemhi County Airport - Salmon, United States": "SMN", "Belfast Intl - Belfast, United Kingdom": "BFS", "Brampton Island - Brampton Island, Australia": "BMP", "Ketchikan harbor Seaplane Base - Ketchikan, United States": "WFB", "Felts Fld - Spokane, United States": "SFF", "Berlevag - Berlevag, Norway": "BVG", "Fort St John - Fort Saint John, Canada": "YXJ", "Panzhihua - Panzhihua, China": "PZI", "Murmansk - Murmansk, Russia": "MMK", "Amakusa Airfield - Amakusa, Japan": "AXJ", "Uraj - Uraj, Russia": "URJ", "Coldfoot Airport - Coldfoot, United States": "CXF", "Edinburgh Waverly Station - Edinburgh, United Kingdom": "ZXE", "Tri State Milton J Ferguson Field - Huntington, United States": "HTS", "Santa Fe Muni - Santa Fe, United States": "SAF", "Dipolog - Dipolog, Philippines": "DPL", "Nynashamn Ferry Port - Nynashamn, Sweden": "NYN", "Aeroclub Cluj - Dezmir, Romania": "DZM", "Octeville - Le Havre, France": "LEH", "Al Baha - El-baha, Saudi Arabia": "ABT", "Lasham - Lasham, United Kingdom": "QLA", "Bratsk - Bratsk, Russia": "BTK", "Jonesboro Muni - Jonesboro, United States": "JBR", "Woitape Airport - Woitape, Papua New Guinea": "WTP", "Glen Innes - Glen Innes, Australia": "GLI", "Wilmington Amtrak Station - Wilmington, United States": "ZWI", "Nepalgunj Airport - Nepalgunj, Nepal": "KEP", "Basco Airport - Basco, Philippines": "BSO", "Craiova - Craiova, Romania": "CRA", "Crooked Creek Airport - Crooked Creek, United States": "CKD", "Calgary Intl - Calgary, Canada": "YYC", "Alakanuk Airport - Alakanuk, United States": "AUK", "Pakse - Pakse, Laos": "PKZ", "Ibadan - Ibadan, Nigeria": "IBA", "Fort Worth Alliance Airport - Fort Worth, United States": "AFW", "Cape Dorset - Cape Dorset, Canada": "YTE", "Camp Mabry Austin City - Austin TX, United States": "ATT", "Governador Valadares Airport - Governador Valadares, Brazil": "GVR", "Boston Back Bay Station - Boston, United States": "ZTY", "Shively Field Airport - SARATOGA, United States": "SAA", "Dunhuang Airport - Dunhuang, China": "DNH", "Kithira - Kithira, Greece": "KIT", "Sishen - Sishen, South Africa": "SIS", "Capital Intl - Beijing, China": "PEK", "Tokunoshima - Tokunoshima, Japan": "TKN", "Diego Jimenez Torres - Fajardo, Puerto Rico": "FAJ", "Las Americas Intl - Santo Domingo, Dominican Republic": "SDQ", "Gladwin Zettel Memorial Airport - Gladwin, United States": "GDW", "Cotopaxi International Airport - Latacunga, Ecuador": "LTX", "Hoybuktmoen - Kirkenes, Norway": "KKN", "Springbok - Springbok, South Africa": "SBU", "Ibn Batouta - Tanger, Morocco": "TNG", "Josefa Camejo - Paraguana, Venezuela": "LSP", "La M\u00f4le Airport - La M\u00f4le, France": "LTT", "Prerov - Prerov, Czech Republic": "PRV", "Brevig Mission Airport - Brevig Mission, United States": "KTS", "Steamboat Springs Airport-Bob Adams Field - Steamboat Springs, United States": "SBS", "Ust-Maya Airport - Ust-Maya, Russia": "UMS", "Porto Nacional - Porto Nacional, Brazil": "PNB", "Pueblo Memorial - Pueblo, United States": "PUB", "Sondre Stromfjord - Sondrestrom, Greenland": "SFJ", "Macdill Afb - Tampa, United States": "MCF", "Bamberg County Airport - Bamberg, United States": "99N", "Tabatinga - Tabatinga, Brazil": "TBT", "Quinhagak Airport - Quinhagak, United States": "KWN", "Perry-Foley Airport - Perry, United States": "40J", "Freetown Lungi - Freetown, Sierra Leone": "FNA", "Aeroclub Deva - Deva, Romania": "DVA", "Visalia Municipal Airport - Visalia, United States": "VIS", "Agra - Agra, India": "AGR", "Alberto Carnevalli - Merida, Venezuela": "MRD", "Foshan - Foshan, China": "FUO", "Champforgeuil - Chalon, France": "XCD", "Chachapoyas - Chachapoyas, Peru": "CHH", "Le Sequestre - Albi, France": "LBI", "Ul\u00e9i Airport - Ambryn Island, Vanuatu": "ULB", "Swift Current - Swift Current, Canada": "YYN", "Ouro Sogui Airport - Matam, Senegal": "MAX", "Sierra Grande - Sierra Grande, Argentina": "SGV", "Faranah - Faranah, Guinea": "FAA", "Lewiston Nez Perce Co - Lewiston, United States": "LWS", "Aeropuerto Internacional Valle del Conlara - Merlo, Argentina": "RLO", "McClellan-Palomar Airport - Carlsbad, United States": "CLD", "Amherst Amtrak Station AMM - Amherst MA, United States": "XZK", "Dekalb-Peachtree Airport - Atlanta, United States": "PDK", "Maupiti - Maupiti, French Polynesia": "MAU", "Albany Intl - Albany, United States": "ALB", "San Rafael - San Rafael, Argentina": "AFA", "Devi Ahilyabai Holkar - Indore, India": "IDR", "Wenshan Airport - Wenshan, China": "WNH", "Sanandaj - Sanandaj, Iran": "SDG", "Totness Airstrip - Totness, Suriname": "TOT", "Astoria Regional Airport - Astoria, United States": "AST", "Khmeinitskiy - Khmeinitskiy, Ukraine": "HMJ", "McGrath Airport - Mcgrath, United States": "MCG", "Bassel Al Assad Intl - Latakia, Syria": "LTK", "Les Ajoncs - La Roche-sur-yon, France": "EDM", "Edward G Pitka Sr - Galena, United States": "GAL", "Presidente Nicolau Lobato Intl - Dili, East Timor": "DIL", "Hana - Hana, United States": "HNM", "Kerrville Municipal Airport - Kerrville, United States": "ERV", "Aldan Airport - Aldan, Russia": "ADH", "Essen Mulheim - Essen, Germany": "ESS", "Sierra Vista Muni Libby Aaf - Fort Huachuca, United States": "FHU", "Bykovo - Moscow, Russia": "BKA", "J M Nkomo Intl - Bulawayo, Zimbabwe": "BUQ", "Port Augusta Airport - Argyle, Australia": "PUG", "Sokcho - Sokch'o, South Korea": "SHO", "Bonnyville Airport - Bonnyville, Canada": "YBY", "Belbek Sevastopol International Airport - Sevastopol, Ukraine": "UKS", "Sale - Rabat, Morocco": "RBA", "Ramechhap - Ramechhap, Nepal": "RHP", "Gurupi Airport - Gurupi, Brazil": "GRP", "Trollhattan Vanersborg - Trollhattan, Sweden": "THN", "Sorstokken - Stord, Norway": "SRP", "Frankfurt Oder Hbf - Frankfurt Oder, Germany": "ZFR", "Ndjamena Hassan Djamous - N'djamena, Chad": "NDJ", "Visby - Visby, Sweden": "VBY", "Santa Monica Municipal Airport - Santa Monica, United States": "SMO", "Bhisho - Bisho, South Africa": "BIY", "Finger Lakes Regional Airport - Seneca Falls, United States": "0G7", "Banak - Lakselv, Norway": "LKL", "La Abraq Airport - Al Bayda', Libya": "LAQ", "Jiayuguan Airport - Jiayuguan, China": "JGN", "Yecheon - Yechon, South Korea": "YEC", "Ain Arnat Airport - Setif, Algeria": "QSF", "Minsk 1 - Minsk, Belarus": "MHP", "San Juan - San Julian, Argentina": "UAQ", "Lake Hood Seaplane Base - Anchorage, United States": "LHD", "Poliarny Airport - Yakutia, Russia": "PYJ", "Wadi Halfa Airport - Wadi Halfa, Sudan": "WHF", "Marina Di Campo - Marina Di Campo, Italy": "EBA", "Irkutsk - Irkutsk, Russia": "IKT", "Halli - Halli, Finland": "KEV", "Svartnes Airport - Vard\u00f8, Norway": "VAW", "Mohamed Boudiaf Intl - Constantine, Algeria": "CZL", "Davis Monthan Afb - Tucson, United States": "DMA", "Richards Bay - Richard's Bay, South Africa": "RCB", "Pajuostis - Panevezys, Lithuania": "PNV", "Ponta Delgada - Ponta Delgada, Portugal": "PDL", "Buffalo Range - Chiredzi, Zimbabwe": "BFO", "Phuket Intl - Phuket, Thailand": "HKT", "Waterloo Regional Airport - Waterloo, United States": "ALO", "Calais Dunkerque - Calais, France": "CQF", "Kumamoto - Kumamoto, Japan": "KMJ", "Craig Cove Airport - Craig Cove, Vanuatu": "CCV", "Okadama Airport - Sapporo, Japan": "OKD", "Bekily - Bekily, Madagascar": "OVA", "Corvallis Muni - Corvallis, United States": "CVO", "Aupaluk Airport - Aupaluk, Canada": "YPJ", "False Pass Airport - False Pass, United States": "KFP", "Kalgoorlie Boulder - Kalgoorlie, Australia": "KGI", "Apartad\u00f3 Airport - Apartad\u00f3, Colombia": "APO", "Sigonella - Sigonella, Italy": "NSY", "Redcliffe Airport - Redcliffe, Vanuatu": "RCL", "Ulukhaktok Holman - Holman Island, Canada": "YHI", "Yakutat - Yakutat, United States": "YAK", "Sultan Abdul Halim - Alor Setar, Malaysia": "AOR", "Dobbins Arb - Marietta, United States": "MGE", "Batman - Batman, Turkey": "BAL", "West 30th St. Heliport - New York, United States": "JRA", "Wotho Island Airport - Wotho Island, Marshall Islands": "WTO", "Henri Coanda - Bucharest, Romania": "OTP", "Schiphol - Amsterdam, Netherlands": "AMS", "San Domino Island Heliport - Tremiti Islands, Italy": "TQR", "Koliganek Airport - Koliganek, United States": "KGK", "Porter County Municipal Airport - Valparaiso, United States": "NPZ", "Shamattawa Airport - Shamattawa, Canada": "ZTM", "San Sebastian - San Sebastian, Spain": "EAS", "Lubang Community Airport - Lubang, Philippines": "LBX", "Coronation - Coronation, Canada": "YCT", "Ukunda Airport - Ukunda, Kenya": "UKA", "Elkins Randolph Co Jennings Randolph - Elkins, United States": "EKN", "Greenbrier Valley Airport - Lewisburg, United States": "LWB", "Shannon - Shannon, Ireland": "SNN", "Sokol - Magadan, Russia": "GDX", "Igloolik Airport - Igloolik, Canada": "YGT", "Aktau - Aktau, Kazakhstan": "SCO", "Pasni - Pasni, Pakistan": "PSI", "Riga Intl - Riga, Latvia": "RIX", "New Stuyahok Airport - New Stuyahok, United States": "KNW", "Norfolk Ns - Norfolk, United States": "NGU", "St Catherine Intl - St. Catherine, Egypt": "SKV", "Wattay Intl - Vientiane, Laos": "VTE", "Redang - Redang, Malaysia": "RDN", "Le Raizet - Pointe-a-pitre, Guadeloupe": "PTP", "Municipal Airport - Viroqua, United States": "Y51", "Greater Kankakee - Kankakee, United States": "IKK", "Tuscaloosa Rgnl - Tuscaloosa AL, United States": "TCL", "Biessenhofen BF - Biessenhofen, Germany": "BIE", "Kent - Chatham, Canada": "XCM", "Godman Aaf - Fort Knox, United States": "FTK", "Kotoka Intl - Accra, Ghana": "ACC", "Grantley Adams Intl - Bridgetown, Barbados": "BGI", "Deputado Luis Eduardo Magalhaes - Salvador, Brazil": "SSA", "Moomba - Moomba, Australia": "MOO", "Hagerstown Regional Richard A Henson Field - Hagerstown, United States": "HGR", "Roche Harbor Seaplane Base - Roche Harbor, United States": "RCE", "Vigra - Alesund, Norway": "AES", "Stanhope - Haliburton, Canada": "ND4", "Ngaoundere - N'gaoundere, Cameroon": "NGE", "Hagfors Airport - Hagfors, Sweden": "HFS", "Luce County Airport - Newberry, United States": "ERY", "El Tehuelche - Puerto Madryn, Argentina": "PMY", "Bagdad Airport - Bagdad, United States": "E51", "Satu Mare - Satu Mare, Romania": "SUJ", "Kasaba Bay Airport - Kasaba Bay, Zambia": "ZKB", "Kirovsk-Apatity Airport - Apatity, Russia": "KVK", "Gare Montparnasse - Paris, France": "XGB", "San Angelo Rgnl Mathis Fld - San Angelo, United States": "SJT", "Ashford - Lympne, United Kingdom": "LYM", "Bob Quinn Lake - Bob Quinn Lake, Canada": "YBO", "Tansonnhat Intl - Ho Chi Minh City, Vietnam": "SGN", "Scatsta - Scatsta, United Kingdom": "SDZ", "Tulsipur - Dang, Nepal": "DNP", "Seo De Urgel - Seo De Urgel, Spain": "LEU", "Frankfurt Main - Frankfurt, Germany": "FRA", "Catarman National Airport - Catarman, Philippines": "CRM", "Aguni Airport - Aguni, Japan": "AGJ", "Cataratas Del Iguazu - Iguazu Falls, Argentina": "IGR", "Taraz - Dzhambul, Kazakhstan": "DMB", "Trois Rivieres Airport - Trois Rivieres, Canada": "YRQ", "Palmas - Palmas, Brazil": "PMW", "Reeroe Airport - Caherciveen, Ireland": "CHE", "Lecce - Lecce, Italy": "LCC", "Brussels South - Charleroi, Belgium": "CRL", "Edinburgh - Edinburgh, United Kingdom": "EDI", "Lappeenranta - Lappeenranta, Finland": "LPP", "Beograd - Belgrade, Serbia": "BEG", "Durango Intl - Durango, Mexico": "DGO", "Amderma Airport - Amderma, Russia": "AMV", "Chilliwack - Chilliwack, Canada": "YCW", "Bethel - Bethel, United States": "BET", "Winnipeg Intl - Winnipeg, Canada": "YWG", "Alderney - Alderney, Guernsey": "ACI", "Allakaket Airport - Allakaket, United States": "AET", "Cambridge Municipal Airport - Cambridge, United States": "CDI", "Sleetmute Airport - Sleetmute, United States": "SLQ", "Alicante - Alicante, Spain": "ALC", "Fitchburg Municipal Airport - Fitchburg, United States": "FIT", "Thule Air Base - Thule, Greenland": "THU", "Kurumoch - Samara, Russia": "KUF", "Dell Flight Strip - Dell, United States": "4U9", "Shang Yi - Kinmen, Taiwan": "KNH", "Augsburg - Augsburg, Germany": "AGB", "Apalachicola Regional Airport - Apalachicola, United States": "AAF", "Bathurst Airport - Bathurst, Australia": "BHS", "Victoria River Downs Airport - Victoria River Downs, Australia": "VCD", "Belo sur Tsiribihina Airport - Belo sur Tsiribihina, Madagascar": "BMD", "Paso De Los Libres - Paso De Los Libres, Argentina": "AOL", "Sugraly Airport - Zarafshan, Uzbekistan": "AFS", "Beihan - Beihan, Yemen": "BHN", "Takotna Airport - Takotna, United States": "TCT", "Capital City Airport - Frankfort, United States": "FFT", "General Enrique Mosconi Airport - Tartagal, Argentina": "TTG", "Tucurui - Tucurui, Brazil": "TUR", "Gallup Muni - Gallup, United States": "GUP", "La Mesa Intl - San Pedro Sula, Honduras": "SAP", "Tupelo Regional Airport - Tupelo, United States": "TUP", "Magdeburg-Cochstedt - Cochstedt, Germany": "CSO", "Vigo - Vigo, Spain": "VGO", "Helena Rgnl - Helena, United States": "HLN", "Sharurah - Sharurah, Saudi Arabia": "SHW", "Charnay - Macon, France": "QNX", "Huslia Airport - Huslia, United States": "HSL", "Rangiroa - Rangiroa, French Polynesia": "RGI", "Aviano Ab - Aviano, Italy": "AVB", "Ricardo Garc\u00eda Posada Airport - El Salvador, Chile": "ESR", "Makedonia - Thessaloniki, Greece": "SKG", "Chautauqua County-Dunkirk Airport - Dunkirk, United States": "DKK", "Chkalovsky Airport - Shchyolkovo, Russia": "CKL", "Zamora - Zamora, Mexico": "ZMM", "Polgolla Reservoir - Kandy, Sri Lanka": "KDZ", "Little Rock Afb - Jacksonville, United States": "LRF", "Canaima - Canaima, Venezuela": "CAJ", "Yacuiba - Yacuiba, Bolivia": "BYC", "Persian Gulf Airport - Khalije Fars, Iran": "PGU", "Karumba Airport - Karumba, Australia": "KRB", "Hollis Seaplane Base - Hollis, United States": "HYL", "Sanliurfa Airport - Sanliurfa, Turkey": "SFQ", "Mundo Maya International - Flores, Guatemala": "FRS", "Aswan Intl - Aswan, Egypt": "ASW", "Usinsk - Usinsk, Russia": "USK", "Sibu - Sibu, Malaysia": "SBW", "Cleveland Hopkins Intl - Cleveland, United States": "CLE", "Dushanbe - Dushanbe, Tajikistan": "DYU", "Angads - Oujda, Morocco": "OUD", "Tampa North Aero Park - Tampa, United States": "X39", "Babimost - Zielona Gora, Poland": "IEG", "Santa Elena Airport - Santa Elena de Uairen, Venezuela": "SNV", "Nuernberg Railway - Nuernberg, Germany": "ZAQ", "Long Island Mac Arthur - Islip, United States": "ISP", "Grand Bahama Intl - Freeport, Bahamas": "FPO", "Depati Amir - Pangkal Pinang, Indonesia": "PGK", "Lima Allen County Airport - Lima, United States": "AOH", "Alexandria Intl - Alexandria, United States": "AEX", "Matsuyama - Matsuyama, Japan": "MYJ", "Mogilev Airport - Mogilev, Belarus": "MVQ", "Zhuhai Airport - Zhuhai, China": "ZUH", "Norman Manley Intl - Kingston, Jamaica": "KIN", "Gorno-Altaysk Airport - Gorno-Altaysk, Russia": "RGK", "Riviere Du Loup - Riviere Du Loup, Canada": "YRI", "Austin Straubel Intl - Green Bay, United States": "GRB", "Mason City Municipal - Mason City, United States": "MCW", "Richfield Minicipal Airport - Richfield, United States": "RIF", "Alluitsup Paa Heliport - Alluitsup Paa, Greenland": "LLU", "Yap Intl - Yap, Micronesia": "YAP", "Lar Airport - Lar, Iran": "LRR", "Mahanaim I Ben Yaakov - Rosh Pina, Israel": "RPN", "San Luis - San Luis, Argentina": "LUQ", "Southern California Logistics - Victorville, United States": "VCV", "Ingeniero Juan Guillermo Villasana - Pachuca, Mexico": "PCA", "Sayun International Airport - Sayun Intl, Yemen": "GXF", "Resistencia - Resistencia, Argentina": "RES", "Jiamusi Airport - Jiamusi, China": "JMU", "Blackpool - Blackpool, United Kingdom": "BLK", "Illinois Valley Regional - Peru, United States": "VYS", "Saidu Sharif - Saidu Sharif, Pakistan": "SDT", "Kobe - Kobe, Japan": "UKB", "Taichung Airport - Taichung, Taiwan": "TXG", "Ambilobe - Ambilobe, Madagascar": "AMB", "Allama Iqbal Intl - Lahore, Pakistan": "LHE", "CedarKey - Cedar Key, United States": "CDK", "Ranong - Ranong, Thailand": "UNN", "Sabzevar National Airport - Sabzevar, Iran": "AFZ", "Siuna Airport - Siuna, Nicaragua": "SIU", "Nuku Hiva - Nuku Hiva, French Polynesia": "NHV", "Ketchikan Intl - Ketchikan, United States": "KTN", "McKinnon Airport - Brunswick, United States": "SSI", "Gy\u0151r-P\u00e9r International Airport - Gy\u0151r, Hungary": "QGY", "Tok Junction Airport - Tok, United States": "6K8", "Newcastle - Newcastle, South Africa": "NCS", "Laduani Airstrip - Laduani, Suriname": "LDO", "Tefe - Tefe, Brazil": "TFF", "Abakan - Abakan, Russia": "ABA", "Hiva Oa-Atuona Airport - Hiva-oa, French Polynesia": "AUQ", "General leite de Castro Airport - Rio Verde, Brazil": "RVD", "Prince Rupert - Prince Pupert, Canada": "YPR", "Nakhchivan Airport - Nakhchivan, Azerbaijan": "NAJ", "Peace River - Peace River, Canada": "YPE", "Tambacounda - Tambacounda, Senegal": "TUD", "Coningsby - Coningsby, United Kingdom": "QCY", "Aitutaki - Aitutaki, Cook Islands": "AIT", "Barcelos Airport - Barcelos, Brazil": "BAZ", "Wabush - Wabush, Canada": "YWK", "Pierre Regional Airport - Pierre, United States": "PIR", "Condron Aaf - White Sands, United States": "WSD", "Niederrhein - Weeze, Germany": "NRN", "Heho - Heho, Burma": "HEH", "Akureyri - Akureyri, Iceland": "AEY", "Londrina - Londrina, Brazil": "LDB", "Provence - Marseille, France": "MRS", "Solomon Airport - Solomon, Australia": "SLJ", "Poplar Bluff Municipal Airport - Poplar Bluff, United States": "POF", "Aeropuerto de Rafaela - Rafaela, Argentina": "RAF", "Sarh Airport - Sarh, Chad": "SRH", "Southdowns - Southdowns, Zambia": "KIW", "Rovaniemi - Rovaniemi, Finland": "RVN", "Afonso Pena - Curitiba, Brazil": "CWB", "Kosrae - Kosrae, Micronesia": "KSA", "Sindal Airport - Sindal, Denmark": "CNL", "Maribor - Maribor, Slovenia": "MBX", "Soesterberg - Soesterberg, Netherlands": "UTC", "Tribhuvan Intl - Kathmandu, Nepal": "KTM", "Malaga - Malaga, Spain": "AGP", "Narsarsuaq - Narssarssuaq, Greenland": "UAK", "Odense - Odense, Denmark": "ODE", "Abidjan Felix Houphouet Boigny Intl - Abidjan, Cote d'Ivoire": "ABJ", "Transilvania Targu Mures - Tirgu Mures, Romania": "TGM", "Puerto Carreno - Puerto Carreno, Colombia": "PCR", "Cap Fap David Abenzur Rengifo Intl - Pucallpa, Peru": "PCL", "Salt Lake City Intl - Salt Lake City, United States": "SLC", "Xingyi Airport - Xingyi, China": "ACX", "Los Colonizadores Airport - Saravena, Colombia": "RVE", "Landskrona - Landskrona, Sweden": "JLD", "Dawadmi Domestic Airport - Dawadmi, Saudi Arabia": "DWD", "Madera Municipal Airport - Madera, United States": "MAE", "Manicore - Manicore, Brazil": "MNX", "Masbate Airport - Masbate, Philippines": "MBT", "Qasigiannguit - Qasigiannguit, Greenland": "JCH", "Rendani - Manokwari, Indonesia": "MKW", "Kiwayu (Mkononi) Airport - Kiwayu, Kenya": "KWY", "Alta Floresta - Alta Floresta, Brazil": "AFL", "San Tome - San Tome, Venezuela": "SOM", "El Embrujo - Providencia, Colombia": "PVA", "Tchibanga Airport - Tchibanga, Gabon": "TCH", "Araxos - Patras, Greece": "GPA", "Cortez Muni - Cortez, United States": "CEZ", "Lockhart River Airport - Lockhart River, Australia": "IRG", "Eniwetok Airport - Eniwetok Atoll, Marshall Islands": "ENT", "Montgomery Field - San Diego, United States": "MYF", "Canyonlands Field - Moab, United States": "CNY", "Igdir - Igdir, Turkey": "IGD", "Oudomxay - Muang Xay, Laos": "ODY", "Taif - Taif, Saudi Arabia": "TIF", "Kittila - Kittila, Finland": "KTT", "Lijiang Airport - Lijiang, China": "LJG", "Santo Angelo - Santo Angelo, Brazil": "GEL", "Cape Girardeau Regional Airport - Cape Girardeau, United States": "CGI", "Marechal Cunha Machado Intl - Sao Luis, Brazil": "SLZ", "Nottingham East Midlands - East Midlands, United Kingdom": "EMA", "Kjevik - Kristiansand, Norway": "KRS", "Yellowknife - Yellowknife, Canada": "YZF", "Graz - Graz, Austria": "GRZ", "Moro Airport - Moro, Papua New Guinea": "MXH", "Corumba Intl - Corumba, Brazil": "CMG", "Lyudao - Green Island, Taiwan": "GNI", "Sein\u00e4joki Airport - Sein\u00e4joki / Ilmajoki, Finland": "SJY", "North Perry - Hollywood, United States": "HWO", "Bedourie Airport - Bedourie, Australia": "BEU", "Port Moresby Jacksons Intl - Port Moresby, Papua New Guinea": "POM", "Peenemunde Airfield - Peenemunde, Germany": "PEF", "Camiguin Airport - Camiguin, Philippines": "CGM", "Wuhai - Wuhai, China": "WUA", "Bogande Airport - Bogande, Canada": "XBG", "Twenthe - Enschede, Netherlands": "ENS", "El Centro Naf - El Centro, United States": "NJK", "Sidney Muni Airport - Sidney, United States": "SNY", "Manapouri - Manapouri, New Zealand": "TEU", "Raleigh Durham Intl - Raleigh-durham, United States": "RDU", "Mary Airport - Mary, Turkmenistan": "MYP", "Tuktoyaktuk - Tuktoyaktuk, Canada": "YUB", "Karup - Karup, Denmark": "KRP", "Ihu Airport - Ihu, Papua New Guinea": "IHU", "Son Sant Joan - Palma de Mallorca, Spain": "PMI", "Sion - Sion, Switzerland": "SIR", "Saiss - Fes, Morocco": "FEZ", "Powell River Airport - Powell River, Canada": "YPW", "Kikai Airport - Kikai, Japan": "KKX", "Sachigo Lake Airport - Sachigo Lake, Canada": "ZPB", "Mulatupo Airport - Mulatupo, Panama": "MPP", "Provincetown Muni - Provincetown, United States": "PVC", "Vincent Fayks Airport - Paloemeu, Suriname": "OEM", "Adiyaman Airport - Adiyaman, Turkey": "ADF", "Cairo Intl - Cairo, Egypt": "CAI", "Yakubu Gowon - Jos, Nigeria": "JOS", "Teniente Benjamin Matienzo - Tucuman, Argentina": "TUC", "All Airports - London, United Kingdom": "LON", "Hilo Intl - Hilo, United States": "ITO", "Owensboro Daviess County Airport - Owensboro, United States": "OWB", "Ujae Atoll Airport - Ujae Atoll, Marshall Islands": "UJE", "Scholes Intl At Galveston - Galveston, United States": "GLS", "Bob Baker Memorial Airport - Kiana, United States": "IAN", "Ankang Airport - Ankang, China": "AKA", "Capurgana Airport - Capurgana, Colombia": "CPB", "Shigatse Peace Airport - Shigatse, China": "RKZ", "St. Michael Airport - St. Michael, United States": "SMK", "Dalhart Muni - Dalhart, United States": "DHT", "Mmabatho International Airport - Mafeking, South Africa": "MBD", "Stokka - Sandnessjoen, Norway": "SSJ", "Covington Municipal Airport - Covington, United States": "9A1", "Bildudalur Airport - Bildudalur, Iceland": "BIU", "Toledo - Toledo, United States": "TOL", "Bellary - Bellary, India": "BEP", "Soure Airport - Soure, Brazil": "SFK", "King Fahd Intl - Dammam, Saudi Arabia": "DMM", "Francistown - Francistown, Botswana": "FRW", "Yelizovo - Petropavlovsk, Russia": "PKC", "Turkmenabat - Turkmenabat, Turkmenistan": "CRZ", "Maimana - Maimama, Afghanistan": "MMZ", "Mutiara Ii - Labuhan Bajo, Indonesia": "LBJ", "Salekhard Airport - Salekhard, Russia": "SLY", "All Airports - Chicago, United States": "CHI", "China Lake Naws - China, United States": "NID", "Limon Intl - Limon, Costa Rica": "LIO", "Brenoux - Mende, France": "MEN", "Canberra - Canberra, Australia": "CBR", "Stornoway - Stornoway, United Kingdom": "SYY", "Japura - Rengat, Indonesia": "RGT", "Braunschweig Wolfsburg - Braunschweig, Germany": "BWE", "Sinop Airport - Sinop, Turkey": "SIC", "Totegegie - Totegegie, French Polynesia": "GMR", "Niue International Airport - Alofi, Niue": "IUE", "Donaueschingen Villingen - Donaueschingen, Germany": "ZQL", "Hanau Aaf - Hanau, Germany": "ZNF", "Naples Muni - Naples, United States": "APF", "Tr\u00e0 N\u00f3c Airport - Can Tho, Vietnam": "VCA", "Hooper Bay Airport - Hooper Bay, United States": "HPB", "Coen Airport - Coen, Australia": "CUQ", "Gasmata Island Airport - Gasmata Island, Papua New Guinea": "GMI", "Cartersville Airport - Cartersville, United States": "VPC", "Queen Street Station - Glasgow, United Kingdom": "GLQ", "Southern Wisconsin Regional Airport - Janesville, United States": "JVL", "Manchester Regional Airport - Manchester NH, United States": "MHT", "Fayetteville Regional Grannis Field - Fayetteville, United States": "FAY", "Moultrie Municipal Airport - Moultrie, United States": "MGR", "Altus Afb - Altus, United States": "LTS", "Geelong Airport - Geelong, Australia": "GEX", "Carthage - Tunis, Tunisia": "TUN", "David Wayne Hooks Field - Houston, United States": "DWH", "Grissom Arb - Peru, United States": "GUS", "Laughlin-Bullhead Intl - Bullhead, United States": "IFP", "Boa Vista - Boa Vista, Brazil": "BVB", "Beihai Airport - Beihai, China": "BHY", "Matsapha - Manzini, Swaziland": "MTS", "Qikiqtarjuaq - Broughton Island, Canada": "YVM", "Atbara Airport - Atbara, Sudan": "ATB", "Huron Rgnl - Huron, United States": "HON", "Grand Canyon National Park Airport - Grand Canyon, United States": "GCN", "Buttonville Muni - Toronto, Canada": "YKZ", "City - London, United Kingdom": "LCY", "El Tari - Kupang, Indonesia": "KOE", "Dane Co Rgnl Truax Fld - Madison, United States": "MSN", "Gillam Airport - Gillam, Canada": "YGX", "Morrisville Stowe State Airport - Morrisville, United States": "MVL", "Minangkabau - Padang, Indonesia": "PDG", "Tabubil Airport - Tabubil, Papua New Guinea": "TBG", "St Gallen Altenrhein - Altenrhein, Switzerland": "ACH", "Windhoek Hosea Kutako International Airport  - Windhoek, Namibia": "WDH", "Hatay Airport - Hatay, Turkey": "HTY", "Knokke-Heist Westkapelle Heliport - Knokke, Belgium": "KNO", "Kamina Base - Kamina Base, Congo (Kinshasa)": "KMN", "Talhar - Talhar, Pakistan": "BDN", "Entebbe Intl - Entebbe, Uganda": "EBB", "General Manuel Carlos Piar - Ciudad Guayana, Venezuela": "CGU", "Shearwater - Halifax, Canada": "YAW", "Grants Milan Muni - Grants, United States": "GNT", "Hamburg Inc Airport - Hamburg, United States": "4G2", "Mangshi Airport - Luxi, China": "LUM", "Shishmaref Airport - Shishmaref, United States": "SHH", "Momote Airport - Momote, Papua New Guinea": "MAS", "Biggin Hill - Biggin Hill, United Kingdom": "BQH", "Culebra Airport - Culebra Island, Puerto Rico": "CPX", "Lihue - Lihue, United States": "LIH", "Lincoln - Lincoln, United States": "LNK", "Reno Tahoe Intl - Reno, United States": "RNO", "Charlottesville-Albemarle - Charlottesville VA, United States": "CHO", "Imphal - Imphal, India": "IMF", "Chisinau Intl - Chisinau, Moldova": "KIV", "Cotabato - Cotabato, Philippines": "CBO", "George Bush Intercontinental - Houston, United States": "IAH", "Fujairah Intl - Fujeirah, United Arab Emirates": "FJR", "Willow Grove Nas Jrb - Willow Grove, United States": "NXX", "Dr Ambedkar Intl - Nagpur, India": "NAG", "Mariscal Sucre Intl - Quito, Ecuador": "UIO", "Ridgeland Airport - Ridgeland, United States": "3J1", "Perth Scone Airport - Perth, United Kingdom": "PSL", "Morgantown Muni Walter L Bill Hart Fld - Morgantown, United States": "MGW", "Cabinda - Cabinda, Angola": "CAB", "Gurney Airport - Gurney, Papua New Guinea": "GUR", "Flying Cloud Airport - Eden Prairie, United States": "FCM", "Brookings Regional Airport - Brookings, United States": "BKX", "Blagnac - Toulouse, France": "TLS", "Ngorangora Airport - Kirakira, Solomon Islands": "IRA", "Perito Moreno - Perito Moreno, Argentina": "PMQ", "Campo Dos Bugres - Caxias Do Sul, Brazil": "CXJ", "Ciudad Obregon Intl - Ciudad Obregon, Mexico": "CEN", "Khasab - Khasab, Oman": "KHS", "Eilat - Elat, Israel": "ETH", "Kotlik Airport - Kotlik, United States": "KOT", "Arenal Airport - La Fortuna/San Carlos, Costa Rica": "FON", "Mary's Harbour Airport - Mary's Harbour, Canada": "YMH", "Peawanuck Airport - Peawanuck, Canada": "YPO", "Tartu - Tartu, Estonia": "TAY", "Sam Ratulangi - Manado, Indonesia": "MDC", "Kaben Airport - Kaben, Marshall Islands": "KBT", "Fredericton - Fredericton, Canada": "YFC", "Santa Cruz/Graciosa Bay/Luova Airport - Santa Cruz/Graciosa Bay/Luova, Solomon Islands": "SCZ", "Allahabad - Allahabad, India": "IXD", "Charlottetown - Charlottetown, Canada": "YYG", "Am Timan Airport - Am Timan, Chad": "AMC", "Sao Felix do Xingu Airport - Sao Felix do Xingu, Brazil": "SXX", "Lubeck Blankensee - Luebeck, Germany": "LBC", "Grosseto - Grosseto, Italy": "GRS", "Save - Gothenborg, Sweden": "GSE", "Kuujjuarapik Airport - Kuujjuarapik, Canada": "YGW", "Borg El Arab Intl - Alexandria, Egypt": "HBE", "Kunsan Air Base - Kunsan, South Korea": "KUV", "Kamishly Airport - Kamishly, Syria": "KAC", "Ignacio Agramonte Intl - Camaguey, Cuba": "CMW", "Wall Street Heliport - New York, United States": "JRB", "Sialkot Airport - Sialkot, Pakistan": "SKT", "Kalmar - Kalkmar, Sweden": "KLR", "Koggala Airport - Koggala, Sri Lanka": "KCT", "Xoxocotlan Intl - Oaxaca, Mexico": "OAX", "Kenai Muni - Kenai, United States": "ENA", "Point Salines Intl - Point Salines, Grenada": "GND", "Great Barrier Island - Claris, New Zealand": "GBZ", "Lutselk'e Airport - Lutselk'e, Canada": "YSG", "Bantry Aerodrome - Bantry, Ireland": "BYT", "Moser Bay Seaplane Base - Moser Bay, United States": "KMY", "Gardabya Airport - Sirt, Libya": "SRX", "Taiz Intl - Taiz, Yemen": "TAI", "Hubli Airport - Hubli, India": "HBX", "Mabuiag Island Airport - Mabuiag Island, Australia": "UBB", "Stefan Cel Mare - Suceava, Romania": "SCV", "Kariba Intl - Kariba, Zimbabwe": "KAB", "Dayton-Wright Brothers Airport - Dayton, United States": "MGY", "St Lucie County International Airport - Fort Pierce, United States": "FRP", "Meridian Nas - Meridian, United States": "NMM", "Sazena - Sazena, Czech Republic": "LKS", "Ely Airport - Ely, United States": "ELY", "Sorkjosen Airport - Sorkjosen, Norway": "SOJ", "Guardiamarina Zanartu Airport - Puerto Williams, Chile": "WPU", "Pikangikum Airport - Pikangikum, Canada": "YPM", "Birmingham Intl - Birmingham, United States": "BHM", "Kadhdhoo Airport - Laamu Atoll, Maldives": "KDO", "Wilkes-Barre Wyoming Valley Airport - Wilkes-Barre, United States": "WBW", "Aktyubinsk - Aktyubinsk, Kazakhstan": "AKX", "Melville Hall - Dominica, Dominica": "DOM", "Wallis - Wallis, Wallis and Futuna": "WLS", "Ndjili Intl - Kinshasa, Congo (Kinshasa)": "FIH", "Anniston Metro - Anniston, United States": "ANB", "Tacheng Airport - Tacheng, China": "TCG", "LM Clayton Airport - Wolf Point, United States": "OLF", "Agri Airport - Agri, Turkey": "AJI", "Maca\u00e9 Airport - Maca\u00e9, Brazil": "MEA", "Capitan Corbeta C A Curbelo International Airport - Punta del Este, Uruguay": "PDP", "Faro - Faro, Portugal": "FAO", "Dillant Hopkins Airport - Keene, United States": "EEN", "Stockholm Cruise Port - Stockholm, Sweden": "STO", "Nouakchott - Nouakschott, Mauritania": "NKC", "Loudes - Le Puy, France": "LPY", "Nurnberg - Nuernberg, Germany": "NUE", "Ballina Byron Gateway - Ballina Byron Bay, Australia": "BNK", "Cairo-Grady County Airport - Cairo, United States": "70J", "Sussex Co - Georgetown, United States": "GED", "Jose Aponte de la Torre Airport - Ceiba, Puerto Rico": "RVR", "Lichinga - Lichinga, Mozambique": "VXC", "Kailashahar - Kailashahar, India": "IXH", "Herat - Herat, Afghanistan": "HEA", "New Orleans Nas Jrb - New Orleans, United States": "NBG", "Mammy Yoko Heliport - Freetown, Sierra Leone": "JMY", "Rosecrans Mem - Rosecrans, United States": "STJ", "Cuddapah - Cuddapah, India": "CDP", "Virginia - Durban, South Africa": "VIR", "Schwechat - Vienna, Austria": "VIE", "Firenze - Florence, Italy": "FLR", "Rapid City Regional Airport - Rapid City, United States": "RAP", "Belep Islands Airport - Waala, New Caledonia": "BMY", "Babelthuap - Babelthuap, Palau": "ROR", "Kerman - Kerman, Iran": "KER", "Jiagedaqi Airport - Jiagedaqi District, China": "JGD", "Danbury Municipal Airport - Danbury, United States": "DXR", "Oxford House Airport - Oxford House, Canada": "YOH", "New Castle - Wilmington, United States": "ILG", "Sioux Lookout - Sioux Lookout, Canada": "YXL", "Fernando Luis Ribas Dominicci - San Juan, Puerto Rico": "SIG", "Asmara Intl - Asmara, Eritrea": "ASM", "Sonderborg - Soenderborg, Denmark": "SGD", "Crystal River - Crystal River, United States": "CGC", "Megas Alexandros Intl - Kavala, Greece": "KVA", "Pease International Tradeport - Portsmouth, United States": "PSM", "Tte Av Jorge Henrich Arauz - Trinidad, Bolivia": "TDD", "Pemba - Pemba, Mozambique": "POL", "Makin Airport - Makin, Kiribati": "MTK", "Skardu Airport - Skardu, Pakistan": "KDU", "Saint Louis - St. Louis, Senegal": "XLS", "Goma - Goma, Congo (Kinshasa)": "GOM", "Cadete Guillermo Del Castillo Paredes - Tarapoto, Peru": "TPP", "Lviv Intl - Lvov, Ukraine": "LWO", "Sept Iles - Sept-iles, Canada": "YZV", "Ndutu - Ndutu, Tanzania": "DUU", "Houssen - Colmar, France": "CMR", "Alpena County Regional Airport - Alpena, United States": "APN", "Baco Airport - Baco, Ethiopia": "BCO", "Nakhon Phanom - Nakhon Phanom, Thailand": "KOP", "Wishram Amtrak Station - Wishram, United States": "WIH", "Keshod - Keshod, India": "IXK", "Pembina Muni - Pembina, United States": "PMB", "Larisa - Larissa, Greece": "LRA", "Bauru - Bauru, Brazil": "BAU", "Rancho Murieta - Rancho Murieta, United States": "RIU", "Nottingham Airport - Nottingham, United Kingdom": "NQT", "Sir Seewoosagur Ramgoolam Intl - Plaisance, Mauritius": "MRU", "Humaita Airport - Humaita, Brazil": "HUW", "Grozny Airport - Grozny, Russia": "GRV", "Pinang Kampai - Dumai, Indonesia": "DUM", "Porbandar - Porbandar, India": "PBD", "Southwest Georgia Regional Airport - Albany, United States": "ABY", "Antonio Juarbe Pol Airport - Arecibo, Puerto Rico": "ARE", "Boulder City Municipal Airport - Boulder City, United States": "BLD", "El Loa - Calama, Chile": "CJC", "Smith Fld - Fort Wayne IN, United States": "SMD", "Taupo - Taupo, New Zealand": "TUO", "Gwinnett County Airport-Briscoe Field - Lawrenceville, United States": "LZU", "Dallas Love Fld - Dallas, United States": "DAL", "Grise Fiord Airport - Grise Fiord, Canada": "YGZ", "Argyle Airport - Argyle, Australia": "GYL", "Wallops Flight Facility - Wallops Island, United States": "WAL", "Teniente Coronel Luis A Mantilla - Tulcan, Ecuador": "TUA", "Verkehrslandeplatz Juist - Juist, Germany": "JUI", "Maamigili Airport - Maamigili, Maldives": "VAM", "Sioux Gateway Col Bud Day Fld - Sioux City, United States": "SUX", "Lawrence J Timmerman Airport - Milwaukee, United States": "MWC", "Gatwick - London, United Kingdom": "LGW", "El Porvenir - El Porvenir, Panama": "PVE", "Edmonton City Centre - Edmonton, Canada": "YXD", "Mosnov - Ostrava, Czech Republic": "OSR", "Eindhoven - Eindhoven, Netherlands": "EIN", "Rochester - Rochester, United States": "RST", "Dera Ismael Khan Airport - Dera Ismael Khan, Pakistan": "DSK", "Osh - Osh, Kyrgyzstan": "OSS", "Kaitaia - Kaitaia, New Zealand": "KAT", "Chapais Airport - Chibougamau, Canada": "YMT", "Ambatondrazaka Airport - Ambatondrazaka, Madagascar": "WAM", "Excursion Inlet Seaplane Base - Excursion Inlet, United States": "EXI", "Fort Jefferson - Fort Jefferson - Dry Tortugas, United States": "RBN", "Vnukovo - Moscow, Russia": "VKO", "Niau - Niau, French Polynesia": "NIU", "Toyama - Toyama, Japan": "TOY", "Yibin - Yibin, China": "YBP", "Ghat - Ghat, Libya": "GHT", "Buchloe BF - Buchloe, Germany": "BUH", "Lakefront - New Orleans, United States": "NEW", "Asahikawa - Asahikawa, Japan": "AKJ", "Emanuel Co - Santa Barbara, United States": "SBO", "Licenciado Y Gen Ignacio Lopez Rayon - Uruapan, Mexico": "UPN", "Thunder Bay - Thunder Bay, Canada": "YQT", "Nanchong Airport - Nanchong, China": "NAO", "Robins Afb - Macon, United States": "WRB", "Vance Afb - Enid, United States": "END", "Mizan Teferi Airport - Mizan Teferi, Ethiopia": "MTF", "Ithaca Tompkins Rgnl - Ithaca, United States": "ITH", "Phrae - Phrae, Thailand": "PRH", "Enrique Adolfo Jimenez Airport - Col\u00f3n, Panama": "ONX", "Ireland West Knock - Connaught, Ireland": "NOC", "Vilankulo - Vilankulu, Mozambique": "VNX", "West Point Village Seaplane Base - West Point, United States": "KWP", "Arvaikheer Airport - Arvaikheer, Mongolia": "AVK", "Copiapo - Copiapo, Chile": "CPO", "Elenak Airport - Elenak, Marshall Islands": "EAL", "Fussen - Fussen, Germany": "FUS", "Hughenden Airport - Hughenden, Australia": "HGD", "Chatsworth Station - Chatsworth, United States": "CWT", "Wadi Al Dawasir Airport - Wadi-al-dawasir, Saudi Arabia": "EWD", "Ryans Creek Aerodrome - Stewart Island, New Zealand": "SZS", "Tancredo Neves Intl - Belo Horizonte, Brazil": "CNF", "Belmont Airport - Lake Macquarie, Australia": "BEO", "Porto Amboim - Porto Amboim, Angola": "PBN", "Likoma Island Airport - Likoma Island, Malawi": "LIX", "Long Beach - Long Beach, United States": "LGB", "Valan - Honningsvag, Norway": "HVG", "Blackall - Blackall, Australia": "BKQ", "Craig Seaplane Base - Craig, United States": "CGA", "King Salmon - King Salmon, United States": "AKN", "Yushu Batang - Yushu, China": "YUS", "Rigolet Airport - Rigolet, Canada": "YRG", "Venezia Tessera - Venice, Italy": "VCE", "McCarthy Airport - McCarthy, United States": "MXY", "Waris Airport - Waris-Papua Island, Indonesia": "WAR", "South Arkansas Rgnl At Goodwin Fld - El Dorado, United States": "ELD", "Jose Leonardo Chirinos - Coro, Venezuela": "CZE", "Kursk East Airport - Kursk, Russia": "URS", "Akita - Akita, Japan": "AXT", "Cavern City Air Terminal - Carlsbad, United States": "CNM", "Jan Mayensfield - Jan Mayen, Norway": "ZXB", "Rick Husband Amarillo Intl - Amarillo, United States": "AMA", "Sherbro International Airport - Bonthe, Sierra Leone": "BTE", "Lewistown Municipal Airport - Lewistown, United States": "LWT", "Kerema Airport - Kerema, Papua New Guinea": "KMA", "Millinocket Muni - Millinocket, United States": "MLT", "Palo Verde Airport - San Bruno, Mexico": "PVP", "Grand Canyon West Airport - Peach Springs, United States": "1G4", "South Lakeland Airport - Lakeland, United States": "X49", "Bermuda Dunes Airport - Palm Springs, United States": "UDD", "St Mawgan - Newquai, United Kingdom": "NQY", "Liberal Muni - Liberal, United States": "LBL", "Mayaguana - Mayaguana, Bahamas": "MYG", "Tacoma Narrows Airport - Tacoma, United States": "TIW", "La Rochelle-Ile de Re - La Rochelle, France": "LRH", "Kerama Airport - Kerama, Japan": "KJP", "Saint John - St. John, Canada": "YSJ", "RUDNIKI  - RUDNIKI, Poland": "CZW", "Dongying Airport - Dongying, China": "DOY", "Port Said - Port Said, Egypt": "PSD", "Kake Seaplane Base - Kake, United States": "KAE", "Val D Or - Val D'or, Canada": "YVO", "Bourges - Bourges, France": "BOU", "Madeira - Funchal, Portugal": "FNC", "Phnom Penh Intl - Phnom-penh, Cambodia": "PNH", "Tte De Av Salvador Ogaya G - Puerto Suarez, Bolivia": "PSZ", "Telfer Airport - Telfer, Australia": "TEF", "Rickenbacker Intl - Columbus, United States": "LCK", "Mandalay Intl - Mandalay, Burma": "MDL", "Santa Maria Airport - Santa Maria, Brazil": "RIA", "Yuendumu  - Yuendumu , Australia": "YUE", "Motueka - Motueka, New Zealand": "MZP", "Gulu Airport - Gulu, Uganda": "ULU", "Syangboche - Syangboche, Nepal": "SYH", "Abilene Rgnl - Abilene, United States": "ABI", "Bearskin Lake Airport - Bearskin Lake, Canada": "XBE", "Walla Walla Regional Airport - Walla Walla, United States": "ALW", "Nadi Intl - Nandi, Fiji": "NAN", "Usiminas - Ipatinga, Brazil": "IPN", "Panjgur - Panjgur, Pakistan": "PJG", "Land's End / St. Just Airport - Land's End, United Kingdom": "LEQ", "Sud Corse - Figari, France": "FSC", "Train Station - Ottawa, Canada": "XDS", "Abraham Lincoln Capital - Springfield, United States": "SPI", "Patrick Afb - Coco Beach, United States": "COF", "Mandelieu - Cannes, France": "CEQ", "Wotje Atoll Airport - Wotje Atoll, Marshall Islands": "WTE", "Westport - Westport, New Zealand": "WSZ", "Newport News Williamsburg Intl - Newport News, United States": "PHF", "Gods Lake Narrows Airport - Gods Lake Narrows, Canada": "YGO", "Port Blair - Port Blair, India": "IXZ", "Chachoan - Ambato, Ecuador": "ATF", "Mardin Airport - Mardin, Turkey": "MQM", "Sola Airport - Sola, Vanuatu": "SLH", "Florence - Florence, United States": "6S2", "Fabio Alberto Leon Bentley - Mitu, Colombia": "MVP", "Zhijiang Airport - Zhijiang, China": "HJJ", "Salina Municipal Airport - Salina, United States": "SLN", "Suwannee County Airport - Live Oak, United States": "24J", "Reao - Reao, French Polynesia": "REA", "Washington Union Station - Washington, United States": "ZWU", "Donetsk Intl - Donetsk, Ukraine": "DOK", "Beijing Nanyuan Airport - Beijing, China": "NAY", "Vernal Regional Airport - Vernal, United States": "VEL", "Bloemfontein Intl - Bloemfontein, South Africa": "BFN", "All Airports - Washington, United States": "WAS", "Sherbrooke - Sherbrooke, Canada": "YSC", "Bou Chekif - Tiaret, Algeria": "TID", "Sundsvall Harnosand - Sundsvall, Sweden": "SDL", "Nefteyugansk Airport - Nefteyugansk, Russia": "NFG", "Asturias - Aviles, Spain": "OVD", "Lubango - Lubango, Angola": "SDD", "Rock Airport - Tarentum, United States": "9G1", "Ceyzeriat - Bourg, France": "XBK", "Gulfport-Biloxi - Gulfport, United States": "GPT", "Eday Airport - Eday, United Kingdom": "EOI", "Enshi Airport - Enshi, China": "ENH", "Northolt - Northolt, United Kingdom": "NHT", "Hilton Head Airport - Hilton Head Island, United States": "HXD", "Arar - Arar, Saudi Arabia": "RAE", "Port Oceanic Airport - Port Oceanic, United States": "PRL", "Longyan Airport - Longyan, China": "LCX", "Purude University Airport - Lafayette, United States": "LAF", "Pisa - Pisa, Italy": "PSA", "Gregorio Luperon Intl - Puerto Plata, Dominican Republic": "POP", "Farfan - Tulua, Colombia": "ULQ", "Knevichi - Vladivostok, Russia": "VVO", "Bahias De Huatulco Intl - Huatulco, Mexico": "HUX", "Lethem - Lethem, Guyana": "LTM", "Agrinion - Agrinion, Greece": "AGQ", "Lamap Airport - Lamap, Vanuatu": "LPM", "Mildura Airport - Mildura, Australia": "MQL", "Juwata - Taraken, Indonesia": "TRK", "Pangsuma Airport - Putussibau-Borneo Island, Indonesia": "PSU", "Loubomo Airport - Loubomo, Congo (Brazzaville)": "DIS", "Bharatpur Airport - Bharatpur, Nepal": "BHR", "Merced Municipal Airport - Merced, United States": "MCE", "Scottsdale Airport - Scottsdale, United States": "ZSY", "Akure - Akure, Nigeria": "AKR", "Immokalee  - Immokalee , United States": "IMM", "Port Elizabeth Intl - Port Elizabeth, South Africa": "PLZ", "Nausori Intl - Nausori, Fiji": "SUV", "North Las Vegas Airport - Las Vegas, United States": "VGT", "Craven Co Rgnl - New Bern, United States": "EWN", "Ellington Fld - Houston, United States": "EFD", "Minot Intl - Minot, United States": "MOT", "Deering Airport - Deering, United States": "DRG", "Kardla - Kardla, Estonia": "KDL", "Chitral Airport - Chitral, Pakistan": "CJL", "Burgas - Bourgas, Bulgaria": "BOJ", "Ministro Pistarini - Buenos Aires, Argentina": "EZE", "Ioannina - Ioannina, Greece": "IOA", "Chignik Lake Airport - Chignik Lake, United States": "KCQ", "Karlskoga - Karlskoga, Sweden": "KSK", "Innsbruck - Innsbruck, Austria": "INN", "Stranraer Ferry Port - Stranraer, United Kingdom": "SR2", "Astrakhan - Astrakhan, Russia": "ASF", "Rhodes Diagoras - Rhodos, Greece": "RHO", "Mattala Rajapaksa Intl. - Mattala, Sri Lanka": "HRI", "Moshoeshoe I Intl - Maseru, Lesotho": "MSU", "Uummannaq Heliport - Uummannaq, Greenland": "UMD", "Kipnuk Airport - Kipnuk, United States": "KPN", "Shell Mera - Pastaza, Ecuador": "PTZ", "Castle - Merced, United States": "MER", "Netaji Subhash Chandra Bose Intl - Kolkata, India": "CCU", "Tri Cities Airport - Pasco, United States": "PSC", "Mali Airport - Alor Island, Indonesia": "ARD", "Draughon Miller Central Texas Rgnl - Temple, United States": "TPL", "Cloncurry Airport - Cloncurry, Australia": "CNJ", "Malabo - Malabo, Equatorial Guinea": "SSG", "Bayannur - Bayannur, China": "RLK", "San Bernardino International Airport - San Bernardino, United States": "SBD", "Jyvaskyla - Jyvaskyla, Finland": "JYV", "Chan Gurney - Yankton, United States": "YKN", "Heathrow - London, United Kingdom": "LHR", "Minchumina Airport - Lake Minchumina, United States": "MHM", "Mana Island Airport - Mana Island, Fiji": "MNF", "Sodankyla - Sodankyla, Finland": "SOT", "Phoenix International - Sanya, China": "SYX", "Gran Canaria - Gran Canaria, Spain": "LPA", "El Calafate - El Calafate, Argentina": "FTE", "Stuttgart - Stuttgart, Germany": "STR", "Marco Islands - Marco Island Airport, United States": "MRK", "North Bay - North Bay, Canada": "YYB", "Puerto Penasco - Punta Penasco, Mexico": "PPE", "Decatur - Decatur, United States": "DEC", "Bost Airport - Lashkar Gah, Afghanistan": "BST", "Charles De Gaulle - Paris, France": "CDG", "Roros - Roros, Norway": "RRS", "Williams Harbour Airport - Williams Harbour, Canada": "YWM", "Confresa Airport - Santa Terezinha, Brazil": "STZ", "George - George, South Africa": "GRJ", "Santa Cruz - Rio De Janeiro, Brazil": "STU", "Sanga Sanga Airport - Sanga Sanga, Philippines": "SGS", "Paya Lebar - Paya Lebar, Singapore": "QPG", "San Carlos Airport - San Carlos, United States": "SQL", "Kalemie - Kalemie, Congo (Kinshasa)": "FMI", "Addison - Addison, United States": "ADS", "Chippewa County International Airport - Sault Ste Marie, United States": "CIU", "Valdez Pioneer Fld - Valdez, United States": "VDZ", "\u0141\u00f3d\u017a W\u0142adys\u0142aw Reymont Airport - Lodz, Poland": "LCJ", "Chipata Airport - Chipata, Zambia": "CIP", "Nondalton Airport - Nondalton, United States": "NNL", "Cherskiy Airport - Cherskiy, Russia": "CYX", "Langnes - Tromso, Norway": "TOS", "General Urquiza - Parana, Argentina": "PRA", "Nakhon Ratchasima - Nakhon Ratchasima, Thailand": "NAK", "Mar Del Plata - Mar Del Plata, Argentina": "MDQ", "Witham Field Airport - Stuart, United States": "SUA", "Ernesto Cortissoz - Barranquilla, Colombia": "BAQ", "Biskra - Biskra, Algeria": "BSK", "Bella Bella Airport - Bella Bella, Canada": "ZEL", "Iasi - Iasi, Romania": "IAS", "Chimoio Airport - Chimoio, Mozambique": "VPY", "Shah Mokhdum - Rajshahi, Bangladesh": "RJH", "Al-Jawf Domestic Airport - Al-Jawf, Saudi Arabia": "AJF", "Goloson Intl - La Ceiba, Honduras": "LCE", "Annette Island - Annette Island, United States": "ANN", "Tinker Afb - Oklahoma City, United States": "TIK", "West Houston - Houston, United States": "IWS", "Sofia - Sofia, Bulgaria": "SOF", "Champaign - Champaign, United States": "CMI", "Upernavik Airport - Upernavik, Greenland": "JUV", "Haeju Airport - Haeju, North Korea": "HAE", "Achmad Yani - Semarang, Indonesia": "SRG", "Tampa Intl - Tampa, United States": "TPA", "Ashland County Airport - Ashland, United States": "3G4", "What\u00ec Airport - What\u00ec, Canada": "YLE", "Hamadan Airport - Hamadan, Iran": "HDM", "Kent State Airport - Kent, United States": "1G3", "Hasanuddin - Ujung Pandang, Indonesia": "UPG", "Hong Kong Intl - Hong Kong, Hong Kong": "HKG", "Ronchi Dei Legionari - Ronchi De Legionari, Italy": "TRS", "Nurnberg HBF - Nurnberg, Germany": "NUR", "Barataevka - Ulyanovsk, Russia": "ULV", "Nnamdi Azikiwe Intl - Abuja, Nigeria": "ABV", "Sihanoukville - Sihanoukville, Cambodia": "KOS", "Pope Field - Fort Bragg, United States": "POB", "Clarke CO - Quitman, United States": "23M", "Lidkoping - Lidkoping, Sweden": "LDK", "Northern Maine Rgnl At Presque Isle - Presque Isle, United States": "PQI", "Perth Intl - Perth, Australia": "PER", "Urgench Airport - Urgench, Uzbekistan": "UGC", "Lorain County Regional Airport - Lorain-Elyria, United States": "LPR", "Lanzhou Airport - Lanzhou, China": "LHW", "Galeao Antonio Carlos Jobim - Rio De Janeiro, Brazil": "GIG", "Orapa Airport - Orapa, Botswana": "ORP", "Alykel - Norilsk, Russia": "NSK", "Robert Curtis Memorial Airport - Noorvik, United States": "ORV", "Liege - Liege, Belgium": "LGG", "Fullerton Municipal Airport - Fullerton, United States": "FUL", "Newport Municipal Airport - Newport, United States": "ONP", "Namsos H\u00f8knes\u00f8ra Airport - Namsos, Norway": "OSY", "KBWD - Brownwood, United States": "BWD", "Utila Airport - Utila, Honduras": "UII", "Altamira - Altamira, Brazil": "ATM", "Municipal - Corozal, Belize": "CZH", "Pico - Pico, Portugal": "PIX", "Kzyl-Orda - Kzyl-Orda, Kazakhstan": "KZO", "Melbourne Essendon - Melbourne, Australia": "MEB", "Hakodate - Hakodate, Japan": "HKD", "Duxford Aerodrome - Duxford, United Kingdom": "QFO", "Southport - Portage-la-prairie, Canada": "YPG", "Albuquerque International Sunport - Albuquerque, United States": "ABQ", "Tombouctou - Tombouctou, Mali": "TOM", "Margate - Margate, South Africa": "MGH", "Wrigley - Wrigley, Canada": "YWY", "Nasik Road - Nasik Road, India": "ISK", "Rumjatar - Rumjatar, Nepal": "RUM", "Ceuta Heliport - Ceuta, Spain": "JCU", "Oki - Oki Island, Japan": "OKI", "Hao - Hao Island, French Polynesia": "HOI", "M R Stefanik - Bratislava, Slovakia": "BTS", "Minatitlan - Minatitlan, Mexico": "MTT", "Lancaster Airport - Lancaster, United States": "LNS", "Comino Airport - Comino, Malta": "JCO", "Long Lake - Long Lake, United States": "NY9", "Burketown Airport - Burketown, Australia": "BUC", "La Jagua Airport - Garz\u00f3n, Colombia": "GLJ", "Jefferson County Intl - Port Townsend, United States": "0S9", "Luis Munoz Marin Intl - San Juan, Puerto Rico": "SJU", "Chaoyang Airport - Chaoyang, China": "CHG", "Renaison - Roanne, France": "RNE", "Southwest Bay Airport - Malekula Island, Vanuatu": "SWJ", "Pangnirtung - Pangnirtung, Canada": "YXP", "Nuiqsut Airport - Nuiqsut, United States": "NUI", "Robin Hood Doncaster Sheffield Airport - Doncaster,  Sheffield": "United Kingdom", "Bettles - Bettles, United States": "BTT", "Grove City Airport - Grove City, United States": "29D", "Skukuza - Skukuza, South Africa": "SZK", "Kubin Airport - Kubin, Australia": "KUG", "Jingdezhen Airport - Jingdezhen, China": "JDZ", "Havre City Co - Havre, United States": "HVR", "Ryum Airport - R\u00f8rvik, Norway": "RVK", "Lyon Part-Dieu Railway - Lyon, France": "XYD", "Port Hope Simpson Airport - Port Hope Simpson, Canada": "YHA", "Mwalimu Julius K Nyerere Intl - Dar Es Salaam, Tanzania": "DAR", "Man - Man, Cote d'Ivoire": "MJC", "Red Sucker Lake Airport - Red Sucker Lake, Canada": "YRS", "Boutheon - St-Etienne, France": "EBU", "Sir Bani Yas Island - Sir Bani Yas Island, United Arab Emirates": "XSB", "Yampa Valley - Hayden, United States": "HDN", "Henderson Executive Airport - Henderson, United States": "HSH", "Kadala - Chita, Russia": "HTA", "Wilmington Intl - Wilmington, United States": "ILM", "Tabuk - Tabuk, Saudi Arabia": "TUU", "Nikolski Air Station - Nikolski, United States": "IKO", "Lovell Fld - Chattanooga, United States": "CHA", "Puerto Natales - Puerto Natales, Chile": "PNT", "Koro Island Airport - Koro Island, Fiji": "KXF", "Fresno Yosemite Intl - Fresno, United States": "FAT", "Sikeston Memorial Municipal - Sikeston, United States": "SIK", "San Diego Intl - San Diego, United States": "SAN", "Bellona - Bellona, Solomon Islands": "BNY", "General Edward Lawrence Logan Intl - Boston, United States": "BOS", "Boufarik - Boufarik, Algeria": "QFD", "Rondonopolis Airport - Rondonopolis, Brazil": "ROO", "Rostov Na Donu - Rostov, Russia": "ROV", "Ramingining Airport - Ramingining, Australia": "RAM", "Winnipeg St Andrews - Winnipeg, Canada": "YAV", "Mae Sot Airport - Tak, Thailand": "MAQ", "Tamana Airport - Tamana, Kiribati": "TMN", "Pomalaa - Pomalaa, Indonesia": "PUM", "Golden Airport - Golden, Canada": "YGE", "Eppley Afld - Omaha, United States": "OMA", "Bushehr - Bushehr, Iran": "BUZ", "Kyaukpyu - Kyaukpyu, Burma": "KYP", "Mthatha - Umtata, South Africa": "UTT", "Namorik Atoll Airport - Namorik Atoll, Marshall Islands": "NDK", "Altai Airport - Altai, Mongolia": "LTI", "Papa Stour Airport - Papa Stour, United Kingdom": "PSV", "Baiyun Intl - Guangzhou, China": "CAN", "Canal Bajo Carlos Hott Siebert - Osorno, Chile": "ZOS", "Erechim Airport - Erechim, Brazil": "ERM", "Okhotsk Airport - Okhotsk, Russia": "OHO", "Iowa City Municipal Airport - Iowa City, United States": "IOW", "Sierra Maestra - Manzanillo, Cuba": "MZO", "Syamsudin Noor - Banjarmasin, Indonesia": "BDJ", "Big Mountain Afs - Big Mountain, United States": "BMX", "Washington Dulles Intl - Washington, United States": "IAD", "Treuchtlingen BF - Treuchtlingen, Germany": "TLG", "Chiayi - Chiayi, Taiwan": "CYI", "Aur Island Airport - Aur Atoll, Marshall Islands": "AUL", "Tabora Airport - Tabora, Tanzania": "TBO", "Peterborough - Peterborough, Canada": "YPQ", "Richmond - Richmond, Australia": "RCM", "Biard - Poitiers, France": "PIS", "Bandanaira Airport - Bandanaira-Naira Island, Indonesia": "NDA", "Leonora Airport - Leonora, Australia": "LNO", "Houari Boumediene - Algier, Algeria": "ALG", "Regional - Hendricks AAF - Sebring, United States": "SEF", "Esperance Airport - Esperance, Australia": "EPR", "Youngstown Elser Metro Airport - Youngstown, United States": "4G4", "Kirovograd - Kirovograd, Ukraine": "KGO", "Fair Isle Airport - Fair Isle, United Kingdom": "FIE", "Antique - San Jose, Philippines": "SJI", "Nelson Lagoon - Nelson Lagoon, United States": "NLG", "Sterling Municipal Airport - Sterling, United States": "STK", "Kobuk Airport - Kobuk, United States": "OBU", "Annaba - Annaba, Algeria": "AAE", "China Bay - Trinciomalee, Sri Lanka": "TRR", "St. Augustine Airport - St. Augustine Airport, United States": "UST", "La Florida - Tumaco, Colombia": "TCO", "Gray Aaf - Fort Lewis, United States": "GRF", "Tumling Tar - Tumling Tar, Nepal": "TMI", "Incheon Intl - Seoul, South Korea": "ICN", "Abaiang Atoll Airport - Abaiang Atoll, Kiribati": "ABF", "Goodnews Airport - Goodnews Bay, United States": "GNU", "Decimomannu - Decimomannu, Italy": "DCI", "Capit\u00e1n de Av. Emilio Beltr\u00e1n Airport - Guayaramer\u00edn, Bolivia": "GYA", "Palacios Muni - Palacios, United States": "PSX", "Djoemoe Airstrip - Djoemoe, Suriname": "DOE", "Boise Air Terminal - Boise, United States": "BOI", "Kingsville Nas - Kingsville, United States": "NQI", "Campo Alegre Airport - Santana do Araguaia, Brazil": "CMP", "Khudzhand Airport - Khudzhand, Tajikistan": "LBD", "Eglin Afb - Valparaiso, United States": "VPS", "Springfield Branson Natl - Springfield, United States": "SGF", "Stephenville - Stephenville, Canada": "YJT", "Lukou - Nanjing, China": "NKG", "Dr. Augusto Roberto Fuster International Airport - Pedro Juan Caballero, Paraguay": "PJC", "Quincy Regional Baldwin Field - Quincy, United States": "UIN", "Coari Airport - Coari, Brazil": "CIZ", "Fernandina Beach Municipal Airport - Fernandina Beach, United States": "55J", "Fort Lauderdale Hollywood Intl - Fort Lauderdale, United States": "FLL", "Gafsa - Gafsa, Tunisia": "GAF", "Tete Chingodzi - Tete, Mozambique": "TET", "Teller Airport - Teller, United States": "TLA", "Burao Airport - Burao, Somalia": "BUO", "Shinyanga Airport - Shinyanga, Tanzania": "SHY", "San Andros - San Andros, Bahamas": "SAQ", "Julio Belem Airport - Parintins, Brazil": "PIN", "Rotterdam - Rotterdam, Netherlands": "RTM", "Webequie Airport - Webequie, Canada": "YWP", "Egal Intl - Hargeisa, Somalia": "HGA", "Male Intl - Male, Maldives": "MLE", "Sidi Mahdi - Touggourt, Algeria": "TGR", "Quonset State Airport - North Kingstown, United States": "OQU", "Boundary Bay Airport - Boundary Bay, Canada": "YDT", "Albert J Ellis - Jacksonville NC, United States": "OAJ", "Phu Cat Airport - Phucat, Vietnam": "UIH", "Debre Tabor Airport - Debre Tabor, Ethiopia": "DBT", "Scone Airport - Scone, Australia": "NSO", "Santa Rosa Airport - Santa Rosa, Brazil": "SRA", "Agartala - Agartala, India": "IXA", "Woensdrecht - Woensdrecht, Netherlands": "WOE", "S\u00e1rmell\u00e9k International Airport - S\u00e1rmell\u00e9k, Hungary": "SOB", "Mount Pleasant Regional-Faison Field - Mount Pleasant, United States": "LRO", "Luang Phabang Intl - Luang Prabang, Laos": "LPQ", "Carlos Ibanez Del Campo Intl - Punta Arenas, Chile": "PUQ", "Bahir Dar - Bahar Dar, Ethiopia": "BJR", "Yamaguchi Ube - Yamaguchi, Japan": "UBJ", "Duong Dong Airport - Phu Quoc, Vietnam": "PQC", "Funter Bay Seaplane Base - Funter Bay, United States": "FNR", "Wanigela Airport - Wanigela, Papua New Guinea": "AGL", "Qiemo Airport - Qiemo, China": "IQM", "Huizhou - Huizhou, China": "HUZ", "Dong Hoi - Dong Hoi, Vietnam": "VDH", "Pemba - Pemba, Tanzania": "PMA", "Hornafjordur - Hofn, Iceland": "HFN", "Philadelphia Intl - Philadelphia, United States": "PHL", "Danang Intl - Danang, Vietnam": "DAD", "Sun Moon Lake Airport - Sun Moon Lake, Taiwan": "SMT", "Key West Intl - Key West, United States": "EYW", "Fourchambault - Nevers, France": "NVS", "Marsh Harbour - Marsh Harbor, Bahamas": "MHH", "Thumrait - Thumrait, Oman": "TTH", "Griffiss Afld - Rome, United States": "RME", "Olgii Airport - Olgii, Mongolia": "ULG", "Groote Eylandt Airport - Groote Eylandt, Australia": "GTE", "Tlaxcala - Tlaxcala, Mexico": "TXA", "Patna - Patina, India": "PAT", "Cochin - Kochi, India": "COK", "Bata - Bata, Equatorial Guinea": "BSG", "Jijiga Airport - Jijiga, Ethiopia": "JIJ", "Chernivtsi International Airport - Chernovtsk, Ukraine": "CWC", "Hancock County - Bar Harbor - Bar Harbor, United States": "BHB", "Travis Afb - Fairfield, United States": "SUU", "Kagau Island Airport - Kagau Island, Solomon Islands": "KGE", "General Heriberto Jara Intl - Vera Cruz, Mexico": "VER", "Plymouth Municipal Airport - Plymouth, United States": "C65", "Frasca Field - Urbana, United States": "C16", "Talkeetna - Talkeetna, United States": "TKA", "Jinnah Intl - Karachi, Pakistan": "KHI", "Marina Muni - Fort Ord, United States": "OAR", "Dickwella Airport - Dickwella, Sri Lanka": "DIW", "Nuku Airport - Nuku, Papua New Guinea": "UKU", "Invercargill - Invercargill, New Zealand": "IVC", "Misawa Ab - Misawa, Japan": "MSJ", "Port McNeill Airport - Port McNeill, Canada": "YMP", "Nosara - Nosara Beach, Costa Rica": "NOB", "New Chitose - Sapporo, Japan": "CTS", "Jumla - Jumla, Nepal": "JUM", "Reykjahlid Airport - Myvatn, Iceland": "MVA", "Horta - Horta, Portugal": "HOR", "Southwest Michigan Regional Airport - Benton Harbor, United States": "BEH", "Papa Westray Airport - Papa Westray, United Kingdom": "PPW", "Sovetsky Tyumenskaya Airport - Sovetskiy, Russia": "OVS", "Mokuti Lodge Airport - Mokuti Lodge, Namibia": "OKU", "Togiak Airport - Togiak Village, United States": "TOG", "Stanley Airport - Stanley, Falkland Islands": "PSY", "Magwe - Magwe, Burma": "MWQ", "Truckee-Tahoe Airport - Truckee, United States": "TKF", "Eareckson As - Shemya, United States": "SYA", "Rio Cuarto Area De Material - Rio Cuarto, Argentina": "RCU", "Khwai River Lodge - Khwai River, Botswana": "KHW", "Qingyang Airport - Qingyang, China": "IQN", "Prefeito Renato Moreira - Imperatriz, Brazil": "IMP", "Agatti - Agatti Island, India": "AGX", "Blackwater Airport - Blackwater, Australia": "BLT", "Ivato - Antananarivo, Madagascar": "TNR", "Kili Airport - Kili Island, Marshall Islands": "KIO", "Lishe - Ninbo, China": "NGB", "Del Caribe Intl Gen Santiago Marino - Porlamar, Venezuela": "PMV", "Vologda Airport - Vologda, Russia": "VGD", "Samburu South Airport - Samburu South, Kenya": "UAS", "General Santos International Airport - General Santos City, Philippines": "GES", "Pitt-Greenville Airport - Greenville, United States": "PGV", "Prince Mangosuthu Buthelezi - Ulundi, South Africa": "ULD", "King Khaled Military City - King Khalid Mil.city, Saudi Arabia": "HBT", "Henry Post Aaf - Fort Sill, United States": "FSI", "Mandinga Airport - Condoto, Colombia": "COG", "Yenisehir Airport - Yenisehir, Turkey": "YEI", "Diu Airport - Diu, India": "DIU", "Albany Airport - Albany, Australia": "ALH", "Chapada Diamantina Airport - Len\u00e7\u00f3is, Brazil": "LEC", "Vaasa - Vaasa, Finland": "VAA", "Anaa - Anaa, French Polynesia": "AAA", "Barau(Kalimaru) Airport - Tanjung Redep-Borneo Island, Indonesia": "BEJ", "Tarare - Vilefrance, France": "XVF", "Sivas - Sivas, Turkey": "VAS", "Rouyn Noranda - Rouyn, Canada": "YUY", "Gambella - Gambella, Ethiopia": "GMB", "Ted Stevens Anchorage Intl - Anchorage, United States": "ANC", "Alonso Valderrama Airport - Chitr\u00e9, Panama": "CTD", "Mallam Aminu Intl - Kano, Nigeria": "KAN", "Lanzarote - Las Palmas, Spain": "ACE", "Chevery Airport - Chevery, Canada": "YHR", "Yuma Mcas Yuma Intl - Yuma, United States": "YUM", "Terre Haute Intl Hulman Fld - Terre Haute, United States": "HUF", "Tyler Pounds Rgnl - Tyler, United States": "TYR", "Subang-Sultan Abdul Aziz Shah Intl - Kuala Lumpur, Malaysia": "SZB", "Estevan - Estevan, Canada": "YEN", "Oakland Co. Intl - Pontiac, United States": "PTK", "Surat Thani - Surat Thani, Thailand": "URT", "Nanyang Airport - Nanyang, China": "NNY", "General R Fierro Villalobos Intl - Chihuahua, Mexico": "CUU", "Millville Muni - Millville, United States": "MIV", "Manakara - Manakara, Madagascar": "WVK", "Naga Airport - Naga, Philippines": "WNP", "Kiel Holtenau - Kiel, Germany": "KEL", "Aberdeen Regional Airport - Aberdeen, United States": "ABR", "Gila Bend Municipal Airport - Gila Bend, United States": "E63", "Moyo Airport - Moyo, Uganda": "OYG", "Rafha - Rafha, Saudi Arabia": "RAH", "Aransas County Airport - Rockport, United States": "RKP", "Fort Mcmurray - Fort Mcmurray, Canada": "YMM", "Shymkent - Chimkent, Kazakhstan": "CIT", "Wamena - Wamena, Indonesia": "WMX", "Limpopo Valley Airport - Tuli Lodge, Botswana": "TLD", "Daru Airport - Daru, Papua New Guinea": "DAU", "Zona da Mata Regional Airport - Juiz de Fora, Brazil": "IZA", "Westsound Seaplane Base - Westsound, United States": "WSX", "Mbuji Mayi - Mbuji-mayi, Congo (Kinshasa)": "MJM", "Gilmer County Airport - Ellijay, United States": "49A", "Bandar Abbass Intl - Bandar Abbas, Iran": "BND", "Balmaceda - Balmaceda, Chile": "BBA", "Keflavik International Airport - Keflavik, Iceland": "KEF", "Mahdia Airport - Mahdia, Guyana": "MHA", "Medis - Royan, France": "RYN", "Co Ong Airport - Conson, Vietnam": "VCS", "Mildenhall - Mildenhall, United Kingdom": "MHZ", "Montichiari - Brescia, Italy": "VBS", "Sehwan Sharif Airport - Sehwan Sharif, Pakistan": "SYW", "Kaieteur International Airport - Kaieteur Falls, Guyana": "KIA", "Calexico Intl - Calexico, United States": "CXL", "Jasionka - Rzeszow, Poland": "RZE", "Tulsa Intl - Tulsa, United States": "TUL", "City Of Colorado Springs Muni - Colorado Springs, United States": "COS", "Concordia Airport - Concordia, Brazil": "CCI", "Sulaymaniyah International Airport - Sulaymaniyah, Iraq": "ISU", "Locarno Airport - Locarno, Switzerland": "ZJI", "Palm Springs Intl - Palm Springs, United States": "PSP", "Timaru - Timaru, New Zealand": "TIU", "Calgary Springbank Airport - Calgary, Canada": "YBW", "Araraquara - Araracuara, Brazil": "AQA", "Cooma Snowy Mountains Airport - Cooma, Australia": "OOM", "Juanjui - Juanjui, Peru": "JJI", "Kazan - Kazan, Russia": "KZN", "Satar Tacik - Ruteng, Indonesia": "RTG", "Matthew Town - Matthew Town, Bahamas": "IGA", "Miami Seaplane Base - Miami, United States": "MPB", "Coronel Carlos Ciriani Santa Rosa Intl - Tacna, Peru": "TCQ", "Pilot Point Airport - Pilot Point, United States": "PIP", "Tunxi International Airport - Huangshan, China": "TXN", "Chehalis-Centralia - Chehalis, United States": "CLS", "Tikehau - Tikehau, French Polynesia": "TIH", "Sudbury - Sudbury, Canada": "YSB", "Kearney Municipal Airport - Kearney, United States": "EAR", "Ciudad Real Central Airport - Ciudad Real, Spain": "CQM", "Bailian Airport - Liuzhou, China": "LZH", "Port Menier - Port Menier, Canada": "YPN", "Pellston Regional Airport of Emmet County Airport - Pellston, United States": "PLN", "King Cove Airport - King Cove, United States": "KVC", "Tennant Creek Airport - Tennant Creek, Australia": "TCA", "Fenosu - Oristano, Italy": "FNU", "Gold Coast - Coolangatta, Australia": "OOL", "Balti International Airport - Strymba, Moldova": "BZY", "Dorval Railway Station - Dorval, Canada": "XAX", "Newcastle - Newcastle, United Kingdom": "NCL", "Innisfail - Innisfail, Australia": "IFL", "Kota Kinabalu Airport - Kota Kinabalu, Malaysia": "ZWR", "Christiansted Harbor Seaplane Base - Christiansted, Virgin Islands": "SSB", "Araxa Airport - Araxa, Brazil": "AAX", "Phalaborwa - Phalaborwa, South Africa": "PHW", "Beslan Airport - Beslan, Russia": "OGZ", "Tucson Intl - Tucson, United States": "TUS", "Kalskag Airport - Kalskag, United States": "KLG", "Summer Beaver Airport - Summer Beaver, Canada": "SUR", "Blakely Island Airport - Blakely Island, United States": "BYW", "Reus - Reus, Spain": "REU", "Puerto Princesa - Puerto Princesa, Philippines": "PPS", "Redding Muni - Redding, United States": "RDD", "Akola - Akola, India": "AKD", "Cape May Co - Wildwood, United States": "WWD", "Loreto Intl - Loreto, Mexico": "LTO", "Kangirsuk Airport - Kangirsuk, Canada": "YKG", "Nadym Airport - Nadym, Russia": "NYM", "Brackett Field - La Verne, United States": "POC", "Elcho Island Airport - Elcho Island, Australia": "ELC", "Beaver Airport - Beaver, United States": "WBQ", "Kaneohe Bay Mcaf - Kaneohe Bay, United States": "NGF", "Maintirano Airport - Maintirano, Madagascar": "MXT", "Ankeny Regl Airport - Ankeny, United States": "IKV", "Kyoto - Kyoto, Japan": "UKY", "Forbes Fld - Topeka, United States": "FOE", "Dnipropetrovsk Intl - Dnepropetrovsk, Ukraine": "DNK", "Cochrane - Cochrane, Canada": "YCN", "Leon M Ba - Libreville, Gabon": "LBV", "Southend - Southend, United Kingdom": "SEN", "Tetiaroa Airport - Tetiaroa, French Polynesia": "TTI", "Santa Genoveva - Goiania, Brazil": "GYN", "Charlevoix Municipal Airport - Charelvoix, United States": "CVX", "Kerio Valley - Kimwarer, Kenya": "KRV", "Welke Airport - Beaver Island, United States": "6Y8", "Ten Cel Av Cesar Bombonato - Uberlandia, Brazil": "UDI", "Henry Tift Myers Airport - Tifton, United States": "TMA", "Pleurtuit - Dinard, France": "DNR", "Kaukura - Kaukura Atoll, French Polynesia": "KKR", "Colonsay Airport - Colonsay, United Kingdom": "CSA", "Lokpriya Gopinath Bordoloi International Airport - Guwahati, India": "GAU", "Adams Fld - Little Rock, United States": "LIT", "Eek Airport - Eek, United States": "EEK", "Ikaria - Ikaria, Greece": "JIK", "Ratanakiri - Ratanakiri, Cambodia": "RBE", "Oban Airport - North Connel, United Kingdom": "OBN", "Hammerfest Airport - Hammerfest, Norway": "HFT", "Monbetsu - Monbetsu, Japan": "MBE", "Sinop Airport - Sinop, Brazil": "OPS", "Chaiten - Chaiten, Chile": "WCH", "Takapoto - Takapoto, French Polynesia": "TKP", "Bundaberg - Bundaberg, Australia": "BDB", "Fuerteventura - Fuerteventura, Spain": "FUE", "Hunter Aaf - Hunter Aaf, United States": "SVN", "Sandspit - Sandspit, Canada": "YZP", "Armor - St.-brieuc Armor, France": "SBK", "Alexion - Porto Heli, Greece": "PKH", "Trapani Birgi - Trapani, Italy": "TPS", "Puerto Cabezas - Puerto Cabezas, Nicaragua": "PUZ", "Kuopio - Kuopio, Finland": "KUO", "Harar Meda Airport - Debre Zeyit, Ethiopia": "QHR", "Lismore Airport - Lismore, Australia": "LSY", "San Fernando De Apure - San Fernando De Apure, Venezuela": "SFD", "Burke Lakefront Airport - Cleveland, United States": "BKL", "Sultan Syarif Kasim Ii - Pekanbaru, Indonesia": "PKU", "Barksdale Afb - Shreveport, United States": "BAD", "Chabeuil - Valence, France": "VAF", "El Plumerillo - Mendoza, Argentina": "MDZ", "Lake Cumberland Regional Airport - Somerset, United States": "SME", "Tufi Airport - Tufi, Papua New Guinea": "TFI", "Inezgane - Agadir, Morocco": "AGA", "Hattiesburg Laurel Regional Airport - Hattiesburg/Laurel, United States": "PIB", "Lehigh Valley Intl - Allentown, United States": "ABE", "Palm Beach Co Park - West Palm Beach, United States": "LNA", "Nusatupe Airport - Gizo, Solomon Islands": "GZO", "Birmingham - Birmingham, United Kingdom": "BHX", "Lambert St Louis Intl - St. Louis, United States": "STL", "Mauke Airport - Mauke Island, Cook Islands": "MUK", "Dumatubun Airport - Langgur-Kei Islands, Indonesia": "LUV", "Arad - Arad, Romania": "ARW", "Juanda - Surabaya, Indonesia": "SUB", "Quezaltenango Airport - Quezaltenango, Guatemala": "AAZ", "Del Norte County Airport - Crescent City, United States": "CEC", "Gayndah - Gayndah, Australia": "GAH", "Enfidha - Zine El Abidine Ben Ali International Airport - Enfidha, Tunisia": "NBE", "McKinley National Park Airport - McKinley Park, United States": "MCL", "Municipal Airport - Lumberton, United States": "LBT", "Penticton - Penticton, Canada": "YYF", "Essey - Nancy, France": "ENC", "Ugnu-Kuparuk Airport - Kuparuk, United States": "UUK", "Celle - Celle, Germany": "ZCN", "San Carlos De Bariloche - San Carlos De Bariloche, Argentina": "BRC", "St. George Airport - St. George, United States": "STG", "Gomel - Gomel, Belarus": "GME", "Timimoun - Timimoun, Algeria": "TMX", "La Rioja - La Rioja, Argentina": "IRJ", "Wilcannia - Wilcannia, Australia": "WIO", "Santa Ana Airport - Cartago, Colombia": "CRC", "Vunisea Airport - Vunisea, Fiji": "KDV", "Luzhou Airport - Luzhou, China": "LZO", "Berlin Hauptbahnhof - Berlin, Germany": "QPP", "Gheshm Airport - Gheshm, Iran": "GSM", "St Pancras Railway Station - London, United Kingdom": "QQS", "Oswaldo Guevara Mujica - Acarigua, Venezuela": "AGV", "Oskarshamn - Oskarshamn, Sweden": "OSK", "Sanford Regional - Sanford ME, United States": "SFM", "Sydney - Sydney, Canada": "YQY", "Pulau Pangkor Airport - Pangkor Island, Malaysia": "PKG", "Borlange - Borlange, Sweden": "BLE", "Muskoka - Muskoka, Canada": "YQA", "Zhongchuan - Lanzhou, China": "ZGC", "Cadjehoun - Cotonou, Benin": "COO", "Barnes Municipal - Westfield, United States": "BAF", "St. Lewis (Fox Harbour) Airport - St. Lewis, Canada": "YFX", "Sherman Aaf - Fort Leavenworth, United States": "FLV", "Shahid Asyaee - Masjed Soleiman, Iran": "QMJ", "Nakhon Si Thammarat - Nakhon Si Thammarat, Thailand": "NST", "General Manuel Serrano - Machala, Ecuador": "MCH", "Akulivik Airport - Akulivik, Canada": "AKV", "Huanghua Intl - Changsha, China": "HHA", "Paderborn Lippstadt - Paderborn, Germany": "PAD", "El Golea - El Golea, Algeria": "ELG", "Anacortes Airport - Anacortes, United States": "OTS", "Ceduna Airport - Ceduna, Australia": "CED", "Grand Geneva Resort Airport - Lake Geneva, United States": "C02", "Long Seridan Airport - Long Seridan, Malaysia": "ODN", "Okushiri - Okushiri, Japan": "OIR", "Gare de Lyon - Paris, France": "PLY", "Jorhat - Jorhat, India": "JRH", "Ciampino - Rome, Italy": "CIA", "Wadsworth Municipal - Wadsworth, United States": "3G3", "Genesee County Airport - Batavia, United States": "GVQ", "Kurgan Airport - Kurgan, Russia": "KRO", "Macomb Municipal Airport - Macomb, United States": "MQB", "Oulu - Oulu, Finland": "OUL", "General Rafael Buelna Intl - Mazatlan, Mexico": "MZT", "Fontaine Airport - Belfort, France": "BOR", "Bromma - Stockholm, Sweden": "BMA", "Windorah Airport - Windorah, Australia": "WNR", "Greater Rochester Intl - Rochester, United States": "ROC", "Trail Airport - Trail, Canada": "YZZ", "Cape Town Intl - Cape Town, South Africa": "CPT", "Kochi - Kochi, Japan": "KCZ", "Gbadolite - Gbadolite, Congo (Kinshasa)": "BDT", "Brunei Intl - Bandar Seri Begawan, Brunei": "BWN", "Port Angeles Cgas - Port Angeles, United States": "NOW", "Aklavik - Aklavik, Canada": "LAK", "Courchevel Airport - Courcheval, France": "CVF", "Tipton - Fort Meade, United States": "FME", "Dzaoudzi Pamandzi - Dzaoudzi, Mayotte": "DZA", "Texarkana Rgnl Webb Fld - Texarkana, United States": "TXK", "Grand Canyon Heliport - Grand Canyon, United States": "JGC", "Sanliurfa GAP - Sanliurfa, Turkey": "GNY", "Hami Airport - Hami, China": "HMI", "Navoi Airport - Navoi, Uzbekistan": "NVI", "Ely Municipal - Ely, United States": "LYU", "Stroudsburg-Pocono Airport - East Stroudsburg, United States": "N53", "Cecil Field - Jacksonville, United States": "NZC", "Limnos - Limnos, Greece": "LXS", "Porto Santo - Porto Santo, Portugal": "PXO", "Yeager - Charleston, United States": "CRW", "Arviat - Eskimo Point, Canada": "YEK", "Xinzheng - Zhengzhou, China": "CGO", "Ghriss - Ghriss, Algeria": "MUW", "Ponciano Arriaga Intl - San Luis Potosi, Mexico": "SLP", "Springfield Amtrak Station - Springfield MA, United States": "ZSF", "Sulayel - Sulayel, Saudi Arabia": "SLF", "Aleknagik Airport - Aleknagik, United States": "WKK", "Bangor Intl - Bangor, United States": "BGR", "Athens Ben Epps Airport - Athens, United States": "AHN", "Chico Muni - Chico, United States": "CIC", "St Angelo - Enniskillen, United Kingdom": "ENK", "Tabriz Intl - Tabriz, Iran": "TBZ", "Napier - NAPIER, New Zealand": "NPE", "Tarin Kowt Airport - Tarin Kowt, Afghanistan": "TII", "Maradi - Maradi, Niger": "MFQ", "McCall Municipal Airport - McCall, United States": "MYL", "Nanping Wuyishan Airport - Wuyishan, China": "WUS", "El Gora - El Gorah, Egypt": "EGR", "Floyd Bennett Memorial Airport - Queensbury, United States": "GFL", "Arnold Palmer Regional Airport - Latrobe, United States": "LBE", "Matsu Beigan Airport - Matsu Islands, Taiwan": "MFK", "Guam Intl - Agana, Guam": "GUM", "Municipal Airport - Burlington, United States": "BUU", "Metlakatla Seaplane Base - Metakatla, United States": "MTM", "Pingtung South - Pingtung, Taiwan": "PIF", "Kasigluk Airport - Kasigluk, United States": "KUK", "Point Mugu Nas - Point Mugu, United States": "NTD", "London St Pancras - London, United Kingdom": "STP", "Palmer Muni - Palmer, United States": "PAQ", "Everglades Airpark - Everglades, United States": "X01", "Jose Maria Cordova - Rio Negro, Colombia": "MDE", "St Petersburg Clearwater Intl - St. Petersburg, United States": "PIE", "Inverness - Inverness, United Kingdom": "INV", "Pinto Martins Intl - Fortaleza, Brazil": "FOR", "Hercilio Luz - Florianopolis, Brazil": "FLN", "Selaparang - Mataram, Indonesia": "AMI", "Whangarei - Whangarei, New Zealand": "WRE", "Vitoria - Vitoria, Spain": "VIT", "Longreach Airport - Longreach, Australia": "LRE", "Capitan Carlos Martinez De Pinillos - Trujillo, Peru": "TRU", "Yeniseysk Airport - Yeniseysk, Russia": "EIE", "Larnaca - Larnaca, Cyprus": "LCA", "Monroe County Airport - Bloomington, United States": "BMG", "Merimbula Airport - Merimbula, Australia": "MIM", "Cedar City Rgnl - Cedar City, United States": "CDC", "Michigan City Municipal Airport - Michigan City, United States": "MGC", "P\u00e9cs-Pog\u00e1ny Airport - P\u00e9cs-Pog\u00e1ny, Hungary": "PEV", "Shelby County Airport - Shelbyville, United States": "2H0", "Tallinn - Tallinn-ulemiste International, Estonia": "TLL", "Jackson County Airport - Jefferson, United States": "19A", "Luang Namtha - Luang Namtha, Laos": "LXG", "Uytash - Makhachkala, Russia": "MCX", "El Chalten - El Chalten, Argentina": "ELX", "Tokushima - Tokushima, Japan": "TKS", "Tiree - Tiree, United Kingdom": "TRE", "Cocos Keeling Island Airport - Cocos Keeling Island, Cocos (Keeling) Islands": "CCK", "Vero Beach Muni - Vero Beach, United States": "VRB", "Aniwa Airport - Aniwa, Vanuatu": "AWD", "Ebenhofen BF - Ebenhofen, Germany": "EBE", "Speyer - Speyer, Germany": "ZQC", "Virac Airport - Virac, Philippines": "VRC", "All Airports - Milan, Italy": "MIL", "Stansted - London, United Kingdom": "STN", "Thompson - Thompson, Canada": "YTH", "Portland Troutdale - Troutdale, United States": "TTD", "Bora Bora - Bora Bora, French Polynesia": "BOB", "Mfuwe - Mfuwe, Zambia": "MFU", "Obando Airport - Puerto In\u00edrida, Colombia": "PDA", "South Bend Rgnl - South Bend, United States": "SBN", "Ellisras - Lephalale, South Africa": "ELL", "Bremerhaven - Bremerhaven, Germany": "BRV", "Auvergne - Clermont-Ferrand, France": "CFE", "Dawu - Lvliang, China": "LLV", "Columbia Rgnl - Columbia, United States": "COU", "Khartoum - Khartoum, Sudan": "KRT", "Rafael Cabrera - Nueva Gerona, Cuba": "GER", "Ahmedabad - Ahmedabad, India": "AMD", "Lydd - Lydd, United Kingdom": "LYX", "Labuan - Labuan, Malaysia": "LBU", "Velikiye Luki - Velikiye Luki, Russia": "VLU", "Greater Cumberland Rgnl. - Cumberland, United States": "CBE", "Kefallinia - Keffallinia, Greece": "EFL", "Labrea Airport - Labrea, Brazil": "LBR", "Saint Cloud Regional Airport - Saint Cloud, United States": "STC", "Dachuan Airport - Dazhou, China": "DAX", "Mong Hsat - Mong Hsat, Burma": "MOG", "Dublin - Dublin, Ireland": "DUB", "Tajima Airport - Toyooka, Japan": "TJH", "Nauru Intl - Nauru, Nauru": "INU", "Shark Bay Airport - Shark Bay, Australia": "MJK", "San Luis County Regional Airport - San Luis Obispo, United States": "SBP", "Nampula - Nampula, Mozambique": "APL", "Luanda 4 De Fevereiro - Luanda, Angola": "LAD", "Kuusamo - Kuusamo, Finland": "KAO", "Melilla - Melilla, Spain": "MLN", "Upolu - Opolu, United States": "UPP", "Thief River Falls - Thief River Falls, United States": "TVF", "Rogue Valley Intl Medford - Medford, United States": "MFR", "Dusseldorf - Duesseldorf, Germany": "DUS", "Obo Airport - Obo, Papua New Guinea": "OBX", "Jonkoping - Joenkoeping, Sweden": "JKG", "Morawa Airport - Morawa, Australia": "MWB", "Trang - Trang, Thailand": "TST", "Ontario Intl - Ontario, United States": "ONT", "Gatokae Airport - Gatokae, Solomon Islands": "GTA", "Kaohsiung Intl - Kaohsiung, Taiwan": "KHH", "Northeast Philadelphia - Philadelphia, United States": "PNE", "Hebei Handan Airport - Handan, China": "HDG", "Gustavo Rojas Pinilla - San Andres Island, Colombia": "ADZ", "Zhuliany Intl - Kiev, Ukraine": "IEV", "Aiome - Aiome, Papua New Guinea": "AIE", "Barberey - Troyes, France": "QYR", "Redzikowo - Slupsk, Poland": "OSP", "Chester County G O Carlson Airport - Coatesville, United States": "CTH", "Kisumu - Kisumu, Kenya": "KIS", "Eagle's Nest Airport - Waynesboro, United States": "W13", "Belfast City - Belfast, United Kingdom": "BHD", "Leinster Airport - Leinster, Australia": "LER", "Waupaca Municipal Airport - Waupaca, United States": "PCZ", "Tanana Airport - Tanana, United States": "TAL", "Roper Bar - Roper Bar, Australia": "RPB", "Denver Intl - Denver, United States": "DEN", "Valladolid - Valladolid, Spain": "VLL", "Lamar Muni - Lamar, United States": "LAA", "Cheddi Jagan Intl - Georgetown, Guyana": "GEO", "Levuka Airfield - Levuka, Fiji": "LEV", "Rand Airport - Johannesburg, South Africa": "QRA", "Licenciado Gustavo Diaz Ordaz Intl - Puerto Vallarta, Mexico": "PVR", "Wheeling Ohio County Airport - Wheeling, United States": "HLG", "Edward Bodden Airfield - Little Cayman, Cayman Islands": "LYB", "Cataloi - Tulcea, Romania": "TCE", "Ozamis - Ozamis, Philippines": "OZC", "Bradshaw Aaf - Bradshaw Field, United States": "BSF", "Lugano - Lugano, Switzerland": "LUG", "Carlos Alberto da Costa Neves Airport - Cacador, Brazil": "CFC", "Chios - Chios, Greece": "JKH", "Tiga Airport - Tiga, New Caledonia": "TGJ", "Ponta Pora - Ponta Pora, Brazil": "PMG", "Lahad Datu - Lahad Datu, Malaysia": "LDU", "St Pierre - St.-pierre, Saint Pierre and Miquelon": "FSP", "Bowman Fld - Louisville, United States": "LOU", "Ulyanovsk East Airport - Ulyanovsk, Russia": "ULY", "Williams Lake - Williams Lake, Canada": "YWL", "Entzheim - Strasbourg, France": "SXB", "Muanda - Muanda, Congo (Kinshasa)": "MNB", "Alula Airport - Alula, Somalia": "ALU", "Beech Factory Airport - Wichita, United States": "BEC", "Gainesville Rgnl - Gainesville, United States": "GNV", "Campbell River - Campbell River, Canada": "YBL", "Marshall Don Hunter Sr. Airport - Marshall, United States": "MLL", "Huntsville International Airport-Carl T Jones Field - Huntsville, United States": "HSV", "Mulu - Mulu, Malaysia": "MZV", "Kenora - Kenora, Canada": "YQK", "Reggio Calabria - Reggio Calabria, Italy": "REG", "Osmany Intl - Sylhet Osmani, Bangladesh": "ZYL", "Halliburton Field Airport - Duncan, United States": "DUC", "Ramona Airport - Ramona, United States": "RNM", "Thamkharka - Thamkharka, Nepal": "TMK", "Olympic Dam Airport - Olympic Dam, Australia": "OLP", "Prestwick - Prestwick, United Kingdom": "PIK", "Krabi - Krabi, Thailand": "KBV", "Dortmund - Dortmund, Germany": "DTM", "Fera/Maringe Airport - Fera Island, Solomon Islands": "FRE", "MOW - Moscow, Russia": "MOW", "Teyman - Beer-sheba, Israel": "BEV", "Bismarck Municipal Airport - Bismarck, United States": "BIS", "Pavlodar - Pavlodar, Kazakhstan": "PWQ", "Caumont - Avignon, France": "AVN", "Dera Ghazi Khan Airport - Dera Ghazi Khan, Pakistan": "DEA", "Fergana Airport - Fergana, Uzbekistan": "FEG", "Pukarua Airport - Pukarua, French Polynesia": "PUK", "Mc Guire Afb - Wrightstown, United States": "WRI", "Afutara Airport - Afutara, Solomon Islands": "AFT", "Brize Norton - Brize Norton, United Kingdom": "BZZ", "All Airports - New York, United States": "NYC", "Sacramento Intl - Sacramento, United States": "SMF", "Garfield County Regional Airport - Rifle, United States": "RIL", "EuroAirport - Mulhouse, France": "EAP", "El Carano - Quibdo, Colombia": "UIB", "Jacqueline Cochran Regional Airport - Palm Springs, United States": "TRM", "Lycksele - Lycksele, Sweden": "LYC", "Hazleton Municipal - Hazleton, United States": "HZL", "Jack Edwards Airport - Gulf Shores, United States": "JKA", "Wideawake Field - Georgetown Acension Island Santa Helena, United Kingdom": "ASI", "Kindu - Kindu, Congo (Kinshasa)": "KND", "Torp - Sandefjord, Norway": "TRF", "Clear Lake Metroport - Clear Lake City, United States": "CLC", "Weifang Airport - Weifang, China": "WEF", "Sao Filipe Airport - Sao Filipe,  Fogo Island": "Cape Verde", "Stuttgart Railway Station - Stuttgart, Germany": "ZWS", "Sainte Marie - Sainte Marie, Madagascar": "SMS", "Durango La Plata Co - Durango, United States": "DRO", "Santos Dumont - Rio De Janeiro, Brazil": "SDU", "Aksu Airport - Aksu, China": "AKU", "Puc\u00f3n Airport - Pucon, Chile": "ZPC", "Municipal Airport - Zephyrhills, United States": "ZPH", "Fussen BF - Fussen, Germany": "FUX", "Honington - Honington, United Kingdom": "BEQ", "Ahuas Airport - Ahuas, Honduras": "AHS", "Kulik Lake Airport - Kulik Lake, United States": "LKK", "Saint Catherine - Calvi, France": "CLY", "Nightmute Airport - Nightmute, United States": "NME", "Bajura Airport - Bajura, Nepal": "BJU", "Middle Caicos Airport - Middle Caicos, Turks and Caicos Islands": "MDS", "Kinston Regional Jetport - Kinston, United States": "ISO", "Doha Intl - Doha, Qatar": "DOH", "Ittoqqortoormiit Heliport - Ittoqqortoormiit, Greenland": "OBY", "JAGS McCartney International Airport - Cockburn Town, Turks and Caicos Islands": "GDT", "Novyi Urengoy - Novy Urengoy, Russia": "NUX", "Saarbrucken - Saarbruecken, Germany": "SCN", "Dalaman - Dalaman, Turkey": "DLM", "Obock - Obock, Djibouti": "OBC", "Fascene - Nosy-be, Madagascar": "NOS", "Hanimaadhoo Airport - Haa Dhaalu Atoll, Maldives": "HAQ", "Rheine Bentlage - Rheine, Germany": "ZPQ", "Kota - Kota, India": "KTU", "Moss - Rygge, Norway": "RYG", "Fianarantsoa - Fianarantsoa, Madagascar": "WFI", "Marshall Islands Intl - Majuro, Marshall Islands": "MAJ", "Varna - Varna, Bulgaria": "VAR", "Na-San Airport - Son-La, Vietnam": "SQH", "Aqaba King Hussein Intl - Aqaba, Jordan": "AQJ", "Cambridge - Cambridge, United Kingdom": "CBG", "Black Rock - Zuni Pueblo, United States": "ZUN", "Russian Mission Airport - Russian Mission, United States": "RSH", "Elfin Cove Seaplane Base - Elfin Cove, United States": "ELV", "Woodward Field - Camden, United States": "CDN", "Changchun - Changchun, China": "CGQ", "Brest - Brest, Belarus": "BQT", "Walney Island - Barrow Island, United Kingdom": "BWF", "Phaplu - Phaplu, Nepal": "PPL", "Megeve Airport - Verdun, France": "MVV", "Reading Regional Carl A Spaatz Field - Reading, United States": "RDG", "Seattle Tacoma Intl - Seattle, United States": "SEA", "Bodaibo - Bodaibo, Russia": "ODO", "Apataki Airport - Apataki, French Polynesia": "APK", "Oudtshoorn - Oudtshoorn, South Africa": "DUH", "Mukah Airport - Mukah, Malaysia": "MKM", "Busuanga - Busuanga, Philippines": "USU", "Lae Airport - Lae, Marshall Islands": "LML", "Rourkela - Rourkela, India": "RRK", "General Rodolfo Sanchez Taboada Intl - Mexicali, Mexico": "MXL", "Lleida-Alguaire Airport - Lleida, Spain": "ILD", "Sebastian Municipal - Sebastian, United States": "X26", "Sierra Blanca Regional Airport - Ruidoso, United States": "SRR", "Peleliu Airfield - Peleliu, Palau": "C23", "Maiduguri - Maiduguri, Nigeria": "MIU", "Big Bay Water Aerodrome - Big Bay, Canada": "YRR", "Yengema Airport - Yengema, Sierra Leone": "WYE", "Fond-Du-Lac Airport - Fond-Du-Lac, Canada": "ZFD", "Guarulhos Gov Andre Franco Montouro - Sao Paulo, Brazil": "GRU", "Jackson Evers Intl - Jackson, United States": "JAN", "Lizard Island Airport - Lizard Island, Australia": "LZR", "Nanki Shirahama - Nanki-shirahama, Japan": "SHM", "Hydaburg Seaplane Base - Hydaburg, United States": "HYG", "Mediterranee - Montpellier, France": "MPL", "Ushuaia Malvinas Argentinas - Ushuaia, Argentina": "USH", "Nakashibetsu - Nakashibetsu, Japan": "SHB", "Mitiga Airport - Tripoli, Libya": "MJI", "Juba - Juba, South Sudan": "JUB", "Tapachula Intl - Tapachula, Mexico": "TAP", "Shaw Afb - Sumter, United States": "SSC", "Roskilde - Copenhagen, Denmark": "RKE", "Atikokan Muni - Atikokan, Canada": "YIB", "Utirik Airport - Utirik Island, Marshall Islands": "UTK", "Iqaluit - Iqaluit, Canada": "YFB", "Satna - Satna, India": "TNI", "Nueva Loja Airport - Lago Agrio, Ecuador": "LGQ", "Ternopol - Ternopol, Ukraine": "TNL", "Kuito - Kuito, Angola": "SVP", "Mohammed V Intl - Casablanca, Morocco": "CMN", "Valdosta Regional Airport - Valdosta, United States": "VLD", "Dandong - Dandong, China": "DDG", "EuroAirport Basel-Mulhouse-Freiburg - Basel, Switzerland": "BSL", "Friedman Mem - Hailey, United States": "SUN", "Odiham - Odiham, United Kingdom": "ODH", "Western Nebraska Regional Airport - Scottsbluff, United States": "BFF", "Chateaubernard - Cognac, France": "CNG", "Griffing Sandusky - Sandusky, United States": "SKY", "Orange Airport - Orange, Australia": "OAG", "Penza Airport - Penza, Russia": "PEZ", "Umea - Umea, Sweden": "UME", "Bron - Lyon, France": "LYN", "Trenton Mercer - Trenton, United States": "TTN", "El Toro - Santa Ana, United States": "NZJ", "Cap Haitien Intl - Cap Haitien, Haiti": "CAP", "Tri-Cities - Endicott, United States": "CZG", "Baudette Intl - Baudette, United States": "BDE", "Andapa - Andapa, Madagascar": "ZWA", "Goiabeiras - Vitoria, Brazil": "VIX", "In Amenas - Zarzaitine, Algeria": "IAM", "Ilulissat - Ilulissat, Greenland": "JAV", "Phoenix Sky Harbor Intl - Phoenix, United States": "PHX", "Provideniya Bay - Provideniya Bay, Russia": "PVS", "Berlin Gatow - Berlin, Germany": "GWW", "Egegik Airport - Egegik, United States": "EGX", "Tokyo Intl - Tokyo, Japan": "HND", "Imam Khomeini - Tehran, Iran": "IKA", "Idlewild Intl - New York, United States": "IDL", "Marau Airport - Marau, Solomon Islands": "RUS", "Pietermaritzburg - Pietermaritzburg, South Africa": "PZB", "Grootfontein - Grootfontein, Namibia": "GFY", "Santa Maria - Aracaju, Brazil": "AJU", "Grand Case - St. Martin, Guadeloupe": "SFG", "Long Bawan Airport - Long Bawan-Borneo Island, Indonesia": "LBW", "Bassatine - Meknes, Morocco": "MEK", "Guararapes Gilberto Freyre Intl - Recife, Brazil": "REC", "Jimmy Carter Regional - Americus, United States": "ACJ", "Lincoln Regional Airport Karl Harder Field - Lincoln, United States": "LHM", "Kooddoo - Kooddoo, Maldives": "GKK", "Northway - Northway, United States": "ORT", "Foula Airport - Foula, United Kingdom": "FOA", "Hernesaari Heliport - Helsinki, Finland": "HEN", "Quetta - Quetta, Pakistan": "UET", "Kerry - Kerry, Ireland": "KIR", "Tjilik Riwut - Palangkaraya, Indonesia": "PKY", "Adi Sutjipto - Yogyakarta, Indonesia": "JOG", "Morafenobe Airport - Morafenobe, Madagascar": "TVA", "Soalala Airport - Soalala, Madagascar": "DWB", "Narrabri Airport - Narrabri, Australia": "NAA", "Ouesso - Ouesso, Congo (Kinshasa)": "OUE", "Mae Hong Son - Mae Hong Son, Thailand": "HGN", "Borrego Valley Airport - Borrego Springs, United States": "BXS", "Santa Maria - Santa Maria (island), Portugal": "SMA", "Martin State - Baltimore, United States": "MTN", "Bamyan Airport - Bamyan, Afghanistan": "BIN", "Sultan Mahmud Badaruddin Ii - Palembang, Indonesia": "PLM", "Borba Airport - Borba, Brazil": "RBB", "Parkes Airport - Parkes, Australia": "PKE", "Tanjung Manis Airport - Tanjung Manis, Malaysia": "TGC", "Ulaangom Airport - Ulaangom, Mongolia": "ULO", "Seaplane Base - Port Simpson, Canada": "YPI", "Iles De La Madeleine - Iles De La Madeleine, Canada": "YGR", "Beppu Airport - Beppu, Japan": "BPU", "Roanoke Regional - Roanoke VA, United States": "ROA", "Wonderboom - Pretoria, South Africa": "PRY", "Placencia Airport - Placencia, Belize": "PLJ", "Ingeniero Alberto Acuna Ongay Intl - Campeche, Mexico": "CPE", "Hyderabad - Hyderabad, India": "HYD", "Massena Intl Richards Fld - Massena, United States": "MSS", "Heihe Airport - Heihe, China": "HEK", "Spokane Intl - Spokane, United States": "GEG", "Soldotna Airport - Soldotna, United States": "SXQ", "Houlton Intl - Houlton, United States": "HUL", "Burlington Intl - Burlington, United States": "BTV", "Rabil - Boa Vista, Cape Verde": "BVC", "Welkom - Welkom, South Africa": "WEL", "Chumphon - Chumphon, Thailand": "CJM", "Mili Island Airport - Mili Island, Marshall Islands": "MIJ", "Kamuzu Intl - Lilongwe, Malawi": "LLW", "Xuzhou Guanyin Airport - Xuzhou, China": "XUZ", "Multan Intl - Multan, Pakistan": "MUX", "Senador Nilo Coelho - Petrolina, Brazil": "PNZ", "Lindsay - Lindsay, Canada": "NF4", "Mbs Intl - Saginaw, United States": "MBS", "Bahrain Intl - Bahrain, Bahrain": "BAH", "Simferopol Intl - Simferopol, Ukraine": "SIP", "Elista Airport - Elista, Russia": "ESL", "Pitu - Morotai Island, Indonesia": "OTI", "Sabi Sabi Airport - Sabi Sabi, South Africa": "GSS", "Ust-Kut - Ust-Kut, Russia": "UKX", "All Airports - Toronto, Canada": "YTO", "Lake Havasu City Airport - Lake Havasu City, United States": "HII", "Ronald Reagan Washington Natl - Washington, United States": "DCA", "Victoria Regional Airport - Victoria, United States": "VCT", "Port Lions Airport - Port Lions, United States": "ORI", "Las Vegas Muni - Las Vegas, United States": "LVS", "Jacksonville Intl - Jacksonville, United States": "JAX", "London - Kings Cross - London, United Kingdom": "QQK", "Wilhelmshaven Mariensiel - Wilhelmshaven, Germany": "WVN", "Guriat - Guriat, Saudi Arabia": "URY", "Lightning Ridge Airport - Lightning Ridge, Australia": "LHG", "Diego Aracena Intl - Iquique, Chile": "IQQ", "Hopedale Airport - Hopedale, Canada": "YHO", "Quilpie Airport - Quilpie, Australia": "ULP", "Tamale - Tamale, Ghana": "TML", "Swansea - Swansea, United Kingdom": "SWS", "Wright Patterson Afb - Dayton, United States": "FFO", "General Rivadeneira Airport - Esmeraldas, Ecuador": "ESM", "Wang An - Wang An, Taiwan": "WOT", "General Mariano Escobedo Intl - Monterrey, Mexico": "MTY", "Maupertus - Cherbourg, France": "CER", "Whiteman Airport - Los Angeles, United States": "WHP", "Kaedi - Kaedi, Mauritania": "KED", "Caleta Olivia - Caleta Olivia, Argentina": "CVI", "Baguio - Baguio, Philippines": "BAG", "Magas - Nazran, Russia": "%u0", "Andavadoaka - Andavadoaka, Madagascar": "DVD", "Bob Sikes - Crestview, United States": "CEW", "Pulau Tioman - Tioman, Malaysia": "TOD", "Roswell Intl Air Center - Roswell, United States": "ROW", "Owando - Owando, Congo (Kinshasa)": "FTX", "Belaga Airport - Belaga, Malaysia": "BLG", "Shijiazhuang Daguocun International Airport - Shijiazhuang, China": "SJW", "Loei - Loei, Thailand": "LOE", "Bowling Green-Warren County Regional Airport - Bowling Green, United States": "BWG", "Socotra Intl - Socotra, Yemen": "SCT", "Kemerovo - Kemorovo, Russia": "KEJ", "Gambell Airport - Gambell, United States": "GAM", "Khuzdar Airport - Khuzdar, Pakistan": "KDD", "Mucuri Airport - Mucuri, Brazil": "MVS", "Tweed-New Haven Airport - New Haven, United States": "HVN", "Montreal Intl Mirabel - Montreal, Canada": "YMX", "Repulse Bay - Repulse Bay, Canada": "YUT", "Linden Airport - Linden, United States": "LDJ", "Bassillac - Perigueux, France": "PGX", "Mukhino - Ulan-ude, Russia": "UUD", "Chicago Rockford International Airport  - Rockford, United States": "RFD", "Yazd Shahid Sadooghi - Yazd, Iran": "AZD", "Skelleftea - Skelleftea, Sweden": "SFT", "Anvik Airport - Anvik, United States": "ANV", "Mampikony Airport - Mampikony, Madagascar": "WMP", "Lawson Aaf - Fort Benning, United States": "LSF", "Surat - Surat, India": "STV", "Philibert Tsiranana - Mahajanga, Madagascar": "MJN", "Raivavae Airport - Raivavae, French Polynesia": "RVV", "Diamantina Airport - Diamantina, Brazil": "DTI", "La Coloma - La Coloma, Cuba": "LCL", "Kuala Lumpur Intl - Kuala Lumpur, Malaysia": "KUL", "Sun Island Airport - South Aari Atoll, Maldives": "MSI", "Bamburi - Bamburi, Kenya": "BMQ", "Zachar Bay Seaplane Base - Zachar Bay, United States": "KZB", "Boire Field Airport - Nashua, United States": "ASH", "Mara Serena Airport - Masai Mara, Kenya": "MRE", "Foothills Regional Airport - Morganton, United States": "MRN", "Baker Lake - Baker Lake, Canada": "YBK", "Flabob Airport - Riverside, United States": "RIR", "Casa Grande Municipal Airport - Casa Grande, United States": "CGZ", "Eleftherios Venizelos Intl - Athens, Greece": "ATH", "Nadzab - Nadzab, Papua New Guinea": "LAE", "Dothan Rgnl - Dothan, United States": "DHN", "Imsik - Bodrum, Turkey": "BXN", "Milingimbi Airport - Milingimbi, Australia": "MGT", "Kasabonika Airport - Kasabonika, Canada": "XKS", "Laurence G Hanscom Fld - Bedford, United States": "BED", "Tshimpi Airport - Matadi, Congo (Kinshasa)": "MAT", "Eastport Municipal Airport - Eastport, United States": "EPM", "Zurich - Zurich, Switzerland": "ZRH", "Wrangell Airport - Wrangell, United States": "WRG", "Pori - Pori, Finland": "POR", "Massawa Intl - Massawa, Eritrea": "MSW", "Punta Gorda Airport - Punta Gorda, Belize": "PND", "Falls Intl - International Falls, United States": "INL", "Anadolu Airport - Eskissehir, Turkey": "AOE", "Mar\u00edlia Airport - Mar\u00edlia, Brazil": "MII", "Barinas - Barinas, Venezuela": "BNS", "Point Lay Lrrs - Point Lay, United States": "PIZ", "Storuman Airport - Mohed, Sweden": "SQO", "Del Norte Intl - Monterrey, Mexico": "NTR", "Inhambane - Inhambane, Mozambique": "INH", "Decatur County Industrial Air Park - Bainbridge, United States": "BGE", "Dalanzadgad Airport - Dalanzadgad, Mongolia": "DLZ", "Kedougou - Kedougou, Senegal": "KGG", "Atyrau - Atyrau, Kazakhstan": "GUW", "Trier Fohren - Trier, Germany": "ZQF", "Tenerife Norte - Tenerife, Spain": "TFN", "Ine Airport - Ine, Marshall Islands": "IMI", "Samsun  - Samsun, Turkey": "SSX", "Van - Van, Turkey": "VAN", "Saudarkrokur - Saudarkrokur, Iceland": "SAK", "Omboue Hopital - Omboue Hospial, Gabon": "OMB", "Sambava - Sambava, Madagascar": "SVB", "Praslin - Praslin, Seychelles": "PRI", "Tagbilaran - Tagbilaran, Philippines": "TAG", "Leuchars - Leuchars, United Kingdom": "ADX", "Barquisimeto Intl - Barquisimeto, Venezuela": "BRM", "Fort Smith - Fort Smith, Canada": "YSM", "Liping Airport - Liping, China": "HZH", "Antalya - Antalya, Turkey": "AYT", "Sullivan Bay Water Aerodrome - Sullivan Bay, Canada": "YTG", "Piacenza - Piacenza, Italy": "QPZ", "Mariscal Lamar - Cuenca, Ecuador": "CUE", "Binaka - Gunung Sitoli, Indonesia": "GNS", "Sara Airport - Pentecost Island, Vanuatu": "SSR", "Trombetas - Oriximina, Brazil": "TMT", "Helsingborg Cruise Port - Helsingborg, Sweden": "JHE", "Eastern WV Regional Airport - Martinsburg, United States": "MRB", "Fredericksburg Amtrak Station - Fredericksburg, United States": "FBG", "Texada Gillies Bay Airport - Texada, Canada": "YGB", "Nordfjordur Airport - Nordfjordur, Iceland": "NOR", "Carbon County Regional-Buck Davis Field - Price, United States": "PUC", "Choiseul Bay Airport - Choiseul Bay, Solomon Islands": "CHY", "Tiputini - Tiputini, Ecuador": "TPN", "Palm Beach Intl - West Palm Beach, United States": "PBI", "Drake Bay Airport - Puntarenas, Costa Rica": "DRK", "Fort Mcpherson - Fort Mcpherson, Canada": "ZFM", "Amarais Airport - Campinas, Brazil": "CPQ", "Air Base - Interlaken, Switzerland": "ZIN", "Guangzhou South Railway Station - Guangzhou, China": "GZS", "Darlington County Jetport - Darlington, United States": "UDG", "Nanortalik Heliport - Nanortalik, Greenland": "JNN", "Emden - Emden, Germany": "EME", "Cherry Point Mcas - Cherry Point, United States": "NKT", "Catania Fontanarossa - Catania, Italy": "CTA", "Bunia - Bunia, Congo (Kinshasa)": "BUX", "Maya Maya - Brazzaville, Congo (Brazzaville)": "BZV", "Mocimboa Da Praia - Mocimboa Da Praia, Mozambique": "MZB", "Staroselye Airport - Rybinsk, Russia": "RYB", "Sydney Intl - Sydney, Australia": "SYD", "Gnassingbe Eyadema Intl - Lome, Togo": "LFW", "King Island Airport - King Island, Australia": "KNS", "Congo Town Airport - Andros, Bahamas": "COX", "Lianyungang Airport - Lianyungang, China": "LYG", "Puerto Jimenez Airport - Puerto Jimenez, Costa Rica": "PJM", "Orinduik Airport - Orinduik, Guyana": "ORJ", "Kigali Intl - Kigali, Rwanda": "KGL", "Erie-Ottawa Regional Airport - Port Clinton, United States": "PCW", "Kratie Airport - Kratie, Cambodia": "KTI", "Tamanrasset - Tamanrasset, Algeria": "TMR", "Tirana Rinas - Tirana, Albania": "TIA", "Deline - Deline, Canada": "YWJ", "Zhob - Zhob, Pakistan": "PZH", "Winkler Co - Wink, United States": "INK", "Villafranca - Villafranca, Italy": "VRN", "Kolwezi - Kolwezi, Congo (Kinshasa)": "KWZ", "Chuuk Intl - Chuuk, Micronesia": "TKK", "Alfredo Vasquez Cobo - Leticia, Colombia": "LET", "Chernobayevka Airport - Kherson, Ukraine": "KHE", "Alalamain Intl. - Dabaa City, Egypt": "DBB", "Gloucestershire - Golouchestershire, United Kingdom": "GLO", "Dangriga Airport - Dangriga, Belize": "DGA", "Maria Montez Intl - Barahona, Dominican Republic": "BRX", "Wilkes Barre Scranton Intl - Scranton, United States": "AVP", "Murtala Muhammed - Lagos, Nigeria": "LOS", "Eduardo Falla Solano - San Vincente De Caguan, Colombia": "SVI", "Weihai Airport - Weihai, China": "WEH", "Jefferson City Memorial Airport - Jefferson City, United States": "JEF", "Garner Field - Uvalde, United States": "UVA", "Somerset County Airport - Somerset, United States": "2G9", "Unalaska - Unalaska, United States": "DUT", "Mitiaro Island Airport - Mitiaro Island, Cook Islands": "MOI", "Ishigaki - Ishigaki, Japan": "ISG", "Goleniow - Szczecin, Poland": "SZZ", "Dyess Afb - Abilene, United States": "DYS", "Ferihegy - Budapest, Hungary": "BUD", "Dallas Executive Airport - Dallas, United States": "RBD", "Zinder - Zinder, Niger": "ZND", "Batsfjord - Batsfjord, Norway": "BJF", "Rijeka - Rijeka, Croatia": "RJK", "Makkovik Airport - Makkovik, Canada": "YMN", "Chulman - Neryungri, Russia": "CNN", "Mc Carran Intl - Las Vegas, United States": "LAS", "Bella Coola Airport - Bella Coola, Canada": "QBC", "Pocatello Regional Airport - Pocatello, United States": "PIH", "Kapadokya - Nevsehir, Turkey": "NAV", "Grand Rapids Itasca County - Grand Rapids MN, United States": "GPZ", "Balikesir - Balikesir, Turkey": "BZI", "Adirondack Regional Airport - Saranac Lake, United States": "SLK", "Natashquan - Natashquan, Canada": "YNA", "Lawrence Municipal Airport - Lawrence, United States": "LWM", "Negril Aerodrome - Negril, Jamaica": "NEG", "Mehamn - Mehamn, Norway": "MEH", "Auburn University Regional - Auburn, United States": "AUO", "Jefferson County Airpark - Steubenville, United States": "2G2", "Kabul Intl - Kabul, Afghanistan": "KBL", "Ganges Water Aerodrome - Ganges, Canada": "YGG", "Charles M Schulz Sonoma Co - Santa Rosa, United States": "STS", "Nowra Airport - Nowra, Australia": "NOA", "Canakkale Airport - Canakkale, Turkey": "CKZ", "Mt. Fuji Shizuoka Airport - Shizuoka, Japan": "FSZ", "Schonefeld - Berlin, Germany": "SXF", "Morombe - Morombe, Madagascar": "MXM", "Forest Lake Airport - Forest Lake, United States": "25D", "Ioannis Kapodistrias Intl - Kerkyra/corfu, Greece": "CFU", "Randolph Afb - San Antonio, United States": "RND", "Yuzhny - Ivanovo, Russia": "IWA", "Magic Valley Regional Airport - Twin Falls, United States": "TWF", "Grayling Airport - Grayling, United States": "KGX", "Brie Champniers - Angouleme, France": "ANG", "Conakry - Conakry, Guinea": "CKY", "Gove Airport - Gove, Australia": "GOV", "General Abelardo L Rodriguez Intl - Tijuana, Mexico": "TIJ", "Maxwell Afb - Montgomery, United States": "MXF", "Manston - Manston, United Kingdom": "MSE", "Syracuse Hancock Intl - Syracuse, United States": "SYR", "Zhoubai - Qianjiang, China": "JIQ", "St George - Point Barrow, United States": "PBV", "Caldas Novas - Caldas Novas, Brazil": "CLV", "Gwadar - Gwadar, Pakistan": "GWD", "Bicycle Lake Aaf - Fort Irwin, United States": "BYS", "Kalibo - Kalibo, Philippines": "KLO", "Groton New London - Groton CT, United States": "GON", "Crown Point - Scarborough, Trinidad and Tobago": "TAB", "Thandwe - Thandwe, Burma": "SNW", "Kuqa Airport - Kuqa, China": "KCA", "Changzhoudao Airport - Wuzhou, China": "WUZ", "Sheldon Point Airport - Nunam Iqua, United States": "SXP", "Marcillac - Rodez, France": "RDZ", "Les Bases Airport - Grand Bourg, Guadeloupe": "GBJ", "Stockton Metropolitan - Stockton, United States": "SCK", "Williamson Country Regional Airport - Marion, United States": "MWA", "Hyvinkaa - Hyvinkaa, Finland": "HYV", "High Level - High Level, Canada": "YOJ", "Vavau Intl - Vava'u, Tonga": "VAV", "Shoestring Aviation Airfield - Stewartstown, United States": "0P2", "Arba Minch - Arba Minch, Ethiopia": "AMH", "Vancouver Intl - Vancouver, Canada": "YVR", "Sparrevohn Lrrs - Sparrevohn, United States": "SVW", "Puerto Barrios Airport - Puerto Barrios, Guatemala": "PBR", "Sitka Rocky Gutierrez - Sitka, United States": "SIT", "La Defense Heliport - Paris, France": "JPU", "Canouan - Canouan Island, Saint Vincent and the Grenadines": "CIW", "Mora - Mora, Sweden": "MXX", "Sheppard Afb Wichita Falls Muni - Wichita Falls, United States": "SPS", "Whitecourt - Whitecourt, Canada": "YZU", "Aeroporto Blumenau - BLUMENAU, Brazil": "BNU", "Dupage - West Chicago, United States": "DPA", "Ciudad Bolivar - Ciudad Bolivar, Venezuela": "CBL", "Cobar Airport - Cobar, Australia": "CAZ", "Amook Bay Seaplane Base - Amook Bay, United States": "AOS", "Gustavus Airport - Gustavus, United States": "GST", "Trichy - Tiruchirappalli, India": "TRZ", "Cherkassy - Cherkassy, Ukraine": "CKC", "Saint Barthelemy - Gustavia, France": "SBH", "Dade Collier Training And Transition - Miami, United States": "TNT", "Hastings Airport - Freetown, Sierra Leone": "HGS", "Pristina - Pristina, Serbia": "PRN", "Niagara Falls Intl - Niagara Falls, United States": "IAG", "Cotulla Lasalle Co - Cotulla, United States": "COT", "Cherif El Idrissi - Al Hociema, Morocco": "AHU", "Smara Airport - Smara, Western Sahara": "SMW", "Cooinda - Cooinda, Australia": "CDA", "Caribou Muni - Caribou, United States": "CAR", "Myrtle Beach Intl - Myrtle Beach, United States": "MYR", "Nikolai Airport - Nikolai, United States": "NIB", "Mainz - Mainz, Germany": "QMZ", "Falconara - Ancona, Italy": "AOI", "Ataq - Ataq, Yemen": "AXK", "Terrance B Lettsome Intl - Tortola, British Virgin Islands": "EIS", "Adnan Menderes - Izmir, Turkey": "ADB", "Beica Airport - Beica, Ethiopia": "BEI", "Sylvania Airport - Sturtevant, United States": "C89", "Krymsk - Novorossiysk, Russia": "NOI", "Obihiro - Obihiro, Japan": "OBO", "Barra del Colorado Airport - Pococi, Costa Rica": "BCL", "Igarka Airport - Igarka, Russia": "IAA", "Palm Island Airport - Palm Island, Australia": "PMK", "Princeton Muni - Princeton, United States": "PNM", "Puka Puka - Puka Puka, French Polynesia": "PKP", "Kingston Train Station - Kingston, Canada": "XEG", "Albury - Albury, Australia": "ABX", "Ramstein Ab - Ramstein, Germany": "RMS", "Manistee County-Blacker Airport - Manistee, United States": "MBL", "Astypalaia - Astypalaia, Greece": "JTY", "Yolo County Airport - Davis-Woodland-Winters, United States": "DWA", "Jomsom - Jomsom, Nepal": "JMO", "Henry E Rohlsen - St. Croix Island, Virgin Islands": "STX", "Namibe Airport - Mocamedes, Angola": "MSZ", "Tolmachevo - Novosibirsk, Russia": "OVB", "Daytona Beach Intl - Daytona Beach, United States": "DAB", "Wendover - Wendover, United States": "ENV", "Mahshahr - Bandar Mahshahr, Iran": "MRX", "Moron Ab - Sevilla, Spain": "OZP", "Taplejung - Taplejung, Nepal": "TPJ", "Whakatane - Whakatane, New Zealand": "WHK", "Baltimore Washington Intl - Baltimore, United States": "BWI", "Prince Mohammad Bin Abdulaziz - Madinah, Saudi Arabia": "MED", "Pembroke Airport - Pembroke, Canada": "YTA", "Kronoberg - Vaxjo, Sweden": "VXO", "Parsabade Moghan Airport - Parsabad, Iran": "PFQ", "Barnaul - Barnaul, Russia": "BAX", "Kirkuk AB - Kirkuk, Iraq": "KIK", "Musoma Airport - Musoma, Tanzania": "MUZ", "Lajes - Lajes (terceira Island), Portugal": "TER", "Darwin Intl - Darwin, Australia": "DRW", "Katima Mulilo Airport - Mpacha, Namibia": "MPA", "Rockhampton - Rockhampton, Australia": "ROK", "Spitfire Aerodrome - Pedricktown, United States": "7N7", "Simikot - Simikot, Nepal": "IMK", "Kulusuk - Kulusuk, Greenland": "KUS", "Vilhelmina - Vilhelmina, Sweden": "VHM", "Sondok Airport - Hamhung, North Korea": "DSO", "Pittsburgh Intl - Pittsburgh, United States": "PIT", "Rubem Berta - Uruguaiana, Brazil": "URG", "Guyuan - Guyuan, China": "GYU", "Harrisburg Intl - Harrisburg, United States": "MDT", "King Abdullah Bin Abdulaziz - Gizan, Saudi Arabia": "GIZ", "Kendall Tamiami Executive - Kendall-tamiami, United States": "TMB", "Morgantown Airport - Morgantown, United States": "O03", "Raipur - Raipur, India": "RPR", "Esfahan Shahid Beheshti Intl - Isfahan, Iran": "IFN", "Bannu Airport - Bannu, Pakistan": "BNP", "Torino - Torino, Italy": "TRN", "Fort Resolution - Fort Resolution, Canada": "YFR", "Johnson County Airport - Olathe, United States": "OJC", "Saint-Laurent-du-Maroni Airport - Saint-Laurent-du-Maroni, French Guiana": "LDX", "Habib Bourguiba Intl - Monastir, Tunisia": "MIR", "Kasos - Kasos, Greece": "KSJ", "Solenzara - Solenzara, France": "SOZ", "Kelso Longview - Kelso, United States": "KLS", "Rishiri - Rishiri Island, Japan": "RIS", "Dave Forest Airport - Cloudbreak, Australia": "KFE", "Bagram AFB - Kabul, Afghanistan": "BPM", "Clovis Muni - Clovis, United States": "CVN", "Illizi Takhamalt - Illizi, Algeria": "VVZ", "Karmoy - Haugesund, Norway": "HAU", "Temora - Temora, Australia": "TEM", "Flores - Flores, Portugal": "FLW", "Ubari Airport - Ubari, Libya": "QUB", "Hutchinson Municipal Airport - Hutchinson, United States": "HUT", "Tadjoura - Tadjoura, Djibouti": "TDJ", "Norwich - Norwich, United Kingdom": "NWI", "Wujiaba - Kunming, China": "KMG", "Markovo Airport - Markovo, Russia": "KVM", "Pedro Canga - Tumbes, Peru": "TBP", "Isbell Field Airport - Fort Payne, United States": "4A9", "Millington Rgnl Jetport - Millington, United States": "NQA", "Captain Ramon Xatruch Airport - La Palma, Panama": "PLP", "Dawson City - Dawson, Canada": "YDA", "Vadodara - Baroda, India": "BDQ", "Paros - Paros, Greece": "PAS", "Inishmore Airport - Inis Mor, Ireland": "IOR", "Banja Luka International Airport - Banja Luka, Bosnia and Herzegovina": "BNX", "Canton - Canton Island, Kiribati": "CIS", "Mokpo Airport - Mokpo, South Korea": "MPK", "Shah Amanat Intl - Chittagong, Bangladesh": "CGP", "Milos - Milos, Greece": "MLO", "Keokuk Municipal Airport - Keokuk, United States": "EOK", "Tadji Airport - Aitape, Papua New Guinea": "ATP", "Minhad HB - Minhad AB, United Arab Emirates": "NHD", "Braganca - Braganca, Portugal": "BGC", "Siauliai Intl - Siauliai, Lithuania": "SQQ", "Kerteh - Kerteh, Malaysia": "KTE", "Jaipur - Jaipur, India": "JAI", "Izumo - Izumo, Japan": "IZO", "Jabot Airport - Ailinglapalap Atoll, Marshall Islands": "JAT", "Otis Angb - Falmouth, United States": "FMH", "Norfolk Island Intl - Norfolk Island, Norfolk Island": "NLK", "Sungshan - Taipei, Taiwan": "TSA", "Daman - Daman, India": "NMB", "Reykjavik - Reykjavik, Iceland": "RKV", "William P Hobby - Houston, United States": "HOU", "Ondjiva Pereira Airport - Ondjiva, Angola": "VPE", "Aristotelis - Kastoria, Greece": "KSO", "Hassi R Mel - Tilrempt, Algeria": "HRM", "Langkawi Intl - Pulau, Malaysia": "LGK", "Nanisivik - Nanisivik, Canada": "YSR", "Guipavas - Brest, France": "BES", "Losuia Airport - Losuia, Papua New Guinea": "LSA", "Connemara Regional Airport - Indreabhan, Ireland": "NNR", "Union Island International Airport - Union Island, Saint Vincent and the Grenadines": "UNI", "Savusavu Airport - Savusavu, Fiji": "SVU", "Salt Cay Airport - Salt Cay, Turks and Caicos Islands": "SLX", "Lille - Lille, France": "XDB", "Volk Fld - Camp Douglas, United States": "VOK", "Davis Fld - Muskogee, United States": "MKO", "Assab Intl - Assab, Eritrea": "ASA", "Husein Sastranegara - Bandung, Indonesia": "BDO", "Emporia Municipal Airport - Emporia, United States": "EMP", "Noshahr Airport - Noshahr, Iran": "NSH", "Sandakan - Sandakan, Malaysia": "SDK", "Taoyuan Intl - Taipei, Taiwan": "TPE", "Port of Belfast - Belfast, United Kingdom": "BE2", "Kitale - Kitale, Kenya": "KTL", "Binhai - Tianjin, China": "TSN", "Rankin Inlet - Rankin Inlet, Canada": "YRT", "Ardabil Airport - Ardabil, Iran": "ADU", "Mekoryuk Airport - Mekoryuk, United States": "MYU", "Harrison Marion Regional Airport - Clarksburg, United States": "CKB", "Shonai Airport - Shonai, Japan": "SYO", "Yanji Airport - Yanji, China": "YNJ", "Waco Rgnl - Waco, United States": "ACT", "Vilo Acuna Intl - Cayo Largo del Sur, Cuba": "CYO", "Vancouver Harbour Water Airport - Vancouver, Canada": "YHC", "Jorge E Gonzalez Torres - San Jose Del Guaviare, Colombia": "SJE", "Alexandria Intl - Alexandria, Egypt": "ALY", "Prosser - Prosser, United States": "S40", "Namangan Airport - Namangan, Uzbekistan": "NMA", "Saluda County - Saluda, United States": "6J4", "Tadoule Lake Airport - Tadoule Lake, Canada": "XTL", "Loikaw Airport - Loikaw, Burma": "LIW", "Oyem - Oyem, Gabon": "OYE", "Honiara International - Honiara, Solomon Islands": "HIR", "Lampang - Lampang, Thailand": "LPT", "Slave Lake - Slave Lake, Canada": "YZH", "Talagi - Arkhangelsk, Russia": "ARH", "Koromiko - Picton, New Zealand": "PCN", "Graciosa - Graciosa Island, Portugal": "GRW", "Cayo Coco Airport - Cayo Coco, Cuba": "CCC", "Sabetha Municipal - Sabetha, United States": "K83", "Chifeng Airport - Chifeng, China": "CIF", "Atlantic City Intl - Atlantic City, United States": "ACY", "Ensenada - Ensenada, Mexico": "ESE", "Chevak Airport - Chevak, United States": "VAK", "Fostoria Metropolitan Airport - Fostoria, United States": "FZI", "Changde Airport - Changde, China": "CGD", "Deer Lake - Deer Lake, Canada": "YDF", "Vohimarina - Vohemar, Madagascar": "VOH", "Santa Cruz des Quiche Airport - Santa Cruz des Quiche, Guatemala": "AQB", "Bosaso Airport - Bosaso, Somalia": "BSA", "Muskegon County Airport - Muskegon, United States": "MKG", "Leros - Leros, Greece": "LRS", "Biggs Aaf - El Paso, United States": "BIF", "Zaqatala International Airport - Zaqatala, Azerbaijan": "ZTU", "Hannover Messe-Heliport - Hannover, Germany": "ZVM", "Montgomery County Airpark - Gaithersburg, United States": "GAI", "Port O\\\\'Connor Airfield - Port O\\\\'Connor, United States": "S46", "Baoshan Airport - Baoshan, China": "BSD", "Gimhae Intl - Busan, South Korea": "PUS", "El Tepual Intl - Puerto Montt, Chile": "PMC", "Elizabethton Municipal Airport - Elizabethton, United States": "0A9", "Sunshine Coast - Maroochydore, Australia": "MCY", "Bhubaneshwar - Bhubaneswar, India": "BBI", "Munich Railway - Munich, Germany": "ZMU", "Manang - Manang, Nepal": "NGX", "Paraparaumu - Paraparaumu, New Zealand": "PPQ", "Lucknow - Lucknow, India": "LKO", "Pafos Intl - Paphos, Cyprus": "PFO", "Saman\u00e1 El Catey International Airport - Samana, Dominican Republic": "AZS", "Fort Yukon - Fort Yukon, United States": "FYU", "Aalborg - Aalborg, Denmark": "AAL", "Mudgee Airport - Mudgee, Australia": "DGE", "Deadmans Cay - Dead Man's Cay, Bahamas": "LGI", "Bali Ngurah Rai - Denpasar, Indonesia": "DPS", "Hill Afb - Ogden, United States": "HIF", "Nuuk - Godthaab, Greenland": "GOH", "Samjiyon Airport - Samjiyon, North Korea": "YJS", "Arutua - Arutua, French Polynesia": "AXR", "Port Macquarie Airport - Port Macquarie, Australia": "PQQ", "Ornskoldsvik - Ornskoldsvik, Sweden": "OER", "Mountain Home Municipal Airport - Mountain Home, United States": "U76", "Lanai - Lanai, United States": "LNY", "All Airports - Paris, France": "PAR", "Blythe Airport - Blythe, United States": "BLH", "Ghanzi Airport - Ghanzi, Botswana": "GNZ", "Windom Municipal Airport - Windom, United States": "MWM", "Meilan - Haikou, China": "HAK", "Galcaio Airport - Galcaio, Somalia": "GLK", "Newtok Airport - Newtok, United States": "WWT", "Klawock Seaplane Base - Klawock, United States": "AQC", "Kansas City Intl - Kansas City, United States": "MCI", "Farnborough - Farnborough, United Kingdom": "FAB", "Port Heiden Airport - Port Heiden, United States": "PTH", "H Hasan Aroeboesman - Ende, Indonesia": "ENE", "Prince George - Prince George, Canada": "YXS", "Valle De La Pascua - Valle De La Pascua, Venezuela": "VDP", "Torreon Intl - Torreon, Mexico": "TRC", "Rio Grande - Rio Grande, Argentina": "RGA", "Ekati - Ekati, Canada": "YOA", "Debre Marqos - Debre Marqos, Ethiopia": "DBM", "Pond Inlet - Pond Inlet, Canada": "YIO", "Laishan - Yantai, China": "YNT", "Moose Jaw Air Vice Marshal C M Mcewen - Moose Jaw, Canada": "YMJ", "Marinduque Airport - Gasan, Philippines": "MRQ", "San Luis Valley Regional Airport - Alamosa, United States": "ALS", "Baimuru Airport - Baimuru, Papua New Guinea": "VMU", "Catumbela Airport - Catumbela, Angola": "CBT", "Point Roberts Airpark - Point Roberts, United States": "1RL", "Pune - Pune, India": "PNQ", "Gjoa Haven - Gjoa Haven, Canada": "YHK", "Roi Et - Roi Et, Thailand": "ROI", "General Mitchell Intl - Milwaukee, United States": "MKE", "Dr Joaquin Balaguer International Airport - La Isabela, Dominican Republic": "JBQ", "Turkmenbashi - Krasnovodsk, Turkmenistan": "KRW", "Coxs Bazar - Cox's Bazar, Bangladesh": "CXB", "Oguzeli - Gaziantep, Turkey": "GZT", "Polk Aaf - Fort Polk, United States": "POE", "Mejit Atoll Airport - Mejit Atoll, Marshall Islands": "MJB", "Tenerife Sur - Tenerife, Spain": "TFS", "Esbjerg - Esbjerg, Denmark": "EBJ", "Ulithi - Ulithi, Micronesia": "ULI", "Lynden Pindling Intl - Nassau, Bahamas": "NAS", "Toccoa RG Letourneau Field Airport - Toccoa, United States": "TOC", "Rimini - Rimini, Italy": "RMI", "Townsville - Townsville, Australia": "TSV", "John H. Batten Airport - Racine, United States": "RAC", "Nogales Intl - Nogales, Mexico": "NOG", "Aguas Claras - Ocana, Colombia": "OCV", "Nunapitchuk Airport - Nunapitchuk, United States": "NUP", "Armstrong - Armstrong, Canada": "YYW", "Zaragoza Ab - Zaragoza, Spain": "ZAZ", "Bellegarde - Limoges, France": "LIG", "Chapleau - Chapleau, Canada": "YLD", "Knox County Regional Airport - Rockland, United States": "RKD", "Bazaruto Island Airport - Bazaruto Island, Mozambique": "BZB", "Seoul Ab - Seoul East, South Korea": "SSN", "Stewart Intl - Newburgh, United States": "SWF", "Talavera La Real - Badajoz, Spain": "BJZ", "Francisco C Ada Saipan Intl - Saipan, Northern Mariana Islands": "SPN", "Ronda Airport - Ronda, Spain": "RRA", "Ronneby - Ronneby, Sweden": "RNB", "Cormeilles En Vexin - Pontoise, France": "POX", "Shakawe Airport - Shakawe, Botswana": "SWX", "Johan A Pengel Intl - Zandery, Suriname": "PBM", "Charleville - Charlieville, Australia": "CTL", "Port Columbus Intl - Columbus, United States": "CMH", "McArthur River Mine Airport - McArthur River Mine, Australia": "MCV", "Del Rio Intl - Del Rio, United States": "DRT", "Tallahassee Rgnl - Tallahassee, United States": "TLH", "Minot Afb - Minot, United States": "MIB", "Narrandera Airport - Narrandera, Australia": "NRA", "Lesquin - Lille, France": "LIL", "Liepaja Intl - Liepaja, Latvia": "LPX", "Pudong - Shanghai, China": "PVG", "Coronel Francisco Secada Vignetta Intl - Iquitos, Peru": "IQT", "Delta County Airport - Escanaba, United States": "ESC", "Bourke Airport - Bourke, Australia": "BRK", "Quantico Mcaf - Quantico, United States": "NYG", "Deols - Chateauroux, France": "CHR", "Livingood Airport - Livingood, United States": "LIV", "Garland Airport - Lewiston, United States": "8M8", "Woomera - Woomera, Australia": "UMR", "Pinal Airpark - Marana, United States": "MZJ", "Abel Santamaria - Santa Clara, Cuba": "SNU", "Badu Island Airport - Badu Island, Australia": "BDD", "Santorini - Thira, Greece": "JTR", "Florence Rgnl - Florence, United States": "FLO", "Mau Hau - Waingapu, Indonesia": "WGP", "Scammon Bay Airport - Scammon Bay, United States": "SCM", "Santa Teresita Airport - Santa Teresita, Argentina": "SST", "Yaounde Nsimalen - Yaounde, Cameroon": "NSI", "La Teste De Buch - Arcachon, France": "XAC", "Eureka - Eureka, Canada": "YEU", "Stella Maris - Stella Maris, Bahamas": "SML", "Marathon - Marathon, Canada": "YSP", "Amami - Amami, Japan": "ASJ", "Kiffa - Kiffa, Mauritania": "KFA", "Kulob Airport - Kulyab, Tajikistan": "TJU", "Piarco - Port-of-spain, Trinidad and Tobago": "POS", "Magong - Makung, Taiwan": "MZG", "Kallax - Lulea, Sweden": "LLA", "Moree Airport - Moree, Australia": "MRZ", "Abha - Abha, Saudi Arabia": "AHB", "Chhatrapati Shivaji Intl - Mumbai, India": "BOM", "Bisbee Douglas Intl - Douglas, United States": "DUG", "Lossiemouth - Lossiemouth, United Kingdom": "LMO", "Oneonta Municipal Airport - Oneonta, United States": "ONH", "Atlantic City Rail Terminal - Atlantic City NJ, United States": "ZRA", "Ravensthorpe Airport - Ravensthorpe, Australia": "RVT", "Brussels Natl - Brussels, Belgium": "BRU", "Cigli - Izmir, Turkey": "IGL", "Syros Airport - Syros Island, Greece": "JSY", "Pichoy - Valdivia, Chile": "ZAL", "Yulin Airport - Yulin, China": "UYN", "Banjul Intl - Banjul, Gambia": "BJL", "Bournemouth - Bournemouth, United Kingdom": "BOH", "Ouzinkie Airport - Ouzinkie, United States": "KOZ", "U Taphao Intl - Pattaya, Thailand": "UTP", "Formosa - Formosa, Argentina": "FMA", "Surkhet - Surkhet, Nepal": "SKH", "Cardiff - Cardiff, United Kingdom": "CWL", "Manhattan Reigonal - Manhattan, United States": "MHK", "Cruzeiro do Sul - Cruzeiro do Sul, Brazil": "CZS", "Quincy Municipal Airport - Quincy, United States": "2J9", "Bryce Canyon - Bryce Canyon, United States": "BCE", "Temindung - Samarinda, Indonesia": "SRI", "Big Creek Airport - Big Creek, Belize": "BGK", "La Pedrera Airport - La Pedrera, Colombia": "LPD", "V C Bird Intl - Antigua, Antigua and Barbuda": "ANU", "Marham - Marham, United Kingdom": "KNF", "Dalbandin Airport - Dalbandin, Pakistan": "DBA", "Wiarton - Wiarton, Canada": "YVV", "Juan Casiano - Guapi, Colombia": "GPI", "Qaisumah - Hafr Al-batin, Saudi Arabia": "AQI", "Imo Airport - Imo, Nigeria": "QOW", "Wiley Post Will Rogers Mem - Barrow, United States": "BRW", "Paulatuk - Paulatuk, Canada": "YPC", "Tak - Tak, Thailand": "TKT", "Bermejo - Bermejo, Bolivia": "BJO", "Tautii Magheraus - Baia Mare, Romania": "BAY", "Yuba County Airport - Yuba City, United States": "MYV", "Central Station - Glasgow, United Kingdom": "ZGG", "Kamembe - Kamembe, Rwanda": "KME", "Penneshaw Airport - Penneshaw, Australia": "PEA", "Fort Hope Airport - Fort Hope, Canada": "YFH", "Hwange National Park - Hwange National Park, Zimbabwe": "WKM", "Cordoba - Cordoba, Spain": "ODB", "Gabes - Gabes, Tunisia": "GAE", "Durban Intl - Durban, South Africa": "DUR", "Golfo de Morrosquillo Airport - Tolu, Colombia": "TLU", "Bromont Airport - Bromont, Canada": "ZBM", "Charlotte Douglas Intl - Charlotte, United States": "CLT", "Governador Jorge Teixeira De Oliveira - Porto Velho, Brazil": "PVH", "Susilo Airport - Sintang-Borneo Island, Indonesia": "SQG", "Ban Huoeisay Airport - Huay Xai, Laos": "OUI", "Tavie Airport - Paama Island, Vanuatu": "PBJ", "Baldwin County Airport - Milledgeville, United States": "MLJ", "Gutersloh - Guetersloh, Germany": "GUT", "Centennial - Denver, United States": "APA", "Tivat - Tivat, Montenegro": "TIV", "South Naknek Airport - South Naknek, United States": "WSN", "Dire Dawa Intl - Dire Dawa, Ethiopia": "DIR", "Salvaza - Carcassonne, France": "CCF", "Lynchburg Regional Preston Glenn Field - Lynchburg, United States": "LYH", "Ndola - Ndola, Zambia": "NLA", "Baghdad International Airport - Baghdad, Iraq": "BGW", "Xiaoshan - Hangzhou, China": "HGH", "Kassala - Kassala, Sudan": "KSL", "Jersey - Jersey, Jersey": "JER", "Ondangwa Airport - Ondangwa, Namibia": "OND", "Tamworth - Tamworth, Australia": "TMW", "Yinchuan - Yinchuan, China": "INC", "Saidpur - Saidpur, Bangladesh": "SPD", "Franklin - Franklin, United States": "FKL", "Perth Jandakot - Perth, Australia": "JAD", "Ivujivik Airport - Ivujivik, Canada": "YIK", "Page Fld - Fort Myers, United States": "FMY", "Tepic - Tepic, Mexico": "TPQ", "Westerly State Airport - Washington County, United States": "WST", "Gary Chicago International Airport - Gary, United States": "GYY", "Enontekio - Enontekio, Finland": "ENF", "Karonga - Karonga, Malawi": "KGJ", "Orly - Paris, France": "ORY", "Khomutovo - Yuzhno-sakhalinsk, Russia": "UUS", "Kangra Airport - Kangra, India": "DHM", "Basrah Intl - Basrah, Iraq": "BSR", "Barrow Island Airport - Barrow Island, Australia": "BWB", "Upington - Upington, South Africa": "UTN", "Philip Billard Muni - Topeka, United States": "TOP", "Capit\u00e1n Av. Selin Zeitun Lopez Airport - Riberalta, Bolivia": "RIB", "Hite Airport - Hanksville, United States": "UT3", "Petrozavodsk Airport - Petrozavodsk, Russia": "PES", "Cachimbo - Itaituba, Brazil": "ITB", "St Clair Co Intl - Port Huron, United States": "PHN", "Nacala - Nacala, Mozambique": "MNC", "North Platte Regional Airport Lee Bird Field - North Platte, United States": "LBF", "Valkaria Municipal - Valkaria, United States": "X59", "University Park Airport - State College Pennsylvania, United States": "SCE", "Arkansas Intl - Blytheville, United States": "BYH", "Moyale Airport - Moyale, Kenya": "OYL", "King Abdulaziz Intl - Jeddah, Saudi Arabia": "JED", "Newport State - Newport RI, United States": "UUU", "Destin - Destin, United States": "DTS", "Tinian Intl - West Tinian, Northern Mariana Islands": "TIQ", "Mabaruma Airport - Mabaruma, Guyana": "USI", "Maximo Gomez - Ciego De Avila, Cuba": "AVI", "Osnova International Airport - Kharkov, Ukraine": "HRK", "General Pedro Jose Mendez Intl - Ciudad Victoria, Mexico": "CVM", "Dolpa - Dolpa, Nepal": "DOP", "Golmud Airport - Golmud, China": "GOQ", "Raiatea - Raiatea Island, French Polynesia": "RFP", "Zarzis - Djerba, Tunisia": "DJE", "Truth Or Consequences Muni - Truth Or Consequences, United States": "TCS", "Eagle Co Rgnl - Vail, United States": "EGE", "Aasiaat - Aasiaat, Greenland": "JEG", "Glacier Park Intl - Kalispell, United States": "FCA", "Lifou - Lifou, New Caledonia": "LIF", "Asheville Regional Airport - Asheville, United States": "AVL", "Ralph Wien Mem - Kotzebue, United States": "OTZ", "Drietabbetje Airstrip - Drietabbetje, Suriname": "DRJ", "Riverside Muni - Riverside, United States": "RAL", "Cabo Velas Airport - Nicoya, Costa Rica": "TNO", "Yasser Arafat Intl - Gaza, Palestine": "GZA", "Zvartnots - Yerevan, Armenia": "EVN", "Yongzhou Lingling Airport - Yongzhou, China": "LLF", "Saibai Island Airport - Saibai Island, Australia": "SBR", "Port-de-Paix Airport - Port-de-Paix, Haiti": "PAX", "Rafic Hariri Intl - Beirut, Lebanon": "BEY", "Jwaneng - Jwaneng, Botswana": "JWA", "Nikunau Airport - Nikunau, Kiribati": "NIG", "Hengchun Airport - Hengchun, Taiwan": "HCN", "General Servando Canales Intl - Matamoros, Mexico": "MAM", "Kumasi Airport - Kumasi, Ghana": "KMS", "Edmonton Intl - Edmonton, Canada": "YEG", "Lista - Farsund, Norway": "FAN", "Rosita Airport - Rosita, Nicaragua": "RFS", "Sligo - Sligo, Ireland": "SXL", "Barwick Lafayette Airport - LaFayette, United States": "9A5", "Buri Ram - Buri Ram, Thailand": "BFV", "Igiugig Airport - Igiugig, United States": "IGG", "Governors Harbour - Governor's Harbor, Bahamas": "GHB", "Rajahmundry - Rajahmundry, India": "RJA", "Richard B Russell Airport - Rome, United States": "RMG", "Vance Winkworth Amory International Airport - Charlestown, Saint Kitts and Nevis": "NEV", "Waterbury-Oxford Airport - Oxford, United States": "OXC", "Maniitsoq Airport - Maniitsoq, Greenland": "JSU", "General Bartolome Salom Intl - Puerto Cabello, Venezuela": "PBL", "Botucatu - Botucatu, Brazil": "QCJ", "Colville Lake Airport - Colville Lake, Canada": "YCK", "Orebro - Orebro, Sweden": "ORB", "Uige - Uige, Angola": "UGO", "Aeroporto de Porto Seguro - Porto Seguro, Brazil": "BPS", "Wajir - Wajir, Kenya": "WJR", "Shreveport Rgnl - Shreveport, United States": "SHV", "Ovda - Ovda, Israel": "VDA", "Ji-Paran\u00e1 Airport - Ji-Paran\u00e1, Brazil": "JPR", "Touho - Touho, New Caledonia": "TOU", "Sary-Arka - Karaganda, Kazakhstan": "KGF", "Bagan - Bagan, Burma": "BPE", "Midland Intl - Midland, United States": "MAF", "Sumbawa Besar Airport - Sumbawa Island, Indonesia": "SWQ", "Tabiteuea South Airport - Tabiteuea, Kiribati": "TSU", "Easton-Newnam Field Airport - Easton, United States": "ESN", "Pisco Intl - Pisco, Peru": "PIO", "St Anthony - St. Anthony, Canada": "YAY", "Pelican Seaplane Base - Pelican, United States": "PEC", "Rio Gallegos - Rio Gallegos, Argentina": "RGL", "Samsun-\u00c7ar\u015famba Airport - Samsun, Turkey": "SZF", "Chaklala - Islamabad, Pakistan": "ISB", "Veliky Ustyug - Veliky Ustyug, Russia": "VUS", "Alldays Airport - Alldays, South Africa": "ADY", "Orlando Bezerra de Menezes Airport - Juazeiro Do Norte, Brazil": "JDO", "Brownsville South Padre Island Intl - Brownsville, United States": "BRO", "Tomanggong Airport - Tomanggong, Malaysia": "TMG", "Tofino - Tofino, Canada": "YAZ", "Taba Intl - Taba, Egypt": "TCP", "Kingfisher Lake Airport - Kingfisher Lake, Canada": "KIF", "Cincinnati Muni Lunken Fld - Cincinnati, United States": "LUK", "Kiruna - Kiruna, Sweden": "KRN", "Comandante Espora - Bahia Blanca, Argentina": "BHI", "Puvirnituq Airport - Puvirnituq, Canada": "YPX", "Barkley Regional Airport - PADUCAH, United States": "PAH", "Matagami - Matagami, Canada": "YNM", "Ulanhot Airport - Ulanhot, China": "HLH", "John F Kennedy Intl - New York, United States": "JFK", "King Abdulaziz Ab - Dhahran, Saudi Arabia": "DHA", "Phoenix Regional Airport - Phoenix, United States": "A39", "Anahim Lake Airport - Anahim Lake, Canada": "YAA", "Takaka Aerodrome - Takaka, New Zealand": "KTF", "Germack Airport - Geneva, United States": "7D9", "Poplar Hill Airport - Poplar Hill, Canada": "YHP", "Stendal Borstel - Stendal, Germany": "ZSN", "Changhai - Changhai, China": "CNI", "Red Deer Regional - Red Deer Industrial, Canada": "YQF", "Guiria - Guiria, Venezuela": "GUI", "Joacaba Airport - Joacaba, Brazil": "JCB", "Ye - Ye, Burma": "XYE", "Niigata - Niigata, Japan": "KIJ", "Mogador Airport - Essadouira, Morocco": "ESU", "Missoula Intl - Missoula, United States": "MSO", "Tunggul Wulung - Cilacap, Indonesia": "CXP", "Luxor Intl - Luxor, Egypt": "LXR", "Albina Airstrip - Albina, Suriname": "ABN", "Allen Aaf - Delta Junction, United States": "BIG", "Kimberley - Kimberley, South Africa": "KIM", "Latur Airport - Latur, India": "LTU", "Haifa - Haifa, Israel": "HFA", "Cologne Railway - Cologne, Germany": "QKL", "Thisted - Thisted, Denmark": "TED", "Rhinelander Oneida County Airport - Rhinelander, United States": "RHI", "Rodby Port - Rodby, Denmark": "ROD", "Melbourne Moorabbin - Melbourne, Australia": "MBW", "Windham Airport - Willimantic, United States": "IJD", "Kaadedhdhoo - Kaadedhdhoo, Maldives": "KDM", "Renner Fld - Goodland, United States": "GLD", "Fort Dodge Rgnl - Fort Dodge, United States": "FOD", "Samui - Ko Samui, Thailand": "USM", "Valencia - Valencia, Spain": "VLC", "Posadas - Posadas, Argentina": "PSS", "Seymour Johnson Afb - Goldsboro, United States": "GSB", "Aeroporto Estadual Arthur Siqueira - Braganca Paulista, Brazil": "BJP", "Zhongwei Xiangshan Airport - Zhongwei, China": "ZHY", "Charmeil - Vichy, France": "VHY", "Berbera - Berbera, Somalia": "BBO", "Kauhava - Kauhava, Finland": "KAU", "Hamburg Hbf - Hamburg, Germany": "ZMB", "Damascus Intl - Damascus, Syria": "DAM", "Maiana Airport - Maiana, Kiribati": "MNK", "Iliamna - Iliamna, United States": "ILI", "Hamilton - Hamilton, Canada": "YHM", "Seronera - Seronera, Tanzania": "SEU", "Pattimura - Ambon, Indonesia": "AMQ", "Central Wisconsin - Wassau, United States": "CWA", "Rochambeau - Cayenne, French Guiana": "CAY", "Gjogur Airport - Gjogur, Iceland": "GJR", "Hayward Executive Airport - Hayward, United States": "HWD", "Saniat Rmel - Tetouan, Morocco": "TTU", "Luena - Luena, Angola": "LUO", "Simon Bolivar Intl - Caracas, Venezuela": "CCS", "Portoroz - Portoroz, Slovenia": "POW", "Belize City Municipal Airport - Belize, Belize": "TZA", "Holloman Afb - Alamogordo, United States": "HMN", "Stony River 2 Airport - Stony River, United States": "SRV", "Lethbridge - Lethbridge, Canada": "YQL", "North Eleuthera - North Eleuthera, Bahamas": "ELH", "Paulo Abdala Airport - Francisco Beltrao, Brazil": "FBE", "Qabala Airport - Qabala, Azerbaijan": "GBB", "Anglesey Airport - Angelsey, United Kingdom": "HLY", "London - London, Canada": "YXU", "Maripasoula Airport - Maripasoula, French Guiana": "MPY", "Kengtung - Kengtung, Burma": "KET", "Baton Rouge Metro Ryan Fld - Baton Rouge, United States": "BTR", "Chimbu Airport - Kundiawa, Papua New Guinea": "CMU", "Gare du Nord - Paris, France": "XPG", "Vijayawada - Vijayawada, India": "VGA", "Erhac - Malatya, Turkey": "MLX", "Sliac - Sliac, Slovakia": "SLD", "Franz Josef Strauss - Munich, Germany": "MUC", "Desroches - Desroches, Seychelles": "DES", "Botopassi Airstrip - Botopasi, Suriname": "BTO", "Westerland Sylt - Westerland, Germany": "GWT", "Castlegar - Castlegar, Canada": "YCG", "Kasongo Lunda - Kasongo, Congo (Kinshasa)": "KGN", "Boma Airport - Boma, Congo (Kinshasa)": "BOA", "Club Makokola Airport - Club Makokola, Malawi": "CMK", "Mannheim Railway - Mannheim, Germany": "ZMA", "Nawabshah - Nawabshah, Pakistan": "WNS", "Noto - Wajima, Japan": "NTQ", "Hudson Bay - Hudson Bay, Canada": "YHB", "Moton Field Municipal Airport - Tuskegee, United States": "06A", "General Francisco Javier Mina Intl - Tampico, Mexico": "TAM", "Oakey Airport - Oakey, Australia": "OKY", "Sambu Airport - Boca de S\u00e1balo, Panama": "SAX", "Pechora - Pechora, Russia": "PEX", "New Carrollton Rail Station - New Carrollton, United States": "ZRZ", "Sultan Ismail - Johor Bahru, Malaysia": "JHB", "Lhasa-Gonggar - Lhasa, China": "LXA", "Changbaishan Airport - Baishan, China": "NBS", "Fort Smith Rgnl - Fort Smith, United States": "FSM", "Sahand Airport - Maragheh, Iran": "ACP", "Logan-Cache - Logan, United States": "LGU", "Karamay Airport - Karamay, China": "KRY", "Sitia - Sitia, Greece": "JSH", "El Alcarav\u00e1n Airport - Yopal, Colombia": "EYP", "Walgett Airport - Walgett, Australia": "WGE", "Friedrichshafen - Friedrichshafen, Germany": "FDH", "Riyan - Mukalla, Yemen": "RIY", "Victoria Inner Harbour Airport - Victoria, Canada": "YWH", "Bisha - Bisha, Saudi Arabia": "BHH", "Touat Cheikh Sidi Mohamed Belkebir - Adrar, Algeria": "AZR", "Miramichi - Chatham, Canada": "YCH", "Ormoc Airport - Ormoc City, Philippines": "OMC", "Zhaotong Airport - Zhaotong, China": "ZAT", "Spichenkovo Airport - Novokuznetsk, Russia": "NOZ", "Selfield Airport - Selma Alabama, United States": "SES", "Fukue - Fukue, Japan": "FUJ", "Ulsan - Ulsan, South Korea": "USN", "Ambouli International Airport - Djibouti, Djibouti": "JIB", "Zonguldak - Zonguldak, Turkey": "ONQ", "Almaty - Alma-ata, Kazakhstan": "ALA", "Mianyang Airport - Mianyang, China": "MIG", "El Alto Intl - La Paz, Bolivia": "LPB", "Leknes Airport - Leknes, Norway": "LKN", "Kelani River-Peliyagoda Waterdrome - Colombo, Sri Lanka": "KEZ", "John Wayne Arpt Orange Co - Santa Ana, United States": "SNA", "Huai An Lianshui Airport - Huai An, China": "HIA", "Jodhpur - Jodhpur, India": "JDH", "Bahia Pi\u00f1a Airport - Bahia Pi\u00f1a, Panama": "BFQ", "Forde Bringeland - Forde, Norway": "FDE", "Uzhhorod International Airport - Uzhgorod, Ukraine": "UDJ", "Iki - Iki, Japan": "IKI", "Pickens County Airport - Jasper, United States": "JZP", "Key Field - Meridian, United States": "MEI", "Shimla Airport - Shimla, India": "SLV", "Newark Liberty Intl - Newark, United States": "EWR", "Block Island State Airport - Block Island, United States": "BID", "Grand Canyon West Airport - Grand Canyon West, United States": "GCW", "Phu Bai - Hue, Vietnam": "HUI", "Hillsboro Muni - Hillsboro, United States": "INJ", "Normanton Airport - Normanton, Australia": "NTN", "Wickenburg Municipal Airport - Wickenburg, United States": "E25", "Ambunti - Ambunti, Papua New Guinea": "AUJ", "Soummam - Bejaja, Algeria": "BJA", "Eskisehir - Eskisehir, Turkey": "ESK", "Bucholz Aaf - Kwajalein, Marshall Islands": "KWA", "Black Hills Airport-Clyde Ice Field - Spearfish-South Dakota, United States": "SPF", "Mariana Grajales - Guantanamo, Cuba": "GAO", "Campo Dell Oro - Ajaccio, France": "AJA", "Wunnumin Lake Airport - Wunnumin Lake, Canada": "WNN", "Polonia - Medan, Indonesia": "MES", "Nagoya Airport - Nagoya, Japan": "NKM", "Igor I Sikorsky Mem - Stratford, United States": "BDR", "Gobernador Gregores Airport - Gobernador Gregores, Argentina": "GGS", "La Crosse Municipal - La Crosse, United States": "LSE", "Southeast Texas Rgnl - Beaumont, United States": "BPT", "Cooch Behar - Cooch-behar, India": "COH", "Mykolaiv International Airport - Nikolayev, Ukraine": "NLV", "Grottaglie - Grottaglie, Italy": "TAR", "Capital City - Lansing, United States": "LAN", "Zamperini Field Airport - Torrance, United States": "TOA", "Arvidsjaur - Arvidsjaur, Sweden": "AJR", "Lakeland - Minocqua - Woodruff, United States": "ARV", "Haines Airport - Haines, United States": "HNS", "Vicenza - Vicenza, Italy": "VIC", "Enugu - Enugu, Nigeria": "ENU", "Tippi Airport - Tippi, Ethiopia": "TIE", "Kaieteur - Kaieteur, Guyana": "KAI", "Kahului - Kahului, United States": "OGG", "Koln Bonn - Cologne, Germany": "CGN", "Iosco County - East Tawas, United States": "ECA", "Bellingham Intl - Bellingham, United States": "BLI", "Matecana - Pereira, Colombia": "PEI", "Brusselton - Brusselton, Australia": "BQB", "Babo - Babo, Indonesia": "BXB", "Launceston - Launceston, Australia": "LST", "Nelson - Nelson, New Zealand": "NSN", "Bilbao - Bilbao, Spain": "BIO", "Arturo Merino Benitez Intl - Santiago, Chile": "SCL", "Hrodno Airport - Hrodna, Belarus": "GNA", "Lackland Afb Kelly Fld Annex - San Antonio, United States": "SKF", "Malargue - Malargue, Argentina": "LGS", "North Spirit Lake Airport - North Spirit Lake, Canada": "YNO", "Bessemer - Bessemer, United States": "EKY", "Angoon Seaplane Base - Angoon, United States": "AGN", "Amsterdam Centraal - Amsterdam, Netherlands": "ZYA", "Tsumeb Airport - Tsumeb, Namibia": "TSB", "Korla Airport - Korla, China": "KRL", "Nyagan Airport - Nyagan, Russia": "NYA", "Viracopos - Campinas, Brazil": "VCP", "Phoenix-Mesa Gateway - Mesa, United States": "AZA", "Malolo Lailai Island Airport - Malolo Lailai Island, Fiji": "PTF", "Fairbanks Intl - Fairbanks, United States": "FAI", "Catamarca - Catamarca, Argentina": "CTC", "Heide-B\u00fcsum Airport - B\u00fcsum, Germany": "HEI", "Poltava - Poltava, Ukraine": "PLV", "Guemar Airport - Guemar, Algeria": "ELU", "Miandrivazo - Miandrivazo, Madagascar": "ZVA", "Thorshofn Airport - Thorshofn, Iceland": "THO", "Koulamoutou Airport - Koulamoutou, Gabon": "KOU", "Narsaq Heliport - Narsaq, Greenland": "JNS", "Sand Point Airport - Sand Point, United States": "SDP", "Tortoli - Tortoli, Italy": "TTB", "Theodore Francis Green State - Providence, United States": "PVD", "Hamburg - Hamburg, Germany": "HAM", "Malad City - Malad City, United States": "MLD", "St Jacques - Rennes, France": "RNS", "Tri-State Steuben County Airport - Angola, United States": "ANQ", "Miri - Miri, Malaysia": "MYY", "Barcelona - Barcelona, Spain": "BCN", "Quetzalcoatl Intl - Nuevo Laredo, Mexico": "NLD", "Lee Airport - Annapolis, United States": "ANP", "Galt Field Airport - Greenwood, United States": "10C", "Novo Aripuana Airport - Novo Aripuana, Brazil": "NVP", "Flesland - Bergen, Norway": "BGO", "Ixtapa Zihuatanejo Intl - Zihuatanejo, Mexico": "ZIH", "Tongren - Tongren, China": "TEN", "Hannover - Hannover, Germany": "HAJ", "Port Alsworth Airport - Port alsworth, United States": "PTA", "Dubbo - Dubbo, Australia": "DBO", "Comandante Fap German Arias Graziani - Anta, Peru": "ATA", "Alliance Municipal Airport - Alliance, United States": "AIA", "San Diego Old Town Transit Center - San Diego, United States": "OLT", "Shepparton - Shepparton, Australia": "SHT", "Juneau Intl - Juneau, United States": "JNU", "Sawyer International Airport - Marquette, United States": "MQT", "Harare Intl - Harare, Zimbabwe": "HRE", "Cross City - Cross City, United States": "CTY", "Kristianstad - Kristianstad, Sweden": "KID", "Lakehurst Naes - Lakehurst, United States": "NEL", "Barajas - Madrid, Spain": "MAD", "Amaury Feitosa Tomaz Airport - Eirunepe, Brazil": "ERN", "Asyut International Airport - Asyut, Egypt": "ATZ", "Bergamo Orio Al Serio - Bergamo, Italy": "BGY", "Kenmore Air Harbor Inc Seaplane Base - Kenmore, United States": "KEH", "Yakima Air Terminal McAllister Field - Yakima, United States": "YKM", "Manassas - Manassas, United States": "MNZ", "Selebi Phikwe - Selebi-phikwe, Botswana": "PKW", "Varkaus - Varkaus, Finland": "VRK", "Mirny - Mirnyj, Russia": "MJZ", "Puerto Lempira Airport - Puerto Lempira, Honduras": "PEU", "Nefta - Tozeur, Tunisia": "TOE", "Glasgow - Glasgow, United Kingdom": "GLA", "Jalalabad - Jalalabad, Afghanistan": "JAA", "Deurne - Antwerp, Belgium": "ANR", "Hola - Hola, Kenya": "HOA", "Jessore - Jessore, Bangladesh": "JSR", "Gemena - Gemena, Congo (Kinshasa)": "GMA", "Quesnel - Quesnel, Canada": "YQZ", "Ndolo - Kinshasa, Congo (Kinshasa)": "NLO", "Luton - London, United Kingdom": "LTN", "Sadiq Abubakar Iii Intl - Sokoto, Nigeria": "SKO", "Terre-de-Haut Airport - Les Saintes, Guadeloupe": "LSS", "Langeoog Airport - Langeoog, Germany": "LGO", "Rene Fontaine - Hearst, Canada": "YHF", "Esenboga - Ankara, Turkey": "ESB", "Lalibella - Lalibella, Ethiopia": "LLI", "Penggung - Cirebon, Indonesia": "CBN", "Koszalin - Zegrze Pomorskie Airport - Koszalin, Poland": "OSZ", "La Garenne - Agen, France": "AGF", "Fort Nelson - Fort Nelson, Canada": "YYE", "Rocky Mountain House - Rocky Mountain House, Canada": "YRM", "Port Lincoln Airport - Port Lincoln, Australia": "PLO", "Wageningen Airstrip - Wageningen, Suriname": "AGI", "Albenga - Albenga, Italy": "ALL", "Surigao Airport - Sangley Point, Philippines": "SUG", "Pilot Station Airport - Pilot Station, United States": "PQS", "Akhiok Airport - Akhiok, United States": "AKK", "Fort Simpson - Fort Simpson, Canada": "YFS", "Yandina Airport - Yandina, Solomon Islands": "XYA", "Hyderabad Airport - Hyderabad, Pakistan": "HDD", "South Indian Lake Airport - South Indian Lake, Canada": "XSI", "Waimea Kohala - Kamuela, United States": "MUE", "Licenciado Adolfo Lopez Mateos Intl - Toluca, Mexico": "TLC", "Managua Intl - Managua, Nicaragua": "MGA", "Isle Of Man - Isle Of Man, Isle of Man": "IOM", "Ruzyne - Prague, Czech Republic": "PRG", "Queenstown - Queenstown International, New Zealand": "ZQN", "Inisheer - Inisheer, Ireland": "INQ", "Saint Geoirs - Grenoble, France": "GNB", "Al Ghaidah Intl - Al Ghaidah Intl, Yemen": "AAY", "Johannesburg Intl - Johannesburg, South Africa": "JNB", "Petropavlosk South Airport - Petropavlosk, Kazakhstan": "PPK", "Old Harbor Airport - Old Harbor, United States": "OLH", "Wewak Intl - Wewak, Papua New Guinea": "WWK", "Des Moines Intl - Des Moines, United States": "DSM", "Wynyard Airport - Burnie, Australia": "BWT", "Ciudad Constituci\u00f3n Airport - Ciudad Constituci\u00f3n, Mexico": "CUA", "Yariguies - Barrancabermeja, Colombia": "EJA", "Baoan Intl - Shenzhen, China": "SZX", "Van Wert County Airport - Van Wert, United States": "VNW", "Macau Ferry Pier - Macau, Macau": "XZM", "Airok Airport - Airok, Marshall Islands": "AIC", "Victoria Falls Intl - Victoria Falls, Zimbabwe": "VFA", "Hat Yai Intl - Hat Yai, Thailand": "HDY", "Otu - Otu, Colombia": "OTU", "Kuwait Intl - Kuwait, Kuwait": "KWI", "Redencao Airport - Redencao, Brazil": "RDC", "Volkel AB - Volkel, Netherlands": "UDE", "Sebha - Sebha, Libya": "SEB", "Fairmont Hot Springs - Coral Harbour, Canada": "YZS", "Dongola - Dongola, Sudan": "DOG", "La Guardia - New York, United States": "LGA", "Gdynia - Gdynia, Poland": "QYD", "Landvetter - Gothenborg, Sweden": "GOT", "Muren Airport - Muren, Mongolia": "MXV", "Jiuzhaigou Huanglong - Jiuzhaigou, China": "JZH", "Raleigh County Memorial Airport - Beckley, United States": "BKW", "Supadio - Pontianak, Indonesia": "PNK", "Yichang Airport - Yichang, China": "YIH", "Jose Joaquin De Olmedo Intl - Guayaquil, Ecuador": "GYE", "Liege-Guillemins Railway Station - Liege, Belgium": "XHN", "Qiqihar Sanjiazi Airport - Qiqihar, China": "NDG", "Gimli Industrial Park Airport - Gimli, Canada": "YGM", "Cartwright Airport - Cartwright, Canada": "YRF", "Presidente Prudente - President Prudente, Brazil": "PPB", "Creil - Creil, France": "CSF", "Wings Field - Philadelphia, United States": "BBX", "Bajhang - Bajhang, Nepal": "BJH", "Chinchilla - Chinchilla, Australia": "CCL", "Sharq Al-Owainat Airport - Sharq Al-Owainat, Egypt": "GSQ", "Gino Lisa - Foggia, Italy": "FOG", "Singita Sabi Sands - Sabi Sands, South Africa": "INY", "Newark Penn Station - Newark, United States": "ZRP", "Solwesi Airport - Solwesi, Zambia": "SLI", "Wevelgem - Kortrijk-vevelgem, Belgium": "QKT", "Yading Daocheng - Daocheng, China": "DCY", "Kununurra - Kununurra, Australia": "KNX", "Georgetown County Airport - Georgetown, United States": "GGE", "Adak Airport - Adak Island, United States": "ADK", "Gimpo - Seoul, South Korea": "GMP", "Tarapac\u00e1 Airport - Tarapac\u00e1, Colombia": "TCD", "Saga Airport - Saga, Japan": "HSG", "Rutland State Airport - Rutland, United States": "RUT", "Padova - Padova, Italy": "QPA", "Lincang Airport - Lincang, China": "LNJ", "Fairchild Afb - Spokane, United States": "SKA", "Shilavo Airport - Shilavo, Ethiopia": "HIL", "Homer - Homer, United States": "HOM", "Detroit Metro Wayne Co - Detroit, United States": "DTW", "Menorca - Menorca, Spain": "MAH", "Qualicum Beach Airport - Qualicum Beach, Canada": "XQU", "Jerez - Jerez, Spain": "XRY", "Vanguardia - Villavicencio, Colombia": "VVC", "Asosa - Asosa, Ethiopia": "ASO", "Traian Vuia - Timisoara, Romania": "TSR", "Lukla - Lukla, Nepal": "LUA", "Komsomolsk-on-Amur Airport - Komsomolsk-on-Amur, Russia": "KXK", "Begishevo - Nizhnekamsk, Russia": "NBC", "Capital City Airport - Harrisburg, United States": "CXY", "Whiteman Afb - Knobnoster, United States": "SZL", "Roxas Airport - Roxas City, Philippines": "RXS", "Foster Field - Apple River, United States": "7A4", "Sultan Mahmud - Kuala Terengganu, Malaysia": "TGG", "Sunyani - Sunyani, Ghana": "NYI", "Presidente Castro Pinto - Joao Pessoa, Brazil": "JPA", "Lindau HBF - Lindau, Germany": "LND", "Hartford Union Station - Hartford, United States": "ZRT", "Waskaganish Airport - Waskaganish, Canada": "YKQ", "ISLES OF SCILLY - ST MARY\\\\'S, United Kingdom": "ISC", "Nagasaki - Nagasaki, Japan": "NGS", "Okayama - Okayama, Japan": "OKJ", "Gao - Gao, Mali": "GAQ", "Coolidge Municipal Airport - Cooldige, United States": "P08", "Los Alamos Airport - Los Alamos, United States": "LAM", "Fort Albany Airport - Fort Albany, Canada": "YFA", "Peoria Regional - Peoria, United States": "PIA", "Soderhamn Airport - Soderhamn, Sweden": "SOO", "Kemi Tornio - Kemi, Finland": "KEM", "Sharjah Intl - Sharjah, United Arab Emirates": "SHJ", "Juan Gualberto Gomez Intl - Varadero, Cuba": "VRA", "Yamoussoukro - Yamoussoukro, Cote d'Ivoire": "ASK", "Lensk - Lensk, Russia": "ULK", "Mallacoota Airport - Mallacoota, Australia": "XMC", "Beverly Municipal Airport - Beverly, United States": "BVY", "Faa\\\\'a International - Papeete, French Polynesia": "PPT", "Portage Municipal Airport - Portage, United States": "C47", "Houghton County Memorial Airport - Hancock, United States": "CMX", "Wallblake - The Valley, Anguilla": "AXA", "Wilmington Airborne Airpark - Wilmington, United States": "ILN", "Termez Airport - Termez, Uzbekistan": "TMJ", "Rajkot - Rajkot, India": "RAJ", "Kijang - Tanjung Pinang, Indonesia": "TNJ", "La Plata - La Plata, Argentina": "LPG", "Hudiksvall - Hudiksvall, Sweden": "HUV", "Eugenio Maria De Hostos - Mayaguez, Puerto Rico": "MAZ", "Tengchong Tuofeng Airport - Tengchong, China": "TCZ", "Ludhiana - Ludhiaha, India": "LUH", "Kvernberget - Kristiansund, Norway": "KSU", "Manzhouli - Manzhouli, China": "NZH", "Naryan-Mar - Naryan-Mar, Russia": "NNM", "Mekane Salam Airport - Mekane Selam, Ethiopia": "MKS", "Blue Grass - Lexington KY, United States": "LEX", "Deadhorse - Deadhorse, United States": "SCC", "Yakataga Airport - Yakataga, United States": "CYT", "Shenandoah Valley Regional Airport - Weyers Cave, United States": "SHD", "Bijie Feixiong Airport - Bijie, China": "BFJ", "Gunnison - Crested Butte - Gunnison, United States": "GUC", "Dusseldorf Hauptbahnhof - Dusseldorf, Germany": "QDU", "Selibady - Selibabi, Mauritania": "SEY", "St. Augustine Airport - St. Augustine, United States": "SGJ", "Bishop International - Flint, United States": "FNT", "Toliara - Toliara, Madagascar": "TLE", "Sanikiluaq Airport - Sanikiluaq, Canada": "YSK", "New Kitakyushu - Kitakyushu, Japan": "KKJ", "Luxembourg - Luxemburg, Luxembourg": "LUX", "Dimapur Airport - Dimapur, India": "DMU", "Oberpfaffenhofen - Oberpfaffenhofen, Germany": "OBF", "\u00cele des Pins Airport - \u00cele des Pins, New Caledonia": "ILP", "Perales - Ibague, Colombia": "IBE", "Ljubljana - Ljubljana, Slovenia": "LJU", "Nis - Nis, Serbia": "INI", "Cassidy Intl - Kiritimati, Kiribati": "CXI", "Ulusaba Airstrip - Ulusaba, Namibia": "ULX", "Bowerman Field - Hoquiam, United States": "HQM", "Wau Airport - Wau, Sudan": "WUU", "Wiluna Airport - Wiluna, Australia": "WUN", "Franca Airport - Franca, Brazil": "FRC", "Homestead Arb - Homestead, United States": "HST", "Adana - Adana, Turkey": "ADA", "Dubuque Rgnl - Dubuque IA, United States": "DBQ", "Coulter Fld - Bryan, United States": "CFD", "Ambanja Airport - Ambanja, Madagascar": "IVA", "Gualeguaychu - Gualeguaychu, Argentina": "GHU", "Wirawila Airport - Wirawila, Sri Lanka": "WRZ", "Korhogo - Korhogo, Cote d'Ivoire": "HGO", "Tuguegarao Airport - Tuguegarao, Philippines": "TUG", "Skyhaven Airport - Rochester, United States": "DAW", "Manitouwadge - Manitouwadge, Canada": "YMG", "Ouargla - Ouargla, Algeria": "OGX", "Queenstown - Queenstown, South Africa": "UTW", "Timmins - Timmins, Canada": "YTS", "Coban - Coban, Guatemala": "CBV", "Cascavel - Cascavel, Brazil": "CAC", "Karpathos - Karpathos, Greece": "AOK", "Friday Harbor Seaplane Base - Friday Harbor, United States": "FBS", "Guanambi Airport - Guanambi, Brazil": "GNM", "Tauranga - Tauranga, New Zealand": "TRG", "Camilo Daza - Cucuta, Colombia": "CUC", "Marka Intl - Amman, Jordan": "ADJ", "Pamplona - Pamplona, Spain": "PNA", "Laoag Intl - Laoag, Philippines": "LAO", "Axum - Axum, Ethiopia": "AXU", "St Johns Intl - St. John's, Canada": "YYT", "Arcata - Arcata CA, United States": "ACV", "Aeropuerto Capitan Fuentes Martinez - Porvenir, Chile": "WPR", "Pormpuraaw Airport - Pormpuraaw, Australia": "EDR", "Praha hlavni nadrazi - Prague, Czech Republic": "XYG", "Egelsbach - Egelsbach, Germany": "QEF", "Garowe - International - Garowe, Somalia": "GGR", "Split - Split, Croatia": "SPU", "Chris Hadfield - Sarnia, Canada": "YZR", "Luhansk International Airport - Lugansk, Ukraine": "VSG", "Key Largo - Ocean Reef Club Airport, United States": "OCA", "Ken Jones - Port Antonio, Jamaica": "POT", "Capit\u00e1n Av. German Quiroga G. Airport - San Borja, Bolivia": "SRJ", "Lauriston Airport - Carriacou Island, Grenada": "CRU", "Marana Regional - Tucson, United States": "AVW", "Lake Tahoe Airport - South Lake Tahoe, United States": "TVL", "Wollongong Airport - Wollongong, Australia": "WOL", "Thangool - Biloela, Australia": "THG", "Kineshma - Kineshma, Russia": "KIE", "Anaktuvuk Pass Airport - Anaktuvuk Pass, United States": "AKP", "General Ulpiano Paez - Salinas, Ecuador": "SNC", "Balkhash Airport - Balkhash, Kazakhstan": "BXH", "Port Bailey Seaplane Base - Port Bailey, United States": "KPY", "Lodwar - Lodwar, Kenya": "LOK", "Marmul - Marmul, Oman": "OMM", "Hornepayne - Hornepayne, Canada": "YHN", "William T. Piper Mem. - Lock Haven, United States": "LHV", "Bryant Ahp - Fort Richardson, United States": "FRN", "Lourdes - Tarbes, France": "LDE", "Donegal Airport - Dongloe, Ireland": "CFN", "Granville - Granville, France": "GFR", "R\u00f8st Airport - R\u00f8st, Norway": "RET", "William R Fairchild International Airport - Port Angeles, United States": "CLM", "Esler Rgnl - Alexandria, United States": "ESF", "Podgorica - Podgorica, Montenegro": "TGD", "General Manuel Carlos Piar - Guayana, Venezuela": "PZO", "Bradford Regional Airport - Bradford, United States": "BFD", "Ust Kamenogorsk Airport - Ust Kamenogorsk, Kazakhstan": "UKK", "Waterford - Waterford, Ireland": "WAT", "Likiep Airport - Likiep Island, Marshall Islands": "LIK", "Genova Sestri - Genoa, Italy": "GOA", "Okaukuejo Airport - Okaukuejo, Namibia": "OKF", "RADOM - RADOM, Poland": "QXR", "Samos - Samos, Greece": "SMI", "Point Hope Airport - Point Hope, United States": "PHO", "Bangui M Poko - Bangui, Central African Republic": "BGF", "Myitkyina - Myitkyina, Burma": "MYT", "Aix Les Milles - Aix-les-milles, France": "QXB", "Ahwaz - Ahwaz, Iran": "AWZ", "Lebanon State - Lebanon, United States": "S30", "Meadow Lake - Meadow Lake, Canada": "YLJ", "Vieques Airport - Vieques Island, Puerto Rico": "VQS", "Odesa Intl - Odessa, Ukraine": "ODS", "Yakushima - Yakushima, Japan": "KUM", "Fort Worth Meacham Intl - Fort Worth, United States": "FTW", "Gondar - Gondar, Ethiopia": "GDQ", "Dawson Creek - Dawson Creek, Canada": "YDQ", "Bhairahawa - Bhairawa, Nepal": "BWA", "Mangaia Island Airport - Mangaia Island, Cook Islands": "MGS", "Okha Airport - Okha, Russia": "OHH", "Sharona - Sharona, Afghanistan": "AZ3", "Manja Airport - Manja, Madagascar": "MJA", "Puerto Rico Airport - Puerto Rico/Manuripi, Bolivia": "PUR", "Khatanga Airport - Khatanga, Russia": "HTG", "Alexander Bay - Alexander Bay, South Africa": "ALJ", "Casale - Brindisi, Italy": "BDS", "Ellsworth Afb - Rapid City, United States": "RCA", "Wittman Regional Airport - Oshkosh, United States": "OSH", "Palonegro - Bucaramanga, Colombia": "BGA", "Bukoba Airport - Bukoba, Tanzania": "BKZ", "Ampugnano - Siena, Italy": "SAY", "Wakkanai - Wakkanai, Japan": "WKJ", "Tonopah Test Range - Tonopah, United States": "TNX", "Sacramento Mather - Sacramento, United States": "MHR", "Malanje - Malanje, Angola": "MEG", "Sabiha Gokcen - Istanbul, Turkey": "SAW", "Port Clarence Coast Guard Station - Port Clarence, United States": "KPC", "Vilnius Intl - Vilnius, Lithuania": "VNO", "Pantelleria - Pantelleria, Italy": "PNL", "Parnu - Parnu, Estonia": "EPU", "Colima - Colima, Mexico": "CLQ", "Sampit(Hasan) Airport - Sampit-Borneo Island, Indonesia": "SMQ", "Ottawa Macdonald Cartier Intl - Ottawa, Canada": "YOW", "Aranuka Airport - Buariki, Kiribati": "AAK", "A Coruna - La Coruna, Spain": "LCG", "Stafsberg Airport - Hamar, Norway": "HMR", "Changzhi Airport - Changzhi, China": "CIH", "Leesburg Executive Airport - Leesburg, United States": "JYO", "Fua Amotu Intl - Tongatapu, Tonga": "TBU", "Vaernes - Trondheim, Norway": "TRD", "Bandirma - Bandirma, Turkey": "BDM", "Misima Island Airport - Misima Island, Papua New Guinea": "MIS", "Lake Evella Airport - Lake Evella, Australia": "LEL", "Terrace Bay - Terrace Bay, Namibia": "TCY", "MariposaYosemite - Mariposa, United States": "MPI", "Zumbi Dos Palmares - Maceio, Brazil": "MCZ", "Westchester Co - White Plains, United States": "HPN", "General Ignacio P Garcia Intl - Hermosillo, Mexico": "HMO", "Bosset Airport - Bosset, Papua New Guinea": "BOT", "Arlington Municipal - Arlington, United States": "GKY", "Bluefields - Bluefields, Nicaragua": "BEF", "La Junta Muni - La Junta, United States": "LHX", "San Antonio Del Tachira - San Antonio, Venezuela": "SVZ", "Kempten HBF - Kempten, Germany": "KEX", "Reyes Murillo Airport - Nuqu\u00ed, Colombia": "NQU", "Ngau Airport - Ngau, Fiji": "NGI", "Tianyang - Baise, China": "AEB", "Siem Reap - Siem-reap, Cambodia": "REP", "Yellowstone Airport - West Yellowstone, United States": "WYS", "Schefferville - Schefferville, Canada": "YKL", "Basankusu Airport - Basankusu, Congo (Kinshasa)": "BSU", "Great Bend Municipal - Great Bend, United States": "GBN", "Toussaint Louverture Intl - Port-au-prince, Haiti": "PAP", "New Tanegashima - Tanegashima, Japan": "TNE", "Walaha Airport - Walaha, Vanuatu": "WLH", "Suffield Heliport - Suffield, Canada": "YSD", "Chandragadhi Airport - Chandragarhi, Nepal": "BDP", "Tureia Airport - Tureia, French Polynesia": "ZTA", "Rurrenabaque Airport - Rerrenabaque, Bolivia": "RBQ", "Marktoberdorf Schule - Marktoberdorf, Germany": "MOS", "Mineral Wells - Mineral Wells, United States": "MWL", "Ilheus - Ilheus, Brazil": "IOS", "Warukin Airport - Tanjung-Borneo Island, Indonesia": "TJG", "Fort Good Hope - Fort Good Hope, Canada": "YGH", "Fortman Airport - St. Marys, United States": "1OH", "Coconut Island Airport - Coconut Island, Australia": "CNC", "Koyukuk Airport - Koyukuk, United States": "KYU", "North Ronaldsay Airport - North Ronaldsay, United Kingdom": "NRL", "Bodo - Bodo, Norway": "BOO", "Mineralnyye Vody - Mineralnye Vody, Russia": "MRV", "Cam Ranh Airport - Nha Trang, Vietnam": "CXR", "Lafayette Rgnl - Lafayette, United States": "LFT", "Mountain Home Afb - Mountain Home, United States": "MUO", "La Chorrera Airport - La Chorrera, Colombia": "LCR", "Termal - Rio Hondo, Argentina": "RHD", "Shiraz Shahid Dastghaib Intl - Shiraz, Iran": "SYZ", "Regional Airport - Joliet, United States": "JOT", "Gare de LEst - Paris, France": "XHP", "Ustupo - Ustupo, Panama": "UTU", "Ingolstadt BF - Ingolstadt, Germany": "IGS", "Milford Sound Airport - Milford Sound, New Zealand": "MFN", "Maloelap Island Airport - Maloelap Island, Marshall Islands": "MAV", "Dunedin - Dunedin, New Zealand": "DUD", "Gilberto Lavaque - Cafayate, Argentina": "CFX", "Bhavnagar - Bhaunagar, India": "BHU", "Skrydstrup - Skrydstrup, Denmark": "SKS", "Kenema Airport - Kenema, Sierra Leone": "KEN", "Salak - Maroua, Cameroon": "MVR", "Borongan Airport - Borongan, Philippines": "BPR", "Gibraltar - Gibraltar, Gibraltar": "GIB", "Gustavo Artunduaga Paredes - Florencia, Colombia": "FLA", "Tanjung Harapan Airport - Tanjung Selor-Borneo Island, Indonesia": "TJS", "Bordj Badji Mokhtar Airport - Bordj Badji Mokhtar, Algeria": "BMW", "Lourdes De Blanc Sablon Airport - Lourdes-De-Blanc-Sablon, Canada": "YBX", "Pokhara - Pokhara, Nepal": "PKR", "Domododevo - Moscow, Russia": "DME", "Tempelhof - Berlin, Germany": "THF", "Kalaupapa Airport - Molokai, United States": "LUP", "Lansdowne Airport - Youngstown, United States": "04G", "Ilebo Airport - Ilebo, Congo (Kinshasa)": "PFR", "Ailuk Airport - Ailuk Island, Marshall Islands": "AIM", "Playa Samara Airport - Playa Samara, Costa Rica": "PLD", "Aktio - Preveza, Greece": "PVK", "Matsumoto - Matsumoto, Japan": "MMJ", "Port Bucyrus-Crawford County Airport - Bucyrus, United States": "17G", "Zhanjiang Airport - Zhanjiang, China": "ZHA", "Buka Airport - Buka Island, Papua New Guinea": "BUA", "Kikwit - Kikwit, Congo (Kinshasa)": "KKW", "Pecs - Pecs, Hungary": "QPJ", "Aurillac - Aurillac, France": "AUR", "Shaktoolik Airport - Shaktoolik, United States": "SKK", "Port Protection Seaplane Base - Port Protection, United States": "PPV", "Rivne International Airport - Rivne, Ukraine": "RWN", "Faizabad Airport - Faizabad, Afghanistan": "FBD", "Schaumburg Regional - Schaumburg, United States": "06C", "Cat Lake Airport - Cat Lake, Canada": "YAC", "Fond Du Lac County Airport - Fond du Lac, United States": "FLD", "Don Miguel Hidalgo Y Costilla Intl - Guadalajara, Mexico": "GDL", "Cayana Airstrip - Cayana, Suriname": "AAJ", "Simara - Simara, Nepal": "SIF", "Stephens Co - Breckenridge, United States": "BKD", "Bradley Intl - Windsor Locks, United States": "BDL", "Sauce Viejo - Santa Fe, Argentina": "SFN", "Ganzhou Airport - Ganzhou, China": "KOW", "Trenton - Trenton, Canada": "YTR", "Kashechewan Airport - Kashechewan, Canada": "ZKE", "Montoir - St.-nazaire, France": "SNR", "Churchill Falls Airport - Churchill Falls, Canada": "ZUM", "Caballococha Airport - Caballococha, Peru": "LHC", "Wheeler Sack Aaf - Fort Drum, United States": "GTB", "Nejran - Nejran, Saudi Arabia": "EAM", "Codela Airport - Guapiles, Costa Rica": "CSC", "Dali - Dali, China": "DLU", "Sogndal Airport - Sogndal, Norway": "SOG", "Turbat International Airport - Turbat, Pakistan": "TUK", "Gillespie - El Cajon, United States": "SEE", "Ilorin - Ilorin, Nigeria": "ILR", "Miyakejima Airport - Miyakejima, Japan": "MYE", "Comiso - Comiso, Italy": "CIY", "Queretaro Intercontinental - Queretaro, Mexico": "QRO", "Komatsu - Kanazawa, Japan": "KMQ", "Lauro Kurtz - Passo Fundo, Brazil": "PFB", "Kanas Airport - Burqin, China": "KJI", "Yaounde Ville - Yaounde, Cameroon": "YAO", "Westbahnhoff - Vienna, Austria": "XWW", "Yuzhny - Tashkent, Uzbekistan": "TAS", "Campbell Aaf - Hopkinsville, United States": "HOP", "Oceana Nas - Oceana, United States": "NTU", "Sturup - Malmoe, Sweden": "MMX", "Golden Triangle Regional Airport - Columbus Mississippi, United States": "GTR", "Silver Springs Airport - Silver Springs, United States": "SPZ", "Little Grand Rapids Airport - Little Grand Rapids, Canada": "ZGR", "Moises Benzaquen Rengifo - Yurimaguas, Peru": "YMS", "Ford Airport - Iron Mountain, United States": "IMT", "Bangalore - Bangalore, India": "BLR", "Balandino - Chelyabinsk, Russia": "CEK", "Hewanorra Intl - Hewandorra, Saint Lucia": "UVF", "Perugia - Perugia, Italy": "PEG", "Attawapiskat Airport - Attawapiskat, Canada": "YAT", "Laage - Laage, Germany": "RLG", "Bouake - Bouake, Cote d'Ivoire": "BYK", "McDuffie County Airport - Thomson, United States": "HQU", "Bandar Lengeh - Bandar Lengeh, Iran": "BDH", "Lompoc Airport - Lompoc, United States": "LPC", "Malindi Airport - Malindi, Kenya": "MYD", "Dong Tac - Tuy Hoa, Vietnam": "TBB", "Douglas Municipal Airport - Douglas, United States": "DQH", "Gulkana - Gulkana, United States": "GKN", "Qaarsut Airport - Uummannaq, Greenland": "JQA", "Ua Pou Airport - Ua Pou, French Polynesia": "UAP", "Granada - Granada, Spain": "GRX", "Manihiki Island Airport - Manihiki Island, Cook Islands": "MHX", "Roumaniere - Bergerac, France": "EGC", "Ballalae Airport - Ballalae, Solomon Islands": "BAS", "Rongelap Island Airport - Rongelap Island, Marshall Islands": "RNP", "Aix Les Bains - Chambery, France": "CMF", "Xining Caojiabu Airport - Xining, China": "XNN", "Mid-Ohio Valley Regional Airport - PARKERSBURG, United States": "PKB", "Elmendorf Afb - Anchorage, United States": "EDF", "Diwopu - Urumqi, China": "URC", "San Salvador - Cockburn Town, Bahamas": "ZSA", "Vryburg - Vryburg, South Africa": "VRU", "Sittwe - Sittwe, Burma": "AKY", "Paro - Thimphu, Bhutan": "PBH", "Captain Rogelio Castillo National Airport - Celaya, Mexico": "CYW", "Abbotsford - Abbotsford, Canada": "YXX", "Noatak Airport - Noatak, United States": "WTK", "Butts Aaf - Fort Carson, United States": "FCS", "Maria Dolores - Los Angeles, Chile": "LSQ", "Inuvik Mike Zubko - Inuvik, Canada": "YEV", "Maitland Airport - Maitland, Australia": "MTL", "Shungnak Airport - Shungnak, United States": "SHG", "Boulder Municipal - Boulder, United States": "WBU", "Selfridge Angb - Mount Clemens, United States": "MTC", "Rae Lakes Airport - Gam\u00e8t\u00ec, Canada": "YRA", "Sibiu - Sibiu, Romania": "SBZ", "Clow International Airport - Bolingbrook, United States": "1CS", "El Fashir - El Fasher, Sudan": "ELF", "Zhoushuizi - Dalian, China": "DLC", "Horn Island Airport - Horn Island, Australia": "HID", "Train Station - Richmond, United States": "ZRD", "Montbeugny - Moulins, France": "XMU", "Batumi - Batumi, Georgia": "BUS", "San Luis - Ipiales, Colombia": "IPI", "Leirin - Fagernes, Norway": "VDB", "Wanaka - Wanaka, New Zealand": "WKA", "Broome - Broome, Australia": "BME", "Mayo - Mayo, Canada": "YMA", "Manu Dayak - Agadez, Niger": "AJY", "Buffalo Narrows - Buffalo Narrows, Canada": "YVT", "Majoor Henry Fernandes Airport - Nieuw Nickerie, Suriname": "ICK", "Daniel Field Airport - Augusta, United States": "DNL", "Clear - Clear Mews, United States": "Z84", "St George Airport - St George, Australia": "SGO", "Sabadell Airport - Sabadell, Spain": "QSA", "Alberto Delgado Airport - Trinidad, Cuba": "TND", "Manihi - Manihi, French Polynesia": "XMH", "Hanzhong Airport - Hanzhong, China": "HZG", "Abdul Rachman Saleh - Malang, Indonesia": "MLG", "Port Gentil - Port Gentil, Gabon": "POG", "Altay Airport - Altay, China": "AAT", "Big Bear City - Big Bear, United States": "L35", "Khrabrovo - Kaliningrad, Russia": "KGD", "Domerat - Montlucon, France": "MCU", "Polokwane International - Polokwane, South Africa": "PTG", "Pangborn Field - Wenatchee, United States": "EAT", "Sisimiut Airport - Sisimiut, Greenland": "JHS", "Mtwara - Mtwara, Tanzania": "MYW", "Hobart - Hobart, Australia": "HBA", "Phitsanulok - Phitsanulok, Thailand": "PHS", "Yangzhou Taizhou Airport - Yangzhou, China": "YTY", "Koblenz Winningen - Koblenz, Germany": "ZNV", "Negage - Negage, Angola": "GXG", "Bronnoy - Bronnoysund, Norway": "BNN", "Portland Intl - Portland, United States": "PDX", "Bricy - Orleans, France": "ORE", "Bristol Filton - Bristol, United Kingdom": "FZO", "Harford County Airport - Churchville, United States": "0W3", "Butuan - Butuan, Philippines": "BXU", "Vopnafj\u00f6r\u00f0ur Airport - Vopnafj\u00f6r\u00f0ur, Iceland": "VPN", "Maota Airport - Savaii Island, Samoa": "MXS", "Uyuni Airport - Uyuni, Bolivia": "UYU", "Hamburg Finkenwerder - Hamburg, Germany": "XFW", "Craig Fld - Selma, United States": "SEM", "Geiteryggen - Skien, Norway": "SKE", "Lankaran International Airport - Lankaran, Azerbaijan": "LLK", "Roscommon Co - Houghton Lake, United States": "HTL", "Lublin - Lublin, Poland": "LUZ", "Williamson-Sodus Airport - Williamson, United States": "SDC", "Pulkovo - St. Petersburg, Russia": "LED", "Sedona - Sedona, United States": "SDX", "Summerside - Summerside, Canada": "YSU", "Pittsburgh-Monroeville Airport - Monroeville, United States": "4G0", "Cyril E King - St. Thomas, Virgin Islands": "STT", "Latina - Latina, Italy": "QLT", "Vermilion Regional - Danville, United States": "DNV", "Nan - Nan, Thailand": "NNT", "Dubrovnik - Dubrovnik, Croatia": "DBV", "Osijek - Osijek, Croatia": "OSI", "Palermo - Palermo, Italy": "PMO", "Livermore Municipal - Livermore, United States": "LVK", "Ouani - Anjouan, Comoros": "AJN", "Beaufort - Beaufort, United States": "BFT", "Zafer - Kutahya, Turkey": "KZR", "Yamagata - Yamagata, Japan": "GAJ", "Onslow  - Onslow, Australia": "ONS", "Fornebu - Oslo, Norway": "FBU", "Thiruvananthapuram Intl - Trivandrum, India": "TRV", "Tindouf - Tindouf, Algeria": "TIN", "Aeroclub Cioca - Timisoara, Romania": "CIO", "Smith Reynolds - Winston-salem, United States": "INT", "Monterey Peninsula - Monterey, United States": "MRY", "Guanaja - Guanaja, Honduras": "GJA", "Skagway Airport - Skagway, United States": "SGY", "Augsburg Railway - Augsburg, Germany": "ZAU", "Brisbane Intl - Brisbane, Australia": "BNE", "Beauregard Rgnl - Deridder, United States": "DRI", "Gladstone Airport - Gladstone, Australia": "GLT", "Markham - Markham, Canada": "NU8", "Plage Blanche - Tan Tan, Morocco": "TTA", "Tolagnaro - Tolagnaro, Madagascar": "FTU", "Makemo - Makemo, French Polynesia": "MKP", "Campo Grande - Campo Grande, Brazil": "CGR", "Duluth Intl - Duluth, United States": "DLH", "Dickinson Theodore Roosevelt Regional Airport - Dickinson, United States": "DIK", "Dibrugarh - Mohanbari, India": "MOH", "Hurlburt Fld - Mary Esther, United States": "HRT", "Marakei Airport - Marakei, Kiribati": "MZK", "Weipa - Weipa, Australia": "WEI", "Shahre Kord Airport - Shahre Kord, Iran": "CQD", "Exeter - Exeter, United Kingdom": "EXT", "Bremerton National - Bremerton, United States": "PWT", "Churchill - Churchill, Canada": "YYQ", "Edward F Knapp State - Montpelier, United States": "MPV", "Frank Pais Intl - Holguin, Cuba": "HOG", "Dr Antonio Nicolas Briceno - Valera, Venezuela": "VLV", "Tapini Airport - Tapini, Papua New Guinea": "TPI", "Paddington Station - London, United Kingdom": "QQP", "French Valley Airport - Murrieta-Temecula, United States": "RBK", "Grider Fld - Pine Bluff, United States": "PBF", "Leite Lopes - Ribeirao Preto, Brazil": "RAO", "Mc Minnville Muni - Mackminnville, United States": "MMV", "Las Brujas - Corozal, Colombia": "CZU", "Bamaga Injinoo - Amberley, Australia": "ABM", "Kongiganak Airport - Kongiganak, United States": "KKH", "Sao Gabriel da Cachoeira Airport - Sao Gabriel da Cachoeira, Brazil": "SJL", "Pyrzowice - Katowice, Poland": "KTW", "Usak Airport - Usak, Turkey": "USQ", "Rafael Nunez - Cartagena, Colombia": "CTG", "Abemama Atoll Airport - Abemama, Kiribati": "AEA", "Bakalalan Airport - Bakalalan, Malaysia": "BKM", "Garons - Nimes, France": "FNI", "James M Cox Dayton Intl - Dayton, United States": "DAY", "Barter Island Lrrs - Barter Island, United States": "BTI", "Clearwater Air Park - Clearwater, United States": "CLW", "Mitilini - Mytilini, Greece": "MJT", "Erzincan - Erzincan, Turkey": "ERC", "Gavle - Gavle, Sweden": "GVX", "Kramfors Solleftea - Kramfors, Sweden": "KRF", "Executive - Avon Park, United States": "AVO", "Sheridan County Airport - Sheridan, United States": "SHR", "Le Touquet Paris Plage - Le Tourquet, France": "LTQ", "Baraboo Wisconsin Dells Airport - Baraboo, United States": "DLL", "Kandrian Airport - Kandrian, Papua New Guinea": "KDR", "Renton - Renton, United States": "RNT", "Idaho Falls Rgnl - Idaho Falls, United States": "IDA", "Leeds Bradford - Leeds, United Kingdom": "LBA", "Saul Airport - Saul, French Guiana": "XAU", "Bobo Dioulasso - Bobo-dioulasso, Burkina Faso": "BOY", "Novy - Khabarovsk, Russia": "KHV", "Hiroshima - Hiroshima, Japan": "HIJ", "Masvingo Intl - Masvingo, Zimbabwe": "MVZ", "Wagga Wagga - Wagga Wagga, Australia": "WGA", "Iloilo - Iloilo, Philippines": "ILO", "Louisville International Airport - Louisville, United States": "SDF", "Nissan Island Airport - Nissan Island, Papua New Guinea": "IIS", "Groennedal Heliport - Groennedal, Greenland": "JGR", "Oriximina Airport - Oriximina, Brazil": "ORX", "Maquehue - Temuco, Chile": "ZCO", "Yonaguni - Yonaguni Jima, Japan": "OGN", "Kotlas Airport - Kotlas, Russia": "KSZ", "Rock Springs Sweetwater County Airport - Rock Springs, United States": "RKS", "DeFuniak Springs Airport - DeFuniak Springs, United States": "54J", "Juliaca - Juliaca, Peru": "JUL", "Williams County Airport - Bryan, United States": "0G6", "Havre Saint-Pierre Airport - Havre-Saint-Pierre, Canada": "YGV", "Morondava - Morondava, Madagascar": "MOQ", "Sheboygan County Memorial Airport - Sheboygan, United States": "SBM", "Taiping - Harbin, China": "HRB", "Caye Caulker Airport - Caye Caulker, Belize": "CUK", "Chah Bahar - Chah Bahar, Iran": "ZBR", "Akiak Airport - Akiak, United States": "AKI", "Ormara Airport - Ormara Raik, Pakistan": "ORW", "Tirupati - Tirupeti, India": "TIR", "All Airports - Tokyo, Japan": "TYO", "Rio Turbio - Rio Turbio, Argentina": "RYO", "Iconi Airport - Moroni, Comoros": "YVA", "Soroti - Soroti, Uganda": "SRT", "Narathiwat - Narathiwat, Thailand": "NAW", "Mountain Airport - Mountain, Nepal": "MWP", "Erbil Intl - Erbil, Iraq": "EBL", "Cape Newenham Lrrs - Cape Newenham, United States": "EHM", "Stamford Amtrak Station - Stamford, United States": "ZTF", "Alexandros Papadiamantis - Skiathos, Greece": "JSI", "Brussels Gare du Midi - Brussels, Belgium": "ZYR", "Yasuj Airport - Yasuj, Iran": "YES", "Sultan Thaha - Jambi, Indonesia": "DJB", "Muskrat Dam Airport - Muskrat Dam, Canada": "MSA", "Hato - Willemstad, Netherlands Antilles": "CUR", "Dillon's Bay Airport - Dillon's Bay, Vanuatu": "DLY", "Karratha - Karratha, Australia": "KTA", "Centraal - Rotterdam, Netherlands": "QRH", "Nezhitino - Nezhitino, Russia": "NEZ", "Lone Star Executive - Conroe, United States": "CXO", "Chiang Rai Intl - Chiang Rai, Thailand": "CEI", "Lawrence Municipal - Lawrence, United States": "LWC", "Garden City Rgnl - Garden City, United States": "GCK", "Dumaguete - Dumaguete, Philippines": "DGT", "Pashkovskiy - Krasnodar, Russia": "KRR", "Juan H. White - Caucasia, Colombia": "CAQ", "Strachowice - Wroclaw, Poland": "WRO", "Glentanner - Glentanner, New Zealand": "MON", "Puerto Escondido Intl - Puerto Escondido, Mexico": "PXM", "General Mariano Matamoros - Cuernavaca, Mexico": "CVJ", "Stauning - Stauning, Denmark": "STA", "Simao Airport - Simao, China": "SYM", "Ercan International Airport - Nicosia, Cyprus": "ECN", "Tainan - Tainan, Taiwan": "TNN", "Christchurch Intl - Christchurch, New Zealand": "CHC", "Cross Lake - Charlie Sinclair Memorial Airport - Cross Lake, Canada": "YCR", "Tsletsi Airport - Djelfa, Algeria": "QDJ", "Ben Gurion - Tel-aviv, Israel": "TLV", "Stagen Airport - Laut Island, Indonesia": "KBU", "Wollaston Lake Airport - Wollaston Lake, Canada": "ZWL", "Carolina - Carolina, Brazil": "CLN", "Nema - Nema, Mauritania": "EMN", "Nantes Atlantique - Nantes, France": "NTE", "Lakeland Linder Regional Airport - Lakeland, United States": "LAL", "Ann Arbor Municipal Airport - Ann Arbor, United States": "ARB", "Palmyra - Palmyra, Syria": "PMS", "Ouarzazate - Ouarzazate, Morocco": "OZZ", "Fitiuta Airport - Fiti\\\\'uta, American Samoa": "FTI", "NAS Alameda - Alameda, United States": "NGZ", "Bafoussam - Bafoussam, Cameroon": "BFX", "Devils Lake Regional Airport - Devils Lake, United States": "DVL", "EL Real Airport - El Real, Panama": "ELE", "Coronel Fap Alfredo Mendivil Duarte - Ayacucho, Peru": "AYP", "Cape Palmas Airport - Greenville, Liberia": "CPA", "Zadar - Zadar, Croatia": "ZAD", "Municipal Airport - Aiken, United States": "AIK", "Bardufoss - Bardufoss, Norway": "BDU", "San Julian - San Julian, Argentina": "ULA", "Jamestown Regional Airport - Jamestown, United States": "JMS", "Sentral - Kuala Lumpur, Malaysia": "XKL", "Aeroparque Jorge Newbery - Buenos Aires, Argentina": "AEP", "Cerro Moreno Intl - Antofagasta, Chile": "ANF", "Pondok Cabe - Jakarta, Indonesia": "PCB", "Harry Clever Field Airport - New Philadelpha, United States": "PHD", "Westover Arb Metropolitan - Chicopee Falls, United States": "CEF", "Nonouti Airport - Nonouti, Kiribati": "NON", "Gwangju - Kwangju, South Korea": "KWJ", "Wejh - Wejh, Saudi Arabia": "EJH", "Birdsville Airport - Birdsville, Australia": "BVI", "Ozona Muni - Ozona, United States": "OZA", "Base Aerea De Santos - Santos, Brazil": "SSZ", "Noibai Intl - Hanoi, Vietnam": "HAN", "Le Castellet - Le Castellet, France": "CTT", "Redstone Aaf - Redstone, United States": "HUA", "Augusto Severo - Natal, Brazil": "NAT", "Aerotortuguero Airport - Roxana, Costa Rica": "TTQ", "Halifax Intl - Halifax, Canada": "YHZ", "First Flight Airport - Kill Devil Hills, United States": "FFA", "Monrovia Roberts Intl - Monrovia, Liberia": "ROB", "Kapuskasing - Kapuskasing, Canada": "YYU", "Saratoga County Airport - Ballston Spa, United States": "5B2", "Cote D\\\\'Azur - Nice, France": "NCE", "Wuxi Airport - Wuxi, China": "WUX", "Abu Simbel - Abu Simbel, Egypt": "ABS", "Indian Mountain Lrrs - Indian Mountains, United States": "UTO", "Dease Lake - Dease Lake, Canada": "YDL", "Shubuling Airport - Linyi, China": "LYI", "Birch Creek Airport - Brich Creek, United States": "KBC", "Odate Noshiro Airport - Odate Noshiro, Japan": "ONJ", "Union Station - Utica, United States": "UCA", "Memorial Field - Hot Springs, United States": "HOT", "Charlotte County-Punta Gorda Airport - Punta Gorda, United States": "PGD", "Kagoshima - Kagoshima, Japan": "KOJ", "Abeche - Abeche, Chad": "AEH", "Brandon Muni - Brandon, Canada": "YBR", "Stevens Point Municipal Airport - Stevens Point, United States": "STE", "Helsinki Vantaa - Helsinki, Finland": "HEL", "Plaine Corail - Rodriguez Island, Mauritius": "RRG", "Mirecourt - Epinal, France": "EPL", "Ukhta - Ukhta, Russia": "UCT", "Clayton County Tara Field - Hampton, United States": "4A7", "Teniente Jaime A De Montreuil Morales - Chimbote, Peru": "CHM", "Billings Logan International Airport - Billings, United States": "BIL", "Port Williams Seaplane Base - Port Williams, United States": "KPR", "Tahoua - Tahoua, Niger": "THZ", "Evanston-Uinta CO Burns Fld - Evanston, United States": "EVW", "Spencer Muni - Spencer, United States": "SPW", "Sveg - Sveg, Sweden": "EVG", "Akutan Seaplane Base - Akutan, United States": "KQA", "Windsor - Windsor, Canada": "YQG", "NYERI - NYERI, Kenya": "NYE", "Indigo Bay Lodge Airport - Indigo Bay Lodge, Mozambique": "IBL", "Tanna island - Tanna, Vanuatu": "TAH", "Jing Gang Shan Airport - Ji An, China": "JGS", "Anda Airport - Sandane, Norway": "SDN", "Tyonek Airport - Tyonek, United States": "TYE", "Jamnagar - Jamnagar, India": "JGA", "Humberside - Humberside, United Kingdom": "HUY", "Macapa - Macapa, Brazil": "MCP", "Roberts Fld - Redmond-Bend, United States": "RDM", "Holesovice - Praha, Czech Republic": "XYJ", "Portland Intl Jetport - Portland, United States": "PWM", "Lubumbashi Intl - Lubumashi, Congo (Kinshasa)": "FBM", "Crotone - Crotone, Italy": "CRV", "Shillong Airport - Shillong, India": "SHL", "Regional De Maringa Silvio Name Junior - Maringa, Brazil": "MGF", "Halls Creek Airport - Halls Creek, Australia": "HCQ", "South Cariboo Regional Airport - 108 Mile Ranch, Canada": "ZML", "Francisco De Assis - Juiz De Fora, Brazil": "JDF", "Montgomery Regional Airport  - MONTGOMERY, United States": "MGM", "Louis Armstrong New Orleans Intl - New Orleans, United States": "MSY", "Porto - Porto, Portugal": "OPO", "Cuamba - Cuamba, Mozambique": "FXO", "Scappoose Industrial Airpark - San Luis, United States": "SPB", "Jinghong - Jinghong, China": "JHG", "Chiang Mai Intl - Chiang Mai, Thailand": "CNX", "Hyakuri - Ibaraki, Japan": "IBR", "Boscobel - Ocho Rios, Jamaica": "OCJ", "F D Roosevelt - Oranjestad, Netherlands Antilles": "EUX", "Grand Junction Regional - Grand Junction, United States": "GJT", "Nabire - Nabire, Indonesia": "NBX", "Angel Albino Corzo - Tuxtla Gutierrez, Mexico": "TGZ", "Kidlington - Oxford, United Kingdom": "OXF", "Arkalyk Airport - Arkalyk, Kazakhstan": "AYK", "Yiwu Airport - Yiwu, China": "YIW", "Londolovit Airport - Londolovit, Papua New Guinea": "LNV", "Los Garzones - Monteria, Colombia": "MTR", "Gweru Thornhill - Gwert, Zimbabwe": "GWE", "Buckeye Municipal Airport - Buckeye, United States": "BXK", "Glendale Municipal Airport - Glendale, United States": "GEU", "Worland Municipal Airport - Worland, United States": "WRL", "Frankfurt Hahn - Hahn, Germany": "HHN", "Rawalakot - Rawala Kot, Pakistan": "RAZ", "Jiwani Airport - Jiwani, Pakistan": "JIW", "Fort Bridger - Fort Bridger, United States": "FBR", "Teniente Alejandro Velasco Astete Intl - Cuzco, Peru": "CUZ", "Caldwell Essex County Airport - Caldwell, United States": "CDW", "Burwash - Burwash, Canada": "YDB", "Cozumel Intl - Cozumel, Mexico": "CZM", "Maues Airport - Maues, Brazil": "MBZ", "E T Joshua - Kingstown, Saint Vincent and the Grenadines": "SVD", "Cessnock Airport - Cessnock, Australia": "CES", "International Airport - Ocala, United States": "OCF", "Rennell/Tingoa Airport - Rennell Island, Solomon Islands": "RNL", "Ohio State University Airport - Columbus, United States": "OSU", "Sharm El Sheikh Intl - Sharm El Sheikh, Egypt": "SSH", "Kruger Mpumalanga International Airport - Mpumalanga, South Africa": "MQP", "St Pierre Pierrefonds - St.-pierre, Reunion": "ZSE", "Arnage - Le Mans, France": "LME", "Pattani - Pattani, Thailand": "PAN", "Kaufbeuren BF - Kaufbeuren, Germany": "KFX", "Grant County Airport - Silver City, United States": "SVC", "Banmaw Airport - Banmaw, Burma": "BMO", "Cooktown Airport - Cooktown, Australia": "CTN", "Stormville Airport - Stormville, United States": "N69", "Bochum HBF - Bochum, Germany": "BOX", "Cagayan De Oro - Ladag, Philippines": "CGY", "Antoine De St Exupery Airport - San Antonio Oeste, Argentina": "OES", "Leon Airport - Leon, Spain": "LEN", "Lakeba Island Airport - Lakeba Island, Fiji": "LKB", "Clinton Municipal - Clinton, United States": "CWI", "Leuterschach BF - Leuterschach, Germany": "LES", "Braceville Airport - Braceville, United States": "41N", "Dehradun - Dehra Dun, India": "DED", "Fort Wayne - Fort Wayne, United States": "FWA", "Chacalluta - Arica, Chile": "ARI", "Orchid Beach - Fraser Island, Australia": "OKB", "Trat - Trat, Thailand": "TDX", "Kigoma Airport - Kigoma, Tanzania": "TKQ", "Luogang - Hefei, China": "HFE", "Kuressaare - Kuressaare, Estonia": "URE", "Mazar I Sharif - Mazar-i-sharif, Afghanistan": "MZR", "Snohomish Co - Everett, United States": "PAE", "Dundo Airport - Dundo, Angola": "DUE", "Ahe Airport - Ahe, French Polynesia": "AHE", "Avalon - Catalina Island, United States": "AVX", "Capitan Montes - Talara, Peru": "TYL", "Atka Airport - Atka, United States": "AKB", "W H Barron Field - Dublin, United States": "DBN", "Myeik - Myeik, Burma": "MGZ", "Tehuacan - Tehuacan, Mexico": "TCN", "Toamasina - Toamasina, Madagascar": "TMM", "Great Falls Intl - Great Falls, United States": "GTF", "Manokotak Airport - Manokotak, United States": "KMO", "Mahlon Sweet Fld - Eugene, United States": "EUG", "Cabo Frio International Airport - Cabo Frio, Brazil": "CFB", "Delta Municipal Airport - Delta, United States": "DTA", "Long Lellang Airport - Long Datih, Malaysia": "LGL", "Arthur Dunn Airpark - Titusville, United States": "X21", "Mc Connell Afb - Wichita, United States": "IAB", "Siglufjordur - Siglufjordur, Iceland": "SIJ", "Kontum Airport - Kontum, Vietnam": "KON", "Unst Airport - Unst, United Kingdom": "UNT", "Majors - Greenvile, United States": "GVT", "Cork - Cork, Ireland": "ORK", "Muir Aaf - Muir, United States": "MUI", "Central Illinois Rgnl - Bloomington, United States": "BMI", "Howard - Howard, Panama": "HOW", "Tsiroanomandidy Airport - Tsiroanomandidy, Madagascar": "WTS", "Entrammes - Laval, France": "LVA", "Skovde - Skovde, Sweden": "KVB", "Outer Skerries Airport - Outer Skerries, United Kingdom": "OUK", "Liuting - Qingdao, China": "TAO", "Ubon Ratchathani - Ubon Ratchathani, Thailand": "UBP", "Alghero - Alghero, Italy": "AHO", "Hualien - Hualien, Taiwan": "HUN", "Quaqtaq Airport - Quaqtaq, Canada": "YQC", "Telefomin Airport - Telefomin, Papua New Guinea": "TFM", "St Denis Gillot - St.-denis, Reunion": "RUN", "Tezpur Airport - Tezpur, India": "TEZ", "Gisenyi - Gisenyi, Rwanda": "GYI", "Sepinggan - Balikpapan, Indonesia": "BPN", "Kassel Calden - Kassel, Germany": "KSF", "Grand Strand Airport - North Myrtle Beach, United States": "CRE", "Elkhart Municipal - Elkhart, United States": "EKI", "York Landing Airport - York Landing, Canada": "ZAC", "Birsa Munda - Ranchi, India": "IXR", "Sanday Airport - Sanday, United Kingdom": "NDY", "Aden Adde International Airport - Mogadishu, Somalia": "MGQ", "Lee C Fine Memorial Airport - Kaiser Lake Ozark, United States": "AIZ", "Mount Keith - Mount Keith, Australia": "WME", "Vanua Balavu Airport - Vanua Balavu, Fiji": "VBV", "Chile Chico - Chile Chico, Chile": "CCH", "Kashi - Kashi, China": "KHG", "Prince Abdul Majeed Airport - Al-Ula, Saudi Arabia": "ULH", "Branches - Auxerre, France": "AUF", "Boone Co - Harrison, United States": "HRO", "Palo Alto Airport of Santa Clara County - Palo Alto, United States": "PAO", "Samedan - Samedan, Switzerland": "SMV", "Salzburg - Salzburg, Austria": "SZG", "Bojnourd Airport - Bojnourd, Iran": "BJB", "Tasiujaq Airport - Tasiujaq, Canada": "YTQ", "Lipetsk Airport - Lipetsk, Russia": "LPK", "Hemavan Airport - Hemavan, Sweden": "HMV", "Aioun El Atrouss - Aioun El Atrouss, Mauritania": "IEO", "Harris County Airport - Pine Mountain, United States": "PIM", "Abu Dhabi Intl - Abu Dhabi, United Arab Emirates": "AUH", "Kaimana - Kaimana, Indonesia": "KNG", "Kankesanturai - Jaffna, Sri Lanka": "JAF", "Karlovy Vary - Karlovy Vary, Czech Republic": "KLV", "St. Peter-Ording Airport - Sankt Peter-Ording, Germany": "PSH", "Larsen Bay Airport - Larsen Bay, United States": "KLN", "Naval Air Station - Glenview, United States": "NBU", "Klawock Airport - Klawock, United States": "KLW", "Vilhena - Vilhena, Brazil": "BVH", "Cannon Afb - Clovis, United States": "CVS", "Senadora Eunice Micheles Airport - Sao Paulo de Olivenca, Brazil": "OLC", "Spring Point - Spring Point, Bahamas": "AXP", "Tripoli Intl - Tripoli, Libya": "TIP", "Punta Cana Intl - Punta Cana, Dominican Republic": "PUJ", "Rukumkot - Rukumkot, Nepal": "RUK", "Barnstable Muni Boardman Polando Fld - Barnstable, United States": "HYA", "Euston Station - London, United Kingdom": "QQU", "Colonia Sarmiento - Colonia Sarmiento, Argentina": "OLN", "Evenes - Harstad/Narvik, Norway": "EVE", "Black Tickle Airport - Black Tickle, Canada": "YBI", "Buochs Airport - Buochs, Switzerland": "BXO", "Changzhou - Changzhou, China": "CZX", "Lisboa - Lisbon, Portugal": "LIS", "North Whale Seaplane Base - North Whale Pass, United States": "WWP", "Lansing Municipal - Lansing, United States": "IGQ", "Bhuj - Bhuj, India": "BHJ", "Theodore - Theodore, Australia": "TDR", "Bhopal - Bhopal, India": "BHO", "Tafaraoui - Oran, Algeria": "TAF", "Utti - Utti, Finland": "QVY", "Beale Afb - Marysville, United States": "BAB", "Bonanza Airport - Bonanza, Nicaragua": "BZA", "Frazier Lake Airpark - Hollister, United States": "1C9", "Kalbarri Airport - Kalbarri, Australia": "KAX", "Phetchabun - Phetchabun, Thailand": "PHY", "Jiujiang Lushan Airport - Jiujiang, China": "JIU", "Teniente Vidal - Coyhaique, Chile": "GXQ", "Norman Y Mineta San Jose Intl - San Jose, United States": "SJC", "Hermanos Serdan Intl - Puebla, Mexico": "PBC", "Barcaldine Airport - Barcaldine, Australia": "BCI", "Barking Sands Pmrf - Barking Sands, United States": "BKH", "Changi Intl - Singapore, Singapore": "SIN", "Dare County Regional - Manteo, United States": "MQI", "Providenciales - Providenciales, Turks and Caicos Islands": "PLS", "Wichita Mid Continent - Wichita, United States": "ICT", "Manley Hot Springs Airport - Manley Hot Springs, United States": "MLY", "Brochet Airport - Brochet, Canada": "YBT", "Escuela Mariscal Sucre Airport - Maracay, Venezuela": "MYC", "Santa Cruz - Santa Cruz, Argentina": "RZA", "Angelina Co - Lufkin, United States": "LFK", "Pullman-Moscow Rgnl - Pullman, United States": "PUW", "Avalon - Avalon, Australia": "AVV", "Grand Central - Johannesburg, South Africa": "GCJ", "Skagen - Stokmarknes, Norway": "SKN", "Alert - Alert, Canada": "YLT", "Marcos A Gelabert Intl - Panama, Panama": "PAC", "Okecie - Warsaw, Poland": "WAW", "Halim Perdanakusuma International Airport - Jakarta, Indonesia": "HLP", "Vitebsk - Vitebsk, Belarus": "VTB", "El Bagre Airport - El Bagre, Colombia": "EBG", "Tinak Airport - Tinak, Marshall Islands": "TIC", "Nashville Intl - Nashville, United States": "BNA", "Zyryanka West Airport - Zyryanka, Russia": "ZKP", "Makokou - Makokou, Gabon": "MKU", "Sultan Babullah - Ternate, Indonesia": "TTE", "Atiu Island Airport - Atiu Island, Cook Islands": "AIU", "Sloulin Fld Intl - Williston, United States": "ISN", "Linate - Milan, Italy": "LIN", "Mount Hagen - Mount Hagen, Papua New Guinea": "HGU", "Hovden - Orsta-Volda, Norway": "HOV", "Moore County Airport - Pinehurst-Southern Pines, United States": "SOP", "Sendai - Sendai, Japan": "SDJ", "Guillermo Leon Valencia - Popayan, Colombia": "PPN", "Hector Silva Airstrip - Belmopan, Belize": "BCV", "Ataturk - Istanbul, Turkey": "IST", "Tambor Airport - Nicoya, Costa Rica": "TMU", "Yellowstone Rgnl - Cody, United States": "COD", "Hasvik - Hasvik, Norway": "HAA", "Miyako - Miyako, Japan": "MMY", "Port Moller Airport - Cold Bay, United States": "PML", "Central Airport - Central, United States": "CEM", "Guanare - Guanare, Venezuela": "GUQ", "Hardwick Field Airport - Cleveland, United States": "HDI", "Amboseli Airport - Amboseli National Park, Kenya": "ASV", "Mata'aho Airport - Angaha,  Niuafo'ou Island": "Tonga", "Filippos - Kozani, Greece": "KZI", "Merzifon - Merzifon, Turkey": "MZH", "Bamberg BF - Bamberg, Germany": "BAM", "Andrews Afb - Camp Springs, United States": "ADW", "Rivera International Airport - Rivera, Uruguay": "RVY", "Battambang Airport - Battambang, Cambodia": "BBM", "Ernest A Love Fld - Prescott, United States": "PRC", "Rosario - Rosario, Argentina": "ROS", "Benbecula - Benbecula, United Kingdom": "BEB", "Ocean Ridge Airport - Gualala, United States": "E55", "Eelde - Groningen, Netherlands": "GRQ", "Kogalym International - Kogalym, Russia": "KGP", "Wemindji Airport - Wemindji, Canada": "YNC", "Newman Airport - Newman, Australia": "ZNE", "De Kalb Taylor Municipal Airport - De Kalb, United States": "DKB", "Fakarava - Fakarava, French Polynesia": "FAV", "Kandla - Kandla, India": "IXY", "Nanyuki Civil Airport - Nanyuki, Kenya": "NYK", "Dundee - Dundee, United Kingdom": "DND", "Linz - Linz, Austria": "LNZ", "DuBois Regional Airport - Du Bois, United States": "DUJ", "Yoron - Yoron, Japan": "RNJ", "Longvic - Dijon, France": "DIJ", "Vinh Airport - Vinh, Vietnam": "VII", "Will Rogers World - Oklahoma City, United States": "OKC", "Tekirda\u011f \u00c7orlu Airport - \u00c7orlu, Turkey": "TEQ", "Hongqiao Intl - Shanghai, China": "SHA", "Forquilhinha - Criciuma, Brazil": "CCM", "Dodge City Regional Airport - Dodge City, United States": "DDC", "Limbang - Limbang, Malaysia": "LMN", "South Bimini - Alice Town, Bahamas": "BIM", "Mandritsara Airport - Mandritsara, Madagascar": "WMA", "Kugluktuk - Coppermine, Canada": "YCO", "San Antonio Intl - San Antonio, United States": "SAT", "Cat Bi International Airport - Haiphong, Vietnam": "HPH", "Twin Hills Airport - Twin Hills, United States": "TWA", "Allegheny County Airport - Pittsburgh, United States": "AGC", "Port Sudan New International Airport - Port Sudan, Sudan": "PZU", "Olive Branch Muni - Olive Branch, United States": "OLV", "Augusta State - Augusta, United States": "AUG", "Adana-Incirlik Airbase - Adana, Turkey": "UAB", "Almirante Padilla - Rio Hacha, Colombia": "RCH", "Goulburn Airport - Goulburn, Australia": "GUL", "Metz Nancy Lorraine - Metz, France": "ETZ", "Londolozi - Londolozi, South Africa": "LDZ", "Moulay Ali Cherif - Er-rachidia, Morocco": "ERH", "Khovd Airport - Khovd, Mongolia": "HVD", "Bembridge - Bembridge, United Kingdom": "BBP", "Bermuda Intl - Bermuda, Bermuda": "BDA", "La Macarena - La Macarena, Colombia": "LMC", "Key West Nas - Key West, United States": "NQX", "Kasane - Kasane, Botswana": "BBK", "Walvis Bay Airport - Walvis Bay, Namibia": "WVB", "Points North Landing Airport - Points North Landing, Canada": "YNL", "East Troy Municipal Airport - East Troy, United States": "57C", "Tongoa Island Airport - Tongoa Island, Vanuatu": "TGH", "Saravane Airport - Saravane, Laos": "VNA", "Woerthersee International Airport - Klagenfurt, Austria": "KLU", "Zaporizhzhia International Airport - Zaporozhye, Ukraine": "OZH", "Svolv\u00e6r Helle Airport - Svolv\u00e6r, Norway": "SVJ", "Guettin MecklenburgVorpommern Germany - Ruegen, Germany": "GTI", "Merrill Fld - Anchorage, United States": "MRI", "Coonabarabran - Coonabarabran, Australia": "COJ", "Fallon Nas - Fallon, United States": "NFL", "Friday Harbor Airport - Friday Harbor, United States": "FRD", "West Georgia Regional Airport - O V Gray Field - Carrollton, United States": "CTJ", "Meribel Airport - Ajaccio, France": "MFX", "Bale Mulhouse - Mulhouse, France": "MLH", "Toledo Airport - Toledo, Brazil": "TOW", "Fatmawati Soekarno - Bengkulu, Indonesia": "BKS", "NW Arkansas Regional - Bentonville, United States": "XNA", "Meythet - Annecy, France": "NCY", "Kapanda Airport - Kapanda, Angola": "KNP", "Ormond Beach municipal Airport - Ormond Beach, United States": "OMN", "Lutsk - Lutsk, Ukraine": "UKC", "Gran Roque Airport - Los Roques, Venezuela": "LRV", "Chalkyitsik Airport - Chalkyitsik, United States": "CIK", "Miramar Mcas - Miramar, United States": "NKX", "Warsaw Modlin - Warsaw, Poland": "WMI", "Kericho - Kericho, Kenya": "KEY", "Maturin - Maturin, Venezuela": "MUN", "Berens River - Berens River, Canada": "YBV", "Kars Airport - Kars, Turkey": "KSY", "Kish Island - Kish Island, Iran": "KIH", "Gelendzik - Gelendzik, Russia": "GDZ", "Childress Muni - Childress, United States": "CDS", "Allgau - Memmingen, Germany": "FMM", "Moruya Airport - Moruya, Australia": "MYA", "Molokai - Molokai, United States": "MKK", "Nanded Airport - Nanded, India": "NDC", "Dowagiac Municipal Airport - Dowagiac, United States": "C91", "Ibiza - Ibiza, Spain": "IBZ", "Chisholm Hibbing - Hibbing, United States": "HIB", "Coto 47 - Coto 47, Costa Rica": "OTR", "Durham Tees Valley Airport - Teesside, United Kingdom": "MME", "Bird Island Airport - Bird Island, Seychelles": "BDI", "City Centre - Toronto, Canada": "YTZ", "Tarapoa - Tarapoa, Ecuador": "TPC", "Page Municipal Airport - Page, United States": "PGA", "Culiacan Intl - Culiacan, Mexico": "CUL", "Hood Aaf - Fort Hood, United States": "HLR", "Island Lake Airport - Island Lake, Canada": "YIV", "Gods River Airport - Gods River, Canada": "ZGI", "Fria - Fira, Guinea": "FIG", "Lencero Airport - Jalapa, Mexico": "JAL", "Phan Rang Airport - Phan Rang, Vietnam": "PHA", "Chicago Ohare Intl - Chicago, United States": "ORD", "Scott Afb Midamerica - Belleville, United States": "BLV", "Southeast Iowa Regional Airport - Burlington, United States": "BRL", "Shuangliu - Chengdu, China": "CTU", "Antonio Narino - Pasto, Colombia": "PSO", "Elmira Corning Rgnl - Elmira, United States": "ELM", "Jack Northrop Fld Hawthorne Muni - Hawthorne, United States": "HHR", "Madang - Madang, Papua New Guinea": "MAG", "Pensacola Nas - Pensacola, United States": "NPA", "Sui - Sui, Pakistan": "SUL", "Train Station - Edmonton, Canada": "XZL", "Dillingham - Dillingham, United States": "HDH", "Pescara - Pescara, Italy": "PSR", "Red Lake Airport - Red Lake, Canada": "YRL", "San Francisco Intl - San Francisco, United States": "SFO", "Ogoki Post Airport - Ogoki Post, Canada": "YOG", "Newton City-County Airport - Newton, United States": "EWK", "Cheikh Larbi Tebessi - Tebessa, Algeria": "TEE", "Buon Ma Thuot Airport - Buonmethuot, Vietnam": "BMV", "Tana Toraja Airport - Toraja, Indonesia": "TTR", "Bintulu - Bintulu, Malaysia": "BTU", "Heringsdorf Airport - Heringsdorf, Germany": "HDF", "Auki Airport - Auki, Solomon Islands": "AKS", "Iringa - Iringa, Tanzania": "IRI", "Gare de Strasbourg - Strasbourg, France": "XWG", "Corn Island Airport - Corn Island, Nicaragua": "RNI", "Chesterfield Inlet Airport - Chesterfield Inlet, Canada": "YCS", "Riviere Rouge - Mont-Tremblant International Inc. Airport - Mont-Tremblant, Canada": "YTM", "Galion Municipal Airport - Galion, United States": "GQQ", "Queen Alia Intl - Amman, Jordan": "AMM", "Nea Anchialos - Nea Anghialos, Greece": "VOL", "Safford Regional Airport - Safford, United States": "SAD", "Valle Del Fuerte Intl - Los Mochis, Mexico": "LMM", "Los Cabos Intl - San Jose Del Cabo, Mexico": "SJD", "Naha - Naha, Indonesia": "NAH", "Noyabrsk - Noyabrsk, Russia": "NOJ", "Geilenkirchen - Geilenkirchen, Germany": "GKE", "Ivalo - Ivalo, Finland": "IVL", "Salisbury Ocean City Wicomico Rgnl - Salisbury, United States": "SBY", "Lauro Carneiro De Loyola - Joinville, Brazil": "JOI", "Grabtsevo - Kaluga, Russia": "KLF", "Jose Marti Intl - Havana, Cuba": "HAV", "Lawica - Poznan, Poland": "POZ", "Door County Cherryland Airport - Sturgeon Bay, United States": "SUE", "Toksook Bay Airport - Toksook Bay, United States": "OOK", "Muhammad Salahuddin - Bima, Indonesia": "BMU", "Plum Island Airport - Newburyport, United States": "2B2", "Jolo Airport - Jolo, Philippines": "JOL", "Alamogordo White Sands Regional Airport - Alamogordo, United States": "ALM", "Senou - Bamako, Mali": "BKO", "Toowoomba - Toowoomba, Australia": "TWB", "Wawa - Wawa, Canada": "YXZ", "Ambalabe - Antsohihy, Madagascar": "WAI", "Hua Hin - Prachuap Khiri Khan, Thailand": "HHQ", "Central Station - Uppsala, Sweden": "QYX", "Gusau - Gusau, Nigeria": "QUS", "Meixian Airport - Meixian, China": "MXZ", "Norman Wells - Norman Wells, Canada": "YVQ", "Salgado Filho - Porto Alegre, Brazil": "POA", "Takoradi - Takoradi, Ghana": "TKD", "Berlin Brandenburg Willy Brandt - Berlin, Germany": "BER", "Solovki Airport - Solovetsky Islands, Russia": "CSH", "Vancouver Coal Harbour - Vancouver, Canada": "CXH", "Le Lamentin - Fort-de-france, Martinique": "FDF", "Hartness State - Springfield VT, United States": "VSF", "Ponca City Rgnl - Ponca City, United States": "PNC", "Taree Airport - Taree, Australia": "TRO", "Turku - Turku, Finland": "TKU", "Dalat - Dalat, Vietnam": "DLI", "Meadows Fld - Bakersfield, United States": "BFL", "Aleppo Intl - Aleppo, Syria": "ALP", "Andenes - Andoya, Norway": "ANX", "Diqing Airport - Shangri-La, China": "DIG", "Kanpur - Kanpur, India": "KNU", "Makale - Makale, Ethiopia": "MQX", "Rawlins Municipal Airport-Harvey Field - Rawlins, United States": "RWL", "Ardmore Muni - Ardmore, United States": "ADM", "Yancheng Airport - Yancheng, China": "YNZ", "Coronel E Carvajal - Macas, Ecuador": "XMS", "Chuathbaluk Airport - Chuathbaluk, United States": "CHU", "Santarem - Santarem, Brazil": "STM", "Fiumicino - Rome, Italy": "FCO", "Wales Airport - Wales, United States": "WAA", "Koyuk Alfred Adams Airport - Koyuk, United States": "KKA", "Hickory Rgnl - Hickory, United States": "HKY", "Exmouth Airport - Exmouth, Australia": "EXM", "Sukhumi Dranda - Sukhumi, Georgia": "SUI", "Kullu Manali - Kulu, India": "KUU", "Bom Jesus Da Lapa - Bom Jesus Da Lapa, Brazil": "LAZ", "Joplin Rgnl - Joplin, United States": "JLN", "Mountain Village Airport - Mountain Village, United States": "MOU", "Dover Afb - Dover, United States": "DOV", "Salalah - Salalah, Oman": "SLL", "Piestany - Piestany, Slovakia": "PZY", "Huesca-Pirineos Airport - Huesca, Spain": "HSK", "Oshawa Airport - Oshawa, Canada": "YOO", "Edson - Edson, Canada": "YET", "Koln HBF - Koln, Germany": "KOX", "Kaduna - Kaduna, Nigeria": "KAD", "Mendeleevo - Yuzhno-Kurilsk, Russia": "DEE", "Villa Garzon Airport - Villa Garzon, Colombia": "VGZ", "Luqa - Malta, Malta": "MLA", "Carpiquet - Caen, France": "CFR", "San Fernando Airport - San Fernando, Philippines": "SFE", "Levelock Airport - Levelock, United States": "KLL", "La Tontouta - Noumea, New Caledonia": "NOU", "Oxnard - Ventura County - Oxnard, United States": "OXR", "Reyes Airport - Reyes, Bolivia": "REY", "Quzhou Airport - Quzhou, China": "JUZ", "Tsushima - Tsushima, Japan": "TSJ", "Jixi Airport - Jixi, China": "JXA", "ZAPALA - ZAPALA, Argentina": "APZ", "Mota Lava Airport - Ablow, Vanuatu": "MTV", "Mobile Downtown - Mobile, United States": "BFM", "Yarmouth Airport - Yarmouth, Canada": "YQI", "Essen HBF - Essen, Germany": "ESX", "Breves Airport - Breves, Brazil": "BVS", "Daqing Saertu Airport - Daqing, China": "DAQ", "Lampedusa - Lampedusa, Italy": "LMP", "Jomo Kenyatta International - Nairobi, Kenya": "NBO", "Portland Airport - Portland, Australia": "PTJ", "Put-in-Bay Airport - Put-in-Bay, United States": "3W2", "Playa del Carmen Airport - Playa del Carmen, Mexico": "PCM", "Takaroa - Takaroa, French Polynesia": "TKX", "Mudanjiang - Mudanjiang, China": "MDG", "Morristown Municipal Airport - Morristown, United States": "MMU", "Gorakhpur Airport - Gorakhpur, India": "GOP", "Jinzhou Airport - Jinzhou, China": "JNZ", "Playa De Oro Intl - Manzanillo, Mexico": "ZLO", "Coffs Harbour - Coff's Harbour, Australia": "CFS", "Bathurst Airport - Bathurst, Canada": "ZBF", "Mark Anton Airport - Dayton, United States": "2A0", "Sao Pedro - Sao Vicente Island, Cape Verde": "VXE", "Huronia - Midland, Canada": "YEE", "Tinson Pen - Kingston, Jamaica": "KTP", "Hauptbahnhof - Bonn, Germany": "BNJ", "Polk County Airport - Cornelius Moore Field - Cedartown, United States": "4A4", "Orcas Island Airport - Eastsound, United States": "ESD", "Nantucket Mem - Nantucket, United States": "ACK", "Seletar - Singapore, Singapore": "XSP", "Francisco Bangoy International - Davao, Philippines": "DVO", "Bartow Municipal Airport - Bartow, United States": "BOW", "Bingol - Bingol, Turkey": "BGG", "Asau Airport - Savai\\\\'i, Samoa": "AAU", "Neuenland - Bremen, Germany": "BRE", "Chongjin Airport - Chongjin, North Korea": "RGO", "Jaluit Airport - Jabor Jaluit Atoll, Marshall Islands": "UIT", "Camilo Ponce Enriquez Airport - La Toma (Catamayo), Ecuador": "LOH", "Yichun Mingyueshan Airport - Yichun, China": "YIC", "Rainbow Lake Airport - Rainbow Lake, Canada": "YOP", "Amilcar Cabral Intl - Amilcar Cabral, Cape Verde": "SID", "Dakhla Airport - Dakhla, Western Sahara": "VIL", "Wipim Airport - Wipim, Papua New Guinea": "WPM", "Huahine - Huahine Island, French Polynesia": "HUH", "Ingeniero Jacobacci - Ingeniero Jacobacci, Argentina": "IGB", "Sioux Falls - Sioux Falls, United States": "FSD", "Elizabeth City Cgas Rgnl - Elizabeth City, United States": "ECG", "St. Theresa Point Airport - St. Theresa Point, Canada": "YST", "Piedras Negras Intl - Piedras Negras, Mexico": "PDS", "Jammu - Jammu, India": "IXJ", "Saskatoon J G Diefenbaker Intl - Saskatoon, Canada": "YXE", "Randall Airport - Middletown, United States": "06N", "Paamiut Heliport - Paamiut, Greenland": "JFR", "Pilanesberg Intl - Pilanesberg, South Africa": "NTY", "Bolton Field - Columbus, United States": "TZR", "Marshfield Municipal Airport - Marshfield, United States": "MFI", "El Aroui Airport - El Aroui, Morocco": "NDR", "Santa Barbara Muni - Santa Barbara, United States": "SBA", "Nueva Hesperides Intl - Salto, Uruguay": "STY", "Chicago Executive - Chicago-Wheeling, United States": "PWK", "Eldorado Intl - Bogota, Colombia": "BOG", "Langley Afb - Hampton, United States": "LFI", "Prominent Hill - Prominent Hill, Australia": "PXH", "Casa De Campo Intl - La Romana, Dominican Republic": "LRM", "Medicine Hat - Medicine Hat, Canada": "YXH", "Anderson Rgnl - Andersen, United States": "AND", "Shanhaiguan Airport - Qinhuangdao, China": "SHP", "Presidente Juscelino Kubitschek - Brasilia, Brazil": "BSB", "Frescaty - Metz, France": "MZM", "Turpan - Turpan, China": "TLQ", "Lawton-Fort Sill Regional Airport - Lawton, United States": "LAW", "R\u00f8ssvoll Airport - Mo i Rana, Norway": "MQN", "Salta - Salta, Argentina": "SLA", "Mafia - Mafia Island, Tanzania": "MFA", "Austin Bergstrom Intl - Austin, United States": "AUS", "Warraber Island Airport - Sue Islet, Australia": "SYU", "Owen Roberts Intl - Georgetown, Cayman Islands": "GCM", "Alfonso Lopez Pumarejo - Valledupar, Colombia": "VUP", "Presidente Peron - Neuquen, Argentina": "NQN", "General Juan N Alvarez Intl - Acapulco, Mexico": "ACA", "Roma Airport - Roma, Australia": "RMA", "El Nido Airport - El Nido, Philippines": "ENI", "Monrovia Spriggs Payne - Monrovia, Liberia": "MLW", "Tenakee Seaplane Base - Tenakee Springs, United States": "TKE", "Xi\\\\'An Xiguan - Xi\\\\'AN, China": "SIA", "El Tor - El-tor, Egypt": "ELT", "Coventry - Coventry, United Kingdom": "CVT", "Tobias Bolanos International Airport - San Jose, Costa Rica": "SYQ", "Airport - Vadso, Norway": "VDS", "Eielson Afb - Fairbanks, United States": "EIL", "Sentani - Jayapura, Indonesia": "DJJ", "Lazaro Cardenas - Lazard Cardenas, Mexico": "LZC", "Kabri Dehar Airport - Kabri Dehar, Ethiopia": "ABK", "Port Berg\u00e9 Airport - Port Berg\u00e9, Madagascar": "WPB", "Savannakhet - Savannakhet, Laos": "ZVK", "Dhigurah Centara Grand Maldives - Dhigurah, Maldives": "DHG", "Patreksfjordur - Patreksfjordur, Iceland": "PFJ", "Astana Intl - Tselinograd, Kazakhstan": "TSE", "Pickle Lake - Pickle Lake, Canada": "YPL", "Burevestnik Airport - Iturup Island, Russia": "BVV", "Huanghua - Changcha, China": "CSX", "Nalchik Airport - Nalchik, Russia": "NAL", "Oakdale Airport - Oakdale, United States": "O27", "Panama City Bay Co Intl - Panama City, United States": "PFN", "Nome - Nome, United States": "OME", "Maraba - Maraba, Brazil": "MAB", "Boeing Fld King Co Intl - Seattle, United States": "BFI", "Gardermoen - Oslo, Norway": "OSL", "Naxos - Cyclades Islands, Greece": "JNX", "Lake City Municipal Airport - Lake City, United States": "LCQ", "Karuluk Airport - Karluk, United States": "KYK", "Wai Oti - Maumere, Indonesia": "MOF", "Semipalatinsk - Semiplatinsk, Kazakhstan": "PLX", "Seychelles Intl - Mahe, Seychelles": "SEZ", "Miyazaki - Miyazaki, Japan": "KMI", "Cherry Capital Airport - Traverse City, United States": "TVC", "Terrace - Terrace, Canada": "YXT", "Toncontin Intl - Tegucigalpa, Honduras": "TGU", "Nanaimo Harbour Water Airport - Nanaimo, Canada": "ZNA", "Vagar - Vagar, Faroe Islands": "FAE", "Halmstad - Halmstad, Sweden": "HAD", "Hilton Iru fushi - Maldives Hilton Iru fushi, Maldives": "IRU", "Konduz - Kunduz, Afghanistan": "UND", "Cincinnati Northern Kentucky Intl - Cincinnati, United States": "CVG", "Mangalore - Mangalore, India": "IXE", "Colombo Ratmalana - Colombo, Sri Lanka": "RML", "London-Corbin Airport-MaGee Field - London, United States": "LOZ", "Cunnamulla Airport - Cunnamulla, Australia": "CMA", "Aizawl - Aizwal, India": "AJL", "Bemidji Regional Airport - Bemidji, United States": "BJI", "Hector International Airport - Fargo, United States": "FAR", "Nairobi Wilson - Nairobi, Kenya": "WIL", "Georgetown Municipal Airport - Georgetown, United States": "GTU", "Ivano Frankivsk International Airport - Ivano-Frankivsk, Ukraine": "IFO", "Uberaba - Uberaba, Brazil": "UBA", "La Gomera Airport - La Gomera, Spain": "GMZ", "Cornwall Regional Airport - Cornwall, Canada": "YCC", "Carrillo Airport - Carrillo, Costa Rica": "RIK", "Kenitra - Kentira, Morocco": "NNA", "Mobile Rgnl - Mobile, United States": "MOB", "Merritt Island Airport - Cocoa, United States": "COI", "Monclova Intl - Monclova, Mexico": "LOV", "Penn Station - New York, United States": "ZYP", "Bam Airport - Bam, Iran": "BXR", "Croisette Heliport - Cannes, France": "JCA", "Santander - Santander, Spain": "SDR", "Elazig - Elazig, Turkey": "EZS", "Garissa - Garissa, Kenya": "GAS", "Centre-Piedmont-Cherokee County Regional Airport - Centre, United States": "PYP", "Zaranj Airport - Zaranj, Afghanistan": "ZAJ", "Bartolomeu Lisandro - Campos, Brazil": "CAW", "Gwalior - Gwalior, India": "GWL", "Carajas Airport - Parauapebas, Brazil": "CKS", "Pelotas - Pelotas, Brazil": "PET", "Pointe Noire - Pointe-noire, Congo (Brazzaville)": "PNR", "Athen Helenikon Airport - Athens, Greece": "HEW", "Yangon Intl - Yangon, Burma": "RGN", "Indianapolis Intl - Indianapolis, United States": "IND", "Barra Airport - Barra, United Kingdom": "BRR", "Alice Intl - Alice, United States": "ALI", "Borkum - Borkum, Germany": "BMK", "Kivalina Airport - Kivalina, United States": "KVL", "Pompano Beach Airpark - Pompano Beach, United States": "PMP", "Yakutsk - Yakutsk, Russia": "YKS", "Ankavandra Airport - Ankavandra, Madagascar": "JVA", "South Jersey Regional Airport - Mount Holly, United States": "VAY", "Ardeche Meridionale - Aubenas-vals-lanas, France": "OBS", "Ashgabat - Ashkhabad, Turkmenistan": "ASB", "Chitose - Chitose, Japan": "SPK", "La Nubia - Manizales, Colombia": "MZL", "Bairnsdale Airport - Bairnsdale, Australia": "BSJ", "Simbai - Simbai, Papua New Guinea": "SIM", "\u017dilina Airport - \u017dilina, Slovakia": "ILZ", "Pakuba Airport - Pakuba, Uganda": "PAF", "Takamatsu - Takamatsu, Japan": "TAK", "Gore Bay Manitoulin - Gore Bay, Canada": "YZE", "St Paul Island - St. Paul Island, United States": "SNP", "Pantnagar - Nainital, India": "PGH", "Learmonth - Learmonth, Australia": "LEA", "Bentota Airport - Bentota, Sri Lanka": "BJT", "Kowanyama Airport - Kowanyama, Australia": "KWM", "Sandy Lake Airport - Sandy Lake, Canada": "ZSJ", "Yorkton Muni - Yorkton, Canada": "YQV", "St. Louis Downtown Airport - East St. Louis, United States": "CPS", "Keewaywin - Keewaywin, Canada": "KEW", "Suki Airport - Suki, Papua New Guinea": "SKC", "Hilton Head - Hilton Head, United States": "HHH", "Ugolny Airport - Anadyr, Russia": "DYR", "Grafton Airport - Grafton, Australia": "GFN", "Golfito - Golfito, Costa Rica": "GLF", "Valesdir Airport - Valesdir, Vanuatu": "VLS", "Sohag International - Sohag, Egypt": "HMB", "Akron Fulton Intl - Akron, United States": "AKC", "Branch County Memorial Airport - Coldwater, United States": "OEB", "Clyde River - Clyde River, Canada": "YCY", "Easterwood Fld - College Station, United States": "CLL", "Kerch Intl - Kerch, Ukraine": "KHC", "Caruaru Airport - Caruaru, Brazil": "CAU", "Mopah - Merauke, Indonesia": "MKQ", "Kikwetu Airport - Lindi, Tanzania": "LDI", "Oued Irara - Hassi Messaoud, Algeria": "HME", "Inongo Airport - Inongo, Congo (Kinshasa)": "INO", "Nunukan Airport - Nunukan-Nunukan Island, Indonesia": "NNX", "Kilimanjaro Intl - Kilimanjaro, Tanzania": "JRO", "Jabiru - Jabiru, Australia": "JAB", "Vias - Beziers, France": "BZR", "Kleinsee - Kleinsee, South Africa": "KLZ", "Wainwright As - Fort Wainwright, United States": "K03", "Ohrid - Ohrid, Macedonia": "OHD", "Philip S W Goldson Intl - Belize City, Belize": "BZE", "Antsalova Airport - Antsalova, Madagascar": "WAQ", "Seal Cove Seaplane Base - Prince Rupert, Canada": "ZSW", "Narita Intl - Tokyo, Japan": "NRT", "Surgut - Surgut, Russia": "SGC", "Kingston - Kingston, Canada": "YGK", "Tres De Mayo - Puerto Asis, Colombia": "PUU", "Heron Island - Heron Island, Australia": "HRN", "Oradea - Oradea, Romania": "OMR", "Rafael Hernandez - Aguadilla, Puerto Rico": "BQN", "Lynn Lake - Lynn Lake, Canada": "YYL", "Le Pontreau - Cholet, France": "CET", "Martha\\\\'s Vineyard - Vineyard Haven MA, United States": "MVY", "Burgos Airport - Burgos, Spain": "RGS", "Ofu Airport - Ofu, American Samoa": "OFU", "Subic Bay International Airport - Olongapo City, Philippines": "SFS", "Diori Hamani - Niamey, Niger": "NIM", "Valenca Airport - Valenca, Brazil": "VAL", "Strahan Airport - Strahan, Australia": "SRN", "Fane Airport - Fane, Papua New Guinea": "FNE", "Point Baker Seaplane Base - Point Baker, United States": "KPB", "Joensuu - Joensuu, Finland": "JOE", "Fliegerhost  - Kaufbeuren, Germany": "KFB", "Bayankhongor Airport - Bayankhongor, Mongolia": "BYN", "Bahawalpur Airport - Bahawalpur, Pakistan": "BHV", "Phillips Aaf - Aberdeen, United States": "APG", "Menara - Marrakech, Morocco": "RAK", "Grant Co Intl - Grant County Airport, United States": "MWH", "Frans Kaisiepo - Biak, Indonesia": "BIK", "Pl\u00c3\u00a1cido de Castro - Rio Branco, Brazil": "RBR", "Tocumen Intl - Panama City, Panama": "PTY", "Yoshkar-Ola Airport - Yoshkar-Ola, Russia": "JOK", "Mansons Landing Water Aerodrome - Mansons Landing, Canada": "YMU", "Nhatrang - Nhatrang, Vietnam": "NHA", "Alferez Fap David Figueroa Fernandini Airport - Hu\u00e1nuco, Peru": "HUU", "Kolhapur - Kolhapur, India": "KLH", "Chinle Municipal Airport - Chinle, United States": "E91", "Kalamazoo - Kalamazoo, United States": "AZO", "Lee Gilmer Memorial Airport - Gainesville, United States": "GVL", "Griffith Airport - Griffith, Australia": "GFF", "Gr\u00edmsey Airport - Gr\u00edmsey, Iceland": "GRY", "Zia Intl - Dhaka, Bangladesh": "DAC", "Peterborough Railway Station - Peterborough, United Kingdom": "XVH", "McMinn Co - Athens, United States": "MMI", "Guangyuan Airport - Guangyuan, China": "GYS", "Eloy Alfaro Intl - Manta, Ecuador": "MEC", "Treviso - Treviso, Italy": "TSF", "Fernando De Noronha - Fernando Do Noronha, Brazil": "FEN", "Wausau Downtown Airport - Wausau, United States": "AUW", "Pointe Vele Airport - Futuna Island, Wallis and Futuna": "FUT", "Viru Viru Intl - Santa Cruz, Bolivia": "VVI", "Presidente Joao Suassuna - Campina Grande, Brazil": "CPV", "Watertown Regional Airport - Watertown, United States": "ATY", "Rahadi Usman - Ketapang, Indonesia": "KTG", "Winslow-Lindbergh Regional Airport - Winslow, United States": "INW", "Oranjemund Airport - Oranjemund, Namibia": "OMD", "Alexander Field South Wood County Airport - Wisconsin Rapids, United States": "ISW", "Marsa Alam Intl - Marsa Alam, Egypt": "RMF", "Kugaaruk - Pelly Bay, Canada": "YBB", "Kamusi Airport - Kamusi, Papua New Guinea": "KUY", "Stony Rapids Airport - Stony Rapids, Canada": "YSF", "Cibao Intl - Santiago, Dominican Republic": "STI", "Ziguinchor - Ziguinchor, Senegal": "ZIG", "Yelahanka AFB - Bangalore, India": "YLK", "Sola - Stavanger, Norway": "SVG", "Vatry - Chalons, France": "XCR", "Tulip City Airport - Holland, United States": "BIV", "Mojave - Mojave, United States": "MHV", "Aspen Pitkin County Sardy Field - Aspen, United States": "ASE", "Rio Grande - Rio Grande, Brazil": "RIG", "Eagle Airport - Eagle, United States": "EAA", "Salamanca - Salamanca, Spain": "SLM", "Bursa Airport - Bursa, Turkey": "BTZ", "Barrow County Airport - Winder, United States": "WDR", "Quanzhou Airport - Quanzhou, China": "JJN", "Piedmont Triad - Greensboro, United States": "GSO", "Kasiguncu - Poso, Indonesia": "PSJ", "Tasiilaq - Angmagssalik, Greenland": "AGM", "North West Santo Airport - Olpoi, Vanuatu": "OLZ", "Annemasse - Annemasse, France": "QNJ", "Leipzig Halle - Leipzig, Germany": "LEJ", "Flugplatz Merzbrueck - Aachen, Germany": "AAH", "Petersburg James A. Johnson - Petersburg, United States": "PSG", "Chaghcharan Airport - Chaghcharan, Afghanistan": "CCN", "H As Hanandjoeddin - Tanjung Pandan, Indonesia": "TJQ", "Buffalo Niagara Intl - Buffalo, United States": "BUF", "Bauru-Arealva - Bauru, Brazil": "JTC", "Fulton County Airport Brown Field - Atlanta, United States": "FTY", "Tho Xuan Airport - Thanh Hoa, Vietnam": "THD", "Honolulu Intl - Honolulu, United States": "HNL", "Forli - Forli, Italy": "FRL", "Gallivare - Gallivare, Sweden": "GEV", "Stratton ANGB - Schenectady County Airpor - Scotia NY, United States": "SCH", "Qamdo Bangda Airport - Bangda, China": "BPX", "Merignac - Bordeaux, France": "BOD", "Kenmore Air Harbor Seaplane Base - Seattle, United States": "LKE", "Ardmore - Ardmore, New Zealand": "AMZ", "Santiago - Santiago, Spain": "SCQ", "Sumburgh - Sumburgh, United Kingdom": "LSI", "Udon Thani - Udon Thani, Thailand": "UTH", "Cape Romanzof Lrrs - Cape Romanzof, United States": "CZF", "Manchester - Manchester, United Kingdom": "MAN", "Leeuwarden - Leeuwarden, Netherlands": "LWR", "La Palma - Santa Cruz De La Palma, Spain": "SPC", "Hall Beach - Hall Beach, Canada": "YUX", "Bujumbura Intl - Bujumbura, Burundi": "BJM", "Gaya - Gaya, India": "GAY", "Sege Airport - Sege, Solomon Islands": "EGM", "Osan Ab - Osan, South Korea": "OSN", "Masirah - Masirah, Oman": "MSH", "Mysore Airport - Mysore, India": "MYQ", "Saransk Airport - Saransk, Russia": "SKX", "Coimbatore - Coimbatore, India": "CJB", "Butaritari Atoll Airport - Butaritari, Kiribati": "BBG", "Arrachart - Antsiranana, Madagascar": "DIE", "Tin City LRRS Airport - Tin City, United States": "TNC", "Ogdensburg Intl - Ogdensburg, United States": "OGS", "Rampart Airport - Rampart, United States": "RMP", "Postville Airport - Postville, Canada": "YSO", "Laredo Intl - Laredo, United States": "LRD", "Chippewa Valley Regional Airport - Eau Claire, United States": "EAU", "Furnace Creek - Death Valley National Park, United States": "L06", "Rincon de los Sauces - Rincon de los Sauces, Argentina": "RDS", "Beru Island Airport - Beru Island, Kiribati": "BEZ", "Datadawai Airport - Datadawai-Borneo Island, Indonesia": "DTD", "KIEV  INTERNATIONAL AIRPORT - KIEV, Ukraine": "KIP", "Richmond County Airport - Rockingham, United States": "RCZ", "Hotan - Hotan, China": "HTN", "Licenciado Benito Juarez Intl - Mexico City, Mexico": "MEX", "Big Timber Airport - Big Timber, United States": "6S0", "Sannvhe - Tangshan, China": "TVS", "Kenosha Regional Airport - Kenosha, United States": "ENW", "Saint-Pierre-des-Corps - Tours, France": "XSH", "Kwethluk Airport - Kwethluk, United States": "KWT", "Tandag Airport - Tandag, Philippines": "TDG", "Kopitnari - Kutaisi, Georgia": "KUT", "Las Heras Airport - Las Heras, Argentina": "LHS", "Portsmouth Airport - Portsmouth, United Kingdom": "PME", "Val De Loire - Tours, France": "TUF", "Benguera Island Airport - Benguera Island, Mozambique": "BCW", "Melbourne Intl - Melbourne, United States": "MLB", "Wusu - Taiyuan, China": "TYN", "Xewkija Heliport - Gozo, Malta": "GZM", "Tambolaka Airport - Waikabubak-Sumba Island, Indonesia": "TMC", "Flensburg Schaferhaus - Flensburg, Germany": "FLF", "Nicosia International Airport - Nicosia, Cyprus": "NIC", "McNary Field - Salem, United States": "SLE", "Council Airport - Council, United States": "CIL", "Analalava - Analalava, Madagascar": "HVA", "Lake Placid Airport - Lake Placid, United States": "LKP", "Tawau - Tawau, Malaysia": "TWU", "Ciudad del Este - Ciudad del Este, Paraguay": "AGT", "Tianhe - Wuhan, China": "WUH", "Aurel Vlaicu - Bucharest, Romania": "BBU", "Turany - Brno, Czech Republic": "BRQ", "Congonhas - Sao Paulo, Brazil": "CGH", "Brandywine Airport - West Goshen Township, United States": "OQN", "Nemiscau Airport - Nemiscau, Canada": "YNS", "Mackay - Mackay, Australia": "MKY", "Dhanbad - Dhanbad, India": "DBD", "Waukegan Rgnl - Chicago, United States": "UGN", "Robert L Bradshaw - Basse Terre, Saint Kitts and Nevis": "SKB", "Cottonwood Airport - Cottonwood, United States": "P52", "Gander Intl - Gander, Canada": "YQX", "Zorg en Hoop Airport - Paramaribo, Suriname": "ORG", "Hauptbahnhof - Salzburg, Austria": "ZSB", "Robert Gray Aaf - Killeen, United States": "GRK", "Pampulha - Belo Horizonte, Brazil": "BHZ", "Putao - Putao, Burma": "PBU", "Chignik Lagoon Airport - Chignik Lagoon, United States": "KCL", "Tuntutuliak Airport - Tuntutuliak, United States": "WTL", "Taunton Municipal Airport - King Field - Taunton, United States": "TAN", "Chinggis Khaan Intl - Ulan Bator, Mongolia": "ULN", "Kerikeri - Kerikeri, New Zealand": "KKE", "Springfield-Beckly Municipal Airport - Springfield, United States": "SGH", "Juan Manuel Galvez Intl - Roatan, Honduras": "RTB", "Kegaska Airport - Kegaska, Canada": "ZKG", "Girua Airport - Girua, Papua New Guinea": "PNP", "Boulia Airport - Boulia, Australia": "BQL", "Tresco Heliport - Tresco, United Kingdom": "TSO", "Mendi Airport - Mendi, Papua New Guinea": "MDU", "Chernigov - Chernigov, Ukraine": "CEJ", "Elmas - Cagliari, Italy": "CAG", "Kodiak - Kodiak, United States": "ADQ", "Norway House Airport - Norway House, Canada": "YNE", "Minsk 2 - Minsk 2, Belarus": "MSQ", "Fox Glacier Airstrip - Fox Glacier, New Zealand": "FGL", "Lilabari - Lilabari, India": "IXI", "Fort Chipewyan - Fort Chipewyan, Canada": "YPY", "Tri-Cities Regional Airport - BRISTOL, United States": "TRI", "Hatfield - Hatfield, United Kingdom": "HTF", "Flinders Island Airport - Flinders Island, Australia": "FLS", "Kangiqsualujjuaq (Georges River) Airport - Kangiqsualujjuaq, Canada": "XGR", "Orenburg - Orenburg, Russia": "REN", "Nelspruit Airport - Nelspruit, South Africa": "NLP", "Clarksville-Montgomery County Regional Airport - Clarksville, United States": "CKV", "Lech Walesa - Gdansk, Poland": "GDN", "Gannan - Xiahe city, China": "GXH", "Niagara District - Saint Catherines, Canada": "YCM", "Monroe Rgnl - Monroe, United States": "MLU", "Dryden Rgnl - Dryden, Canada": "YHD", "Lisala - Lisala, Congo (Kinshasa)": "LIQ", "Lins - Lins, Brazil": "LIP", "Geneina Airport - Geneina, Sudan": "EGN", "Karlstad Airport - Karlstad, Sweden": "KSD", "Ishurdi - Ishurdi, Bangladesh": "IRD", "Aosta Airport - Aosta, Italy": "AOT", "Dresden - Dresden, Germany": "DRS", "Nellis Afb - Las Vegas, United States": "LSV", "Wenzhou Yongqiang Airport - Wenzhou, China": "WNZ", "Choibalsan Airport - Choibalsan, Mongolia": "COQ", "Jijel - Jijel, Algeria": "GJL", "Chu Lai - Chu Lai, Vietnam": "VCL", "Kapalua - Lahania-kapalua, United States": "JHM", "Old Crow - Old Crow, Canada": "YOC", "Panama City-NW Florida Bea. - Panama City, United States": "ECP", "Logro\u00f1o-Agoncillo Airport - Logro\u00f1o-Agoncillo, Spain": "RJL", "Whittlesford Parkway Rail Station - Whittlesford, United Kingdom": "WLF", "Flin Flon - Flin Flon, Canada": "YFO", "Santa Maria Pub Cpt G Allan Hancock Airport - Santa Maria, United States": "SMX", "Norfolk Intl - Norfolk, United States": "ORF", "Klamath Falls Airport - Klamath Falls, United States": "LMT", "Mvengue - Franceville, Gabon": "MVB", "Sacheon Air Base - Sacheon, South Korea": "HIN", "Kuantan - Kuantan, Malaysia": "KUA", "Savoonga Airport - Savoonga, United States": "SVA", "Moenjodaro - Moenjodaro, Pakistan": "MJD", "Orestes Acosta - Moa, Cuba": "MOA", "Regina Intl - Regina, Canada": "YQR", "Rocky Mount Wilson Regional Airport - Rocky Mount, United States": "RWI", "Telluride - Telluride, United States": "TEX", "Villa Dolores - Villa Dolores, Argentina": "VDR", "Capitan Nicolas Rojas - Potosi, Bolivia": "POI", "Doha Free Zone Airport - Doha, Qatar": "XOZ", "Chenega Bay Airport - Chenega, United States": "NCN", "Lamezia Terme - Lamezia, Italy": "SUF", "Ayers Rock - Uluru, Australia": "AYQ", "Bathurst Island Airport - Bathurst Island, Australia": "BRT", "Kalay Airport - Kalemyo, Myanmar": "KMV", "Hachijojima - Hachijojima, Japan": "HAC", "Tegel - Berlin, Germany": "TXL", "Omsk - Omsk, Russia": "OMS", "Lemoore Nas - Lemoore, United States": "NLC", "St-Fran\u00e7ois Airport - St-Fran\u00e7ois, Guadeloupe": "SFC", "Ambrosio L V Taravella - Cordoba, Argentina": "COR", "Carriel Sur Intl - Concepcion, Chile": "CCP", "Vorkuta Airport - Vorkuta, Russia": "VKT", "Gatineau - Gatineau, Canada": "YND", "Mansfield Municipal - Mansfield, United States": "1B9", "Naypyidaw - Naypyidaw, Burma": "ELA", "Varanasi - Varanasi, India": "VNS", "Wuxu - Nanning, China": "NNG", "Shelby County Airport - Alabaster, United States": "EET", "Broken Hill Airport - Broken Hill, Australia": "BHQ", "Memanbetsu - Memanbetsu, Japan": "MMB", "Tununak Airport - Tununak, United States": "TNK", "Sao Carlos TAM - Sao Carlos, Brazil": "QSC", "Moffett Federal Afld - Mountain View, United States": "NUQ", "Bario Airport - Bario, Malaysia": "BBN", "Huangyan Luqiao Airport - Huangyan, China": "HYN", "Moosonee - Moosonee, Canada": "YMO", "Canefield - Canefield, Dominica": "DCF", "Galway - Galway, Ireland": "GWY", "Pau Pyrenees - Pau, France": "PUF", "Oshima - Oshima, Japan": "OIM", "Bydgoszcz Ignacy Jan Paderewski Airport - Bydgoszcz, Poland": "BZG", "Koumac - Koumac, New Caledonia": "KOC", "Mount Pleasant - Mount Pleasant, Falkland Islands": "MPN", "Mount Gambier Airport - Mount Gambier, Australia": "MGB", "East London - East London, South Africa": "ELS", "Nogales Intl - Nogales, United States": "OLS", "La Florida - La Serena, Chile": "LSC", "Matak Airport - Anambas Islands, Indonesia": "MWK", "Kaufana Airport - Eua Island, Tonga": "EUA", "Hartsfield Jackson Atlanta Intl - Atlanta, United States": "ATL", "Zenata - Tlemcen, Algeria": "TLM", "Malacca - Malacca, Malaysia": "MKZ", "Abraham Gonzalez Intl - Ciudad Juarez, Mexico": "CJS", "Bonriki Intl - Tarawa, Kiribati": "TRW", "Pajala Airport - Pajala, Sweden": "PJA", "Fresh Creek - Andros Town, Bahamas": "ASD", "Greenwood Leflore - Greenwood, United States": "GWO", "Lake Manyara - Lake Manyara, Tanzania": "LKY", "Hanamaki - Hanamaki, Japan": "HNA", "Dien Bien Phu Airport - Dienbienphu, Vietnam": "DIN", "Collin County Regional Airport at Mc Kinney - DALLAS, United States": "TKI", "Meucon - Vannes, France": "VNE", "Port Hardy - Port Hardy, Canada": "YZT", "Khajuraho - Khajuraho, India": "HJR", "Belgorod International Airport - Belgorod, Russia": "EGO", "Babanakira Airport - Mbambanakira, Solomon Islands": "MBU", "Grand Forks Intl - Grand Forks, United States": "GFK", "Lombok International Airport - Praya, Indonesia": "LOP", "Arturo Michelena Intl - Valencia, Venezuela": "VLN", "Youngstown Warren Rgnl - Youngstown, United States": "YNG", "Kisimayu - Kismayu, Somalia": "KMU", "Gisborne - Gisborne, New Zealand": "GIS", "Sachs Harbour - Sachs Harbour, Canada": "YSY", "Brooks Field Airport - Marshall, United States": "RMY", "McCook Regional Airport - McCook, United States": "MCK", "Johnston Atoll - Johnston Island, Johnston Atoll": "JON", "Long Apung Airport - Long Apung-Borneo Island, Indonesia": "LPU", "Felker Aaf - Fort Eustis, United States": "FAF", "Magnitogorsk - Magnetiogorsk, Russia": "MQF", "Lanyu - Lanyu, Taiwan": "KYD", "Mariehamn - Mariehamn, Finland": "MHQ", "Tri-County Regional Airport - Lone Rock, United States": "LNR", "Uranium City Airport - Uranium City, Canada": "YBE", "Kimbe Airport - Hoskins, Papua New Guinea": "HKN", "Coleman A Young Muni - Detroit, United States": "DET", "Fukuoka - Fukuoka, Japan": "FUK", "Carrasco Intl - Montevideo, Uruguay": "MVD", "Vermilion - Vermillion, Canada": "YVG", "Soekarno Hatta Intl - Jakarta, Indonesia": "CGK", "Gaspe - Gaspe, Canada": "YGP", "Fort Stockton Pecos Co - Fort Stockton, United States": "FST", "Zagreb - Zagreb, Croatia": "ZAG", "Bimini North Seaplane Base - Bimini, Bahamas": "NSB", "Dix Sept Rosado Airport - Mossoro, Brazil": "MVF", "Barreiras Airport - Barreiras, Brazil": "BRA", "Arlanda - Stockholm, Sweden": "ARN", "Chadron Municipal Airport - Chadron, United States": "CDR", "Issyk-Kul International Airport - Tamchy, Kyrgyzstan": "\u0418\u041a\u0423", "Kavieng Airport - Kavieng, Papua New Guinea": "KVG", "Pecos Municipal Airport - Pecos, United States": "PEQ", "Cap Skiring - Cap Skiring, Senegal": "CSK", "Olga Bay Seaplane Base - Olga Bay, United States": "KOY", "Chileka Intl - Blantyre, Malawi": "BLZ", "Antsirabe - Antsirabe, Madagascar": "ATJ", "Cherokee County Airport - Canton, United States": "47A", "Tamuin - Tamuin, Mexico": "TSL", "Jamshedpur - Jamshedpur, India": "IXW", "Geraldton Greenstone Regional - Geraldton, Canada": "YGQ", "Gilbert Airport - Winter Haven, United States": "GIF", "Isla Mujeres - Isla Mujeres, Mexico": "ISJ", "Aggeneys - Aggeneys, South Africa": "AGZ", "Gbangbatok Airport - Gbangbatok, Sierra Leone": "GBK", "St George Muni - Saint George, United States": "SGU", "Bautzen - Bautzen, Germany": "BBJ", "Quad City Intl - Moline, United States": "MLI", "Matsu Nangan Airport - Matsu Islands, Taiwan": "LZN", "St Agnant - Rochefort, France": "RCO", "Vandenberg Afb - Lompoc, United States": "VBG", "Ostbahnhof - Berlin, Germany": "BHF", "Quebec Jean Lesage Intl - Quebec, Canada": "YQB", "Chokurdakh Airport - Chokurdah, Russia": "CKH", "Cape Lisburne Lrrs - Cape Lisburne, United States": "LUR", "Juan Santamaria Intl - San Jose, Costa Rica": "SJO", "Tula - Tula, Russia": "TYA", "Kirkwall - Kirkwall, United Kingdom": "KOI", "Napa County Airport - Napa, United States": "APC", "Moundou - Moundou, Chad": "MQQ", "Enyu Airfield - Bikini Atoll, Marshall Islands": "BII", "Inukjuak Airport - Inukjuak, Canada": "YPH", "Eldoret Intl - Eldoret, Kenya": "EDL", "Tulita - Tulita, Canada": "ZFN", "Aurukun Airport - Aurukun, Australia": "AUU", "Lamidanda - Lamidanda, Nepal": "LDN", "Coll Airport - Coll, United Kingdom": "COL", "Gazipasa Airport - Alanya, Turkey": "GZP", "Dionysios Solomos - Zakynthos, Greece": "ZTH", "Red Devil Airport - Red Devil, United States": "RDV", "Wick - Wick, United Kingdom": "WIC", "Regensburg HBF - Regensburg, Germany": "RGB", "Godofredo P - Caticlan, Philippines": "MPH", "Wonju Airport - Wonju, South Korea": "WJU", "Whyalla Airport - Whyalla, Australia": "WYA", "Santa Barbara Del Zulia - Santa Barbara, Venezuela": "STB", "Trabzon - Trabzon, Turkey": "TZX", "Kaikoura - Kaikoura, New Zealand": "KBZ", "Rach Gia - Rach Gia, Vietnam": "VKG", "Levaldigi - Cuneo, Italy": "CUF", "Alcides Fernandez Airport - Acandi, Colombia": "ACD", "Meghauli Airport - Meghauli, Nepal": "MEY", "Lost Nation Municipal Airport - Willoughby, United States": "LNN", "Gogebic Iron County Airport - Ironwood, United States": "IWD", "Las Cruces Intl - Las Cruces, United States": "LRU", "Tela - Tela, Honduras": "TEA", "Juancho E. Yrausquin - Saba, Netherlands Antilles": "SAB", "El Salvador Intl - San Salvador, El Salvador": "SAL", "Robertson Field - Plainville, United States": "4B8", "Yokota Ab - Yokota, Japan": "OKO", "Plantation Airpark - Sylvania, United States": "JYL", "Rosario Seaplane Base - Rosario, United States": "RSJ", "Pakhokku Airport - Pakhokku, Burma": "PKK", "Bolshoye Savino - Perm, Russia": "PEE", "Saurimo - Saurimo, Angola": "VHC", "Nioki Airport - Nioki, Congo (Kinshasa)": "NIO", "Opa Locka - Miami, United States": "OPF", "Beloyarsky - Beloyarsky, Russia": "EYK", "Sao Tome Intl - Sao Tome, Sao Tome and Principe": "TMS", "Jefman - Sorong, Indonesia": "SOQ", "Augsburg HBF - Augsburg, Germany": "AUB", "Maroantsetra - Maroantsetra, Madagascar": "WMN", "Shire Inda Selassie Airport - Shire Indasilase, Ethiopia": "SHC", "Oostende - Ostend, Belgium": "OST", "Antonio Jose De Sucre - Cumana, Venezuela": "CUM", "Jimma - Jimma, Ethiopia": "JIM", "Frankfurt-Main Hauptbahnhof - Frankfurt, Germany": "ZRB", "Cold Lake - Cold Lake, Canada": "YOD", "Hamilton Airport - Hamilton, Australia": "HLT", "Sydney Bankstown - Sydney, Australia": "BWU", "Hattiesburg Bobby L. Chain Municipal Airport - Hattiesburg, United States": "HBG", "Moorea - Moorea, French Polynesia": "MOZ", "Batna Airport - Batna, Algeria": "BLJ", "Benina - Benghazi, Libya": "BEN", "Comandante Gustavo Kraemer - Bage, Brazil": "BGX", "Colonel Hill Airport - Colonel Hill, Bahamas": "CRI", "Marechal Rondon - Cuiaba, Brazil": "CGB", "Ferry County Airport - Republic, United States": "R49", "Sir Seretse Khama Intl - Gaberone, Botswana": "GBE", "Jesus Teran Intl - Aguascalientes, Mexico": "AGU", "Furstenfeldbruck - Fuerstenfeldbruck, Germany": "FEL", "Beaver Falls - Beaver Falls, United States": "BFP", "Goose Bay - Goose Bay, Canada": "YYR", "Mananjary - Mananjary, Madagascar": "MNJ", "Chemehuevi Valley - Chemehuevi Valley, United States": "49X", "Antonio Maceo Intl - Santiago De Cuba, Cuba": "SCU", "Maputo - Maputo, Mozambique": "MPM", "El Obeid - El Obeid, Sudan": "EBD", "Baracoa - Magangue, Colombia": "MGN", "Carlos Manuel De Cespedes - Bayamo, Cuba": "BYM", "El Eden - Armenia, Colombia": "AXM", "Jaime Gonzalez - Cienfuegos, Cuba": "CFG", "Los Angeles Intl - Los Angeles, United States": "LAX", "Buckley Afb - Buckley, United States": "BKF", "Kruunupyy - Kruunupyy, Finland": "KOK", "Andahuaylas - Andahuaylas, Peru": "ANS", "Wokal Field Glasgow International Airport - Glasgow, United States": "GGW", "Shute Harbour - Shute Harbour, Australia": "JHQ", "Dasoguz Airport - Dasoguz, Turkmenistan": "TAZ", "Balice - Krakow, Poland": "KRK", "Girona - Gerona, Spain": "GRO", "Pathein Airport - Pathein, Burma": "BSX", "Savannah Hilton Head Intl - Savannah, United States": "SAV", "Herrera International Airport - Santo Domingo, Dominican Republic": "HEX", "Tatitlek Airport - Tatitlek, United States": "TEK", "Corrientes - Corrientes, Argentina": "CNQ", "Chapeco - Chapeco, Brazil": "XAP", "Fairford - Fairford, United Kingdom": "FFD", "Wainwright Airport - Wainwright, United States": "AIN", "Martin Campbell Field Airport - Copperhead, United States": "1A3", "Avaratra - Mananara, Madagascar": "WMR", "Monaco - Monaco, Monaco": "MCM", "Majkin Airport - Majkin, Marshall Islands": "MJE", "Pohnpei Intl - Pohnpei, Micronesia": "PNI", "Beira - Beira, Mozambique": "BEW", "Great Keppel Island - Great Keppel Island, Australia": "GKL", "Brantford - Brantford, Canada": "YFD", "Tari Airport - Tari, Papua New Guinea": "TIZ", "Sigiriya Airport - Sigiriya, Sri Lanka": "GIU", "Eagle County Airport - Eagle, United States": "EGA", "Abadan - Abadan, Iran": "ABD", "Cold Bay - Cold Bay, United States": "CDB", "Senador Petronio Portella - Teresina, Brazil": "THE", "Kumejima - Kumejima, Japan": "UEO", "Tabiteuea North - Tabiteuea North, Kiribati": "TBF", "Train Station - Winnipeg, Canada": "XEF", "Santo Pekoa International Airport - Santo, Vanuatu": "SON", "Heroes Del Acre - Cobija, Bolivia": "CIJ", "Knoxville Downtown Island Airport - Knoxville, United States": "DKX", "Gustavo Rizo - Baracoa Playa, Cuba": "BCA", "Sangafa Airport - Sangafa, Vanuatu": "EAE", "Aarhus - Aarhus, Denmark": "AAR", "Effingham Memorial Airport - Effingham, United States": "1H2", "Ouagadougou - Ouagadougou, Burkina Faso": "OUA", "Kisangani Simisini - Kisangani, Congo (Kinshasa)": "FKI", "Bhojpur - Bhojpur, Nepal": "BHP", "Corpus Christi Intl - Corpus Christi, United States": "CRP", "Mataiva - Mataiva, French Polynesia": "MVT", "Sartaneja Airport - Sarteneja, Belize": "SJX", "Prince Albert Glass Field - Prince Albert, Canada": "YPA", "Yining Airport - Yining, China": "YIN", "Samarkand - Samarkand, Uzbekistan": "SKD", "Sault Ste Marie - Sault Sainte Marie, Canada": "YAM", "Heidelberg - Heidelberg, Germany": "HDB", "Centraal - Antwerp, Belgium": "ZWE", "Columbia County - Hudson NY, United States": "HCC", "Tiko - Tiko, Cameroon": "TKC", "Round Lake (Weagamow Lake) Airport - Round Lake, Canada": "ZRJ", "Le Bourget - Paris, France": "LBG", "St Marys Airport - St Mary's, United States": "KSM", "T\u00eate-\u00e0-la-Baleine Airport - T\u00eate-\u00e0-la-Baleine, Canada": "ZTB", "Mont Joli - Mont Joli, Canada": "YYY", "Winton Airport - Winton, Australia": "WIN", "Chicago Midway Intl - Chicago, United States": "MDW", "La Tabati\u00e8re Airport - La Tabati\u00e8re, Canada": "ZLT", "Alto Rio Senguer Airport - Alto Rio Senguer, Argentina": "ARR", "Waterloo - Waterloo, Canada": "YKF", "Riverton Regional - Riverton WY, United States": "RIW", "Timiskaming Rgnl - Earlton, Canada": "YXR", "Bandundu - Bandoundu, Congo (Kinshasa)": "FDU", "Cicia Airport - Cicia, Fiji": "ICI", "Sao Jorge - Sao Jorge Island, Portugal": "SJZ", "Aracatuba - Aracatuba, Brazil": "ARU", "Whitehorse Intl - Whitehorse, Canada": "YXY", "Bokondini Airport - Bokondini-Papua Island, Indonesia": "BUI", "Tiksi Airport - Tiksi, Russia": "IKS", "Kuini Lavenia Airport - Niuatoputapu, Tonga": "NTT", "Livingstone - Livingstone, Zambia": "LVI", "Strezhevoy - Strezhevoy, Russia": "SWT", "Dinwiddie County Airport - Petersburg, United States": "PTB", "Mc Alester Rgnl - Mcalester, United States": "MLC", "Hoedspruit Afb - Hoedspruit, South Africa": "HDS", "Armidale - Armidale, Australia": "ARM", "Carlisle - Carlisle, United Kingdom": "CAX", "Santa Ana Airport - Santa Ana, Solomon Islands": "NNB", "V\u00e6r\u00f8y Heliport - V\u00e6r\u00f8y, Norway": "VRY", "Sao Felix do Araguaia Airport - Sao Felix do Araguaia, Brazil": "SXO", "Penrhyn Island Airport - Penrhyn Island, Cook Islands": "PYE", "Capitan Fap Guillermo Concha Iberico - Piura, Peru": "PIU", "Central - Copenhagen, Denmark": "ZGH", "Patos de Minas Airport - Patos de Minas, Brazil": "POJ", "Inishmaan Aerodrome - Inishmaan, Ireland": "IIA", "La Aurora - Guatemala City, Guatemala": "GUA", "Basango Mboliasa Airport - Kiri, Congo (Kinshasa)": "KRZ", "Cambridge Bay - Cambridge Bay, Canada": "YCB", "Kahramanmaras Airport - Kahramanmaras, Turkey": "KCM", "Angers-Loire Airport - Angers/Marc\u00e9, France": "ANE", "Tsaratanana Airport - Tsaratanana, Madagascar": "TTS", "Fort Lauderdale Executive - Fort Lauderdale, United States": "FXE", "Nikos Kazantzakis - Heraklion, Greece": "HER", "Kuria Airport - Kuria, Kiribati": "KUC", "Caucaya Airport - Puerto Legu\u00edzamo, Colombia": "LQM", "Chub Cay - Chub Cay, Bahamas": "CCZ", "Charleston Afb Intl - Charleston, United States": "CHS", "Capitan Oriel Lea Plaza - Tarija, Bolivia": "TJA", "Burlington-Alamance Regional Airport - Burlington, United States": "BUY", "Legazpi - Legazpi, Philippines": "LGP", "Radin Inten II (Branti) Airport - Bandar Lampung-Sumatra Island, Indonesia": "TKG", "Fagali\\\\'i - Apia, Samoa": "FGI", "Calabar - Calabar, Nigeria": "CBQ", "Parachinar Airport - Parachinar, Pakistan": "PAJ", "Kosice - Kosice, Slovakia": "KSC", "Enrique Malek Intl - David, Panama": "DAV", "Muan - Muan, South Korea": "MWX", "Akron Canton Regional Airport - Akron, United States": "CAK", "Kiunga Airport - Kiunga, Papua New Guinea": "UNG", "Drake Fld - Fayetteville, United States": "FYV", "Coonamble Airport - Coonamble, Australia": "CNB", "Andizhan Airport - Andizhan, Uzbekistan": "AZN", "Greater Binghamton Edwin A Link Fld - Binghamton, United States": "BGM", "Jacksonville Nas - Jacksonville, United States": "NIP", "Maria Reiche Neuman Airport - Nazca, Peru": "NZA", "Lubbock Preston Smith Intl - Lubbock, United States": "LBB", "Awasa Airport - Awasa, Ethiopia": "AWA", "Deer Harbor Seaplane - Deer Harbor, United States": "DHB", "Salina Cruz Naval Air Station - Salina Cruz, Mexico": "SCX", "Balkanabat - Balkanabat, Turkmenistan": "BKN", "Dunk Island Airport - Dunk Island, Australia": "DKI", "Mamitupo - Mamitupo, Panama": "MPU", "Mashhad - Mashhad, Iran": "MHD", "Cheongju International Airport - Chongju, South Korea": "CJJ", "Gan Island Airport - Gan Island, Maldives": "GAN", "Lac Brochet Airport - Lac Brochet, Canada": "XLB", "Metropolitan Oakland Intl - Oakland, United States": "OAK", "Northwest Alabama Regional Airport - Muscle Shoals, United States": "MSL", "Bonaventure Airport - Bonaventure, Canada": "YVB", "Tzaneen - Tzaneen, South Africa": "LTA", "Saint Exupery - Lyon, France": "LYS", "Rodriguez Ballon - Arequipa, Peru": "AQP", "Brown Field Municipal Airport - San Diego, United States": "SDM", "Ladysmith - Ladysmith, South Africa": "LAY", "Tavaux - Dole, France": "DLE", "Crisp County Cordele Airport - Cordele, United States": "CKF", "Heber City Municipal Airport - Heber, United States": "36U", "Pohang - Pohang, South Korea": "KPO", "Orpheus Island - Orpheus Island, Australia": "ORS", "Kajaani - Kajaani, Finland": "KAJ", "Vanimo Airport - Vanimo, Papua New Guinea": "VAI", "Atar - Atar, Mauritania": "ATR", "Neerlerit Inaat Airport - Neerlerit Inaat, Greenland": "CNP", "Masset Airport - Masset, Canada": "ZMT", "Maniwaki - Maniwaki, Canada": "YMW", "Madurai - Madurai, India": "IXM", "Northeast Alabama Regional Airport - Gadsden, United States": "GAD", "Capodichino - Naples, Italy": "NAP", "Golovin Airport - Golovin, United States": "GLV", "Munich HBF - Munich, Germany": "MUQ", "Machu Pichu Airport - Machu Pichu, Peru": "MFT", "Sheremetyevo - Moscow, Russia": "SVO", "Benguela - Benguela, Angola": "BUG", "North Central State - Smithfield, United States": "SFZ", "Mayumba Airport - Mayumba, Gabon": "MYB", "Blackbushe - Blackbushe, United Kingdom": "BBS", "Arnsberg Menden - Arnsberg, Germany": "ZCA", "Tshikapa Airport - Tshikapa, Congo (Kinshasa)": "TSH", "Yeosu - Yeosu, South Korea": "RSU", "Venetie Airport - Venetie, United States": "VEE", "Sarasota Bradenton Intl - Sarasota, United States": "SRQ", "Hof Plauen - Hof, Germany": "HOQ", "Billund - Billund, Denmark": "BLL", "Rock Hill York Co Bryant Airport - Rock Hill, United States": "RKH", "Woodbourne - Woodbourne, New Zealand": "BHE", "Xilinhot Airport - Xilinhot, China": "XIL", "Norderney - Norderney, Germany": "NRD", "Faleolo Intl - Faleolo, Samoa": "APW", "Mackinac Island Airport - Mackinac Island, United States": "MCD", "Tokua Airport - Tokua, Papua New Guinea": "RAB", "Unalakleet Airport - Unalakleet, United States": "UNK", "El Borma - El Borma, Tunisia": "EBM", "Birjand - Birjand, Iran": "XBJ", "Concord Municipal - Concord NH, United States": "CON", "Chefornak Airport - Chefornak, United States": "CYF", "Beaumont Municipal - Beaumont, United States": "BMT", "Princess Juliana Intl - Philipsburg, Netherlands Antilles": "SXM", "Fort William Heliport - Fort William, United Kingdom": "FWM", "Mackenzie Airport - Mackenzie British Columbia, Canada": "YZY", "Grand Forks Afb - Red River, United States": "RDR", "Ignatyevo - Blagoveschensk, Russia": "BQS", "Achutupo Airport - Achutupo, Panama": "ACU", "Sidney-Richland Municipal Airport - Sidney, United States": "SDY", "Vityazevo - Anapa, Russia": "AAQ", "Helgoland-D\u00fcne Airport - Helgoland, Germany": "HGL", "Nantong Airport - Nantong, China": "NTG", "Worcester Regional Airport - Worcester, United States": "ORH", "Thargomindah Airport - Thargomindah, Australia": "XTG", "Neuchatel Airport - Neuchatel, Switzerland": "QNC", "Gerrard Smith Intl - Cayman Barac, Cayman Islands": "CYB", "Yam Island Airport - Yam Island, Australia": "XMY", "Sanaa Intl - Sanaa, Yemen": "SAH", "Gamal Abdel Nasser Airport - Tobruk, Libya": "TOB", "Tatalina Lrrs - Tatalina, United States": "TLJ", "Nizhny Novgorod - Nizhniy Novgorod, Russia": "GOJ", "Train Station - Churchill, Canada": "XAD", "Regional Airport - Statesville, United States": "SVH", "Kadena Ab - Kadena, Japan": "DNA", "Darnley Island Airport - Darnley Island, Australia": "NLF", "Sholapur - Sholapur, India": "SSE", "Ciudad Del Carmen Intl - Ciudad Del Carmen, Mexico": "CME", "Ourilandia do Norte Airport - Ourilandia do Norte, Brazil": "OIA", "Ust-Ilimsk - Ust Ilimsk, Russia": "UIK", "Tuluksak Airport - Tuluksak, United States": "TLT", "Mwanza - Mwanza, Tanzania": "MWZ", "Ploujean - Morlaix, France": "MXN", "Pula - Pula, Croatia": "PUY", "Gumrak - Volgograd, Russia": "VOG", "Enejit Airport - Enejit, Marshall Islands": "EJT", "Preguica - Sao Nocolau Island, Cape Verde": "SNE", "Whitianga Airport - Whitianga, New Zealand": "WTZ", "Mustique - Mustique, Saint Vincent and the Grenadines": "MQS", "Olbia Costa Smeralda - Olbia, Italy": "OLB", "Maun - Maun, Botswana": "MUB", "Westray Airport - Westray, United Kingdom": "WRY", "Diyarbakir - Diyabakir, Turkey": "DIY", "Rafsanjan Airport - Rafsanjan, Iran": "RJN", "Pocos De Caldas - Pocos De Caldas, Brazil": "POO", "Rock Sound - Rock Sound, Bahamas": "RSD", "Lake Wales Municipal Airport - Lake Wales, United States": "X07", "Almeria - Almeria, Spain": "LEI", "Whidbey Island Nas - Whidbey Island, United States": "NUW", "Caye Chapel Airport - Caye Chapel, Belize": "CYC", "Kandahar - Kandahar, Afghanistan": "KDH", "Reynolds Field - Jackson, United States": "JXN", "New Plymouth - New Plymouth, New Zealand": "NPL", "Tambow - Tambow, Russia": "TBW", "Ilford Airport - Ilford, Canada": "ILF", "Coffman Cove Seaplane Base - Coffman Cove, United States": "KCC", "Alexandria - Alexandria, United States": "ALX", "Hoonah Airport - Hoonah, United States": "HNH", "Brainerd Lakes Rgnl - Brainerd, United States": "BRD", "Tajin - Poza Rico, Mexico": "PAZ", "Chatham Seaplane Base - Sitka, United States": "CYM", "Chaurjhari - Chaurjhari, Nepal": "HRJ", "Grand Marais Cook County Airport - Grand Marais, United States": "GRM", "Brigham City - Brigham City, United States": "BMC", "Lebanon Municipal Airport - Lebanon, United States": "LEB", "General Manuel Marquez De Leon Intl - La Paz, Mexico": "LAP", "Gamba - Gamba, Gabon": "GAX", "Jining Airport  - Jining, China": "JNG", "Acadiana Rgnl - Louisiana, United States": "ARA", "Ilam Airport - Ilam, Iran": "IIL", "Labasa Airport - Lambasa, Fiji": "LBS", "Creech Afb - Indian Springs, United States": "INS", "Pendopo Airport - Talang Gudang-Sumatra Island, Indonesia": "PDO", "Elim Airport - Elim, United States": "ELI", "Murray Island Airport - Murray Island, Australia": "MYI", "Maimun Saleh - Sabang, Indonesia": "SBG", "Kalokol - Kalokol, Kenya": "KLK", "Qeqertarsuaq Heliport - Qeqertarsuaq Airport, Greenland": "JGO", "Tatry - Poprad, Slovakia": "TAT", "Bacacheri - Curitiba, Brazil": "BFH", "Cheboksary Airport - Cheboksary, Russia": "CSY", "Matari - Isiro, Congo (Kinshasa)": "IRP", "Tapuruquara Airport - Santa Isabel do Rio Negro, Brazil": "IRZ", "Calicut - Calicut, India": "CCJ", "Almirante Zar - Trelew, Argentina": "REL", "Malpensa - Milano, Italy": "MXP", "Hyder Seaplane Base - Hyder, United States": "WHD", "Lake Charles Rgnl - Lake Charles, United States": "LCH", "Lamen Bay Airport - Lamen Bay, Vanuatu": "LNB", "Jorge Chavez Intl - Lima, Peru": "LIM", "Mare - Mare, New Caledonia": "MEE", "Bern Belp - Bern, Switzerland": "BRN", "Mc Kellar Sipes Rgnl - Jackson, United States": "MKL", "Altenburg Nobitz - Altenburg, Germany": "AOC", "Kirksville Regional Airport - Kirksville, United States": "IRK", "Professor Urbano Ernesto Stumpf - Sao Jose Dos Campos, Brazil": "SJK", "Maio - Maio, Cape Verde": "MMO", "Union Station - Toronto, Canada": "YBZ", "Parry Sound - Parry Sound, Canada": "YPD", "Lozuvatka International Airport - Krivoy Rog, Ukraine": "KWG", "Proserpine Whitsunday Coast - Prosserpine, Australia": "PPP", "Noumerat - Ghardaia, Algeria": "GHA", "Teterboro - Teterboro, United States": "TEB", "Carnarvon Airport - Carnarvon, Australia": "CVQ", "Playon Chico - Playon Chico, Panama": "PYC", "B\u00e9char Boudghene Ben Ali Lotfi Airport - B\u00e9char, Algeria": "CBH", "Bodrum - Milas - Bodrum, Turkey": "BJV", "San Crist\u00f3bal Airport - San Crist\u00f3bal, Ecuador": "SCY", "Canadian Rockies Intl - Cranbrook, Canada": "YXC", "Quelimane - Quelimane, Mozambique": "UEL", "Robe Airport - Goba, Ethiopia": "GOB", "Tampere Pirkkala - Tampere, Finland": "TMP", "Paradise Island Seaplane Base - Nassau, Bahamas": "WZY", "El Arish International Airport - El Arish, Egypt": "AAC", "Fak Fak - Fak Fak, Indonesia": "FKQ", "La Managua - Quepos, Costa Rica": "XQP", "Aviador C Campos - San Martin Des Andes, Argentina": "CPC", "Kokshetau Airport - Kokshetau, Kazakhstan": "KOV", "Taldykorgan Airport - Taldykorgan, Kazakhstan": "TDK", "Patuxent River Nas - Patuxent River, United States": "NHK", "Spirit Of St Louis - Null, United States": "SUS", "Penzance Heliport - Penzance, United Kingdom": "PZE", "Willow Run - Detroit, United States": "YIP", "Albert Whitted - St. Petersburg, United States": "SPG", "Alice Springs - Alice Springs, Australia": "ASP", "Tucupita - Tucupita, Venezuela": "TUV", "Silchar - Silchar, India": "IXS", "Benito Salas - Neiva, Colombia": "NVA", "Hang Nadim - Batam, Indonesia": "BTH", "Sukhothai - Sukhothai, Thailand": "THS", "Batuna Airport - Batuna, Solomon Islands": "BPF", "Bandaranaike Intl Colombo - Colombo, Sri Lanka": "CMB", "Romblon Airport - Romblon, Philippines": "TBH", "Swakopmund Airport - Swakopmund, Namibia": "SWP", "Kirkland Lake - Kirkland Lake, Canada": "YKX", "Aomori - Aomori, Japan": "AOJ", "Olaya Herrera - Medellin, Colombia": "EOH", "March Arb - Riverside, United States": "RIV", "Port Vila Bauerfield - Port-vila, Vanuatu": "VLI", "Provo Municipal Airport - Provo, United States": "PVU", "Brus Laguna Airport - Brus Laguna, Honduras": "BHG", "North Caicos - North Caicos, Turks and Caicos Islands": "NCA", "New Bedford Regional Airport - New Bedford, United States": "EWB", "Rio Sidra - Rio Sidra, Panama": "RSI", "Watson Lake - Watson Lake, Canada": "YQH", "Lerwick / Tingwall Airport - Lerwick, United Kingdom": "LWK", "Humera Airport - Humera, Ethiopia": "HUE", "Eastmain River Airport - Eastmain River, Canada": "ZEM", "Yenbo - Yenbo, Saudi Arabia": "YNB", "Wake Island Afld - Wake island, Wake Island": "AWK", "Devonport Airport - Devonport, Australia": "DPO", "Fitzroy Crossing Airport - Fitzroy Crossing, Australia": "FIZ", "Fort Severn Airport - Fort Severn, Canada": "YER", "Petawawa - Petawawa, Canada": "YWA", "Hilversum Railway Station - Hilversum, Netherlands": "QYI", "Menongue - Menongue, Angola": "SPP", "Lodja Airport - Lodja, Congo (Kinshasa)": "LJA", "Datong Airport - Datong, China": "DAT", "Futuna Airport - Futuna Island, Vanuatu": "FTA", "Funafuti International - Funafuti, Tuvalu": "FUN", "Pike County Airport - Hatcher Field - Pikeville, United States": "PBX", "Palmerston North - Palmerston North, New Zealand": "PMR", "Mono Airport - Stirling Island, Solomon Islands": "MNY", "Orlando Sanford Intl - Sanford, United States": "SFB", "Brunswick Golden Isles Airport - Brunswick, United States": "BQK", "Vinnitsa - Vinnitsa, Ukraine": "VIN", "Praia International Airport - Praia,  Santiago Island": "Cape Verde", "Skavsta - Stockholm, Sweden": "NYO", "Mount Hotham Airport - Mount Hotham, Australia": "MHU", "Lambarene - Lambarene, Gabon": "LBQ", "Boca Raton - Boca Raton, United States": "BCT", "Marudi - Marudi, Malaysia": "MUR", "Dibrugarh Airport - Dibrugarh, India": "DIB", "Awaba Airport - Awaba, Papua New Guinea": "AWB", "Richmond Municipal Airport - Richmond, United States": "RID", "Baden Airpark - Karlsruhe/Baden-Baden, Germany": "FKB", "Anglet - Biarritz-bayonne, France": "BIQ", "Santa Cruz - Santa Cruz, Bolivia": "SRZ", "Dallas Fort Worth Intl - Dallas-Fort Worth, United States": "DFW", "Mount Cook - Mount Cook, New Zealand": "GTN", "Mouilla Ville Airport - Mouila, Gabon": "MJL", "Ipota Airport - Ipota, Vanuatu": "IPA", "Iginniarfik Heliport - Iginniarfik, Greenland": "QFI", "Shoreham - Shoreham By Sea, United Kingdom": "ESH", "Dawson Community Airport - Glendive, United States": "GDV", "Ouvea - Ouvea, New Caledonia": "UVE", "Lewis University Airport - Lockport, United States": "LOT", "Whale Cove Airport - Whale Cove, Canada": "YXN", "Kastrup - Copenhagen, Denmark": "CPH", "Mbandaka - Mbandaka, Congo (Kinshasa)": "MDK", "Bari - Bari, Italy": "BRI", "Kamarang Airport - Kamarang, Guyana": "KAR", "New Bight Airport - Cat Island, Bahamas": "CAT", "Jekyll Island Airport - Jekyll Island, United States": "09J", "Leopold Sedar Senghor Intl - Dakar, Senegal": "DKR", "Cimei Airport - Cimei, Taiwan": "CMJ", "General Jose Maria Yanez Intl - Guaymas, Mexico": "GYM", "Pondicherry - Pendicherry, India": "PNY", "Zhoushan Airport - Zhoushan, China": "HSN", "Una-Comandatuba Airport - Una, Brazil": "UNA", "Dhangarhi - Dhangarhi, Nepal": "DHI", "Zweibruecken - Zweibruecken, Germany": "ZQW", "Bert Mooney Airport - Butte, United States": "BTM", "Pensacola Rgnl - Pensacola, United States": "PNS", "Anelghowhat Airport - Anelghowhat, Vanuatu": "AUY", "Aurangabad - Aurangabad, India": "IXU", "Hurghada Intl - Hurghada, Egypt": "HRG", "Migalovo - Tver, Russia": "KLD", "La Chinita Intl - Maracaibo, Venezuela": "MAR", "Corvo Airport - Corvo, Portugal": "CVU", "Rasht - Rasht, Iran": "RAS", "Tubuai - Tubuai, French Polynesia": "TUB", "Kastelorizo - Kastelorizo, Greece": "KZS", "La Grande Riviere - La Grande Riviere, Canada": "YGL", "Dodoma - Dodoma, Tanzania": "DOD", "Mus Airport - Mus, Turkey": "MSR", "El Jaguel / Punta del Este Airport - Maldonado, Uruguay": "MDO", "Contadora Airport - Contadora Island, Panama": "OTD", "Nassau Paradise Island Airport - Nassau, Bahamas": "PID", "In Salah - In Salah, Algeria": "INZ", "Kalamata - Kalamata, Greece": "KLX", "Seeb Intl - Muscat, Oman": "MCT", "Lloydminster - Lloydminster, Canada": "YLL", "Alma Airport - Alma, Canada": "YTF", "Lucapa Airport - Lucapa, Angola": "LBZ", "Aniak Airport - Aniak, United States": "ANI", "Qaanaaq Airport - Qaanaaq, Greenland": "NAQ", "Puerto Obaldia - Puerto Obaldia, Panama": "PUE", "Shimojishima - Shimojishima, Japan": "SHI", "Bandaressalam - Moheli, Comoros": "NWA", "Thomasville Regional Airport - Thomasville, United States": "TVI", "Suavanao Airport - Suavanao, Solomon Islands": "VAO", "Waddington - Waddington, United Kingdom": "WTN", "Luoyang Airport - Luoyang, China": "LYA", "Nyingchi Airport - Nyingchi, China": "LZY", "Dawei Airport - Dawei, Burma": "TVY", "Kuujjuaq - Quujjuaq, Canada": "YVP", "Andravida - Andravida, Greece": "PYR", "Kaltag Airport - Kaltag, United States": "KAL", "Emerald - Emerald, Australia": "EMD", "Adelaide Intl - Adelaide, Australia": "ADL", "Osvaldo Vieira International Airport - Bissau, Guinea-Bissau": "OXB", "Ambodedjo - Mopti, Mali": "MZI", "Tampa Executive Airport - Tampa, United States": "VDF", "Luke Afb - Phoenix, United States": "LUF", "Goa - Goa, India": "GOI", "Lynden Airport - Lynden, United States": "38W", "Arthurs Town Airport - Arthur's Town, Bahamas": "ATC", "Sde Dov - Tel-aviv, Israel": "SDV", "Rivesaltes - Perpignan, France": "PGF", "Cuyo Airport - Cuyo, Philippines": "CYU", "Mornington Island Airport - Mornington Island, Australia": "ONG", "Savonlinna - Savonlinna, Finland": "SVL", "Kingman Airport - Kingman, United States": "IGM", "Gangneung - Kangnung, South Korea": "KAG", "Victoria Intl - Victoria, Canada": "YYJ", "Umiujaq Airport - Umiujaq, Canada": "YUD", "Souda - Chania, Greece": "CHQ", "Emmonak Airport - Emmonak, United States": "EMK", "Wellington Municipal - Wellington, United States": "EGT", "Bayreuth - Bayreuth, Germany": "BYU", "Xangongo - Xangongo, Angola": "XGN", "Hermanos Ameijeiras - Las Tunas, Cuba": "VTU", "Mayor Buenaventura Vivas - Santo Domingo, Venezuela": "STD", "Foumban Nkounja - Foumban, Cameroon": "FOM", "Iskandar - Pangkalan Bun, Indonesia": "PKN", "Waterloo International - London, United Kingdom": "QQW", "Fonte Boa Airport - Fonte Boa, Brazil": "FBA", "Kilaguni - Kilaguni, Kenya": "ILU", "Longyear - Svalbard, Norway": "LYR", "Crystal Airport - Crystal, United States": "MIC", "Seal Bay Seaplane Base - Seal Bay, United States": "SYB", "Seward Airport - Seward, United States": "SWD", "Sultan Iskandarmuda - Banda Aceh, Indonesia": "BTJ", "7 Novembre - Tabarka, Tunisia": "TBJ", "Labe - Labe, Guinea": "LEK", "Bornholm Ronne - Ronne, Denmark": "RNN", "Neumuenster - Neumuenster, Germany": "EUM", "Hughes Airport - Hughes, United States": "HUS", "Warri Airport - Osubi, Nigeria": "QRW", "Miquelon - Miquelon, Saint Pierre and Miquelon": "MQC", "Southampton - Southampton, United Kingdom": "SOU", "Kamloops - Kamloops, Canada": "YKA", "Stevenage Railway Station - Stevenage, United Kingdom": "XVJ", "Show Low Regional Airport - Show Low, United States": "SOW", "Vallee De Seine - Rouen, France": "URO", "Orlando de Carvalho Airport - Umuarama, Brazil": "UMU", "Atmautluak Airport - Atmautluak, United States": "369", "Mc Allen Miller Intl - Mcallen, United States": "MFE", "South Haven Area Regional Airport - South Haven, United States": "LWA", "Hamilton - Hamilton, New Zealand": "HLZ", "North Island Nas - San Diego, United States": "NZY", "Selawik Airport - Selawik, United States": "WLK", "Lann Bihoue - Lorient, France": "LRT", "Ramsar - Ramsar, Iran": "RZR", "Gardermoen Airport - Oslo, Norway": "GEN", "Holy Cross Airport - Holy Cross, United States": "HCR", "Casique Aramare - Puerto Ayacucho, Venezuela": "PYH", "Parma - Parma, Italy": "PMF", "Anqing Airport - Anqing, China": "AQG", "Bugulma Airport - Bugulma, Russia": "UUA", "Al Najaf International Airport - Najaf, Iraq": "NJF", "Tunoshna - Yaroslavl, Russia": "IAR", "El Paso Intl - El Paso, United States": "ELP", "Laghouat - Laghouat, Algeria": "LOO", "Vit\u00f3ria da Conquista Airport - Vit\u00f3ria Da Conquista, Brazil": "VDC", "Lake Murray Airport - Lake Murray, Papua New Guinea": "LMY", "Columbus Afb - Colombus, United States": "CBM", "Waspam Airport - Waspam, Nicaragua": "WSP", "Philadelphia 30th St Station - Philadelphia, United States": "ZFV", "Miami University Airport - Oxford, United States": "OXD", "Eros Airport - Windhoek, Namibia": "ERS", "Vila Real - Vila Real, Portugal": "VRL", "Nakina Airport - Nakina, Canada": "YQN", "Atqasuk Edward Burnell Sr Memorial Airport - Atqasuk, United States": "ATK", "Chandigarh - Chandigarh, India": "IXC", "Douala - Douala, Cameroon": "DLA", "Santiago Del Estero - Santiago Del Estero, Argentina": "SDE", "Pluguffan - Quimper, France": "UIP", "Jeju Intl - Cheju, South Korea": "CJU", "Prince Said Ibrahim - Moroni, Comoros": "HAH", "Pobedilovo Airport - Kirov, Russia": "KVX", "Ogle - Georgetown, Guyana": "OGL", "Debrecen - Debrecen, Hungary": "DEB", "Bitam - Bitam, Gabon": "BMM", "Wellington Intl - Wellington, New Zealand": "WLG", "Pahokee Airport - Pahokee, United States": "PHK", "Liverpool - Liverpool, United Kingdom": "LPL", "Cairns Intl - Cairns, Australia": "CNS", "Penn Station - Baltimore, United States": "ZBP", "Hartford Brainard - Hartford, United States": "HFD", "Tambohorano Airport - Tambohorano, Madagascar": "WTA", "Moranbah Airport - Moranbah, Australia": "MOV", "Iwami Airport - Iwami, Japan": "IWJ", "Kissimmee Gateway Airport - Kissimmee, United States": "ISM", "Chubu Centrair Intl - Nagoya, Japan": "NGO", "Ladd Aaf - Fort Wainwright, United States": "FBK", "Nukus Airport - Nukus, Uzbekistan": "NCU", "Sechelt Aerodrome - Sechelt-Gibsons, Canada": "YHS", "Banks Airport - Swans Island, United States": "ME5", "Amparai - Galoya, Sri Lanka": "GOY", "Williamsport Rgnl - Williamsport, United States": "IPT", "Whistler/Green Lake Water Aerodrome - Whistler, Canada": "YWS", "Sari Dasht E Naz Airport - Dasht-e-naz, Iran": "SRY", "Kitoi Bay Seaplane Base - Kitoi Bay, United States": "KKB", "Lewiston Maine - Lewiston, United States": "LEW", "Rotuma Airport - Rotuma, Fiji": "RTA", "Gostomel Antonov - Kiev, Ukraine": "GML", "Scatsta Airport - Scatsta, United Kingdom": "SCS", "Lady Elliot Island - Lady Elliot Island, Australia": "LYT", "Wapekeka Airport - Angling Lake, Canada": "YAX", "Villa Gesell - Villa Gesell, Argentina": "VLG", "Egilsstadir - Egilsstadir, Iceland": "EGS", "Merle K Mudhole Smith - Cordova, United States": "CDV", "Wanxian Airport - Wanxian, China": "WXN", "Sheikh Zayed - Rahim Yar Khan, Pakistan": "RYK", "Val De Cans Intl - Belem, Brazil": "BEL", "Oscoda Wurtsmith - Oscoda, United States": "OSC", "Newcastle Airport - Newcastle, Australia": "NTL", "Reina Beatrix Intl - Oranjestad, Aruba": "AUA", "\u00c4ngelholm-Helsingborg Airport - \u00c4ngelholm, Sweden": "AGH", "Jacquinot Bay Airport - Jacquinot Bay, Papua New Guinea": "JAQ", "La D\u00e9sirade Airport - Grande Anse, Guadeloupe": "DSD", "General Jose Antonio Anzoategui Intl - Barcelona, Venezuela": "BLA", "Pappy Boyington - Coeur d'Alene, United States": "COE", "Kresty - Pskov, Russia": "PKV", "Bloyer Field - Tomah, United States": "Y72", "All Airports - Beijing, China": "BJS", "Santa Rosa - Santa Rosa, Argentina": "RSA", "Florida Keys Marathon Airport - Marathon, United States": "MTH", "Geraldton Airport - Geraldton, Australia": "GET", "Kona Intl At Keahole - Kona, United States": "KOA", "Isafjordur - Isafjordur, Iceland": "IFJ", "Torrejon - Madrid, Spain": "TOJ", "Gore Airport - Gore, Ethiopia": "GOR", "Lopez Island Airport - Lopez, United States": "LPS", "Barysiai - Barysiai, Lithuania": "HLJ", "Four Corners Rgnl - Farmington, United States": "FMN", "John Murtha Johnstown-Cambria County Airport - Johnstown, United States": "JST", "Gounda Airport - Gounda, Central African Republic": "GDA", "Pago Pago Intl - Pago Pago, American Samoa": "PPG", "Richland Airport - Richland Center, United States": "93C", "Jiangbei - Chongqing, China": "CKG", "Kudat Airport - Kudat, Malaysia": "KUD", "Fitzgerald Municipal Airport - Fitzgerald, United States": "FZG", "Gassim - Gassim, Saudi Arabia": "ELQ", "Balikesir Korfez Airport - Balikesir Korfez, Turkey": "EDO", "Masterton - Masterton, New Zealand": "MRO", "FOB Salerno - Khost, Afghanistan": "KHT", "Kalkgurung Airport - Kalkgurung, Australia": "KFG", "Hayman Island Airport - Hayman Island, Australia": "HIS", "Executive - Orlando, United States": "ORL", "Malikus Saleh Airport - Lhok Seumawe-Sumatra Island, Indonesia": "LSW", "Kelowna - Kelowna, Canada": "YLW", "Boorama Airport - Boorama, Somalia": "BXX", "Gaua Island Airport - Gaua Island, Vanuatu": "ZGU", "Cuyahoga County - Richmond Heights, United States": "CGF", "Dayong Airport - Dayong, China": "DYG", "Notodden - Notodden, Norway": "NTB", "Twentynine Palms Eaf - Twenty Nine Palms, United States": "NXP", "Manas - Bishkek, Kyrgyzstan": "FRU", "Nouadhibou - Nouadhibou, Mauritania": "NDB", "Mehrabad Intl - Teheran, Iran": "THR", "Marktoberdorf BF - Marktoberdorf, Germany": "OAL", "Tiska - Djanet, Algeria": "DJG", "Tianshui Airport - Tianshui, China": "THQ", "Swan River Airport - Swan River, Canada": "ZJN", "Gaoqi - Xiamen, China": "XMN", "Lansdowne House Airport - Lansdowne House, Canada": "YLH", "Redlands Municipal Airport - Redlands, United States": "REI", "Ua Huka Airport - Ua Huka, French Polynesia": "UAH", "Syktyvkar - Syktyvkar, Russia": "SCW", "Kalymnos Island - Kalymnos, Greece": "JKL", "Chautauqua County-Jamestown - Jamestown, United States": "JHW", "Waukesha County Airport - Waukesha, United States": "UES", "Aden Intl - Aden, Yemen": "ADE", "Bagotville - Bagotville, Canada": "YBG", "Gesundbrunnen - Berlin, Germany": "BGS", "Dikson Airport - Dikson, Russia": "DKS", "Mount Isa - Mount Isa, Australia": "ISA", "Torres Airstrip - Loh/Linua, Vanuatu": "TOH", "Vieste Heliport - Vieste, Italy": "VIF", "Popondetta - Popondetta, Papua New Guinea": "EIA", "Tucumcari Muni - Tucumcari, United States": "TCC", "Schwerin Parchim - Parchim, Germany": "SZW", "Yorke Island Airport - Yorke Island, Australia": "OKR", "Hultsfred - Hultsfred, Sweden": "HLF", "Kufra - Kufra, Libya": "AKF", "Caravelas - Caravelas, Brazil": "CRQ", "Bukhara - Bukhara, Uzbekistan": "BHK", "Tindal Airport - Katherine, Australia": "KTR", "Bilaspur - Bilaspur, India": "PAB", "Mutiara - Palu, Indonesia": "PLW", "Zhytomyr - Zhytomyr, Ukraine": "ZTR", "Jose Celestino Mutis - Bahia Solano, Colombia": "BSC", "Xieng Khouang - Phon Savan, Laos": "XKH", "City of Derry - Londonderry, United Kingdom": "LDY", "Mercedita - Ponce, Puerto Rico": "PSE", "Tancredo Thomaz de Faria Airport - Guarapuava, Brazil": "GPB", "Vestmannaeyjar - Vestmannaeyjar, Iceland": "VEY", "Puttgarden - Puttgarden, Germany": "QUA", "Araguaina Airport - Araguaina, Brazil": "AUX", "Kimmirut Airport - Kimmirut, Canada": "YLC", "Kone - Kone, New Caledonia": "KNQ", "Hervey Bay Airport - Hervey Bay, Australia": "HVB", "Whiting Fld Nas North - Milton, United States": "NSE", "Ambatomainty Airport - Ambatomainty, Madagascar": "AMY", "Arusha - Arusha, Tanzania": "ARK", "Deer Valley Municipal Airport - Phoenix , United States": "DVT", "Taytay Sandoval - Taytay, Philippines": "RZP", "Uromiyeh Airport - Uromiyeh, Iran": "OMH", "Wangerooge Airport - Wangerooge, Germany": "AGE", "Derby Airport - Derby, Australia": "DRB", "Lifuka Island Airport - Lifuka, Tonga": "HPA", "Heydar Aliyev - Baku, Azerbaijan": "BAK", "Makurdi - Makurdi, Nigeria": "MDI", "Akunnaaq Heliport - Akunnaaq, Greenland": "QCU", "Naha - Okinawa, Japan": "OKA", "Montrose Regional Airport - Montrose CO, United States": "MTJ", "Apopka - Orlando, United States": "X04", "Calbayog Airport - Calbayog City, Philippines": "CYP", "Angers St Laud - Angers, France": "QXG", "Dubai Intl - Dubai, United Arab Emirates": "DXB", "Healy River Airport - Healy, United States": "HKB", "Long Akah Airport - Long Akah, Malaysia": "LKH", "Yan'an Airport - Yan'an, China": "ENY", "Islay - Islay, United Kingdom": "ILY", "Huambo - Huambo, Angola": "NOV", "Cobb County Airport-Mc Collum Field - Atlanta, United States": "RYY", "Penang Intl - Penang, Malaysia": "PEN", "Lahr Airport - Lahr, Germany": "LHA", "Desert Aire - Mattawa, United States": "M94", "Es Senia - Oran, Algeria": "ORN", "Rarotonga Intl - Avarua, Cook Islands": "RAR", "Codrington Airport - Codrington, Antigua and Barbuda": "BBQ", "Zaria - Zaria, Nigeria": "ZAR", "Long Banga Airport - Long Banga, Malaysia": "LBP", "Lonorore Airport - Lonorore, Vanuatu": "LNE", "Teslin - Teslin, Canada": "YZW", "Hail - Hail, Saudi Arabia": "HAS", "Cut Bank Muni - Cutbank, United States": "CTB", "San Pedro - San Pedro, Belize": "SPR", "Stebbins Airport - Stebbins, United States": "WBB", "Hiroshima-Nishi - Hiroshima, Japan": "HIW", "Kostanay West Airport - Kostanay, Kazakhstan": "KSN", "Dalma Airport - Dalma Island, United Arab Emirates": "ZDY", "Platinum - Port Moller, United States": "PTU", "Olympia Regional Airpor - Olympia, United States": "OLM", "Barisal Airport - Barisal, Bangladesh": "BZL", "Gillette-Campbell County Airport - Gillette, United States": "GCC", "Kushiro Airport - Kushiro, Japan": "KUH", "Maningrida Airport - Maningrida, Australia": "MNG", "Hokitika - Hokitika, New Zealand": "HKK", "Lake Simcoe - Barrie-Orillia, Canada": "YLS", "Conceicao Do Araguaia - Conceicao Do Araguaia, Brazil": "CDJ", "Rocky Mountain Metropolitan Airport - Broomfield-CO, United States": "BJC", "Hodeidah Intl - Hodeidah, Yemen": "HOD", "Kindersley - Kindersley, Canada": "YKY", "Guanajuato Intl - Del Bajio, Mexico": "BJX", "J F Mitchell Airport - Bequia, Saint Vincent and the Grenadines": "BQU", "Le Palyvestre - Hyeres, France": "TLN", "Yola - Yola, Nigeria": "YOL", "Rimatara - Rimatara, French Polynesia": "RMT", "Kananga - Kananga, Congo (Kinshasa)": "KGA", "Andersen Afb - Andersen, Guam": "UAM", "Rotorua - Rotorua, New Zealand": "ROT", "Arroyo Barril Intl - Samana, Dominican Republic": "EPS", "Nalati - Xinyuan, China": "NLT", "Moala Airport - Moala, Fiji": "MFJ", "Minto Airport - Minto, United States": "MNT", "Afyon - Afyon, Turkey": "AFY", "Framnes - Narvik, Norway": "NVK", "Offutt Afb - Omaha, United States": "OFF", "Central Station - Stockholm, Sweden": "XEV", "Maryborough Airport - Maryborough, Australia": "MBH", "Downsview - Toronto, Canada": "YZD", "Frejus Saint Raphael - Frejus, France": "FRJ", "Uzunyazi - Kastamonu, Turkey": "KFS", "Oceano County Airport - Oceano, United States": "L52", "Branson LLC - Branson, United States": "BKG", "Mariupol International Airport - Mariupol International, Ukraine": "MPW", "Bob Hope - Burbank, United States": "BUR", "Mannheim City - Mannheim, Germany": "MHG", "Kyzyl Airport - Kyzyl, Russia": "KYZ", "Lawas Airport - Lawas, Malaysia": "LWY", "Sakon Nakhon - Sakon Nakhon, Thailand": "SNO", "Kjaerstad - Mosjoen, Norway": "MJF", "Wurzburg HBF - Wurzburg, Germany": "WZB", "Pevek - Pevek, Russia": "PWE", "Pathankot - Pathankot, India": "IXP", "Saab - Linkoeping, Sweden": "LPI", "Giebelstadt Aaf - Giebelstadt, Germany": "GHF", "Layang Layang Airport - Layang Layang Atoll, Malaysia": "LAC", "Pedro Bay Airport - Pedro Bay, United States": "PDB", "North Battleford - North Battleford, Canada": "YQW", "Pai - Pai, Thailand": "PYY", "Okondja - Okondja, Gabon": "OKN", "Cancun Intl - Cancun, Mexico": "CUN", "Araracuara Airport - Araracuara, Colombia": "ACR", "\u00cele d'Yeu Airport - \u00cele d'Yeu, France": "IDY", "Heilongjiang Mohe Airport - Mohe County, China": "OHE", "Mc Clellan Afld - Sacramento, United States": "MCC", "Fairfield County Airport - Winnsboro, United States": "FDW", "Lelystad Airport - Lelystad, Netherlands": "LEY", "Chetumal Intl - Chetumal, Mexico": "CTM", "Lord Howe Island Airport - Lord Howe Island, Australia": "LDH", "Kuching Intl - Kuching, Malaysia": "KCH", "Delaware County Airport - Muncie, United States": "MIE", "New Haven Rail Station - New Haven, United States": "ZVE", "Poretta - Bastia, France": "BIA", "Vasteras - Vasteras, Sweden": "VST", "Santiago Perez - Arauca, Colombia": "AUC", "Niamtougou International - Niatougou, Togo": "LRL", "Cheyenne Rgnl Jerry Olson Fld - Cheyenne, United States": "CYS", "Fukushima Airport - Fukushima, Japan": "FKS", "Redhill Aerodrome - Redhill, United Kingdom": "KRH", "Imperial Co - Imperial, United States": "IPL", "Sangster Intl - Montego Bay, Jamaica": "MBJ", "Jujuy - Jujuy, Argentina": "JUJ", "Ech Cheliff - Ech-cheliff, Algeria": "QAS", "Trenton-Robbinsville Airport - Trenton, United States": "N87", "Port Harcourt Intl - Port Hartcourt, Nigeria": "PHC", "General Jose Francisco Bermudez - Carupano, Venezuela": "CUP", "Bocas Del Toro Intl - Bocas Del Toro, Panama": "BOC", "Port Hedland Intl - Port Hedland, Australia": "PHE", "Laguna de Los Patos International Airport - Colonia, Uruguay": "CYR", "Don Muang Intl - Bangkok, Thailand": "DMK", "Princeton - Princeton, Canada": "YDC", "Coweta County Airport - Newnan, United States": "CCO", "Midway Atoll - Midway, Midway Islands": "MDY", "Oita - Oita, Japan": "OIT", "Bagdogra - Baghdogra, India": "IXB", "Tampa Padang - Mamuju, Indonesia": "MJU", "Chertovitskoye - Voronezh, Russia": "VOZ", "Mostar - Mostar, Bosnia and Herzegovina": "OMO", "Mesa Falcon Field - Mesa, United States": "FFZ", "Soyo - Soyo, Angola": "SZA", "Mzuzu - Mzuzu, Malawi": "ZZU", "Tomsk Bogashevo Airport - Tomsk, Russia": "TOF", "Sonderlandeplatz Norden-Norddeich - Norden, Germany": "NOE", "Ponta Pelada Airport - Manaus, Brazil": "PLL", "Mainz Finthen - Mainz, Germany": "QFZ", "Munda Airport - Munda, Solomon Islands": "MUA", "Baillif Airport - Basse Terre, Guadeloupe": "BBR", "Ocean Shores Municipal - Ocean Shores, United States": "W04", "Woja Airport - Majuro Atoll, Marshall Islands": "WJA", "Hamilton Island Airport - Hamilton Island, Australia": "HTI", "Farafangana - Farafangana, Madagascar": "RVA", "Bacau - Bacau, Romania": "BCM", "Daniel Z Romualdez - Tacloban, Philippines": "TAC", "Minacu Airport - Minacu, Brazil": "MQH", "Greenwood - Greenwood, Canada": "YZX", "Thorne Bay Seaplane Base - Thorne Bay, United States": "KTB", "Rimouski Airport - Rimouski, Canada": "YXK", "Reales Tamarindos - Portoviejo, Ecuador": "PVO", "Spring Hill Airport - Sterling, United States": "70N", "Ononge Airport - Ononge, Papua New Guinea": "ONB", "Bacolod - Bacolod, Philippines": "BCD", "Antsirabato - Antalaha, Madagascar": "ANM", "Mikkeli - Mikkeli, Finland": "MIK", "Rundu - Rundu, Namibia": "NDU", "Kirtland Air Force Base - Kirtland A.f.b., United States": "IKR", "Jeh Airport - Ailinglapalap Atoll, Marshall Islands": "JEJ", "Dimokritos - Alexandroupolis, Greece": "AXD", "Nulato Airport - Nulato, United States": "NUL", "Bukavu Kavumu - Bukavu/kavumu, Congo (Kinshasa)": "BKY", "Sub Teniente Nestor Arias - San Felipe, Venezuela": "SFH", "Juan Pablo P\u00e9rez Alfonso Airport - El Vig\u00eda, Venezuela": "VIG", "Gode Airport - Gode, Ethiopia": "GDE", "Suvarnabhumi Intl - Bangkok, Thailand": "BKK", "Dembidollo Airport - Dembidollo, Ethiopia": "DEM", "Laramie Regional Airport - Laramie, United States": "LAR", "Evansville Regional - Evansville, United States": "EVV", "St Gatien - Deauville, France": "DOL", "Ocean Isle Beach Airport - Ocean Isle Beach, United States": "60J", "Lester B Pearson Intl - Toronto, Canada": "YYZ", "Augusta Rgnl At Bush Fld - Bush Field, United States": "AGS", "Shageluk Airport - Shageluk, United States": "SHX", "Leh - Leh, India": "IXL", "Ambler Airport - Ambler, United States": "ABL", "Kangiqsujuaq - Wakeham Bay Airport - Kangiqsujuaq, Canada": "YWB", "Kake Airport - Kake, United States": "AFE", "General Lucio Blanco Intl - Reynosa, Mexico": "REX", "Floro - Floro, Norway": "FRO", "Kitadaito - Kitadaito, Japan": "KTD", "Fort St. James - Perison Airport - Fort St. James, Canada": "YJM", "Lamu Manda - Lamu, Kenya": "LAU", "Tstc Waco - Waco, United States": "CNW", "Sugar Land Regional Airport - Sugar Land, United States": "SGR", "Bubung - Luwuk, Indonesia": "LUW", "Comox - Comox, Canada": "YQQ", "Southwest Oregon Regional Airport - North Bend, United States": "OTH", "Muzaffarabad - Muzaffarabad, Pakistan": "MFG", "Monroe Reqional Airport - Charlotte, United States": "EQY", "Qingshan - Xichang, China": "XIC", "Hohenems - Hohenems, Austria": "HOJ", "El Bolson - El Bolson, Argentina": "EHL", "Simon Bolivar - Santa Marta, Colombia": "SMR", "Izhevsk Airport - Izhevsk, Russia": "IJK", "Tunica Municipal Airport - Tunica, United States": "UTM", "Manitoulin East - Manitowaning, Canada": "YEM", "Shahid Ashrafi Esfahani - Bakhtaran, Iran": "KSH", "Middle Georgia Rgnl - Macon, United States": "MCN", "San Pedro - San Pedro, Cote d'Ivoire": "SPY", "Daniel Oduber Quiros Intl - Liberia, Costa Rica": "LIR", "The Pas Airport - The Pas, Canada": "YQD", "East Texas Rgnl - Longview, United States": "GGG", "Silvio Pettirossi Intl - Asuncion, Paraguay": "ASU", "La Fria - La Fria, Venezuela": "LFR", "Pampulha Carlos Drummond De Andrade - Belo Horizonte, Brazil": "PLU", "Chennai Intl - Madras, India": "MAA", "Leshukonskoye Airport - Arkhangelsk, Russia": "LDG", "Tandil - Tandil, Argentina": "TDL", "Oamaru - Oamaru, New Zealand": "OAM", "Malakal - Malakal, Sudan": "MAK", "Jinggangshan - Jian, China": "KNC", "Senggeh Airport - Senggeh-Papua Island, Indonesia": "SEH", "Auckland Intl - Auckland, New Zealand": "AKL", "Sochi - Sochi, Russia": "AER", "Plymouth - Plymouth, United Kingdom": "PLH", "Paraburdoo Airport - Paraburdoo, Australia": "PBO", "Plan De Guadalupe Intl - Saltillo, Mexico": "SLW", "Bristol - Bristol, United Kingdom": "BRS", "Sarajevo - Sarajevo, Bosnia and Herzegovina": "SJJ", "Biratnagar - Biratnagar, Nepal": "BIR", "Balakovo Airport - Balakovo, Russia": "BWO", "Barth - Barth, Germany": "BBH", "Adi Sumarmo Wiryokusumo - Solo City, Indonesia": "SOC", "Natrona Co Intl - Casper, United States": "CPR", "Wai Sha Airport - Shantou, China": "SWA", "Burrello-Mechanicville Airport - Mechanicville, United States": "K27", "Baie Comeau - Baie Comeau, Canada": "YBC", "Ufa - Ufa, Russia": "UFA", "Berberati - Berberati, Central African Republic": "BBT", "Confresa Airport - Confresa, Brazil": "CFO", "Tidjikja - Tidjikja, Mauritania": "TIY", "Tame - Tame, Colombia": "TME", "Peshawar Intl - Peshawar, Pakistan": "PEW", "Bakel - Bakel, Senegal": "BXE", "Wyk auf Foehr - Wyk, Germany": "OHR", "Yonago Kitaro - Miho, Japan": "YGJ", "Moses Kilangin - Timika, Indonesia": "TIM", "Nyala Airport - Nyala, Sudan": "UYL", "Minna New - Minna, Nigeria": "MXJ", "Orange County Airport - Montgomery, United States": "MGJ", "Qaqortoq Heliport - Qaqortoq, Greenland": "JJU", "Pardubice - Pardubice, Czech Republic": "PED", "Aro - Molde, Norway": "MOL", "Mexia - Limestone County Airport - Mexia, United States": "LXY", "Goroka - Goroka, Papua New Guinea": "GKA", "Ca Mau - Ca Mau, Vietnam": "CAH", "Shenyang Taoxian International Airport - Shenyang, China": "SHE", "Ghadames East - Ghadames, Libya": "LTD", "\u00d6stersund Airport - \u00d6stersund, Sweden": "OSD", "Tachileik - Tachilek, Burma": "THL", "Aeroclub Sibiu - Sibiu, Romania": "SIB", "Alfonso Bonilla Aragon Intl - Cali, Colombia": "CLO", "Cherepovets Airport - Cherepovets, Russia": "CEE", "Pagadian - Pagadian, Philippines": "PAG", "Icy Bay Airport - Icy Bay, United States": "ICY", "Sultan Ismail Petra - Kota Bahru, Malaysia": "KBR", "Diamantino Airport - Diamantino, Brazil": "DMT", "Weedon Field - Eufala, United States": "EUF", "Ruby Airport - Ruby, United States": "RBY", "King Khaled Intl - Riyadh, Saudi Arabia": "RUH", "Charlo - Charlo, Canada": "YCL", "Jorge Wilsterman - Cochabamba, Bolivia": "CBB", "Annai Airport - Annai, Guyana": "NAI", "Bamenda - Bamenda, Cameroon": "BPC", "Circle City Airport - Circle, United States": "IRC", "Husavik - Husavik, Iceland": "HZK", "Orlando Intl - Orlando, United States": "MCO", "Licenciado Manuel Crescencio Rejon Int - Merida, Mexico": "MID", "Skiros - Skiros, Greece": "SKU", "Appleton - Appleton, United States": "ATW", "Ching Chuang Kang - Taichung, Taiwan": "RMQ", "Padre Aldamiz - Puerto Maldonado, Peru": "PEM", "Amritsar - Amritsar, India": "ATQ", "Ephraim-Gibraltar Airport - Ephraim, United States": "3D2", "Aeroclube de Nova Iguacu - Nova Iguacu, Brazil": "QNV", "BFT County Airport - Beauford, United States": "BFT", "Losinj Airport - Mali Losinj, Croatia": "LSZ", "Eastern Slopes Regional - Fryeburg, United States": "IZG", "Bom Futuro Airport - Lucas do Rio Verde, Brazil": "LVR", "Karshi Khanabad Airport - Khanabad, Uzbekistan": "KSQ", "Turaif - Turaif, Saudi Arabia": "TUI", "Kissidougou - Kissidougou, Guinea": "KSI", "Corpus Christi NAS - Corpus Christi, United States": "NGP", "Train Station - Belleville, Canada": "XVV", "Brac - Brac, Croatia": "BWK", "Doomadgee Airport - Doomadgee, Australia": "DMD", "Chisasibi Airport - Chisasibi, Canada": "YKU", "Lusaka Intl - Lusaka, Zambia": "LUN", "Uzundzhovo - Haskovo, Bulgaria": "HKV", "Isparta S\u00fcleyman Demirel Airport - Isparta, Turkey": "ISE", "Imbaimadai Airport - Imbaimadai, Guyana": "IMB", "Bole Intl - Addis Ababa, Ethiopia": "ADD", "Chatham Islands - Chatham Island, New Zealand": "CHT", "Salluit Airport - Salluit, Canada": "YZG", "St Jean - St. Jean, Canada": "YJN", "Mikonos - Mykonos, Greece": "JMK", "Mactan Cebu Intl - Cebu, Philippines": "CEB", "Benin - Benin, Nigeria": "BNI", "Ras Al Khaimah Intl - Ras Al Khaimah, United Arab Emirates": "RKT", "Bateen - Abu Dhabi, United Arab Emirates": "AZI", "Stoelmans Eiland Airstrip - Stoelmans Eiland, Suriname": "SMZ", "Lashio - Lashio, Burma": "LSH", "Minami Daito - Minami Daito, Japan": "MMD", "St Augustin Airport - St-Augustin, Canada": "YIF", "Buchanan Field Airport - Concord, United States": "CCR", "Mid Delta Regional Airport - Greenville, United States": "GLH", "Wheeler Aaf - Wahiawa, United States": "HHI", "Nizhnevartovsk - Nizhnevartovsk, Russia": "NJC", "Kos - Kos, Greece": "KGS", "Bo Airport - Bo, Sierra Leone": "KBS", "LaGrange-Callaway Airport - LaGrange, United States": "LGC", "Roberval - Roberval, Canada": "YRJ", "Shpakovskoye - Stavropol, Russia": "STW", "Pyongyang Intl - Pyongyang, Korea": "FNJ", "Ninoy Aquino Intl - Manila, Philippines": "MNL", "Mc Ghee Tyson - Knoxville, United States": "TYS", "Southwest Florida Intl - Fort Myers, United States": "RSW", "Clemson - Clemson, United States": "CEU", "Longdongbao - Guiyang, China": "KWE", "Gunsa - Shiquanhe, China": "NGQ", "Melbourne Intl - Melbourne, Australia": "MEL", "Major Brigadeiro Trompowsky - Varginha, Brazil": "VAG", "Albian Aerodrome - Wood Buffalo, Canada": "JHL", "Capt Jose A Quinones Gonzales Intl - Chiclayo, Peru": "CIX", "Revelstoke Airport - Revelstoke, Canada": "YRV", "Modesto City Co Harry Sham - Modesto, United States": "MOD", "Laughlin Afb - Del Rio, United States": "DLF", "Sokerkino - Kostroma, Russia": "KMW", "Sukkur - Sukkur, Pakistan": "SKZ", "Belgaum - Belgaum, India": "IXG", "All Airports - Montreal, Canada": "YMQ", "Principe - Principe, Sao Tome and Principe": "PCP", "Taloyoak - Spence Bay, Canada": "YYH", "Wolter Monginsidi - Kendari, Indonesia": "KDI", "Boigu Airport - Boigu, Australia": "GIC", "Griffin-Spalding County Airport - Griffin, United States": "6A2", "Jeremie Airport - Jeremie, Haiti": "JEE", "Wanganui - Wanganui, New Zealand": "WAG", "White Mountain Airport - White Mountain, United States": "WMO", "Daloa - Daloa, Cote d'Ivoire": "DJO", "Lanseria - Johannesburg, South Africa": "HLA", "Besalampy - Besalampy, Madagascar": "BPY", "Plovdiv - Plovdiv, Bulgaria": "PDV", "Orlando - Orlando, United States": "DWS", "Ulawa Airport - Ulawa, Solomon Islands": "RNA", "Fengnin - Fengnin, Taiwan": "TTT", "Dauphin Barker - Dauphin, Canada": "YDN", "Comodoro Pierrestegui - Concordia, Argentina": "COC", "Thyna - Sfax, Tunisia": "SFA", "East 34th Street Heliport - New York, United States": "TSS", "Findlay Airport - Findley, United States": "FDY", "Inverell - Inverell, Australia": "IVR", "Columbus Metropolitan Airport - Columbus, United States": "CSG", "Dubai Al Maktoum - Dubai, United Arab Emirates": "DWC", "Indira Gandhi Intl - Delhi, India": "DEL", "Kokoda Airport - Kokoda, Papua New Guinea": "KKD", "Virgin Gorda Airport - Spanish Town, British Virgin Islands": "VIJ", "Columbia Metropolitan - Columbia, United States": "CAE", "Marshall Aaf - Fort Riley, United States": "FRI", "C P A Carlos Rovirosa Intl - Villahermosa, Mexico": "VSA", "Bologna - Bologna, Italy": "BLQ", "Rumbek Airport - Rumbek, Sudan": "RBX", "Palanga Intl - Palanga, Lithuania": "PLQ", "Gorgan Airport - Gorgan, Iran": "GBT", "Hondo Municipal Airport - Hondo, United States": "HDO", "Sacramento Executive - Sacramento, United States": "SAC", "Berezovo - Berezovo, Russia": "NBB", "Buckland Airport - Buckland, United States": "BKC", "Chisana Airport - Chisana, United States": "CZN", "Arua Airport - Arua, Uganda": "RUA", "Kikori Airport - Kikori, Papua New Guinea": "KRI", "Daegu Ab - Taegu, South Korea": "TAE", "Smithers - Smithers, Canada": "YYD", "Van Nuys - Van Nuys, United States": "VNY", "Hierro - Hierro, Spain": "VDE", "Mataveri Intl - Easter Island, Chile": "IPC", "Mersa Matruh - Mersa-matruh, Egypt": "MUH", "Campbeltown Airport - Campbeltown, United Kingdom": "CAL", "Gerald R Ford Intl - Grand Rapids, United States": "GRR", "Fort Frances Municipal Airport - Fort Frances, Canada": "YAG", "Mosul International Airport - Mosul, Iraq": "OSB", "Souche - Niort, France": "NIT", "Cataratas Intl - Foz Do Iguacu, Brazil": "IGU", "Orland - Orland, Norway": "OLA", "Deer Lake Airport - Deer Lake, Canada": "YVZ", "Skopje - Skopje, Macedonia": "SKP", "Constanza Airport - Constanza, Dominican Republic": "COZ", "Richmond Intl - Richmond, United States": "RIC", "Cardak - Denizli, Turkey": "DNZ", "Xiangfan Airport - Xiangfan, China": "XFN", "Faisalabad Intl - Faisalabad, Pakistan": "LYP", "Mount Magnet Airport - Mount Magnet, Australia": "MMG", "Mawlamyine Airport - Mawlamyine, Burma": "MNU", "Laverton Airport - Laverton, Australia": "LVO", "Itokama Airport - Itokama, Papua New Guinea": "ITK", "Richard Lloyd Jones Jr Airport - Tulsa, United States": "RVS", "Khon Kaen - Khon Kaen, Thailand": "KKC", "Drummond Island Airport - Drummond Island, United States": "DRM", "Madison GA Municipal Airport - Madison, United States": "52A", "Exuma Intl - Great Exuma, Bahamas": "GGT", "Francis S Gabreski - West Hampton Beach, United States": "FOK", "Tottori - Tottori, Japan": "TTJ", "Tbilisi - Tbilisi, Georgia": "TBS", "Coober Pedy Airport - Coober Pedy, Australia": "CPD", "Bagan Intl - Nyuang U, Burma": "NYU", "Fort Collins Loveland Muni - Fort Collins, United States": "FNL", "Minneapolis St Paul Intl - Minneapolis, United States": "MSP", "Pierre Elliott Trudeau Intl - Montreal, Canada": "YUL", "Balimo Airport - Balimo, Papua New Guinea": "OPU", "Jaqu\u00e9 Airport - Jaqu\u00e9, Panama": "JQE", "Cuxhaven Airport - Cuxhaven, Germany": "NDZ", "Valkenburg - Valkenburg, Netherlands": "LID", "Guernsey - Guernsey, Guernsey": "GCI", "Perryville Airport - Perryville, United States": "KPV", "Greater Moncton Intl - Moncton, Canada": "YQM", "Pender Harbour Water Aerodrome - Pender Harbour, Canada": "YPT", "Essen Railway - Essen, Germany": "ZES", "Baita Airport - Hohhot, China": "HET", "Tanga - Tanga, Tanzania": "TGT", "Kansai - Osaka, Japan": "KIX", "Changbei Intl - Nanchang, China": "KHN", "Flagler County Airport - Flagler, United States": "XFL", "Francisco De Orellana - Coca, Ecuador": "OCC", "Dalton Municipal Airport - Dalton, United States": "DNN", "Raduzhny Airport - Raduzhnyi, Russia": "RAT", "Christmas Island - Christmas Island, Christmas Island": "XCH", "Guerrero Negro Airport - Guerrero Negro, Mexico": "GUB", "Pleiku Airport - Pleiku, Vietnam": "PXU", "Waikoloa Heliport - Waikoloa Village, United States": "WKL", "Grande Prairie - Grande Prairie, Canada": "YQU", "Kawthoung Airport - Kawthoung, Burma": "KAW", "Koltsovo - Yekaterinburg, Russia": "SVX", "Konya - Konya, Turkey": "KYA", "Putnam County Airport - Greencastle, United States": "4I7", "Arorae Island Airport - Arorae, Kiribati": "AIS", "Mombasa Moi Intl - Mombasa, Kenya": "MBA", "Erzurum - Erzurum, Turkey": "ERZ", "Flagstaff Pulliam Airport - Flagstaff, United States": "FLG", "Robinson Aaf - Robinson, United States": "RBM", "Portland Hillsboro - Hillsboro, United States": "HIO", "Oran - Oran, Argentina": "ORA", "Ministro Victor Konder Intl - Navegantes, Brazil": "NVT", "Malamala Airport - Malamala, South Africa": "AAM", "Cap Manuel Nino Intl - Changuinola, Panama": "CHX", "Magenta - Noumea, New Caledonia": "GEA", "Bolzano - Bolzano, Italy": "BZO", "Prospect Creek Airport - Prospect Creek, United States": "PPC", "Gimpo International Airpot - Seoul, South Korea": "SEL", "Bulgan Airport - Bulgan, Mongolia": "UGA", "John A. Osborne Airport - Geralds, Montserrat": "MNI", "Alexandra - Alexandra, New Zealand": "ALR", "Jalaluddin - Gorontalo, Indonesia": "GTO", "Longana Airport - Longana, Vanuatu": "LOD", "Jaisalmer - Jaisalmer, India": "JSA", "Meekatharra Airport - Meekatharra, Australia": "MKR", "Liangjiang - Guilin, China": "KWL", "Mansfield Lahm Regional - Mansfield, United States": "MFD", "Packwood - Packwood, United States": "55S", "Keetmanshoop - Keetmanshoop, Namibia": "KMP", "Rota Intl - Rota, Northern Mariana Islands": "ROP", "Xianyang - Xi'an, China": "XIY", "Keesler Afb - Biloxi, United States": "BIX", "Luderitz Airport - Luderitz, Namibia": "LUD", "Yeovilton - Yeovilton, United Kingdom": "YEO", "Mbanza Congo - M'banza-congo, Angola": "SSY", "Kwigillingok Airport - Kwigillingok, United States": "KWK", "Matei Airport - Matei, Fiji": "TVU", "Garoua - Garoua, Cameroon": "GOU", "Baotou Airport - Baotou, China": "BAV", "Messina - Musina, South Africa": "MEZ", "Uralsk - Uralsk, Kazakhstan": "URA", "Stronsay Airport - Stronsay, United Kingdom": "SOY", "Esquel - Esquel, Argentina": "EQS", "Meigs Field - Chicago, United States": "CGX", "Khanty Mansiysk Airport - Khanty-Mansiysk, Russia": "HMA", "Kungsangen - Norrkoeping, Sweden": "NRK", "De Kooy - De Kooy, Netherlands": "DHR", "Torsby Airport - Torsby, Sweden": "TYF", "Inyokern Airport - Inyokern, United States": "IYK", "Julia Creek Airport - Julia Creek, Australia": "JCK", "Nain Airport - Nain, Canada": "YDP", "Dyce - Aberdeen, United Kingdom": "ABZ", "Orsk Airport - Orsk, Russia": "OSW", "Hassan I Airport - El Aai\u00fan, Western Sahara": "EUN", "Wapenamanda Airport - Wapenamanda, Papua New Guinea": "WBM", "Kingscote Airport - Kingscote, Australia": "KGC", "Naone Airport - Maewo Island, Vanuatu": "MWF", "Jabalpur - Jabalpur, India": "JLR", "Monchengladbach - Moenchengladbach, Germany": "MGL", "Paulo Afonso - Paulo Alfonso, Brazil": "PAV", "Bryansk - Bryansk, Russia": "BZK", "Colorado Springs East - Ellicott, United States": "A50", "Misratah Airport - Misratah, Libya": "MRA", "Sevilla - Sevilla, Spain": "SVQ", "Plattsburgh Intl - Plattsburgh, United States": "PBG", "Downtown - Kansas City, United States": "MKC", "Frank Wiley Field - Miles City, United States": "MLS", "Big Trout Lake Airport - Big Trout Lake, Canada": "YTL", "Vishakhapatnam - Vishakhapatnam, India": "VTZ", "Edwards Afb - Edwards Afb, United States": "EDW", "Mc Chord Afb - Tacoma, United States": "TCM", "Kangding Airport - Kangding, China": "KGT", "Anaco - Anaco, Venezuela": "AAO", "Jackson Hole Airport - Jacksn Hole, United States": "JAC", "Uru Harbour Airport - Atoifi, Solomon Islands": "ATD", "Memphis Intl - Memphis, United States": "MEM", "Menominee Marinette Twin Co - Macon, United States": "MNM", "Tille - Beauvais, France": "BVA", "Jinan - Jinan, China": "TNA", "Hays Regional Airport - Hays, United States": "HYS", "Central Railway Station - Montreal, Canada": "YMY", "Space Coast Reg'l Airport - Titusville, United States": "TIX", "Lago Argentino Airport - El Calafate, Argentina": "ING", "Iwo Jima - Iwojima, Japan": "IWO", "Caransebes - Caransebes, Romania": "CSB", "Rochester Airport - Rochester, United Kingdom": "RCS", "Erfurt - Erfurt, Germany": "ERF", "County - Okeechobee, United States": "OBE", "Norsup Airport - Norsup, Vanuatu": "NUS", "Palmdale Rgnl Usaf Plt 42 - Palmdale, United States": "PMD", "Deir Zzor - Deire Zor, Syria": "DEZ", "Otaru - Otaru, Japan": "QOT", "Helsinki Malmi - Helsinki, Finland": "HEM", "Cauayan Airport - Cauayan, Philippines": "CYZ", "Arctic Bay Airport - Arctic Bay, Canada": "YAB", "Mission Field Airport - Livingston-Montana, United States": "LVM", "Sorocaba Airport - Sorocaba, Brazil": "SOD", "Alta - Alta, Norway": "ALF", "Kaolack - Kaolack, Senegal": "KLC", "Mayor General FAP Armando Revoredo Iglesias Airport - Cajamarca, Peru": "CJA", "La Roche - Brive, France": "BVE", "Central Nebraska Regional Airport - Grand Island, United States": "GRI", "Spangdahlem Ab - Spangdahlem, Germany": "SPM", "La Ronge - La Ronge, Canada": "YVC", "Lyneham - Lyneham, United Kingdom": "LYE", "Lea Co Rgnl - Hobbs, United States": "HOB", "General Francisco J Mujica Intl - Morelia, Mexico": "MLM", "Bonito Airport - Bointo, Brazil": "BYO", "Seymour - Galapagos, Ecuador": "GPS", "Islita Airport - Nandayure, Costa Rica": "PBP", "Zhezkazgan Airport - Zhezkazgan, Kazakhstan": "DZN", "King Hussein - Mafraq, Jordan": "OMF", "NAYPYITAW - NAYPYITAW, Burma": "NYT", "Ranai Airport - Ranai-Natuna Besar Island, Indonesia": "NTX", "Ringi Cove Airport - Ringi Cove, Solomon Islands": "RIN", "Roschino - Tyumen, Russia": "TJM", "Bochum Railway - Bochum, Germany": "EBO", "Zahedan Intl - Zahedan, Iran": "ZAH", "Ganja Airport - Ganja, Azerbaijan": "KVD", "Andrau Airport - Houston, United States": "AAP", "Palmar Sur - Palmar Sur, Costa Rica": "PMZ", "Fort McMurray - Mildred Lake Airport - Fort McMurray, Canada": "NML", "Nanaimo - Nanaimo, Canada": "YCD", "Aeroporto Prefeito Octavio de Almeida Neves - Sao Joao del Rei, Brazil": "JDR", "San Juan - Uganik Seaplane Base - San Juan, United States": "WSJ", "Changle - Fuzhou, China": "FOC", "Zanzibar - Zanzibar, Tanzania": "ZNZ", "South Caicos - South Caicos, Turks and Caicos Islands": "XSC", "Northern Aroostook Regional Airport - Frenchville, United States": "WFK", "Combolcha Airport - Dessie, Ethiopia": "DSE", "Chignik Bay Seaplane Base - Chignik, United States": "KBW", "Faya Largeau - Faya-largeau, Chad": "FYT", "Alitak Seaplane Base - Lazy Bay, United States": "ALZ", "General Leobardo C Ruiz Intl - Zacatecas, Mexico": "ZCL", "Camden - Camden, Australia": "CDU", "Jesup-Wayne County Airport - Jesup, United States": "JES", "Norwood Memorial Airport - Norwood, United States": "OWD", "Eagle River - Eagle River, United States": "EGV", "Atlanta Regional Airport - Falcon Field - Atlanta, United States": "FFC", "Khamti - Khamti, Burma": "KHM", "Gilgit - Gilgit, Pakistan": "GIL", "Necochea Airport - Necochea, Argentina": "NEC", "Ekwok Airport - Ekwok, United States": "KEK", "Geneve Cointrin - Geneva, Switzerland": "GVA", "Faro - Faro, Canada": "ZFA", "Dabo - Singkep, Indonesia": "SIQ", "Zamboanga Intl - Zamboanga, Philippines": "ZAM", "Kankan - Kankan, Guinea": "KNN", "St Hubert - Montreal, Canada": "YHU", "Garachine Airport - Garachine, Panama": "GHE", "Elko Regional Airport - Elko, United States": "EKO", "Sultan Azlan Shah - Ipoh, Malaysia": "IPH", "Murcia San Javier - Murcia, Spain": "MJV", "Eastern Oregon Regional Airport - Pendleton, United States": "PDT", "Waynesville Rgnl Arpt At Forney Fld - Fort Leonardwood, United States": "TBN", "Watertown Intl - Watertown, United States": "ART", "Tongliao Airport - Tongliao, China": "TGO", "Salerno Pontecagnano Airport - Salerno, Italy": "QSR", "Gyumri - Gyumri, Armenia": "LWN", "Moody Afb - Valdosta, United States": "VAD", "Tyndall Afb - Panama City, United States": "PAM", "Mammoth Yosemite Airport - Mammoth Lakes, United States": "MMH", "Kota Kinabalu Intl - Kota Kinabalu, Malaysia": "BKI", "Udaipur - Udaipur, India": "UDR", "Toussus Le Noble - Toussous-le-noble, France": "TNF", "Macau Intl - Macau, Macau": "MFM", "Al Ain International Airport - Al Ain, United Arab Emirates": "AAN", "Erkilet - Kayseri, Turkey": "ASR", "Hawarden - Hawarden, United Kingdom": "CEG", "Jose de San Martin Airport - Jose de San Martin, Argentina": "JSM", "Tubuala Airport - Tubuala, Panama": "TUW", "Ordos Ejin Horo - Dongsheng, China": "DSN", "Cedar Rapids - Cedar Rapids, United States": "CID", "Munster Osnabruck - Munster, Germany": "FMO", "Kayes Dag Dag - Kayes, Mali": "KYS", "Fuyang Airport - Fuyang, China": "FUG", "Al Ahsa - Al-ahsa, Saudi Arabia": "HOF", "Valley Intl - Harlingen, United States": "HRL", "Hobart Muni - Hobart, United States": "HBR", "Akrotiri - Akrotiri, Cyprus": "AKT", "Emelyanovo - Krasnoyarsk, Russia": "KJA", "Ramata Airport - Ramata, Solomon Islands": "RBV", "Indianapolis Metropolitan Airport - Indianapolis, United States": "UMP", "Gobernador Castello - Viedma, Argentina": "VDM", "Dourados Airport - Dourados, Brazil": "DOU", "Central - Saratov, Russia": "RTW", "Miami Intl - Miami, United States": "MIA"};
-
-
-/***/ },
-/* 319 */
-/***/ function(module, exports) {
-
-	module.exports = {"Swahili - Kenya": "sw-KE", "Arabic - Libya": "ar-LY", "Thai - Thailand": "th-TH", "French - Canada": "fr-CA", "Spanish - Spain": "es-ES", "Greek - Greece": "el-GR", "Ukrainian - Ukraine": "uk-UA", "Konkani - India": "kok-IN", "Romanian - Romania": "ro-RO", "Arabic - Algeria": "ar-DZ", "Belarusian - Belarus": "be-BY", "English - New Zealand": "en-NZ", "French - France": "fr-FR", "Italian - Switzerland": "it-CH", "Sanskrit - India": "sa-IN", "Punjabi - India": "pa-IN", "Chinese - Taiwan": "zh-TW", "Vietnamese - Vietnam": "vi-VN", "French - Switzerland": "fr-CH", "Danish - Denmark": "da-DK", "German - Austria": "de-AT", "Dutch - The Netherlands": "nl-NL", "Serbian (Cyrillic) - Serbia": "Cy-sr-SP", "Kyrgyz - Kazakhstan": "ky-KZ", "Tamil - India": "ta-IN", "Spanish - Chile": "es-CL", "Lithuanian - Lithuania": "lt-LT", "English - Ireland": "en-IE", "Arabic - Iraq": "ar-IQ", "Slovenian - Slovenia": "sl-SI", "Portuguese - Portugal": "pt-PT", "German - Liechtenstein": "de-LI", "Swedish - Sweden": "sv-SE", "Afrikaans - South Africa": "af-ZA", "Kannada - India": "kn-IN", "Telugu - India": "te-IN", "Indonesian - Indonesia": "id-ID", "English - Philippines": "en-PH", "Latvian - Latvia": "lv-LV", "Hindi - India": "hi-IN", "Armenian - Armenia": "hy-AM", "Spanish - Costa Rica": "es-CR", "Chinese - Singapore": "zh-SG", "Spanish - Venezuela": "es-VE", "Mongolian - Mongolia": "mn-MN", "Serbian (Latin) - Serbia": "Lt-sr-SP", "Arabic - Yemen": "ar-YE", "Galician - Galician": "gl-ES", "Georgian - Georgia": "ka-GE", "Chinese - Macau SAR": "zh-MO", "English - Jamaica": "en-JM", "Arabic - Kuwait": "ar-KW", "Spanish - Dominican Republic": "es-DO", "Basque - Basque": "eu-ES", "Polish - Poland": "pl-PL", "Italian - Italy": "it-IT", "Spanish - Paraguay": "es-PY", "English - Belize": "en-BZ", "Chinese - Hong Kong SAR": "zh-HK", "French - Luxembourg": "fr-LU", "Arabic - Bahrain": "ar-BH", "Bulgarian - Bulgaria": "bg-BG", "Arabic - Syria": "ar-SY", "Catalan - Catalan": "ca-ES", "Tatar - Russia": "tt-RU", "Dhivehi - Maldives": "div-MV", "Russian - Russia": "ru-RU", "Kazakh - Kazakhstan": "kk-KZ", "Chinese - China": "zh-CN", "Azeri (Latin) - Azerbaijan": "Lt-az-AZ", "Finnish - Finland": "fi-FI", "English - South Africa": "en-ZA", "French - Belgium": "fr-BE", "Swedish - Finland": "sv-FI", "Uzbek (Latin) - Uzbekistan": "Lt-uz-UZ", "Uzbek (Cyrillic) - Uzbekistan": "Cy-uz-UZ", "Malay - Brunei": "ms-BN", "Turkish - Turkey": "tr-TR", "Arabic - Jordan": "ar-JO", "Norwegian (Bokm\u00e5l) - Norway": "nb-NO", "Hebrew - Israel": "he-IL", "Albanian - Albania": "sq-AL", "Korean - Korea": "ko-KR", "Spanish - Uruguay": "es-UY", "Hungarian - Hungary": "hu-HU", "German - Switzerland": "de-CH", "Arabic - Tunisia": "ar-TN", "Estonian - Estonia": "et-EE", "Malay - Malaysia": "ms-MY", "Arabic - Saudi Arabia": "ar-SA", "Arabic - Qatar": "ar-QA", "English - Canada": "en-CA", "Spanish - Honduras": "es-HN", "French - Monaco": "fr-MC", "Arabic - United Arab Emirates": "ar-AE", "Chinese (Traditional)": "zh-CHT", "Arabic - Morocco": "ar-MA", "Croatian - Croatia": "hr-HR", "English - United States": "en-US", "Arabic - Oman": "ar-OM", "Spanish - Puerto Rico": "es-PR", "Spanish - El Salvador": "es-SV", "German - Luxembourg": "de-LU", "Spanish - Peru": "es-PE", "English - Zimbabwe": "en-ZW", "Syriac - Syria": "syr-SY", "Arabic - Lebanon": "ar-LB", "Spanish - Guatemala": "es-GT", "Norwegian (Nynorsk) - Norway": "nn-NO", "English - Caribbean": "en-CB", "Spanish - Mexico": "es-MX", "Macedonian (FYROM)": "mk-MK", "Faroese - Faroe Islands": "fo-FO", "Marathi - India": "mr-IN", "Icelandic - Iceland": "is-IS", "Spanish - Nicaragua": "es-NI", "Spanish - Panama": "es-PA", "Slovak - Slovakia": "sk-SK", "Spanish - Ecuador": "es-EC", "Japanese - Japan": "ja-JP", "Urdu - Pakistan": "ur-PK", "Czech - Czech Republic": "cs-CZ", "Dutch - Belgium": "nl-BE", "German - Germany": "de-DE", "Farsi - Iran": "fa-IR", "English - United Kingdom": "en-GB", "Portuguese - Brazil": "pt-BR", "Gujarati - India": "gu-IN", "Azeri (Cyrillic) - Azerbaijan": "Cy-az-AZ", "Arabic - Egypt": "ar-EG", "Spanish - Colombia": "es-CO", "English - Australia": "en-AU", "English - Trinidad and Tobago": "en-TT", "Spanish - Bolivia": "es-BO", "Spanish - Argentina": "es-AR", "Chinese (Simplified)": "zh-CHS"};
-
-
-/***/ },
-/* 320 */
-/***/ function(module, exports) {
-
-	module.exports = {"Nicaragua Cordoba": "NIO", "Laos Kip": "LAK", "Malawi Kwacha": "MWK", "Bahamas Dollar": "BSD", "Sierra Leone Leone": "SLL", "Macau Pataca": "MOP", "New Zealand Dollar": "NZD", "Mongolia Tughrik": "MNT", "Iceland Krona": "ISK", "Ghana Cedi": "GHS", "Morocco Dirham": "MAD", "Bhutan Ngultrum": "BTN", "Korea (North) Won": "KPW", "Sri Lanka Rupee": "LKR", "Romania New Leu": "RON", "Russia Ruble": "RUB", "Georgia Lari": "GEL", "Qatar Riyal": "QAR", "Tuvalu Dollar": "TVD", "Albania Lek": "ALL", "Namibia Dollar": "NAD", "Libya Dinar": "LYD", "Ukraine Hryvnia": "UAH", "Iraq Dinar": "IQD", "Iran Rial": "IRR", "Jersey Pound": "JEP", "Djibouti Franc": "DJF", "Euro Member Countries": "EUR", "S\u00e3o Tom\u00e9 and Pr\u00edncipe Dobra": "STD", "Lebanon Pound": "LBP", "Brazil Real": "BRL", "Nepal Rupee": "NPR", "Norway Krone": "NOK", "Saudi Arabia Riyal": "SAR", "Somalia Shilling": "SOS", "Falkland Islands (Malvinas) Pound": "FKP", "El Salvador Colon": "SVC", "Croatia Kuna": "HRK", "Bolivia Bol\u00edviano": "BOB", "Tanzania Shilling": "TZS", "Cambodia Riel": "KHR", "Egypt Pound": "EGP", "Yemen Rial": "YER", "Chile Peso": "CLP", "Denmark Krone": "DKK", "Armenia Dram": "AMD", "Panama Balboa": "PAB", "Australia Dollar": "AUD", "Syria Pound": "SYP", "Uganda Shilling": "UGX", "Uzbekistan Som": "UZS", "Guyana Dollar": "GYD", "Bulgaria Lev": "BGN", "Papua New Guinea Kina": "PGK", "Moldova Leu": "MDL", "Bangladesh Taka": "BDT", "Bermuda Dollar": "BMD", "Jordan Dinar": "JOD", "Uruguay Peso": "UYU", "Argentina Peso": "ARS", "Serbia Dinar": "RSD", "Eritrea Nakfa": "ERN", "Peru Sol": "PEN", "Burundi Franc": "BIF", "Kyrgyzstan Som": "KGS", "Guernsey Pound": "GGP", "Kuwait Dinar": "KWD", "Canada Dollar": "CAD", "Saint Helena Pound": "SHP", "Tonga Pa'anga": "TOP", "Israel Shekel": "ILS", "Ethiopia Birr": "ETB", "Czech Republic Koruna": "CZK", "Mexico Peso": "MXN", "Pakistan Rupee": "PKR", "China Yuan Renminbi": "CNY", "India Rupee": "INR", "Costa Rica Colon": "CRC", "Afghanistan Afghani": "AFN", "Oman Rial": "OMR", "Comoros Franc": "KMF", "Vanuatu Vatu": "VUV", "Sweden Krona": "SEK", "Jamaica Dollar": "JMD", "Cape Verde Escudo": "CVE", "Kenya Shilling": "KES", "Hong Kong Dollar": "HKD", "Guatemala Quetzal": "GTQ", "United Arab Emirates Dirham": "AED", "Venezuela Bolivar": "VEF", "Tajikistan Somoni": "TJS", "Mauritania Ouguiya": "MRO", "Botswana Pula": "BWP", "Bahrain Dinar": "BHD", "Samoa Tala": "WST", "Rwanda Franc": "RWF", "Lesotho Loti": "LSL", "Macedonia Denar": "MKD", "Mozambique Metical": "MZN", "Netherlands Antilles Guilder": "ANG", "Congo/Kinshasa Franc": "CDF", "Korea (South) Won": "KRW", "Communaut\u00e9 Financi\u00e8re Africaine (BEAC) CFA Franc BEAC": "XAF", "Belarus Ruble": "BYR", "Dominican Republic Peso": "DOP", "Solomon Islands Dollar": "SBD", "Cuba Convertible Peso": "CUC", "Suriname Dollar": "SRD", "Swaziland Lilangeni": "SZL", "South Africa Rand": "ZAR", "International Monetary Fund (IMF) Special Drawing Rights": "XDR", "Brunei Darussalam Dollar": "BND", "Seborga Luigino": "SPL", "Azerbaijan New Manat": "AZN", "Communaut\u00e9 Financi\u00e8re Africaine (BCEAO) Franc": "XOF", "Zambia Kwacha": "ZMW", "Kazakhstan Tenge": "KZT", "Nigeria Naira": "NGN", "Poland Zloty": "PLN", "Cuba Peso": "CUP", "Sudan Pound": "SDG", "Viet Nam Dong": "VND", "Comptoirs Fran\u00e7ais du Pacifique (CFP) Franc": "XPF", "Guinea Franc": "GNF", "Belize Dollar": "BZD", "Philippines Peso": "PHP", "Maldives (Maldive Islands) Rufiyaa": "MVR", "Angola Kwanza": "AOA", "Turkey Lira": "TRY", "United Kingdom Pound": "GBP", "Paraguay Guarani": "PYG", "Liberia Dollar": "LRD", "Hungary Forint": "HUF", "Haiti Gourde": "HTG", "Colombia Peso": "COP", "Fiji Dollar": "FJD", "Malaysia Ringgit": "MYR", "Zimbabwe Dollar": "ZWD", "Thailand Baht": "THB", "Mauritius Rupee": "MUR", "Taiwan New Dollar": "TWD", "Gambia Dalasi": "GMD", "Madagascar Ariary": "MGA", "Switzerland Franc": "CHF", "Barbados Dollar": "BBD", "Algeria Dinar": "DZD", "Japan Yen": "JPY", "Bosnia and Herzegovina Convertible Marka": "BAM", "Indonesia Rupiah": "IDR", "Aruba Guilder": "AWG", "Seychelles Rupee": "SCR", "Turkmenistan Manat": "TMT", "Myanmar (Burma) Kyat": "MMK", "Cayman Islands Dollar": "KYD", "Gibraltar Pound": "GIP", "Tunisia Dinar": "TND", "Singapore Dollar": "SGD", "United States Dollar": "USD", "Honduras Lempira": "HNL", "East Caribbean Dollar": "XCD", "Trinidad and Tobago Dollar": "TTD", "Isle of Man Pound": "IMP"};
-
-
-/***/ },
-/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54303,49 +54295,49 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(322);
+	var _classnames = __webpack_require__(319);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _moment = __webpack_require__(323);
+	var _moment = __webpack_require__(320);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _debounce = __webpack_require__(425);
+	var _debounce = __webpack_require__(422);
 	
 	var _debounce2 = _interopRequireDefault(_debounce);
 	
-	var _range = __webpack_require__(432);
+	var _range = __webpack_require__(429);
 	
 	var _range2 = _interopRequireDefault(_range);
 	
-	var _utils = __webpack_require__(442);
+	var _utils = __webpack_require__(439);
 	
-	var _locale = __webpack_require__(444);
+	var _locale = __webpack_require__(441);
 	
 	var _locale2 = _interopRequireDefault(_locale);
 	
-	var _theme = __webpack_require__(445);
+	var _theme = __webpack_require__(442);
 	
 	var _theme2 = _interopRequireDefault(_theme);
 	
-	var _Today = __webpack_require__(446);
+	var _Today = __webpack_require__(443);
 	
 	var _Today2 = _interopRequireDefault(_Today);
 	
-	var _Header = __webpack_require__(447);
+	var _Header = __webpack_require__(444);
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
-	var _List = __webpack_require__(457);
+	var _List = __webpack_require__(454);
 	
 	var _List2 = _interopRequireDefault(_List);
 	
-	var _Weekdays = __webpack_require__(510);
+	var _Weekdays = __webpack_require__(507);
 	
 	var _Weekdays2 = _interopRequireDefault(_Weekdays);
 	
-	var _Years = __webpack_require__(511);
+	var _Years = __webpack_require__(508);
 	
 	var _Years2 = _interopRequireDefault(_Years);
 	
@@ -54887,7 +54879,7 @@
 	exports.default = InfiniteCalendar;
 
 /***/ },
-/* 322 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -54941,7 +54933,7 @@
 
 
 /***/ },
-/* 323 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -55342,7 +55334,7 @@
 	                module && module.exports) {
 	            try {
 	                oldLocale = globalLocale._abbr;
-	                __webpack_require__(324)("./" + name);
+	                __webpack_require__(321)("./" + name);
 	                // because defineLocale currently also sets the global locale, we
 	                // want to undo that for lazy loaded locales
 	                locale_locales__getSetGlobalLocale(oldLocale);
@@ -58987,210 +58979,210 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(282)(module)))
 
 /***/ },
-/* 324 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 325,
-		"./af.js": 325,
-		"./ar": 326,
-		"./ar-ma": 327,
-		"./ar-ma.js": 327,
-		"./ar-sa": 328,
-		"./ar-sa.js": 328,
-		"./ar-tn": 329,
-		"./ar-tn.js": 329,
-		"./ar.js": 326,
-		"./az": 330,
-		"./az.js": 330,
-		"./be": 331,
-		"./be.js": 331,
-		"./bg": 332,
-		"./bg.js": 332,
-		"./bn": 333,
-		"./bn.js": 333,
-		"./bo": 334,
-		"./bo.js": 334,
-		"./br": 335,
-		"./br.js": 335,
-		"./bs": 336,
-		"./bs.js": 336,
-		"./ca": 337,
-		"./ca.js": 337,
-		"./cs": 338,
-		"./cs.js": 338,
-		"./cv": 339,
-		"./cv.js": 339,
-		"./cy": 340,
-		"./cy.js": 340,
-		"./da": 341,
-		"./da.js": 341,
-		"./de": 342,
-		"./de-at": 343,
-		"./de-at.js": 343,
-		"./de.js": 342,
-		"./dv": 344,
-		"./dv.js": 344,
-		"./el": 345,
-		"./el.js": 345,
-		"./en-au": 346,
-		"./en-au.js": 346,
-		"./en-ca": 347,
-		"./en-ca.js": 347,
-		"./en-gb": 348,
-		"./en-gb.js": 348,
-		"./en-ie": 349,
-		"./en-ie.js": 349,
-		"./en-nz": 350,
-		"./en-nz.js": 350,
-		"./eo": 351,
-		"./eo.js": 351,
-		"./es": 352,
-		"./es.js": 352,
-		"./et": 353,
-		"./et.js": 353,
-		"./eu": 354,
-		"./eu.js": 354,
-		"./fa": 355,
-		"./fa.js": 355,
-		"./fi": 356,
-		"./fi.js": 356,
-		"./fo": 357,
-		"./fo.js": 357,
-		"./fr": 358,
-		"./fr-ca": 359,
-		"./fr-ca.js": 359,
-		"./fr-ch": 360,
-		"./fr-ch.js": 360,
-		"./fr.js": 358,
-		"./fy": 361,
-		"./fy.js": 361,
-		"./gd": 362,
-		"./gd.js": 362,
-		"./gl": 363,
-		"./gl.js": 363,
-		"./he": 364,
-		"./he.js": 364,
-		"./hi": 365,
-		"./hi.js": 365,
-		"./hr": 366,
-		"./hr.js": 366,
-		"./hu": 367,
-		"./hu.js": 367,
-		"./hy-am": 368,
-		"./hy-am.js": 368,
-		"./id": 369,
-		"./id.js": 369,
-		"./is": 370,
-		"./is.js": 370,
-		"./it": 371,
-		"./it.js": 371,
-		"./ja": 372,
-		"./ja.js": 372,
-		"./jv": 373,
-		"./jv.js": 373,
-		"./ka": 374,
-		"./ka.js": 374,
-		"./kk": 375,
-		"./kk.js": 375,
-		"./km": 376,
-		"./km.js": 376,
-		"./ko": 377,
-		"./ko.js": 377,
-		"./ky": 378,
-		"./ky.js": 378,
-		"./lb": 379,
-		"./lb.js": 379,
-		"./lo": 380,
-		"./lo.js": 380,
-		"./lt": 381,
-		"./lt.js": 381,
-		"./lv": 382,
-		"./lv.js": 382,
-		"./me": 383,
-		"./me.js": 383,
-		"./mk": 384,
-		"./mk.js": 384,
-		"./ml": 385,
-		"./ml.js": 385,
-		"./mr": 386,
-		"./mr.js": 386,
-		"./ms": 387,
-		"./ms-my": 388,
-		"./ms-my.js": 388,
-		"./ms.js": 387,
-		"./my": 389,
-		"./my.js": 389,
-		"./nb": 390,
-		"./nb.js": 390,
-		"./ne": 391,
-		"./ne.js": 391,
-		"./nl": 392,
-		"./nl.js": 392,
-		"./nn": 393,
-		"./nn.js": 393,
-		"./pa-in": 394,
-		"./pa-in.js": 394,
-		"./pl": 395,
-		"./pl.js": 395,
-		"./pt": 396,
-		"./pt-br": 397,
-		"./pt-br.js": 397,
-		"./pt.js": 396,
-		"./ro": 398,
-		"./ro.js": 398,
-		"./ru": 399,
-		"./ru.js": 399,
-		"./se": 400,
-		"./se.js": 400,
-		"./si": 401,
-		"./si.js": 401,
-		"./sk": 402,
-		"./sk.js": 402,
-		"./sl": 403,
-		"./sl.js": 403,
-		"./sq": 404,
-		"./sq.js": 404,
-		"./sr": 405,
-		"./sr-cyrl": 406,
-		"./sr-cyrl.js": 406,
-		"./sr.js": 405,
-		"./ss": 407,
-		"./ss.js": 407,
-		"./sv": 408,
-		"./sv.js": 408,
-		"./sw": 409,
-		"./sw.js": 409,
-		"./ta": 410,
-		"./ta.js": 410,
-		"./te": 411,
-		"./te.js": 411,
-		"./th": 412,
-		"./th.js": 412,
-		"./tl-ph": 413,
-		"./tl-ph.js": 413,
-		"./tlh": 414,
-		"./tlh.js": 414,
-		"./tr": 415,
-		"./tr.js": 415,
-		"./tzl": 416,
-		"./tzl.js": 416,
-		"./tzm": 417,
-		"./tzm-latn": 418,
-		"./tzm-latn.js": 418,
-		"./tzm.js": 417,
-		"./uk": 419,
-		"./uk.js": 419,
-		"./uz": 420,
-		"./uz.js": 420,
-		"./vi": 421,
-		"./vi.js": 421,
-		"./x-pseudo": 422,
-		"./x-pseudo.js": 422,
-		"./zh-cn": 423,
-		"./zh-cn.js": 423,
-		"./zh-tw": 424,
-		"./zh-tw.js": 424
+		"./af": 322,
+		"./af.js": 322,
+		"./ar": 323,
+		"./ar-ma": 324,
+		"./ar-ma.js": 324,
+		"./ar-sa": 325,
+		"./ar-sa.js": 325,
+		"./ar-tn": 326,
+		"./ar-tn.js": 326,
+		"./ar.js": 323,
+		"./az": 327,
+		"./az.js": 327,
+		"./be": 328,
+		"./be.js": 328,
+		"./bg": 329,
+		"./bg.js": 329,
+		"./bn": 330,
+		"./bn.js": 330,
+		"./bo": 331,
+		"./bo.js": 331,
+		"./br": 332,
+		"./br.js": 332,
+		"./bs": 333,
+		"./bs.js": 333,
+		"./ca": 334,
+		"./ca.js": 334,
+		"./cs": 335,
+		"./cs.js": 335,
+		"./cv": 336,
+		"./cv.js": 336,
+		"./cy": 337,
+		"./cy.js": 337,
+		"./da": 338,
+		"./da.js": 338,
+		"./de": 339,
+		"./de-at": 340,
+		"./de-at.js": 340,
+		"./de.js": 339,
+		"./dv": 341,
+		"./dv.js": 341,
+		"./el": 342,
+		"./el.js": 342,
+		"./en-au": 343,
+		"./en-au.js": 343,
+		"./en-ca": 344,
+		"./en-ca.js": 344,
+		"./en-gb": 345,
+		"./en-gb.js": 345,
+		"./en-ie": 346,
+		"./en-ie.js": 346,
+		"./en-nz": 347,
+		"./en-nz.js": 347,
+		"./eo": 348,
+		"./eo.js": 348,
+		"./es": 349,
+		"./es.js": 349,
+		"./et": 350,
+		"./et.js": 350,
+		"./eu": 351,
+		"./eu.js": 351,
+		"./fa": 352,
+		"./fa.js": 352,
+		"./fi": 353,
+		"./fi.js": 353,
+		"./fo": 354,
+		"./fo.js": 354,
+		"./fr": 355,
+		"./fr-ca": 356,
+		"./fr-ca.js": 356,
+		"./fr-ch": 357,
+		"./fr-ch.js": 357,
+		"./fr.js": 355,
+		"./fy": 358,
+		"./fy.js": 358,
+		"./gd": 359,
+		"./gd.js": 359,
+		"./gl": 360,
+		"./gl.js": 360,
+		"./he": 361,
+		"./he.js": 361,
+		"./hi": 362,
+		"./hi.js": 362,
+		"./hr": 363,
+		"./hr.js": 363,
+		"./hu": 364,
+		"./hu.js": 364,
+		"./hy-am": 365,
+		"./hy-am.js": 365,
+		"./id": 366,
+		"./id.js": 366,
+		"./is": 367,
+		"./is.js": 367,
+		"./it": 368,
+		"./it.js": 368,
+		"./ja": 369,
+		"./ja.js": 369,
+		"./jv": 370,
+		"./jv.js": 370,
+		"./ka": 371,
+		"./ka.js": 371,
+		"./kk": 372,
+		"./kk.js": 372,
+		"./km": 373,
+		"./km.js": 373,
+		"./ko": 374,
+		"./ko.js": 374,
+		"./ky": 375,
+		"./ky.js": 375,
+		"./lb": 376,
+		"./lb.js": 376,
+		"./lo": 377,
+		"./lo.js": 377,
+		"./lt": 378,
+		"./lt.js": 378,
+		"./lv": 379,
+		"./lv.js": 379,
+		"./me": 380,
+		"./me.js": 380,
+		"./mk": 381,
+		"./mk.js": 381,
+		"./ml": 382,
+		"./ml.js": 382,
+		"./mr": 383,
+		"./mr.js": 383,
+		"./ms": 384,
+		"./ms-my": 385,
+		"./ms-my.js": 385,
+		"./ms.js": 384,
+		"./my": 386,
+		"./my.js": 386,
+		"./nb": 387,
+		"./nb.js": 387,
+		"./ne": 388,
+		"./ne.js": 388,
+		"./nl": 389,
+		"./nl.js": 389,
+		"./nn": 390,
+		"./nn.js": 390,
+		"./pa-in": 391,
+		"./pa-in.js": 391,
+		"./pl": 392,
+		"./pl.js": 392,
+		"./pt": 393,
+		"./pt-br": 394,
+		"./pt-br.js": 394,
+		"./pt.js": 393,
+		"./ro": 395,
+		"./ro.js": 395,
+		"./ru": 396,
+		"./ru.js": 396,
+		"./se": 397,
+		"./se.js": 397,
+		"./si": 398,
+		"./si.js": 398,
+		"./sk": 399,
+		"./sk.js": 399,
+		"./sl": 400,
+		"./sl.js": 400,
+		"./sq": 401,
+		"./sq.js": 401,
+		"./sr": 402,
+		"./sr-cyrl": 403,
+		"./sr-cyrl.js": 403,
+		"./sr.js": 402,
+		"./ss": 404,
+		"./ss.js": 404,
+		"./sv": 405,
+		"./sv.js": 405,
+		"./sw": 406,
+		"./sw.js": 406,
+		"./ta": 407,
+		"./ta.js": 407,
+		"./te": 408,
+		"./te.js": 408,
+		"./th": 409,
+		"./th.js": 409,
+		"./tl-ph": 410,
+		"./tl-ph.js": 410,
+		"./tlh": 411,
+		"./tlh.js": 411,
+		"./tr": 412,
+		"./tr.js": 412,
+		"./tzl": 413,
+		"./tzl.js": 413,
+		"./tzm": 414,
+		"./tzm-latn": 415,
+		"./tzm-latn.js": 415,
+		"./tzm.js": 414,
+		"./uk": 416,
+		"./uk.js": 416,
+		"./uz": 417,
+		"./uz.js": 417,
+		"./vi": 418,
+		"./vi.js": 418,
+		"./x-pseudo": 419,
+		"./x-pseudo.js": 419,
+		"./zh-cn": 420,
+		"./zh-cn.js": 420,
+		"./zh-tw": 421,
+		"./zh-tw.js": 421
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -59203,11 +59195,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 324;
+	webpackContext.id = 321;
 
 
 /***/ },
-/* 325 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59215,7 +59207,7 @@
 	//! author : Werner Mollentze : https://github.com/wernerm
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59284,7 +59276,7 @@
 	}));
 
 /***/ },
-/* 326 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59294,7 +59286,7 @@
 	//! Native plural forms: forabi https://github.com/forabi
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59425,7 +59417,7 @@
 	}));
 
 /***/ },
-/* 327 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59434,7 +59426,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59489,7 +59481,7 @@
 	}));
 
 /***/ },
-/* 328 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59497,7 +59489,7 @@
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59597,14 +59589,14 @@
 	}));
 
 /***/ },
-/* 329 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale  : Tunisian Arabic (ar-tn)
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59659,7 +59651,7 @@
 	}));
 
 /***/ },
-/* 330 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59667,7 +59659,7 @@
 	//! author : topchiyev : https://github.com/topchiyev
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59768,7 +59760,7 @@
 	}));
 
 /***/ },
-/* 331 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59778,7 +59770,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -59906,7 +59898,7 @@
 	}));
 
 /***/ },
-/* 332 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -59914,7 +59906,7 @@
 	//! author : Krasen Borisov : https://github.com/kraz
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60000,7 +59992,7 @@
 	}));
 
 /***/ },
-/* 333 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60008,7 +60000,7 @@
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60123,7 +60115,7 @@
 	}));
 
 /***/ },
-/* 334 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60131,7 +60123,7 @@
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60246,7 +60238,7 @@
 	}));
 
 /***/ },
-/* 335 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60254,7 +60246,7 @@
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60358,7 +60350,7 @@
 	}));
 
 /***/ },
-/* 336 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60367,7 +60359,7 @@
 	//! based on (hr) translation by Bojan Marković
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60505,7 +60497,7 @@
 	}));
 
 /***/ },
-/* 337 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60513,7 +60505,7 @@
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60590,7 +60582,7 @@
 	}));
 
 /***/ },
-/* 338 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60598,7 +60590,7 @@
 	//! author : petrbela : https://github.com/petrbela
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60765,7 +60757,7 @@
 	}));
 
 /***/ },
-/* 339 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60773,7 +60765,7 @@
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60832,7 +60824,7 @@
 	}));
 
 /***/ },
-/* 340 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60840,7 +60832,7 @@
 	//! author : Robert Allen
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60916,7 +60908,7 @@
 	}));
 
 /***/ },
-/* 341 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60924,7 +60916,7 @@
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -60980,7 +60972,7 @@
 	}));
 
 /***/ },
-/* 342 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -60990,7 +60982,7 @@
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61062,7 +61054,7 @@
 	}));
 
 /***/ },
-/* 343 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61073,7 +61065,7 @@
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61145,7 +61137,7 @@
 	}));
 
 /***/ },
-/* 344 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61153,7 +61145,7 @@
 	//! author : Jawish Hameed : https://github.com/jawish
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61248,7 +61240,7 @@
 	}));
 
 /***/ },
-/* 345 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61256,7 +61248,7 @@
 	//! author : Aggelos Karalias : https://github.com/mehiel
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61350,14 +61342,14 @@
 	}));
 
 /***/ },
-/* 346 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : australian english (en-au)
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61420,7 +61412,7 @@
 	}));
 
 /***/ },
-/* 347 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61428,7 +61420,7 @@
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61487,7 +61479,7 @@
 	}));
 
 /***/ },
-/* 348 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61495,7 +61487,7 @@
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61558,7 +61550,7 @@
 	}));
 
 /***/ },
-/* 349 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61566,7 +61558,7 @@
 	//! author : Chris Cartlidge : https://github.com/chriscartlidge
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61629,14 +61621,14 @@
 	}));
 
 /***/ },
-/* 350 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : New Zealand english (en-nz)
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61699,7 +61691,7 @@
 	}));
 
 /***/ },
-/* 351 */
+/* 348 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61709,7 +61701,7 @@
 	//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61776,7 +61768,7 @@
 	}));
 
 /***/ },
-/* 352 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61784,7 +61776,7 @@
 	//! author : Julio Napurí : https://github.com/julionc
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61861,7 +61853,7 @@
 	}));
 
 /***/ },
-/* 353 */
+/* 350 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61870,7 +61862,7 @@
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -61945,7 +61937,7 @@
 	}));
 
 /***/ },
-/* 354 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -61953,7 +61945,7 @@
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62015,7 +62007,7 @@
 	}));
 
 /***/ },
-/* 355 */
+/* 352 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62023,7 +62015,7 @@
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62125,7 +62117,7 @@
 	}));
 
 /***/ },
-/* 356 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62133,7 +62125,7 @@
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62236,7 +62228,7 @@
 	}));
 
 /***/ },
-/* 357 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62244,7 +62236,7 @@
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62300,7 +62292,7 @@
 	}));
 
 /***/ },
-/* 358 */
+/* 355 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62308,7 +62300,7 @@
 	//! author : John Fischer : https://github.com/jfroffice
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62368,7 +62360,7 @@
 	}));
 
 /***/ },
-/* 359 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62376,7 +62368,7 @@
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62432,7 +62424,7 @@
 	}));
 
 /***/ },
-/* 360 */
+/* 357 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62440,7 +62432,7 @@
 	//! author : Gaspard Bucher : https://github.com/gaspard
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62500,7 +62492,7 @@
 	}));
 
 /***/ },
-/* 361 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62508,7 +62500,7 @@
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62577,7 +62569,7 @@
 	}));
 
 /***/ },
-/* 362 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62585,7 +62577,7 @@
 	//! author : Jon Ashdown : https://github.com/jonashdown
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62657,7 +62649,7 @@
 	}));
 
 /***/ },
-/* 363 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62665,7 +62657,7 @@
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62738,7 +62730,7 @@
 	}));
 
 /***/ },
-/* 364 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62748,7 +62740,7 @@
 	//! author : Tal Ater : https://github.com/TalAter
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62841,7 +62833,7 @@
 	}));
 
 /***/ },
-/* 365 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62849,7 +62841,7 @@
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -62969,7 +62961,7 @@
 	}));
 
 /***/ },
-/* 366 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -62977,7 +62969,7 @@
 	//! author : Bojan Marković : https://github.com/bmarkovic
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -63118,7 +63110,7 @@
 	}));
 
 /***/ },
-/* 367 */
+/* 364 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -63126,7 +63118,7 @@
 	//! author : Adam Brunner : https://github.com/adambrunner
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -63231,7 +63223,7 @@
 	}));
 
 /***/ },
-/* 368 */
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -63239,7 +63231,7 @@
 	//! author : Armendarabyan : https://github.com/armendarabyan
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -63330,7 +63322,7 @@
 	}));
 
 /***/ },
-/* 369 */
+/* 366 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -63339,7 +63331,7 @@
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -63417,7 +63409,7 @@
 	}));
 
 /***/ },
-/* 370 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -63425,7 +63417,7 @@
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -63548,7 +63540,7 @@
 	}));
 
 /***/ },
-/* 371 */
+/* 368 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -63557,7 +63549,7 @@
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -63622,7 +63614,7 @@
 	}));
 
 /***/ },
-/* 372 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -63630,7 +63622,7 @@
 	//! author : LI Long : https://github.com/baryon
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -63702,7 +63694,7 @@
 	}));
 
 /***/ },
-/* 373 */
+/* 370 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -63711,7 +63703,7 @@
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -63789,7 +63781,7 @@
 	}));
 
 /***/ },
-/* 374 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -63797,7 +63789,7 @@
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -63882,7 +63874,7 @@
 	}));
 
 /***/ },
-/* 375 */
+/* 372 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -63890,7 +63882,7 @@
 	//! authors : Nurlan Rakhimzhanov : https://github.com/nurlan
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -63973,7 +63965,7 @@
 	}));
 
 /***/ },
-/* 376 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -63981,7 +63973,7 @@
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -64035,7 +64027,7 @@
 	}));
 
 /***/ },
-/* 377 */
+/* 374 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -64047,7 +64039,7 @@
 	//! - Jeeeyul Lee <jeeeyul@gmail.com>
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -64107,7 +64099,7 @@
 	}));
 
 /***/ },
-/* 378 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -64115,7 +64107,7 @@
 	//! author : Chyngyz Arystan uulu : https://github.com/chyngyz
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -64199,7 +64191,7 @@
 	}));
 
 /***/ },
-/* 379 */
+/* 376 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -64207,7 +64199,7 @@
 	//! author : mweimerskirch : https://github.com/mweimerskirch, David Raison : https://github.com/kwisatz
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -64339,7 +64331,7 @@
 	}));
 
 /***/ },
-/* 380 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -64347,7 +64339,7 @@
 	//! author : Ryan Hart : https://github.com/ryanhart2
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -64413,7 +64405,7 @@
 	}));
 
 /***/ },
-/* 381 */
+/* 378 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -64421,7 +64413,7 @@
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -64533,7 +64525,7 @@
 	}));
 
 /***/ },
-/* 382 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -64542,7 +64534,7 @@
 	//! author : Jānis Elmeris : https://github.com/JanisE
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -64634,7 +64626,7 @@
 	}));
 
 /***/ },
-/* 383 */
+/* 380 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -64642,7 +64634,7 @@
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -64749,7 +64741,7 @@
 	}));
 
 /***/ },
-/* 384 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -64757,7 +64749,7 @@
 	//! author : Borislav Mickov : https://github.com/B0k0
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -64843,7 +64835,7 @@
 	}));
 
 /***/ },
-/* 385 */
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -64851,7 +64843,7 @@
 	//! author : Floyd Pink : https://github.com/floydpink
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -64928,7 +64920,7 @@
 	}));
 
 /***/ },
-/* 386 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -64937,7 +64929,7 @@
 	//! author : Vivek Athalye : https://github.com/vnathalye
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -65091,7 +65083,7 @@
 	}));
 
 /***/ },
-/* 387 */
+/* 384 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -65099,7 +65091,7 @@
 	//! author : Weldan Jamili : https://github.com/weldan
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -65177,7 +65169,7 @@
 	}));
 
 /***/ },
-/* 388 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -65185,7 +65177,7 @@
 	//! author : Weldan Jamili : https://github.com/weldan
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -65263,7 +65255,7 @@
 	}));
 
 /***/ },
-/* 389 */
+/* 386 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -65271,7 +65263,7 @@
 	//! author : Squar team, mysquar.com
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -65360,7 +65352,7 @@
 	}));
 
 /***/ },
-/* 390 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -65369,7 +65361,7 @@
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -65427,7 +65419,7 @@
 	}));
 
 /***/ },
-/* 391 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -65435,7 +65427,7 @@
 	//! author : suvash : https://github.com/suvash
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -65554,7 +65546,7 @@
 	}));
 
 /***/ },
-/* 392 */
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -65562,7 +65554,7 @@
 	//! author : Joris Röling : https://github.com/jjupiter
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -65631,7 +65623,7 @@
 	}));
 
 /***/ },
-/* 393 */
+/* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -65639,7 +65631,7 @@
 	//! author : https://github.com/mechuwind
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -65695,7 +65687,7 @@
 	}));
 
 /***/ },
-/* 394 */
+/* 391 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -65703,7 +65695,7 @@
 	//! author : Harpreet Singh : https://github.com/harpreetkhalsagtbit
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -65823,7 +65815,7 @@
 	}));
 
 /***/ },
-/* 395 */
+/* 392 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -65831,7 +65823,7 @@
 	//! author : Rafal Hirsz : https://github.com/evoL
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -65932,7 +65924,7 @@
 	}));
 
 /***/ },
-/* 396 */
+/* 393 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -65940,7 +65932,7 @@
 	//! author : Jefferson : https://github.com/jalex79
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -66001,7 +65993,7 @@
 	}));
 
 /***/ },
-/* 397 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -66009,7 +66001,7 @@
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -66066,7 +66058,7 @@
 	}));
 
 /***/ },
-/* 398 */
+/* 395 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -66075,7 +66067,7 @@
 	//! author : Valentin Agachi : https://github.com/avaly
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -66145,7 +66137,7 @@
 	}));
 
 /***/ },
-/* 399 */
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -66155,7 +66147,7 @@
 	//! author : Коренберг Марк : https://github.com/socketpair
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -66324,7 +66316,7 @@
 	}));
 
 /***/ },
-/* 400 */
+/* 397 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -66332,7 +66324,7 @@
 	//! authors : Bård Rolstad Henriksen : https://github.com/karamell
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -66389,7 +66381,7 @@
 	}));
 
 /***/ },
-/* 401 */
+/* 398 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -66397,7 +66389,7 @@
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -66464,7 +66456,7 @@
 	}));
 
 /***/ },
-/* 402 */
+/* 399 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -66473,7 +66465,7 @@
 	//! based on work of petrbela : https://github.com/petrbela
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -66618,7 +66610,7 @@
 	}));
 
 /***/ },
-/* 403 */
+/* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -66626,7 +66618,7 @@
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -66784,7 +66776,7 @@
 	}));
 
 /***/ },
-/* 404 */
+/* 401 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -66794,7 +66786,7 @@
 	//! author : Oerd Cukalla : https://github.com/oerd (fixes)
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -66858,7 +66850,7 @@
 	}));
 
 /***/ },
-/* 405 */
+/* 402 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -66866,7 +66858,7 @@
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -66972,7 +66964,7 @@
 	}));
 
 /***/ },
-/* 406 */
+/* 403 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -66980,7 +66972,7 @@
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -67086,7 +67078,7 @@
 	}));
 
 /***/ },
-/* 407 */
+/* 404 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -67094,7 +67086,7 @@
 	//! author : Nicolai Davies<mail@nicolai.io> : https://github.com/nicolaidavies
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -67179,7 +67171,7 @@
 	}));
 
 /***/ },
-/* 408 */
+/* 405 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -67187,7 +67179,7 @@
 	//! author : Jens Alm : https://github.com/ulmus
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -67252,7 +67244,7 @@
 	}));
 
 /***/ },
-/* 409 */
+/* 406 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -67260,7 +67252,7 @@
 	//! author : Fahad Kassim : https://github.com/fadsel
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -67315,7 +67307,7 @@
 	}));
 
 /***/ },
-/* 410 */
+/* 407 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -67323,7 +67315,7 @@
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -67448,7 +67440,7 @@
 	}));
 
 /***/ },
-/* 411 */
+/* 408 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -67456,7 +67448,7 @@
 	//! author : Krishna Chaitanya Thota : https://github.com/kcthota
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -67541,7 +67533,7 @@
 	}));
 
 /***/ },
-/* 412 */
+/* 409 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -67549,7 +67541,7 @@
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -67612,7 +67604,7 @@
 	}));
 
 /***/ },
-/* 413 */
+/* 410 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -67620,7 +67612,7 @@
 	//! author : Dan Hagman
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -67678,7 +67670,7 @@
 	}));
 
 /***/ },
-/* 414 */
+/* 411 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -67686,7 +67678,7 @@
 	//! author : Dominika Kruk : https://github.com/amaranthrose
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -67802,7 +67794,7 @@
 	}));
 
 /***/ },
-/* 415 */
+/* 412 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -67811,7 +67803,7 @@
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -67896,7 +67888,7 @@
 	}));
 
 /***/ },
-/* 416 */
+/* 413 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -67904,7 +67896,7 @@
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v with the help of Iustì Canun
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -67991,7 +67983,7 @@
 	}));
 
 /***/ },
-/* 417 */
+/* 414 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -67999,7 +67991,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -68053,7 +68045,7 @@
 	}));
 
 /***/ },
-/* 418 */
+/* 415 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -68061,7 +68053,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -68115,7 +68107,7 @@
 	}));
 
 /***/ },
-/* 419 */
+/* 416 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -68124,7 +68116,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -68265,7 +68257,7 @@
 	}));
 
 /***/ },
-/* 420 */
+/* 417 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -68273,7 +68265,7 @@
 	//! author : Sardor Muminov : https://github.com/muminoff
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -68327,7 +68319,7 @@
 	}));
 
 /***/ },
-/* 421 */
+/* 418 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -68335,7 +68327,7 @@
 	//! author : Bang Nguyen : https://github.com/bangnk
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -68410,7 +68402,7 @@
 	}));
 
 /***/ },
-/* 422 */
+/* 419 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -68418,7 +68410,7 @@
 	//! author : Andrew Hood : https://github.com/andrewhood125
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -68482,7 +68474,7 @@
 	}));
 
 /***/ },
-/* 423 */
+/* 420 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -68491,7 +68483,7 @@
 	//! author : Zeno Zeng : https://github.com/zenozeng
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -68613,7 +68605,7 @@
 	}));
 
 /***/ },
-/* 424 */
+/* 421 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -68621,7 +68613,7 @@
 	//! author : Ben : https://github.com/ben-lin
 	
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(323)) :
+	    true ? factory(__webpack_require__(320)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -68718,12 +68710,12 @@
 	}));
 
 /***/ },
-/* 425 */
+/* 422 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(426),
-	    now = __webpack_require__(427),
-	    toNumber = __webpack_require__(428);
+	var isObject = __webpack_require__(423),
+	    now = __webpack_require__(424),
+	    toNumber = __webpack_require__(425);
 	
 	/** Used as the `TypeError` message for "Functions" methods. */
 	var FUNC_ERROR_TEXT = 'Expected a function';
@@ -68905,7 +68897,7 @@
 
 
 /***/ },
-/* 426 */
+/* 423 */
 /***/ function(module, exports) {
 
 	/**
@@ -68942,7 +68934,7 @@
 
 
 /***/ },
-/* 427 */
+/* 424 */
 /***/ function(module, exports) {
 
 	/**
@@ -68969,12 +68961,12 @@
 
 
 /***/ },
-/* 428 */
+/* 425 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isFunction = __webpack_require__(429),
-	    isObject = __webpack_require__(426),
-	    isSymbol = __webpack_require__(430);
+	var isFunction = __webpack_require__(426),
+	    isObject = __webpack_require__(423),
+	    isSymbol = __webpack_require__(427);
 	
 	/** Used as references for various `Number` constants. */
 	var NAN = 0 / 0;
@@ -69042,10 +69034,10 @@
 
 
 /***/ },
-/* 429 */
+/* 426 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObject = __webpack_require__(426);
+	var isObject = __webpack_require__(423);
 	
 	/** `Object#toString` result references. */
 	var funcTag = '[object Function]',
@@ -69091,10 +69083,10 @@
 
 
 /***/ },
-/* 430 */
+/* 427 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isObjectLike = __webpack_require__(431);
+	var isObjectLike = __webpack_require__(428);
 	
 	/** `Object#toString` result references. */
 	var symbolTag = '[object Symbol]';
@@ -69136,7 +69128,7 @@
 
 
 /***/ },
-/* 431 */
+/* 428 */
 /***/ function(module, exports) {
 
 	/**
@@ -69171,10 +69163,10 @@
 
 
 /***/ },
-/* 432 */
+/* 429 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var createRange = __webpack_require__(433);
+	var createRange = __webpack_require__(430);
 	
 	/**
 	 * Creates an array of numbers (positive and/or negative) progressing from
@@ -69223,12 +69215,12 @@
 
 
 /***/ },
-/* 433 */
+/* 430 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseRange = __webpack_require__(434),
-	    isIterateeCall = __webpack_require__(435),
-	    toNumber = __webpack_require__(428);
+	var baseRange = __webpack_require__(431),
+	    isIterateeCall = __webpack_require__(432),
+	    toNumber = __webpack_require__(425);
 	
 	/**
 	 * Creates a `_.range` or `_.rangeRight` function.
@@ -69260,7 +69252,7 @@
 
 
 /***/ },
-/* 434 */
+/* 431 */
 /***/ function(module, exports) {
 
 	/* Built-in method references for those with the same name as other `lodash` methods. */
@@ -69294,13 +69286,13 @@
 
 
 /***/ },
-/* 435 */
+/* 432 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var eq = __webpack_require__(436),
-	    isArrayLike = __webpack_require__(437),
-	    isIndex = __webpack_require__(441),
-	    isObject = __webpack_require__(426);
+	var eq = __webpack_require__(433),
+	    isArrayLike = __webpack_require__(434),
+	    isIndex = __webpack_require__(438),
+	    isObject = __webpack_require__(423);
 	
 	/**
 	 * Checks if the given arguments are from an iteratee call.
@@ -69330,7 +69322,7 @@
 
 
 /***/ },
-/* 436 */
+/* 433 */
 /***/ function(module, exports) {
 
 	/**
@@ -69373,12 +69365,12 @@
 
 
 /***/ },
-/* 437 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getLength = __webpack_require__(438),
-	    isFunction = __webpack_require__(429),
-	    isLength = __webpack_require__(440);
+	var getLength = __webpack_require__(435),
+	    isFunction = __webpack_require__(426),
+	    isLength = __webpack_require__(437);
 	
 	/**
 	 * Checks if `value` is array-like. A value is considered array-like if it's
@@ -69413,10 +69405,10 @@
 
 
 /***/ },
-/* 438 */
+/* 435 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseProperty = __webpack_require__(439);
+	var baseProperty = __webpack_require__(436);
 	
 	/**
 	 * Gets the "length" property value of `object`.
@@ -69435,7 +69427,7 @@
 
 
 /***/ },
-/* 439 */
+/* 436 */
 /***/ function(module, exports) {
 
 	/**
@@ -69455,7 +69447,7 @@
 
 
 /***/ },
-/* 440 */
+/* 437 */
 /***/ function(module, exports) {
 
 	/** Used as references for various `Number` constants. */
@@ -69497,7 +69489,7 @@
 
 
 /***/ },
-/* 441 */
+/* 438 */
 /***/ function(module, exports) {
 
 	/** Used as references for various `Number` constants. */
@@ -69525,7 +69517,7 @@
 
 
 /***/ },
-/* 442 */
+/* 439 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69545,11 +69537,11 @@
 	exports.validLayout = validLayout;
 	exports.validDisplay = validDisplay;
 	
-	var _moment = __webpack_require__(323);
+	var _moment = __webpack_require__(320);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	__webpack_require__(443);
+	__webpack_require__(440);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -69727,13 +69719,13 @@
 	}
 
 /***/ },
-/* 443 */
+/* 440 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
 	  if (true) {
 	    // AMD. Register as an anonymous module unless amdModuleId is set
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(323)], __WEBPACK_AMD_DEFINE_RESULT__ = function (a0) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(320)], __WEBPACK_AMD_DEFINE_RESULT__ = function (a0) {
 	      return (root['DateRange'] = factory(a0));
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if (typeof exports === 'object') {
@@ -70131,7 +70123,7 @@
 
 
 /***/ },
-/* 444 */
+/* 441 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -70150,7 +70142,7 @@
 	};
 
 /***/ },
-/* 445 */
+/* 442 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -70172,7 +70164,7 @@
 	};
 
 /***/ },
-/* 446 */
+/* 443 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70187,11 +70179,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(322);
+	var _classnames = __webpack_require__(319);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _moment = __webpack_require__(323);
+	var _moment = __webpack_require__(320);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
@@ -70280,7 +70272,7 @@
 	exports.default = Today;
 
 /***/ },
-/* 447 */
+/* 444 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70295,15 +70287,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _reactAddonsCssTransitionGroup = __webpack_require__(450);
+	var _reactAddonsCssTransitionGroup = __webpack_require__(447);
 	
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 	
-	var _classnames = __webpack_require__(322);
+	var _classnames = __webpack_require__(319);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -70442,13 +70434,13 @@
 	exports.default = Header;
 
 /***/ },
-/* 448 */
+/* 445 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(449);
+	module.exports = __webpack_require__(446);
 
 /***/ },
-/* 449 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -70478,13 +70470,13 @@
 	module.exports = shallowCompare;
 
 /***/ },
-/* 450 */
+/* 447 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(451);
+	module.exports = __webpack_require__(448);
 
 /***/ },
-/* 451 */
+/* 448 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -70504,8 +70496,8 @@
 	
 	var React = __webpack_require__(2);
 	
-	var ReactTransitionGroup = __webpack_require__(452);
-	var ReactCSSTransitionGroupChild = __webpack_require__(454);
+	var ReactTransitionGroup = __webpack_require__(449);
+	var ReactCSSTransitionGroupChild = __webpack_require__(451);
 	
 	function createTransitionTimeoutPropValidator(transitionType) {
 	  var timeoutPropName = 'transition' + transitionType + 'Timeout';
@@ -70576,7 +70568,7 @@
 	module.exports = ReactCSSTransitionGroup;
 
 /***/ },
-/* 452 */
+/* 449 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -70595,7 +70587,7 @@
 	var _assign = __webpack_require__(4);
 	
 	var React = __webpack_require__(2);
-	var ReactTransitionChildMapping = __webpack_require__(453);
+	var ReactTransitionChildMapping = __webpack_require__(450);
 	
 	var emptyFunction = __webpack_require__(11);
 	
@@ -70792,7 +70784,7 @@
 	module.exports = ReactTransitionGroup;
 
 /***/ },
-/* 453 */
+/* 450 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -70894,7 +70886,7 @@
 	module.exports = ReactTransitionChildMapping;
 
 /***/ },
-/* 454 */
+/* 451 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -70913,8 +70905,8 @@
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(39);
 	
-	var CSSCore = __webpack_require__(455);
-	var ReactTransitionEvents = __webpack_require__(456);
+	var CSSCore = __webpack_require__(452);
+	var ReactTransitionEvents = __webpack_require__(453);
 	
 	var onlyChild = __webpack_require__(37);
 	
@@ -71059,7 +71051,7 @@
 	module.exports = ReactCSSTransitionGroupChild;
 
 /***/ },
-/* 455 */
+/* 452 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -71186,7 +71178,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 456 */
+/* 453 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -71264,7 +71256,7 @@
 	module.exports = ReactTransitionEvents;
 
 /***/ },
-/* 457 */
+/* 454 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71279,19 +71271,19 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactVirtualized = __webpack_require__(458);
+	var _reactVirtualized = __webpack_require__(455);
 	
-	var _classnames = __webpack_require__(322);
+	var _classnames = __webpack_require__(319);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _moment = __webpack_require__(323);
+	var _moment = __webpack_require__(320);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _utils = __webpack_require__(442);
+	var _utils = __webpack_require__(439);
 	
-	var _Month = __webpack_require__(508);
+	var _Month = __webpack_require__(505);
 	
 	var _Month2 = _interopRequireDefault(_Month);
 	
@@ -71487,7 +71479,7 @@
 	exports.default = List;
 
 /***/ },
-/* 458 */
+/* 455 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71496,7 +71488,7 @@
 	  value: true
 	});
 	
-	var _ArrowKeyStepper = __webpack_require__(459);
+	var _ArrowKeyStepper = __webpack_require__(456);
 	
 	Object.defineProperty(exports, 'ArrowKeyStepper', {
 	  enumerable: true,
@@ -71505,7 +71497,7 @@
 	  }
 	});
 	
-	var _AutoSizer = __webpack_require__(461);
+	var _AutoSizer = __webpack_require__(458);
 	
 	Object.defineProperty(exports, 'AutoSizer', {
 	  enumerable: true,
@@ -71514,7 +71506,7 @@
 	  }
 	});
 	
-	var _CellMeasurer = __webpack_require__(464);
+	var _CellMeasurer = __webpack_require__(461);
 	
 	Object.defineProperty(exports, 'CellMeasurer', {
 	  enumerable: true,
@@ -71523,7 +71515,7 @@
 	  }
 	});
 	
-	var _Collection = __webpack_require__(470);
+	var _Collection = __webpack_require__(467);
 	
 	Object.defineProperty(exports, 'Collection', {
 	  enumerable: true,
@@ -71532,7 +71524,7 @@
 	  }
 	});
 	
-	var _ColumnSizer = __webpack_require__(482);
+	var _ColumnSizer = __webpack_require__(479);
 	
 	Object.defineProperty(exports, 'ColumnSizer', {
 	  enumerable: true,
@@ -71541,7 +71533,7 @@
 	  }
 	});
 	
-	var _FlexTable = __webpack_require__(492);
+	var _FlexTable = __webpack_require__(489);
 	
 	Object.defineProperty(exports, 'FlexTable', {
 	  enumerable: true,
@@ -71568,7 +71560,7 @@
 	  }
 	});
 	
-	var _Grid = __webpack_require__(484);
+	var _Grid = __webpack_require__(481);
 	
 	Object.defineProperty(exports, 'defaultCellRangeRenderer', {
 	  enumerable: true,
@@ -71583,7 +71575,7 @@
 	  }
 	});
 	
-	var _InfiniteLoader = __webpack_require__(500);
+	var _InfiniteLoader = __webpack_require__(497);
 	
 	Object.defineProperty(exports, 'InfiniteLoader', {
 	  enumerable: true,
@@ -71592,7 +71584,7 @@
 	  }
 	});
 	
-	var _ScrollSync = __webpack_require__(502);
+	var _ScrollSync = __webpack_require__(499);
 	
 	Object.defineProperty(exports, 'ScrollSync', {
 	  enumerable: true,
@@ -71601,7 +71593,7 @@
 	  }
 	});
 	
-	var _VirtualScroll = __webpack_require__(504);
+	var _VirtualScroll = __webpack_require__(501);
 	
 	Object.defineProperty(exports, 'VirtualScroll', {
 	  enumerable: true,
@@ -71610,7 +71602,7 @@
 	  }
 	});
 	
-	var _WindowScroller = __webpack_require__(506);
+	var _WindowScroller = __webpack_require__(503);
 	
 	Object.defineProperty(exports, 'WindowScroller', {
 	  enumerable: true,
@@ -71620,7 +71612,7 @@
 	});
 
 /***/ },
-/* 459 */
+/* 456 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71630,7 +71622,7 @@
 	});
 	exports.ArrowKeyStepper = exports.default = undefined;
 	
-	var _ArrowKeyStepper2 = __webpack_require__(460);
+	var _ArrowKeyStepper2 = __webpack_require__(457);
 	
 	var _ArrowKeyStepper3 = _interopRequireDefault(_ArrowKeyStepper2);
 	
@@ -71640,7 +71632,7 @@
 	exports.ArrowKeyStepper = _ArrowKeyStepper3.default;
 
 /***/ },
-/* 460 */
+/* 457 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71655,7 +71647,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -71787,7 +71779,7 @@
 	exports.default = ArrowKeyStepper;
 
 /***/ },
-/* 461 */
+/* 458 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71797,7 +71789,7 @@
 	});
 	exports.AutoSizer = exports.default = undefined;
 	
-	var _AutoSizer2 = __webpack_require__(462);
+	var _AutoSizer2 = __webpack_require__(459);
 	
 	var _AutoSizer3 = _interopRequireDefault(_AutoSizer2);
 	
@@ -71807,7 +71799,7 @@
 	exports.AutoSizer = _AutoSizer3.default;
 
 /***/ },
-/* 462 */
+/* 459 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71822,7 +71814,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -71864,7 +71856,7 @@
 	    value: function componentDidMount() {
 	      // Defer requiring resize handler in order to support server-side rendering.
 	      // See issue #41
-	      this._detectElementResize = __webpack_require__(463);
+	      this._detectElementResize = __webpack_require__(460);
 	      this._detectElementResize.addResizeListener(this._parentNode, this._onResize);
 	
 	      this._onResize();
@@ -71982,7 +71974,7 @@
 	exports.default = AutoSizer;
 
 /***/ },
-/* 463 */
+/* 460 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -72149,7 +72141,7 @@
 	};
 
 /***/ },
-/* 464 */
+/* 461 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72159,7 +72151,7 @@
 	});
 	exports.CellMeasurer = exports.default = undefined;
 	
-	var _CellMeasurer2 = __webpack_require__(465);
+	var _CellMeasurer2 = __webpack_require__(462);
 	
 	var _CellMeasurer3 = _interopRequireDefault(_CellMeasurer2);
 	
@@ -72169,7 +72161,7 @@
 	exports.CellMeasurer = _CellMeasurer3.default;
 
 /***/ },
-/* 465 */
+/* 462 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72188,7 +72180,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _server = __webpack_require__(466);
+	var _server = __webpack_require__(463);
 	
 	var _server2 = _interopRequireDefault(_server);
 	
@@ -72448,16 +72440,16 @@
 	exports.default = CellMeasurer;
 
 /***/ },
-/* 466 */
+/* 463 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(467);
+	module.exports = __webpack_require__(464);
 
 
 /***/ },
-/* 467 */
+/* 464 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -72474,7 +72466,7 @@
 	'use strict';
 	
 	var ReactDefaultInjection = __webpack_require__(43);
-	var ReactServerRendering = __webpack_require__(468);
+	var ReactServerRendering = __webpack_require__(465);
 	var ReactVersion = __webpack_require__(36);
 	
 	ReactDefaultInjection.inject();
@@ -72488,7 +72480,7 @@
 	module.exports = ReactDOMServer;
 
 /***/ },
-/* 468 */
+/* 465 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -72509,7 +72501,7 @@
 	var ReactInstrumentation = __webpack_require__(18);
 	var ReactMarkupChecksum = __webpack_require__(163);
 	var ReactReconciler = __webpack_require__(62);
-	var ReactServerBatchingStrategy = __webpack_require__(469);
+	var ReactServerBatchingStrategy = __webpack_require__(466);
 	var ReactServerRenderingTransaction = __webpack_require__(128);
 	var ReactUpdates = __webpack_require__(59);
 	
@@ -72578,7 +72570,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 469 */
+/* 466 */
 /***/ function(module, exports) {
 
 	/**
@@ -72605,7 +72597,7 @@
 	module.exports = ReactServerBatchingStrategy;
 
 /***/ },
-/* 470 */
+/* 467 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72615,7 +72607,7 @@
 	});
 	exports.Collection = exports.default = undefined;
 	
-	var _Collection2 = __webpack_require__(471);
+	var _Collection2 = __webpack_require__(468);
 	
 	var _Collection3 = _interopRequireDefault(_Collection2);
 	
@@ -72625,7 +72617,7 @@
 	exports.Collection = _Collection3.default;
 
 /***/ },
-/* 471 */
+/* 468 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72642,19 +72634,19 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _CollectionView = __webpack_require__(472);
+	var _CollectionView = __webpack_require__(469);
 	
 	var _CollectionView2 = _interopRequireDefault(_CollectionView);
 	
-	var _calculateSizeAndPositionData2 = __webpack_require__(478);
+	var _calculateSizeAndPositionData2 = __webpack_require__(475);
 	
 	var _calculateSizeAndPositionData3 = _interopRequireDefault(_calculateSizeAndPositionData2);
 	
-	var _getUpdatedOffsetForIndex = __webpack_require__(481);
+	var _getUpdatedOffsetForIndex = __webpack_require__(478);
 	
 	var _getUpdatedOffsetForIndex2 = _interopRequireDefault(_getUpdatedOffsetForIndex);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -72914,7 +72906,7 @@
 	}
 
 /***/ },
-/* 472 */
+/* 469 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72931,23 +72923,23 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(322);
+	var _classnames = __webpack_require__(319);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _createCallbackMemoizer = __webpack_require__(473);
+	var _createCallbackMemoizer = __webpack_require__(470);
 	
 	var _createCallbackMemoizer2 = _interopRequireDefault(_createCallbackMemoizer);
 	
-	var _scrollbarSize = __webpack_require__(474);
+	var _scrollbarSize = __webpack_require__(471);
 	
 	var _scrollbarSize2 = _interopRequireDefault(_scrollbarSize);
 	
-	var _raf = __webpack_require__(476);
+	var _raf = __webpack_require__(473);
 	
 	var _raf2 = _interopRequireDefault(_raf);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -73551,7 +73543,7 @@
 	exports.default = CollectionView;
 
 /***/ },
-/* 473 */
+/* 470 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -73593,12 +73585,12 @@
 	}
 
 /***/ },
-/* 474 */
+/* 471 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var canUseDOM = __webpack_require__(475);
+	var canUseDOM = __webpack_require__(472);
 	
 	var size;
 	
@@ -73623,17 +73615,17 @@
 	};
 
 /***/ },
-/* 475 */
+/* 472 */
 /***/ function(module, exports) {
 
 	'use strict';
 	module.exports = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 
 /***/ },
-/* 476 */
+/* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(477)
+	/* WEBPACK VAR INJECTION */(function(global) {var now = __webpack_require__(474)
 	  , root = typeof window === 'undefined' ? global : window
 	  , vendors = ['moz', 'webkit']
 	  , suffix = 'AnimationFrame'
@@ -73709,7 +73701,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 477 */
+/* 474 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Generated by CoffeeScript 1.7.1
@@ -73748,7 +73740,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 478 */
+/* 475 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73758,7 +73750,7 @@
 	});
 	exports.default = calculateSizeAndPositionData;
 	
-	var _SectionManager = __webpack_require__(479);
+	var _SectionManager = __webpack_require__(476);
 	
 	var _SectionManager2 = _interopRequireDefault(_SectionManager);
 	
@@ -73800,7 +73792,7 @@
 	}
 
 /***/ },
-/* 479 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73816,7 +73808,7 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
 	
 	
-	var _Section = __webpack_require__(480);
+	var _Section = __webpack_require__(477);
 	
 	var _Section2 = _interopRequireDefault(_Section);
 	
@@ -73961,7 +73953,7 @@
 	exports.default = SectionManager;
 
 /***/ },
-/* 480 */
+/* 477 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -74037,7 +74029,7 @@
 	exports.default = Section;
 
 /***/ },
-/* 481 */
+/* 478 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -74082,7 +74074,7 @@
 	}
 
 /***/ },
-/* 482 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74092,7 +74084,7 @@
 	});
 	exports.ColumnSizer = exports.default = undefined;
 	
-	var _ColumnSizer2 = __webpack_require__(483);
+	var _ColumnSizer2 = __webpack_require__(480);
 	
 	var _ColumnSizer3 = _interopRequireDefault(_ColumnSizer2);
 	
@@ -74102,7 +74094,7 @@
 	exports.ColumnSizer = _ColumnSizer3.default;
 
 /***/ },
-/* 483 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74115,11 +74107,11 @@
 	
 	var _react = __webpack_require__(1);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _Grid = __webpack_require__(484);
+	var _Grid = __webpack_require__(481);
 	
 	var _Grid2 = _interopRequireDefault(_Grid);
 	
@@ -74243,7 +74235,7 @@
 	exports.default = ColumnSizer;
 
 /***/ },
-/* 484 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74253,11 +74245,11 @@
 	});
 	exports.defaultCellRangeRenderer = exports.Grid = exports.default = undefined;
 	
-	var _Grid2 = __webpack_require__(485);
+	var _Grid2 = __webpack_require__(482);
 	
 	var _Grid3 = _interopRequireDefault(_Grid2);
 	
-	var _defaultCellRangeRenderer2 = __webpack_require__(491);
+	var _defaultCellRangeRenderer2 = __webpack_require__(488);
 	
 	var _defaultCellRangeRenderer3 = _interopRequireDefault(_defaultCellRangeRenderer2);
 	
@@ -74268,7 +74260,7 @@
 	exports.defaultCellRangeRenderer = _defaultCellRangeRenderer3.default;
 
 /***/ },
-/* 485 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74285,43 +74277,43 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(322);
+	var _classnames = __webpack_require__(319);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _calculateSizeAndPositionDataAndUpdateScrollOffset = __webpack_require__(486);
+	var _calculateSizeAndPositionDataAndUpdateScrollOffset = __webpack_require__(483);
 	
 	var _calculateSizeAndPositionDataAndUpdateScrollOffset2 = _interopRequireDefault(_calculateSizeAndPositionDataAndUpdateScrollOffset);
 	
-	var _ScalingCellSizeAndPositionManager = __webpack_require__(487);
+	var _ScalingCellSizeAndPositionManager = __webpack_require__(484);
 	
 	var _ScalingCellSizeAndPositionManager2 = _interopRequireDefault(_ScalingCellSizeAndPositionManager);
 	
-	var _createCallbackMemoizer = __webpack_require__(473);
+	var _createCallbackMemoizer = __webpack_require__(470);
 	
 	var _createCallbackMemoizer2 = _interopRequireDefault(_createCallbackMemoizer);
 	
-	var _getOverscanIndices = __webpack_require__(489);
+	var _getOverscanIndices = __webpack_require__(486);
 	
 	var _getOverscanIndices2 = _interopRequireDefault(_getOverscanIndices);
 	
-	var _scrollbarSize = __webpack_require__(474);
+	var _scrollbarSize = __webpack_require__(471);
 	
 	var _scrollbarSize2 = _interopRequireDefault(_scrollbarSize);
 	
-	var _raf = __webpack_require__(476);
+	var _raf = __webpack_require__(473);
 	
 	var _raf2 = _interopRequireDefault(_raf);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _updateScrollIndexHelper = __webpack_require__(490);
+	var _updateScrollIndexHelper = __webpack_require__(487);
 	
 	var _updateScrollIndexHelper2 = _interopRequireDefault(_updateScrollIndexHelper);
 	
-	var _defaultCellRangeRenderer = __webpack_require__(491);
+	var _defaultCellRangeRenderer = __webpack_require__(488);
 	
 	var _defaultCellRangeRenderer2 = _interopRequireDefault(_defaultCellRangeRenderer);
 	
@@ -75251,7 +75243,7 @@
 	exports.default = Grid;
 
 /***/ },
-/* 486 */
+/* 483 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75298,7 +75290,7 @@
 	}
 
 /***/ },
-/* 487 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75310,7 +75302,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _CellSizeAndPositionManager = __webpack_require__(488);
+	var _CellSizeAndPositionManager = __webpack_require__(485);
 	
 	var _CellSizeAndPositionManager2 = _interopRequireDefault(_CellSizeAndPositionManager);
 	
@@ -75523,7 +75515,7 @@
 	exports.default = ScalingCellSizeAndPositionManager;
 
 /***/ },
-/* 488 */
+/* 485 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -75815,7 +75807,7 @@
 	exports.default = CellSizeAndPositionManager;
 
 /***/ },
-/* 489 */
+/* 486 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -75846,7 +75838,7 @@
 	}
 
 /***/ },
-/* 490 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75856,7 +75848,7 @@
 	});
 	exports.default = updateScrollIndexHelper;
 	
-	var _getUpdatedOffsetForIndex = __webpack_require__(481);
+	var _getUpdatedOffsetForIndex = __webpack_require__(478);
 	
 	var _getUpdatedOffsetForIndex2 = _interopRequireDefault(_getUpdatedOffsetForIndex);
 	
@@ -75921,7 +75913,7 @@
 	}
 
 /***/ },
-/* 491 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75938,7 +75930,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(322);
+	var _classnames = __webpack_require__(319);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -76028,7 +76020,7 @@
 	}
 
 /***/ },
-/* 492 */
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76038,19 +76030,19 @@
 	});
 	exports.SortIndicator = exports.SortDirection = exports.FlexColumn = exports.FlexTable = exports.default = undefined;
 	
-	var _FlexTable2 = __webpack_require__(493);
+	var _FlexTable2 = __webpack_require__(490);
 	
 	var _FlexTable3 = _interopRequireDefault(_FlexTable2);
 	
-	var _FlexColumn2 = __webpack_require__(494);
+	var _FlexColumn2 = __webpack_require__(491);
 	
 	var _FlexColumn3 = _interopRequireDefault(_FlexColumn2);
 	
-	var _SortDirection2 = __webpack_require__(497);
+	var _SortDirection2 = __webpack_require__(494);
 	
 	var _SortDirection3 = _interopRequireDefault(_SortDirection2);
 	
-	var _SortIndicator2 = __webpack_require__(496);
+	var _SortIndicator2 = __webpack_require__(493);
 	
 	var _SortIndicator3 = _interopRequireDefault(_SortIndicator2);
 	
@@ -76063,7 +76055,7 @@
 	exports.SortIndicator = _SortIndicator3.default;
 
 /***/ },
-/* 493 */
+/* 490 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76076,11 +76068,11 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _classnames = __webpack_require__(322);
+	var _classnames = __webpack_require__(319);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _FlexColumn = __webpack_require__(494);
+	var _FlexColumn = __webpack_require__(491);
 	
 	var _FlexColumn2 = _interopRequireDefault(_FlexColumn);
 	
@@ -76090,15 +76082,15 @@
 	
 	var _reactDom = __webpack_require__(38);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _Grid = __webpack_require__(484);
+	var _Grid = __webpack_require__(481);
 	
 	var _Grid2 = _interopRequireDefault(_Grid);
 	
-	var _SortDirection = __webpack_require__(497);
+	var _SortDirection = __webpack_require__(494);
 	
 	var _SortDirection2 = _interopRequireDefault(_SortDirection);
 	
@@ -76733,7 +76725,7 @@
 	exports.default = FlexTable;
 
 /***/ },
-/* 494 */
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76744,15 +76736,15 @@
 	
 	var _react = __webpack_require__(1);
 	
-	var _defaultHeaderRenderer = __webpack_require__(495);
+	var _defaultHeaderRenderer = __webpack_require__(492);
 	
 	var _defaultHeaderRenderer2 = _interopRequireDefault(_defaultHeaderRenderer);
 	
-	var _defaultCellRenderer = __webpack_require__(498);
+	var _defaultCellRenderer = __webpack_require__(495);
 	
 	var _defaultCellRenderer2 = _interopRequireDefault(_defaultCellRenderer);
 	
-	var _defaultCellDataGetter = __webpack_require__(499);
+	var _defaultCellDataGetter = __webpack_require__(496);
 	
 	var _defaultCellDataGetter2 = _interopRequireDefault(_defaultCellDataGetter);
 	
@@ -76849,7 +76841,7 @@
 	exports.default = Column;
 
 /***/ },
-/* 495 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76863,7 +76855,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SortIndicator = __webpack_require__(496);
+	var _SortIndicator = __webpack_require__(493);
 	
 	var _SortIndicator2 = _interopRequireDefault(_SortIndicator);
 	
@@ -76902,7 +76894,7 @@
 	}
 
 /***/ },
-/* 496 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76916,11 +76908,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(322);
+	var _classnames = __webpack_require__(319);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _SortDirection = __webpack_require__(497);
+	var _SortDirection = __webpack_require__(494);
 	
 	var _SortDirection2 = _interopRequireDefault(_SortDirection);
 	
@@ -76955,7 +76947,7 @@
 	};
 
 /***/ },
-/* 497 */
+/* 494 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -76980,7 +76972,7 @@
 	exports.default = SortDirection;
 
 /***/ },
-/* 498 */
+/* 495 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -77010,7 +77002,7 @@
 	}
 
 /***/ },
-/* 499 */
+/* 496 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -77039,7 +77031,7 @@
 	}
 
 /***/ },
-/* 500 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77049,7 +77041,7 @@
 	});
 	exports.InfiniteLoader = exports.default = undefined;
 	
-	var _InfiniteLoader2 = __webpack_require__(501);
+	var _InfiniteLoader2 = __webpack_require__(498);
 	
 	var _InfiniteLoader3 = _interopRequireDefault(_InfiniteLoader2);
 	
@@ -77059,7 +77051,7 @@
 	exports.InfiniteLoader = _InfiniteLoader3.default;
 
 /***/ },
-/* 501 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77075,7 +77067,7 @@
 	
 	var _react = __webpack_require__(1);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -77314,7 +77306,7 @@
 	}
 
 /***/ },
-/* 502 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77324,7 +77316,7 @@
 	});
 	exports.ScrollSync = exports.default = undefined;
 	
-	var _ScrollSync2 = __webpack_require__(503);
+	var _ScrollSync2 = __webpack_require__(500);
 	
 	var _ScrollSync3 = _interopRequireDefault(_ScrollSync2);
 	
@@ -77334,7 +77326,7 @@
 	exports.ScrollSync = _ScrollSync3.default;
 
 /***/ },
-/* 503 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77347,7 +77339,7 @@
 	
 	var _react = __webpack_require__(1);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -77440,7 +77432,7 @@
 	exports.default = ScrollSync;
 
 /***/ },
-/* 504 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77450,7 +77442,7 @@
 	});
 	exports.VirtualScroll = exports.default = undefined;
 	
-	var _VirtualScroll2 = __webpack_require__(505);
+	var _VirtualScroll2 = __webpack_require__(502);
 	
 	var _VirtualScroll3 = _interopRequireDefault(_VirtualScroll2);
 	
@@ -77460,7 +77452,7 @@
 	exports.VirtualScroll = _VirtualScroll3.default;
 
 /***/ },
-/* 505 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77471,7 +77463,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _Grid = __webpack_require__(484);
+	var _Grid = __webpack_require__(481);
 	
 	var _Grid2 = _interopRequireDefault(_Grid);
 	
@@ -77479,11 +77471,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(322);
+	var _classnames = __webpack_require__(319);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
@@ -77756,7 +77748,7 @@
 	exports.default = VirtualScroll;
 
 /***/ },
-/* 506 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77766,7 +77758,7 @@
 	});
 	exports.WindowScroller = exports.default = undefined;
 	
-	var _WindowScroller2 = __webpack_require__(507);
+	var _WindowScroller2 = __webpack_require__(504);
 	
 	var _WindowScroller3 = _interopRequireDefault(_WindowScroller2);
 	
@@ -77776,7 +77768,7 @@
 	exports.WindowScroller = _WindowScroller3.default;
 
 /***/ },
-/* 507 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77795,11 +77787,11 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _raf = __webpack_require__(476);
+	var _raf = __webpack_require__(473);
 	
 	var _raf2 = _interopRequireDefault(_raf);
 	
@@ -77975,7 +77967,7 @@
 	exports.default = WindowScroller;
 
 /***/ },
-/* 508 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -77990,11 +77982,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(322);
+	var _classnames = __webpack_require__(319);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _Day = __webpack_require__(509);
+	var _Day = __webpack_require__(506);
 	
 	var _Day2 = _interopRequireDefault(_Day);
 	
@@ -78132,7 +78124,7 @@
 	exports.default = Month;
 
 /***/ },
-/* 509 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78218,7 +78210,7 @@
 	}
 
 /***/ },
-/* 510 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78233,15 +78225,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactAddonsShallowCompare = __webpack_require__(448);
+	var _reactAddonsShallowCompare = __webpack_require__(445);
 	
 	var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 	
-	var _moment = __webpack_require__(323);
+	var _moment = __webpack_require__(320);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
-	var _range = __webpack_require__(432);
+	var _range = __webpack_require__(429);
 	
 	var _range2 = _interopRequireDefault(_range);
 	
@@ -78302,7 +78294,7 @@
 	exports.default = Weekdays;
 
 /***/ },
-/* 511 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -78317,15 +78309,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactVirtualized = __webpack_require__(458);
+	var _reactVirtualized = __webpack_require__(455);
 	
-	var _classnames = __webpack_require__(322);
+	var _classnames = __webpack_require__(319);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _utils = __webpack_require__(442);
+	var _utils = __webpack_require__(439);
 	
-	var _moment = __webpack_require__(323);
+	var _moment = __webpack_require__(320);
 	
 	var _moment2 = _interopRequireDefault(_moment);
 	
@@ -78532,6 +78524,27 @@
 	    years: _react.PropTypes.array
 	};
 	exports.default = Years;
+
+/***/ },
+/* 509 */
+/***/ function(module, exports) {
+
+	module.exports = {"Dongshan - Hailar, China": "HLD", "Resolute Bay - Resolute, Canada": "YRB", "Mihail Kogalniceanu - Constanta, Romania": "CND", "Seaplane Base - Winterhaven, United States": "F57", "Mazamet - Castres, France": "DCM", "Carauari Airport - Carauari, Brazil": "CAF", "Treasure Cay - Treasure Cay, Bahamas": "TCB", "Yangyang International Airport - Sokcho / Gangneung, South Korea": "YNY", "Lokichoggio Airport - Lokichoggio, Kenya": "LKG", "Campo Fontenelle - Piracununga, Brazil": "QPS", "Mercer County Airport - Bluefield, United States": "BLF", "Osaka Intl - Osaka, Japan": "ITM", "Maastricht - Maastricht, Netherlands": "MST", "Hooker Creek Airport - Hooker Creek, Australia": "HOK", "Gorna Oryahovitsa - Gorna Orechovica, Bulgaria": "GOZ", "Erie Intl Tom Ridge Fld - Erie, United States": "ERI", "Srinagar - Srinagar, India": "SXR", "Flamingo - Kralendijk, Netherlands Antilles": "BON", "Cluj Napoca - Cluj-napoca, Romania": "CLJ", "Puerto Deseado - Puerto Deseado, Argentina": "PUD", "Gallatin Field - Bozeman, United States": "BZN", "Rurutu - Rurutu, French Polynesia": "RUR", "Khoram Abad Airport - Khorram Abad, Iran": "KHD", "Comodoro Rivadavia - Comodoro Rivadavia, Argentina": "CRD", "Champagne - Reims, France": "RHE", "Altoona Blair Co - Altoona, United States": "AOO", "Whitsunday Airstrip - Airlie Beach, Australia": "WSY", "Lannion - Lannion, France": "LAI", "Etimesgut - Ankara, Turkey": "ANK", "Renmark - Renmark, Australia": "RMK", "Hay River - Hay River, Canada": "YHY", "New Century AirCenter Airport - Olathe, United States": "JCI", "Zhangxiao - Yuncheng, China": "YCU", "Juana Azurduy De Padilla - Sucre, Bolivia": "SRE", "George F L Charles - Castries, Saint Lucia": "SLU", "Eduardo Gomes Intl - Manaus, Brazil": "MAO", "Arctic Village Airport - Arctic Village, United States": "ARC", "Sao Jose Do Rio Preto - Sao Jose Do Rio Preto, Brazil": "SJP", "Diosdado Macapagal International - Angeles City, Philippines": "CRK", "Ventspils International Airport - Ventspils, Latvia": "VTS", "Greenville-Spartanburg International - Greenville, United States": "GSP", "Boryspil Intl - Kiev, Ukraine": "KBP", "Mario Ribeiro - Montes Claros, Brazil": "MOC", "Lowell City Airport - Lowell, United States": "24C", "Gerardo Tobar Lopez - Buenaventura, Colombia": "BUN", "Al Udeid AB - Doha, Qatar": "IUD", "Kaunas Intl - Kaunas, Lithuania": "KUN", "Zoo - Berlin, Germany": "QWC", "Lemhi County Airport - Salmon, United States": "SMN", "Belfast Intl - Belfast, United Kingdom": "BFS", "Brampton Island - Brampton Island, Australia": "BMP", "Ketchikan harbor Seaplane Base - Ketchikan, United States": "WFB", "Felts Fld - Spokane, United States": "SFF", "Berlevag - Berlevag, Norway": "BVG", "Fort St John - Fort Saint John, Canada": "YXJ", "Panzhihua - Panzhihua, China": "PZI", "Murmansk - Murmansk, Russia": "MMK", "Amakusa Airfield - Amakusa, Japan": "AXJ", "Uraj - Uraj, Russia": "URJ", "Coldfoot Airport - Coldfoot, United States": "CXF", "Edinburgh Waverly Station - Edinburgh, United Kingdom": "ZXE", "Tri State Milton J Ferguson Field - Huntington, United States": "HTS", "Santa Fe Muni - Santa Fe, United States": "SAF", "Dipolog - Dipolog, Philippines": "DPL", "Nynashamn Ferry Port - Nynashamn, Sweden": "NYN", "Aeroclub Cluj - Dezmir, Romania": "DZM", "Octeville - Le Havre, France": "LEH", "Al Baha - El-baha, Saudi Arabia": "ABT", "Lasham - Lasham, United Kingdom": "QLA", "Bratsk - Bratsk, Russia": "BTK", "Jonesboro Muni - Jonesboro, United States": "JBR", "Woitape Airport - Woitape, Papua New Guinea": "WTP", "Glen Innes - Glen Innes, Australia": "GLI", "Wilmington Amtrak Station - Wilmington, United States": "ZWI", "Nepalgunj Airport - Nepalgunj, Nepal": "KEP", "Basco Airport - Basco, Philippines": "BSO", "Craiova - Craiova, Romania": "CRA", "Crooked Creek Airport - Crooked Creek, United States": "CKD", "Calgary Intl - Calgary, Canada": "YYC", "Alakanuk Airport - Alakanuk, United States": "AUK", "Pakse - Pakse, Laos": "PKZ", "Ibadan - Ibadan, Nigeria": "IBA", "Fort Worth Alliance Airport - Fort Worth, United States": "AFW", "Cape Dorset - Cape Dorset, Canada": "YTE", "Camp Mabry Austin City - Austin TX, United States": "ATT", "Governador Valadares Airport - Governador Valadares, Brazil": "GVR", "Boston Back Bay Station - Boston, United States": "ZTY", "Shively Field Airport - SARATOGA, United States": "SAA", "Dunhuang Airport - Dunhuang, China": "DNH", "Kithira - Kithira, Greece": "KIT", "Sishen - Sishen, South Africa": "SIS", "Capital Intl - Beijing, China": "PEK", "Tokunoshima - Tokunoshima, Japan": "TKN", "Diego Jimenez Torres - Fajardo, Puerto Rico": "FAJ", "Las Americas Intl - Santo Domingo, Dominican Republic": "SDQ", "Gladwin Zettel Memorial Airport - Gladwin, United States": "GDW", "Cotopaxi International Airport - Latacunga, Ecuador": "LTX", "Hoybuktmoen - Kirkenes, Norway": "KKN", "Springbok - Springbok, South Africa": "SBU", "Ibn Batouta - Tanger, Morocco": "TNG", "Josefa Camejo - Paraguana, Venezuela": "LSP", "La M\u00f4le Airport - La M\u00f4le, France": "LTT", "Prerov - Prerov, Czech Republic": "PRV", "Brevig Mission Airport - Brevig Mission, United States": "KTS", "Steamboat Springs Airport-Bob Adams Field - Steamboat Springs, United States": "SBS", "Ust-Maya Airport - Ust-Maya, Russia": "UMS", "Porto Nacional - Porto Nacional, Brazil": "PNB", "Pueblo Memorial - Pueblo, United States": "PUB", "Sondre Stromfjord - Sondrestrom, Greenland": "SFJ", "Macdill Afb - Tampa, United States": "MCF", "Bamberg County Airport - Bamberg, United States": "99N", "Tabatinga - Tabatinga, Brazil": "TBT", "Quinhagak Airport - Quinhagak, United States": "KWN", "Perry-Foley Airport - Perry, United States": "40J", "Freetown Lungi - Freetown, Sierra Leone": "FNA", "Aeroclub Deva - Deva, Romania": "DVA", "Visalia Municipal Airport - Visalia, United States": "VIS", "Agra - Agra, India": "AGR", "Alberto Carnevalli - Merida, Venezuela": "MRD", "Foshan - Foshan, China": "FUO", "Champforgeuil - Chalon, France": "XCD", "Chachapoyas - Chachapoyas, Peru": "CHH", "Le Sequestre - Albi, France": "LBI", "Ul\u00e9i Airport - Ambryn Island, Vanuatu": "ULB", "Swift Current - Swift Current, Canada": "YYN", "Ouro Sogui Airport - Matam, Senegal": "MAX", "Sierra Grande - Sierra Grande, Argentina": "SGV", "Faranah - Faranah, Guinea": "FAA", "Lewiston Nez Perce Co - Lewiston, United States": "LWS", "Aeropuerto Internacional Valle del Conlara - Merlo, Argentina": "RLO", "McClellan-Palomar Airport - Carlsbad, United States": "CLD", "Amherst Amtrak Station AMM - Amherst MA, United States": "XZK", "Dekalb-Peachtree Airport - Atlanta, United States": "PDK", "Maupiti - Maupiti, French Polynesia": "MAU", "Albany Intl - Albany, United States": "ALB", "San Rafael - San Rafael, Argentina": "AFA", "Devi Ahilyabai Holkar - Indore, India": "IDR", "Wenshan Airport - Wenshan, China": "WNH", "Sanandaj - Sanandaj, Iran": "SDG", "Totness Airstrip - Totness, Suriname": "TOT", "Astoria Regional Airport - Astoria, United States": "AST", "Khmeinitskiy - Khmeinitskiy, Ukraine": "HMJ", "McGrath Airport - Mcgrath, United States": "MCG", "Bassel Al Assad Intl - Latakia, Syria": "LTK", "Les Ajoncs - La Roche-sur-yon, France": "EDM", "Edward G Pitka Sr - Galena, United States": "GAL", "Presidente Nicolau Lobato Intl - Dili, East Timor": "DIL", "Hana - Hana, United States": "HNM", "Kerrville Municipal Airport - Kerrville, United States": "ERV", "Aldan Airport - Aldan, Russia": "ADH", "Essen Mulheim - Essen, Germany": "ESS", "Sierra Vista Muni Libby Aaf - Fort Huachuca, United States": "FHU", "Bykovo - Moscow, Russia": "BKA", "J M Nkomo Intl - Bulawayo, Zimbabwe": "BUQ", "Port Augusta Airport - Argyle, Australia": "PUG", "Sokcho - Sokch'o, South Korea": "SHO", "Bonnyville Airport - Bonnyville, Canada": "YBY", "Belbek Sevastopol International Airport - Sevastopol, Ukraine": "UKS", "Sale - Rabat, Morocco": "RBA", "Ramechhap - Ramechhap, Nepal": "RHP", "Gurupi Airport - Gurupi, Brazil": "GRP", "Trollhattan Vanersborg - Trollhattan, Sweden": "THN", "Sorstokken - Stord, Norway": "SRP", "Frankfurt Oder Hbf - Frankfurt Oder, Germany": "ZFR", "Ndjamena Hassan Djamous - N'djamena, Chad": "NDJ", "Visby - Visby, Sweden": "VBY", "Santa Monica Municipal Airport - Santa Monica, United States": "SMO", "Bhisho - Bisho, South Africa": "BIY", "Finger Lakes Regional Airport - Seneca Falls, United States": "0G7", "Banak - Lakselv, Norway": "LKL", "La Abraq Airport - Al Bayda', Libya": "LAQ", "Jiayuguan Airport - Jiayuguan, China": "JGN", "Yecheon - Yechon, South Korea": "YEC", "Ain Arnat Airport - Setif, Algeria": "QSF", "Minsk 1 - Minsk, Belarus": "MHP", "San Juan - San Julian, Argentina": "UAQ", "Lake Hood Seaplane Base - Anchorage, United States": "LHD", "Poliarny Airport - Yakutia, Russia": "PYJ", "Wadi Halfa Airport - Wadi Halfa, Sudan": "WHF", "Marina Di Campo - Marina Di Campo, Italy": "EBA", "Irkutsk - Irkutsk, Russia": "IKT", "Halli - Halli, Finland": "KEV", "Svartnes Airport - Vard\u00f8, Norway": "VAW", "Mohamed Boudiaf Intl - Constantine, Algeria": "CZL", "Davis Monthan Afb - Tucson, United States": "DMA", "Richards Bay - Richard's Bay, South Africa": "RCB", "Pajuostis - Panevezys, Lithuania": "PNV", "Ponta Delgada - Ponta Delgada, Portugal": "PDL", "Buffalo Range - Chiredzi, Zimbabwe": "BFO", "Phuket Intl - Phuket, Thailand": "HKT", "Waterloo Regional Airport - Waterloo, United States": "ALO", "Calais Dunkerque - Calais, France": "CQF", "Kumamoto - Kumamoto, Japan": "KMJ", "Craig Cove Airport - Craig Cove, Vanuatu": "CCV", "Okadama Airport - Sapporo, Japan": "OKD", "Bekily - Bekily, Madagascar": "OVA", "Corvallis Muni - Corvallis, United States": "CVO", "Aupaluk Airport - Aupaluk, Canada": "YPJ", "False Pass Airport - False Pass, United States": "KFP", "Kalgoorlie Boulder - Kalgoorlie, Australia": "KGI", "Apartad\u00f3 Airport - Apartad\u00f3, Colombia": "APO", "Sigonella - Sigonella, Italy": "NSY", "Redcliffe Airport - Redcliffe, Vanuatu": "RCL", "Ulukhaktok Holman - Holman Island, Canada": "YHI", "Yakutat - Yakutat, United States": "YAK", "Sultan Abdul Halim - Alor Setar, Malaysia": "AOR", "Dobbins Arb - Marietta, United States": "MGE", "Batman - Batman, Turkey": "BAL", "West 30th St. Heliport - New York, United States": "JRA", "Wotho Island Airport - Wotho Island, Marshall Islands": "WTO", "Henri Coanda - Bucharest, Romania": "OTP", "Schiphol - Amsterdam, Netherlands": "AMS", "San Domino Island Heliport - Tremiti Islands, Italy": "TQR", "Koliganek Airport - Koliganek, United States": "KGK", "Porter County Municipal Airport - Valparaiso, United States": "NPZ", "Shamattawa Airport - Shamattawa, Canada": "ZTM", "San Sebastian - San Sebastian, Spain": "EAS", "Lubang Community Airport - Lubang, Philippines": "LBX", "Coronation - Coronation, Canada": "YCT", "Ukunda Airport - Ukunda, Kenya": "UKA", "Elkins Randolph Co Jennings Randolph - Elkins, United States": "EKN", "Greenbrier Valley Airport - Lewisburg, United States": "LWB", "Shannon - Shannon, Ireland": "SNN", "Sokol - Magadan, Russia": "GDX", "Igloolik Airport - Igloolik, Canada": "YGT", "Aktau - Aktau, Kazakhstan": "SCO", "Pasni - Pasni, Pakistan": "PSI", "Riga Intl - Riga, Latvia": "RIX", "New Stuyahok Airport - New Stuyahok, United States": "KNW", "Norfolk Ns - Norfolk, United States": "NGU", "St Catherine Intl - St. Catherine, Egypt": "SKV", "Wattay Intl - Vientiane, Laos": "VTE", "Redang - Redang, Malaysia": "RDN", "Le Raizet - Pointe-a-pitre, Guadeloupe": "PTP", "Municipal Airport - Viroqua, United States": "Y51", "Greater Kankakee - Kankakee, United States": "IKK", "Tuscaloosa Rgnl - Tuscaloosa AL, United States": "TCL", "Biessenhofen BF - Biessenhofen, Germany": "BIE", "Kent - Chatham, Canada": "XCM", "Godman Aaf - Fort Knox, United States": "FTK", "Kotoka Intl - Accra, Ghana": "ACC", "Grantley Adams Intl - Bridgetown, Barbados": "BGI", "Deputado Luis Eduardo Magalhaes - Salvador, Brazil": "SSA", "Moomba - Moomba, Australia": "MOO", "Hagerstown Regional Richard A Henson Field - Hagerstown, United States": "HGR", "Roche Harbor Seaplane Base - Roche Harbor, United States": "RCE", "Vigra - Alesund, Norway": "AES", "Stanhope - Haliburton, Canada": "ND4", "Ngaoundere - N'gaoundere, Cameroon": "NGE", "Hagfors Airport - Hagfors, Sweden": "HFS", "Luce County Airport - Newberry, United States": "ERY", "El Tehuelche - Puerto Madryn, Argentina": "PMY", "Bagdad Airport - Bagdad, United States": "E51", "Satu Mare - Satu Mare, Romania": "SUJ", "Kasaba Bay Airport - Kasaba Bay, Zambia": "ZKB", "Kirovsk-Apatity Airport - Apatity, Russia": "KVK", "Gare Montparnasse - Paris, France": "XGB", "San Angelo Rgnl Mathis Fld - San Angelo, United States": "SJT", "Ashford - Lympne, United Kingdom": "LYM", "Bob Quinn Lake - Bob Quinn Lake, Canada": "YBO", "Tansonnhat Intl - Ho Chi Minh City, Vietnam": "SGN", "Scatsta - Scatsta, United Kingdom": "SDZ", "Tulsipur - Dang, Nepal": "DNP", "Seo De Urgel - Seo De Urgel, Spain": "LEU", "Frankfurt Main - Frankfurt, Germany": "FRA", "Catarman National Airport - Catarman, Philippines": "CRM", "Aguni Airport - Aguni, Japan": "AGJ", "Cataratas Del Iguazu - Iguazu Falls, Argentina": "IGR", "Taraz - Dzhambul, Kazakhstan": "DMB", "Trois Rivieres Airport - Trois Rivieres, Canada": "YRQ", "Palmas - Palmas, Brazil": "PMW", "Reeroe Airport - Caherciveen, Ireland": "CHE", "Lecce - Lecce, Italy": "LCC", "Brussels South - Charleroi, Belgium": "CRL", "Edinburgh - Edinburgh, United Kingdom": "EDI", "Lappeenranta - Lappeenranta, Finland": "LPP", "Beograd - Belgrade, Serbia": "BEG", "Durango Intl - Durango, Mexico": "DGO", "Amderma Airport - Amderma, Russia": "AMV", "Chilliwack - Chilliwack, Canada": "YCW", "Bethel - Bethel, United States": "BET", "Winnipeg Intl - Winnipeg, Canada": "YWG", "Alderney - Alderney, Guernsey": "ACI", "Allakaket Airport - Allakaket, United States": "AET", "Cambridge Municipal Airport - Cambridge, United States": "CDI", "Sleetmute Airport - Sleetmute, United States": "SLQ", "Alicante - Alicante, Spain": "ALC", "Fitchburg Municipal Airport - Fitchburg, United States": "FIT", "Thule Air Base - Thule, Greenland": "THU", "Kurumoch - Samara, Russia": "KUF", "Dell Flight Strip - Dell, United States": "4U9", "Shang Yi - Kinmen, Taiwan": "KNH", "Augsburg - Augsburg, Germany": "AGB", "Apalachicola Regional Airport - Apalachicola, United States": "AAF", "Bathurst Airport - Bathurst, Australia": "BHS", "Victoria River Downs Airport - Victoria River Downs, Australia": "VCD", "Belo sur Tsiribihina Airport - Belo sur Tsiribihina, Madagascar": "BMD", "Paso De Los Libres - Paso De Los Libres, Argentina": "AOL", "Sugraly Airport - Zarafshan, Uzbekistan": "AFS", "Beihan - Beihan, Yemen": "BHN", "Takotna Airport - Takotna, United States": "TCT", "Capital City Airport - Frankfort, United States": "FFT", "General Enrique Mosconi Airport - Tartagal, Argentina": "TTG", "Tucurui - Tucurui, Brazil": "TUR", "Gallup Muni - Gallup, United States": "GUP", "La Mesa Intl - San Pedro Sula, Honduras": "SAP", "Tupelo Regional Airport - Tupelo, United States": "TUP", "Magdeburg-Cochstedt - Cochstedt, Germany": "CSO", "Vigo - Vigo, Spain": "VGO", "Helena Rgnl - Helena, United States": "HLN", "Sharurah - Sharurah, Saudi Arabia": "SHW", "Charnay - Macon, France": "QNX", "Huslia Airport - Huslia, United States": "HSL", "Rangiroa - Rangiroa, French Polynesia": "RGI", "Aviano Ab - Aviano, Italy": "AVB", "Ricardo Garc\u00eda Posada Airport - El Salvador, Chile": "ESR", "Makedonia - Thessaloniki, Greece": "SKG", "Chautauqua County-Dunkirk Airport - Dunkirk, United States": "DKK", "Chkalovsky Airport - Shchyolkovo, Russia": "CKL", "Zamora - Zamora, Mexico": "ZMM", "Polgolla Reservoir - Kandy, Sri Lanka": "KDZ", "Little Rock Afb - Jacksonville, United States": "LRF", "Canaima - Canaima, Venezuela": "CAJ", "Yacuiba - Yacuiba, Bolivia": "BYC", "Persian Gulf Airport - Khalije Fars, Iran": "PGU", "Karumba Airport - Karumba, Australia": "KRB", "Hollis Seaplane Base - Hollis, United States": "HYL", "Sanliurfa Airport - Sanliurfa, Turkey": "SFQ", "Mundo Maya International - Flores, Guatemala": "FRS", "Aswan Intl - Aswan, Egypt": "ASW", "Usinsk - Usinsk, Russia": "USK", "Sibu - Sibu, Malaysia": "SBW", "Cleveland Hopkins Intl - Cleveland, United States": "CLE", "Dushanbe - Dushanbe, Tajikistan": "DYU", "Angads - Oujda, Morocco": "OUD", "Tampa North Aero Park - Tampa, United States": "X39", "Babimost - Zielona Gora, Poland": "IEG", "Santa Elena Airport - Santa Elena de Uairen, Venezuela": "SNV", "Nuernberg Railway - Nuernberg, Germany": "ZAQ", "Long Island Mac Arthur - Islip, United States": "ISP", "Grand Bahama Intl - Freeport, Bahamas": "FPO", "Depati Amir - Pangkal Pinang, Indonesia": "PGK", "Lima Allen County Airport - Lima, United States": "AOH", "Alexandria Intl - Alexandria, United States": "AEX", "Matsuyama - Matsuyama, Japan": "MYJ", "Mogilev Airport - Mogilev, Belarus": "MVQ", "Zhuhai Airport - Zhuhai, China": "ZUH", "Norman Manley Intl - Kingston, Jamaica": "KIN", "Gorno-Altaysk Airport - Gorno-Altaysk, Russia": "RGK", "Riviere Du Loup - Riviere Du Loup, Canada": "YRI", "Austin Straubel Intl - Green Bay, United States": "GRB", "Mason City Municipal - Mason City, United States": "MCW", "Richfield Minicipal Airport - Richfield, United States": "RIF", "Alluitsup Paa Heliport - Alluitsup Paa, Greenland": "LLU", "Yap Intl - Yap, Micronesia": "YAP", "Lar Airport - Lar, Iran": "LRR", "Mahanaim I Ben Yaakov - Rosh Pina, Israel": "RPN", "San Luis - San Luis, Argentina": "LUQ", "Southern California Logistics - Victorville, United States": "VCV", "Ingeniero Juan Guillermo Villasana - Pachuca, Mexico": "PCA", "Sayun International Airport - Sayun Intl, Yemen": "GXF", "Resistencia - Resistencia, Argentina": "RES", "Jiamusi Airport - Jiamusi, China": "JMU", "Blackpool - Blackpool, United Kingdom": "BLK", "Illinois Valley Regional - Peru, United States": "VYS", "Saidu Sharif - Saidu Sharif, Pakistan": "SDT", "Kobe - Kobe, Japan": "UKB", "Taichung Airport - Taichung, Taiwan": "TXG", "Ambilobe - Ambilobe, Madagascar": "AMB", "Allama Iqbal Intl - Lahore, Pakistan": "LHE", "CedarKey - Cedar Key, United States": "CDK", "Ranong - Ranong, Thailand": "UNN", "Sabzevar National Airport - Sabzevar, Iran": "AFZ", "Siuna Airport - Siuna, Nicaragua": "SIU", "Nuku Hiva - Nuku Hiva, French Polynesia": "NHV", "Ketchikan Intl - Ketchikan, United States": "KTN", "McKinnon Airport - Brunswick, United States": "SSI", "Gy\u0151r-P\u00e9r International Airport - Gy\u0151r, Hungary": "QGY", "Tok Junction Airport - Tok, United States": "6K8", "Newcastle - Newcastle, South Africa": "NCS", "Laduani Airstrip - Laduani, Suriname": "LDO", "Tefe - Tefe, Brazil": "TFF", "Abakan - Abakan, Russia": "ABA", "Hiva Oa-Atuona Airport - Hiva-oa, French Polynesia": "AUQ", "General leite de Castro Airport - Rio Verde, Brazil": "RVD", "Prince Rupert - Prince Pupert, Canada": "YPR", "Nakhchivan Airport - Nakhchivan, Azerbaijan": "NAJ", "Peace River - Peace River, Canada": "YPE", "Tambacounda - Tambacounda, Senegal": "TUD", "Coningsby - Coningsby, United Kingdom": "QCY", "Aitutaki - Aitutaki, Cook Islands": "AIT", "Barcelos Airport - Barcelos, Brazil": "BAZ", "Wabush - Wabush, Canada": "YWK", "Pierre Regional Airport - Pierre, United States": "PIR", "Condron Aaf - White Sands, United States": "WSD", "Niederrhein - Weeze, Germany": "NRN", "Heho - Heho, Burma": "HEH", "Akureyri - Akureyri, Iceland": "AEY", "Londrina - Londrina, Brazil": "LDB", "Provence - Marseille, France": "MRS", "Solomon Airport - Solomon, Australia": "SLJ", "Poplar Bluff Municipal Airport - Poplar Bluff, United States": "POF", "Aeropuerto de Rafaela - Rafaela, Argentina": "RAF", "Sarh Airport - Sarh, Chad": "SRH", "Southdowns - Southdowns, Zambia": "KIW", "Rovaniemi - Rovaniemi, Finland": "RVN", "Afonso Pena - Curitiba, Brazil": "CWB", "Kosrae - Kosrae, Micronesia": "KSA", "Sindal Airport - Sindal, Denmark": "CNL", "Maribor - Maribor, Slovenia": "MBX", "Soesterberg - Soesterberg, Netherlands": "UTC", "Tribhuvan Intl - Kathmandu, Nepal": "KTM", "Malaga - Malaga, Spain": "AGP", "Narsarsuaq - Narssarssuaq, Greenland": "UAK", "Odense - Odense, Denmark": "ODE", "Abidjan Felix Houphouet Boigny Intl - Abidjan, Cote d'Ivoire": "ABJ", "Transilvania Targu Mures - Tirgu Mures, Romania": "TGM", "Puerto Carreno - Puerto Carreno, Colombia": "PCR", "Cap Fap David Abenzur Rengifo Intl - Pucallpa, Peru": "PCL", "Salt Lake City Intl - Salt Lake City, United States": "SLC", "Xingyi Airport - Xingyi, China": "ACX", "Los Colonizadores Airport - Saravena, Colombia": "RVE", "Landskrona - Landskrona, Sweden": "JLD", "Dawadmi Domestic Airport - Dawadmi, Saudi Arabia": "DWD", "Madera Municipal Airport - Madera, United States": "MAE", "Manicore - Manicore, Brazil": "MNX", "Masbate Airport - Masbate, Philippines": "MBT", "Qasigiannguit - Qasigiannguit, Greenland": "JCH", "Rendani - Manokwari, Indonesia": "MKW", "Kiwayu (Mkononi) Airport - Kiwayu, Kenya": "KWY", "Alta Floresta - Alta Floresta, Brazil": "AFL", "San Tome - San Tome, Venezuela": "SOM", "El Embrujo - Providencia, Colombia": "PVA", "Tchibanga Airport - Tchibanga, Gabon": "TCH", "Araxos - Patras, Greece": "GPA", "Cortez Muni - Cortez, United States": "CEZ", "Lockhart River Airport - Lockhart River, Australia": "IRG", "Eniwetok Airport - Eniwetok Atoll, Marshall Islands": "ENT", "Montgomery Field - San Diego, United States": "MYF", "Canyonlands Field - Moab, United States": "CNY", "Igdir - Igdir, Turkey": "IGD", "Oudomxay - Muang Xay, Laos": "ODY", "Taif - Taif, Saudi Arabia": "TIF", "Kittila - Kittila, Finland": "KTT", "Lijiang Airport - Lijiang, China": "LJG", "Santo Angelo - Santo Angelo, Brazil": "GEL", "Cape Girardeau Regional Airport - Cape Girardeau, United States": "CGI", "Marechal Cunha Machado Intl - Sao Luis, Brazil": "SLZ", "Nottingham East Midlands - East Midlands, United Kingdom": "EMA", "Kjevik - Kristiansand, Norway": "KRS", "Yellowknife - Yellowknife, Canada": "YZF", "Graz - Graz, Austria": "GRZ", "Moro Airport - Moro, Papua New Guinea": "MXH", "Corumba Intl - Corumba, Brazil": "CMG", "Lyudao - Green Island, Taiwan": "GNI", "Sein\u00e4joki Airport - Sein\u00e4joki / Ilmajoki, Finland": "SJY", "North Perry - Hollywood, United States": "HWO", "Bedourie Airport - Bedourie, Australia": "BEU", "Port Moresby Jacksons Intl - Port Moresby, Papua New Guinea": "POM", "Peenemunde Airfield - Peenemunde, Germany": "PEF", "Camiguin Airport - Camiguin, Philippines": "CGM", "Wuhai - Wuhai, China": "WUA", "Bogande Airport - Bogande, Canada": "XBG", "Twenthe - Enschede, Netherlands": "ENS", "El Centro Naf - El Centro, United States": "NJK", "Sidney Muni Airport - Sidney, United States": "SNY", "Manapouri - Manapouri, New Zealand": "TEU", "Raleigh Durham Intl - Raleigh-durham, United States": "RDU", "Mary Airport - Mary, Turkmenistan": "MYP", "Tuktoyaktuk - Tuktoyaktuk, Canada": "YUB", "Karup - Karup, Denmark": "KRP", "Ihu Airport - Ihu, Papua New Guinea": "IHU", "Son Sant Joan - Palma de Mallorca, Spain": "PMI", "Sion - Sion, Switzerland": "SIR", "Saiss - Fes, Morocco": "FEZ", "Powell River Airport - Powell River, Canada": "YPW", "Kikai Airport - Kikai, Japan": "KKX", "Sachigo Lake Airport - Sachigo Lake, Canada": "ZPB", "Mulatupo Airport - Mulatupo, Panama": "MPP", "Provincetown Muni - Provincetown, United States": "PVC", "Vincent Fayks Airport - Paloemeu, Suriname": "OEM", "Adiyaman Airport - Adiyaman, Turkey": "ADF", "Cairo Intl - Cairo, Egypt": "CAI", "Yakubu Gowon - Jos, Nigeria": "JOS", "Teniente Benjamin Matienzo - Tucuman, Argentina": "TUC", "All Airports - London, United Kingdom": "LON", "Hilo Intl - Hilo, United States": "ITO", "Owensboro Daviess County Airport - Owensboro, United States": "OWB", "Ujae Atoll Airport - Ujae Atoll, Marshall Islands": "UJE", "Scholes Intl At Galveston - Galveston, United States": "GLS", "Bob Baker Memorial Airport - Kiana, United States": "IAN", "Ankang Airport - Ankang, China": "AKA", "Capurgana Airport - Capurgana, Colombia": "CPB", "Shigatse Peace Airport - Shigatse, China": "RKZ", "St. Michael Airport - St. Michael, United States": "SMK", "Dalhart Muni - Dalhart, United States": "DHT", "Mmabatho International Airport - Mafeking, South Africa": "MBD", "Stokka - Sandnessjoen, Norway": "SSJ", "Covington Municipal Airport - Covington, United States": "9A1", "Bildudalur Airport - Bildudalur, Iceland": "BIU", "Toledo - Toledo, United States": "TOL", "Bellary - Bellary, India": "BEP", "Soure Airport - Soure, Brazil": "SFK", "King Fahd Intl - Dammam, Saudi Arabia": "DMM", "Francistown - Francistown, Botswana": "FRW", "Yelizovo - Petropavlovsk, Russia": "PKC", "Turkmenabat - Turkmenabat, Turkmenistan": "CRZ", "Maimana - Maimama, Afghanistan": "MMZ", "Mutiara Ii - Labuhan Bajo, Indonesia": "LBJ", "Salekhard Airport - Salekhard, Russia": "SLY", "All Airports - Chicago, United States": "CHI", "China Lake Naws - China, United States": "NID", "Limon Intl - Limon, Costa Rica": "LIO", "Brenoux - Mende, France": "MEN", "Canberra - Canberra, Australia": "CBR", "Stornoway - Stornoway, United Kingdom": "SYY", "Japura - Rengat, Indonesia": "RGT", "Braunschweig Wolfsburg - Braunschweig, Germany": "BWE", "Sinop Airport - Sinop, Turkey": "SIC", "Totegegie - Totegegie, French Polynesia": "GMR", "Niue International Airport - Alofi, Niue": "IUE", "Donaueschingen Villingen - Donaueschingen, Germany": "ZQL", "Hanau Aaf - Hanau, Germany": "ZNF", "Naples Muni - Naples, United States": "APF", "Tr\u00e0 N\u00f3c Airport - Can Tho, Vietnam": "VCA", "Hooper Bay Airport - Hooper Bay, United States": "HPB", "Coen Airport - Coen, Australia": "CUQ", "Gasmata Island Airport - Gasmata Island, Papua New Guinea": "GMI", "Cartersville Airport - Cartersville, United States": "VPC", "Queen Street Station - Glasgow, United Kingdom": "GLQ", "Southern Wisconsin Regional Airport - Janesville, United States": "JVL", "Manchester Regional Airport - Manchester NH, United States": "MHT", "Fayetteville Regional Grannis Field - Fayetteville, United States": "FAY", "Moultrie Municipal Airport - Moultrie, United States": "MGR", "Altus Afb - Altus, United States": "LTS", "Geelong Airport - Geelong, Australia": "GEX", "Carthage - Tunis, Tunisia": "TUN", "David Wayne Hooks Field - Houston, United States": "DWH", "Grissom Arb - Peru, United States": "GUS", "Laughlin-Bullhead Intl - Bullhead, United States": "IFP", "Boa Vista - Boa Vista, Brazil": "BVB", "Beihai Airport - Beihai, China": "BHY", "Matsapha - Manzini, Swaziland": "MTS", "Qikiqtarjuaq - Broughton Island, Canada": "YVM", "Atbara Airport - Atbara, Sudan": "ATB", "Huron Rgnl - Huron, United States": "HON", "Grand Canyon National Park Airport - Grand Canyon, United States": "GCN", "Buttonville Muni - Toronto, Canada": "YKZ", "City - London, United Kingdom": "LCY", "El Tari - Kupang, Indonesia": "KOE", "Dane Co Rgnl Truax Fld - Madison, United States": "MSN", "Gillam Airport - Gillam, Canada": "YGX", "Morrisville Stowe State Airport - Morrisville, United States": "MVL", "Minangkabau - Padang, Indonesia": "PDG", "Tabubil Airport - Tabubil, Papua New Guinea": "TBG", "St Gallen Altenrhein - Altenrhein, Switzerland": "ACH", "Windhoek Hosea Kutako International Airport  - Windhoek, Namibia": "WDH", "Hatay Airport - Hatay, Turkey": "HTY", "Knokke-Heist Westkapelle Heliport - Knokke, Belgium": "KNO", "Kamina Base - Kamina Base, Congo (Kinshasa)": "KMN", "Talhar - Talhar, Pakistan": "BDN", "Entebbe Intl - Entebbe, Uganda": "EBB", "General Manuel Carlos Piar - Ciudad Guayana, Venezuela": "CGU", "Shearwater - Halifax, Canada": "YAW", "Grants Milan Muni - Grants, United States": "GNT", "Hamburg Inc Airport - Hamburg, United States": "4G2", "Mangshi Airport - Luxi, China": "LUM", "Shishmaref Airport - Shishmaref, United States": "SHH", "Momote Airport - Momote, Papua New Guinea": "MAS", "Biggin Hill - Biggin Hill, United Kingdom": "BQH", "Culebra Airport - Culebra Island, Puerto Rico": "CPX", "Lihue - Lihue, United States": "LIH", "Lincoln - Lincoln, United States": "LNK", "Reno Tahoe Intl - Reno, United States": "RNO", "Charlottesville-Albemarle - Charlottesville VA, United States": "CHO", "Imphal - Imphal, India": "IMF", "Chisinau Intl - Chisinau, Moldova": "KIV", "Cotabato - Cotabato, Philippines": "CBO", "George Bush Intercontinental - Houston, United States": "IAH", "Fujairah Intl - Fujeirah, United Arab Emirates": "FJR", "Willow Grove Nas Jrb - Willow Grove, United States": "NXX", "Dr Ambedkar Intl - Nagpur, India": "NAG", "Mariscal Sucre Intl - Quito, Ecuador": "UIO", "Ridgeland Airport - Ridgeland, United States": "3J1", "Perth Scone Airport - Perth, United Kingdom": "PSL", "Morgantown Muni Walter L Bill Hart Fld - Morgantown, United States": "MGW", "Cabinda - Cabinda, Angola": "CAB", "Gurney Airport - Gurney, Papua New Guinea": "GUR", "Flying Cloud Airport - Eden Prairie, United States": "FCM", "Brookings Regional Airport - Brookings, United States": "BKX", "Blagnac - Toulouse, France": "TLS", "Ngorangora Airport - Kirakira, Solomon Islands": "IRA", "Perito Moreno - Perito Moreno, Argentina": "PMQ", "Campo Dos Bugres - Caxias Do Sul, Brazil": "CXJ", "Ciudad Obregon Intl - Ciudad Obregon, Mexico": "CEN", "Khasab - Khasab, Oman": "KHS", "Eilat - Elat, Israel": "ETH", "Kotlik Airport - Kotlik, United States": "KOT", "Arenal Airport - La Fortuna/San Carlos, Costa Rica": "FON", "Mary's Harbour Airport - Mary's Harbour, Canada": "YMH", "Peawanuck Airport - Peawanuck, Canada": "YPO", "Tartu - Tartu, Estonia": "TAY", "Sam Ratulangi - Manado, Indonesia": "MDC", "Kaben Airport - Kaben, Marshall Islands": "KBT", "Fredericton - Fredericton, Canada": "YFC", "Santa Cruz/Graciosa Bay/Luova Airport - Santa Cruz/Graciosa Bay/Luova, Solomon Islands": "SCZ", "Allahabad - Allahabad, India": "IXD", "Charlottetown - Charlottetown, Canada": "YYG", "Am Timan Airport - Am Timan, Chad": "AMC", "Sao Felix do Xingu Airport - Sao Felix do Xingu, Brazil": "SXX", "Lubeck Blankensee - Luebeck, Germany": "LBC", "Grosseto - Grosseto, Italy": "GRS", "Save - Gothenborg, Sweden": "GSE", "Kuujjuarapik Airport - Kuujjuarapik, Canada": "YGW", "Borg El Arab Intl - Alexandria, Egypt": "HBE", "Kunsan Air Base - Kunsan, South Korea": "KUV", "Kamishly Airport - Kamishly, Syria": "KAC", "Ignacio Agramonte Intl - Camaguey, Cuba": "CMW", "Wall Street Heliport - New York, United States": "JRB", "Sialkot Airport - Sialkot, Pakistan": "SKT", "Kalmar - Kalkmar, Sweden": "KLR", "Koggala Airport - Koggala, Sri Lanka": "KCT", "Xoxocotlan Intl - Oaxaca, Mexico": "OAX", "Kenai Muni - Kenai, United States": "ENA", "Point Salines Intl - Point Salines, Grenada": "GND", "Great Barrier Island - Claris, New Zealand": "GBZ", "Lutselk'e Airport - Lutselk'e, Canada": "YSG", "Bantry Aerodrome - Bantry, Ireland": "BYT", "Moser Bay Seaplane Base - Moser Bay, United States": "KMY", "Gardabya Airport - Sirt, Libya": "SRX", "Taiz Intl - Taiz, Yemen": "TAI", "Hubli Airport - Hubli, India": "HBX", "Mabuiag Island Airport - Mabuiag Island, Australia": "UBB", "Stefan Cel Mare - Suceava, Romania": "SCV", "Kariba Intl - Kariba, Zimbabwe": "KAB", "Dayton-Wright Brothers Airport - Dayton, United States": "MGY", "St Lucie County International Airport - Fort Pierce, United States": "FRP", "Meridian Nas - Meridian, United States": "NMM", "Sazena - Sazena, Czech Republic": "LKS", "Ely Airport - Ely, United States": "ELY", "Sorkjosen Airport - Sorkjosen, Norway": "SOJ", "Guardiamarina Zanartu Airport - Puerto Williams, Chile": "WPU", "Pikangikum Airport - Pikangikum, Canada": "YPM", "Birmingham Intl - Birmingham, United States": "BHM", "Kadhdhoo Airport - Laamu Atoll, Maldives": "KDO", "Wilkes-Barre Wyoming Valley Airport - Wilkes-Barre, United States": "WBW", "Aktyubinsk - Aktyubinsk, Kazakhstan": "AKX", "Melville Hall - Dominica, Dominica": "DOM", "Wallis - Wallis, Wallis and Futuna": "WLS", "Ndjili Intl - Kinshasa, Congo (Kinshasa)": "FIH", "Anniston Metro - Anniston, United States": "ANB", "Tacheng Airport - Tacheng, China": "TCG", "LM Clayton Airport - Wolf Point, United States": "OLF", "Agri Airport - Agri, Turkey": "AJI", "Maca\u00e9 Airport - Maca\u00e9, Brazil": "MEA", "Capitan Corbeta C A Curbelo International Airport - Punta del Este, Uruguay": "PDP", "Faro - Faro, Portugal": "FAO", "Dillant Hopkins Airport - Keene, United States": "EEN", "Stockholm Cruise Port - Stockholm, Sweden": "STO", "Nouakchott - Nouakschott, Mauritania": "NKC", "Loudes - Le Puy, France": "LPY", "Nurnberg - Nuernberg, Germany": "NUE", "Ballina Byron Gateway - Ballina Byron Bay, Australia": "BNK", "Cairo-Grady County Airport - Cairo, United States": "70J", "Sussex Co - Georgetown, United States": "GED", "Jose Aponte de la Torre Airport - Ceiba, Puerto Rico": "RVR", "Lichinga - Lichinga, Mozambique": "VXC", "Kailashahar - Kailashahar, India": "IXH", "Herat - Herat, Afghanistan": "HEA", "New Orleans Nas Jrb - New Orleans, United States": "NBG", "Mammy Yoko Heliport - Freetown, Sierra Leone": "JMY", "Rosecrans Mem - Rosecrans, United States": "STJ", "Cuddapah - Cuddapah, India": "CDP", "Virginia - Durban, South Africa": "VIR", "Schwechat - Vienna, Austria": "VIE", "Firenze - Florence, Italy": "FLR", "Rapid City Regional Airport - Rapid City, United States": "RAP", "Belep Islands Airport - Waala, New Caledonia": "BMY", "Babelthuap - Babelthuap, Palau": "ROR", "Kerman - Kerman, Iran": "KER", "Jiagedaqi Airport - Jiagedaqi District, China": "JGD", "Danbury Municipal Airport - Danbury, United States": "DXR", "Oxford House Airport - Oxford House, Canada": "YOH", "New Castle - Wilmington, United States": "ILG", "Sioux Lookout - Sioux Lookout, Canada": "YXL", "Fernando Luis Ribas Dominicci - San Juan, Puerto Rico": "SIG", "Asmara Intl - Asmara, Eritrea": "ASM", "Sonderborg - Soenderborg, Denmark": "SGD", "Crystal River - Crystal River, United States": "CGC", "Megas Alexandros Intl - Kavala, Greece": "KVA", "Pease International Tradeport - Portsmouth, United States": "PSM", "Tte Av Jorge Henrich Arauz - Trinidad, Bolivia": "TDD", "Pemba - Pemba, Mozambique": "POL", "Makin Airport - Makin, Kiribati": "MTK", "Skardu Airport - Skardu, Pakistan": "KDU", "Saint Louis - St. Louis, Senegal": "XLS", "Goma - Goma, Congo (Kinshasa)": "GOM", "Cadete Guillermo Del Castillo Paredes - Tarapoto, Peru": "TPP", "Lviv Intl - Lvov, Ukraine": "LWO", "Sept Iles - Sept-iles, Canada": "YZV", "Ndutu - Ndutu, Tanzania": "DUU", "Houssen - Colmar, France": "CMR", "Alpena County Regional Airport - Alpena, United States": "APN", "Baco Airport - Baco, Ethiopia": "BCO", "Nakhon Phanom - Nakhon Phanom, Thailand": "KOP", "Wishram Amtrak Station - Wishram, United States": "WIH", "Keshod - Keshod, India": "IXK", "Pembina Muni - Pembina, United States": "PMB", "Larisa - Larissa, Greece": "LRA", "Bauru - Bauru, Brazil": "BAU", "Rancho Murieta - Rancho Murieta, United States": "RIU", "Nottingham Airport - Nottingham, United Kingdom": "NQT", "Sir Seewoosagur Ramgoolam Intl - Plaisance, Mauritius": "MRU", "Humaita Airport - Humaita, Brazil": "HUW", "Grozny Airport - Grozny, Russia": "GRV", "Pinang Kampai - Dumai, Indonesia": "DUM", "Porbandar - Porbandar, India": "PBD", "Southwest Georgia Regional Airport - Albany, United States": "ABY", "Antonio Juarbe Pol Airport - Arecibo, Puerto Rico": "ARE", "Boulder City Municipal Airport - Boulder City, United States": "BLD", "El Loa - Calama, Chile": "CJC", "Smith Fld - Fort Wayne IN, United States": "SMD", "Taupo - Taupo, New Zealand": "TUO", "Gwinnett County Airport-Briscoe Field - Lawrenceville, United States": "LZU", "Dallas Love Fld - Dallas, United States": "DAL", "Grise Fiord Airport - Grise Fiord, Canada": "YGZ", "Argyle Airport - Argyle, Australia": "GYL", "Wallops Flight Facility - Wallops Island, United States": "WAL", "Teniente Coronel Luis A Mantilla - Tulcan, Ecuador": "TUA", "Verkehrslandeplatz Juist - Juist, Germany": "JUI", "Maamigili Airport - Maamigili, Maldives": "VAM", "Sioux Gateway Col Bud Day Fld - Sioux City, United States": "SUX", "Lawrence J Timmerman Airport - Milwaukee, United States": "MWC", "Gatwick - London, United Kingdom": "LGW", "El Porvenir - El Porvenir, Panama": "PVE", "Edmonton City Centre - Edmonton, Canada": "YXD", "Mosnov - Ostrava, Czech Republic": "OSR", "Eindhoven - Eindhoven, Netherlands": "EIN", "Rochester - Rochester, United States": "RST", "Dera Ismael Khan Airport - Dera Ismael Khan, Pakistan": "DSK", "Osh - Osh, Kyrgyzstan": "OSS", "Kaitaia - Kaitaia, New Zealand": "KAT", "Chapais Airport - Chibougamau, Canada": "YMT", "Ambatondrazaka Airport - Ambatondrazaka, Madagascar": "WAM", "Excursion Inlet Seaplane Base - Excursion Inlet, United States": "EXI", "Fort Jefferson - Fort Jefferson - Dry Tortugas, United States": "RBN", "Vnukovo - Moscow, Russia": "VKO", "Niau - Niau, French Polynesia": "NIU", "Toyama - Toyama, Japan": "TOY", "Yibin - Yibin, China": "YBP", "Ghat - Ghat, Libya": "GHT", "Buchloe BF - Buchloe, Germany": "BUH", "Lakefront - New Orleans, United States": "NEW", "Asahikawa - Asahikawa, Japan": "AKJ", "Emanuel Co - Santa Barbara, United States": "SBO", "Licenciado Y Gen Ignacio Lopez Rayon - Uruapan, Mexico": "UPN", "Thunder Bay - Thunder Bay, Canada": "YQT", "Nanchong Airport - Nanchong, China": "NAO", "Robins Afb - Macon, United States": "WRB", "Vance Afb - Enid, United States": "END", "Mizan Teferi Airport - Mizan Teferi, Ethiopia": "MTF", "Ithaca Tompkins Rgnl - Ithaca, United States": "ITH", "Phrae - Phrae, Thailand": "PRH", "Enrique Adolfo Jimenez Airport - Col\u00f3n, Panama": "ONX", "Ireland West Knock - Connaught, Ireland": "NOC", "Vilankulo - Vilankulu, Mozambique": "VNX", "West Point Village Seaplane Base - West Point, United States": "KWP", "Arvaikheer Airport - Arvaikheer, Mongolia": "AVK", "Copiapo - Copiapo, Chile": "CPO", "Elenak Airport - Elenak, Marshall Islands": "EAL", "Fussen - Fussen, Germany": "FUS", "Hughenden Airport - Hughenden, Australia": "HGD", "Chatsworth Station - Chatsworth, United States": "CWT", "Wadi Al Dawasir Airport - Wadi-al-dawasir, Saudi Arabia": "EWD", "Ryans Creek Aerodrome - Stewart Island, New Zealand": "SZS", "Tancredo Neves Intl - Belo Horizonte, Brazil": "CNF", "Belmont Airport - Lake Macquarie, Australia": "BEO", "Porto Amboim - Porto Amboim, Angola": "PBN", "Likoma Island Airport - Likoma Island, Malawi": "LIX", "Long Beach - Long Beach, United States": "LGB", "Valan - Honningsvag, Norway": "HVG", "Blackall - Blackall, Australia": "BKQ", "Craig Seaplane Base - Craig, United States": "CGA", "King Salmon - King Salmon, United States": "AKN", "Yushu Batang - Yushu, China": "YUS", "Rigolet Airport - Rigolet, Canada": "YRG", "Venezia Tessera - Venice, Italy": "VCE", "McCarthy Airport - McCarthy, United States": "MXY", "Waris Airport - Waris-Papua Island, Indonesia": "WAR", "South Arkansas Rgnl At Goodwin Fld - El Dorado, United States": "ELD", "Jose Leonardo Chirinos - Coro, Venezuela": "CZE", "Kursk East Airport - Kursk, Russia": "URS", "Akita - Akita, Japan": "AXT", "Cavern City Air Terminal - Carlsbad, United States": "CNM", "Jan Mayensfield - Jan Mayen, Norway": "ZXB", "Rick Husband Amarillo Intl - Amarillo, United States": "AMA", "Sherbro International Airport - Bonthe, Sierra Leone": "BTE", "Lewistown Municipal Airport - Lewistown, United States": "LWT", "Kerema Airport - Kerema, Papua New Guinea": "KMA", "Millinocket Muni - Millinocket, United States": "MLT", "Palo Verde Airport - San Bruno, Mexico": "PVP", "Grand Canyon West Airport - Peach Springs, United States": "1G4", "South Lakeland Airport - Lakeland, United States": "X49", "Bermuda Dunes Airport - Palm Springs, United States": "UDD", "St Mawgan - Newquai, United Kingdom": "NQY", "Liberal Muni - Liberal, United States": "LBL", "Mayaguana - Mayaguana, Bahamas": "MYG", "Tacoma Narrows Airport - Tacoma, United States": "TIW", "La Rochelle-Ile de Re - La Rochelle, France": "LRH", "Kerama Airport - Kerama, Japan": "KJP", "Saint John - St. John, Canada": "YSJ", "RUDNIKI  - RUDNIKI, Poland": "CZW", "Dongying Airport - Dongying, China": "DOY", "Port Said - Port Said, Egypt": "PSD", "Kake Seaplane Base - Kake, United States": "KAE", "Val D Or - Val D'or, Canada": "YVO", "Bourges - Bourges, France": "BOU", "Madeira - Funchal, Portugal": "FNC", "Phnom Penh Intl - Phnom-penh, Cambodia": "PNH", "Tte De Av Salvador Ogaya G - Puerto Suarez, Bolivia": "PSZ", "Telfer Airport - Telfer, Australia": "TEF", "Rickenbacker Intl - Columbus, United States": "LCK", "Mandalay Intl - Mandalay, Burma": "MDL", "Santa Maria Airport - Santa Maria, Brazil": "RIA", "Yuendumu  - Yuendumu , Australia": "YUE", "Motueka - Motueka, New Zealand": "MZP", "Gulu Airport - Gulu, Uganda": "ULU", "Syangboche - Syangboche, Nepal": "SYH", "Abilene Rgnl - Abilene, United States": "ABI", "Bearskin Lake Airport - Bearskin Lake, Canada": "XBE", "Walla Walla Regional Airport - Walla Walla, United States": "ALW", "Nadi Intl - Nandi, Fiji": "NAN", "Usiminas - Ipatinga, Brazil": "IPN", "Panjgur - Panjgur, Pakistan": "PJG", "Land's End / St. Just Airport - Land's End, United Kingdom": "LEQ", "Sud Corse - Figari, France": "FSC", "Train Station - Ottawa, Canada": "XDS", "Abraham Lincoln Capital - Springfield, United States": "SPI", "Patrick Afb - Coco Beach, United States": "COF", "Mandelieu - Cannes, France": "CEQ", "Wotje Atoll Airport - Wotje Atoll, Marshall Islands": "WTE", "Westport - Westport, New Zealand": "WSZ", "Newport News Williamsburg Intl - Newport News, United States": "PHF", "Gods Lake Narrows Airport - Gods Lake Narrows, Canada": "YGO", "Port Blair - Port Blair, India": "IXZ", "Chachoan - Ambato, Ecuador": "ATF", "Mardin Airport - Mardin, Turkey": "MQM", "Sola Airport - Sola, Vanuatu": "SLH", "Florence - Florence, United States": "6S2", "Fabio Alberto Leon Bentley - Mitu, Colombia": "MVP", "Zhijiang Airport - Zhijiang, China": "HJJ", "Salina Municipal Airport - Salina, United States": "SLN", "Suwannee County Airport - Live Oak, United States": "24J", "Reao - Reao, French Polynesia": "REA", "Washington Union Station - Washington, United States": "ZWU", "Donetsk Intl - Donetsk, Ukraine": "DOK", "Beijing Nanyuan Airport - Beijing, China": "NAY", "Vernal Regional Airport - Vernal, United States": "VEL", "Bloemfontein Intl - Bloemfontein, South Africa": "BFN", "All Airports - Washington, United States": "WAS", "Sherbrooke - Sherbrooke, Canada": "YSC", "Bou Chekif - Tiaret, Algeria": "TID", "Sundsvall Harnosand - Sundsvall, Sweden": "SDL", "Nefteyugansk Airport - Nefteyugansk, Russia": "NFG", "Asturias - Aviles, Spain": "OVD", "Lubango - Lubango, Angola": "SDD", "Rock Airport - Tarentum, United States": "9G1", "Ceyzeriat - Bourg, France": "XBK", "Gulfport-Biloxi - Gulfport, United States": "GPT", "Eday Airport - Eday, United Kingdom": "EOI", "Enshi Airport - Enshi, China": "ENH", "Northolt - Northolt, United Kingdom": "NHT", "Hilton Head Airport - Hilton Head Island, United States": "HXD", "Arar - Arar, Saudi Arabia": "RAE", "Port Oceanic Airport - Port Oceanic, United States": "PRL", "Longyan Airport - Longyan, China": "LCX", "Purude University Airport - Lafayette, United States": "LAF", "Pisa - Pisa, Italy": "PSA", "Gregorio Luperon Intl - Puerto Plata, Dominican Republic": "POP", "Farfan - Tulua, Colombia": "ULQ", "Knevichi - Vladivostok, Russia": "VVO", "Bahias De Huatulco Intl - Huatulco, Mexico": "HUX", "Lethem - Lethem, Guyana": "LTM", "Agrinion - Agrinion, Greece": "AGQ", "Lamap Airport - Lamap, Vanuatu": "LPM", "Mildura Airport - Mildura, Australia": "MQL", "Juwata - Taraken, Indonesia": "TRK", "Pangsuma Airport - Putussibau-Borneo Island, Indonesia": "PSU", "Loubomo Airport - Loubomo, Congo (Brazzaville)": "DIS", "Bharatpur Airport - Bharatpur, Nepal": "BHR", "Merced Municipal Airport - Merced, United States": "MCE", "Scottsdale Airport - Scottsdale, United States": "ZSY", "Akure - Akure, Nigeria": "AKR", "Immokalee  - Immokalee , United States": "IMM", "Port Elizabeth Intl - Port Elizabeth, South Africa": "PLZ", "Nausori Intl - Nausori, Fiji": "SUV", "North Las Vegas Airport - Las Vegas, United States": "VGT", "Craven Co Rgnl - New Bern, United States": "EWN", "Ellington Fld - Houston, United States": "EFD", "Minot Intl - Minot, United States": "MOT", "Deering Airport - Deering, United States": "DRG", "Kardla - Kardla, Estonia": "KDL", "Chitral Airport - Chitral, Pakistan": "CJL", "Burgas - Bourgas, Bulgaria": "BOJ", "Ministro Pistarini - Buenos Aires, Argentina": "EZE", "Ioannina - Ioannina, Greece": "IOA", "Chignik Lake Airport - Chignik Lake, United States": "KCQ", "Karlskoga - Karlskoga, Sweden": "KSK", "Innsbruck - Innsbruck, Austria": "INN", "Stranraer Ferry Port - Stranraer, United Kingdom": "SR2", "Astrakhan - Astrakhan, Russia": "ASF", "Rhodes Diagoras - Rhodos, Greece": "RHO", "Mattala Rajapaksa Intl. - Mattala, Sri Lanka": "HRI", "Moshoeshoe I Intl - Maseru, Lesotho": "MSU", "Uummannaq Heliport - Uummannaq, Greenland": "UMD", "Kipnuk Airport - Kipnuk, United States": "KPN", "Shell Mera - Pastaza, Ecuador": "PTZ", "Castle - Merced, United States": "MER", "Netaji Subhash Chandra Bose Intl - Kolkata, India": "CCU", "Tri Cities Airport - Pasco, United States": "PSC", "Mali Airport - Alor Island, Indonesia": "ARD", "Draughon Miller Central Texas Rgnl - Temple, United States": "TPL", "Cloncurry Airport - Cloncurry, Australia": "CNJ", "Malabo - Malabo, Equatorial Guinea": "SSG", "Bayannur - Bayannur, China": "RLK", "San Bernardino International Airport - San Bernardino, United States": "SBD", "Jyvaskyla - Jyvaskyla, Finland": "JYV", "Chan Gurney - Yankton, United States": "YKN", "Heathrow - London, United Kingdom": "LHR", "Minchumina Airport - Lake Minchumina, United States": "MHM", "Mana Island Airport - Mana Island, Fiji": "MNF", "Sodankyla - Sodankyla, Finland": "SOT", "Phoenix International - Sanya, China": "SYX", "Gran Canaria - Gran Canaria, Spain": "LPA", "El Calafate - El Calafate, Argentina": "FTE", "Stuttgart - Stuttgart, Germany": "STR", "Marco Islands - Marco Island Airport, United States": "MRK", "North Bay - North Bay, Canada": "YYB", "Puerto Penasco - Punta Penasco, Mexico": "PPE", "Decatur - Decatur, United States": "DEC", "Bost Airport - Lashkar Gah, Afghanistan": "BST", "Charles De Gaulle - Paris, France": "CDG", "Roros - Roros, Norway": "RRS", "Williams Harbour Airport - Williams Harbour, Canada": "YWM", "Confresa Airport - Santa Terezinha, Brazil": "STZ", "George - George, South Africa": "GRJ", "Santa Cruz - Rio De Janeiro, Brazil": "STU", "Sanga Sanga Airport - Sanga Sanga, Philippines": "SGS", "Paya Lebar - Paya Lebar, Singapore": "QPG", "San Carlos Airport - San Carlos, United States": "SQL", "Kalemie - Kalemie, Congo (Kinshasa)": "FMI", "Addison - Addison, United States": "ADS", "Chippewa County International Airport - Sault Ste Marie, United States": "CIU", "Valdez Pioneer Fld - Valdez, United States": "VDZ", "\u0141\u00f3d\u017a W\u0142adys\u0142aw Reymont Airport - Lodz, Poland": "LCJ", "Chipata Airport - Chipata, Zambia": "CIP", "Nondalton Airport - Nondalton, United States": "NNL", "Cherskiy Airport - Cherskiy, Russia": "CYX", "Langnes - Tromso, Norway": "TOS", "General Urquiza - Parana, Argentina": "PRA", "Nakhon Ratchasima - Nakhon Ratchasima, Thailand": "NAK", "Mar Del Plata - Mar Del Plata, Argentina": "MDQ", "Witham Field Airport - Stuart, United States": "SUA", "Ernesto Cortissoz - Barranquilla, Colombia": "BAQ", "Biskra - Biskra, Algeria": "BSK", "Bella Bella Airport - Bella Bella, Canada": "ZEL", "Iasi - Iasi, Romania": "IAS", "Chimoio Airport - Chimoio, Mozambique": "VPY", "Shah Mokhdum - Rajshahi, Bangladesh": "RJH", "Al-Jawf Domestic Airport - Al-Jawf, Saudi Arabia": "AJF", "Goloson Intl - La Ceiba, Honduras": "LCE", "Annette Island - Annette Island, United States": "ANN", "Tinker Afb - Oklahoma City, United States": "TIK", "West Houston - Houston, United States": "IWS", "Sofia - Sofia, Bulgaria": "SOF", "Champaign - Champaign, United States": "CMI", "Upernavik Airport - Upernavik, Greenland": "JUV", "Haeju Airport - Haeju, North Korea": "HAE", "Achmad Yani - Semarang, Indonesia": "SRG", "Tampa Intl - Tampa, United States": "TPA", "Ashland County Airport - Ashland, United States": "3G4", "What\u00ec Airport - What\u00ec, Canada": "YLE", "Hamadan Airport - Hamadan, Iran": "HDM", "Kent State Airport - Kent, United States": "1G3", "Hasanuddin - Ujung Pandang, Indonesia": "UPG", "Hong Kong Intl - Hong Kong, Hong Kong": "HKG", "Ronchi Dei Legionari - Ronchi De Legionari, Italy": "TRS", "Nurnberg HBF - Nurnberg, Germany": "NUR", "Barataevka - Ulyanovsk, Russia": "ULV", "Nnamdi Azikiwe Intl - Abuja, Nigeria": "ABV", "Sihanoukville - Sihanoukville, Cambodia": "KOS", "Pope Field - Fort Bragg, United States": "POB", "Clarke CO - Quitman, United States": "23M", "Lidkoping - Lidkoping, Sweden": "LDK", "Northern Maine Rgnl At Presque Isle - Presque Isle, United States": "PQI", "Perth Intl - Perth, Australia": "PER", "Urgench Airport - Urgench, Uzbekistan": "UGC", "Lorain County Regional Airport - Lorain-Elyria, United States": "LPR", "Lanzhou Airport - Lanzhou, China": "LHW", "Galeao Antonio Carlos Jobim - Rio De Janeiro, Brazil": "GIG", "Orapa Airport - Orapa, Botswana": "ORP", "Alykel - Norilsk, Russia": "NSK", "Robert Curtis Memorial Airport - Noorvik, United States": "ORV", "Liege - Liege, Belgium": "LGG", "Fullerton Municipal Airport - Fullerton, United States": "FUL", "Newport Municipal Airport - Newport, United States": "ONP", "Namsos H\u00f8knes\u00f8ra Airport - Namsos, Norway": "OSY", "KBWD - Brownwood, United States": "BWD", "Utila Airport - Utila, Honduras": "UII", "Altamira - Altamira, Brazil": "ATM", "Municipal - Corozal, Belize": "CZH", "Pico - Pico, Portugal": "PIX", "Kzyl-Orda - Kzyl-Orda, Kazakhstan": "KZO", "Melbourne Essendon - Melbourne, Australia": "MEB", "Hakodate - Hakodate, Japan": "HKD", "Duxford Aerodrome - Duxford, United Kingdom": "QFO", "Southport - Portage-la-prairie, Canada": "YPG", "Albuquerque International Sunport - Albuquerque, United States": "ABQ", "Tombouctou - Tombouctou, Mali": "TOM", "Margate - Margate, South Africa": "MGH", "Wrigley - Wrigley, Canada": "YWY", "Nasik Road - Nasik Road, India": "ISK", "Rumjatar - Rumjatar, Nepal": "RUM", "Ceuta Heliport - Ceuta, Spain": "JCU", "Oki - Oki Island, Japan": "OKI", "Hao - Hao Island, French Polynesia": "HOI", "M R Stefanik - Bratislava, Slovakia": "BTS", "Minatitlan - Minatitlan, Mexico": "MTT", "Lancaster Airport - Lancaster, United States": "LNS", "Comino Airport - Comino, Malta": "JCO", "Long Lake - Long Lake, United States": "NY9", "Burketown Airport - Burketown, Australia": "BUC", "La Jagua Airport - Garz\u00f3n, Colombia": "GLJ", "Jefferson County Intl - Port Townsend, United States": "0S9", "Luis Munoz Marin Intl - San Juan, Puerto Rico": "SJU", "Chaoyang Airport - Chaoyang, China": "CHG", "Renaison - Roanne, France": "RNE", "Southwest Bay Airport - Malekula Island, Vanuatu": "SWJ", "Pangnirtung - Pangnirtung, Canada": "YXP", "Nuiqsut Airport - Nuiqsut, United States": "NUI", "Robin Hood Doncaster Sheffield Airport - Doncaster,  Sheffield": "United Kingdom", "Bettles - Bettles, United States": "BTT", "Grove City Airport - Grove City, United States": "29D", "Skukuza - Skukuza, South Africa": "SZK", "Kubin Airport - Kubin, Australia": "KUG", "Jingdezhen Airport - Jingdezhen, China": "JDZ", "Havre City Co - Havre, United States": "HVR", "Ryum Airport - R\u00f8rvik, Norway": "RVK", "Lyon Part-Dieu Railway - Lyon, France": "XYD", "Port Hope Simpson Airport - Port Hope Simpson, Canada": "YHA", "Mwalimu Julius K Nyerere Intl - Dar Es Salaam, Tanzania": "DAR", "Man - Man, Cote d'Ivoire": "MJC", "Red Sucker Lake Airport - Red Sucker Lake, Canada": "YRS", "Boutheon - St-Etienne, France": "EBU", "Sir Bani Yas Island - Sir Bani Yas Island, United Arab Emirates": "XSB", "Yampa Valley - Hayden, United States": "HDN", "Henderson Executive Airport - Henderson, United States": "HSH", "Kadala - Chita, Russia": "HTA", "Wilmington Intl - Wilmington, United States": "ILM", "Tabuk - Tabuk, Saudi Arabia": "TUU", "Nikolski Air Station - Nikolski, United States": "IKO", "Lovell Fld - Chattanooga, United States": "CHA", "Puerto Natales - Puerto Natales, Chile": "PNT", "Koro Island Airport - Koro Island, Fiji": "KXF", "Fresno Yosemite Intl - Fresno, United States": "FAT", "Sikeston Memorial Municipal - Sikeston, United States": "SIK", "San Diego Intl - San Diego, United States": "SAN", "Bellona - Bellona, Solomon Islands": "BNY", "General Edward Lawrence Logan Intl - Boston, United States": "BOS", "Boufarik - Boufarik, Algeria": "QFD", "Rondonopolis Airport - Rondonopolis, Brazil": "ROO", "Rostov Na Donu - Rostov, Russia": "ROV", "Ramingining Airport - Ramingining, Australia": "RAM", "Winnipeg St Andrews - Winnipeg, Canada": "YAV", "Mae Sot Airport - Tak, Thailand": "MAQ", "Tamana Airport - Tamana, Kiribati": "TMN", "Pomalaa - Pomalaa, Indonesia": "PUM", "Golden Airport - Golden, Canada": "YGE", "Eppley Afld - Omaha, United States": "OMA", "Bushehr - Bushehr, Iran": "BUZ", "Kyaukpyu - Kyaukpyu, Burma": "KYP", "Mthatha - Umtata, South Africa": "UTT", "Namorik Atoll Airport - Namorik Atoll, Marshall Islands": "NDK", "Altai Airport - Altai, Mongolia": "LTI", "Papa Stour Airport - Papa Stour, United Kingdom": "PSV", "Baiyun Intl - Guangzhou, China": "CAN", "Canal Bajo Carlos Hott Siebert - Osorno, Chile": "ZOS", "Erechim Airport - Erechim, Brazil": "ERM", "Okhotsk Airport - Okhotsk, Russia": "OHO", "Iowa City Municipal Airport - Iowa City, United States": "IOW", "Sierra Maestra - Manzanillo, Cuba": "MZO", "Syamsudin Noor - Banjarmasin, Indonesia": "BDJ", "Big Mountain Afs - Big Mountain, United States": "BMX", "Washington Dulles Intl - Washington, United States": "IAD", "Treuchtlingen BF - Treuchtlingen, Germany": "TLG", "Chiayi - Chiayi, Taiwan": "CYI", "Aur Island Airport - Aur Atoll, Marshall Islands": "AUL", "Tabora Airport - Tabora, Tanzania": "TBO", "Peterborough - Peterborough, Canada": "YPQ", "Richmond - Richmond, Australia": "RCM", "Biard - Poitiers, France": "PIS", "Bandanaira Airport - Bandanaira-Naira Island, Indonesia": "NDA", "Leonora Airport - Leonora, Australia": "LNO", "Houari Boumediene - Algier, Algeria": "ALG", "Regional - Hendricks AAF - Sebring, United States": "SEF", "Esperance Airport - Esperance, Australia": "EPR", "Youngstown Elser Metro Airport - Youngstown, United States": "4G4", "Kirovograd - Kirovograd, Ukraine": "KGO", "Fair Isle Airport - Fair Isle, United Kingdom": "FIE", "Antique - San Jose, Philippines": "SJI", "Nelson Lagoon - Nelson Lagoon, United States": "NLG", "Sterling Municipal Airport - Sterling, United States": "STK", "Kobuk Airport - Kobuk, United States": "OBU", "Annaba - Annaba, Algeria": "AAE", "China Bay - Trinciomalee, Sri Lanka": "TRR", "St. Augustine Airport - St. Augustine Airport, United States": "UST", "La Florida - Tumaco, Colombia": "TCO", "Gray Aaf - Fort Lewis, United States": "GRF", "Tumling Tar - Tumling Tar, Nepal": "TMI", "Incheon Intl - Seoul, South Korea": "ICN", "Abaiang Atoll Airport - Abaiang Atoll, Kiribati": "ABF", "Goodnews Airport - Goodnews Bay, United States": "GNU", "Decimomannu - Decimomannu, Italy": "DCI", "Capit\u00e1n de Av. Emilio Beltr\u00e1n Airport - Guayaramer\u00edn, Bolivia": "GYA", "Palacios Muni - Palacios, United States": "PSX", "Djoemoe Airstrip - Djoemoe, Suriname": "DOE", "Boise Air Terminal - Boise, United States": "BOI", "Kingsville Nas - Kingsville, United States": "NQI", "Campo Alegre Airport - Santana do Araguaia, Brazil": "CMP", "Khudzhand Airport - Khudzhand, Tajikistan": "LBD", "Eglin Afb - Valparaiso, United States": "VPS", "Springfield Branson Natl - Springfield, United States": "SGF", "Stephenville - Stephenville, Canada": "YJT", "Lukou - Nanjing, China": "NKG", "Dr. Augusto Roberto Fuster International Airport - Pedro Juan Caballero, Paraguay": "PJC", "Quincy Regional Baldwin Field - Quincy, United States": "UIN", "Coari Airport - Coari, Brazil": "CIZ", "Fernandina Beach Municipal Airport - Fernandina Beach, United States": "55J", "Fort Lauderdale Hollywood Intl - Fort Lauderdale, United States": "FLL", "Gafsa - Gafsa, Tunisia": "GAF", "Tete Chingodzi - Tete, Mozambique": "TET", "Teller Airport - Teller, United States": "TLA", "Burao Airport - Burao, Somalia": "BUO", "Shinyanga Airport - Shinyanga, Tanzania": "SHY", "San Andros - San Andros, Bahamas": "SAQ", "Julio Belem Airport - Parintins, Brazil": "PIN", "Rotterdam - Rotterdam, Netherlands": "RTM", "Webequie Airport - Webequie, Canada": "YWP", "Egal Intl - Hargeisa, Somalia": "HGA", "Male Intl - Male, Maldives": "MLE", "Sidi Mahdi - Touggourt, Algeria": "TGR", "Quonset State Airport - North Kingstown, United States": "OQU", "Boundary Bay Airport - Boundary Bay, Canada": "YDT", "Albert J Ellis - Jacksonville NC, United States": "OAJ", "Phu Cat Airport - Phucat, Vietnam": "UIH", "Debre Tabor Airport - Debre Tabor, Ethiopia": "DBT", "Scone Airport - Scone, Australia": "NSO", "Santa Rosa Airport - Santa Rosa, Brazil": "SRA", "Agartala - Agartala, India": "IXA", "Woensdrecht - Woensdrecht, Netherlands": "WOE", "S\u00e1rmell\u00e9k International Airport - S\u00e1rmell\u00e9k, Hungary": "SOB", "Mount Pleasant Regional-Faison Field - Mount Pleasant, United States": "LRO", "Luang Phabang Intl - Luang Prabang, Laos": "LPQ", "Carlos Ibanez Del Campo Intl - Punta Arenas, Chile": "PUQ", "Bahir Dar - Bahar Dar, Ethiopia": "BJR", "Yamaguchi Ube - Yamaguchi, Japan": "UBJ", "Duong Dong Airport - Phu Quoc, Vietnam": "PQC", "Funter Bay Seaplane Base - Funter Bay, United States": "FNR", "Wanigela Airport - Wanigela, Papua New Guinea": "AGL", "Qiemo Airport - Qiemo, China": "IQM", "Huizhou - Huizhou, China": "HUZ", "Dong Hoi - Dong Hoi, Vietnam": "VDH", "Pemba - Pemba, Tanzania": "PMA", "Hornafjordur - Hofn, Iceland": "HFN", "Philadelphia Intl - Philadelphia, United States": "PHL", "Danang Intl - Danang, Vietnam": "DAD", "Sun Moon Lake Airport - Sun Moon Lake, Taiwan": "SMT", "Key West Intl - Key West, United States": "EYW", "Fourchambault - Nevers, France": "NVS", "Marsh Harbour - Marsh Harbor, Bahamas": "MHH", "Thumrait - Thumrait, Oman": "TTH", "Griffiss Afld - Rome, United States": "RME", "Olgii Airport - Olgii, Mongolia": "ULG", "Groote Eylandt Airport - Groote Eylandt, Australia": "GTE", "Tlaxcala - Tlaxcala, Mexico": "TXA", "Patna - Patina, India": "PAT", "Cochin - Kochi, India": "COK", "Bata - Bata, Equatorial Guinea": "BSG", "Jijiga Airport - Jijiga, Ethiopia": "JIJ", "Chernivtsi International Airport - Chernovtsk, Ukraine": "CWC", "Hancock County - Bar Harbor - Bar Harbor, United States": "BHB", "Travis Afb - Fairfield, United States": "SUU", "Kagau Island Airport - Kagau Island, Solomon Islands": "KGE", "General Heriberto Jara Intl - Vera Cruz, Mexico": "VER", "Plymouth Municipal Airport - Plymouth, United States": "C65", "Frasca Field - Urbana, United States": "C16", "Talkeetna - Talkeetna, United States": "TKA", "Jinnah Intl - Karachi, Pakistan": "KHI", "Marina Muni - Fort Ord, United States": "OAR", "Dickwella Airport - Dickwella, Sri Lanka": "DIW", "Nuku Airport - Nuku, Papua New Guinea": "UKU", "Invercargill - Invercargill, New Zealand": "IVC", "Misawa Ab - Misawa, Japan": "MSJ", "Port McNeill Airport - Port McNeill, Canada": "YMP", "Nosara - Nosara Beach, Costa Rica": "NOB", "New Chitose - Sapporo, Japan": "CTS", "Jumla - Jumla, Nepal": "JUM", "Reykjahlid Airport - Myvatn, Iceland": "MVA", "Horta - Horta, Portugal": "HOR", "Southwest Michigan Regional Airport - Benton Harbor, United States": "BEH", "Papa Westray Airport - Papa Westray, United Kingdom": "PPW", "Sovetsky Tyumenskaya Airport - Sovetskiy, Russia": "OVS", "Mokuti Lodge Airport - Mokuti Lodge, Namibia": "OKU", "Togiak Airport - Togiak Village, United States": "TOG", "Stanley Airport - Stanley, Falkland Islands": "PSY", "Magwe - Magwe, Burma": "MWQ", "Truckee-Tahoe Airport - Truckee, United States": "TKF", "Eareckson As - Shemya, United States": "SYA", "Rio Cuarto Area De Material - Rio Cuarto, Argentina": "RCU", "Khwai River Lodge - Khwai River, Botswana": "KHW", "Qingyang Airport - Qingyang, China": "IQN", "Prefeito Renato Moreira - Imperatriz, Brazil": "IMP", "Agatti - Agatti Island, India": "AGX", "Blackwater Airport - Blackwater, Australia": "BLT", "Ivato - Antananarivo, Madagascar": "TNR", "Kili Airport - Kili Island, Marshall Islands": "KIO", "Lishe - Ninbo, China": "NGB", "Del Caribe Intl Gen Santiago Marino - Porlamar, Venezuela": "PMV", "Vologda Airport - Vologda, Russia": "VGD", "Samburu South Airport - Samburu South, Kenya": "UAS", "General Santos International Airport - General Santos City, Philippines": "GES", "Pitt-Greenville Airport - Greenville, United States": "PGV", "Prince Mangosuthu Buthelezi - Ulundi, South Africa": "ULD", "King Khaled Military City - King Khalid Mil.city, Saudi Arabia": "HBT", "Henry Post Aaf - Fort Sill, United States": "FSI", "Mandinga Airport - Condoto, Colombia": "COG", "Yenisehir Airport - Yenisehir, Turkey": "YEI", "Diu Airport - Diu, India": "DIU", "Albany Airport - Albany, Australia": "ALH", "Chapada Diamantina Airport - Len\u00e7\u00f3is, Brazil": "LEC", "Vaasa - Vaasa, Finland": "VAA", "Anaa - Anaa, French Polynesia": "AAA", "Barau(Kalimaru) Airport - Tanjung Redep-Borneo Island, Indonesia": "BEJ", "Tarare - Vilefrance, France": "XVF", "Sivas - Sivas, Turkey": "VAS", "Rouyn Noranda - Rouyn, Canada": "YUY", "Gambella - Gambella, Ethiopia": "GMB", "Ted Stevens Anchorage Intl - Anchorage, United States": "ANC", "Alonso Valderrama Airport - Chitr\u00e9, Panama": "CTD", "Mallam Aminu Intl - Kano, Nigeria": "KAN", "Lanzarote - Las Palmas, Spain": "ACE", "Chevery Airport - Chevery, Canada": "YHR", "Yuma Mcas Yuma Intl - Yuma, United States": "YUM", "Terre Haute Intl Hulman Fld - Terre Haute, United States": "HUF", "Tyler Pounds Rgnl - Tyler, United States": "TYR", "Subang-Sultan Abdul Aziz Shah Intl - Kuala Lumpur, Malaysia": "SZB", "Estevan - Estevan, Canada": "YEN", "Oakland Co. Intl - Pontiac, United States": "PTK", "Surat Thani - Surat Thani, Thailand": "URT", "Nanyang Airport - Nanyang, China": "NNY", "General R Fierro Villalobos Intl - Chihuahua, Mexico": "CUU", "Millville Muni - Millville, United States": "MIV", "Manakara - Manakara, Madagascar": "WVK", "Naga Airport - Naga, Philippines": "WNP", "Kiel Holtenau - Kiel, Germany": "KEL", "Aberdeen Regional Airport - Aberdeen, United States": "ABR", "Gila Bend Municipal Airport - Gila Bend, United States": "E63", "Moyo Airport - Moyo, Uganda": "OYG", "Rafha - Rafha, Saudi Arabia": "RAH", "Aransas County Airport - Rockport, United States": "RKP", "Fort Mcmurray - Fort Mcmurray, Canada": "YMM", "Shymkent - Chimkent, Kazakhstan": "CIT", "Wamena - Wamena, Indonesia": "WMX", "Limpopo Valley Airport - Tuli Lodge, Botswana": "TLD", "Daru Airport - Daru, Papua New Guinea": "DAU", "Zona da Mata Regional Airport - Juiz de Fora, Brazil": "IZA", "Westsound Seaplane Base - Westsound, United States": "WSX", "Mbuji Mayi - Mbuji-mayi, Congo (Kinshasa)": "MJM", "Gilmer County Airport - Ellijay, United States": "49A", "Bandar Abbass Intl - Bandar Abbas, Iran": "BND", "Balmaceda - Balmaceda, Chile": "BBA", "Keflavik International Airport - Keflavik, Iceland": "KEF", "Mahdia Airport - Mahdia, Guyana": "MHA", "Medis - Royan, France": "RYN", "Co Ong Airport - Conson, Vietnam": "VCS", "Mildenhall - Mildenhall, United Kingdom": "MHZ", "Montichiari - Brescia, Italy": "VBS", "Sehwan Sharif Airport - Sehwan Sharif, Pakistan": "SYW", "Kaieteur International Airport - Kaieteur Falls, Guyana": "KIA", "Calexico Intl - Calexico, United States": "CXL", "Jasionka - Rzeszow, Poland": "RZE", "Tulsa Intl - Tulsa, United States": "TUL", "City Of Colorado Springs Muni - Colorado Springs, United States": "COS", "Concordia Airport - Concordia, Brazil": "CCI", "Sulaymaniyah International Airport - Sulaymaniyah, Iraq": "ISU", "Locarno Airport - Locarno, Switzerland": "ZJI", "Palm Springs Intl - Palm Springs, United States": "PSP", "Timaru - Timaru, New Zealand": "TIU", "Calgary Springbank Airport - Calgary, Canada": "YBW", "Araraquara - Araracuara, Brazil": "AQA", "Cooma Snowy Mountains Airport - Cooma, Australia": "OOM", "Juanjui - Juanjui, Peru": "JJI", "Kazan - Kazan, Russia": "KZN", "Satar Tacik - Ruteng, Indonesia": "RTG", "Matthew Town - Matthew Town, Bahamas": "IGA", "Miami Seaplane Base - Miami, United States": "MPB", "Coronel Carlos Ciriani Santa Rosa Intl - Tacna, Peru": "TCQ", "Pilot Point Airport - Pilot Point, United States": "PIP", "Tunxi International Airport - Huangshan, China": "TXN", "Chehalis-Centralia - Chehalis, United States": "CLS", "Tikehau - Tikehau, French Polynesia": "TIH", "Sudbury - Sudbury, Canada": "YSB", "Kearney Municipal Airport - Kearney, United States": "EAR", "Ciudad Real Central Airport - Ciudad Real, Spain": "CQM", "Bailian Airport - Liuzhou, China": "LZH", "Port Menier - Port Menier, Canada": "YPN", "Pellston Regional Airport of Emmet County Airport - Pellston, United States": "PLN", "King Cove Airport - King Cove, United States": "KVC", "Tennant Creek Airport - Tennant Creek, Australia": "TCA", "Fenosu - Oristano, Italy": "FNU", "Gold Coast - Coolangatta, Australia": "OOL", "Balti International Airport - Strymba, Moldova": "BZY", "Dorval Railway Station - Dorval, Canada": "XAX", "Newcastle - Newcastle, United Kingdom": "NCL", "Innisfail - Innisfail, Australia": "IFL", "Kota Kinabalu Airport - Kota Kinabalu, Malaysia": "ZWR", "Christiansted Harbor Seaplane Base - Christiansted, Virgin Islands": "SSB", "Araxa Airport - Araxa, Brazil": "AAX", "Phalaborwa - Phalaborwa, South Africa": "PHW", "Beslan Airport - Beslan, Russia": "OGZ", "Tucson Intl - Tucson, United States": "TUS", "Kalskag Airport - Kalskag, United States": "KLG", "Summer Beaver Airport - Summer Beaver, Canada": "SUR", "Blakely Island Airport - Blakely Island, United States": "BYW", "Reus - Reus, Spain": "REU", "Puerto Princesa - Puerto Princesa, Philippines": "PPS", "Redding Muni - Redding, United States": "RDD", "Akola - Akola, India": "AKD", "Cape May Co - Wildwood, United States": "WWD", "Loreto Intl - Loreto, Mexico": "LTO", "Kangirsuk Airport - Kangirsuk, Canada": "YKG", "Nadym Airport - Nadym, Russia": "NYM", "Brackett Field - La Verne, United States": "POC", "Elcho Island Airport - Elcho Island, Australia": "ELC", "Beaver Airport - Beaver, United States": "WBQ", "Kaneohe Bay Mcaf - Kaneohe Bay, United States": "NGF", "Maintirano Airport - Maintirano, Madagascar": "MXT", "Ankeny Regl Airport - Ankeny, United States": "IKV", "Kyoto - Kyoto, Japan": "UKY", "Forbes Fld - Topeka, United States": "FOE", "Dnipropetrovsk Intl - Dnepropetrovsk, Ukraine": "DNK", "Cochrane - Cochrane, Canada": "YCN", "Leon M Ba - Libreville, Gabon": "LBV", "Southend - Southend, United Kingdom": "SEN", "Tetiaroa Airport - Tetiaroa, French Polynesia": "TTI", "Santa Genoveva - Goiania, Brazil": "GYN", "Charlevoix Municipal Airport - Charelvoix, United States": "CVX", "Kerio Valley - Kimwarer, Kenya": "KRV", "Welke Airport - Beaver Island, United States": "6Y8", "Ten Cel Av Cesar Bombonato - Uberlandia, Brazil": "UDI", "Henry Tift Myers Airport - Tifton, United States": "TMA", "Pleurtuit - Dinard, France": "DNR", "Kaukura - Kaukura Atoll, French Polynesia": "KKR", "Colonsay Airport - Colonsay, United Kingdom": "CSA", "Lokpriya Gopinath Bordoloi International Airport - Guwahati, India": "GAU", "Adams Fld - Little Rock, United States": "LIT", "Eek Airport - Eek, United States": "EEK", "Ikaria - Ikaria, Greece": "JIK", "Ratanakiri - Ratanakiri, Cambodia": "RBE", "Oban Airport - North Connel, United Kingdom": "OBN", "Hammerfest Airport - Hammerfest, Norway": "HFT", "Monbetsu - Monbetsu, Japan": "MBE", "Sinop Airport - Sinop, Brazil": "OPS", "Chaiten - Chaiten, Chile": "WCH", "Takapoto - Takapoto, French Polynesia": "TKP", "Bundaberg - Bundaberg, Australia": "BDB", "Fuerteventura - Fuerteventura, Spain": "FUE", "Hunter Aaf - Hunter Aaf, United States": "SVN", "Sandspit - Sandspit, Canada": "YZP", "Armor - St.-brieuc Armor, France": "SBK", "Alexion - Porto Heli, Greece": "PKH", "Trapani Birgi - Trapani, Italy": "TPS", "Puerto Cabezas - Puerto Cabezas, Nicaragua": "PUZ", "Kuopio - Kuopio, Finland": "KUO", "Harar Meda Airport - Debre Zeyit, Ethiopia": "QHR", "Lismore Airport - Lismore, Australia": "LSY", "San Fernando De Apure - San Fernando De Apure, Venezuela": "SFD", "Burke Lakefront Airport - Cleveland, United States": "BKL", "Sultan Syarif Kasim Ii - Pekanbaru, Indonesia": "PKU", "Barksdale Afb - Shreveport, United States": "BAD", "Chabeuil - Valence, France": "VAF", "El Plumerillo - Mendoza, Argentina": "MDZ", "Lake Cumberland Regional Airport - Somerset, United States": "SME", "Tufi Airport - Tufi, Papua New Guinea": "TFI", "Inezgane - Agadir, Morocco": "AGA", "Hattiesburg Laurel Regional Airport - Hattiesburg/Laurel, United States": "PIB", "Lehigh Valley Intl - Allentown, United States": "ABE", "Palm Beach Co Park - West Palm Beach, United States": "LNA", "Nusatupe Airport - Gizo, Solomon Islands": "GZO", "Birmingham - Birmingham, United Kingdom": "BHX", "Lambert St Louis Intl - St. Louis, United States": "STL", "Mauke Airport - Mauke Island, Cook Islands": "MUK", "Dumatubun Airport - Langgur-Kei Islands, Indonesia": "LUV", "Arad - Arad, Romania": "ARW", "Juanda - Surabaya, Indonesia": "SUB", "Quezaltenango Airport - Quezaltenango, Guatemala": "AAZ", "Del Norte County Airport - Crescent City, United States": "CEC", "Gayndah - Gayndah, Australia": "GAH", "Enfidha - Zine El Abidine Ben Ali International Airport - Enfidha, Tunisia": "NBE", "McKinley National Park Airport - McKinley Park, United States": "MCL", "Municipal Airport - Lumberton, United States": "LBT", "Penticton - Penticton, Canada": "YYF", "Essey - Nancy, France": "ENC", "Ugnu-Kuparuk Airport - Kuparuk, United States": "UUK", "Celle - Celle, Germany": "ZCN", "San Carlos De Bariloche - San Carlos De Bariloche, Argentina": "BRC", "St. George Airport - St. George, United States": "STG", "Gomel - Gomel, Belarus": "GME", "Timimoun - Timimoun, Algeria": "TMX", "La Rioja - La Rioja, Argentina": "IRJ", "Wilcannia - Wilcannia, Australia": "WIO", "Santa Ana Airport - Cartago, Colombia": "CRC", "Vunisea Airport - Vunisea, Fiji": "KDV", "Luzhou Airport - Luzhou, China": "LZO", "Berlin Hauptbahnhof - Berlin, Germany": "QPP", "Gheshm Airport - Gheshm, Iran": "GSM", "St Pancras Railway Station - London, United Kingdom": "QQS", "Oswaldo Guevara Mujica - Acarigua, Venezuela": "AGV", "Oskarshamn - Oskarshamn, Sweden": "OSK", "Sanford Regional - Sanford ME, United States": "SFM", "Sydney - Sydney, Canada": "YQY", "Pulau Pangkor Airport - Pangkor Island, Malaysia": "PKG", "Borlange - Borlange, Sweden": "BLE", "Muskoka - Muskoka, Canada": "YQA", "Zhongchuan - Lanzhou, China": "ZGC", "Cadjehoun - Cotonou, Benin": "COO", "Barnes Municipal - Westfield, United States": "BAF", "St. Lewis (Fox Harbour) Airport - St. Lewis, Canada": "YFX", "Sherman Aaf - Fort Leavenworth, United States": "FLV", "Shahid Asyaee - Masjed Soleiman, Iran": "QMJ", "Nakhon Si Thammarat - Nakhon Si Thammarat, Thailand": "NST", "General Manuel Serrano - Machala, Ecuador": "MCH", "Akulivik Airport - Akulivik, Canada": "AKV", "Huanghua Intl - Changsha, China": "HHA", "Paderborn Lippstadt - Paderborn, Germany": "PAD", "El Golea - El Golea, Algeria": "ELG", "Anacortes Airport - Anacortes, United States": "OTS", "Ceduna Airport - Ceduna, Australia": "CED", "Grand Geneva Resort Airport - Lake Geneva, United States": "C02", "Long Seridan Airport - Long Seridan, Malaysia": "ODN", "Okushiri - Okushiri, Japan": "OIR", "Gare de Lyon - Paris, France": "PLY", "Jorhat - Jorhat, India": "JRH", "Ciampino - Rome, Italy": "CIA", "Wadsworth Municipal - Wadsworth, United States": "3G3", "Genesee County Airport - Batavia, United States": "GVQ", "Kurgan Airport - Kurgan, Russia": "KRO", "Macomb Municipal Airport - Macomb, United States": "MQB", "Oulu - Oulu, Finland": "OUL", "General Rafael Buelna Intl - Mazatlan, Mexico": "MZT", "Fontaine Airport - Belfort, France": "BOR", "Bromma - Stockholm, Sweden": "BMA", "Windorah Airport - Windorah, Australia": "WNR", "Greater Rochester Intl - Rochester, United States": "ROC", "Trail Airport - Trail, Canada": "YZZ", "Cape Town Intl - Cape Town, South Africa": "CPT", "Kochi - Kochi, Japan": "KCZ", "Gbadolite - Gbadolite, Congo (Kinshasa)": "BDT", "Brunei Intl - Bandar Seri Begawan, Brunei": "BWN", "Port Angeles Cgas - Port Angeles, United States": "NOW", "Aklavik - Aklavik, Canada": "LAK", "Courchevel Airport - Courcheval, France": "CVF", "Tipton - Fort Meade, United States": "FME", "Dzaoudzi Pamandzi - Dzaoudzi, Mayotte": "DZA", "Texarkana Rgnl Webb Fld - Texarkana, United States": "TXK", "Grand Canyon Heliport - Grand Canyon, United States": "JGC", "Sanliurfa GAP - Sanliurfa, Turkey": "GNY", "Hami Airport - Hami, China": "HMI", "Navoi Airport - Navoi, Uzbekistan": "NVI", "Ely Municipal - Ely, United States": "LYU", "Stroudsburg-Pocono Airport - East Stroudsburg, United States": "N53", "Cecil Field - Jacksonville, United States": "NZC", "Limnos - Limnos, Greece": "LXS", "Porto Santo - Porto Santo, Portugal": "PXO", "Yeager - Charleston, United States": "CRW", "Arviat - Eskimo Point, Canada": "YEK", "Xinzheng - Zhengzhou, China": "CGO", "Ghriss - Ghriss, Algeria": "MUW", "Ponciano Arriaga Intl - San Luis Potosi, Mexico": "SLP", "Springfield Amtrak Station - Springfield MA, United States": "ZSF", "Sulayel - Sulayel, Saudi Arabia": "SLF", "Aleknagik Airport - Aleknagik, United States": "WKK", "Bangor Intl - Bangor, United States": "BGR", "Athens Ben Epps Airport - Athens, United States": "AHN", "Chico Muni - Chico, United States": "CIC", "St Angelo - Enniskillen, United Kingdom": "ENK", "Tabriz Intl - Tabriz, Iran": "TBZ", "Napier - NAPIER, New Zealand": "NPE", "Tarin Kowt Airport - Tarin Kowt, Afghanistan": "TII", "Maradi - Maradi, Niger": "MFQ", "McCall Municipal Airport - McCall, United States": "MYL", "Nanping Wuyishan Airport - Wuyishan, China": "WUS", "El Gora - El Gorah, Egypt": "EGR", "Floyd Bennett Memorial Airport - Queensbury, United States": "GFL", "Arnold Palmer Regional Airport - Latrobe, United States": "LBE", "Matsu Beigan Airport - Matsu Islands, Taiwan": "MFK", "Guam Intl - Agana, Guam": "GUM", "Municipal Airport - Burlington, United States": "BUU", "Metlakatla Seaplane Base - Metakatla, United States": "MTM", "Pingtung South - Pingtung, Taiwan": "PIF", "Kasigluk Airport - Kasigluk, United States": "KUK", "Point Mugu Nas - Point Mugu, United States": "NTD", "London St Pancras - London, United Kingdom": "STP", "Palmer Muni - Palmer, United States": "PAQ", "Everglades Airpark - Everglades, United States": "X01", "Jose Maria Cordova - Rio Negro, Colombia": "MDE", "St Petersburg Clearwater Intl - St. Petersburg, United States": "PIE", "Inverness - Inverness, United Kingdom": "INV", "Pinto Martins Intl - Fortaleza, Brazil": "FOR", "Hercilio Luz - Florianopolis, Brazil": "FLN", "Selaparang - Mataram, Indonesia": "AMI", "Whangarei - Whangarei, New Zealand": "WRE", "Vitoria - Vitoria, Spain": "VIT", "Longreach Airport - Longreach, Australia": "LRE", "Capitan Carlos Martinez De Pinillos - Trujillo, Peru": "TRU", "Yeniseysk Airport - Yeniseysk, Russia": "EIE", "Larnaca - Larnaca, Cyprus": "LCA", "Monroe County Airport - Bloomington, United States": "BMG", "Merimbula Airport - Merimbula, Australia": "MIM", "Cedar City Rgnl - Cedar City, United States": "CDC", "Michigan City Municipal Airport - Michigan City, United States": "MGC", "P\u00e9cs-Pog\u00e1ny Airport - P\u00e9cs-Pog\u00e1ny, Hungary": "PEV", "Shelby County Airport - Shelbyville, United States": "2H0", "Tallinn - Tallinn-ulemiste International, Estonia": "TLL", "Jackson County Airport - Jefferson, United States": "19A", "Luang Namtha - Luang Namtha, Laos": "LXG", "Uytash - Makhachkala, Russia": "MCX", "El Chalten - El Chalten, Argentina": "ELX", "Tokushima - Tokushima, Japan": "TKS", "Tiree - Tiree, United Kingdom": "TRE", "Cocos Keeling Island Airport - Cocos Keeling Island, Cocos (Keeling) Islands": "CCK", "Vero Beach Muni - Vero Beach, United States": "VRB", "Aniwa Airport - Aniwa, Vanuatu": "AWD", "Ebenhofen BF - Ebenhofen, Germany": "EBE", "Speyer - Speyer, Germany": "ZQC", "Virac Airport - Virac, Philippines": "VRC", "All Airports - Milan, Italy": "MIL", "Stansted - London, United Kingdom": "STN", "Thompson - Thompson, Canada": "YTH", "Portland Troutdale - Troutdale, United States": "TTD", "Bora Bora - Bora Bora, French Polynesia": "BOB", "Mfuwe - Mfuwe, Zambia": "MFU", "Obando Airport - Puerto In\u00edrida, Colombia": "PDA", "South Bend Rgnl - South Bend, United States": "SBN", "Ellisras - Lephalale, South Africa": "ELL", "Bremerhaven - Bremerhaven, Germany": "BRV", "Auvergne - Clermont-Ferrand, France": "CFE", "Dawu - Lvliang, China": "LLV", "Columbia Rgnl - Columbia, United States": "COU", "Khartoum - Khartoum, Sudan": "KRT", "Rafael Cabrera - Nueva Gerona, Cuba": "GER", "Ahmedabad - Ahmedabad, India": "AMD", "Lydd - Lydd, United Kingdom": "LYX", "Labuan - Labuan, Malaysia": "LBU", "Velikiye Luki - Velikiye Luki, Russia": "VLU", "Greater Cumberland Rgnl. - Cumberland, United States": "CBE", "Kefallinia - Keffallinia, Greece": "EFL", "Labrea Airport - Labrea, Brazil": "LBR", "Saint Cloud Regional Airport - Saint Cloud, United States": "STC", "Dachuan Airport - Dazhou, China": "DAX", "Mong Hsat - Mong Hsat, Burma": "MOG", "Dublin - Dublin, Ireland": "DUB", "Tajima Airport - Toyooka, Japan": "TJH", "Nauru Intl - Nauru, Nauru": "INU", "Shark Bay Airport - Shark Bay, Australia": "MJK", "San Luis County Regional Airport - San Luis Obispo, United States": "SBP", "Nampula - Nampula, Mozambique": "APL", "Luanda 4 De Fevereiro - Luanda, Angola": "LAD", "Kuusamo - Kuusamo, Finland": "KAO", "Melilla - Melilla, Spain": "MLN", "Upolu - Opolu, United States": "UPP", "Thief River Falls - Thief River Falls, United States": "TVF", "Rogue Valley Intl Medford - Medford, United States": "MFR", "Dusseldorf - Duesseldorf, Germany": "DUS", "Obo Airport - Obo, Papua New Guinea": "OBX", "Jonkoping - Joenkoeping, Sweden": "JKG", "Morawa Airport - Morawa, Australia": "MWB", "Trang - Trang, Thailand": "TST", "Ontario Intl - Ontario, United States": "ONT", "Gatokae Airport - Gatokae, Solomon Islands": "GTA", "Kaohsiung Intl - Kaohsiung, Taiwan": "KHH", "Northeast Philadelphia - Philadelphia, United States": "PNE", "Hebei Handan Airport - Handan, China": "HDG", "Gustavo Rojas Pinilla - San Andres Island, Colombia": "ADZ", "Zhuliany Intl - Kiev, Ukraine": "IEV", "Aiome - Aiome, Papua New Guinea": "AIE", "Barberey - Troyes, France": "QYR", "Redzikowo - Slupsk, Poland": "OSP", "Chester County G O Carlson Airport - Coatesville, United States": "CTH", "Kisumu - Kisumu, Kenya": "KIS", "Eagle's Nest Airport - Waynesboro, United States": "W13", "Belfast City - Belfast, United Kingdom": "BHD", "Leinster Airport - Leinster, Australia": "LER", "Waupaca Municipal Airport - Waupaca, United States": "PCZ", "Tanana Airport - Tanana, United States": "TAL", "Roper Bar - Roper Bar, Australia": "RPB", "Denver Intl - Denver, United States": "DEN", "Valladolid - Valladolid, Spain": "VLL", "Lamar Muni - Lamar, United States": "LAA", "Cheddi Jagan Intl - Georgetown, Guyana": "GEO", "Levuka Airfield - Levuka, Fiji": "LEV", "Rand Airport - Johannesburg, South Africa": "QRA", "Licenciado Gustavo Diaz Ordaz Intl - Puerto Vallarta, Mexico": "PVR", "Wheeling Ohio County Airport - Wheeling, United States": "HLG", "Edward Bodden Airfield - Little Cayman, Cayman Islands": "LYB", "Cataloi - Tulcea, Romania": "TCE", "Ozamis - Ozamis, Philippines": "OZC", "Bradshaw Aaf - Bradshaw Field, United States": "BSF", "Lugano - Lugano, Switzerland": "LUG", "Carlos Alberto da Costa Neves Airport - Cacador, Brazil": "CFC", "Chios - Chios, Greece": "JKH", "Tiga Airport - Tiga, New Caledonia": "TGJ", "Ponta Pora - Ponta Pora, Brazil": "PMG", "Lahad Datu - Lahad Datu, Malaysia": "LDU", "St Pierre - St.-pierre, Saint Pierre and Miquelon": "FSP", "Bowman Fld - Louisville, United States": "LOU", "Ulyanovsk East Airport - Ulyanovsk, Russia": "ULY", "Williams Lake - Williams Lake, Canada": "YWL", "Entzheim - Strasbourg, France": "SXB", "Muanda - Muanda, Congo (Kinshasa)": "MNB", "Alula Airport - Alula, Somalia": "ALU", "Beech Factory Airport - Wichita, United States": "BEC", "Gainesville Rgnl - Gainesville, United States": "GNV", "Campbell River - Campbell River, Canada": "YBL", "Marshall Don Hunter Sr. Airport - Marshall, United States": "MLL", "Huntsville International Airport-Carl T Jones Field - Huntsville, United States": "HSV", "Mulu - Mulu, Malaysia": "MZV", "Kenora - Kenora, Canada": "YQK", "Reggio Calabria - Reggio Calabria, Italy": "REG", "Osmany Intl - Sylhet Osmani, Bangladesh": "ZYL", "Halliburton Field Airport - Duncan, United States": "DUC", "Ramona Airport - Ramona, United States": "RNM", "Thamkharka - Thamkharka, Nepal": "TMK", "Olympic Dam Airport - Olympic Dam, Australia": "OLP", "Prestwick - Prestwick, United Kingdom": "PIK", "Krabi - Krabi, Thailand": "KBV", "Dortmund - Dortmund, Germany": "DTM", "Fera/Maringe Airport - Fera Island, Solomon Islands": "FRE", "MOW - Moscow, Russia": "MOW", "Teyman - Beer-sheba, Israel": "BEV", "Bismarck Municipal Airport - Bismarck, United States": "BIS", "Pavlodar - Pavlodar, Kazakhstan": "PWQ", "Caumont - Avignon, France": "AVN", "Dera Ghazi Khan Airport - Dera Ghazi Khan, Pakistan": "DEA", "Fergana Airport - Fergana, Uzbekistan": "FEG", "Pukarua Airport - Pukarua, French Polynesia": "PUK", "Mc Guire Afb - Wrightstown, United States": "WRI", "Afutara Airport - Afutara, Solomon Islands": "AFT", "Brize Norton - Brize Norton, United Kingdom": "BZZ", "All Airports - New York, United States": "NYC", "Sacramento Intl - Sacramento, United States": "SMF", "Garfield County Regional Airport - Rifle, United States": "RIL", "EuroAirport - Mulhouse, France": "EAP", "El Carano - Quibdo, Colombia": "UIB", "Jacqueline Cochran Regional Airport - Palm Springs, United States": "TRM", "Lycksele - Lycksele, Sweden": "LYC", "Hazleton Municipal - Hazleton, United States": "HZL", "Jack Edwards Airport - Gulf Shores, United States": "JKA", "Wideawake Field - Georgetown Acension Island Santa Helena, United Kingdom": "ASI", "Kindu - Kindu, Congo (Kinshasa)": "KND", "Torp - Sandefjord, Norway": "TRF", "Clear Lake Metroport - Clear Lake City, United States": "CLC", "Weifang Airport - Weifang, China": "WEF", "Sao Filipe Airport - Sao Filipe,  Fogo Island": "Cape Verde", "Stuttgart Railway Station - Stuttgart, Germany": "ZWS", "Sainte Marie - Sainte Marie, Madagascar": "SMS", "Durango La Plata Co - Durango, United States": "DRO", "Santos Dumont - Rio De Janeiro, Brazil": "SDU", "Aksu Airport - Aksu, China": "AKU", "Puc\u00f3n Airport - Pucon, Chile": "ZPC", "Municipal Airport - Zephyrhills, United States": "ZPH", "Fussen BF - Fussen, Germany": "FUX", "Honington - Honington, United Kingdom": "BEQ", "Ahuas Airport - Ahuas, Honduras": "AHS", "Kulik Lake Airport - Kulik Lake, United States": "LKK", "Saint Catherine - Calvi, France": "CLY", "Nightmute Airport - Nightmute, United States": "NME", "Bajura Airport - Bajura, Nepal": "BJU", "Middle Caicos Airport - Middle Caicos, Turks and Caicos Islands": "MDS", "Kinston Regional Jetport - Kinston, United States": "ISO", "Doha Intl - Doha, Qatar": "DOH", "Ittoqqortoormiit Heliport - Ittoqqortoormiit, Greenland": "OBY", "JAGS McCartney International Airport - Cockburn Town, Turks and Caicos Islands": "GDT", "Novyi Urengoy - Novy Urengoy, Russia": "NUX", "Saarbrucken - Saarbruecken, Germany": "SCN", "Dalaman - Dalaman, Turkey": "DLM", "Obock - Obock, Djibouti": "OBC", "Fascene - Nosy-be, Madagascar": "NOS", "Hanimaadhoo Airport - Haa Dhaalu Atoll, Maldives": "HAQ", "Rheine Bentlage - Rheine, Germany": "ZPQ", "Kota - Kota, India": "KTU", "Moss - Rygge, Norway": "RYG", "Fianarantsoa - Fianarantsoa, Madagascar": "WFI", "Marshall Islands Intl - Majuro, Marshall Islands": "MAJ", "Varna - Varna, Bulgaria": "VAR", "Na-San Airport - Son-La, Vietnam": "SQH", "Aqaba King Hussein Intl - Aqaba, Jordan": "AQJ", "Cambridge - Cambridge, United Kingdom": "CBG", "Black Rock - Zuni Pueblo, United States": "ZUN", "Russian Mission Airport - Russian Mission, United States": "RSH", "Elfin Cove Seaplane Base - Elfin Cove, United States": "ELV", "Woodward Field - Camden, United States": "CDN", "Changchun - Changchun, China": "CGQ", "Brest - Brest, Belarus": "BQT", "Walney Island - Barrow Island, United Kingdom": "BWF", "Phaplu - Phaplu, Nepal": "PPL", "Megeve Airport - Verdun, France": "MVV", "Reading Regional Carl A Spaatz Field - Reading, United States": "RDG", "Seattle Tacoma Intl - Seattle, United States": "SEA", "Bodaibo - Bodaibo, Russia": "ODO", "Apataki Airport - Apataki, French Polynesia": "APK", "Oudtshoorn - Oudtshoorn, South Africa": "DUH", "Mukah Airport - Mukah, Malaysia": "MKM", "Busuanga - Busuanga, Philippines": "USU", "Lae Airport - Lae, Marshall Islands": "LML", "Rourkela - Rourkela, India": "RRK", "General Rodolfo Sanchez Taboada Intl - Mexicali, Mexico": "MXL", "Lleida-Alguaire Airport - Lleida, Spain": "ILD", "Sebastian Municipal - Sebastian, United States": "X26", "Sierra Blanca Regional Airport - Ruidoso, United States": "SRR", "Peleliu Airfield - Peleliu, Palau": "C23", "Maiduguri - Maiduguri, Nigeria": "MIU", "Big Bay Water Aerodrome - Big Bay, Canada": "YRR", "Yengema Airport - Yengema, Sierra Leone": "WYE", "Fond-Du-Lac Airport - Fond-Du-Lac, Canada": "ZFD", "Guarulhos Gov Andre Franco Montouro - Sao Paulo, Brazil": "GRU", "Jackson Evers Intl - Jackson, United States": "JAN", "Lizard Island Airport - Lizard Island, Australia": "LZR", "Nanki Shirahama - Nanki-shirahama, Japan": "SHM", "Hydaburg Seaplane Base - Hydaburg, United States": "HYG", "Mediterranee - Montpellier, France": "MPL", "Ushuaia Malvinas Argentinas - Ushuaia, Argentina": "USH", "Nakashibetsu - Nakashibetsu, Japan": "SHB", "Mitiga Airport - Tripoli, Libya": "MJI", "Juba - Juba, South Sudan": "JUB", "Tapachula Intl - Tapachula, Mexico": "TAP", "Shaw Afb - Sumter, United States": "SSC", "Roskilde - Copenhagen, Denmark": "RKE", "Atikokan Muni - Atikokan, Canada": "YIB", "Utirik Airport - Utirik Island, Marshall Islands": "UTK", "Iqaluit - Iqaluit, Canada": "YFB", "Satna - Satna, India": "TNI", "Nueva Loja Airport - Lago Agrio, Ecuador": "LGQ", "Ternopol - Ternopol, Ukraine": "TNL", "Kuito - Kuito, Angola": "SVP", "Mohammed V Intl - Casablanca, Morocco": "CMN", "Valdosta Regional Airport - Valdosta, United States": "VLD", "Dandong - Dandong, China": "DDG", "EuroAirport Basel-Mulhouse-Freiburg - Basel, Switzerland": "BSL", "Friedman Mem - Hailey, United States": "SUN", "Odiham - Odiham, United Kingdom": "ODH", "Western Nebraska Regional Airport - Scottsbluff, United States": "BFF", "Chateaubernard - Cognac, France": "CNG", "Griffing Sandusky - Sandusky, United States": "SKY", "Orange Airport - Orange, Australia": "OAG", "Penza Airport - Penza, Russia": "PEZ", "Umea - Umea, Sweden": "UME", "Bron - Lyon, France": "LYN", "Trenton Mercer - Trenton, United States": "TTN", "El Toro - Santa Ana, United States": "NZJ", "Cap Haitien Intl - Cap Haitien, Haiti": "CAP", "Tri-Cities - Endicott, United States": "CZG", "Baudette Intl - Baudette, United States": "BDE", "Andapa - Andapa, Madagascar": "ZWA", "Goiabeiras - Vitoria, Brazil": "VIX", "In Amenas - Zarzaitine, Algeria": "IAM", "Ilulissat - Ilulissat, Greenland": "JAV", "Phoenix Sky Harbor Intl - Phoenix, United States": "PHX", "Provideniya Bay - Provideniya Bay, Russia": "PVS", "Berlin Gatow - Berlin, Germany": "GWW", "Egegik Airport - Egegik, United States": "EGX", "Tokyo Intl - Tokyo, Japan": "HND", "Imam Khomeini - Tehran, Iran": "IKA", "Idlewild Intl - New York, United States": "IDL", "Marau Airport - Marau, Solomon Islands": "RUS", "Pietermaritzburg - Pietermaritzburg, South Africa": "PZB", "Grootfontein - Grootfontein, Namibia": "GFY", "Santa Maria - Aracaju, Brazil": "AJU", "Grand Case - St. Martin, Guadeloupe": "SFG", "Long Bawan Airport - Long Bawan-Borneo Island, Indonesia": "LBW", "Bassatine - Meknes, Morocco": "MEK", "Guararapes Gilberto Freyre Intl - Recife, Brazil": "REC", "Jimmy Carter Regional - Americus, United States": "ACJ", "Lincoln Regional Airport Karl Harder Field - Lincoln, United States": "LHM", "Kooddoo - Kooddoo, Maldives": "GKK", "Northway - Northway, United States": "ORT", "Foula Airport - Foula, United Kingdom": "FOA", "Hernesaari Heliport - Helsinki, Finland": "HEN", "Quetta - Quetta, Pakistan": "UET", "Kerry - Kerry, Ireland": "KIR", "Tjilik Riwut - Palangkaraya, Indonesia": "PKY", "Adi Sutjipto - Yogyakarta, Indonesia": "JOG", "Morafenobe Airport - Morafenobe, Madagascar": "TVA", "Soalala Airport - Soalala, Madagascar": "DWB", "Narrabri Airport - Narrabri, Australia": "NAA", "Ouesso - Ouesso, Congo (Kinshasa)": "OUE", "Mae Hong Son - Mae Hong Son, Thailand": "HGN", "Borrego Valley Airport - Borrego Springs, United States": "BXS", "Santa Maria - Santa Maria (island), Portugal": "SMA", "Martin State - Baltimore, United States": "MTN", "Bamyan Airport - Bamyan, Afghanistan": "BIN", "Sultan Mahmud Badaruddin Ii - Palembang, Indonesia": "PLM", "Borba Airport - Borba, Brazil": "RBB", "Parkes Airport - Parkes, Australia": "PKE", "Tanjung Manis Airport - Tanjung Manis, Malaysia": "TGC", "Ulaangom Airport - Ulaangom, Mongolia": "ULO", "Seaplane Base - Port Simpson, Canada": "YPI", "Iles De La Madeleine - Iles De La Madeleine, Canada": "YGR", "Beppu Airport - Beppu, Japan": "BPU", "Roanoke Regional - Roanoke VA, United States": "ROA", "Wonderboom - Pretoria, South Africa": "PRY", "Placencia Airport - Placencia, Belize": "PLJ", "Ingeniero Alberto Acuna Ongay Intl - Campeche, Mexico": "CPE", "Hyderabad - Hyderabad, India": "HYD", "Massena Intl Richards Fld - Massena, United States": "MSS", "Heihe Airport - Heihe, China": "HEK", "Spokane Intl - Spokane, United States": "GEG", "Soldotna Airport - Soldotna, United States": "SXQ", "Houlton Intl - Houlton, United States": "HUL", "Burlington Intl - Burlington, United States": "BTV", "Rabil - Boa Vista, Cape Verde": "BVC", "Welkom - Welkom, South Africa": "WEL", "Chumphon - Chumphon, Thailand": "CJM", "Mili Island Airport - Mili Island, Marshall Islands": "MIJ", "Kamuzu Intl - Lilongwe, Malawi": "LLW", "Xuzhou Guanyin Airport - Xuzhou, China": "XUZ", "Multan Intl - Multan, Pakistan": "MUX", "Senador Nilo Coelho - Petrolina, Brazil": "PNZ", "Lindsay - Lindsay, Canada": "NF4", "Mbs Intl - Saginaw, United States": "MBS", "Bahrain Intl - Bahrain, Bahrain": "BAH", "Simferopol Intl - Simferopol, Ukraine": "SIP", "Elista Airport - Elista, Russia": "ESL", "Pitu - Morotai Island, Indonesia": "OTI", "Sabi Sabi Airport - Sabi Sabi, South Africa": "GSS", "Ust-Kut - Ust-Kut, Russia": "UKX", "All Airports - Toronto, Canada": "YTO", "Lake Havasu City Airport - Lake Havasu City, United States": "HII", "Ronald Reagan Washington Natl - Washington, United States": "DCA", "Victoria Regional Airport - Victoria, United States": "VCT", "Port Lions Airport - Port Lions, United States": "ORI", "Las Vegas Muni - Las Vegas, United States": "LVS", "Jacksonville Intl - Jacksonville, United States": "JAX", "London - Kings Cross - London, United Kingdom": "QQK", "Wilhelmshaven Mariensiel - Wilhelmshaven, Germany": "WVN", "Guriat - Guriat, Saudi Arabia": "URY", "Lightning Ridge Airport - Lightning Ridge, Australia": "LHG", "Diego Aracena Intl - Iquique, Chile": "IQQ", "Hopedale Airport - Hopedale, Canada": "YHO", "Quilpie Airport - Quilpie, Australia": "ULP", "Tamale - Tamale, Ghana": "TML", "Swansea - Swansea, United Kingdom": "SWS", "Wright Patterson Afb - Dayton, United States": "FFO", "General Rivadeneira Airport - Esmeraldas, Ecuador": "ESM", "Wang An - Wang An, Taiwan": "WOT", "General Mariano Escobedo Intl - Monterrey, Mexico": "MTY", "Maupertus - Cherbourg, France": "CER", "Whiteman Airport - Los Angeles, United States": "WHP", "Kaedi - Kaedi, Mauritania": "KED", "Caleta Olivia - Caleta Olivia, Argentina": "CVI", "Baguio - Baguio, Philippines": "BAG", "Magas - Nazran, Russia": "%u0", "Andavadoaka - Andavadoaka, Madagascar": "DVD", "Bob Sikes - Crestview, United States": "CEW", "Pulau Tioman - Tioman, Malaysia": "TOD", "Roswell Intl Air Center - Roswell, United States": "ROW", "Owando - Owando, Congo (Kinshasa)": "FTX", "Belaga Airport - Belaga, Malaysia": "BLG", "Shijiazhuang Daguocun International Airport - Shijiazhuang, China": "SJW", "Loei - Loei, Thailand": "LOE", "Bowling Green-Warren County Regional Airport - Bowling Green, United States": "BWG", "Socotra Intl - Socotra, Yemen": "SCT", "Kemerovo - Kemorovo, Russia": "KEJ", "Gambell Airport - Gambell, United States": "GAM", "Khuzdar Airport - Khuzdar, Pakistan": "KDD", "Mucuri Airport - Mucuri, Brazil": "MVS", "Tweed-New Haven Airport - New Haven, United States": "HVN", "Montreal Intl Mirabel - Montreal, Canada": "YMX", "Repulse Bay - Repulse Bay, Canada": "YUT", "Linden Airport - Linden, United States": "LDJ", "Bassillac - Perigueux, France": "PGX", "Mukhino - Ulan-ude, Russia": "UUD", "Chicago Rockford International Airport  - Rockford, United States": "RFD", "Yazd Shahid Sadooghi - Yazd, Iran": "AZD", "Skelleftea - Skelleftea, Sweden": "SFT", "Anvik Airport - Anvik, United States": "ANV", "Mampikony Airport - Mampikony, Madagascar": "WMP", "Lawson Aaf - Fort Benning, United States": "LSF", "Surat - Surat, India": "STV", "Philibert Tsiranana - Mahajanga, Madagascar": "MJN", "Raivavae Airport - Raivavae, French Polynesia": "RVV", "Diamantina Airport - Diamantina, Brazil": "DTI", "La Coloma - La Coloma, Cuba": "LCL", "Kuala Lumpur Intl - Kuala Lumpur, Malaysia": "KUL", "Sun Island Airport - South Aari Atoll, Maldives": "MSI", "Bamburi - Bamburi, Kenya": "BMQ", "Zachar Bay Seaplane Base - Zachar Bay, United States": "KZB", "Boire Field Airport - Nashua, United States": "ASH", "Mara Serena Airport - Masai Mara, Kenya": "MRE", "Foothills Regional Airport - Morganton, United States": "MRN", "Baker Lake - Baker Lake, Canada": "YBK", "Flabob Airport - Riverside, United States": "RIR", "Casa Grande Municipal Airport - Casa Grande, United States": "CGZ", "Eleftherios Venizelos Intl - Athens, Greece": "ATH", "Nadzab - Nadzab, Papua New Guinea": "LAE", "Dothan Rgnl - Dothan, United States": "DHN", "Imsik - Bodrum, Turkey": "BXN", "Milingimbi Airport - Milingimbi, Australia": "MGT", "Kasabonika Airport - Kasabonika, Canada": "XKS", "Laurence G Hanscom Fld - Bedford, United States": "BED", "Tshimpi Airport - Matadi, Congo (Kinshasa)": "MAT", "Eastport Municipal Airport - Eastport, United States": "EPM", "Zurich - Zurich, Switzerland": "ZRH", "Wrangell Airport - Wrangell, United States": "WRG", "Pori - Pori, Finland": "POR", "Massawa Intl - Massawa, Eritrea": "MSW", "Punta Gorda Airport - Punta Gorda, Belize": "PND", "Falls Intl - International Falls, United States": "INL", "Anadolu Airport - Eskissehir, Turkey": "AOE", "Mar\u00edlia Airport - Mar\u00edlia, Brazil": "MII", "Barinas - Barinas, Venezuela": "BNS", "Point Lay Lrrs - Point Lay, United States": "PIZ", "Storuman Airport - Mohed, Sweden": "SQO", "Del Norte Intl - Monterrey, Mexico": "NTR", "Inhambane - Inhambane, Mozambique": "INH", "Decatur County Industrial Air Park - Bainbridge, United States": "BGE", "Dalanzadgad Airport - Dalanzadgad, Mongolia": "DLZ", "Kedougou - Kedougou, Senegal": "KGG", "Atyrau - Atyrau, Kazakhstan": "GUW", "Trier Fohren - Trier, Germany": "ZQF", "Tenerife Norte - Tenerife, Spain": "TFN", "Ine Airport - Ine, Marshall Islands": "IMI", "Samsun  - Samsun, Turkey": "SSX", "Van - Van, Turkey": "VAN", "Saudarkrokur - Saudarkrokur, Iceland": "SAK", "Omboue Hopital - Omboue Hospial, Gabon": "OMB", "Sambava - Sambava, Madagascar": "SVB", "Praslin - Praslin, Seychelles": "PRI", "Tagbilaran - Tagbilaran, Philippines": "TAG", "Leuchars - Leuchars, United Kingdom": "ADX", "Barquisimeto Intl - Barquisimeto, Venezuela": "BRM", "Fort Smith - Fort Smith, Canada": "YSM", "Liping Airport - Liping, China": "HZH", "Antalya - Antalya, Turkey": "AYT", "Sullivan Bay Water Aerodrome - Sullivan Bay, Canada": "YTG", "Piacenza - Piacenza, Italy": "QPZ", "Mariscal Lamar - Cuenca, Ecuador": "CUE", "Binaka - Gunung Sitoli, Indonesia": "GNS", "Sara Airport - Pentecost Island, Vanuatu": "SSR", "Trombetas - Oriximina, Brazil": "TMT", "Helsingborg Cruise Port - Helsingborg, Sweden": "JHE", "Eastern WV Regional Airport - Martinsburg, United States": "MRB", "Fredericksburg Amtrak Station - Fredericksburg, United States": "FBG", "Texada Gillies Bay Airport - Texada, Canada": "YGB", "Nordfjordur Airport - Nordfjordur, Iceland": "NOR", "Carbon County Regional-Buck Davis Field - Price, United States": "PUC", "Choiseul Bay Airport - Choiseul Bay, Solomon Islands": "CHY", "Tiputini - Tiputini, Ecuador": "TPN", "Palm Beach Intl - West Palm Beach, United States": "PBI", "Drake Bay Airport - Puntarenas, Costa Rica": "DRK", "Fort Mcpherson - Fort Mcpherson, Canada": "ZFM", "Amarais Airport - Campinas, Brazil": "CPQ", "Air Base - Interlaken, Switzerland": "ZIN", "Guangzhou South Railway Station - Guangzhou, China": "GZS", "Darlington County Jetport - Darlington, United States": "UDG", "Nanortalik Heliport - Nanortalik, Greenland": "JNN", "Emden - Emden, Germany": "EME", "Cherry Point Mcas - Cherry Point, United States": "NKT", "Catania Fontanarossa - Catania, Italy": "CTA", "Bunia - Bunia, Congo (Kinshasa)": "BUX", "Maya Maya - Brazzaville, Congo (Brazzaville)": "BZV", "Mocimboa Da Praia - Mocimboa Da Praia, Mozambique": "MZB", "Staroselye Airport - Rybinsk, Russia": "RYB", "Sydney Intl - Sydney, Australia": "SYD", "Gnassingbe Eyadema Intl - Lome, Togo": "LFW", "King Island Airport - King Island, Australia": "KNS", "Congo Town Airport - Andros, Bahamas": "COX", "Lianyungang Airport - Lianyungang, China": "LYG", "Puerto Jimenez Airport - Puerto Jimenez, Costa Rica": "PJM", "Orinduik Airport - Orinduik, Guyana": "ORJ", "Kigali Intl - Kigali, Rwanda": "KGL", "Erie-Ottawa Regional Airport - Port Clinton, United States": "PCW", "Kratie Airport - Kratie, Cambodia": "KTI", "Tamanrasset - Tamanrasset, Algeria": "TMR", "Tirana Rinas - Tirana, Albania": "TIA", "Deline - Deline, Canada": "YWJ", "Zhob - Zhob, Pakistan": "PZH", "Winkler Co - Wink, United States": "INK", "Villafranca - Villafranca, Italy": "VRN", "Kolwezi - Kolwezi, Congo (Kinshasa)": "KWZ", "Chuuk Intl - Chuuk, Micronesia": "TKK", "Alfredo Vasquez Cobo - Leticia, Colombia": "LET", "Chernobayevka Airport - Kherson, Ukraine": "KHE", "Alalamain Intl. - Dabaa City, Egypt": "DBB", "Gloucestershire - Golouchestershire, United Kingdom": "GLO", "Dangriga Airport - Dangriga, Belize": "DGA", "Maria Montez Intl - Barahona, Dominican Republic": "BRX", "Wilkes Barre Scranton Intl - Scranton, United States": "AVP", "Murtala Muhammed - Lagos, Nigeria": "LOS", "Eduardo Falla Solano - San Vincente De Caguan, Colombia": "SVI", "Weihai Airport - Weihai, China": "WEH", "Jefferson City Memorial Airport - Jefferson City, United States": "JEF", "Garner Field - Uvalde, United States": "UVA", "Somerset County Airport - Somerset, United States": "2G9", "Unalaska - Unalaska, United States": "DUT", "Mitiaro Island Airport - Mitiaro Island, Cook Islands": "MOI", "Ishigaki - Ishigaki, Japan": "ISG", "Goleniow - Szczecin, Poland": "SZZ", "Dyess Afb - Abilene, United States": "DYS", "Ferihegy - Budapest, Hungary": "BUD", "Dallas Executive Airport - Dallas, United States": "RBD", "Zinder - Zinder, Niger": "ZND", "Batsfjord - Batsfjord, Norway": "BJF", "Rijeka - Rijeka, Croatia": "RJK", "Makkovik Airport - Makkovik, Canada": "YMN", "Chulman - Neryungri, Russia": "CNN", "Mc Carran Intl - Las Vegas, United States": "LAS", "Bella Coola Airport - Bella Coola, Canada": "QBC", "Pocatello Regional Airport - Pocatello, United States": "PIH", "Kapadokya - Nevsehir, Turkey": "NAV", "Grand Rapids Itasca County - Grand Rapids MN, United States": "GPZ", "Balikesir - Balikesir, Turkey": "BZI", "Adirondack Regional Airport - Saranac Lake, United States": "SLK", "Natashquan - Natashquan, Canada": "YNA", "Lawrence Municipal Airport - Lawrence, United States": "LWM", "Negril Aerodrome - Negril, Jamaica": "NEG", "Mehamn - Mehamn, Norway": "MEH", "Auburn University Regional - Auburn, United States": "AUO", "Jefferson County Airpark - Steubenville, United States": "2G2", "Kabul Intl - Kabul, Afghanistan": "KBL", "Ganges Water Aerodrome - Ganges, Canada": "YGG", "Charles M Schulz Sonoma Co - Santa Rosa, United States": "STS", "Nowra Airport - Nowra, Australia": "NOA", "Canakkale Airport - Canakkale, Turkey": "CKZ", "Mt. Fuji Shizuoka Airport - Shizuoka, Japan": "FSZ", "Schonefeld - Berlin, Germany": "SXF", "Morombe - Morombe, Madagascar": "MXM", "Forest Lake Airport - Forest Lake, United States": "25D", "Ioannis Kapodistrias Intl - Kerkyra/corfu, Greece": "CFU", "Randolph Afb - San Antonio, United States": "RND", "Yuzhny - Ivanovo, Russia": "IWA", "Magic Valley Regional Airport - Twin Falls, United States": "TWF", "Grayling Airport - Grayling, United States": "KGX", "Brie Champniers - Angouleme, France": "ANG", "Conakry - Conakry, Guinea": "CKY", "Gove Airport - Gove, Australia": "GOV", "General Abelardo L Rodriguez Intl - Tijuana, Mexico": "TIJ", "Maxwell Afb - Montgomery, United States": "MXF", "Manston - Manston, United Kingdom": "MSE", "Syracuse Hancock Intl - Syracuse, United States": "SYR", "Zhoubai - Qianjiang, China": "JIQ", "St George - Point Barrow, United States": "PBV", "Caldas Novas - Caldas Novas, Brazil": "CLV", "Gwadar - Gwadar, Pakistan": "GWD", "Bicycle Lake Aaf - Fort Irwin, United States": "BYS", "Kalibo - Kalibo, Philippines": "KLO", "Groton New London - Groton CT, United States": "GON", "Crown Point - Scarborough, Trinidad and Tobago": "TAB", "Thandwe - Thandwe, Burma": "SNW", "Kuqa Airport - Kuqa, China": "KCA", "Changzhoudao Airport - Wuzhou, China": "WUZ", "Sheldon Point Airport - Nunam Iqua, United States": "SXP", "Marcillac - Rodez, France": "RDZ", "Les Bases Airport - Grand Bourg, Guadeloupe": "GBJ", "Stockton Metropolitan - Stockton, United States": "SCK", "Williamson Country Regional Airport - Marion, United States": "MWA", "Hyvinkaa - Hyvinkaa, Finland": "HYV", "High Level - High Level, Canada": "YOJ", "Vavau Intl - Vava'u, Tonga": "VAV", "Shoestring Aviation Airfield - Stewartstown, United States": "0P2", "Arba Minch - Arba Minch, Ethiopia": "AMH", "Vancouver Intl - Vancouver, Canada": "YVR", "Sparrevohn Lrrs - Sparrevohn, United States": "SVW", "Puerto Barrios Airport - Puerto Barrios, Guatemala": "PBR", "Sitka Rocky Gutierrez - Sitka, United States": "SIT", "La Defense Heliport - Paris, France": "JPU", "Canouan - Canouan Island, Saint Vincent and the Grenadines": "CIW", "Mora - Mora, Sweden": "MXX", "Sheppard Afb Wichita Falls Muni - Wichita Falls, United States": "SPS", "Whitecourt - Whitecourt, Canada": "YZU", "Aeroporto Blumenau - BLUMENAU, Brazil": "BNU", "Dupage - West Chicago, United States": "DPA", "Ciudad Bolivar - Ciudad Bolivar, Venezuela": "CBL", "Cobar Airport - Cobar, Australia": "CAZ", "Amook Bay Seaplane Base - Amook Bay, United States": "AOS", "Gustavus Airport - Gustavus, United States": "GST", "Trichy - Tiruchirappalli, India": "TRZ", "Cherkassy - Cherkassy, Ukraine": "CKC", "Saint Barthelemy - Gustavia, France": "SBH", "Dade Collier Training And Transition - Miami, United States": "TNT", "Hastings Airport - Freetown, Sierra Leone": "HGS", "Pristina - Pristina, Serbia": "PRN", "Niagara Falls Intl - Niagara Falls, United States": "IAG", "Cotulla Lasalle Co - Cotulla, United States": "COT", "Cherif El Idrissi - Al Hociema, Morocco": "AHU", "Smara Airport - Smara, Western Sahara": "SMW", "Cooinda - Cooinda, Australia": "CDA", "Caribou Muni - Caribou, United States": "CAR", "Myrtle Beach Intl - Myrtle Beach, United States": "MYR", "Nikolai Airport - Nikolai, United States": "NIB", "Mainz - Mainz, Germany": "QMZ", "Falconara - Ancona, Italy": "AOI", "Ataq - Ataq, Yemen": "AXK", "Terrance B Lettsome Intl - Tortola, British Virgin Islands": "EIS", "Adnan Menderes - Izmir, Turkey": "ADB", "Beica Airport - Beica, Ethiopia": "BEI", "Sylvania Airport - Sturtevant, United States": "C89", "Krymsk - Novorossiysk, Russia": "NOI", "Obihiro - Obihiro, Japan": "OBO", "Barra del Colorado Airport - Pococi, Costa Rica": "BCL", "Igarka Airport - Igarka, Russia": "IAA", "Palm Island Airport - Palm Island, Australia": "PMK", "Princeton Muni - Princeton, United States": "PNM", "Puka Puka - Puka Puka, French Polynesia": "PKP", "Kingston Train Station - Kingston, Canada": "XEG", "Albury - Albury, Australia": "ABX", "Ramstein Ab - Ramstein, Germany": "RMS", "Manistee County-Blacker Airport - Manistee, United States": "MBL", "Astypalaia - Astypalaia, Greece": "JTY", "Yolo County Airport - Davis-Woodland-Winters, United States": "DWA", "Jomsom - Jomsom, Nepal": "JMO", "Henry E Rohlsen - St. Croix Island, Virgin Islands": "STX", "Namibe Airport - Mocamedes, Angola": "MSZ", "Tolmachevo - Novosibirsk, Russia": "OVB", "Daytona Beach Intl - Daytona Beach, United States": "DAB", "Wendover - Wendover, United States": "ENV", "Mahshahr - Bandar Mahshahr, Iran": "MRX", "Moron Ab - Sevilla, Spain": "OZP", "Taplejung - Taplejung, Nepal": "TPJ", "Whakatane - Whakatane, New Zealand": "WHK", "Baltimore Washington Intl - Baltimore, United States": "BWI", "Prince Mohammad Bin Abdulaziz - Madinah, Saudi Arabia": "MED", "Pembroke Airport - Pembroke, Canada": "YTA", "Kronoberg - Vaxjo, Sweden": "VXO", "Parsabade Moghan Airport - Parsabad, Iran": "PFQ", "Barnaul - Barnaul, Russia": "BAX", "Kirkuk AB - Kirkuk, Iraq": "KIK", "Musoma Airport - Musoma, Tanzania": "MUZ", "Lajes - Lajes (terceira Island), Portugal": "TER", "Darwin Intl - Darwin, Australia": "DRW", "Katima Mulilo Airport - Mpacha, Namibia": "MPA", "Rockhampton - Rockhampton, Australia": "ROK", "Spitfire Aerodrome - Pedricktown, United States": "7N7", "Simikot - Simikot, Nepal": "IMK", "Kulusuk - Kulusuk, Greenland": "KUS", "Vilhelmina - Vilhelmina, Sweden": "VHM", "Sondok Airport - Hamhung, North Korea": "DSO", "Pittsburgh Intl - Pittsburgh, United States": "PIT", "Rubem Berta - Uruguaiana, Brazil": "URG", "Guyuan - Guyuan, China": "GYU", "Harrisburg Intl - Harrisburg, United States": "MDT", "King Abdullah Bin Abdulaziz - Gizan, Saudi Arabia": "GIZ", "Kendall Tamiami Executive - Kendall-tamiami, United States": "TMB", "Morgantown Airport - Morgantown, United States": "O03", "Raipur - Raipur, India": "RPR", "Esfahan Shahid Beheshti Intl - Isfahan, Iran": "IFN", "Bannu Airport - Bannu, Pakistan": "BNP", "Torino - Torino, Italy": "TRN", "Fort Resolution - Fort Resolution, Canada": "YFR", "Johnson County Airport - Olathe, United States": "OJC", "Saint-Laurent-du-Maroni Airport - Saint-Laurent-du-Maroni, French Guiana": "LDX", "Habib Bourguiba Intl - Monastir, Tunisia": "MIR", "Kasos - Kasos, Greece": "KSJ", "Solenzara - Solenzara, France": "SOZ", "Kelso Longview - Kelso, United States": "KLS", "Rishiri - Rishiri Island, Japan": "RIS", "Dave Forest Airport - Cloudbreak, Australia": "KFE", "Bagram AFB - Kabul, Afghanistan": "BPM", "Clovis Muni - Clovis, United States": "CVN", "Illizi Takhamalt - Illizi, Algeria": "VVZ", "Karmoy - Haugesund, Norway": "HAU", "Temora - Temora, Australia": "TEM", "Flores - Flores, Portugal": "FLW", "Ubari Airport - Ubari, Libya": "QUB", "Hutchinson Municipal Airport - Hutchinson, United States": "HUT", "Tadjoura - Tadjoura, Djibouti": "TDJ", "Norwich - Norwich, United Kingdom": "NWI", "Wujiaba - Kunming, China": "KMG", "Markovo Airport - Markovo, Russia": "KVM", "Pedro Canga - Tumbes, Peru": "TBP", "Isbell Field Airport - Fort Payne, United States": "4A9", "Millington Rgnl Jetport - Millington, United States": "NQA", "Captain Ramon Xatruch Airport - La Palma, Panama": "PLP", "Dawson City - Dawson, Canada": "YDA", "Vadodara - Baroda, India": "BDQ", "Paros - Paros, Greece": "PAS", "Inishmore Airport - Inis Mor, Ireland": "IOR", "Banja Luka International Airport - Banja Luka, Bosnia and Herzegovina": "BNX", "Canton - Canton Island, Kiribati": "CIS", "Mokpo Airport - Mokpo, South Korea": "MPK", "Shah Amanat Intl - Chittagong, Bangladesh": "CGP", "Milos - Milos, Greece": "MLO", "Keokuk Municipal Airport - Keokuk, United States": "EOK", "Tadji Airport - Aitape, Papua New Guinea": "ATP", "Minhad HB - Minhad AB, United Arab Emirates": "NHD", "Braganca - Braganca, Portugal": "BGC", "Siauliai Intl - Siauliai, Lithuania": "SQQ", "Kerteh - Kerteh, Malaysia": "KTE", "Jaipur - Jaipur, India": "JAI", "Izumo - Izumo, Japan": "IZO", "Jabot Airport - Ailinglapalap Atoll, Marshall Islands": "JAT", "Otis Angb - Falmouth, United States": "FMH", "Norfolk Island Intl - Norfolk Island, Norfolk Island": "NLK", "Sungshan - Taipei, Taiwan": "TSA", "Daman - Daman, India": "NMB", "Reykjavik - Reykjavik, Iceland": "RKV", "William P Hobby - Houston, United States": "HOU", "Ondjiva Pereira Airport - Ondjiva, Angola": "VPE", "Aristotelis - Kastoria, Greece": "KSO", "Hassi R Mel - Tilrempt, Algeria": "HRM", "Langkawi Intl - Pulau, Malaysia": "LGK", "Nanisivik - Nanisivik, Canada": "YSR", "Guipavas - Brest, France": "BES", "Losuia Airport - Losuia, Papua New Guinea": "LSA", "Connemara Regional Airport - Indreabhan, Ireland": "NNR", "Union Island International Airport - Union Island, Saint Vincent and the Grenadines": "UNI", "Savusavu Airport - Savusavu, Fiji": "SVU", "Salt Cay Airport - Salt Cay, Turks and Caicos Islands": "SLX", "Lille - Lille, France": "XDB", "Volk Fld - Camp Douglas, United States": "VOK", "Davis Fld - Muskogee, United States": "MKO", "Assab Intl - Assab, Eritrea": "ASA", "Husein Sastranegara - Bandung, Indonesia": "BDO", "Emporia Municipal Airport - Emporia, United States": "EMP", "Noshahr Airport - Noshahr, Iran": "NSH", "Sandakan - Sandakan, Malaysia": "SDK", "Taoyuan Intl - Taipei, Taiwan": "TPE", "Port of Belfast - Belfast, United Kingdom": "BE2", "Kitale - Kitale, Kenya": "KTL", "Binhai - Tianjin, China": "TSN", "Rankin Inlet - Rankin Inlet, Canada": "YRT", "Ardabil Airport - Ardabil, Iran": "ADU", "Mekoryuk Airport - Mekoryuk, United States": "MYU", "Harrison Marion Regional Airport - Clarksburg, United States": "CKB", "Shonai Airport - Shonai, Japan": "SYO", "Yanji Airport - Yanji, China": "YNJ", "Waco Rgnl - Waco, United States": "ACT", "Vilo Acuna Intl - Cayo Largo del Sur, Cuba": "CYO", "Vancouver Harbour Water Airport - Vancouver, Canada": "YHC", "Jorge E Gonzalez Torres - San Jose Del Guaviare, Colombia": "SJE", "Alexandria Intl - Alexandria, Egypt": "ALY", "Prosser - Prosser, United States": "S40", "Namangan Airport - Namangan, Uzbekistan": "NMA", "Saluda County - Saluda, United States": "6J4", "Tadoule Lake Airport - Tadoule Lake, Canada": "XTL", "Loikaw Airport - Loikaw, Burma": "LIW", "Oyem - Oyem, Gabon": "OYE", "Honiara International - Honiara, Solomon Islands": "HIR", "Lampang - Lampang, Thailand": "LPT", "Slave Lake - Slave Lake, Canada": "YZH", "Talagi - Arkhangelsk, Russia": "ARH", "Koromiko - Picton, New Zealand": "PCN", "Graciosa - Graciosa Island, Portugal": "GRW", "Cayo Coco Airport - Cayo Coco, Cuba": "CCC", "Sabetha Municipal - Sabetha, United States": "K83", "Chifeng Airport - Chifeng, China": "CIF", "Atlantic City Intl - Atlantic City, United States": "ACY", "Ensenada - Ensenada, Mexico": "ESE", "Chevak Airport - Chevak, United States": "VAK", "Fostoria Metropolitan Airport - Fostoria, United States": "FZI", "Changde Airport - Changde, China": "CGD", "Deer Lake - Deer Lake, Canada": "YDF", "Vohimarina - Vohemar, Madagascar": "VOH", "Santa Cruz des Quiche Airport - Santa Cruz des Quiche, Guatemala": "AQB", "Bosaso Airport - Bosaso, Somalia": "BSA", "Muskegon County Airport - Muskegon, United States": "MKG", "Leros - Leros, Greece": "LRS", "Biggs Aaf - El Paso, United States": "BIF", "Zaqatala International Airport - Zaqatala, Azerbaijan": "ZTU", "Hannover Messe-Heliport - Hannover, Germany": "ZVM", "Montgomery County Airpark - Gaithersburg, United States": "GAI", "Port O\\\\'Connor Airfield - Port O\\\\'Connor, United States": "S46", "Baoshan Airport - Baoshan, China": "BSD", "Gimhae Intl - Busan, South Korea": "PUS", "El Tepual Intl - Puerto Montt, Chile": "PMC", "Elizabethton Municipal Airport - Elizabethton, United States": "0A9", "Sunshine Coast - Maroochydore, Australia": "MCY", "Bhubaneshwar - Bhubaneswar, India": "BBI", "Munich Railway - Munich, Germany": "ZMU", "Manang - Manang, Nepal": "NGX", "Paraparaumu - Paraparaumu, New Zealand": "PPQ", "Lucknow - Lucknow, India": "LKO", "Pafos Intl - Paphos, Cyprus": "PFO", "Saman\u00e1 El Catey International Airport - Samana, Dominican Republic": "AZS", "Fort Yukon - Fort Yukon, United States": "FYU", "Aalborg - Aalborg, Denmark": "AAL", "Mudgee Airport - Mudgee, Australia": "DGE", "Deadmans Cay - Dead Man's Cay, Bahamas": "LGI", "Bali Ngurah Rai - Denpasar, Indonesia": "DPS", "Hill Afb - Ogden, United States": "HIF", "Nuuk - Godthaab, Greenland": "GOH", "Samjiyon Airport - Samjiyon, North Korea": "YJS", "Arutua - Arutua, French Polynesia": "AXR", "Port Macquarie Airport - Port Macquarie, Australia": "PQQ", "Ornskoldsvik - Ornskoldsvik, Sweden": "OER", "Mountain Home Municipal Airport - Mountain Home, United States": "U76", "Lanai - Lanai, United States": "LNY", "All Airports - Paris, France": "PAR", "Blythe Airport - Blythe, United States": "BLH", "Ghanzi Airport - Ghanzi, Botswana": "GNZ", "Windom Municipal Airport - Windom, United States": "MWM", "Meilan - Haikou, China": "HAK", "Galcaio Airport - Galcaio, Somalia": "GLK", "Newtok Airport - Newtok, United States": "WWT", "Klawock Seaplane Base - Klawock, United States": "AQC", "Kansas City Intl - Kansas City, United States": "MCI", "Farnborough - Farnborough, United Kingdom": "FAB", "Port Heiden Airport - Port Heiden, United States": "PTH", "H Hasan Aroeboesman - Ende, Indonesia": "ENE", "Prince George - Prince George, Canada": "YXS", "Valle De La Pascua - Valle De La Pascua, Venezuela": "VDP", "Torreon Intl - Torreon, Mexico": "TRC", "Rio Grande - Rio Grande, Argentina": "RGA", "Ekati - Ekati, Canada": "YOA", "Debre Marqos - Debre Marqos, Ethiopia": "DBM", "Pond Inlet - Pond Inlet, Canada": "YIO", "Laishan - Yantai, China": "YNT", "Moose Jaw Air Vice Marshal C M Mcewen - Moose Jaw, Canada": "YMJ", "Marinduque Airport - Gasan, Philippines": "MRQ", "San Luis Valley Regional Airport - Alamosa, United States": "ALS", "Baimuru Airport - Baimuru, Papua New Guinea": "VMU", "Catumbela Airport - Catumbela, Angola": "CBT", "Point Roberts Airpark - Point Roberts, United States": "1RL", "Pune - Pune, India": "PNQ", "Gjoa Haven - Gjoa Haven, Canada": "YHK", "Roi Et - Roi Et, Thailand": "ROI", "General Mitchell Intl - Milwaukee, United States": "MKE", "Dr Joaquin Balaguer International Airport - La Isabela, Dominican Republic": "JBQ", "Turkmenbashi - Krasnovodsk, Turkmenistan": "KRW", "Coxs Bazar - Cox's Bazar, Bangladesh": "CXB", "Oguzeli - Gaziantep, Turkey": "GZT", "Polk Aaf - Fort Polk, United States": "POE", "Mejit Atoll Airport - Mejit Atoll, Marshall Islands": "MJB", "Tenerife Sur - Tenerife, Spain": "TFS", "Esbjerg - Esbjerg, Denmark": "EBJ", "Ulithi - Ulithi, Micronesia": "ULI", "Lynden Pindling Intl - Nassau, Bahamas": "NAS", "Toccoa RG Letourneau Field Airport - Toccoa, United States": "TOC", "Rimini - Rimini, Italy": "RMI", "Townsville - Townsville, Australia": "TSV", "John H. Batten Airport - Racine, United States": "RAC", "Nogales Intl - Nogales, Mexico": "NOG", "Aguas Claras - Ocana, Colombia": "OCV", "Nunapitchuk Airport - Nunapitchuk, United States": "NUP", "Armstrong - Armstrong, Canada": "YYW", "Zaragoza Ab - Zaragoza, Spain": "ZAZ", "Bellegarde - Limoges, France": "LIG", "Chapleau - Chapleau, Canada": "YLD", "Knox County Regional Airport - Rockland, United States": "RKD", "Bazaruto Island Airport - Bazaruto Island, Mozambique": "BZB", "Seoul Ab - Seoul East, South Korea": "SSN", "Stewart Intl - Newburgh, United States": "SWF", "Talavera La Real - Badajoz, Spain": "BJZ", "Francisco C Ada Saipan Intl - Saipan, Northern Mariana Islands": "SPN", "Ronda Airport - Ronda, Spain": "RRA", "Ronneby - Ronneby, Sweden": "RNB", "Cormeilles En Vexin - Pontoise, France": "POX", "Shakawe Airport - Shakawe, Botswana": "SWX", "Johan A Pengel Intl - Zandery, Suriname": "PBM", "Charleville - Charlieville, Australia": "CTL", "Port Columbus Intl - Columbus, United States": "CMH", "McArthur River Mine Airport - McArthur River Mine, Australia": "MCV", "Del Rio Intl - Del Rio, United States": "DRT", "Tallahassee Rgnl - Tallahassee, United States": "TLH", "Minot Afb - Minot, United States": "MIB", "Narrandera Airport - Narrandera, Australia": "NRA", "Lesquin - Lille, France": "LIL", "Liepaja Intl - Liepaja, Latvia": "LPX", "Pudong - Shanghai, China": "PVG", "Coronel Francisco Secada Vignetta Intl - Iquitos, Peru": "IQT", "Delta County Airport - Escanaba, United States": "ESC", "Bourke Airport - Bourke, Australia": "BRK", "Quantico Mcaf - Quantico, United States": "NYG", "Deols - Chateauroux, France": "CHR", "Livingood Airport - Livingood, United States": "LIV", "Garland Airport - Lewiston, United States": "8M8", "Woomera - Woomera, Australia": "UMR", "Pinal Airpark - Marana, United States": "MZJ", "Abel Santamaria - Santa Clara, Cuba": "SNU", "Badu Island Airport - Badu Island, Australia": "BDD", "Santorini - Thira, Greece": "JTR", "Florence Rgnl - Florence, United States": "FLO", "Mau Hau - Waingapu, Indonesia": "WGP", "Scammon Bay Airport - Scammon Bay, United States": "SCM", "Santa Teresita Airport - Santa Teresita, Argentina": "SST", "Yaounde Nsimalen - Yaounde, Cameroon": "NSI", "La Teste De Buch - Arcachon, France": "XAC", "Eureka - Eureka, Canada": "YEU", "Stella Maris - Stella Maris, Bahamas": "SML", "Marathon - Marathon, Canada": "YSP", "Amami - Amami, Japan": "ASJ", "Kiffa - Kiffa, Mauritania": "KFA", "Kulob Airport - Kulyab, Tajikistan": "TJU", "Piarco - Port-of-spain, Trinidad and Tobago": "POS", "Magong - Makung, Taiwan": "MZG", "Kallax - Lulea, Sweden": "LLA", "Moree Airport - Moree, Australia": "MRZ", "Abha - Abha, Saudi Arabia": "AHB", "Chhatrapati Shivaji Intl - Mumbai, India": "BOM", "Bisbee Douglas Intl - Douglas, United States": "DUG", "Lossiemouth - Lossiemouth, United Kingdom": "LMO", "Oneonta Municipal Airport - Oneonta, United States": "ONH", "Atlantic City Rail Terminal - Atlantic City NJ, United States": "ZRA", "Ravensthorpe Airport - Ravensthorpe, Australia": "RVT", "Brussels Natl - Brussels, Belgium": "BRU", "Cigli - Izmir, Turkey": "IGL", "Syros Airport - Syros Island, Greece": "JSY", "Pichoy - Valdivia, Chile": "ZAL", "Yulin Airport - Yulin, China": "UYN", "Banjul Intl - Banjul, Gambia": "BJL", "Bournemouth - Bournemouth, United Kingdom": "BOH", "Ouzinkie Airport - Ouzinkie, United States": "KOZ", "U Taphao Intl - Pattaya, Thailand": "UTP", "Formosa - Formosa, Argentina": "FMA", "Surkhet - Surkhet, Nepal": "SKH", "Cardiff - Cardiff, United Kingdom": "CWL", "Manhattan Reigonal - Manhattan, United States": "MHK", "Cruzeiro do Sul - Cruzeiro do Sul, Brazil": "CZS", "Quincy Municipal Airport - Quincy, United States": "2J9", "Bryce Canyon - Bryce Canyon, United States": "BCE", "Temindung - Samarinda, Indonesia": "SRI", "Big Creek Airport - Big Creek, Belize": "BGK", "La Pedrera Airport - La Pedrera, Colombia": "LPD", "V C Bird Intl - Antigua, Antigua and Barbuda": "ANU", "Marham - Marham, United Kingdom": "KNF", "Dalbandin Airport - Dalbandin, Pakistan": "DBA", "Wiarton - Wiarton, Canada": "YVV", "Juan Casiano - Guapi, Colombia": "GPI", "Qaisumah - Hafr Al-batin, Saudi Arabia": "AQI", "Imo Airport - Imo, Nigeria": "QOW", "Wiley Post Will Rogers Mem - Barrow, United States": "BRW", "Paulatuk - Paulatuk, Canada": "YPC", "Tak - Tak, Thailand": "TKT", "Bermejo - Bermejo, Bolivia": "BJO", "Tautii Magheraus - Baia Mare, Romania": "BAY", "Yuba County Airport - Yuba City, United States": "MYV", "Central Station - Glasgow, United Kingdom": "ZGG", "Kamembe - Kamembe, Rwanda": "KME", "Penneshaw Airport - Penneshaw, Australia": "PEA", "Fort Hope Airport - Fort Hope, Canada": "YFH", "Hwange National Park - Hwange National Park, Zimbabwe": "WKM", "Cordoba - Cordoba, Spain": "ODB", "Gabes - Gabes, Tunisia": "GAE", "Durban Intl - Durban, South Africa": "DUR", "Golfo de Morrosquillo Airport - Tolu, Colombia": "TLU", "Bromont Airport - Bromont, Canada": "ZBM", "Charlotte Douglas Intl - Charlotte, United States": "CLT", "Governador Jorge Teixeira De Oliveira - Porto Velho, Brazil": "PVH", "Susilo Airport - Sintang-Borneo Island, Indonesia": "SQG", "Ban Huoeisay Airport - Huay Xai, Laos": "OUI", "Tavie Airport - Paama Island, Vanuatu": "PBJ", "Baldwin County Airport - Milledgeville, United States": "MLJ", "Gutersloh - Guetersloh, Germany": "GUT", "Centennial - Denver, United States": "APA", "Tivat - Tivat, Montenegro": "TIV", "South Naknek Airport - South Naknek, United States": "WSN", "Dire Dawa Intl - Dire Dawa, Ethiopia": "DIR", "Salvaza - Carcassonne, France": "CCF", "Lynchburg Regional Preston Glenn Field - Lynchburg, United States": "LYH", "Ndola - Ndola, Zambia": "NLA", "Baghdad International Airport - Baghdad, Iraq": "BGW", "Xiaoshan - Hangzhou, China": "HGH", "Kassala - Kassala, Sudan": "KSL", "Jersey - Jersey, Jersey": "JER", "Ondangwa Airport - Ondangwa, Namibia": "OND", "Tamworth - Tamworth, Australia": "TMW", "Yinchuan - Yinchuan, China": "INC", "Saidpur - Saidpur, Bangladesh": "SPD", "Franklin - Franklin, United States": "FKL", "Perth Jandakot - Perth, Australia": "JAD", "Ivujivik Airport - Ivujivik, Canada": "YIK", "Page Fld - Fort Myers, United States": "FMY", "Tepic - Tepic, Mexico": "TPQ", "Westerly State Airport - Washington County, United States": "WST", "Gary Chicago International Airport - Gary, United States": "GYY", "Enontekio - Enontekio, Finland": "ENF", "Karonga - Karonga, Malawi": "KGJ", "Orly - Paris, France": "ORY", "Khomutovo - Yuzhno-sakhalinsk, Russia": "UUS", "Kangra Airport - Kangra, India": "DHM", "Basrah Intl - Basrah, Iraq": "BSR", "Barrow Island Airport - Barrow Island, Australia": "BWB", "Upington - Upington, South Africa": "UTN", "Philip Billard Muni - Topeka, United States": "TOP", "Capit\u00e1n Av. Selin Zeitun Lopez Airport - Riberalta, Bolivia": "RIB", "Hite Airport - Hanksville, United States": "UT3", "Petrozavodsk Airport - Petrozavodsk, Russia": "PES", "Cachimbo - Itaituba, Brazil": "ITB", "St Clair Co Intl - Port Huron, United States": "PHN", "Nacala - Nacala, Mozambique": "MNC", "North Platte Regional Airport Lee Bird Field - North Platte, United States": "LBF", "Valkaria Municipal - Valkaria, United States": "X59", "University Park Airport - State College Pennsylvania, United States": "SCE", "Arkansas Intl - Blytheville, United States": "BYH", "Moyale Airport - Moyale, Kenya": "OYL", "King Abdulaziz Intl - Jeddah, Saudi Arabia": "JED", "Newport State - Newport RI, United States": "UUU", "Destin - Destin, United States": "DTS", "Tinian Intl - West Tinian, Northern Mariana Islands": "TIQ", "Mabaruma Airport - Mabaruma, Guyana": "USI", "Maximo Gomez - Ciego De Avila, Cuba": "AVI", "Osnova International Airport - Kharkov, Ukraine": "HRK", "General Pedro Jose Mendez Intl - Ciudad Victoria, Mexico": "CVM", "Dolpa - Dolpa, Nepal": "DOP", "Golmud Airport - Golmud, China": "GOQ", "Raiatea - Raiatea Island, French Polynesia": "RFP", "Zarzis - Djerba, Tunisia": "DJE", "Truth Or Consequences Muni - Truth Or Consequences, United States": "TCS", "Eagle Co Rgnl - Vail, United States": "EGE", "Aasiaat - Aasiaat, Greenland": "JEG", "Glacier Park Intl - Kalispell, United States": "FCA", "Lifou - Lifou, New Caledonia": "LIF", "Asheville Regional Airport - Asheville, United States": "AVL", "Ralph Wien Mem - Kotzebue, United States": "OTZ", "Drietabbetje Airstrip - Drietabbetje, Suriname": "DRJ", "Riverside Muni - Riverside, United States": "RAL", "Cabo Velas Airport - Nicoya, Costa Rica": "TNO", "Yasser Arafat Intl - Gaza, Palestine": "GZA", "Zvartnots - Yerevan, Armenia": "EVN", "Yongzhou Lingling Airport - Yongzhou, China": "LLF", "Saibai Island Airport - Saibai Island, Australia": "SBR", "Port-de-Paix Airport - Port-de-Paix, Haiti": "PAX", "Rafic Hariri Intl - Beirut, Lebanon": "BEY", "Jwaneng - Jwaneng, Botswana": "JWA", "Nikunau Airport - Nikunau, Kiribati": "NIG", "Hengchun Airport - Hengchun, Taiwan": "HCN", "General Servando Canales Intl - Matamoros, Mexico": "MAM", "Kumasi Airport - Kumasi, Ghana": "KMS", "Edmonton Intl - Edmonton, Canada": "YEG", "Lista - Farsund, Norway": "FAN", "Rosita Airport - Rosita, Nicaragua": "RFS", "Sligo - Sligo, Ireland": "SXL", "Barwick Lafayette Airport - LaFayette, United States": "9A5", "Buri Ram - Buri Ram, Thailand": "BFV", "Igiugig Airport - Igiugig, United States": "IGG", "Governors Harbour - Governor's Harbor, Bahamas": "GHB", "Rajahmundry - Rajahmundry, India": "RJA", "Richard B Russell Airport - Rome, United States": "RMG", "Vance Winkworth Amory International Airport - Charlestown, Saint Kitts and Nevis": "NEV", "Waterbury-Oxford Airport - Oxford, United States": "OXC", "Maniitsoq Airport - Maniitsoq, Greenland": "JSU", "General Bartolome Salom Intl - Puerto Cabello, Venezuela": "PBL", "Botucatu - Botucatu, Brazil": "QCJ", "Colville Lake Airport - Colville Lake, Canada": "YCK", "Orebro - Orebro, Sweden": "ORB", "Uige - Uige, Angola": "UGO", "Aeroporto de Porto Seguro - Porto Seguro, Brazil": "BPS", "Wajir - Wajir, Kenya": "WJR", "Shreveport Rgnl - Shreveport, United States": "SHV", "Ovda - Ovda, Israel": "VDA", "Ji-Paran\u00e1 Airport - Ji-Paran\u00e1, Brazil": "JPR", "Touho - Touho, New Caledonia": "TOU", "Sary-Arka - Karaganda, Kazakhstan": "KGF", "Bagan - Bagan, Burma": "BPE", "Midland Intl - Midland, United States": "MAF", "Sumbawa Besar Airport - Sumbawa Island, Indonesia": "SWQ", "Tabiteuea South Airport - Tabiteuea, Kiribati": "TSU", "Easton-Newnam Field Airport - Easton, United States": "ESN", "Pisco Intl - Pisco, Peru": "PIO", "St Anthony - St. Anthony, Canada": "YAY", "Pelican Seaplane Base - Pelican, United States": "PEC", "Rio Gallegos - Rio Gallegos, Argentina": "RGL", "Samsun-\u00c7ar\u015famba Airport - Samsun, Turkey": "SZF", "Chaklala - Islamabad, Pakistan": "ISB", "Veliky Ustyug - Veliky Ustyug, Russia": "VUS", "Alldays Airport - Alldays, South Africa": "ADY", "Orlando Bezerra de Menezes Airport - Juazeiro Do Norte, Brazil": "JDO", "Brownsville South Padre Island Intl - Brownsville, United States": "BRO", "Tomanggong Airport - Tomanggong, Malaysia": "TMG", "Tofino - Tofino, Canada": "YAZ", "Taba Intl - Taba, Egypt": "TCP", "Kingfisher Lake Airport - Kingfisher Lake, Canada": "KIF", "Cincinnati Muni Lunken Fld - Cincinnati, United States": "LUK", "Kiruna - Kiruna, Sweden": "KRN", "Comandante Espora - Bahia Blanca, Argentina": "BHI", "Puvirnituq Airport - Puvirnituq, Canada": "YPX", "Barkley Regional Airport - PADUCAH, United States": "PAH", "Matagami - Matagami, Canada": "YNM", "Ulanhot Airport - Ulanhot, China": "HLH", "John F Kennedy Intl - New York, United States": "JFK", "King Abdulaziz Ab - Dhahran, Saudi Arabia": "DHA", "Phoenix Regional Airport - Phoenix, United States": "A39", "Anahim Lake Airport - Anahim Lake, Canada": "YAA", "Takaka Aerodrome - Takaka, New Zealand": "KTF", "Germack Airport - Geneva, United States": "7D9", "Poplar Hill Airport - Poplar Hill, Canada": "YHP", "Stendal Borstel - Stendal, Germany": "ZSN", "Changhai - Changhai, China": "CNI", "Red Deer Regional - Red Deer Industrial, Canada": "YQF", "Guiria - Guiria, Venezuela": "GUI", "Joacaba Airport - Joacaba, Brazil": "JCB", "Ye - Ye, Burma": "XYE", "Niigata - Niigata, Japan": "KIJ", "Mogador Airport - Essadouira, Morocco": "ESU", "Missoula Intl - Missoula, United States": "MSO", "Tunggul Wulung - Cilacap, Indonesia": "CXP", "Luxor Intl - Luxor, Egypt": "LXR", "Albina Airstrip - Albina, Suriname": "ABN", "Allen Aaf - Delta Junction, United States": "BIG", "Kimberley - Kimberley, South Africa": "KIM", "Latur Airport - Latur, India": "LTU", "Haifa - Haifa, Israel": "HFA", "Cologne Railway - Cologne, Germany": "QKL", "Thisted - Thisted, Denmark": "TED", "Rhinelander Oneida County Airport - Rhinelander, United States": "RHI", "Rodby Port - Rodby, Denmark": "ROD", "Melbourne Moorabbin - Melbourne, Australia": "MBW", "Windham Airport - Willimantic, United States": "IJD", "Kaadedhdhoo - Kaadedhdhoo, Maldives": "KDM", "Renner Fld - Goodland, United States": "GLD", "Fort Dodge Rgnl - Fort Dodge, United States": "FOD", "Samui - Ko Samui, Thailand": "USM", "Valencia - Valencia, Spain": "VLC", "Posadas - Posadas, Argentina": "PSS", "Seymour Johnson Afb - Goldsboro, United States": "GSB", "Aeroporto Estadual Arthur Siqueira - Braganca Paulista, Brazil": "BJP", "Zhongwei Xiangshan Airport - Zhongwei, China": "ZHY", "Charmeil - Vichy, France": "VHY", "Berbera - Berbera, Somalia": "BBO", "Kauhava - Kauhava, Finland": "KAU", "Hamburg Hbf - Hamburg, Germany": "ZMB", "Damascus Intl - Damascus, Syria": "DAM", "Maiana Airport - Maiana, Kiribati": "MNK", "Iliamna - Iliamna, United States": "ILI", "Hamilton - Hamilton, Canada": "YHM", "Seronera - Seronera, Tanzania": "SEU", "Pattimura - Ambon, Indonesia": "AMQ", "Central Wisconsin - Wassau, United States": "CWA", "Rochambeau - Cayenne, French Guiana": "CAY", "Gjogur Airport - Gjogur, Iceland": "GJR", "Hayward Executive Airport - Hayward, United States": "HWD", "Saniat Rmel - Tetouan, Morocco": "TTU", "Luena - Luena, Angola": "LUO", "Simon Bolivar Intl - Caracas, Venezuela": "CCS", "Portoroz - Portoroz, Slovenia": "POW", "Belize City Municipal Airport - Belize, Belize": "TZA", "Holloman Afb - Alamogordo, United States": "HMN", "Stony River 2 Airport - Stony River, United States": "SRV", "Lethbridge - Lethbridge, Canada": "YQL", "North Eleuthera - North Eleuthera, Bahamas": "ELH", "Paulo Abdala Airport - Francisco Beltrao, Brazil": "FBE", "Qabala Airport - Qabala, Azerbaijan": "GBB", "Anglesey Airport - Angelsey, United Kingdom": "HLY", "London - London, Canada": "YXU", "Maripasoula Airport - Maripasoula, French Guiana": "MPY", "Kengtung - Kengtung, Burma": "KET", "Baton Rouge Metro Ryan Fld - Baton Rouge, United States": "BTR", "Chimbu Airport - Kundiawa, Papua New Guinea": "CMU", "Gare du Nord - Paris, France": "XPG", "Vijayawada - Vijayawada, India": "VGA", "Erhac - Malatya, Turkey": "MLX", "Sliac - Sliac, Slovakia": "SLD", "Franz Josef Strauss - Munich, Germany": "MUC", "Desroches - Desroches, Seychelles": "DES", "Botopassi Airstrip - Botopasi, Suriname": "BTO", "Westerland Sylt - Westerland, Germany": "GWT", "Castlegar - Castlegar, Canada": "YCG", "Kasongo Lunda - Kasongo, Congo (Kinshasa)": "KGN", "Boma Airport - Boma, Congo (Kinshasa)": "BOA", "Club Makokola Airport - Club Makokola, Malawi": "CMK", "Mannheim Railway - Mannheim, Germany": "ZMA", "Nawabshah - Nawabshah, Pakistan": "WNS", "Noto - Wajima, Japan": "NTQ", "Hudson Bay - Hudson Bay, Canada": "YHB", "Moton Field Municipal Airport - Tuskegee, United States": "06A", "General Francisco Javier Mina Intl - Tampico, Mexico": "TAM", "Oakey Airport - Oakey, Australia": "OKY", "Sambu Airport - Boca de S\u00e1balo, Panama": "SAX", "Pechora - Pechora, Russia": "PEX", "New Carrollton Rail Station - New Carrollton, United States": "ZRZ", "Sultan Ismail - Johor Bahru, Malaysia": "JHB", "Lhasa-Gonggar - Lhasa, China": "LXA", "Changbaishan Airport - Baishan, China": "NBS", "Fort Smith Rgnl - Fort Smith, United States": "FSM", "Sahand Airport - Maragheh, Iran": "ACP", "Logan-Cache - Logan, United States": "LGU", "Karamay Airport - Karamay, China": "KRY", "Sitia - Sitia, Greece": "JSH", "El Alcarav\u00e1n Airport - Yopal, Colombia": "EYP", "Walgett Airport - Walgett, Australia": "WGE", "Friedrichshafen - Friedrichshafen, Germany": "FDH", "Riyan - Mukalla, Yemen": "RIY", "Victoria Inner Harbour Airport - Victoria, Canada": "YWH", "Bisha - Bisha, Saudi Arabia": "BHH", "Touat Cheikh Sidi Mohamed Belkebir - Adrar, Algeria": "AZR", "Miramichi - Chatham, Canada": "YCH", "Ormoc Airport - Ormoc City, Philippines": "OMC", "Zhaotong Airport - Zhaotong, China": "ZAT", "Spichenkovo Airport - Novokuznetsk, Russia": "NOZ", "Selfield Airport - Selma Alabama, United States": "SES", "Fukue - Fukue, Japan": "FUJ", "Ulsan - Ulsan, South Korea": "USN", "Ambouli International Airport - Djibouti, Djibouti": "JIB", "Zonguldak - Zonguldak, Turkey": "ONQ", "Almaty - Alma-ata, Kazakhstan": "ALA", "Mianyang Airport - Mianyang, China": "MIG", "El Alto Intl - La Paz, Bolivia": "LPB", "Leknes Airport - Leknes, Norway": "LKN", "Kelani River-Peliyagoda Waterdrome - Colombo, Sri Lanka": "KEZ", "John Wayne Arpt Orange Co - Santa Ana, United States": "SNA", "Huai An Lianshui Airport - Huai An, China": "HIA", "Jodhpur - Jodhpur, India": "JDH", "Bahia Pi\u00f1a Airport - Bahia Pi\u00f1a, Panama": "BFQ", "Forde Bringeland - Forde, Norway": "FDE", "Uzhhorod International Airport - Uzhgorod, Ukraine": "UDJ", "Iki - Iki, Japan": "IKI", "Pickens County Airport - Jasper, United States": "JZP", "Key Field - Meridian, United States": "MEI", "Shimla Airport - Shimla, India": "SLV", "Newark Liberty Intl - Newark, United States": "EWR", "Block Island State Airport - Block Island, United States": "BID", "Grand Canyon West Airport - Grand Canyon West, United States": "GCW", "Phu Bai - Hue, Vietnam": "HUI", "Hillsboro Muni - Hillsboro, United States": "INJ", "Normanton Airport - Normanton, Australia": "NTN", "Wickenburg Municipal Airport - Wickenburg, United States": "E25", "Ambunti - Ambunti, Papua New Guinea": "AUJ", "Soummam - Bejaja, Algeria": "BJA", "Eskisehir - Eskisehir, Turkey": "ESK", "Bucholz Aaf - Kwajalein, Marshall Islands": "KWA", "Black Hills Airport-Clyde Ice Field - Spearfish-South Dakota, United States": "SPF", "Mariana Grajales - Guantanamo, Cuba": "GAO", "Campo Dell Oro - Ajaccio, France": "AJA", "Wunnumin Lake Airport - Wunnumin Lake, Canada": "WNN", "Polonia - Medan, Indonesia": "MES", "Nagoya Airport - Nagoya, Japan": "NKM", "Igor I Sikorsky Mem - Stratford, United States": "BDR", "Gobernador Gregores Airport - Gobernador Gregores, Argentina": "GGS", "La Crosse Municipal - La Crosse, United States": "LSE", "Southeast Texas Rgnl - Beaumont, United States": "BPT", "Cooch Behar - Cooch-behar, India": "COH", "Mykolaiv International Airport - Nikolayev, Ukraine": "NLV", "Grottaglie - Grottaglie, Italy": "TAR", "Capital City - Lansing, United States": "LAN", "Zamperini Field Airport - Torrance, United States": "TOA", "Arvidsjaur - Arvidsjaur, Sweden": "AJR", "Lakeland - Minocqua - Woodruff, United States": "ARV", "Haines Airport - Haines, United States": "HNS", "Vicenza - Vicenza, Italy": "VIC", "Enugu - Enugu, Nigeria": "ENU", "Tippi Airport - Tippi, Ethiopia": "TIE", "Kaieteur - Kaieteur, Guyana": "KAI", "Kahului - Kahului, United States": "OGG", "Koln Bonn - Cologne, Germany": "CGN", "Iosco County - East Tawas, United States": "ECA", "Bellingham Intl - Bellingham, United States": "BLI", "Matecana - Pereira, Colombia": "PEI", "Brusselton - Brusselton, Australia": "BQB", "Babo - Babo, Indonesia": "BXB", "Launceston - Launceston, Australia": "LST", "Nelson - Nelson, New Zealand": "NSN", "Bilbao - Bilbao, Spain": "BIO", "Arturo Merino Benitez Intl - Santiago, Chile": "SCL", "Hrodno Airport - Hrodna, Belarus": "GNA", "Lackland Afb Kelly Fld Annex - San Antonio, United States": "SKF", "Malargue - Malargue, Argentina": "LGS", "North Spirit Lake Airport - North Spirit Lake, Canada": "YNO", "Bessemer - Bessemer, United States": "EKY", "Angoon Seaplane Base - Angoon, United States": "AGN", "Amsterdam Centraal - Amsterdam, Netherlands": "ZYA", "Tsumeb Airport - Tsumeb, Namibia": "TSB", "Korla Airport - Korla, China": "KRL", "Nyagan Airport - Nyagan, Russia": "NYA", "Viracopos - Campinas, Brazil": "VCP", "Phoenix-Mesa Gateway - Mesa, United States": "AZA", "Malolo Lailai Island Airport - Malolo Lailai Island, Fiji": "PTF", "Fairbanks Intl - Fairbanks, United States": "FAI", "Catamarca - Catamarca, Argentina": "CTC", "Heide-B\u00fcsum Airport - B\u00fcsum, Germany": "HEI", "Poltava - Poltava, Ukraine": "PLV", "Guemar Airport - Guemar, Algeria": "ELU", "Miandrivazo - Miandrivazo, Madagascar": "ZVA", "Thorshofn Airport - Thorshofn, Iceland": "THO", "Koulamoutou Airport - Koulamoutou, Gabon": "KOU", "Narsaq Heliport - Narsaq, Greenland": "JNS", "Sand Point Airport - Sand Point, United States": "SDP", "Tortoli - Tortoli, Italy": "TTB", "Theodore Francis Green State - Providence, United States": "PVD", "Hamburg - Hamburg, Germany": "HAM", "Malad City - Malad City, United States": "MLD", "St Jacques - Rennes, France": "RNS", "Tri-State Steuben County Airport - Angola, United States": "ANQ", "Miri - Miri, Malaysia": "MYY", "Barcelona - Barcelona, Spain": "BCN", "Quetzalcoatl Intl - Nuevo Laredo, Mexico": "NLD", "Lee Airport - Annapolis, United States": "ANP", "Galt Field Airport - Greenwood, United States": "10C", "Novo Aripuana Airport - Novo Aripuana, Brazil": "NVP", "Flesland - Bergen, Norway": "BGO", "Ixtapa Zihuatanejo Intl - Zihuatanejo, Mexico": "ZIH", "Tongren - Tongren, China": "TEN", "Hannover - Hannover, Germany": "HAJ", "Port Alsworth Airport - Port alsworth, United States": "PTA", "Dubbo - Dubbo, Australia": "DBO", "Comandante Fap German Arias Graziani - Anta, Peru": "ATA", "Alliance Municipal Airport - Alliance, United States": "AIA", "San Diego Old Town Transit Center - San Diego, United States": "OLT", "Shepparton - Shepparton, Australia": "SHT", "Juneau Intl - Juneau, United States": "JNU", "Sawyer International Airport - Marquette, United States": "MQT", "Harare Intl - Harare, Zimbabwe": "HRE", "Cross City - Cross City, United States": "CTY", "Kristianstad - Kristianstad, Sweden": "KID", "Lakehurst Naes - Lakehurst, United States": "NEL", "Barajas - Madrid, Spain": "MAD", "Amaury Feitosa Tomaz Airport - Eirunepe, Brazil": "ERN", "Asyut International Airport - Asyut, Egypt": "ATZ", "Bergamo Orio Al Serio - Bergamo, Italy": "BGY", "Kenmore Air Harbor Inc Seaplane Base - Kenmore, United States": "KEH", "Yakima Air Terminal McAllister Field - Yakima, United States": "YKM", "Manassas - Manassas, United States": "MNZ", "Selebi Phikwe - Selebi-phikwe, Botswana": "PKW", "Varkaus - Varkaus, Finland": "VRK", "Mirny - Mirnyj, Russia": "MJZ", "Puerto Lempira Airport - Puerto Lempira, Honduras": "PEU", "Nefta - Tozeur, Tunisia": "TOE", "Glasgow - Glasgow, United Kingdom": "GLA", "Jalalabad - Jalalabad, Afghanistan": "JAA", "Deurne - Antwerp, Belgium": "ANR", "Hola - Hola, Kenya": "HOA", "Jessore - Jessore, Bangladesh": "JSR", "Gemena - Gemena, Congo (Kinshasa)": "GMA", "Quesnel - Quesnel, Canada": "YQZ", "Ndolo - Kinshasa, Congo (Kinshasa)": "NLO", "Luton - London, United Kingdom": "LTN", "Sadiq Abubakar Iii Intl - Sokoto, Nigeria": "SKO", "Terre-de-Haut Airport - Les Saintes, Guadeloupe": "LSS", "Langeoog Airport - Langeoog, Germany": "LGO", "Rene Fontaine - Hearst, Canada": "YHF", "Esenboga - Ankara, Turkey": "ESB", "Lalibella - Lalibella, Ethiopia": "LLI", "Penggung - Cirebon, Indonesia": "CBN", "Koszalin - Zegrze Pomorskie Airport - Koszalin, Poland": "OSZ", "La Garenne - Agen, France": "AGF", "Fort Nelson - Fort Nelson, Canada": "YYE", "Rocky Mountain House - Rocky Mountain House, Canada": "YRM", "Port Lincoln Airport - Port Lincoln, Australia": "PLO", "Wageningen Airstrip - Wageningen, Suriname": "AGI", "Albenga - Albenga, Italy": "ALL", "Surigao Airport - Sangley Point, Philippines": "SUG", "Pilot Station Airport - Pilot Station, United States": "PQS", "Akhiok Airport - Akhiok, United States": "AKK", "Fort Simpson - Fort Simpson, Canada": "YFS", "Yandina Airport - Yandina, Solomon Islands": "XYA", "Hyderabad Airport - Hyderabad, Pakistan": "HDD", "South Indian Lake Airport - South Indian Lake, Canada": "XSI", "Waimea Kohala - Kamuela, United States": "MUE", "Licenciado Adolfo Lopez Mateos Intl - Toluca, Mexico": "TLC", "Managua Intl - Managua, Nicaragua": "MGA", "Isle Of Man - Isle Of Man, Isle of Man": "IOM", "Ruzyne - Prague, Czech Republic": "PRG", "Queenstown - Queenstown International, New Zealand": "ZQN", "Inisheer - Inisheer, Ireland": "INQ", "Saint Geoirs - Grenoble, France": "GNB", "Al Ghaidah Intl - Al Ghaidah Intl, Yemen": "AAY", "Johannesburg Intl - Johannesburg, South Africa": "JNB", "Petropavlosk South Airport - Petropavlosk, Kazakhstan": "PPK", "Old Harbor Airport - Old Harbor, United States": "OLH", "Wewak Intl - Wewak, Papua New Guinea": "WWK", "Des Moines Intl - Des Moines, United States": "DSM", "Wynyard Airport - Burnie, Australia": "BWT", "Ciudad Constituci\u00f3n Airport - Ciudad Constituci\u00f3n, Mexico": "CUA", "Yariguies - Barrancabermeja, Colombia": "EJA", "Baoan Intl - Shenzhen, China": "SZX", "Van Wert County Airport - Van Wert, United States": "VNW", "Macau Ferry Pier - Macau, Macau": "XZM", "Airok Airport - Airok, Marshall Islands": "AIC", "Victoria Falls Intl - Victoria Falls, Zimbabwe": "VFA", "Hat Yai Intl - Hat Yai, Thailand": "HDY", "Otu - Otu, Colombia": "OTU", "Kuwait Intl - Kuwait, Kuwait": "KWI", "Redencao Airport - Redencao, Brazil": "RDC", "Volkel AB - Volkel, Netherlands": "UDE", "Sebha - Sebha, Libya": "SEB", "Fairmont Hot Springs - Coral Harbour, Canada": "YZS", "Dongola - Dongola, Sudan": "DOG", "La Guardia - New York, United States": "LGA", "Gdynia - Gdynia, Poland": "QYD", "Landvetter - Gothenborg, Sweden": "GOT", "Muren Airport - Muren, Mongolia": "MXV", "Jiuzhaigou Huanglong - Jiuzhaigou, China": "JZH", "Raleigh County Memorial Airport - Beckley, United States": "BKW", "Supadio - Pontianak, Indonesia": "PNK", "Yichang Airport - Yichang, China": "YIH", "Jose Joaquin De Olmedo Intl - Guayaquil, Ecuador": "GYE", "Liege-Guillemins Railway Station - Liege, Belgium": "XHN", "Qiqihar Sanjiazi Airport - Qiqihar, China": "NDG", "Gimli Industrial Park Airport - Gimli, Canada": "YGM", "Cartwright Airport - Cartwright, Canada": "YRF", "Presidente Prudente - President Prudente, Brazil": "PPB", "Creil - Creil, France": "CSF", "Wings Field - Philadelphia, United States": "BBX", "Bajhang - Bajhang, Nepal": "BJH", "Chinchilla - Chinchilla, Australia": "CCL", "Sharq Al-Owainat Airport - Sharq Al-Owainat, Egypt": "GSQ", "Gino Lisa - Foggia, Italy": "FOG", "Singita Sabi Sands - Sabi Sands, South Africa": "INY", "Newark Penn Station - Newark, United States": "ZRP", "Solwesi Airport - Solwesi, Zambia": "SLI", "Wevelgem - Kortrijk-vevelgem, Belgium": "QKT", "Yading Daocheng - Daocheng, China": "DCY", "Kununurra - Kununurra, Australia": "KNX", "Georgetown County Airport - Georgetown, United States": "GGE", "Adak Airport - Adak Island, United States": "ADK", "Gimpo - Seoul, South Korea": "GMP", "Tarapac\u00e1 Airport - Tarapac\u00e1, Colombia": "TCD", "Saga Airport - Saga, Japan": "HSG", "Rutland State Airport - Rutland, United States": "RUT", "Padova - Padova, Italy": "QPA", "Lincang Airport - Lincang, China": "LNJ", "Fairchild Afb - Spokane, United States": "SKA", "Shilavo Airport - Shilavo, Ethiopia": "HIL", "Homer - Homer, United States": "HOM", "Detroit Metro Wayne Co - Detroit, United States": "DTW", "Menorca - Menorca, Spain": "MAH", "Qualicum Beach Airport - Qualicum Beach, Canada": "XQU", "Jerez - Jerez, Spain": "XRY", "Vanguardia - Villavicencio, Colombia": "VVC", "Asosa - Asosa, Ethiopia": "ASO", "Traian Vuia - Timisoara, Romania": "TSR", "Lukla - Lukla, Nepal": "LUA", "Komsomolsk-on-Amur Airport - Komsomolsk-on-Amur, Russia": "KXK", "Begishevo - Nizhnekamsk, Russia": "NBC", "Capital City Airport - Harrisburg, United States": "CXY", "Whiteman Afb - Knobnoster, United States": "SZL", "Roxas Airport - Roxas City, Philippines": "RXS", "Foster Field - Apple River, United States": "7A4", "Sultan Mahmud - Kuala Terengganu, Malaysia": "TGG", "Sunyani - Sunyani, Ghana": "NYI", "Presidente Castro Pinto - Joao Pessoa, Brazil": "JPA", "Lindau HBF - Lindau, Germany": "LND", "Hartford Union Station - Hartford, United States": "ZRT", "Waskaganish Airport - Waskaganish, Canada": "YKQ", "ISLES OF SCILLY - ST MARY\\\\'S, United Kingdom": "ISC", "Nagasaki - Nagasaki, Japan": "NGS", "Okayama - Okayama, Japan": "OKJ", "Gao - Gao, Mali": "GAQ", "Coolidge Municipal Airport - Cooldige, United States": "P08", "Los Alamos Airport - Los Alamos, United States": "LAM", "Fort Albany Airport - Fort Albany, Canada": "YFA", "Peoria Regional - Peoria, United States": "PIA", "Soderhamn Airport - Soderhamn, Sweden": "SOO", "Kemi Tornio - Kemi, Finland": "KEM", "Sharjah Intl - Sharjah, United Arab Emirates": "SHJ", "Juan Gualberto Gomez Intl - Varadero, Cuba": "VRA", "Yamoussoukro - Yamoussoukro, Cote d'Ivoire": "ASK", "Lensk - Lensk, Russia": "ULK", "Mallacoota Airport - Mallacoota, Australia": "XMC", "Beverly Municipal Airport - Beverly, United States": "BVY", "Faa\\\\'a International - Papeete, French Polynesia": "PPT", "Portage Municipal Airport - Portage, United States": "C47", "Houghton County Memorial Airport - Hancock, United States": "CMX", "Wallblake - The Valley, Anguilla": "AXA", "Wilmington Airborne Airpark - Wilmington, United States": "ILN", "Termez Airport - Termez, Uzbekistan": "TMJ", "Rajkot - Rajkot, India": "RAJ", "Kijang - Tanjung Pinang, Indonesia": "TNJ", "La Plata - La Plata, Argentina": "LPG", "Hudiksvall - Hudiksvall, Sweden": "HUV", "Eugenio Maria De Hostos - Mayaguez, Puerto Rico": "MAZ", "Tengchong Tuofeng Airport - Tengchong, China": "TCZ", "Ludhiana - Ludhiaha, India": "LUH", "Kvernberget - Kristiansund, Norway": "KSU", "Manzhouli - Manzhouli, China": "NZH", "Naryan-Mar - Naryan-Mar, Russia": "NNM", "Mekane Salam Airport - Mekane Selam, Ethiopia": "MKS", "Blue Grass - Lexington KY, United States": "LEX", "Deadhorse - Deadhorse, United States": "SCC", "Yakataga Airport - Yakataga, United States": "CYT", "Shenandoah Valley Regional Airport - Weyers Cave, United States": "SHD", "Bijie Feixiong Airport - Bijie, China": "BFJ", "Gunnison - Crested Butte - Gunnison, United States": "GUC", "Dusseldorf Hauptbahnhof - Dusseldorf, Germany": "QDU", "Selibady - Selibabi, Mauritania": "SEY", "St. Augustine Airport - St. Augustine, United States": "SGJ", "Bishop International - Flint, United States": "FNT", "Toliara - Toliara, Madagascar": "TLE", "Sanikiluaq Airport - Sanikiluaq, Canada": "YSK", "New Kitakyushu - Kitakyushu, Japan": "KKJ", "Luxembourg - Luxemburg, Luxembourg": "LUX", "Dimapur Airport - Dimapur, India": "DMU", "Oberpfaffenhofen - Oberpfaffenhofen, Germany": "OBF", "\u00cele des Pins Airport - \u00cele des Pins, New Caledonia": "ILP", "Perales - Ibague, Colombia": "IBE", "Ljubljana - Ljubljana, Slovenia": "LJU", "Nis - Nis, Serbia": "INI", "Cassidy Intl - Kiritimati, Kiribati": "CXI", "Ulusaba Airstrip - Ulusaba, Namibia": "ULX", "Bowerman Field - Hoquiam, United States": "HQM", "Wau Airport - Wau, Sudan": "WUU", "Wiluna Airport - Wiluna, Australia": "WUN", "Franca Airport - Franca, Brazil": "FRC", "Homestead Arb - Homestead, United States": "HST", "Adana - Adana, Turkey": "ADA", "Dubuque Rgnl - Dubuque IA, United States": "DBQ", "Coulter Fld - Bryan, United States": "CFD", "Ambanja Airport - Ambanja, Madagascar": "IVA", "Gualeguaychu - Gualeguaychu, Argentina": "GHU", "Wirawila Airport - Wirawila, Sri Lanka": "WRZ", "Korhogo - Korhogo, Cote d'Ivoire": "HGO", "Tuguegarao Airport - Tuguegarao, Philippines": "TUG", "Skyhaven Airport - Rochester, United States": "DAW", "Manitouwadge - Manitouwadge, Canada": "YMG", "Ouargla - Ouargla, Algeria": "OGX", "Queenstown - Queenstown, South Africa": "UTW", "Timmins - Timmins, Canada": "YTS", "Coban - Coban, Guatemala": "CBV", "Cascavel - Cascavel, Brazil": "CAC", "Karpathos - Karpathos, Greece": "AOK", "Friday Harbor Seaplane Base - Friday Harbor, United States": "FBS", "Guanambi Airport - Guanambi, Brazil": "GNM", "Tauranga - Tauranga, New Zealand": "TRG", "Camilo Daza - Cucuta, Colombia": "CUC", "Marka Intl - Amman, Jordan": "ADJ", "Pamplona - Pamplona, Spain": "PNA", "Laoag Intl - Laoag, Philippines": "LAO", "Axum - Axum, Ethiopia": "AXU", "St Johns Intl - St. John's, Canada": "YYT", "Arcata - Arcata CA, United States": "ACV", "Aeropuerto Capitan Fuentes Martinez - Porvenir, Chile": "WPR", "Pormpuraaw Airport - Pormpuraaw, Australia": "EDR", "Praha hlavni nadrazi - Prague, Czech Republic": "XYG", "Egelsbach - Egelsbach, Germany": "QEF", "Garowe - International - Garowe, Somalia": "GGR", "Split - Split, Croatia": "SPU", "Chris Hadfield - Sarnia, Canada": "YZR", "Luhansk International Airport - Lugansk, Ukraine": "VSG", "Key Largo - Ocean Reef Club Airport, United States": "OCA", "Ken Jones - Port Antonio, Jamaica": "POT", "Capit\u00e1n Av. German Quiroga G. Airport - San Borja, Bolivia": "SRJ", "Lauriston Airport - Carriacou Island, Grenada": "CRU", "Marana Regional - Tucson, United States": "AVW", "Lake Tahoe Airport - South Lake Tahoe, United States": "TVL", "Wollongong Airport - Wollongong, Australia": "WOL", "Thangool - Biloela, Australia": "THG", "Kineshma - Kineshma, Russia": "KIE", "Anaktuvuk Pass Airport - Anaktuvuk Pass, United States": "AKP", "General Ulpiano Paez - Salinas, Ecuador": "SNC", "Balkhash Airport - Balkhash, Kazakhstan": "BXH", "Port Bailey Seaplane Base - Port Bailey, United States": "KPY", "Lodwar - Lodwar, Kenya": "LOK", "Marmul - Marmul, Oman": "OMM", "Hornepayne - Hornepayne, Canada": "YHN", "William T. Piper Mem. - Lock Haven, United States": "LHV", "Bryant Ahp - Fort Richardson, United States": "FRN", "Lourdes - Tarbes, France": "LDE", "Donegal Airport - Dongloe, Ireland": "CFN", "Granville - Granville, France": "GFR", "R\u00f8st Airport - R\u00f8st, Norway": "RET", "William R Fairchild International Airport - Port Angeles, United States": "CLM", "Esler Rgnl - Alexandria, United States": "ESF", "Podgorica - Podgorica, Montenegro": "TGD", "General Manuel Carlos Piar - Guayana, Venezuela": "PZO", "Bradford Regional Airport - Bradford, United States": "BFD", "Ust Kamenogorsk Airport - Ust Kamenogorsk, Kazakhstan": "UKK", "Waterford - Waterford, Ireland": "WAT", "Likiep Airport - Likiep Island, Marshall Islands": "LIK", "Genova Sestri - Genoa, Italy": "GOA", "Okaukuejo Airport - Okaukuejo, Namibia": "OKF", "RADOM - RADOM, Poland": "QXR", "Samos - Samos, Greece": "SMI", "Point Hope Airport - Point Hope, United States": "PHO", "Bangui M Poko - Bangui, Central African Republic": "BGF", "Myitkyina - Myitkyina, Burma": "MYT", "Aix Les Milles - Aix-les-milles, France": "QXB", "Ahwaz - Ahwaz, Iran": "AWZ", "Lebanon State - Lebanon, United States": "S30", "Meadow Lake - Meadow Lake, Canada": "YLJ", "Vieques Airport - Vieques Island, Puerto Rico": "VQS", "Odesa Intl - Odessa, Ukraine": "ODS", "Yakushima - Yakushima, Japan": "KUM", "Fort Worth Meacham Intl - Fort Worth, United States": "FTW", "Gondar - Gondar, Ethiopia": "GDQ", "Dawson Creek - Dawson Creek, Canada": "YDQ", "Bhairahawa - Bhairawa, Nepal": "BWA", "Mangaia Island Airport - Mangaia Island, Cook Islands": "MGS", "Okha Airport - Okha, Russia": "OHH", "Sharona - Sharona, Afghanistan": "AZ3", "Manja Airport - Manja, Madagascar": "MJA", "Puerto Rico Airport - Puerto Rico/Manuripi, Bolivia": "PUR", "Khatanga Airport - Khatanga, Russia": "HTG", "Alexander Bay - Alexander Bay, South Africa": "ALJ", "Casale - Brindisi, Italy": "BDS", "Ellsworth Afb - Rapid City, United States": "RCA", "Wittman Regional Airport - Oshkosh, United States": "OSH", "Palonegro - Bucaramanga, Colombia": "BGA", "Bukoba Airport - Bukoba, Tanzania": "BKZ", "Ampugnano - Siena, Italy": "SAY", "Wakkanai - Wakkanai, Japan": "WKJ", "Tonopah Test Range - Tonopah, United States": "TNX", "Sacramento Mather - Sacramento, United States": "MHR", "Malanje - Malanje, Angola": "MEG", "Sabiha Gokcen - Istanbul, Turkey": "SAW", "Port Clarence Coast Guard Station - Port Clarence, United States": "KPC", "Vilnius Intl - Vilnius, Lithuania": "VNO", "Pantelleria - Pantelleria, Italy": "PNL", "Parnu - Parnu, Estonia": "EPU", "Colima - Colima, Mexico": "CLQ", "Sampit(Hasan) Airport - Sampit-Borneo Island, Indonesia": "SMQ", "Ottawa Macdonald Cartier Intl - Ottawa, Canada": "YOW", "Aranuka Airport - Buariki, Kiribati": "AAK", "A Coruna - La Coruna, Spain": "LCG", "Stafsberg Airport - Hamar, Norway": "HMR", "Changzhi Airport - Changzhi, China": "CIH", "Leesburg Executive Airport - Leesburg, United States": "JYO", "Fua Amotu Intl - Tongatapu, Tonga": "TBU", "Vaernes - Trondheim, Norway": "TRD", "Bandirma - Bandirma, Turkey": "BDM", "Misima Island Airport - Misima Island, Papua New Guinea": "MIS", "Lake Evella Airport - Lake Evella, Australia": "LEL", "Terrace Bay - Terrace Bay, Namibia": "TCY", "MariposaYosemite - Mariposa, United States": "MPI", "Zumbi Dos Palmares - Maceio, Brazil": "MCZ", "Westchester Co - White Plains, United States": "HPN", "General Ignacio P Garcia Intl - Hermosillo, Mexico": "HMO", "Bosset Airport - Bosset, Papua New Guinea": "BOT", "Arlington Municipal - Arlington, United States": "GKY", "Bluefields - Bluefields, Nicaragua": "BEF", "La Junta Muni - La Junta, United States": "LHX", "San Antonio Del Tachira - San Antonio, Venezuela": "SVZ", "Kempten HBF - Kempten, Germany": "KEX", "Reyes Murillo Airport - Nuqu\u00ed, Colombia": "NQU", "Ngau Airport - Ngau, Fiji": "NGI", "Tianyang - Baise, China": "AEB", "Siem Reap - Siem-reap, Cambodia": "REP", "Yellowstone Airport - West Yellowstone, United States": "WYS", "Schefferville - Schefferville, Canada": "YKL", "Basankusu Airport - Basankusu, Congo (Kinshasa)": "BSU", "Great Bend Municipal - Great Bend, United States": "GBN", "Toussaint Louverture Intl - Port-au-prince, Haiti": "PAP", "New Tanegashima - Tanegashima, Japan": "TNE", "Walaha Airport - Walaha, Vanuatu": "WLH", "Suffield Heliport - Suffield, Canada": "YSD", "Chandragadhi Airport - Chandragarhi, Nepal": "BDP", "Tureia Airport - Tureia, French Polynesia": "ZTA", "Rurrenabaque Airport - Rerrenabaque, Bolivia": "RBQ", "Marktoberdorf Schule - Marktoberdorf, Germany": "MOS", "Mineral Wells - Mineral Wells, United States": "MWL", "Ilheus - Ilheus, Brazil": "IOS", "Warukin Airport - Tanjung-Borneo Island, Indonesia": "TJG", "Fort Good Hope - Fort Good Hope, Canada": "YGH", "Fortman Airport - St. Marys, United States": "1OH", "Coconut Island Airport - Coconut Island, Australia": "CNC", "Koyukuk Airport - Koyukuk, United States": "KYU", "North Ronaldsay Airport - North Ronaldsay, United Kingdom": "NRL", "Bodo - Bodo, Norway": "BOO", "Mineralnyye Vody - Mineralnye Vody, Russia": "MRV", "Cam Ranh Airport - Nha Trang, Vietnam": "CXR", "Lafayette Rgnl - Lafayette, United States": "LFT", "Mountain Home Afb - Mountain Home, United States": "MUO", "La Chorrera Airport - La Chorrera, Colombia": "LCR", "Termal - Rio Hondo, Argentina": "RHD", "Shiraz Shahid Dastghaib Intl - Shiraz, Iran": "SYZ", "Regional Airport - Joliet, United States": "JOT", "Gare de LEst - Paris, France": "XHP", "Ustupo - Ustupo, Panama": "UTU", "Ingolstadt BF - Ingolstadt, Germany": "IGS", "Milford Sound Airport - Milford Sound, New Zealand": "MFN", "Maloelap Island Airport - Maloelap Island, Marshall Islands": "MAV", "Dunedin - Dunedin, New Zealand": "DUD", "Gilberto Lavaque - Cafayate, Argentina": "CFX", "Bhavnagar - Bhaunagar, India": "BHU", "Skrydstrup - Skrydstrup, Denmark": "SKS", "Kenema Airport - Kenema, Sierra Leone": "KEN", "Salak - Maroua, Cameroon": "MVR", "Borongan Airport - Borongan, Philippines": "BPR", "Gibraltar - Gibraltar, Gibraltar": "GIB", "Gustavo Artunduaga Paredes - Florencia, Colombia": "FLA", "Tanjung Harapan Airport - Tanjung Selor-Borneo Island, Indonesia": "TJS", "Bordj Badji Mokhtar Airport - Bordj Badji Mokhtar, Algeria": "BMW", "Lourdes De Blanc Sablon Airport - Lourdes-De-Blanc-Sablon, Canada": "YBX", "Pokhara - Pokhara, Nepal": "PKR", "Domododevo - Moscow, Russia": "DME", "Tempelhof - Berlin, Germany": "THF", "Kalaupapa Airport - Molokai, United States": "LUP", "Lansdowne Airport - Youngstown, United States": "04G", "Ilebo Airport - Ilebo, Congo (Kinshasa)": "PFR", "Ailuk Airport - Ailuk Island, Marshall Islands": "AIM", "Playa Samara Airport - Playa Samara, Costa Rica": "PLD", "Aktio - Preveza, Greece": "PVK", "Matsumoto - Matsumoto, Japan": "MMJ", "Port Bucyrus-Crawford County Airport - Bucyrus, United States": "17G", "Zhanjiang Airport - Zhanjiang, China": "ZHA", "Buka Airport - Buka Island, Papua New Guinea": "BUA", "Kikwit - Kikwit, Congo (Kinshasa)": "KKW", "Pecs - Pecs, Hungary": "QPJ", "Aurillac - Aurillac, France": "AUR", "Shaktoolik Airport - Shaktoolik, United States": "SKK", "Port Protection Seaplane Base - Port Protection, United States": "PPV", "Rivne International Airport - Rivne, Ukraine": "RWN", "Faizabad Airport - Faizabad, Afghanistan": "FBD", "Schaumburg Regional - Schaumburg, United States": "06C", "Cat Lake Airport - Cat Lake, Canada": "YAC", "Fond Du Lac County Airport - Fond du Lac, United States": "FLD", "Don Miguel Hidalgo Y Costilla Intl - Guadalajara, Mexico": "GDL", "Cayana Airstrip - Cayana, Suriname": "AAJ", "Simara - Simara, Nepal": "SIF", "Stephens Co - Breckenridge, United States": "BKD", "Bradley Intl - Windsor Locks, United States": "BDL", "Sauce Viejo - Santa Fe, Argentina": "SFN", "Ganzhou Airport - Ganzhou, China": "KOW", "Trenton - Trenton, Canada": "YTR", "Kashechewan Airport - Kashechewan, Canada": "ZKE", "Montoir - St.-nazaire, France": "SNR", "Churchill Falls Airport - Churchill Falls, Canada": "ZUM", "Caballococha Airport - Caballococha, Peru": "LHC", "Wheeler Sack Aaf - Fort Drum, United States": "GTB", "Nejran - Nejran, Saudi Arabia": "EAM", "Codela Airport - Guapiles, Costa Rica": "CSC", "Dali - Dali, China": "DLU", "Sogndal Airport - Sogndal, Norway": "SOG", "Turbat International Airport - Turbat, Pakistan": "TUK", "Gillespie - El Cajon, United States": "SEE", "Ilorin - Ilorin, Nigeria": "ILR", "Miyakejima Airport - Miyakejima, Japan": "MYE", "Comiso - Comiso, Italy": "CIY", "Queretaro Intercontinental - Queretaro, Mexico": "QRO", "Komatsu - Kanazawa, Japan": "KMQ", "Lauro Kurtz - Passo Fundo, Brazil": "PFB", "Kanas Airport - Burqin, China": "KJI", "Yaounde Ville - Yaounde, Cameroon": "YAO", "Westbahnhoff - Vienna, Austria": "XWW", "Yuzhny - Tashkent, Uzbekistan": "TAS", "Campbell Aaf - Hopkinsville, United States": "HOP", "Oceana Nas - Oceana, United States": "NTU", "Sturup - Malmoe, Sweden": "MMX", "Golden Triangle Regional Airport - Columbus Mississippi, United States": "GTR", "Silver Springs Airport - Silver Springs, United States": "SPZ", "Little Grand Rapids Airport - Little Grand Rapids, Canada": "ZGR", "Moises Benzaquen Rengifo - Yurimaguas, Peru": "YMS", "Ford Airport - Iron Mountain, United States": "IMT", "Bangalore - Bangalore, India": "BLR", "Balandino - Chelyabinsk, Russia": "CEK", "Hewanorra Intl - Hewandorra, Saint Lucia": "UVF", "Perugia - Perugia, Italy": "PEG", "Attawapiskat Airport - Attawapiskat, Canada": "YAT", "Laage - Laage, Germany": "RLG", "Bouake - Bouake, Cote d'Ivoire": "BYK", "McDuffie County Airport - Thomson, United States": "HQU", "Bandar Lengeh - Bandar Lengeh, Iran": "BDH", "Lompoc Airport - Lompoc, United States": "LPC", "Malindi Airport - Malindi, Kenya": "MYD", "Dong Tac - Tuy Hoa, Vietnam": "TBB", "Douglas Municipal Airport - Douglas, United States": "DQH", "Gulkana - Gulkana, United States": "GKN", "Qaarsut Airport - Uummannaq, Greenland": "JQA", "Ua Pou Airport - Ua Pou, French Polynesia": "UAP", "Granada - Granada, Spain": "GRX", "Manihiki Island Airport - Manihiki Island, Cook Islands": "MHX", "Roumaniere - Bergerac, France": "EGC", "Ballalae Airport - Ballalae, Solomon Islands": "BAS", "Rongelap Island Airport - Rongelap Island, Marshall Islands": "RNP", "Aix Les Bains - Chambery, France": "CMF", "Xining Caojiabu Airport - Xining, China": "XNN", "Mid-Ohio Valley Regional Airport - PARKERSBURG, United States": "PKB", "Elmendorf Afb - Anchorage, United States": "EDF", "Diwopu - Urumqi, China": "URC", "San Salvador - Cockburn Town, Bahamas": "ZSA", "Vryburg - Vryburg, South Africa": "VRU", "Sittwe - Sittwe, Burma": "AKY", "Paro - Thimphu, Bhutan": "PBH", "Captain Rogelio Castillo National Airport - Celaya, Mexico": "CYW", "Abbotsford - Abbotsford, Canada": "YXX", "Noatak Airport - Noatak, United States": "WTK", "Butts Aaf - Fort Carson, United States": "FCS", "Maria Dolores - Los Angeles, Chile": "LSQ", "Inuvik Mike Zubko - Inuvik, Canada": "YEV", "Maitland Airport - Maitland, Australia": "MTL", "Shungnak Airport - Shungnak, United States": "SHG", "Boulder Municipal - Boulder, United States": "WBU", "Selfridge Angb - Mount Clemens, United States": "MTC", "Rae Lakes Airport - Gam\u00e8t\u00ec, Canada": "YRA", "Sibiu - Sibiu, Romania": "SBZ", "Clow International Airport - Bolingbrook, United States": "1CS", "El Fashir - El Fasher, Sudan": "ELF", "Zhoushuizi - Dalian, China": "DLC", "Horn Island Airport - Horn Island, Australia": "HID", "Train Station - Richmond, United States": "ZRD", "Montbeugny - Moulins, France": "XMU", "Batumi - Batumi, Georgia": "BUS", "San Luis - Ipiales, Colombia": "IPI", "Leirin - Fagernes, Norway": "VDB", "Wanaka - Wanaka, New Zealand": "WKA", "Broome - Broome, Australia": "BME", "Mayo - Mayo, Canada": "YMA", "Manu Dayak - Agadez, Niger": "AJY", "Buffalo Narrows - Buffalo Narrows, Canada": "YVT", "Majoor Henry Fernandes Airport - Nieuw Nickerie, Suriname": "ICK", "Daniel Field Airport - Augusta, United States": "DNL", "Clear - Clear Mews, United States": "Z84", "St George Airport - St George, Australia": "SGO", "Sabadell Airport - Sabadell, Spain": "QSA", "Alberto Delgado Airport - Trinidad, Cuba": "TND", "Manihi - Manihi, French Polynesia": "XMH", "Hanzhong Airport - Hanzhong, China": "HZG", "Abdul Rachman Saleh - Malang, Indonesia": "MLG", "Port Gentil - Port Gentil, Gabon": "POG", "Altay Airport - Altay, China": "AAT", "Big Bear City - Big Bear, United States": "L35", "Khrabrovo - Kaliningrad, Russia": "KGD", "Domerat - Montlucon, France": "MCU", "Polokwane International - Polokwane, South Africa": "PTG", "Pangborn Field - Wenatchee, United States": "EAT", "Sisimiut Airport - Sisimiut, Greenland": "JHS", "Mtwara - Mtwara, Tanzania": "MYW", "Hobart - Hobart, Australia": "HBA", "Phitsanulok - Phitsanulok, Thailand": "PHS", "Yangzhou Taizhou Airport - Yangzhou, China": "YTY", "Koblenz Winningen - Koblenz, Germany": "ZNV", "Negage - Negage, Angola": "GXG", "Bronnoy - Bronnoysund, Norway": "BNN", "Portland Intl - Portland, United States": "PDX", "Bricy - Orleans, France": "ORE", "Bristol Filton - Bristol, United Kingdom": "FZO", "Harford County Airport - Churchville, United States": "0W3", "Butuan - Butuan, Philippines": "BXU", "Vopnafj\u00f6r\u00f0ur Airport - Vopnafj\u00f6r\u00f0ur, Iceland": "VPN", "Maota Airport - Savaii Island, Samoa": "MXS", "Uyuni Airport - Uyuni, Bolivia": "UYU", "Hamburg Finkenwerder - Hamburg, Germany": "XFW", "Craig Fld - Selma, United States": "SEM", "Geiteryggen - Skien, Norway": "SKE", "Lankaran International Airport - Lankaran, Azerbaijan": "LLK", "Roscommon Co - Houghton Lake, United States": "HTL", "Lublin - Lublin, Poland": "LUZ", "Williamson-Sodus Airport - Williamson, United States": "SDC", "Pulkovo - St. Petersburg, Russia": "LED", "Sedona - Sedona, United States": "SDX", "Summerside - Summerside, Canada": "YSU", "Pittsburgh-Monroeville Airport - Monroeville, United States": "4G0", "Cyril E King - St. Thomas, Virgin Islands": "STT", "Latina - Latina, Italy": "QLT", "Vermilion Regional - Danville, United States": "DNV", "Nan - Nan, Thailand": "NNT", "Dubrovnik - Dubrovnik, Croatia": "DBV", "Osijek - Osijek, Croatia": "OSI", "Palermo - Palermo, Italy": "PMO", "Livermore Municipal - Livermore, United States": "LVK", "Ouani - Anjouan, Comoros": "AJN", "Beaufort - Beaufort, United States": "BFT", "Zafer - Kutahya, Turkey": "KZR", "Yamagata - Yamagata, Japan": "GAJ", "Onslow  - Onslow, Australia": "ONS", "Fornebu - Oslo, Norway": "FBU", "Thiruvananthapuram Intl - Trivandrum, India": "TRV", "Tindouf - Tindouf, Algeria": "TIN", "Aeroclub Cioca - Timisoara, Romania": "CIO", "Smith Reynolds - Winston-salem, United States": "INT", "Monterey Peninsula - Monterey, United States": "MRY", "Guanaja - Guanaja, Honduras": "GJA", "Skagway Airport - Skagway, United States": "SGY", "Augsburg Railway - Augsburg, Germany": "ZAU", "Brisbane Intl - Brisbane, Australia": "BNE", "Beauregard Rgnl - Deridder, United States": "DRI", "Gladstone Airport - Gladstone, Australia": "GLT", "Markham - Markham, Canada": "NU8", "Plage Blanche - Tan Tan, Morocco": "TTA", "Tolagnaro - Tolagnaro, Madagascar": "FTU", "Makemo - Makemo, French Polynesia": "MKP", "Campo Grande - Campo Grande, Brazil": "CGR", "Duluth Intl - Duluth, United States": "DLH", "Dickinson Theodore Roosevelt Regional Airport - Dickinson, United States": "DIK", "Dibrugarh - Mohanbari, India": "MOH", "Hurlburt Fld - Mary Esther, United States": "HRT", "Marakei Airport - Marakei, Kiribati": "MZK", "Weipa - Weipa, Australia": "WEI", "Shahre Kord Airport - Shahre Kord, Iran": "CQD", "Exeter - Exeter, United Kingdom": "EXT", "Bremerton National - Bremerton, United States": "PWT", "Churchill - Churchill, Canada": "YYQ", "Edward F Knapp State - Montpelier, United States": "MPV", "Frank Pais Intl - Holguin, Cuba": "HOG", "Dr Antonio Nicolas Briceno - Valera, Venezuela": "VLV", "Tapini Airport - Tapini, Papua New Guinea": "TPI", "Paddington Station - London, United Kingdom": "QQP", "French Valley Airport - Murrieta-Temecula, United States": "RBK", "Grider Fld - Pine Bluff, United States": "PBF", "Leite Lopes - Ribeirao Preto, Brazil": "RAO", "Mc Minnville Muni - Mackminnville, United States": "MMV", "Las Brujas - Corozal, Colombia": "CZU", "Bamaga Injinoo - Amberley, Australia": "ABM", "Kongiganak Airport - Kongiganak, United States": "KKH", "Sao Gabriel da Cachoeira Airport - Sao Gabriel da Cachoeira, Brazil": "SJL", "Pyrzowice - Katowice, Poland": "KTW", "Usak Airport - Usak, Turkey": "USQ", "Rafael Nunez - Cartagena, Colombia": "CTG", "Abemama Atoll Airport - Abemama, Kiribati": "AEA", "Bakalalan Airport - Bakalalan, Malaysia": "BKM", "Garons - Nimes, France": "FNI", "James M Cox Dayton Intl - Dayton, United States": "DAY", "Barter Island Lrrs - Barter Island, United States": "BTI", "Clearwater Air Park - Clearwater, United States": "CLW", "Mitilini - Mytilini, Greece": "MJT", "Erzincan - Erzincan, Turkey": "ERC", "Gavle - Gavle, Sweden": "GVX", "Kramfors Solleftea - Kramfors, Sweden": "KRF", "Executive - Avon Park, United States": "AVO", "Sheridan County Airport - Sheridan, United States": "SHR", "Le Touquet Paris Plage - Le Tourquet, France": "LTQ", "Baraboo Wisconsin Dells Airport - Baraboo, United States": "DLL", "Kandrian Airport - Kandrian, Papua New Guinea": "KDR", "Renton - Renton, United States": "RNT", "Idaho Falls Rgnl - Idaho Falls, United States": "IDA", "Leeds Bradford - Leeds, United Kingdom": "LBA", "Saul Airport - Saul, French Guiana": "XAU", "Bobo Dioulasso - Bobo-dioulasso, Burkina Faso": "BOY", "Novy - Khabarovsk, Russia": "KHV", "Hiroshima - Hiroshima, Japan": "HIJ", "Masvingo Intl - Masvingo, Zimbabwe": "MVZ", "Wagga Wagga - Wagga Wagga, Australia": "WGA", "Iloilo - Iloilo, Philippines": "ILO", "Louisville International Airport - Louisville, United States": "SDF", "Nissan Island Airport - Nissan Island, Papua New Guinea": "IIS", "Groennedal Heliport - Groennedal, Greenland": "JGR", "Oriximina Airport - Oriximina, Brazil": "ORX", "Maquehue - Temuco, Chile": "ZCO", "Yonaguni - Yonaguni Jima, Japan": "OGN", "Kotlas Airport - Kotlas, Russia": "KSZ", "Rock Springs Sweetwater County Airport - Rock Springs, United States": "RKS", "DeFuniak Springs Airport - DeFuniak Springs, United States": "54J", "Juliaca - Juliaca, Peru": "JUL", "Williams County Airport - Bryan, United States": "0G6", "Havre Saint-Pierre Airport - Havre-Saint-Pierre, Canada": "YGV", "Morondava - Morondava, Madagascar": "MOQ", "Sheboygan County Memorial Airport - Sheboygan, United States": "SBM", "Taiping - Harbin, China": "HRB", "Caye Caulker Airport - Caye Caulker, Belize": "CUK", "Chah Bahar - Chah Bahar, Iran": "ZBR", "Akiak Airport - Akiak, United States": "AKI", "Ormara Airport - Ormara Raik, Pakistan": "ORW", "Tirupati - Tirupeti, India": "TIR", "All Airports - Tokyo, Japan": "TYO", "Rio Turbio - Rio Turbio, Argentina": "RYO", "Iconi Airport - Moroni, Comoros": "YVA", "Soroti - Soroti, Uganda": "SRT", "Narathiwat - Narathiwat, Thailand": "NAW", "Mountain Airport - Mountain, Nepal": "MWP", "Erbil Intl - Erbil, Iraq": "EBL", "Cape Newenham Lrrs - Cape Newenham, United States": "EHM", "Stamford Amtrak Station - Stamford, United States": "ZTF", "Alexandros Papadiamantis - Skiathos, Greece": "JSI", "Brussels Gare du Midi - Brussels, Belgium": "ZYR", "Yasuj Airport - Yasuj, Iran": "YES", "Sultan Thaha - Jambi, Indonesia": "DJB", "Muskrat Dam Airport - Muskrat Dam, Canada": "MSA", "Hato - Willemstad, Netherlands Antilles": "CUR", "Dillon's Bay Airport - Dillon's Bay, Vanuatu": "DLY", "Karratha - Karratha, Australia": "KTA", "Centraal - Rotterdam, Netherlands": "QRH", "Nezhitino - Nezhitino, Russia": "NEZ", "Lone Star Executive - Conroe, United States": "CXO", "Chiang Rai Intl - Chiang Rai, Thailand": "CEI", "Lawrence Municipal - Lawrence, United States": "LWC", "Garden City Rgnl - Garden City, United States": "GCK", "Dumaguete - Dumaguete, Philippines": "DGT", "Pashkovskiy - Krasnodar, Russia": "KRR", "Juan H. White - Caucasia, Colombia": "CAQ", "Strachowice - Wroclaw, Poland": "WRO", "Glentanner - Glentanner, New Zealand": "MON", "Puerto Escondido Intl - Puerto Escondido, Mexico": "PXM", "General Mariano Matamoros - Cuernavaca, Mexico": "CVJ", "Stauning - Stauning, Denmark": "STA", "Simao Airport - Simao, China": "SYM", "Ercan International Airport - Nicosia, Cyprus": "ECN", "Tainan - Tainan, Taiwan": "TNN", "Christchurch Intl - Christchurch, New Zealand": "CHC", "Cross Lake - Charlie Sinclair Memorial Airport - Cross Lake, Canada": "YCR", "Tsletsi Airport - Djelfa, Algeria": "QDJ", "Ben Gurion - Tel-aviv, Israel": "TLV", "Stagen Airport - Laut Island, Indonesia": "KBU", "Wollaston Lake Airport - Wollaston Lake, Canada": "ZWL", "Carolina - Carolina, Brazil": "CLN", "Nema - Nema, Mauritania": "EMN", "Nantes Atlantique - Nantes, France": "NTE", "Lakeland Linder Regional Airport - Lakeland, United States": "LAL", "Ann Arbor Municipal Airport - Ann Arbor, United States": "ARB", "Palmyra - Palmyra, Syria": "PMS", "Ouarzazate - Ouarzazate, Morocco": "OZZ", "Fitiuta Airport - Fiti\\\\'uta, American Samoa": "FTI", "NAS Alameda - Alameda, United States": "NGZ", "Bafoussam - Bafoussam, Cameroon": "BFX", "Devils Lake Regional Airport - Devils Lake, United States": "DVL", "EL Real Airport - El Real, Panama": "ELE", "Coronel Fap Alfredo Mendivil Duarte - Ayacucho, Peru": "AYP", "Cape Palmas Airport - Greenville, Liberia": "CPA", "Zadar - Zadar, Croatia": "ZAD", "Municipal Airport - Aiken, United States": "AIK", "Bardufoss - Bardufoss, Norway": "BDU", "San Julian - San Julian, Argentina": "ULA", "Jamestown Regional Airport - Jamestown, United States": "JMS", "Sentral - Kuala Lumpur, Malaysia": "XKL", "Aeroparque Jorge Newbery - Buenos Aires, Argentina": "AEP", "Cerro Moreno Intl - Antofagasta, Chile": "ANF", "Pondok Cabe - Jakarta, Indonesia": "PCB", "Harry Clever Field Airport - New Philadelpha, United States": "PHD", "Westover Arb Metropolitan - Chicopee Falls, United States": "CEF", "Nonouti Airport - Nonouti, Kiribati": "NON", "Gwangju - Kwangju, South Korea": "KWJ", "Wejh - Wejh, Saudi Arabia": "EJH", "Birdsville Airport - Birdsville, Australia": "BVI", "Ozona Muni - Ozona, United States": "OZA", "Base Aerea De Santos - Santos, Brazil": "SSZ", "Noibai Intl - Hanoi, Vietnam": "HAN", "Le Castellet - Le Castellet, France": "CTT", "Redstone Aaf - Redstone, United States": "HUA", "Augusto Severo - Natal, Brazil": "NAT", "Aerotortuguero Airport - Roxana, Costa Rica": "TTQ", "Halifax Intl - Halifax, Canada": "YHZ", "First Flight Airport - Kill Devil Hills, United States": "FFA", "Monrovia Roberts Intl - Monrovia, Liberia": "ROB", "Kapuskasing - Kapuskasing, Canada": "YYU", "Saratoga County Airport - Ballston Spa, United States": "5B2", "Cote D\\\\'Azur - Nice, France": "NCE", "Wuxi Airport - Wuxi, China": "WUX", "Abu Simbel - Abu Simbel, Egypt": "ABS", "Indian Mountain Lrrs - Indian Mountains, United States": "UTO", "Dease Lake - Dease Lake, Canada": "YDL", "Shubuling Airport - Linyi, China": "LYI", "Birch Creek Airport - Brich Creek, United States": "KBC", "Odate Noshiro Airport - Odate Noshiro, Japan": "ONJ", "Union Station - Utica, United States": "UCA", "Memorial Field - Hot Springs, United States": "HOT", "Charlotte County-Punta Gorda Airport - Punta Gorda, United States": "PGD", "Kagoshima - Kagoshima, Japan": "KOJ", "Abeche - Abeche, Chad": "AEH", "Brandon Muni - Brandon, Canada": "YBR", "Stevens Point Municipal Airport - Stevens Point, United States": "STE", "Helsinki Vantaa - Helsinki, Finland": "HEL", "Plaine Corail - Rodriguez Island, Mauritius": "RRG", "Mirecourt - Epinal, France": "EPL", "Ukhta - Ukhta, Russia": "UCT", "Clayton County Tara Field - Hampton, United States": "4A7", "Teniente Jaime A De Montreuil Morales - Chimbote, Peru": "CHM", "Billings Logan International Airport - Billings, United States": "BIL", "Port Williams Seaplane Base - Port Williams, United States": "KPR", "Tahoua - Tahoua, Niger": "THZ", "Evanston-Uinta CO Burns Fld - Evanston, United States": "EVW", "Spencer Muni - Spencer, United States": "SPW", "Sveg - Sveg, Sweden": "EVG", "Akutan Seaplane Base - Akutan, United States": "KQA", "Windsor - Windsor, Canada": "YQG", "NYERI - NYERI, Kenya": "NYE", "Indigo Bay Lodge Airport - Indigo Bay Lodge, Mozambique": "IBL", "Tanna island - Tanna, Vanuatu": "TAH", "Jing Gang Shan Airport - Ji An, China": "JGS", "Anda Airport - Sandane, Norway": "SDN", "Tyonek Airport - Tyonek, United States": "TYE", "Jamnagar - Jamnagar, India": "JGA", "Humberside - Humberside, United Kingdom": "HUY", "Macapa - Macapa, Brazil": "MCP", "Roberts Fld - Redmond-Bend, United States": "RDM", "Holesovice - Praha, Czech Republic": "XYJ", "Portland Intl Jetport - Portland, United States": "PWM", "Lubumbashi Intl - Lubumashi, Congo (Kinshasa)": "FBM", "Crotone - Crotone, Italy": "CRV", "Shillong Airport - Shillong, India": "SHL", "Regional De Maringa Silvio Name Junior - Maringa, Brazil": "MGF", "Halls Creek Airport - Halls Creek, Australia": "HCQ", "South Cariboo Regional Airport - 108 Mile Ranch, Canada": "ZML", "Francisco De Assis - Juiz De Fora, Brazil": "JDF", "Montgomery Regional Airport  - MONTGOMERY, United States": "MGM", "Louis Armstrong New Orleans Intl - New Orleans, United States": "MSY", "Porto - Porto, Portugal": "OPO", "Cuamba - Cuamba, Mozambique": "FXO", "Scappoose Industrial Airpark - San Luis, United States": "SPB", "Jinghong - Jinghong, China": "JHG", "Chiang Mai Intl - Chiang Mai, Thailand": "CNX", "Hyakuri - Ibaraki, Japan": "IBR", "Boscobel - Ocho Rios, Jamaica": "OCJ", "F D Roosevelt - Oranjestad, Netherlands Antilles": "EUX", "Grand Junction Regional - Grand Junction, United States": "GJT", "Nabire - Nabire, Indonesia": "NBX", "Angel Albino Corzo - Tuxtla Gutierrez, Mexico": "TGZ", "Kidlington - Oxford, United Kingdom": "OXF", "Arkalyk Airport - Arkalyk, Kazakhstan": "AYK", "Yiwu Airport - Yiwu, China": "YIW", "Londolovit Airport - Londolovit, Papua New Guinea": "LNV", "Los Garzones - Monteria, Colombia": "MTR", "Gweru Thornhill - Gwert, Zimbabwe": "GWE", "Buckeye Municipal Airport - Buckeye, United States": "BXK", "Glendale Municipal Airport - Glendale, United States": "GEU", "Worland Municipal Airport - Worland, United States": "WRL", "Frankfurt Hahn - Hahn, Germany": "HHN", "Rawalakot - Rawala Kot, Pakistan": "RAZ", "Jiwani Airport - Jiwani, Pakistan": "JIW", "Fort Bridger - Fort Bridger, United States": "FBR", "Teniente Alejandro Velasco Astete Intl - Cuzco, Peru": "CUZ", "Caldwell Essex County Airport - Caldwell, United States": "CDW", "Burwash - Burwash, Canada": "YDB", "Cozumel Intl - Cozumel, Mexico": "CZM", "Maues Airport - Maues, Brazil": "MBZ", "E T Joshua - Kingstown, Saint Vincent and the Grenadines": "SVD", "Cessnock Airport - Cessnock, Australia": "CES", "International Airport - Ocala, United States": "OCF", "Rennell/Tingoa Airport - Rennell Island, Solomon Islands": "RNL", "Ohio State University Airport - Columbus, United States": "OSU", "Sharm El Sheikh Intl - Sharm El Sheikh, Egypt": "SSH", "Kruger Mpumalanga International Airport - Mpumalanga, South Africa": "MQP", "St Pierre Pierrefonds - St.-pierre, Reunion": "ZSE", "Arnage - Le Mans, France": "LME", "Pattani - Pattani, Thailand": "PAN", "Kaufbeuren BF - Kaufbeuren, Germany": "KFX", "Grant County Airport - Silver City, United States": "SVC", "Banmaw Airport - Banmaw, Burma": "BMO", "Cooktown Airport - Cooktown, Australia": "CTN", "Stormville Airport - Stormville, United States": "N69", "Bochum HBF - Bochum, Germany": "BOX", "Cagayan De Oro - Ladag, Philippines": "CGY", "Antoine De St Exupery Airport - San Antonio Oeste, Argentina": "OES", "Leon Airport - Leon, Spain": "LEN", "Lakeba Island Airport - Lakeba Island, Fiji": "LKB", "Clinton Municipal - Clinton, United States": "CWI", "Leuterschach BF - Leuterschach, Germany": "LES", "Braceville Airport - Braceville, United States": "41N", "Dehradun - Dehra Dun, India": "DED", "Fort Wayne - Fort Wayne, United States": "FWA", "Chacalluta - Arica, Chile": "ARI", "Orchid Beach - Fraser Island, Australia": "OKB", "Trat - Trat, Thailand": "TDX", "Kigoma Airport - Kigoma, Tanzania": "TKQ", "Luogang - Hefei, China": "HFE", "Kuressaare - Kuressaare, Estonia": "URE", "Mazar I Sharif - Mazar-i-sharif, Afghanistan": "MZR", "Snohomish Co - Everett, United States": "PAE", "Dundo Airport - Dundo, Angola": "DUE", "Ahe Airport - Ahe, French Polynesia": "AHE", "Avalon - Catalina Island, United States": "AVX", "Capitan Montes - Talara, Peru": "TYL", "Atka Airport - Atka, United States": "AKB", "W H Barron Field - Dublin, United States": "DBN", "Myeik - Myeik, Burma": "MGZ", "Tehuacan - Tehuacan, Mexico": "TCN", "Toamasina - Toamasina, Madagascar": "TMM", "Great Falls Intl - Great Falls, United States": "GTF", "Manokotak Airport - Manokotak, United States": "KMO", "Mahlon Sweet Fld - Eugene, United States": "EUG", "Cabo Frio International Airport - Cabo Frio, Brazil": "CFB", "Delta Municipal Airport - Delta, United States": "DTA", "Long Lellang Airport - Long Datih, Malaysia": "LGL", "Arthur Dunn Airpark - Titusville, United States": "X21", "Mc Connell Afb - Wichita, United States": "IAB", "Siglufjordur - Siglufjordur, Iceland": "SIJ", "Kontum Airport - Kontum, Vietnam": "KON", "Unst Airport - Unst, United Kingdom": "UNT", "Majors - Greenvile, United States": "GVT", "Cork - Cork, Ireland": "ORK", "Muir Aaf - Muir, United States": "MUI", "Central Illinois Rgnl - Bloomington, United States": "BMI", "Howard - Howard, Panama": "HOW", "Tsiroanomandidy Airport - Tsiroanomandidy, Madagascar": "WTS", "Entrammes - Laval, France": "LVA", "Skovde - Skovde, Sweden": "KVB", "Outer Skerries Airport - Outer Skerries, United Kingdom": "OUK", "Liuting - Qingdao, China": "TAO", "Ubon Ratchathani - Ubon Ratchathani, Thailand": "UBP", "Alghero - Alghero, Italy": "AHO", "Hualien - Hualien, Taiwan": "HUN", "Quaqtaq Airport - Quaqtaq, Canada": "YQC", "Telefomin Airport - Telefomin, Papua New Guinea": "TFM", "St Denis Gillot - St.-denis, Reunion": "RUN", "Tezpur Airport - Tezpur, India": "TEZ", "Gisenyi - Gisenyi, Rwanda": "GYI", "Sepinggan - Balikpapan, Indonesia": "BPN", "Kassel Calden - Kassel, Germany": "KSF", "Grand Strand Airport - North Myrtle Beach, United States": "CRE", "Elkhart Municipal - Elkhart, United States": "EKI", "York Landing Airport - York Landing, Canada": "ZAC", "Birsa Munda - Ranchi, India": "IXR", "Sanday Airport - Sanday, United Kingdom": "NDY", "Aden Adde International Airport - Mogadishu, Somalia": "MGQ", "Lee C Fine Memorial Airport - Kaiser Lake Ozark, United States": "AIZ", "Mount Keith - Mount Keith, Australia": "WME", "Vanua Balavu Airport - Vanua Balavu, Fiji": "VBV", "Chile Chico - Chile Chico, Chile": "CCH", "Kashi - Kashi, China": "KHG", "Prince Abdul Majeed Airport - Al-Ula, Saudi Arabia": "ULH", "Branches - Auxerre, France": "AUF", "Boone Co - Harrison, United States": "HRO", "Palo Alto Airport of Santa Clara County - Palo Alto, United States": "PAO", "Samedan - Samedan, Switzerland": "SMV", "Salzburg - Salzburg, Austria": "SZG", "Bojnourd Airport - Bojnourd, Iran": "BJB", "Tasiujaq Airport - Tasiujaq, Canada": "YTQ", "Lipetsk Airport - Lipetsk, Russia": "LPK", "Hemavan Airport - Hemavan, Sweden": "HMV", "Aioun El Atrouss - Aioun El Atrouss, Mauritania": "IEO", "Harris County Airport - Pine Mountain, United States": "PIM", "Abu Dhabi Intl - Abu Dhabi, United Arab Emirates": "AUH", "Kaimana - Kaimana, Indonesia": "KNG", "Kankesanturai - Jaffna, Sri Lanka": "JAF", "Karlovy Vary - Karlovy Vary, Czech Republic": "KLV", "St. Peter-Ording Airport - Sankt Peter-Ording, Germany": "PSH", "Larsen Bay Airport - Larsen Bay, United States": "KLN", "Naval Air Station - Glenview, United States": "NBU", "Klawock Airport - Klawock, United States": "KLW", "Vilhena - Vilhena, Brazil": "BVH", "Cannon Afb - Clovis, United States": "CVS", "Senadora Eunice Micheles Airport - Sao Paulo de Olivenca, Brazil": "OLC", "Spring Point - Spring Point, Bahamas": "AXP", "Tripoli Intl - Tripoli, Libya": "TIP", "Punta Cana Intl - Punta Cana, Dominican Republic": "PUJ", "Rukumkot - Rukumkot, Nepal": "RUK", "Barnstable Muni Boardman Polando Fld - Barnstable, United States": "HYA", "Euston Station - London, United Kingdom": "QQU", "Colonia Sarmiento - Colonia Sarmiento, Argentina": "OLN", "Evenes - Harstad/Narvik, Norway": "EVE", "Black Tickle Airport - Black Tickle, Canada": "YBI", "Buochs Airport - Buochs, Switzerland": "BXO", "Changzhou - Changzhou, China": "CZX", "Lisboa - Lisbon, Portugal": "LIS", "North Whale Seaplane Base - North Whale Pass, United States": "WWP", "Lansing Municipal - Lansing, United States": "IGQ", "Bhuj - Bhuj, India": "BHJ", "Theodore - Theodore, Australia": "TDR", "Bhopal - Bhopal, India": "BHO", "Tafaraoui - Oran, Algeria": "TAF", "Utti - Utti, Finland": "QVY", "Beale Afb - Marysville, United States": "BAB", "Bonanza Airport - Bonanza, Nicaragua": "BZA", "Frazier Lake Airpark - Hollister, United States": "1C9", "Kalbarri Airport - Kalbarri, Australia": "KAX", "Phetchabun - Phetchabun, Thailand": "PHY", "Jiujiang Lushan Airport - Jiujiang, China": "JIU", "Teniente Vidal - Coyhaique, Chile": "GXQ", "Norman Y Mineta San Jose Intl - San Jose, United States": "SJC", "Hermanos Serdan Intl - Puebla, Mexico": "PBC", "Barcaldine Airport - Barcaldine, Australia": "BCI", "Barking Sands Pmrf - Barking Sands, United States": "BKH", "Changi Intl - Singapore, Singapore": "SIN", "Dare County Regional - Manteo, United States": "MQI", "Providenciales - Providenciales, Turks and Caicos Islands": "PLS", "Wichita Mid Continent - Wichita, United States": "ICT", "Manley Hot Springs Airport - Manley Hot Springs, United States": "MLY", "Brochet Airport - Brochet, Canada": "YBT", "Escuela Mariscal Sucre Airport - Maracay, Venezuela": "MYC", "Santa Cruz - Santa Cruz, Argentina": "RZA", "Angelina Co - Lufkin, United States": "LFK", "Pullman-Moscow Rgnl - Pullman, United States": "PUW", "Avalon - Avalon, Australia": "AVV", "Grand Central - Johannesburg, South Africa": "GCJ", "Skagen - Stokmarknes, Norway": "SKN", "Alert - Alert, Canada": "YLT", "Marcos A Gelabert Intl - Panama, Panama": "PAC", "Okecie - Warsaw, Poland": "WAW", "Halim Perdanakusuma International Airport - Jakarta, Indonesia": "HLP", "Vitebsk - Vitebsk, Belarus": "VTB", "El Bagre Airport - El Bagre, Colombia": "EBG", "Tinak Airport - Tinak, Marshall Islands": "TIC", "Nashville Intl - Nashville, United States": "BNA", "Zyryanka West Airport - Zyryanka, Russia": "ZKP", "Makokou - Makokou, Gabon": "MKU", "Sultan Babullah - Ternate, Indonesia": "TTE", "Atiu Island Airport - Atiu Island, Cook Islands": "AIU", "Sloulin Fld Intl - Williston, United States": "ISN", "Linate - Milan, Italy": "LIN", "Mount Hagen - Mount Hagen, Papua New Guinea": "HGU", "Hovden - Orsta-Volda, Norway": "HOV", "Moore County Airport - Pinehurst-Southern Pines, United States": "SOP", "Sendai - Sendai, Japan": "SDJ", "Guillermo Leon Valencia - Popayan, Colombia": "PPN", "Hector Silva Airstrip - Belmopan, Belize": "BCV", "Ataturk - Istanbul, Turkey": "IST", "Tambor Airport - Nicoya, Costa Rica": "TMU", "Yellowstone Rgnl - Cody, United States": "COD", "Hasvik - Hasvik, Norway": "HAA", "Miyako - Miyako, Japan": "MMY", "Port Moller Airport - Cold Bay, United States": "PML", "Central Airport - Central, United States": "CEM", "Guanare - Guanare, Venezuela": "GUQ", "Hardwick Field Airport - Cleveland, United States": "HDI", "Amboseli Airport - Amboseli National Park, Kenya": "ASV", "Mata'aho Airport - Angaha,  Niuafo'ou Island": "Tonga", "Filippos - Kozani, Greece": "KZI", "Merzifon - Merzifon, Turkey": "MZH", "Bamberg BF - Bamberg, Germany": "BAM", "Andrews Afb - Camp Springs, United States": "ADW", "Rivera International Airport - Rivera, Uruguay": "RVY", "Battambang Airport - Battambang, Cambodia": "BBM", "Ernest A Love Fld - Prescott, United States": "PRC", "Rosario - Rosario, Argentina": "ROS", "Benbecula - Benbecula, United Kingdom": "BEB", "Ocean Ridge Airport - Gualala, United States": "E55", "Eelde - Groningen, Netherlands": "GRQ", "Kogalym International - Kogalym, Russia": "KGP", "Wemindji Airport - Wemindji, Canada": "YNC", "Newman Airport - Newman, Australia": "ZNE", "De Kalb Taylor Municipal Airport - De Kalb, United States": "DKB", "Fakarava - Fakarava, French Polynesia": "FAV", "Kandla - Kandla, India": "IXY", "Nanyuki Civil Airport - Nanyuki, Kenya": "NYK", "Dundee - Dundee, United Kingdom": "DND", "Linz - Linz, Austria": "LNZ", "DuBois Regional Airport - Du Bois, United States": "DUJ", "Yoron - Yoron, Japan": "RNJ", "Longvic - Dijon, France": "DIJ", "Vinh Airport - Vinh, Vietnam": "VII", "Will Rogers World - Oklahoma City, United States": "OKC", "Tekirda\u011f \u00c7orlu Airport - \u00c7orlu, Turkey": "TEQ", "Hongqiao Intl - Shanghai, China": "SHA", "Forquilhinha - Criciuma, Brazil": "CCM", "Dodge City Regional Airport - Dodge City, United States": "DDC", "Limbang - Limbang, Malaysia": "LMN", "South Bimini - Alice Town, Bahamas": "BIM", "Mandritsara Airport - Mandritsara, Madagascar": "WMA", "Kugluktuk - Coppermine, Canada": "YCO", "San Antonio Intl - San Antonio, United States": "SAT", "Cat Bi International Airport - Haiphong, Vietnam": "HPH", "Twin Hills Airport - Twin Hills, United States": "TWA", "Allegheny County Airport - Pittsburgh, United States": "AGC", "Port Sudan New International Airport - Port Sudan, Sudan": "PZU", "Olive Branch Muni - Olive Branch, United States": "OLV", "Augusta State - Augusta, United States": "AUG", "Adana-Incirlik Airbase - Adana, Turkey": "UAB", "Almirante Padilla - Rio Hacha, Colombia": "RCH", "Goulburn Airport - Goulburn, Australia": "GUL", "Metz Nancy Lorraine - Metz, France": "ETZ", "Londolozi - Londolozi, South Africa": "LDZ", "Moulay Ali Cherif - Er-rachidia, Morocco": "ERH", "Khovd Airport - Khovd, Mongolia": "HVD", "Bembridge - Bembridge, United Kingdom": "BBP", "Bermuda Intl - Bermuda, Bermuda": "BDA", "La Macarena - La Macarena, Colombia": "LMC", "Key West Nas - Key West, United States": "NQX", "Kasane - Kasane, Botswana": "BBK", "Walvis Bay Airport - Walvis Bay, Namibia": "WVB", "Points North Landing Airport - Points North Landing, Canada": "YNL", "East Troy Municipal Airport - East Troy, United States": "57C", "Tongoa Island Airport - Tongoa Island, Vanuatu": "TGH", "Saravane Airport - Saravane, Laos": "VNA", "Woerthersee International Airport - Klagenfurt, Austria": "KLU", "Zaporizhzhia International Airport - Zaporozhye, Ukraine": "OZH", "Svolv\u00e6r Helle Airport - Svolv\u00e6r, Norway": "SVJ", "Guettin MecklenburgVorpommern Germany - Ruegen, Germany": "GTI", "Merrill Fld - Anchorage, United States": "MRI", "Coonabarabran - Coonabarabran, Australia": "COJ", "Fallon Nas - Fallon, United States": "NFL", "Friday Harbor Airport - Friday Harbor, United States": "FRD", "West Georgia Regional Airport - O V Gray Field - Carrollton, United States": "CTJ", "Meribel Airport - Ajaccio, France": "MFX", "Bale Mulhouse - Mulhouse, France": "MLH", "Toledo Airport - Toledo, Brazil": "TOW", "Fatmawati Soekarno - Bengkulu, Indonesia": "BKS", "NW Arkansas Regional - Bentonville, United States": "XNA", "Meythet - Annecy, France": "NCY", "Kapanda Airport - Kapanda, Angola": "KNP", "Ormond Beach municipal Airport - Ormond Beach, United States": "OMN", "Lutsk - Lutsk, Ukraine": "UKC", "Gran Roque Airport - Los Roques, Venezuela": "LRV", "Chalkyitsik Airport - Chalkyitsik, United States": "CIK", "Miramar Mcas - Miramar, United States": "NKX", "Warsaw Modlin - Warsaw, Poland": "WMI", "Kericho - Kericho, Kenya": "KEY", "Maturin - Maturin, Venezuela": "MUN", "Berens River - Berens River, Canada": "YBV", "Kars Airport - Kars, Turkey": "KSY", "Kish Island - Kish Island, Iran": "KIH", "Gelendzik - Gelendzik, Russia": "GDZ", "Childress Muni - Childress, United States": "CDS", "Allgau - Memmingen, Germany": "FMM", "Moruya Airport - Moruya, Australia": "MYA", "Molokai - Molokai, United States": "MKK", "Nanded Airport - Nanded, India": "NDC", "Dowagiac Municipal Airport - Dowagiac, United States": "C91", "Ibiza - Ibiza, Spain": "IBZ", "Chisholm Hibbing - Hibbing, United States": "HIB", "Coto 47 - Coto 47, Costa Rica": "OTR", "Durham Tees Valley Airport - Teesside, United Kingdom": "MME", "Bird Island Airport - Bird Island, Seychelles": "BDI", "City Centre - Toronto, Canada": "YTZ", "Tarapoa - Tarapoa, Ecuador": "TPC", "Page Municipal Airport - Page, United States": "PGA", "Culiacan Intl - Culiacan, Mexico": "CUL", "Hood Aaf - Fort Hood, United States": "HLR", "Island Lake Airport - Island Lake, Canada": "YIV", "Gods River Airport - Gods River, Canada": "ZGI", "Fria - Fira, Guinea": "FIG", "Lencero Airport - Jalapa, Mexico": "JAL", "Phan Rang Airport - Phan Rang, Vietnam": "PHA", "Chicago Ohare Intl - Chicago, United States": "ORD", "Scott Afb Midamerica - Belleville, United States": "BLV", "Southeast Iowa Regional Airport - Burlington, United States": "BRL", "Shuangliu - Chengdu, China": "CTU", "Antonio Narino - Pasto, Colombia": "PSO", "Elmira Corning Rgnl - Elmira, United States": "ELM", "Jack Northrop Fld Hawthorne Muni - Hawthorne, United States": "HHR", "Madang - Madang, Papua New Guinea": "MAG", "Pensacola Nas - Pensacola, United States": "NPA", "Sui - Sui, Pakistan": "SUL", "Train Station - Edmonton, Canada": "XZL", "Dillingham - Dillingham, United States": "HDH", "Pescara - Pescara, Italy": "PSR", "Red Lake Airport - Red Lake, Canada": "YRL", "San Francisco Intl - San Francisco, United States": "SFO", "Ogoki Post Airport - Ogoki Post, Canada": "YOG", "Newton City-County Airport - Newton, United States": "EWK", "Cheikh Larbi Tebessi - Tebessa, Algeria": "TEE", "Buon Ma Thuot Airport - Buonmethuot, Vietnam": "BMV", "Tana Toraja Airport - Toraja, Indonesia": "TTR", "Bintulu - Bintulu, Malaysia": "BTU", "Heringsdorf Airport - Heringsdorf, Germany": "HDF", "Auki Airport - Auki, Solomon Islands": "AKS", "Iringa - Iringa, Tanzania": "IRI", "Gare de Strasbourg - Strasbourg, France": "XWG", "Corn Island Airport - Corn Island, Nicaragua": "RNI", "Chesterfield Inlet Airport - Chesterfield Inlet, Canada": "YCS", "Riviere Rouge - Mont-Tremblant International Inc. Airport - Mont-Tremblant, Canada": "YTM", "Galion Municipal Airport - Galion, United States": "GQQ", "Queen Alia Intl - Amman, Jordan": "AMM", "Nea Anchialos - Nea Anghialos, Greece": "VOL", "Safford Regional Airport - Safford, United States": "SAD", "Valle Del Fuerte Intl - Los Mochis, Mexico": "LMM", "Los Cabos Intl - San Jose Del Cabo, Mexico": "SJD", "Naha - Naha, Indonesia": "NAH", "Noyabrsk - Noyabrsk, Russia": "NOJ", "Geilenkirchen - Geilenkirchen, Germany": "GKE", "Ivalo - Ivalo, Finland": "IVL", "Salisbury Ocean City Wicomico Rgnl - Salisbury, United States": "SBY", "Lauro Carneiro De Loyola - Joinville, Brazil": "JOI", "Grabtsevo - Kaluga, Russia": "KLF", "Jose Marti Intl - Havana, Cuba": "HAV", "Lawica - Poznan, Poland": "POZ", "Door County Cherryland Airport - Sturgeon Bay, United States": "SUE", "Toksook Bay Airport - Toksook Bay, United States": "OOK", "Muhammad Salahuddin - Bima, Indonesia": "BMU", "Plum Island Airport - Newburyport, United States": "2B2", "Jolo Airport - Jolo, Philippines": "JOL", "Alamogordo White Sands Regional Airport - Alamogordo, United States": "ALM", "Senou - Bamako, Mali": "BKO", "Toowoomba - Toowoomba, Australia": "TWB", "Wawa - Wawa, Canada": "YXZ", "Ambalabe - Antsohihy, Madagascar": "WAI", "Hua Hin - Prachuap Khiri Khan, Thailand": "HHQ", "Central Station - Uppsala, Sweden": "QYX", "Gusau - Gusau, Nigeria": "QUS", "Meixian Airport - Meixian, China": "MXZ", "Norman Wells - Norman Wells, Canada": "YVQ", "Salgado Filho - Porto Alegre, Brazil": "POA", "Takoradi - Takoradi, Ghana": "TKD", "Berlin Brandenburg Willy Brandt - Berlin, Germany": "BER", "Solovki Airport - Solovetsky Islands, Russia": "CSH", "Vancouver Coal Harbour - Vancouver, Canada": "CXH", "Le Lamentin - Fort-de-france, Martinique": "FDF", "Hartness State - Springfield VT, United States": "VSF", "Ponca City Rgnl - Ponca City, United States": "PNC", "Taree Airport - Taree, Australia": "TRO", "Turku - Turku, Finland": "TKU", "Dalat - Dalat, Vietnam": "DLI", "Meadows Fld - Bakersfield, United States": "BFL", "Aleppo Intl - Aleppo, Syria": "ALP", "Andenes - Andoya, Norway": "ANX", "Diqing Airport - Shangri-La, China": "DIG", "Kanpur - Kanpur, India": "KNU", "Makale - Makale, Ethiopia": "MQX", "Rawlins Municipal Airport-Harvey Field - Rawlins, United States": "RWL", "Ardmore Muni - Ardmore, United States": "ADM", "Yancheng Airport - Yancheng, China": "YNZ", "Coronel E Carvajal - Macas, Ecuador": "XMS", "Chuathbaluk Airport - Chuathbaluk, United States": "CHU", "Santarem - Santarem, Brazil": "STM", "Fiumicino - Rome, Italy": "FCO", "Wales Airport - Wales, United States": "WAA", "Koyuk Alfred Adams Airport - Koyuk, United States": "KKA", "Hickory Rgnl - Hickory, United States": "HKY", "Exmouth Airport - Exmouth, Australia": "EXM", "Sukhumi Dranda - Sukhumi, Georgia": "SUI", "Kullu Manali - Kulu, India": "KUU", "Bom Jesus Da Lapa - Bom Jesus Da Lapa, Brazil": "LAZ", "Joplin Rgnl - Joplin, United States": "JLN", "Mountain Village Airport - Mountain Village, United States": "MOU", "Dover Afb - Dover, United States": "DOV", "Salalah - Salalah, Oman": "SLL", "Piestany - Piestany, Slovakia": "PZY", "Huesca-Pirineos Airport - Huesca, Spain": "HSK", "Oshawa Airport - Oshawa, Canada": "YOO", "Edson - Edson, Canada": "YET", "Koln HBF - Koln, Germany": "KOX", "Kaduna - Kaduna, Nigeria": "KAD", "Mendeleevo - Yuzhno-Kurilsk, Russia": "DEE", "Villa Garzon Airport - Villa Garzon, Colombia": "VGZ", "Luqa - Malta, Malta": "MLA", "Carpiquet - Caen, France": "CFR", "San Fernando Airport - San Fernando, Philippines": "SFE", "Levelock Airport - Levelock, United States": "KLL", "La Tontouta - Noumea, New Caledonia": "NOU", "Oxnard - Ventura County - Oxnard, United States": "OXR", "Reyes Airport - Reyes, Bolivia": "REY", "Quzhou Airport - Quzhou, China": "JUZ", "Tsushima - Tsushima, Japan": "TSJ", "Jixi Airport - Jixi, China": "JXA", "ZAPALA - ZAPALA, Argentina": "APZ", "Mota Lava Airport - Ablow, Vanuatu": "MTV", "Mobile Downtown - Mobile, United States": "BFM", "Yarmouth Airport - Yarmouth, Canada": "YQI", "Essen HBF - Essen, Germany": "ESX", "Breves Airport - Breves, Brazil": "BVS", "Daqing Saertu Airport - Daqing, China": "DAQ", "Lampedusa - Lampedusa, Italy": "LMP", "Jomo Kenyatta International - Nairobi, Kenya": "NBO", "Portland Airport - Portland, Australia": "PTJ", "Put-in-Bay Airport - Put-in-Bay, United States": "3W2", "Playa del Carmen Airport - Playa del Carmen, Mexico": "PCM", "Takaroa - Takaroa, French Polynesia": "TKX", "Mudanjiang - Mudanjiang, China": "MDG", "Morristown Municipal Airport - Morristown, United States": "MMU", "Gorakhpur Airport - Gorakhpur, India": "GOP", "Jinzhou Airport - Jinzhou, China": "JNZ", "Playa De Oro Intl - Manzanillo, Mexico": "ZLO", "Coffs Harbour - Coff's Harbour, Australia": "CFS", "Bathurst Airport - Bathurst, Canada": "ZBF", "Mark Anton Airport - Dayton, United States": "2A0", "Sao Pedro - Sao Vicente Island, Cape Verde": "VXE", "Huronia - Midland, Canada": "YEE", "Tinson Pen - Kingston, Jamaica": "KTP", "Hauptbahnhof - Bonn, Germany": "BNJ", "Polk County Airport - Cornelius Moore Field - Cedartown, United States": "4A4", "Orcas Island Airport - Eastsound, United States": "ESD", "Nantucket Mem - Nantucket, United States": "ACK", "Seletar - Singapore, Singapore": "XSP", "Francisco Bangoy International - Davao, Philippines": "DVO", "Bartow Municipal Airport - Bartow, United States": "BOW", "Bingol - Bingol, Turkey": "BGG", "Asau Airport - Savai\\\\'i, Samoa": "AAU", "Neuenland - Bremen, Germany": "BRE", "Chongjin Airport - Chongjin, North Korea": "RGO", "Jaluit Airport - Jabor Jaluit Atoll, Marshall Islands": "UIT", "Camilo Ponce Enriquez Airport - La Toma (Catamayo), Ecuador": "LOH", "Yichun Mingyueshan Airport - Yichun, China": "YIC", "Rainbow Lake Airport - Rainbow Lake, Canada": "YOP", "Amilcar Cabral Intl - Amilcar Cabral, Cape Verde": "SID", "Dakhla Airport - Dakhla, Western Sahara": "VIL", "Wipim Airport - Wipim, Papua New Guinea": "WPM", "Huahine - Huahine Island, French Polynesia": "HUH", "Ingeniero Jacobacci - Ingeniero Jacobacci, Argentina": "IGB", "Sioux Falls - Sioux Falls, United States": "FSD", "Elizabeth City Cgas Rgnl - Elizabeth City, United States": "ECG", "St. Theresa Point Airport - St. Theresa Point, Canada": "YST", "Piedras Negras Intl - Piedras Negras, Mexico": "PDS", "Jammu - Jammu, India": "IXJ", "Saskatoon J G Diefenbaker Intl - Saskatoon, Canada": "YXE", "Randall Airport - Middletown, United States": "06N", "Paamiut Heliport - Paamiut, Greenland": "JFR", "Pilanesberg Intl - Pilanesberg, South Africa": "NTY", "Bolton Field - Columbus, United States": "TZR", "Marshfield Municipal Airport - Marshfield, United States": "MFI", "El Aroui Airport - El Aroui, Morocco": "NDR", "Santa Barbara Muni - Santa Barbara, United States": "SBA", "Nueva Hesperides Intl - Salto, Uruguay": "STY", "Chicago Executive - Chicago-Wheeling, United States": "PWK", "Eldorado Intl - Bogota, Colombia": "BOG", "Langley Afb - Hampton, United States": "LFI", "Prominent Hill - Prominent Hill, Australia": "PXH", "Casa De Campo Intl - La Romana, Dominican Republic": "LRM", "Medicine Hat - Medicine Hat, Canada": "YXH", "Anderson Rgnl - Andersen, United States": "AND", "Shanhaiguan Airport - Qinhuangdao, China": "SHP", "Presidente Juscelino Kubitschek - Brasilia, Brazil": "BSB", "Frescaty - Metz, France": "MZM", "Turpan - Turpan, China": "TLQ", "Lawton-Fort Sill Regional Airport - Lawton, United States": "LAW", "R\u00f8ssvoll Airport - Mo i Rana, Norway": "MQN", "Salta - Salta, Argentina": "SLA", "Mafia - Mafia Island, Tanzania": "MFA", "Austin Bergstrom Intl - Austin, United States": "AUS", "Warraber Island Airport - Sue Islet, Australia": "SYU", "Owen Roberts Intl - Georgetown, Cayman Islands": "GCM", "Alfonso Lopez Pumarejo - Valledupar, Colombia": "VUP", "Presidente Peron - Neuquen, Argentina": "NQN", "General Juan N Alvarez Intl - Acapulco, Mexico": "ACA", "Roma Airport - Roma, Australia": "RMA", "El Nido Airport - El Nido, Philippines": "ENI", "Monrovia Spriggs Payne - Monrovia, Liberia": "MLW", "Tenakee Seaplane Base - Tenakee Springs, United States": "TKE", "Xi\\\\'An Xiguan - Xi\\\\'AN, China": "SIA", "El Tor - El-tor, Egypt": "ELT", "Coventry - Coventry, United Kingdom": "CVT", "Tobias Bolanos International Airport - San Jose, Costa Rica": "SYQ", "Airport - Vadso, Norway": "VDS", "Eielson Afb - Fairbanks, United States": "EIL", "Sentani - Jayapura, Indonesia": "DJJ", "Lazaro Cardenas - Lazard Cardenas, Mexico": "LZC", "Kabri Dehar Airport - Kabri Dehar, Ethiopia": "ABK", "Port Berg\u00e9 Airport - Port Berg\u00e9, Madagascar": "WPB", "Savannakhet - Savannakhet, Laos": "ZVK", "Dhigurah Centara Grand Maldives - Dhigurah, Maldives": "DHG", "Patreksfjordur - Patreksfjordur, Iceland": "PFJ", "Astana Intl - Tselinograd, Kazakhstan": "TSE", "Pickle Lake - Pickle Lake, Canada": "YPL", "Burevestnik Airport - Iturup Island, Russia": "BVV", "Huanghua - Changcha, China": "CSX", "Nalchik Airport - Nalchik, Russia": "NAL", "Oakdale Airport - Oakdale, United States": "O27", "Panama City Bay Co Intl - Panama City, United States": "PFN", "Nome - Nome, United States": "OME", "Maraba - Maraba, Brazil": "MAB", "Boeing Fld King Co Intl - Seattle, United States": "BFI", "Gardermoen - Oslo, Norway": "OSL", "Naxos - Cyclades Islands, Greece": "JNX", "Lake City Municipal Airport - Lake City, United States": "LCQ", "Karuluk Airport - Karluk, United States": "KYK", "Wai Oti - Maumere, Indonesia": "MOF", "Semipalatinsk - Semiplatinsk, Kazakhstan": "PLX", "Seychelles Intl - Mahe, Seychelles": "SEZ", "Miyazaki - Miyazaki, Japan": "KMI", "Cherry Capital Airport - Traverse City, United States": "TVC", "Terrace - Terrace, Canada": "YXT", "Toncontin Intl - Tegucigalpa, Honduras": "TGU", "Nanaimo Harbour Water Airport - Nanaimo, Canada": "ZNA", "Vagar - Vagar, Faroe Islands": "FAE", "Halmstad - Halmstad, Sweden": "HAD", "Hilton Iru fushi - Maldives Hilton Iru fushi, Maldives": "IRU", "Konduz - Kunduz, Afghanistan": "UND", "Cincinnati Northern Kentucky Intl - Cincinnati, United States": "CVG", "Mangalore - Mangalore, India": "IXE", "Colombo Ratmalana - Colombo, Sri Lanka": "RML", "London-Corbin Airport-MaGee Field - London, United States": "LOZ", "Cunnamulla Airport - Cunnamulla, Australia": "CMA", "Aizawl - Aizwal, India": "AJL", "Bemidji Regional Airport - Bemidji, United States": "BJI", "Hector International Airport - Fargo, United States": "FAR", "Nairobi Wilson - Nairobi, Kenya": "WIL", "Georgetown Municipal Airport - Georgetown, United States": "GTU", "Ivano Frankivsk International Airport - Ivano-Frankivsk, Ukraine": "IFO", "Uberaba - Uberaba, Brazil": "UBA", "La Gomera Airport - La Gomera, Spain": "GMZ", "Cornwall Regional Airport - Cornwall, Canada": "YCC", "Carrillo Airport - Carrillo, Costa Rica": "RIK", "Kenitra - Kentira, Morocco": "NNA", "Mobile Rgnl - Mobile, United States": "MOB", "Merritt Island Airport - Cocoa, United States": "COI", "Monclova Intl - Monclova, Mexico": "LOV", "Penn Station - New York, United States": "ZYP", "Bam Airport - Bam, Iran": "BXR", "Croisette Heliport - Cannes, France": "JCA", "Santander - Santander, Spain": "SDR", "Elazig - Elazig, Turkey": "EZS", "Garissa - Garissa, Kenya": "GAS", "Centre-Piedmont-Cherokee County Regional Airport - Centre, United States": "PYP", "Zaranj Airport - Zaranj, Afghanistan": "ZAJ", "Bartolomeu Lisandro - Campos, Brazil": "CAW", "Gwalior - Gwalior, India": "GWL", "Carajas Airport - Parauapebas, Brazil": "CKS", "Pelotas - Pelotas, Brazil": "PET", "Pointe Noire - Pointe-noire, Congo (Brazzaville)": "PNR", "Athen Helenikon Airport - Athens, Greece": "HEW", "Yangon Intl - Yangon, Burma": "RGN", "Indianapolis Intl - Indianapolis, United States": "IND", "Barra Airport - Barra, United Kingdom": "BRR", "Alice Intl - Alice, United States": "ALI", "Borkum - Borkum, Germany": "BMK", "Kivalina Airport - Kivalina, United States": "KVL", "Pompano Beach Airpark - Pompano Beach, United States": "PMP", "Yakutsk - Yakutsk, Russia": "YKS", "Ankavandra Airport - Ankavandra, Madagascar": "JVA", "South Jersey Regional Airport - Mount Holly, United States": "VAY", "Ardeche Meridionale - Aubenas-vals-lanas, France": "OBS", "Ashgabat - Ashkhabad, Turkmenistan": "ASB", "Chitose - Chitose, Japan": "SPK", "La Nubia - Manizales, Colombia": "MZL", "Bairnsdale Airport - Bairnsdale, Australia": "BSJ", "Simbai - Simbai, Papua New Guinea": "SIM", "\u017dilina Airport - \u017dilina, Slovakia": "ILZ", "Pakuba Airport - Pakuba, Uganda": "PAF", "Takamatsu - Takamatsu, Japan": "TAK", "Gore Bay Manitoulin - Gore Bay, Canada": "YZE", "St Paul Island - St. Paul Island, United States": "SNP", "Pantnagar - Nainital, India": "PGH", "Learmonth - Learmonth, Australia": "LEA", "Bentota Airport - Bentota, Sri Lanka": "BJT", "Kowanyama Airport - Kowanyama, Australia": "KWM", "Sandy Lake Airport - Sandy Lake, Canada": "ZSJ", "Yorkton Muni - Yorkton, Canada": "YQV", "St. Louis Downtown Airport - East St. Louis, United States": "CPS", "Keewaywin - Keewaywin, Canada": "KEW", "Suki Airport - Suki, Papua New Guinea": "SKC", "Hilton Head - Hilton Head, United States": "HHH", "Ugolny Airport - Anadyr, Russia": "DYR", "Grafton Airport - Grafton, Australia": "GFN", "Golfito - Golfito, Costa Rica": "GLF", "Valesdir Airport - Valesdir, Vanuatu": "VLS", "Sohag International - Sohag, Egypt": "HMB", "Akron Fulton Intl - Akron, United States": "AKC", "Branch County Memorial Airport - Coldwater, United States": "OEB", "Clyde River - Clyde River, Canada": "YCY", "Easterwood Fld - College Station, United States": "CLL", "Kerch Intl - Kerch, Ukraine": "KHC", "Caruaru Airport - Caruaru, Brazil": "CAU", "Mopah - Merauke, Indonesia": "MKQ", "Kikwetu Airport - Lindi, Tanzania": "LDI", "Oued Irara - Hassi Messaoud, Algeria": "HME", "Inongo Airport - Inongo, Congo (Kinshasa)": "INO", "Nunukan Airport - Nunukan-Nunukan Island, Indonesia": "NNX", "Kilimanjaro Intl - Kilimanjaro, Tanzania": "JRO", "Jabiru - Jabiru, Australia": "JAB", "Vias - Beziers, France": "BZR", "Kleinsee - Kleinsee, South Africa": "KLZ", "Wainwright As - Fort Wainwright, United States": "K03", "Ohrid - Ohrid, Macedonia": "OHD", "Philip S W Goldson Intl - Belize City, Belize": "BZE", "Antsalova Airport - Antsalova, Madagascar": "WAQ", "Seal Cove Seaplane Base - Prince Rupert, Canada": "ZSW", "Narita Intl - Tokyo, Japan": "NRT", "Surgut - Surgut, Russia": "SGC", "Kingston - Kingston, Canada": "YGK", "Tres De Mayo - Puerto Asis, Colombia": "PUU", "Heron Island - Heron Island, Australia": "HRN", "Oradea - Oradea, Romania": "OMR", "Rafael Hernandez - Aguadilla, Puerto Rico": "BQN", "Lynn Lake - Lynn Lake, Canada": "YYL", "Le Pontreau - Cholet, France": "CET", "Martha\\\\'s Vineyard - Vineyard Haven MA, United States": "MVY", "Burgos Airport - Burgos, Spain": "RGS", "Ofu Airport - Ofu, American Samoa": "OFU", "Subic Bay International Airport - Olongapo City, Philippines": "SFS", "Diori Hamani - Niamey, Niger": "NIM", "Valenca Airport - Valenca, Brazil": "VAL", "Strahan Airport - Strahan, Australia": "SRN", "Fane Airport - Fane, Papua New Guinea": "FNE", "Point Baker Seaplane Base - Point Baker, United States": "KPB", "Joensuu - Joensuu, Finland": "JOE", "Fliegerhost  - Kaufbeuren, Germany": "KFB", "Bayankhongor Airport - Bayankhongor, Mongolia": "BYN", "Bahawalpur Airport - Bahawalpur, Pakistan": "BHV", "Phillips Aaf - Aberdeen, United States": "APG", "Menara - Marrakech, Morocco": "RAK", "Grant Co Intl - Grant County Airport, United States": "MWH", "Frans Kaisiepo - Biak, Indonesia": "BIK", "Pl\u00c3\u00a1cido de Castro - Rio Branco, Brazil": "RBR", "Tocumen Intl - Panama City, Panama": "PTY", "Yoshkar-Ola Airport - Yoshkar-Ola, Russia": "JOK", "Mansons Landing Water Aerodrome - Mansons Landing, Canada": "YMU", "Nhatrang - Nhatrang, Vietnam": "NHA", "Alferez Fap David Figueroa Fernandini Airport - Hu\u00e1nuco, Peru": "HUU", "Kolhapur - Kolhapur, India": "KLH", "Chinle Municipal Airport - Chinle, United States": "E91", "Kalamazoo - Kalamazoo, United States": "AZO", "Lee Gilmer Memorial Airport - Gainesville, United States": "GVL", "Griffith Airport - Griffith, Australia": "GFF", "Gr\u00edmsey Airport - Gr\u00edmsey, Iceland": "GRY", "Zia Intl - Dhaka, Bangladesh": "DAC", "Peterborough Railway Station - Peterborough, United Kingdom": "XVH", "McMinn Co - Athens, United States": "MMI", "Guangyuan Airport - Guangyuan, China": "GYS", "Eloy Alfaro Intl - Manta, Ecuador": "MEC", "Treviso - Treviso, Italy": "TSF", "Fernando De Noronha - Fernando Do Noronha, Brazil": "FEN", "Wausau Downtown Airport - Wausau, United States": "AUW", "Pointe Vele Airport - Futuna Island, Wallis and Futuna": "FUT", "Viru Viru Intl - Santa Cruz, Bolivia": "VVI", "Presidente Joao Suassuna - Campina Grande, Brazil": "CPV", "Watertown Regional Airport - Watertown, United States": "ATY", "Rahadi Usman - Ketapang, Indonesia": "KTG", "Winslow-Lindbergh Regional Airport - Winslow, United States": "INW", "Oranjemund Airport - Oranjemund, Namibia": "OMD", "Alexander Field South Wood County Airport - Wisconsin Rapids, United States": "ISW", "Marsa Alam Intl - Marsa Alam, Egypt": "RMF", "Kugaaruk - Pelly Bay, Canada": "YBB", "Kamusi Airport - Kamusi, Papua New Guinea": "KUY", "Stony Rapids Airport - Stony Rapids, Canada": "YSF", "Cibao Intl - Santiago, Dominican Republic": "STI", "Ziguinchor - Ziguinchor, Senegal": "ZIG", "Yelahanka AFB - Bangalore, India": "YLK", "Sola - Stavanger, Norway": "SVG", "Vatry - Chalons, France": "XCR", "Tulip City Airport - Holland, United States": "BIV", "Mojave - Mojave, United States": "MHV", "Aspen Pitkin County Sardy Field - Aspen, United States": "ASE", "Rio Grande - Rio Grande, Brazil": "RIG", "Eagle Airport - Eagle, United States": "EAA", "Salamanca - Salamanca, Spain": "SLM", "Bursa Airport - Bursa, Turkey": "BTZ", "Barrow County Airport - Winder, United States": "WDR", "Quanzhou Airport - Quanzhou, China": "JJN", "Piedmont Triad - Greensboro, United States": "GSO", "Kasiguncu - Poso, Indonesia": "PSJ", "Tasiilaq - Angmagssalik, Greenland": "AGM", "North West Santo Airport - Olpoi, Vanuatu": "OLZ", "Annemasse - Annemasse, France": "QNJ", "Leipzig Halle - Leipzig, Germany": "LEJ", "Flugplatz Merzbrueck - Aachen, Germany": "AAH", "Petersburg James A. Johnson - Petersburg, United States": "PSG", "Chaghcharan Airport - Chaghcharan, Afghanistan": "CCN", "H As Hanandjoeddin - Tanjung Pandan, Indonesia": "TJQ", "Buffalo Niagara Intl - Buffalo, United States": "BUF", "Bauru-Arealva - Bauru, Brazil": "JTC", "Fulton County Airport Brown Field - Atlanta, United States": "FTY", "Tho Xuan Airport - Thanh Hoa, Vietnam": "THD", "Honolulu Intl - Honolulu, United States": "HNL", "Forli - Forli, Italy": "FRL", "Gallivare - Gallivare, Sweden": "GEV", "Stratton ANGB - Schenectady County Airpor - Scotia NY, United States": "SCH", "Qamdo Bangda Airport - Bangda, China": "BPX", "Merignac - Bordeaux, France": "BOD", "Kenmore Air Harbor Seaplane Base - Seattle, United States": "LKE", "Ardmore - Ardmore, New Zealand": "AMZ", "Santiago - Santiago, Spain": "SCQ", "Sumburgh - Sumburgh, United Kingdom": "LSI", "Udon Thani - Udon Thani, Thailand": "UTH", "Cape Romanzof Lrrs - Cape Romanzof, United States": "CZF", "Manchester - Manchester, United Kingdom": "MAN", "Leeuwarden - Leeuwarden, Netherlands": "LWR", "La Palma - Santa Cruz De La Palma, Spain": "SPC", "Hall Beach - Hall Beach, Canada": "YUX", "Bujumbura Intl - Bujumbura, Burundi": "BJM", "Gaya - Gaya, India": "GAY", "Sege Airport - Sege, Solomon Islands": "EGM", "Osan Ab - Osan, South Korea": "OSN", "Masirah - Masirah, Oman": "MSH", "Mysore Airport - Mysore, India": "MYQ", "Saransk Airport - Saransk, Russia": "SKX", "Coimbatore - Coimbatore, India": "CJB", "Butaritari Atoll Airport - Butaritari, Kiribati": "BBG", "Arrachart - Antsiranana, Madagascar": "DIE", "Tin City LRRS Airport - Tin City, United States": "TNC", "Ogdensburg Intl - Ogdensburg, United States": "OGS", "Rampart Airport - Rampart, United States": "RMP", "Postville Airport - Postville, Canada": "YSO", "Laredo Intl - Laredo, United States": "LRD", "Chippewa Valley Regional Airport - Eau Claire, United States": "EAU", "Furnace Creek - Death Valley National Park, United States": "L06", "Rincon de los Sauces - Rincon de los Sauces, Argentina": "RDS", "Beru Island Airport - Beru Island, Kiribati": "BEZ", "Datadawai Airport - Datadawai-Borneo Island, Indonesia": "DTD", "KIEV  INTERNATIONAL AIRPORT - KIEV, Ukraine": "KIP", "Richmond County Airport - Rockingham, United States": "RCZ", "Hotan - Hotan, China": "HTN", "Licenciado Benito Juarez Intl - Mexico City, Mexico": "MEX", "Big Timber Airport - Big Timber, United States": "6S0", "Sannvhe - Tangshan, China": "TVS", "Kenosha Regional Airport - Kenosha, United States": "ENW", "Saint-Pierre-des-Corps - Tours, France": "XSH", "Kwethluk Airport - Kwethluk, United States": "KWT", "Tandag Airport - Tandag, Philippines": "TDG", "Kopitnari - Kutaisi, Georgia": "KUT", "Las Heras Airport - Las Heras, Argentina": "LHS", "Portsmouth Airport - Portsmouth, United Kingdom": "PME", "Val De Loire - Tours, France": "TUF", "Benguera Island Airport - Benguera Island, Mozambique": "BCW", "Melbourne Intl - Melbourne, United States": "MLB", "Wusu - Taiyuan, China": "TYN", "Xewkija Heliport - Gozo, Malta": "GZM", "Tambolaka Airport - Waikabubak-Sumba Island, Indonesia": "TMC", "Flensburg Schaferhaus - Flensburg, Germany": "FLF", "Nicosia International Airport - Nicosia, Cyprus": "NIC", "McNary Field - Salem, United States": "SLE", "Council Airport - Council, United States": "CIL", "Analalava - Analalava, Madagascar": "HVA", "Lake Placid Airport - Lake Placid, United States": "LKP", "Tawau - Tawau, Malaysia": "TWU", "Ciudad del Este - Ciudad del Este, Paraguay": "AGT", "Tianhe - Wuhan, China": "WUH", "Aurel Vlaicu - Bucharest, Romania": "BBU", "Turany - Brno, Czech Republic": "BRQ", "Congonhas - Sao Paulo, Brazil": "CGH", "Brandywine Airport - West Goshen Township, United States": "OQN", "Nemiscau Airport - Nemiscau, Canada": "YNS", "Mackay - Mackay, Australia": "MKY", "Dhanbad - Dhanbad, India": "DBD", "Waukegan Rgnl - Chicago, United States": "UGN", "Robert L Bradshaw - Basse Terre, Saint Kitts and Nevis": "SKB", "Cottonwood Airport - Cottonwood, United States": "P52", "Gander Intl - Gander, Canada": "YQX", "Zorg en Hoop Airport - Paramaribo, Suriname": "ORG", "Hauptbahnhof - Salzburg, Austria": "ZSB", "Robert Gray Aaf - Killeen, United States": "GRK", "Pampulha - Belo Horizonte, Brazil": "BHZ", "Putao - Putao, Burma": "PBU", "Chignik Lagoon Airport - Chignik Lagoon, United States": "KCL", "Tuntutuliak Airport - Tuntutuliak, United States": "WTL", "Taunton Municipal Airport - King Field - Taunton, United States": "TAN", "Chinggis Khaan Intl - Ulan Bator, Mongolia": "ULN", "Kerikeri - Kerikeri, New Zealand": "KKE", "Springfield-Beckly Municipal Airport - Springfield, United States": "SGH", "Juan Manuel Galvez Intl - Roatan, Honduras": "RTB", "Kegaska Airport - Kegaska, Canada": "ZKG", "Girua Airport - Girua, Papua New Guinea": "PNP", "Boulia Airport - Boulia, Australia": "BQL", "Tresco Heliport - Tresco, United Kingdom": "TSO", "Mendi Airport - Mendi, Papua New Guinea": "MDU", "Chernigov - Chernigov, Ukraine": "CEJ", "Elmas - Cagliari, Italy": "CAG", "Kodiak - Kodiak, United States": "ADQ", "Norway House Airport - Norway House, Canada": "YNE", "Minsk 2 - Minsk 2, Belarus": "MSQ", "Fox Glacier Airstrip - Fox Glacier, New Zealand": "FGL", "Lilabari - Lilabari, India": "IXI", "Fort Chipewyan - Fort Chipewyan, Canada": "YPY", "Tri-Cities Regional Airport - BRISTOL, United States": "TRI", "Hatfield - Hatfield, United Kingdom": "HTF", "Flinders Island Airport - Flinders Island, Australia": "FLS", "Kangiqsualujjuaq (Georges River) Airport - Kangiqsualujjuaq, Canada": "XGR", "Orenburg - Orenburg, Russia": "REN", "Nelspruit Airport - Nelspruit, South Africa": "NLP", "Clarksville-Montgomery County Regional Airport - Clarksville, United States": "CKV", "Lech Walesa - Gdansk, Poland": "GDN", "Gannan - Xiahe city, China": "GXH", "Niagara District - Saint Catherines, Canada": "YCM", "Monroe Rgnl - Monroe, United States": "MLU", "Dryden Rgnl - Dryden, Canada": "YHD", "Lisala - Lisala, Congo (Kinshasa)": "LIQ", "Lins - Lins, Brazil": "LIP", "Geneina Airport - Geneina, Sudan": "EGN", "Karlstad Airport - Karlstad, Sweden": "KSD", "Ishurdi - Ishurdi, Bangladesh": "IRD", "Aosta Airport - Aosta, Italy": "AOT", "Dresden - Dresden, Germany": "DRS", "Nellis Afb - Las Vegas, United States": "LSV", "Wenzhou Yongqiang Airport - Wenzhou, China": "WNZ", "Choibalsan Airport - Choibalsan, Mongolia": "COQ", "Jijel - Jijel, Algeria": "GJL", "Chu Lai - Chu Lai, Vietnam": "VCL", "Kapalua - Lahania-kapalua, United States": "JHM", "Old Crow - Old Crow, Canada": "YOC", "Panama City-NW Florida Bea. - Panama City, United States": "ECP", "Logro\u00f1o-Agoncillo Airport - Logro\u00f1o-Agoncillo, Spain": "RJL", "Whittlesford Parkway Rail Station - Whittlesford, United Kingdom": "WLF", "Flin Flon - Flin Flon, Canada": "YFO", "Santa Maria Pub Cpt G Allan Hancock Airport - Santa Maria, United States": "SMX", "Norfolk Intl - Norfolk, United States": "ORF", "Klamath Falls Airport - Klamath Falls, United States": "LMT", "Mvengue - Franceville, Gabon": "MVB", "Sacheon Air Base - Sacheon, South Korea": "HIN", "Kuantan - Kuantan, Malaysia": "KUA", "Savoonga Airport - Savoonga, United States": "SVA", "Moenjodaro - Moenjodaro, Pakistan": "MJD", "Orestes Acosta - Moa, Cuba": "MOA", "Regina Intl - Regina, Canada": "YQR", "Rocky Mount Wilson Regional Airport - Rocky Mount, United States": "RWI", "Telluride - Telluride, United States": "TEX", "Villa Dolores - Villa Dolores, Argentina": "VDR", "Capitan Nicolas Rojas - Potosi, Bolivia": "POI", "Doha Free Zone Airport - Doha, Qatar": "XOZ", "Chenega Bay Airport - Chenega, United States": "NCN", "Lamezia Terme - Lamezia, Italy": "SUF", "Ayers Rock - Uluru, Australia": "AYQ", "Bathurst Island Airport - Bathurst Island, Australia": "BRT", "Kalay Airport - Kalemyo, Myanmar": "KMV", "Hachijojima - Hachijojima, Japan": "HAC", "Tegel - Berlin, Germany": "TXL", "Omsk - Omsk, Russia": "OMS", "Lemoore Nas - Lemoore, United States": "NLC", "St-Fran\u00e7ois Airport - St-Fran\u00e7ois, Guadeloupe": "SFC", "Ambrosio L V Taravella - Cordoba, Argentina": "COR", "Carriel Sur Intl - Concepcion, Chile": "CCP", "Vorkuta Airport - Vorkuta, Russia": "VKT", "Gatineau - Gatineau, Canada": "YND", "Mansfield Municipal - Mansfield, United States": "1B9", "Naypyidaw - Naypyidaw, Burma": "ELA", "Varanasi - Varanasi, India": "VNS", "Wuxu - Nanning, China": "NNG", "Shelby County Airport - Alabaster, United States": "EET", "Broken Hill Airport - Broken Hill, Australia": "BHQ", "Memanbetsu - Memanbetsu, Japan": "MMB", "Tununak Airport - Tununak, United States": "TNK", "Sao Carlos TAM - Sao Carlos, Brazil": "QSC", "Moffett Federal Afld - Mountain View, United States": "NUQ", "Bario Airport - Bario, Malaysia": "BBN", "Huangyan Luqiao Airport - Huangyan, China": "HYN", "Moosonee - Moosonee, Canada": "YMO", "Canefield - Canefield, Dominica": "DCF", "Galway - Galway, Ireland": "GWY", "Pau Pyrenees - Pau, France": "PUF", "Oshima - Oshima, Japan": "OIM", "Bydgoszcz Ignacy Jan Paderewski Airport - Bydgoszcz, Poland": "BZG", "Koumac - Koumac, New Caledonia": "KOC", "Mount Pleasant - Mount Pleasant, Falkland Islands": "MPN", "Mount Gambier Airport - Mount Gambier, Australia": "MGB", "East London - East London, South Africa": "ELS", "Nogales Intl - Nogales, United States": "OLS", "La Florida - La Serena, Chile": "LSC", "Matak Airport - Anambas Islands, Indonesia": "MWK", "Kaufana Airport - Eua Island, Tonga": "EUA", "Hartsfield Jackson Atlanta Intl - Atlanta, United States": "ATL", "Zenata - Tlemcen, Algeria": "TLM", "Malacca - Malacca, Malaysia": "MKZ", "Abraham Gonzalez Intl - Ciudad Juarez, Mexico": "CJS", "Bonriki Intl - Tarawa, Kiribati": "TRW", "Pajala Airport - Pajala, Sweden": "PJA", "Fresh Creek - Andros Town, Bahamas": "ASD", "Greenwood Leflore - Greenwood, United States": "GWO", "Lake Manyara - Lake Manyara, Tanzania": "LKY", "Hanamaki - Hanamaki, Japan": "HNA", "Dien Bien Phu Airport - Dienbienphu, Vietnam": "DIN", "Collin County Regional Airport at Mc Kinney - DALLAS, United States": "TKI", "Meucon - Vannes, France": "VNE", "Port Hardy - Port Hardy, Canada": "YZT", "Khajuraho - Khajuraho, India": "HJR", "Belgorod International Airport - Belgorod, Russia": "EGO", "Babanakira Airport - Mbambanakira, Solomon Islands": "MBU", "Grand Forks Intl - Grand Forks, United States": "GFK", "Lombok International Airport - Praya, Indonesia": "LOP", "Arturo Michelena Intl - Valencia, Venezuela": "VLN", "Youngstown Warren Rgnl - Youngstown, United States": "YNG", "Kisimayu - Kismayu, Somalia": "KMU", "Gisborne - Gisborne, New Zealand": "GIS", "Sachs Harbour - Sachs Harbour, Canada": "YSY", "Brooks Field Airport - Marshall, United States": "RMY", "McCook Regional Airport - McCook, United States": "MCK", "Johnston Atoll - Johnston Island, Johnston Atoll": "JON", "Long Apung Airport - Long Apung-Borneo Island, Indonesia": "LPU", "Felker Aaf - Fort Eustis, United States": "FAF", "Magnitogorsk - Magnetiogorsk, Russia": "MQF", "Lanyu - Lanyu, Taiwan": "KYD", "Mariehamn - Mariehamn, Finland": "MHQ", "Tri-County Regional Airport - Lone Rock, United States": "LNR", "Uranium City Airport - Uranium City, Canada": "YBE", "Kimbe Airport - Hoskins, Papua New Guinea": "HKN", "Coleman A Young Muni - Detroit, United States": "DET", "Fukuoka - Fukuoka, Japan": "FUK", "Carrasco Intl - Montevideo, Uruguay": "MVD", "Vermilion - Vermillion, Canada": "YVG", "Soekarno Hatta Intl - Jakarta, Indonesia": "CGK", "Gaspe - Gaspe, Canada": "YGP", "Fort Stockton Pecos Co - Fort Stockton, United States": "FST", "Zagreb - Zagreb, Croatia": "ZAG", "Bimini North Seaplane Base - Bimini, Bahamas": "NSB", "Dix Sept Rosado Airport - Mossoro, Brazil": "MVF", "Barreiras Airport - Barreiras, Brazil": "BRA", "Arlanda - Stockholm, Sweden": "ARN", "Chadron Municipal Airport - Chadron, United States": "CDR", "Issyk-Kul International Airport - Tamchy, Kyrgyzstan": "\u0418\u041a\u0423", "Kavieng Airport - Kavieng, Papua New Guinea": "KVG", "Pecos Municipal Airport - Pecos, United States": "PEQ", "Cap Skiring - Cap Skiring, Senegal": "CSK", "Olga Bay Seaplane Base - Olga Bay, United States": "KOY", "Chileka Intl - Blantyre, Malawi": "BLZ", "Antsirabe - Antsirabe, Madagascar": "ATJ", "Cherokee County Airport - Canton, United States": "47A", "Tamuin - Tamuin, Mexico": "TSL", "Jamshedpur - Jamshedpur, India": "IXW", "Geraldton Greenstone Regional - Geraldton, Canada": "YGQ", "Gilbert Airport - Winter Haven, United States": "GIF", "Isla Mujeres - Isla Mujeres, Mexico": "ISJ", "Aggeneys - Aggeneys, South Africa": "AGZ", "Gbangbatok Airport - Gbangbatok, Sierra Leone": "GBK", "St George Muni - Saint George, United States": "SGU", "Bautzen - Bautzen, Germany": "BBJ", "Quad City Intl - Moline, United States": "MLI", "Matsu Nangan Airport - Matsu Islands, Taiwan": "LZN", "St Agnant - Rochefort, France": "RCO", "Vandenberg Afb - Lompoc, United States": "VBG", "Ostbahnhof - Berlin, Germany": "BHF", "Quebec Jean Lesage Intl - Quebec, Canada": "YQB", "Chokurdakh Airport - Chokurdah, Russia": "CKH", "Cape Lisburne Lrrs - Cape Lisburne, United States": "LUR", "Juan Santamaria Intl - San Jose, Costa Rica": "SJO", "Tula - Tula, Russia": "TYA", "Kirkwall - Kirkwall, United Kingdom": "KOI", "Napa County Airport - Napa, United States": "APC", "Moundou - Moundou, Chad": "MQQ", "Enyu Airfield - Bikini Atoll, Marshall Islands": "BII", "Inukjuak Airport - Inukjuak, Canada": "YPH", "Eldoret Intl - Eldoret, Kenya": "EDL", "Tulita - Tulita, Canada": "ZFN", "Aurukun Airport - Aurukun, Australia": "AUU", "Lamidanda - Lamidanda, Nepal": "LDN", "Coll Airport - Coll, United Kingdom": "COL", "Gazipasa Airport - Alanya, Turkey": "GZP", "Dionysios Solomos - Zakynthos, Greece": "ZTH", "Red Devil Airport - Red Devil, United States": "RDV", "Wick - Wick, United Kingdom": "WIC", "Regensburg HBF - Regensburg, Germany": "RGB", "Godofredo P - Caticlan, Philippines": "MPH", "Wonju Airport - Wonju, South Korea": "WJU", "Whyalla Airport - Whyalla, Australia": "WYA", "Santa Barbara Del Zulia - Santa Barbara, Venezuela": "STB", "Trabzon - Trabzon, Turkey": "TZX", "Kaikoura - Kaikoura, New Zealand": "KBZ", "Rach Gia - Rach Gia, Vietnam": "VKG", "Levaldigi - Cuneo, Italy": "CUF", "Alcides Fernandez Airport - Acandi, Colombia": "ACD", "Meghauli Airport - Meghauli, Nepal": "MEY", "Lost Nation Municipal Airport - Willoughby, United States": "LNN", "Gogebic Iron County Airport - Ironwood, United States": "IWD", "Las Cruces Intl - Las Cruces, United States": "LRU", "Tela - Tela, Honduras": "TEA", "Juancho E. Yrausquin - Saba, Netherlands Antilles": "SAB", "El Salvador Intl - San Salvador, El Salvador": "SAL", "Robertson Field - Plainville, United States": "4B8", "Yokota Ab - Yokota, Japan": "OKO", "Plantation Airpark - Sylvania, United States": "JYL", "Rosario Seaplane Base - Rosario, United States": "RSJ", "Pakhokku Airport - Pakhokku, Burma": "PKK", "Bolshoye Savino - Perm, Russia": "PEE", "Saurimo - Saurimo, Angola": "VHC", "Nioki Airport - Nioki, Congo (Kinshasa)": "NIO", "Opa Locka - Miami, United States": "OPF", "Beloyarsky - Beloyarsky, Russia": "EYK", "Sao Tome Intl - Sao Tome, Sao Tome and Principe": "TMS", "Jefman - Sorong, Indonesia": "SOQ", "Augsburg HBF - Augsburg, Germany": "AUB", "Maroantsetra - Maroantsetra, Madagascar": "WMN", "Shire Inda Selassie Airport - Shire Indasilase, Ethiopia": "SHC", "Oostende - Ostend, Belgium": "OST", "Antonio Jose De Sucre - Cumana, Venezuela": "CUM", "Jimma - Jimma, Ethiopia": "JIM", "Frankfurt-Main Hauptbahnhof - Frankfurt, Germany": "ZRB", "Cold Lake - Cold Lake, Canada": "YOD", "Hamilton Airport - Hamilton, Australia": "HLT", "Sydney Bankstown - Sydney, Australia": "BWU", "Hattiesburg Bobby L. Chain Municipal Airport - Hattiesburg, United States": "HBG", "Moorea - Moorea, French Polynesia": "MOZ", "Batna Airport - Batna, Algeria": "BLJ", "Benina - Benghazi, Libya": "BEN", "Comandante Gustavo Kraemer - Bage, Brazil": "BGX", "Colonel Hill Airport - Colonel Hill, Bahamas": "CRI", "Marechal Rondon - Cuiaba, Brazil": "CGB", "Ferry County Airport - Republic, United States": "R49", "Sir Seretse Khama Intl - Gaberone, Botswana": "GBE", "Jesus Teran Intl - Aguascalientes, Mexico": "AGU", "Furstenfeldbruck - Fuerstenfeldbruck, Germany": "FEL", "Beaver Falls - Beaver Falls, United States": "BFP", "Goose Bay - Goose Bay, Canada": "YYR", "Mananjary - Mananjary, Madagascar": "MNJ", "Chemehuevi Valley - Chemehuevi Valley, United States": "49X", "Antonio Maceo Intl - Santiago De Cuba, Cuba": "SCU", "Maputo - Maputo, Mozambique": "MPM", "El Obeid - El Obeid, Sudan": "EBD", "Baracoa - Magangue, Colombia": "MGN", "Carlos Manuel De Cespedes - Bayamo, Cuba": "BYM", "El Eden - Armenia, Colombia": "AXM", "Jaime Gonzalez - Cienfuegos, Cuba": "CFG", "Los Angeles Intl - Los Angeles, United States": "LAX", "Buckley Afb - Buckley, United States": "BKF", "Kruunupyy - Kruunupyy, Finland": "KOK", "Andahuaylas - Andahuaylas, Peru": "ANS", "Wokal Field Glasgow International Airport - Glasgow, United States": "GGW", "Shute Harbour - Shute Harbour, Australia": "JHQ", "Dasoguz Airport - Dasoguz, Turkmenistan": "TAZ", "Balice - Krakow, Poland": "KRK", "Girona - Gerona, Spain": "GRO", "Pathein Airport - Pathein, Burma": "BSX", "Savannah Hilton Head Intl - Savannah, United States": "SAV", "Herrera International Airport - Santo Domingo, Dominican Republic": "HEX", "Tatitlek Airport - Tatitlek, United States": "TEK", "Corrientes - Corrientes, Argentina": "CNQ", "Chapeco - Chapeco, Brazil": "XAP", "Fairford - Fairford, United Kingdom": "FFD", "Wainwright Airport - Wainwright, United States": "AIN", "Martin Campbell Field Airport - Copperhead, United States": "1A3", "Avaratra - Mananara, Madagascar": "WMR", "Monaco - Monaco, Monaco": "MCM", "Majkin Airport - Majkin, Marshall Islands": "MJE", "Pohnpei Intl - Pohnpei, Micronesia": "PNI", "Beira - Beira, Mozambique": "BEW", "Great Keppel Island - Great Keppel Island, Australia": "GKL", "Brantford - Brantford, Canada": "YFD", "Tari Airport - Tari, Papua New Guinea": "TIZ", "Sigiriya Airport - Sigiriya, Sri Lanka": "GIU", "Eagle County Airport - Eagle, United States": "EGA", "Abadan - Abadan, Iran": "ABD", "Cold Bay - Cold Bay, United States": "CDB", "Senador Petronio Portella - Teresina, Brazil": "THE", "Kumejima - Kumejima, Japan": "UEO", "Tabiteuea North - Tabiteuea North, Kiribati": "TBF", "Train Station - Winnipeg, Canada": "XEF", "Santo Pekoa International Airport - Santo, Vanuatu": "SON", "Heroes Del Acre - Cobija, Bolivia": "CIJ", "Knoxville Downtown Island Airport - Knoxville, United States": "DKX", "Gustavo Rizo - Baracoa Playa, Cuba": "BCA", "Sangafa Airport - Sangafa, Vanuatu": "EAE", "Aarhus - Aarhus, Denmark": "AAR", "Effingham Memorial Airport - Effingham, United States": "1H2", "Ouagadougou - Ouagadougou, Burkina Faso": "OUA", "Kisangani Simisini - Kisangani, Congo (Kinshasa)": "FKI", "Bhojpur - Bhojpur, Nepal": "BHP", "Corpus Christi Intl - Corpus Christi, United States": "CRP", "Mataiva - Mataiva, French Polynesia": "MVT", "Sartaneja Airport - Sarteneja, Belize": "SJX", "Prince Albert Glass Field - Prince Albert, Canada": "YPA", "Yining Airport - Yining, China": "YIN", "Samarkand - Samarkand, Uzbekistan": "SKD", "Sault Ste Marie - Sault Sainte Marie, Canada": "YAM", "Heidelberg - Heidelberg, Germany": "HDB", "Centraal - Antwerp, Belgium": "ZWE", "Columbia County - Hudson NY, United States": "HCC", "Tiko - Tiko, Cameroon": "TKC", "Round Lake (Weagamow Lake) Airport - Round Lake, Canada": "ZRJ", "Le Bourget - Paris, France": "LBG", "St Marys Airport - St Mary's, United States": "KSM", "T\u00eate-\u00e0-la-Baleine Airport - T\u00eate-\u00e0-la-Baleine, Canada": "ZTB", "Mont Joli - Mont Joli, Canada": "YYY", "Winton Airport - Winton, Australia": "WIN", "Chicago Midway Intl - Chicago, United States": "MDW", "La Tabati\u00e8re Airport - La Tabati\u00e8re, Canada": "ZLT", "Alto Rio Senguer Airport - Alto Rio Senguer, Argentina": "ARR", "Waterloo - Waterloo, Canada": "YKF", "Riverton Regional - Riverton WY, United States": "RIW", "Timiskaming Rgnl - Earlton, Canada": "YXR", "Bandundu - Bandoundu, Congo (Kinshasa)": "FDU", "Cicia Airport - Cicia, Fiji": "ICI", "Sao Jorge - Sao Jorge Island, Portugal": "SJZ", "Aracatuba - Aracatuba, Brazil": "ARU", "Whitehorse Intl - Whitehorse, Canada": "YXY", "Bokondini Airport - Bokondini-Papua Island, Indonesia": "BUI", "Tiksi Airport - Tiksi, Russia": "IKS", "Kuini Lavenia Airport - Niuatoputapu, Tonga": "NTT", "Livingstone - Livingstone, Zambia": "LVI", "Strezhevoy - Strezhevoy, Russia": "SWT", "Dinwiddie County Airport - Petersburg, United States": "PTB", "Mc Alester Rgnl - Mcalester, United States": "MLC", "Hoedspruit Afb - Hoedspruit, South Africa": "HDS", "Armidale - Armidale, Australia": "ARM", "Carlisle - Carlisle, United Kingdom": "CAX", "Santa Ana Airport - Santa Ana, Solomon Islands": "NNB", "V\u00e6r\u00f8y Heliport - V\u00e6r\u00f8y, Norway": "VRY", "Sao Felix do Araguaia Airport - Sao Felix do Araguaia, Brazil": "SXO", "Penrhyn Island Airport - Penrhyn Island, Cook Islands": "PYE", "Capitan Fap Guillermo Concha Iberico - Piura, Peru": "PIU", "Central - Copenhagen, Denmark": "ZGH", "Patos de Minas Airport - Patos de Minas, Brazil": "POJ", "Inishmaan Aerodrome - Inishmaan, Ireland": "IIA", "La Aurora - Guatemala City, Guatemala": "GUA", "Basango Mboliasa Airport - Kiri, Congo (Kinshasa)": "KRZ", "Cambridge Bay - Cambridge Bay, Canada": "YCB", "Kahramanmaras Airport - Kahramanmaras, Turkey": "KCM", "Angers-Loire Airport - Angers/Marc\u00e9, France": "ANE", "Tsaratanana Airport - Tsaratanana, Madagascar": "TTS", "Fort Lauderdale Executive - Fort Lauderdale, United States": "FXE", "Nikos Kazantzakis - Heraklion, Greece": "HER", "Kuria Airport - Kuria, Kiribati": "KUC", "Caucaya Airport - Puerto Legu\u00edzamo, Colombia": "LQM", "Chub Cay - Chub Cay, Bahamas": "CCZ", "Charleston Afb Intl - Charleston, United States": "CHS", "Capitan Oriel Lea Plaza - Tarija, Bolivia": "TJA", "Burlington-Alamance Regional Airport - Burlington, United States": "BUY", "Legazpi - Legazpi, Philippines": "LGP", "Radin Inten II (Branti) Airport - Bandar Lampung-Sumatra Island, Indonesia": "TKG", "Fagali\\\\'i - Apia, Samoa": "FGI", "Calabar - Calabar, Nigeria": "CBQ", "Parachinar Airport - Parachinar, Pakistan": "PAJ", "Kosice - Kosice, Slovakia": "KSC", "Enrique Malek Intl - David, Panama": "DAV", "Muan - Muan, South Korea": "MWX", "Akron Canton Regional Airport - Akron, United States": "CAK", "Kiunga Airport - Kiunga, Papua New Guinea": "UNG", "Drake Fld - Fayetteville, United States": "FYV", "Coonamble Airport - Coonamble, Australia": "CNB", "Andizhan Airport - Andizhan, Uzbekistan": "AZN", "Greater Binghamton Edwin A Link Fld - Binghamton, United States": "BGM", "Jacksonville Nas - Jacksonville, United States": "NIP", "Maria Reiche Neuman Airport - Nazca, Peru": "NZA", "Lubbock Preston Smith Intl - Lubbock, United States": "LBB", "Awasa Airport - Awasa, Ethiopia": "AWA", "Deer Harbor Seaplane - Deer Harbor, United States": "DHB", "Salina Cruz Naval Air Station - Salina Cruz, Mexico": "SCX", "Balkanabat - Balkanabat, Turkmenistan": "BKN", "Dunk Island Airport - Dunk Island, Australia": "DKI", "Mamitupo - Mamitupo, Panama": "MPU", "Mashhad - Mashhad, Iran": "MHD", "Cheongju International Airport - Chongju, South Korea": "CJJ", "Gan Island Airport - Gan Island, Maldives": "GAN", "Lac Brochet Airport - Lac Brochet, Canada": "XLB", "Metropolitan Oakland Intl - Oakland, United States": "OAK", "Northwest Alabama Regional Airport - Muscle Shoals, United States": "MSL", "Bonaventure Airport - Bonaventure, Canada": "YVB", "Tzaneen - Tzaneen, South Africa": "LTA", "Saint Exupery - Lyon, France": "LYS", "Rodriguez Ballon - Arequipa, Peru": "AQP", "Brown Field Municipal Airport - San Diego, United States": "SDM", "Ladysmith - Ladysmith, South Africa": "LAY", "Tavaux - Dole, France": "DLE", "Crisp County Cordele Airport - Cordele, United States": "CKF", "Heber City Municipal Airport - Heber, United States": "36U", "Pohang - Pohang, South Korea": "KPO", "Orpheus Island - Orpheus Island, Australia": "ORS", "Kajaani - Kajaani, Finland": "KAJ", "Vanimo Airport - Vanimo, Papua New Guinea": "VAI", "Atar - Atar, Mauritania": "ATR", "Neerlerit Inaat Airport - Neerlerit Inaat, Greenland": "CNP", "Masset Airport - Masset, Canada": "ZMT", "Maniwaki - Maniwaki, Canada": "YMW", "Madurai - Madurai, India": "IXM", "Northeast Alabama Regional Airport - Gadsden, United States": "GAD", "Capodichino - Naples, Italy": "NAP", "Golovin Airport - Golovin, United States": "GLV", "Munich HBF - Munich, Germany": "MUQ", "Machu Pichu Airport - Machu Pichu, Peru": "MFT", "Sheremetyevo - Moscow, Russia": "SVO", "Benguela - Benguela, Angola": "BUG", "North Central State - Smithfield, United States": "SFZ", "Mayumba Airport - Mayumba, Gabon": "MYB", "Blackbushe - Blackbushe, United Kingdom": "BBS", "Arnsberg Menden - Arnsberg, Germany": "ZCA", "Tshikapa Airport - Tshikapa, Congo (Kinshasa)": "TSH", "Yeosu - Yeosu, South Korea": "RSU", "Venetie Airport - Venetie, United States": "VEE", "Sarasota Bradenton Intl - Sarasota, United States": "SRQ", "Hof Plauen - Hof, Germany": "HOQ", "Billund - Billund, Denmark": "BLL", "Rock Hill York Co Bryant Airport - Rock Hill, United States": "RKH", "Woodbourne - Woodbourne, New Zealand": "BHE", "Xilinhot Airport - Xilinhot, China": "XIL", "Norderney - Norderney, Germany": "NRD", "Faleolo Intl - Faleolo, Samoa": "APW", "Mackinac Island Airport - Mackinac Island, United States": "MCD", "Tokua Airport - Tokua, Papua New Guinea": "RAB", "Unalakleet Airport - Unalakleet, United States": "UNK", "El Borma - El Borma, Tunisia": "EBM", "Birjand - Birjand, Iran": "XBJ", "Concord Municipal - Concord NH, United States": "CON", "Chefornak Airport - Chefornak, United States": "CYF", "Beaumont Municipal - Beaumont, United States": "BMT", "Princess Juliana Intl - Philipsburg, Netherlands Antilles": "SXM", "Fort William Heliport - Fort William, United Kingdom": "FWM", "Mackenzie Airport - Mackenzie British Columbia, Canada": "YZY", "Grand Forks Afb - Red River, United States": "RDR", "Ignatyevo - Blagoveschensk, Russia": "BQS", "Achutupo Airport - Achutupo, Panama": "ACU", "Sidney-Richland Municipal Airport - Sidney, United States": "SDY", "Vityazevo - Anapa, Russia": "AAQ", "Helgoland-D\u00fcne Airport - Helgoland, Germany": "HGL", "Nantong Airport - Nantong, China": "NTG", "Worcester Regional Airport - Worcester, United States": "ORH", "Thargomindah Airport - Thargomindah, Australia": "XTG", "Neuchatel Airport - Neuchatel, Switzerland": "QNC", "Gerrard Smith Intl - Cayman Barac, Cayman Islands": "CYB", "Yam Island Airport - Yam Island, Australia": "XMY", "Sanaa Intl - Sanaa, Yemen": "SAH", "Gamal Abdel Nasser Airport - Tobruk, Libya": "TOB", "Tatalina Lrrs - Tatalina, United States": "TLJ", "Nizhny Novgorod - Nizhniy Novgorod, Russia": "GOJ", "Train Station - Churchill, Canada": "XAD", "Regional Airport - Statesville, United States": "SVH", "Kadena Ab - Kadena, Japan": "DNA", "Darnley Island Airport - Darnley Island, Australia": "NLF", "Sholapur - Sholapur, India": "SSE", "Ciudad Del Carmen Intl - Ciudad Del Carmen, Mexico": "CME", "Ourilandia do Norte Airport - Ourilandia do Norte, Brazil": "OIA", "Ust-Ilimsk - Ust Ilimsk, Russia": "UIK", "Tuluksak Airport - Tuluksak, United States": "TLT", "Mwanza - Mwanza, Tanzania": "MWZ", "Ploujean - Morlaix, France": "MXN", "Pula - Pula, Croatia": "PUY", "Gumrak - Volgograd, Russia": "VOG", "Enejit Airport - Enejit, Marshall Islands": "EJT", "Preguica - Sao Nocolau Island, Cape Verde": "SNE", "Whitianga Airport - Whitianga, New Zealand": "WTZ", "Mustique - Mustique, Saint Vincent and the Grenadines": "MQS", "Olbia Costa Smeralda - Olbia, Italy": "OLB", "Maun - Maun, Botswana": "MUB", "Westray Airport - Westray, United Kingdom": "WRY", "Diyarbakir - Diyabakir, Turkey": "DIY", "Rafsanjan Airport - Rafsanjan, Iran": "RJN", "Pocos De Caldas - Pocos De Caldas, Brazil": "POO", "Rock Sound - Rock Sound, Bahamas": "RSD", "Lake Wales Municipal Airport - Lake Wales, United States": "X07", "Almeria - Almeria, Spain": "LEI", "Whidbey Island Nas - Whidbey Island, United States": "NUW", "Caye Chapel Airport - Caye Chapel, Belize": "CYC", "Kandahar - Kandahar, Afghanistan": "KDH", "Reynolds Field - Jackson, United States": "JXN", "New Plymouth - New Plymouth, New Zealand": "NPL", "Tambow - Tambow, Russia": "TBW", "Ilford Airport - Ilford, Canada": "ILF", "Coffman Cove Seaplane Base - Coffman Cove, United States": "KCC", "Alexandria - Alexandria, United States": "ALX", "Hoonah Airport - Hoonah, United States": "HNH", "Brainerd Lakes Rgnl - Brainerd, United States": "BRD", "Tajin - Poza Rico, Mexico": "PAZ", "Chatham Seaplane Base - Sitka, United States": "CYM", "Chaurjhari - Chaurjhari, Nepal": "HRJ", "Grand Marais Cook County Airport - Grand Marais, United States": "GRM", "Brigham City - Brigham City, United States": "BMC", "Lebanon Municipal Airport - Lebanon, United States": "LEB", "General Manuel Marquez De Leon Intl - La Paz, Mexico": "LAP", "Gamba - Gamba, Gabon": "GAX", "Jining Airport  - Jining, China": "JNG", "Acadiana Rgnl - Louisiana, United States": "ARA", "Ilam Airport - Ilam, Iran": "IIL", "Labasa Airport - Lambasa, Fiji": "LBS", "Creech Afb - Indian Springs, United States": "INS", "Pendopo Airport - Talang Gudang-Sumatra Island, Indonesia": "PDO", "Elim Airport - Elim, United States": "ELI", "Murray Island Airport - Murray Island, Australia": "MYI", "Maimun Saleh - Sabang, Indonesia": "SBG", "Kalokol - Kalokol, Kenya": "KLK", "Qeqertarsuaq Heliport - Qeqertarsuaq Airport, Greenland": "JGO", "Tatry - Poprad, Slovakia": "TAT", "Bacacheri - Curitiba, Brazil": "BFH", "Cheboksary Airport - Cheboksary, Russia": "CSY", "Matari - Isiro, Congo (Kinshasa)": "IRP", "Tapuruquara Airport - Santa Isabel do Rio Negro, Brazil": "IRZ", "Calicut - Calicut, India": "CCJ", "Almirante Zar - Trelew, Argentina": "REL", "Malpensa - Milano, Italy": "MXP", "Hyder Seaplane Base - Hyder, United States": "WHD", "Lake Charles Rgnl - Lake Charles, United States": "LCH", "Lamen Bay Airport - Lamen Bay, Vanuatu": "LNB", "Jorge Chavez Intl - Lima, Peru": "LIM", "Mare - Mare, New Caledonia": "MEE", "Bern Belp - Bern, Switzerland": "BRN", "Mc Kellar Sipes Rgnl - Jackson, United States": "MKL", "Altenburg Nobitz - Altenburg, Germany": "AOC", "Kirksville Regional Airport - Kirksville, United States": "IRK", "Professor Urbano Ernesto Stumpf - Sao Jose Dos Campos, Brazil": "SJK", "Maio - Maio, Cape Verde": "MMO", "Union Station - Toronto, Canada": "YBZ", "Parry Sound - Parry Sound, Canada": "YPD", "Lozuvatka International Airport - Krivoy Rog, Ukraine": "KWG", "Proserpine Whitsunday Coast - Prosserpine, Australia": "PPP", "Noumerat - Ghardaia, Algeria": "GHA", "Teterboro - Teterboro, United States": "TEB", "Carnarvon Airport - Carnarvon, Australia": "CVQ", "Playon Chico - Playon Chico, Panama": "PYC", "B\u00e9char Boudghene Ben Ali Lotfi Airport - B\u00e9char, Algeria": "CBH", "Bodrum - Milas - Bodrum, Turkey": "BJV", "San Crist\u00f3bal Airport - San Crist\u00f3bal, Ecuador": "SCY", "Canadian Rockies Intl - Cranbrook, Canada": "YXC", "Quelimane - Quelimane, Mozambique": "UEL", "Robe Airport - Goba, Ethiopia": "GOB", "Tampere Pirkkala - Tampere, Finland": "TMP", "Paradise Island Seaplane Base - Nassau, Bahamas": "WZY", "El Arish International Airport - El Arish, Egypt": "AAC", "Fak Fak - Fak Fak, Indonesia": "FKQ", "La Managua - Quepos, Costa Rica": "XQP", "Aviador C Campos - San Martin Des Andes, Argentina": "CPC", "Kokshetau Airport - Kokshetau, Kazakhstan": "KOV", "Taldykorgan Airport - Taldykorgan, Kazakhstan": "TDK", "Patuxent River Nas - Patuxent River, United States": "NHK", "Spirit Of St Louis - Null, United States": "SUS", "Penzance Heliport - Penzance, United Kingdom": "PZE", "Willow Run - Detroit, United States": "YIP", "Albert Whitted - St. Petersburg, United States": "SPG", "Alice Springs - Alice Springs, Australia": "ASP", "Tucupita - Tucupita, Venezuela": "TUV", "Silchar - Silchar, India": "IXS", "Benito Salas - Neiva, Colombia": "NVA", "Hang Nadim - Batam, Indonesia": "BTH", "Sukhothai - Sukhothai, Thailand": "THS", "Batuna Airport - Batuna, Solomon Islands": "BPF", "Bandaranaike Intl Colombo - Colombo, Sri Lanka": "CMB", "Romblon Airport - Romblon, Philippines": "TBH", "Swakopmund Airport - Swakopmund, Namibia": "SWP", "Kirkland Lake - Kirkland Lake, Canada": "YKX", "Aomori - Aomori, Japan": "AOJ", "Olaya Herrera - Medellin, Colombia": "EOH", "March Arb - Riverside, United States": "RIV", "Port Vila Bauerfield - Port-vila, Vanuatu": "VLI", "Provo Municipal Airport - Provo, United States": "PVU", "Brus Laguna Airport - Brus Laguna, Honduras": "BHG", "North Caicos - North Caicos, Turks and Caicos Islands": "NCA", "New Bedford Regional Airport - New Bedford, United States": "EWB", "Rio Sidra - Rio Sidra, Panama": "RSI", "Watson Lake - Watson Lake, Canada": "YQH", "Lerwick / Tingwall Airport - Lerwick, United Kingdom": "LWK", "Humera Airport - Humera, Ethiopia": "HUE", "Eastmain River Airport - Eastmain River, Canada": "ZEM", "Yenbo - Yenbo, Saudi Arabia": "YNB", "Wake Island Afld - Wake island, Wake Island": "AWK", "Devonport Airport - Devonport, Australia": "DPO", "Fitzroy Crossing Airport - Fitzroy Crossing, Australia": "FIZ", "Fort Severn Airport - Fort Severn, Canada": "YER", "Petawawa - Petawawa, Canada": "YWA", "Hilversum Railway Station - Hilversum, Netherlands": "QYI", "Menongue - Menongue, Angola": "SPP", "Lodja Airport - Lodja, Congo (Kinshasa)": "LJA", "Datong Airport - Datong, China": "DAT", "Futuna Airport - Futuna Island, Vanuatu": "FTA", "Funafuti International - Funafuti, Tuvalu": "FUN", "Pike County Airport - Hatcher Field - Pikeville, United States": "PBX", "Palmerston North - Palmerston North, New Zealand": "PMR", "Mono Airport - Stirling Island, Solomon Islands": "MNY", "Orlando Sanford Intl - Sanford, United States": "SFB", "Brunswick Golden Isles Airport - Brunswick, United States": "BQK", "Vinnitsa - Vinnitsa, Ukraine": "VIN", "Praia International Airport - Praia,  Santiago Island": "Cape Verde", "Skavsta - Stockholm, Sweden": "NYO", "Mount Hotham Airport - Mount Hotham, Australia": "MHU", "Lambarene - Lambarene, Gabon": "LBQ", "Boca Raton - Boca Raton, United States": "BCT", "Marudi - Marudi, Malaysia": "MUR", "Dibrugarh Airport - Dibrugarh, India": "DIB", "Awaba Airport - Awaba, Papua New Guinea": "AWB", "Richmond Municipal Airport - Richmond, United States": "RID", "Baden Airpark - Karlsruhe/Baden-Baden, Germany": "FKB", "Anglet - Biarritz-bayonne, France": "BIQ", "Santa Cruz - Santa Cruz, Bolivia": "SRZ", "Dallas Fort Worth Intl - Dallas-Fort Worth, United States": "DFW", "Mount Cook - Mount Cook, New Zealand": "GTN", "Mouilla Ville Airport - Mouila, Gabon": "MJL", "Ipota Airport - Ipota, Vanuatu": "IPA", "Iginniarfik Heliport - Iginniarfik, Greenland": "QFI", "Shoreham - Shoreham By Sea, United Kingdom": "ESH", "Dawson Community Airport - Glendive, United States": "GDV", "Ouvea - Ouvea, New Caledonia": "UVE", "Lewis University Airport - Lockport, United States": "LOT", "Whale Cove Airport - Whale Cove, Canada": "YXN", "Kastrup - Copenhagen, Denmark": "CPH", "Mbandaka - Mbandaka, Congo (Kinshasa)": "MDK", "Bari - Bari, Italy": "BRI", "Kamarang Airport - Kamarang, Guyana": "KAR", "New Bight Airport - Cat Island, Bahamas": "CAT", "Jekyll Island Airport - Jekyll Island, United States": "09J", "Leopold Sedar Senghor Intl - Dakar, Senegal": "DKR", "Cimei Airport - Cimei, Taiwan": "CMJ", "General Jose Maria Yanez Intl - Guaymas, Mexico": "GYM", "Pondicherry - Pendicherry, India": "PNY", "Zhoushan Airport - Zhoushan, China": "HSN", "Una-Comandatuba Airport - Una, Brazil": "UNA", "Dhangarhi - Dhangarhi, Nepal": "DHI", "Zweibruecken - Zweibruecken, Germany": "ZQW", "Bert Mooney Airport - Butte, United States": "BTM", "Pensacola Rgnl - Pensacola, United States": "PNS", "Anelghowhat Airport - Anelghowhat, Vanuatu": "AUY", "Aurangabad - Aurangabad, India": "IXU", "Hurghada Intl - Hurghada, Egypt": "HRG", "Migalovo - Tver, Russia": "KLD", "La Chinita Intl - Maracaibo, Venezuela": "MAR", "Corvo Airport - Corvo, Portugal": "CVU", "Rasht - Rasht, Iran": "RAS", "Tubuai - Tubuai, French Polynesia": "TUB", "Kastelorizo - Kastelorizo, Greece": "KZS", "La Grande Riviere - La Grande Riviere, Canada": "YGL", "Dodoma - Dodoma, Tanzania": "DOD", "Mus Airport - Mus, Turkey": "MSR", "El Jaguel / Punta del Este Airport - Maldonado, Uruguay": "MDO", "Contadora Airport - Contadora Island, Panama": "OTD", "Nassau Paradise Island Airport - Nassau, Bahamas": "PID", "In Salah - In Salah, Algeria": "INZ", "Kalamata - Kalamata, Greece": "KLX", "Seeb Intl - Muscat, Oman": "MCT", "Lloydminster - Lloydminster, Canada": "YLL", "Alma Airport - Alma, Canada": "YTF", "Lucapa Airport - Lucapa, Angola": "LBZ", "Aniak Airport - Aniak, United States": "ANI", "Qaanaaq Airport - Qaanaaq, Greenland": "NAQ", "Puerto Obaldia - Puerto Obaldia, Panama": "PUE", "Shimojishima - Shimojishima, Japan": "SHI", "Bandaressalam - Moheli, Comoros": "NWA", "Thomasville Regional Airport - Thomasville, United States": "TVI", "Suavanao Airport - Suavanao, Solomon Islands": "VAO", "Waddington - Waddington, United Kingdom": "WTN", "Luoyang Airport - Luoyang, China": "LYA", "Nyingchi Airport - Nyingchi, China": "LZY", "Dawei Airport - Dawei, Burma": "TVY", "Kuujjuaq - Quujjuaq, Canada": "YVP", "Andravida - Andravida, Greece": "PYR", "Kaltag Airport - Kaltag, United States": "KAL", "Emerald - Emerald, Australia": "EMD", "Adelaide Intl - Adelaide, Australia": "ADL", "Osvaldo Vieira International Airport - Bissau, Guinea-Bissau": "OXB", "Ambodedjo - Mopti, Mali": "MZI", "Tampa Executive Airport - Tampa, United States": "VDF", "Luke Afb - Phoenix, United States": "LUF", "Goa - Goa, India": "GOI", "Lynden Airport - Lynden, United States": "38W", "Arthurs Town Airport - Arthur's Town, Bahamas": "ATC", "Sde Dov - Tel-aviv, Israel": "SDV", "Rivesaltes - Perpignan, France": "PGF", "Cuyo Airport - Cuyo, Philippines": "CYU", "Mornington Island Airport - Mornington Island, Australia": "ONG", "Savonlinna - Savonlinna, Finland": "SVL", "Kingman Airport - Kingman, United States": "IGM", "Gangneung - Kangnung, South Korea": "KAG", "Victoria Intl - Victoria, Canada": "YYJ", "Umiujaq Airport - Umiujaq, Canada": "YUD", "Souda - Chania, Greece": "CHQ", "Emmonak Airport - Emmonak, United States": "EMK", "Wellington Municipal - Wellington, United States": "EGT", "Bayreuth - Bayreuth, Germany": "BYU", "Xangongo - Xangongo, Angola": "XGN", "Hermanos Ameijeiras - Las Tunas, Cuba": "VTU", "Mayor Buenaventura Vivas - Santo Domingo, Venezuela": "STD", "Foumban Nkounja - Foumban, Cameroon": "FOM", "Iskandar - Pangkalan Bun, Indonesia": "PKN", "Waterloo International - London, United Kingdom": "QQW", "Fonte Boa Airport - Fonte Boa, Brazil": "FBA", "Kilaguni - Kilaguni, Kenya": "ILU", "Longyear - Svalbard, Norway": "LYR", "Crystal Airport - Crystal, United States": "MIC", "Seal Bay Seaplane Base - Seal Bay, United States": "SYB", "Seward Airport - Seward, United States": "SWD", "Sultan Iskandarmuda - Banda Aceh, Indonesia": "BTJ", "7 Novembre - Tabarka, Tunisia": "TBJ", "Labe - Labe, Guinea": "LEK", "Bornholm Ronne - Ronne, Denmark": "RNN", "Neumuenster - Neumuenster, Germany": "EUM", "Hughes Airport - Hughes, United States": "HUS", "Warri Airport - Osubi, Nigeria": "QRW", "Miquelon - Miquelon, Saint Pierre and Miquelon": "MQC", "Southampton - Southampton, United Kingdom": "SOU", "Kamloops - Kamloops, Canada": "YKA", "Stevenage Railway Station - Stevenage, United Kingdom": "XVJ", "Show Low Regional Airport - Show Low, United States": "SOW", "Vallee De Seine - Rouen, France": "URO", "Orlando de Carvalho Airport - Umuarama, Brazil": "UMU", "Atmautluak Airport - Atmautluak, United States": "369", "Mc Allen Miller Intl - Mcallen, United States": "MFE", "South Haven Area Regional Airport - South Haven, United States": "LWA", "Hamilton - Hamilton, New Zealand": "HLZ", "North Island Nas - San Diego, United States": "NZY", "Selawik Airport - Selawik, United States": "WLK", "Lann Bihoue - Lorient, France": "LRT", "Ramsar - Ramsar, Iran": "RZR", "Gardermoen Airport - Oslo, Norway": "GEN", "Holy Cross Airport - Holy Cross, United States": "HCR", "Casique Aramare - Puerto Ayacucho, Venezuela": "PYH", "Parma - Parma, Italy": "PMF", "Anqing Airport - Anqing, China": "AQG", "Bugulma Airport - Bugulma, Russia": "UUA", "Al Najaf International Airport - Najaf, Iraq": "NJF", "Tunoshna - Yaroslavl, Russia": "IAR", "El Paso Intl - El Paso, United States": "ELP", "Laghouat - Laghouat, Algeria": "LOO", "Vit\u00f3ria da Conquista Airport - Vit\u00f3ria Da Conquista, Brazil": "VDC", "Lake Murray Airport - Lake Murray, Papua New Guinea": "LMY", "Columbus Afb - Colombus, United States": "CBM", "Waspam Airport - Waspam, Nicaragua": "WSP", "Philadelphia 30th St Station - Philadelphia, United States": "ZFV", "Miami University Airport - Oxford, United States": "OXD", "Eros Airport - Windhoek, Namibia": "ERS", "Vila Real - Vila Real, Portugal": "VRL", "Nakina Airport - Nakina, Canada": "YQN", "Atqasuk Edward Burnell Sr Memorial Airport - Atqasuk, United States": "ATK", "Chandigarh - Chandigarh, India": "IXC", "Douala - Douala, Cameroon": "DLA", "Santiago Del Estero - Santiago Del Estero, Argentina": "SDE", "Pluguffan - Quimper, France": "UIP", "Jeju Intl - Cheju, South Korea": "CJU", "Prince Said Ibrahim - Moroni, Comoros": "HAH", "Pobedilovo Airport - Kirov, Russia": "KVX", "Ogle - Georgetown, Guyana": "OGL", "Debrecen - Debrecen, Hungary": "DEB", "Bitam - Bitam, Gabon": "BMM", "Wellington Intl - Wellington, New Zealand": "WLG", "Pahokee Airport - Pahokee, United States": "PHK", "Liverpool - Liverpool, United Kingdom": "LPL", "Cairns Intl - Cairns, Australia": "CNS", "Penn Station - Baltimore, United States": "ZBP", "Hartford Brainard - Hartford, United States": "HFD", "Tambohorano Airport - Tambohorano, Madagascar": "WTA", "Moranbah Airport - Moranbah, Australia": "MOV", "Iwami Airport - Iwami, Japan": "IWJ", "Kissimmee Gateway Airport - Kissimmee, United States": "ISM", "Chubu Centrair Intl - Nagoya, Japan": "NGO", "Ladd Aaf - Fort Wainwright, United States": "FBK", "Nukus Airport - Nukus, Uzbekistan": "NCU", "Sechelt Aerodrome - Sechelt-Gibsons, Canada": "YHS", "Banks Airport - Swans Island, United States": "ME5", "Amparai - Galoya, Sri Lanka": "GOY", "Williamsport Rgnl - Williamsport, United States": "IPT", "Whistler/Green Lake Water Aerodrome - Whistler, Canada": "YWS", "Sari Dasht E Naz Airport - Dasht-e-naz, Iran": "SRY", "Kitoi Bay Seaplane Base - Kitoi Bay, United States": "KKB", "Lewiston Maine - Lewiston, United States": "LEW", "Rotuma Airport - Rotuma, Fiji": "RTA", "Gostomel Antonov - Kiev, Ukraine": "GML", "Scatsta Airport - Scatsta, United Kingdom": "SCS", "Lady Elliot Island - Lady Elliot Island, Australia": "LYT", "Wapekeka Airport - Angling Lake, Canada": "YAX", "Villa Gesell - Villa Gesell, Argentina": "VLG", "Egilsstadir - Egilsstadir, Iceland": "EGS", "Merle K Mudhole Smith - Cordova, United States": "CDV", "Wanxian Airport - Wanxian, China": "WXN", "Sheikh Zayed - Rahim Yar Khan, Pakistan": "RYK", "Val De Cans Intl - Belem, Brazil": "BEL", "Oscoda Wurtsmith - Oscoda, United States": "OSC", "Newcastle Airport - Newcastle, Australia": "NTL", "Reina Beatrix Intl - Oranjestad, Aruba": "AUA", "\u00c4ngelholm-Helsingborg Airport - \u00c4ngelholm, Sweden": "AGH", "Jacquinot Bay Airport - Jacquinot Bay, Papua New Guinea": "JAQ", "La D\u00e9sirade Airport - Grande Anse, Guadeloupe": "DSD", "General Jose Antonio Anzoategui Intl - Barcelona, Venezuela": "BLA", "Pappy Boyington - Coeur d'Alene, United States": "COE", "Kresty - Pskov, Russia": "PKV", "Bloyer Field - Tomah, United States": "Y72", "All Airports - Beijing, China": "BJS", "Santa Rosa - Santa Rosa, Argentina": "RSA", "Florida Keys Marathon Airport - Marathon, United States": "MTH", "Geraldton Airport - Geraldton, Australia": "GET", "Kona Intl At Keahole - Kona, United States": "KOA", "Isafjordur - Isafjordur, Iceland": "IFJ", "Torrejon - Madrid, Spain": "TOJ", "Gore Airport - Gore, Ethiopia": "GOR", "Lopez Island Airport - Lopez, United States": "LPS", "Barysiai - Barysiai, Lithuania": "HLJ", "Four Corners Rgnl - Farmington, United States": "FMN", "John Murtha Johnstown-Cambria County Airport - Johnstown, United States": "JST", "Gounda Airport - Gounda, Central African Republic": "GDA", "Pago Pago Intl - Pago Pago, American Samoa": "PPG", "Richland Airport - Richland Center, United States": "93C", "Jiangbei - Chongqing, China": "CKG", "Kudat Airport - Kudat, Malaysia": "KUD", "Fitzgerald Municipal Airport - Fitzgerald, United States": "FZG", "Gassim - Gassim, Saudi Arabia": "ELQ", "Balikesir Korfez Airport - Balikesir Korfez, Turkey": "EDO", "Masterton - Masterton, New Zealand": "MRO", "FOB Salerno - Khost, Afghanistan": "KHT", "Kalkgurung Airport - Kalkgurung, Australia": "KFG", "Hayman Island Airport - Hayman Island, Australia": "HIS", "Executive - Orlando, United States": "ORL", "Malikus Saleh Airport - Lhok Seumawe-Sumatra Island, Indonesia": "LSW", "Kelowna - Kelowna, Canada": "YLW", "Boorama Airport - Boorama, Somalia": "BXX", "Gaua Island Airport - Gaua Island, Vanuatu": "ZGU", "Cuyahoga County - Richmond Heights, United States": "CGF", "Dayong Airport - Dayong, China": "DYG", "Notodden - Notodden, Norway": "NTB", "Twentynine Palms Eaf - Twenty Nine Palms, United States": "NXP", "Manas - Bishkek, Kyrgyzstan": "FRU", "Nouadhibou - Nouadhibou, Mauritania": "NDB", "Mehrabad Intl - Teheran, Iran": "THR", "Marktoberdorf BF - Marktoberdorf, Germany": "OAL", "Tiska - Djanet, Algeria": "DJG", "Tianshui Airport - Tianshui, China": "THQ", "Swan River Airport - Swan River, Canada": "ZJN", "Gaoqi - Xiamen, China": "XMN", "Lansdowne House Airport - Lansdowne House, Canada": "YLH", "Redlands Municipal Airport - Redlands, United States": "REI", "Ua Huka Airport - Ua Huka, French Polynesia": "UAH", "Syktyvkar - Syktyvkar, Russia": "SCW", "Kalymnos Island - Kalymnos, Greece": "JKL", "Chautauqua County-Jamestown - Jamestown, United States": "JHW", "Waukesha County Airport - Waukesha, United States": "UES", "Aden Intl - Aden, Yemen": "ADE", "Bagotville - Bagotville, Canada": "YBG", "Gesundbrunnen - Berlin, Germany": "BGS", "Dikson Airport - Dikson, Russia": "DKS", "Mount Isa - Mount Isa, Australia": "ISA", "Torres Airstrip - Loh/Linua, Vanuatu": "TOH", "Vieste Heliport - Vieste, Italy": "VIF", "Popondetta - Popondetta, Papua New Guinea": "EIA", "Tucumcari Muni - Tucumcari, United States": "TCC", "Schwerin Parchim - Parchim, Germany": "SZW", "Yorke Island Airport - Yorke Island, Australia": "OKR", "Hultsfred - Hultsfred, Sweden": "HLF", "Kufra - Kufra, Libya": "AKF", "Caravelas - Caravelas, Brazil": "CRQ", "Bukhara - Bukhara, Uzbekistan": "BHK", "Tindal Airport - Katherine, Australia": "KTR", "Bilaspur - Bilaspur, India": "PAB", "Mutiara - Palu, Indonesia": "PLW", "Zhytomyr - Zhytomyr, Ukraine": "ZTR", "Jose Celestino Mutis - Bahia Solano, Colombia": "BSC", "Xieng Khouang - Phon Savan, Laos": "XKH", "City of Derry - Londonderry, United Kingdom": "LDY", "Mercedita - Ponce, Puerto Rico": "PSE", "Tancredo Thomaz de Faria Airport - Guarapuava, Brazil": "GPB", "Vestmannaeyjar - Vestmannaeyjar, Iceland": "VEY", "Puttgarden - Puttgarden, Germany": "QUA", "Araguaina Airport - Araguaina, Brazil": "AUX", "Kimmirut Airport - Kimmirut, Canada": "YLC", "Kone - Kone, New Caledonia": "KNQ", "Hervey Bay Airport - Hervey Bay, Australia": "HVB", "Whiting Fld Nas North - Milton, United States": "NSE", "Ambatomainty Airport - Ambatomainty, Madagascar": "AMY", "Arusha - Arusha, Tanzania": "ARK", "Deer Valley Municipal Airport - Phoenix , United States": "DVT", "Taytay Sandoval - Taytay, Philippines": "RZP", "Uromiyeh Airport - Uromiyeh, Iran": "OMH", "Wangerooge Airport - Wangerooge, Germany": "AGE", "Derby Airport - Derby, Australia": "DRB", "Lifuka Island Airport - Lifuka, Tonga": "HPA", "Heydar Aliyev - Baku, Azerbaijan": "BAK", "Makurdi - Makurdi, Nigeria": "MDI", "Akunnaaq Heliport - Akunnaaq, Greenland": "QCU", "Naha - Okinawa, Japan": "OKA", "Montrose Regional Airport - Montrose CO, United States": "MTJ", "Apopka - Orlando, United States": "X04", "Calbayog Airport - Calbayog City, Philippines": "CYP", "Angers St Laud - Angers, France": "QXG", "Dubai Intl - Dubai, United Arab Emirates": "DXB", "Healy River Airport - Healy, United States": "HKB", "Long Akah Airport - Long Akah, Malaysia": "LKH", "Yan'an Airport - Yan'an, China": "ENY", "Islay - Islay, United Kingdom": "ILY", "Huambo - Huambo, Angola": "NOV", "Cobb County Airport-Mc Collum Field - Atlanta, United States": "RYY", "Penang Intl - Penang, Malaysia": "PEN", "Lahr Airport - Lahr, Germany": "LHA", "Desert Aire - Mattawa, United States": "M94", "Es Senia - Oran, Algeria": "ORN", "Rarotonga Intl - Avarua, Cook Islands": "RAR", "Codrington Airport - Codrington, Antigua and Barbuda": "BBQ", "Zaria - Zaria, Nigeria": "ZAR", "Long Banga Airport - Long Banga, Malaysia": "LBP", "Lonorore Airport - Lonorore, Vanuatu": "LNE", "Teslin - Teslin, Canada": "YZW", "Hail - Hail, Saudi Arabia": "HAS", "Cut Bank Muni - Cutbank, United States": "CTB", "San Pedro - San Pedro, Belize": "SPR", "Stebbins Airport - Stebbins, United States": "WBB", "Hiroshima-Nishi - Hiroshima, Japan": "HIW", "Kostanay West Airport - Kostanay, Kazakhstan": "KSN", "Dalma Airport - Dalma Island, United Arab Emirates": "ZDY", "Platinum - Port Moller, United States": "PTU", "Olympia Regional Airpor - Olympia, United States": "OLM", "Barisal Airport - Barisal, Bangladesh": "BZL", "Gillette-Campbell County Airport - Gillette, United States": "GCC", "Kushiro Airport - Kushiro, Japan": "KUH", "Maningrida Airport - Maningrida, Australia": "MNG", "Hokitika - Hokitika, New Zealand": "HKK", "Lake Simcoe - Barrie-Orillia, Canada": "YLS", "Conceicao Do Araguaia - Conceicao Do Araguaia, Brazil": "CDJ", "Rocky Mountain Metropolitan Airport - Broomfield-CO, United States": "BJC", "Hodeidah Intl - Hodeidah, Yemen": "HOD", "Kindersley - Kindersley, Canada": "YKY", "Guanajuato Intl - Del Bajio, Mexico": "BJX", "J F Mitchell Airport - Bequia, Saint Vincent and the Grenadines": "BQU", "Le Palyvestre - Hyeres, France": "TLN", "Yola - Yola, Nigeria": "YOL", "Rimatara - Rimatara, French Polynesia": "RMT", "Kananga - Kananga, Congo (Kinshasa)": "KGA", "Andersen Afb - Andersen, Guam": "UAM", "Rotorua - Rotorua, New Zealand": "ROT", "Arroyo Barril Intl - Samana, Dominican Republic": "EPS", "Nalati - Xinyuan, China": "NLT", "Moala Airport - Moala, Fiji": "MFJ", "Minto Airport - Minto, United States": "MNT", "Afyon - Afyon, Turkey": "AFY", "Framnes - Narvik, Norway": "NVK", "Offutt Afb - Omaha, United States": "OFF", "Central Station - Stockholm, Sweden": "XEV", "Maryborough Airport - Maryborough, Australia": "MBH", "Downsview - Toronto, Canada": "YZD", "Frejus Saint Raphael - Frejus, France": "FRJ", "Uzunyazi - Kastamonu, Turkey": "KFS", "Oceano County Airport - Oceano, United States": "L52", "Branson LLC - Branson, United States": "BKG", "Mariupol International Airport - Mariupol International, Ukraine": "MPW", "Bob Hope - Burbank, United States": "BUR", "Mannheim City - Mannheim, Germany": "MHG", "Kyzyl Airport - Kyzyl, Russia": "KYZ", "Lawas Airport - Lawas, Malaysia": "LWY", "Sakon Nakhon - Sakon Nakhon, Thailand": "SNO", "Kjaerstad - Mosjoen, Norway": "MJF", "Wurzburg HBF - Wurzburg, Germany": "WZB", "Pevek - Pevek, Russia": "PWE", "Pathankot - Pathankot, India": "IXP", "Saab - Linkoeping, Sweden": "LPI", "Giebelstadt Aaf - Giebelstadt, Germany": "GHF", "Layang Layang Airport - Layang Layang Atoll, Malaysia": "LAC", "Pedro Bay Airport - Pedro Bay, United States": "PDB", "North Battleford - North Battleford, Canada": "YQW", "Pai - Pai, Thailand": "PYY", "Okondja - Okondja, Gabon": "OKN", "Cancun Intl - Cancun, Mexico": "CUN", "Araracuara Airport - Araracuara, Colombia": "ACR", "\u00cele d'Yeu Airport - \u00cele d'Yeu, France": "IDY", "Heilongjiang Mohe Airport - Mohe County, China": "OHE", "Mc Clellan Afld - Sacramento, United States": "MCC", "Fairfield County Airport - Winnsboro, United States": "FDW", "Lelystad Airport - Lelystad, Netherlands": "LEY", "Chetumal Intl - Chetumal, Mexico": "CTM", "Lord Howe Island Airport - Lord Howe Island, Australia": "LDH", "Kuching Intl - Kuching, Malaysia": "KCH", "Delaware County Airport - Muncie, United States": "MIE", "New Haven Rail Station - New Haven, United States": "ZVE", "Poretta - Bastia, France": "BIA", "Vasteras - Vasteras, Sweden": "VST", "Santiago Perez - Arauca, Colombia": "AUC", "Niamtougou International - Niatougou, Togo": "LRL", "Cheyenne Rgnl Jerry Olson Fld - Cheyenne, United States": "CYS", "Fukushima Airport - Fukushima, Japan": "FKS", "Redhill Aerodrome - Redhill, United Kingdom": "KRH", "Imperial Co - Imperial, United States": "IPL", "Sangster Intl - Montego Bay, Jamaica": "MBJ", "Jujuy - Jujuy, Argentina": "JUJ", "Ech Cheliff - Ech-cheliff, Algeria": "QAS", "Trenton-Robbinsville Airport - Trenton, United States": "N87", "Port Harcourt Intl - Port Hartcourt, Nigeria": "PHC", "General Jose Francisco Bermudez - Carupano, Venezuela": "CUP", "Bocas Del Toro Intl - Bocas Del Toro, Panama": "BOC", "Port Hedland Intl - Port Hedland, Australia": "PHE", "Laguna de Los Patos International Airport - Colonia, Uruguay": "CYR", "Don Muang Intl - Bangkok, Thailand": "DMK", "Princeton - Princeton, Canada": "YDC", "Coweta County Airport - Newnan, United States": "CCO", "Midway Atoll - Midway, Midway Islands": "MDY", "Oita - Oita, Japan": "OIT", "Bagdogra - Baghdogra, India": "IXB", "Tampa Padang - Mamuju, Indonesia": "MJU", "Chertovitskoye - Voronezh, Russia": "VOZ", "Mostar - Mostar, Bosnia and Herzegovina": "OMO", "Mesa Falcon Field - Mesa, United States": "FFZ", "Soyo - Soyo, Angola": "SZA", "Mzuzu - Mzuzu, Malawi": "ZZU", "Tomsk Bogashevo Airport - Tomsk, Russia": "TOF", "Sonderlandeplatz Norden-Norddeich - Norden, Germany": "NOE", "Ponta Pelada Airport - Manaus, Brazil": "PLL", "Mainz Finthen - Mainz, Germany": "QFZ", "Munda Airport - Munda, Solomon Islands": "MUA", "Baillif Airport - Basse Terre, Guadeloupe": "BBR", "Ocean Shores Municipal - Ocean Shores, United States": "W04", "Woja Airport - Majuro Atoll, Marshall Islands": "WJA", "Hamilton Island Airport - Hamilton Island, Australia": "HTI", "Farafangana - Farafangana, Madagascar": "RVA", "Bacau - Bacau, Romania": "BCM", "Daniel Z Romualdez - Tacloban, Philippines": "TAC", "Minacu Airport - Minacu, Brazil": "MQH", "Greenwood - Greenwood, Canada": "YZX", "Thorne Bay Seaplane Base - Thorne Bay, United States": "KTB", "Rimouski Airport - Rimouski, Canada": "YXK", "Reales Tamarindos - Portoviejo, Ecuador": "PVO", "Spring Hill Airport - Sterling, United States": "70N", "Ononge Airport - Ononge, Papua New Guinea": "ONB", "Bacolod - Bacolod, Philippines": "BCD", "Antsirabato - Antalaha, Madagascar": "ANM", "Mikkeli - Mikkeli, Finland": "MIK", "Rundu - Rundu, Namibia": "NDU", "Kirtland Air Force Base - Kirtland A.f.b., United States": "IKR", "Jeh Airport - Ailinglapalap Atoll, Marshall Islands": "JEJ", "Dimokritos - Alexandroupolis, Greece": "AXD", "Nulato Airport - Nulato, United States": "NUL", "Bukavu Kavumu - Bukavu/kavumu, Congo (Kinshasa)": "BKY", "Sub Teniente Nestor Arias - San Felipe, Venezuela": "SFH", "Juan Pablo P\u00e9rez Alfonso Airport - El Vig\u00eda, Venezuela": "VIG", "Gode Airport - Gode, Ethiopia": "GDE", "Suvarnabhumi Intl - Bangkok, Thailand": "BKK", "Dembidollo Airport - Dembidollo, Ethiopia": "DEM", "Laramie Regional Airport - Laramie, United States": "LAR", "Evansville Regional - Evansville, United States": "EVV", "St Gatien - Deauville, France": "DOL", "Ocean Isle Beach Airport - Ocean Isle Beach, United States": "60J", "Lester B Pearson Intl - Toronto, Canada": "YYZ", "Augusta Rgnl At Bush Fld - Bush Field, United States": "AGS", "Shageluk Airport - Shageluk, United States": "SHX", "Leh - Leh, India": "IXL", "Ambler Airport - Ambler, United States": "ABL", "Kangiqsujuaq - Wakeham Bay Airport - Kangiqsujuaq, Canada": "YWB", "Kake Airport - Kake, United States": "AFE", "General Lucio Blanco Intl - Reynosa, Mexico": "REX", "Floro - Floro, Norway": "FRO", "Kitadaito - Kitadaito, Japan": "KTD", "Fort St. James - Perison Airport - Fort St. James, Canada": "YJM", "Lamu Manda - Lamu, Kenya": "LAU", "Tstc Waco - Waco, United States": "CNW", "Sugar Land Regional Airport - Sugar Land, United States": "SGR", "Bubung - Luwuk, Indonesia": "LUW", "Comox - Comox, Canada": "YQQ", "Southwest Oregon Regional Airport - North Bend, United States": "OTH", "Muzaffarabad - Muzaffarabad, Pakistan": "MFG", "Monroe Reqional Airport - Charlotte, United States": "EQY", "Qingshan - Xichang, China": "XIC", "Hohenems - Hohenems, Austria": "HOJ", "El Bolson - El Bolson, Argentina": "EHL", "Simon Bolivar - Santa Marta, Colombia": "SMR", "Izhevsk Airport - Izhevsk, Russia": "IJK", "Tunica Municipal Airport - Tunica, United States": "UTM", "Manitoulin East - Manitowaning, Canada": "YEM", "Shahid Ashrafi Esfahani - Bakhtaran, Iran": "KSH", "Middle Georgia Rgnl - Macon, United States": "MCN", "San Pedro - San Pedro, Cote d'Ivoire": "SPY", "Daniel Oduber Quiros Intl - Liberia, Costa Rica": "LIR", "The Pas Airport - The Pas, Canada": "YQD", "East Texas Rgnl - Longview, United States": "GGG", "Silvio Pettirossi Intl - Asuncion, Paraguay": "ASU", "La Fria - La Fria, Venezuela": "LFR", "Pampulha Carlos Drummond De Andrade - Belo Horizonte, Brazil": "PLU", "Chennai Intl - Madras, India": "MAA", "Leshukonskoye Airport - Arkhangelsk, Russia": "LDG", "Tandil - Tandil, Argentina": "TDL", "Oamaru - Oamaru, New Zealand": "OAM", "Malakal - Malakal, Sudan": "MAK", "Jinggangshan - Jian, China": "KNC", "Senggeh Airport - Senggeh-Papua Island, Indonesia": "SEH", "Auckland Intl - Auckland, New Zealand": "AKL", "Sochi - Sochi, Russia": "AER", "Plymouth - Plymouth, United Kingdom": "PLH", "Paraburdoo Airport - Paraburdoo, Australia": "PBO", "Plan De Guadalupe Intl - Saltillo, Mexico": "SLW", "Bristol - Bristol, United Kingdom": "BRS", "Sarajevo - Sarajevo, Bosnia and Herzegovina": "SJJ", "Biratnagar - Biratnagar, Nepal": "BIR", "Balakovo Airport - Balakovo, Russia": "BWO", "Barth - Barth, Germany": "BBH", "Adi Sumarmo Wiryokusumo - Solo City, Indonesia": "SOC", "Natrona Co Intl - Casper, United States": "CPR", "Wai Sha Airport - Shantou, China": "SWA", "Burrello-Mechanicville Airport - Mechanicville, United States": "K27", "Baie Comeau - Baie Comeau, Canada": "YBC", "Ufa - Ufa, Russia": "UFA", "Berberati - Berberati, Central African Republic": "BBT", "Confresa Airport - Confresa, Brazil": "CFO", "Tidjikja - Tidjikja, Mauritania": "TIY", "Tame - Tame, Colombia": "TME", "Peshawar Intl - Peshawar, Pakistan": "PEW", "Bakel - Bakel, Senegal": "BXE", "Wyk auf Foehr - Wyk, Germany": "OHR", "Yonago Kitaro - Miho, Japan": "YGJ", "Moses Kilangin - Timika, Indonesia": "TIM", "Nyala Airport - Nyala, Sudan": "UYL", "Minna New - Minna, Nigeria": "MXJ", "Orange County Airport - Montgomery, United States": "MGJ", "Qaqortoq Heliport - Qaqortoq, Greenland": "JJU", "Pardubice - Pardubice, Czech Republic": "PED", "Aro - Molde, Norway": "MOL", "Mexia - Limestone County Airport - Mexia, United States": "LXY", "Goroka - Goroka, Papua New Guinea": "GKA", "Ca Mau - Ca Mau, Vietnam": "CAH", "Shenyang Taoxian International Airport - Shenyang, China": "SHE", "Ghadames East - Ghadames, Libya": "LTD", "\u00d6stersund Airport - \u00d6stersund, Sweden": "OSD", "Tachileik - Tachilek, Burma": "THL", "Aeroclub Sibiu - Sibiu, Romania": "SIB", "Alfonso Bonilla Aragon Intl - Cali, Colombia": "CLO", "Cherepovets Airport - Cherepovets, Russia": "CEE", "Pagadian - Pagadian, Philippines": "PAG", "Icy Bay Airport - Icy Bay, United States": "ICY", "Sultan Ismail Petra - Kota Bahru, Malaysia": "KBR", "Diamantino Airport - Diamantino, Brazil": "DMT", "Weedon Field - Eufala, United States": "EUF", "Ruby Airport - Ruby, United States": "RBY", "King Khaled Intl - Riyadh, Saudi Arabia": "RUH", "Charlo - Charlo, Canada": "YCL", "Jorge Wilsterman - Cochabamba, Bolivia": "CBB", "Annai Airport - Annai, Guyana": "NAI", "Bamenda - Bamenda, Cameroon": "BPC", "Circle City Airport - Circle, United States": "IRC", "Husavik - Husavik, Iceland": "HZK", "Orlando Intl - Orlando, United States": "MCO", "Licenciado Manuel Crescencio Rejon Int - Merida, Mexico": "MID", "Skiros - Skiros, Greece": "SKU", "Appleton - Appleton, United States": "ATW", "Ching Chuang Kang - Taichung, Taiwan": "RMQ", "Padre Aldamiz - Puerto Maldonado, Peru": "PEM", "Amritsar - Amritsar, India": "ATQ", "Ephraim-Gibraltar Airport - Ephraim, United States": "3D2", "Aeroclube de Nova Iguacu - Nova Iguacu, Brazil": "QNV", "BFT County Airport - Beauford, United States": "BFT", "Losinj Airport - Mali Losinj, Croatia": "LSZ", "Eastern Slopes Regional - Fryeburg, United States": "IZG", "Bom Futuro Airport - Lucas do Rio Verde, Brazil": "LVR", "Karshi Khanabad Airport - Khanabad, Uzbekistan": "KSQ", "Turaif - Turaif, Saudi Arabia": "TUI", "Kissidougou - Kissidougou, Guinea": "KSI", "Corpus Christi NAS - Corpus Christi, United States": "NGP", "Train Station - Belleville, Canada": "XVV", "Brac - Brac, Croatia": "BWK", "Doomadgee Airport - Doomadgee, Australia": "DMD", "Chisasibi Airport - Chisasibi, Canada": "YKU", "Lusaka Intl - Lusaka, Zambia": "LUN", "Uzundzhovo - Haskovo, Bulgaria": "HKV", "Isparta S\u00fcleyman Demirel Airport - Isparta, Turkey": "ISE", "Imbaimadai Airport - Imbaimadai, Guyana": "IMB", "Bole Intl - Addis Ababa, Ethiopia": "ADD", "Chatham Islands - Chatham Island, New Zealand": "CHT", "Salluit Airport - Salluit, Canada": "YZG", "St Jean - St. Jean, Canada": "YJN", "Mikonos - Mykonos, Greece": "JMK", "Mactan Cebu Intl - Cebu, Philippines": "CEB", "Benin - Benin, Nigeria": "BNI", "Ras Al Khaimah Intl - Ras Al Khaimah, United Arab Emirates": "RKT", "Bateen - Abu Dhabi, United Arab Emirates": "AZI", "Stoelmans Eiland Airstrip - Stoelmans Eiland, Suriname": "SMZ", "Lashio - Lashio, Burma": "LSH", "Minami Daito - Minami Daito, Japan": "MMD", "St Augustin Airport - St-Augustin, Canada": "YIF", "Buchanan Field Airport - Concord, United States": "CCR", "Mid Delta Regional Airport - Greenville, United States": "GLH", "Wheeler Aaf - Wahiawa, United States": "HHI", "Nizhnevartovsk - Nizhnevartovsk, Russia": "NJC", "Kos - Kos, Greece": "KGS", "Bo Airport - Bo, Sierra Leone": "KBS", "LaGrange-Callaway Airport - LaGrange, United States": "LGC", "Roberval - Roberval, Canada": "YRJ", "Shpakovskoye - Stavropol, Russia": "STW", "Pyongyang Intl - Pyongyang, Korea": "FNJ", "Ninoy Aquino Intl - Manila, Philippines": "MNL", "Mc Ghee Tyson - Knoxville, United States": "TYS", "Southwest Florida Intl - Fort Myers, United States": "RSW", "Clemson - Clemson, United States": "CEU", "Longdongbao - Guiyang, China": "KWE", "Gunsa - Shiquanhe, China": "NGQ", "Melbourne Intl - Melbourne, Australia": "MEL", "Major Brigadeiro Trompowsky - Varginha, Brazil": "VAG", "Albian Aerodrome - Wood Buffalo, Canada": "JHL", "Capt Jose A Quinones Gonzales Intl - Chiclayo, Peru": "CIX", "Revelstoke Airport - Revelstoke, Canada": "YRV", "Modesto City Co Harry Sham - Modesto, United States": "MOD", "Laughlin Afb - Del Rio, United States": "DLF", "Sokerkino - Kostroma, Russia": "KMW", "Sukkur - Sukkur, Pakistan": "SKZ", "Belgaum - Belgaum, India": "IXG", "All Airports - Montreal, Canada": "YMQ", "Principe - Principe, Sao Tome and Principe": "PCP", "Taloyoak - Spence Bay, Canada": "YYH", "Wolter Monginsidi - Kendari, Indonesia": "KDI", "Boigu Airport - Boigu, Australia": "GIC", "Griffin-Spalding County Airport - Griffin, United States": "6A2", "Jeremie Airport - Jeremie, Haiti": "JEE", "Wanganui - Wanganui, New Zealand": "WAG", "White Mountain Airport - White Mountain, United States": "WMO", "Daloa - Daloa, Cote d'Ivoire": "DJO", "Lanseria - Johannesburg, South Africa": "HLA", "Besalampy - Besalampy, Madagascar": "BPY", "Plovdiv - Plovdiv, Bulgaria": "PDV", "Orlando - Orlando, United States": "DWS", "Ulawa Airport - Ulawa, Solomon Islands": "RNA", "Fengnin - Fengnin, Taiwan": "TTT", "Dauphin Barker - Dauphin, Canada": "YDN", "Comodoro Pierrestegui - Concordia, Argentina": "COC", "Thyna - Sfax, Tunisia": "SFA", "East 34th Street Heliport - New York, United States": "TSS", "Findlay Airport - Findley, United States": "FDY", "Inverell - Inverell, Australia": "IVR", "Columbus Metropolitan Airport - Columbus, United States": "CSG", "Dubai Al Maktoum - Dubai, United Arab Emirates": "DWC", "Indira Gandhi Intl - Delhi, India": "DEL", "Kokoda Airport - Kokoda, Papua New Guinea": "KKD", "Virgin Gorda Airport - Spanish Town, British Virgin Islands": "VIJ", "Columbia Metropolitan - Columbia, United States": "CAE", "Marshall Aaf - Fort Riley, United States": "FRI", "C P A Carlos Rovirosa Intl - Villahermosa, Mexico": "VSA", "Bologna - Bologna, Italy": "BLQ", "Rumbek Airport - Rumbek, Sudan": "RBX", "Palanga Intl - Palanga, Lithuania": "PLQ", "Gorgan Airport - Gorgan, Iran": "GBT", "Hondo Municipal Airport - Hondo, United States": "HDO", "Sacramento Executive - Sacramento, United States": "SAC", "Berezovo - Berezovo, Russia": "NBB", "Buckland Airport - Buckland, United States": "BKC", "Chisana Airport - Chisana, United States": "CZN", "Arua Airport - Arua, Uganda": "RUA", "Kikori Airport - Kikori, Papua New Guinea": "KRI", "Daegu Ab - Taegu, South Korea": "TAE", "Smithers - Smithers, Canada": "YYD", "Van Nuys - Van Nuys, United States": "VNY", "Hierro - Hierro, Spain": "VDE", "Mataveri Intl - Easter Island, Chile": "IPC", "Mersa Matruh - Mersa-matruh, Egypt": "MUH", "Campbeltown Airport - Campbeltown, United Kingdom": "CAL", "Gerald R Ford Intl - Grand Rapids, United States": "GRR", "Fort Frances Municipal Airport - Fort Frances, Canada": "YAG", "Mosul International Airport - Mosul, Iraq": "OSB", "Souche - Niort, France": "NIT", "Cataratas Intl - Foz Do Iguacu, Brazil": "IGU", "Orland - Orland, Norway": "OLA", "Deer Lake Airport - Deer Lake, Canada": "YVZ", "Skopje - Skopje, Macedonia": "SKP", "Constanza Airport - Constanza, Dominican Republic": "COZ", "Richmond Intl - Richmond, United States": "RIC", "Cardak - Denizli, Turkey": "DNZ", "Xiangfan Airport - Xiangfan, China": "XFN", "Faisalabad Intl - Faisalabad, Pakistan": "LYP", "Mount Magnet Airport - Mount Magnet, Australia": "MMG", "Mawlamyine Airport - Mawlamyine, Burma": "MNU", "Laverton Airport - Laverton, Australia": "LVO", "Itokama Airport - Itokama, Papua New Guinea": "ITK", "Richard Lloyd Jones Jr Airport - Tulsa, United States": "RVS", "Khon Kaen - Khon Kaen, Thailand": "KKC", "Drummond Island Airport - Drummond Island, United States": "DRM", "Madison GA Municipal Airport - Madison, United States": "52A", "Exuma Intl - Great Exuma, Bahamas": "GGT", "Francis S Gabreski - West Hampton Beach, United States": "FOK", "Tottori - Tottori, Japan": "TTJ", "Tbilisi - Tbilisi, Georgia": "TBS", "Coober Pedy Airport - Coober Pedy, Australia": "CPD", "Bagan Intl - Nyuang U, Burma": "NYU", "Fort Collins Loveland Muni - Fort Collins, United States": "FNL", "Minneapolis St Paul Intl - Minneapolis, United States": "MSP", "Pierre Elliott Trudeau Intl - Montreal, Canada": "YUL", "Balimo Airport - Balimo, Papua New Guinea": "OPU", "Jaqu\u00e9 Airport - Jaqu\u00e9, Panama": "JQE", "Cuxhaven Airport - Cuxhaven, Germany": "NDZ", "Valkenburg - Valkenburg, Netherlands": "LID", "Guernsey - Guernsey, Guernsey": "GCI", "Perryville Airport - Perryville, United States": "KPV", "Greater Moncton Intl - Moncton, Canada": "YQM", "Pender Harbour Water Aerodrome - Pender Harbour, Canada": "YPT", "Essen Railway - Essen, Germany": "ZES", "Baita Airport - Hohhot, China": "HET", "Tanga - Tanga, Tanzania": "TGT", "Kansai - Osaka, Japan": "KIX", "Changbei Intl - Nanchang, China": "KHN", "Flagler County Airport - Flagler, United States": "XFL", "Francisco De Orellana - Coca, Ecuador": "OCC", "Dalton Municipal Airport - Dalton, United States": "DNN", "Raduzhny Airport - Raduzhnyi, Russia": "RAT", "Christmas Island - Christmas Island, Christmas Island": "XCH", "Guerrero Negro Airport - Guerrero Negro, Mexico": "GUB", "Pleiku Airport - Pleiku, Vietnam": "PXU", "Waikoloa Heliport - Waikoloa Village, United States": "WKL", "Grande Prairie - Grande Prairie, Canada": "YQU", "Kawthoung Airport - Kawthoung, Burma": "KAW", "Koltsovo - Yekaterinburg, Russia": "SVX", "Konya - Konya, Turkey": "KYA", "Putnam County Airport - Greencastle, United States": "4I7", "Arorae Island Airport - Arorae, Kiribati": "AIS", "Mombasa Moi Intl - Mombasa, Kenya": "MBA", "Erzurum - Erzurum, Turkey": "ERZ", "Flagstaff Pulliam Airport - Flagstaff, United States": "FLG", "Robinson Aaf - Robinson, United States": "RBM", "Portland Hillsboro - Hillsboro, United States": "HIO", "Oran - Oran, Argentina": "ORA", "Ministro Victor Konder Intl - Navegantes, Brazil": "NVT", "Malamala Airport - Malamala, South Africa": "AAM", "Cap Manuel Nino Intl - Changuinola, Panama": "CHX", "Magenta - Noumea, New Caledonia": "GEA", "Bolzano - Bolzano, Italy": "BZO", "Prospect Creek Airport - Prospect Creek, United States": "PPC", "Gimpo International Airpot - Seoul, South Korea": "SEL", "Bulgan Airport - Bulgan, Mongolia": "UGA", "John A. Osborne Airport - Geralds, Montserrat": "MNI", "Alexandra - Alexandra, New Zealand": "ALR", "Jalaluddin - Gorontalo, Indonesia": "GTO", "Longana Airport - Longana, Vanuatu": "LOD", "Jaisalmer - Jaisalmer, India": "JSA", "Meekatharra Airport - Meekatharra, Australia": "MKR", "Liangjiang - Guilin, China": "KWL", "Mansfield Lahm Regional - Mansfield, United States": "MFD", "Packwood - Packwood, United States": "55S", "Keetmanshoop - Keetmanshoop, Namibia": "KMP", "Rota Intl - Rota, Northern Mariana Islands": "ROP", "Xianyang - Xi'an, China": "XIY", "Keesler Afb - Biloxi, United States": "BIX", "Luderitz Airport - Luderitz, Namibia": "LUD", "Yeovilton - Yeovilton, United Kingdom": "YEO", "Mbanza Congo - M'banza-congo, Angola": "SSY", "Kwigillingok Airport - Kwigillingok, United States": "KWK", "Matei Airport - Matei, Fiji": "TVU", "Garoua - Garoua, Cameroon": "GOU", "Baotou Airport - Baotou, China": "BAV", "Messina - Musina, South Africa": "MEZ", "Uralsk - Uralsk, Kazakhstan": "URA", "Stronsay Airport - Stronsay, United Kingdom": "SOY", "Esquel - Esquel, Argentina": "EQS", "Meigs Field - Chicago, United States": "CGX", "Khanty Mansiysk Airport - Khanty-Mansiysk, Russia": "HMA", "Kungsangen - Norrkoeping, Sweden": "NRK", "De Kooy - De Kooy, Netherlands": "DHR", "Torsby Airport - Torsby, Sweden": "TYF", "Inyokern Airport - Inyokern, United States": "IYK", "Julia Creek Airport - Julia Creek, Australia": "JCK", "Nain Airport - Nain, Canada": "YDP", "Dyce - Aberdeen, United Kingdom": "ABZ", "Orsk Airport - Orsk, Russia": "OSW", "Hassan I Airport - El Aai\u00fan, Western Sahara": "EUN", "Wapenamanda Airport - Wapenamanda, Papua New Guinea": "WBM", "Kingscote Airport - Kingscote, Australia": "KGC", "Naone Airport - Maewo Island, Vanuatu": "MWF", "Jabalpur - Jabalpur, India": "JLR", "Monchengladbach - Moenchengladbach, Germany": "MGL", "Paulo Afonso - Paulo Alfonso, Brazil": "PAV", "Bryansk - Bryansk, Russia": "BZK", "Colorado Springs East - Ellicott, United States": "A50", "Misratah Airport - Misratah, Libya": "MRA", "Sevilla - Sevilla, Spain": "SVQ", "Plattsburgh Intl - Plattsburgh, United States": "PBG", "Downtown - Kansas City, United States": "MKC", "Frank Wiley Field - Miles City, United States": "MLS", "Big Trout Lake Airport - Big Trout Lake, Canada": "YTL", "Vishakhapatnam - Vishakhapatnam, India": "VTZ", "Edwards Afb - Edwards Afb, United States": "EDW", "Mc Chord Afb - Tacoma, United States": "TCM", "Kangding Airport - Kangding, China": "KGT", "Anaco - Anaco, Venezuela": "AAO", "Jackson Hole Airport - Jacksn Hole, United States": "JAC", "Uru Harbour Airport - Atoifi, Solomon Islands": "ATD", "Memphis Intl - Memphis, United States": "MEM", "Menominee Marinette Twin Co - Macon, United States": "MNM", "Tille - Beauvais, France": "BVA", "Jinan - Jinan, China": "TNA", "Hays Regional Airport - Hays, United States": "HYS", "Central Railway Station - Montreal, Canada": "YMY", "Space Coast Reg'l Airport - Titusville, United States": "TIX", "Lago Argentino Airport - El Calafate, Argentina": "ING", "Iwo Jima - Iwojima, Japan": "IWO", "Caransebes - Caransebes, Romania": "CSB", "Rochester Airport - Rochester, United Kingdom": "RCS", "Erfurt - Erfurt, Germany": "ERF", "County - Okeechobee, United States": "OBE", "Norsup Airport - Norsup, Vanuatu": "NUS", "Palmdale Rgnl Usaf Plt 42 - Palmdale, United States": "PMD", "Deir Zzor - Deire Zor, Syria": "DEZ", "Otaru - Otaru, Japan": "QOT", "Helsinki Malmi - Helsinki, Finland": "HEM", "Cauayan Airport - Cauayan, Philippines": "CYZ", "Arctic Bay Airport - Arctic Bay, Canada": "YAB", "Mission Field Airport - Livingston-Montana, United States": "LVM", "Sorocaba Airport - Sorocaba, Brazil": "SOD", "Alta - Alta, Norway": "ALF", "Kaolack - Kaolack, Senegal": "KLC", "Mayor General FAP Armando Revoredo Iglesias Airport - Cajamarca, Peru": "CJA", "La Roche - Brive, France": "BVE", "Central Nebraska Regional Airport - Grand Island, United States": "GRI", "Spangdahlem Ab - Spangdahlem, Germany": "SPM", "La Ronge - La Ronge, Canada": "YVC", "Lyneham - Lyneham, United Kingdom": "LYE", "Lea Co Rgnl - Hobbs, United States": "HOB", "General Francisco J Mujica Intl - Morelia, Mexico": "MLM", "Bonito Airport - Bointo, Brazil": "BYO", "Seymour - Galapagos, Ecuador": "GPS", "Islita Airport - Nandayure, Costa Rica": "PBP", "Zhezkazgan Airport - Zhezkazgan, Kazakhstan": "DZN", "King Hussein - Mafraq, Jordan": "OMF", "NAYPYITAW - NAYPYITAW, Burma": "NYT", "Ranai Airport - Ranai-Natuna Besar Island, Indonesia": "NTX", "Ringi Cove Airport - Ringi Cove, Solomon Islands": "RIN", "Roschino - Tyumen, Russia": "TJM", "Bochum Railway - Bochum, Germany": "EBO", "Zahedan Intl - Zahedan, Iran": "ZAH", "Ganja Airport - Ganja, Azerbaijan": "KVD", "Andrau Airport - Houston, United States": "AAP", "Palmar Sur - Palmar Sur, Costa Rica": "PMZ", "Fort McMurray - Mildred Lake Airport - Fort McMurray, Canada": "NML", "Nanaimo - Nanaimo, Canada": "YCD", "Aeroporto Prefeito Octavio de Almeida Neves - Sao Joao del Rei, Brazil": "JDR", "San Juan - Uganik Seaplane Base - San Juan, United States": "WSJ", "Changle - Fuzhou, China": "FOC", "Zanzibar - Zanzibar, Tanzania": "ZNZ", "South Caicos - South Caicos, Turks and Caicos Islands": "XSC", "Northern Aroostook Regional Airport - Frenchville, United States": "WFK", "Combolcha Airport - Dessie, Ethiopia": "DSE", "Chignik Bay Seaplane Base - Chignik, United States": "KBW", "Faya Largeau - Faya-largeau, Chad": "FYT", "Alitak Seaplane Base - Lazy Bay, United States": "ALZ", "General Leobardo C Ruiz Intl - Zacatecas, Mexico": "ZCL", "Camden - Camden, Australia": "CDU", "Jesup-Wayne County Airport - Jesup, United States": "JES", "Norwood Memorial Airport - Norwood, United States": "OWD", "Eagle River - Eagle River, United States": "EGV", "Atlanta Regional Airport - Falcon Field - Atlanta, United States": "FFC", "Khamti - Khamti, Burma": "KHM", "Gilgit - Gilgit, Pakistan": "GIL", "Necochea Airport - Necochea, Argentina": "NEC", "Ekwok Airport - Ekwok, United States": "KEK", "Geneve Cointrin - Geneva, Switzerland": "GVA", "Faro - Faro, Canada": "ZFA", "Dabo - Singkep, Indonesia": "SIQ", "Zamboanga Intl - Zamboanga, Philippines": "ZAM", "Kankan - Kankan, Guinea": "KNN", "St Hubert - Montreal, Canada": "YHU", "Garachine Airport - Garachine, Panama": "GHE", "Elko Regional Airport - Elko, United States": "EKO", "Sultan Azlan Shah - Ipoh, Malaysia": "IPH", "Murcia San Javier - Murcia, Spain": "MJV", "Eastern Oregon Regional Airport - Pendleton, United States": "PDT", "Waynesville Rgnl Arpt At Forney Fld - Fort Leonardwood, United States": "TBN", "Watertown Intl - Watertown, United States": "ART", "Tongliao Airport - Tongliao, China": "TGO", "Salerno Pontecagnano Airport - Salerno, Italy": "QSR", "Gyumri - Gyumri, Armenia": "LWN", "Moody Afb - Valdosta, United States": "VAD", "Tyndall Afb - Panama City, United States": "PAM", "Mammoth Yosemite Airport - Mammoth Lakes, United States": "MMH", "Kota Kinabalu Intl - Kota Kinabalu, Malaysia": "BKI", "Udaipur - Udaipur, India": "UDR", "Toussus Le Noble - Toussous-le-noble, France": "TNF", "Macau Intl - Macau, Macau": "MFM", "Al Ain International Airport - Al Ain, United Arab Emirates": "AAN", "Erkilet - Kayseri, Turkey": "ASR", "Hawarden - Hawarden, United Kingdom": "CEG", "Jose de San Martin Airport - Jose de San Martin, Argentina": "JSM", "Tubuala Airport - Tubuala, Panama": "TUW", "Ordos Ejin Horo - Dongsheng, China": "DSN", "Cedar Rapids - Cedar Rapids, United States": "CID", "Munster Osnabruck - Munster, Germany": "FMO", "Kayes Dag Dag - Kayes, Mali": "KYS", "Fuyang Airport - Fuyang, China": "FUG", "Al Ahsa - Al-ahsa, Saudi Arabia": "HOF", "Valley Intl - Harlingen, United States": "HRL", "Hobart Muni - Hobart, United States": "HBR", "Akrotiri - Akrotiri, Cyprus": "AKT", "Emelyanovo - Krasnoyarsk, Russia": "KJA", "Ramata Airport - Ramata, Solomon Islands": "RBV", "Indianapolis Metropolitan Airport - Indianapolis, United States": "UMP", "Gobernador Castello - Viedma, Argentina": "VDM", "Dourados Airport - Dourados, Brazil": "DOU", "Central - Saratov, Russia": "RTW", "Miami Intl - Miami, United States": "MIA"};
+
+
+/***/ },
+/* 510 */
+/***/ function(module, exports) {
+
+	module.exports = {"Swahili - Kenya": "sw-KE", "Arabic - Libya": "ar-LY", "Thai - Thailand": "th-TH", "French - Canada": "fr-CA", "Spanish - Spain": "es-ES", "Greek - Greece": "el-GR", "Ukrainian - Ukraine": "uk-UA", "Konkani - India": "kok-IN", "Romanian - Romania": "ro-RO", "Arabic - Algeria": "ar-DZ", "Belarusian - Belarus": "be-BY", "English - New Zealand": "en-NZ", "French - France": "fr-FR", "Italian - Switzerland": "it-CH", "Sanskrit - India": "sa-IN", "Punjabi - India": "pa-IN", "Chinese - Taiwan": "zh-TW", "Vietnamese - Vietnam": "vi-VN", "French - Switzerland": "fr-CH", "Danish - Denmark": "da-DK", "German - Austria": "de-AT", "Dutch - The Netherlands": "nl-NL", "Serbian (Cyrillic) - Serbia": "Cy-sr-SP", "Kyrgyz - Kazakhstan": "ky-KZ", "Tamil - India": "ta-IN", "Spanish - Chile": "es-CL", "Lithuanian - Lithuania": "lt-LT", "English - Ireland": "en-IE", "Arabic - Iraq": "ar-IQ", "Slovenian - Slovenia": "sl-SI", "Portuguese - Portugal": "pt-PT", "German - Liechtenstein": "de-LI", "Swedish - Sweden": "sv-SE", "Afrikaans - South Africa": "af-ZA", "Kannada - India": "kn-IN", "Telugu - India": "te-IN", "Indonesian - Indonesia": "id-ID", "English - Philippines": "en-PH", "Latvian - Latvia": "lv-LV", "Hindi - India": "hi-IN", "Armenian - Armenia": "hy-AM", "Spanish - Costa Rica": "es-CR", "Chinese - Singapore": "zh-SG", "Spanish - Venezuela": "es-VE", "Mongolian - Mongolia": "mn-MN", "Serbian (Latin) - Serbia": "Lt-sr-SP", "Arabic - Yemen": "ar-YE", "Galician - Galician": "gl-ES", "Georgian - Georgia": "ka-GE", "Chinese - Macau SAR": "zh-MO", "English - Jamaica": "en-JM", "Arabic - Kuwait": "ar-KW", "Spanish - Dominican Republic": "es-DO", "Basque - Basque": "eu-ES", "Polish - Poland": "pl-PL", "Italian - Italy": "it-IT", "Spanish - Paraguay": "es-PY", "English - Belize": "en-BZ", "Chinese - Hong Kong SAR": "zh-HK", "French - Luxembourg": "fr-LU", "Arabic - Bahrain": "ar-BH", "Bulgarian - Bulgaria": "bg-BG", "Arabic - Syria": "ar-SY", "Catalan - Catalan": "ca-ES", "Tatar - Russia": "tt-RU", "Dhivehi - Maldives": "div-MV", "Russian - Russia": "ru-RU", "Kazakh - Kazakhstan": "kk-KZ", "Chinese - China": "zh-CN", "Azeri (Latin) - Azerbaijan": "Lt-az-AZ", "Finnish - Finland": "fi-FI", "English - South Africa": "en-ZA", "French - Belgium": "fr-BE", "Swedish - Finland": "sv-FI", "Uzbek (Latin) - Uzbekistan": "Lt-uz-UZ", "Uzbek (Cyrillic) - Uzbekistan": "Cy-uz-UZ", "Malay - Brunei": "ms-BN", "Turkish - Turkey": "tr-TR", "Arabic - Jordan": "ar-JO", "Norwegian (Bokm\u00e5l) - Norway": "nb-NO", "Hebrew - Israel": "he-IL", "Albanian - Albania": "sq-AL", "Korean - Korea": "ko-KR", "Spanish - Uruguay": "es-UY", "Hungarian - Hungary": "hu-HU", "German - Switzerland": "de-CH", "Arabic - Tunisia": "ar-TN", "Estonian - Estonia": "et-EE", "Malay - Malaysia": "ms-MY", "Arabic - Saudi Arabia": "ar-SA", "Arabic - Qatar": "ar-QA", "English - Canada": "en-CA", "Spanish - Honduras": "es-HN", "French - Monaco": "fr-MC", "Arabic - United Arab Emirates": "ar-AE", "Chinese (Traditional)": "zh-CHT", "Arabic - Morocco": "ar-MA", "Croatian - Croatia": "hr-HR", "English - United States": "en-US", "Arabic - Oman": "ar-OM", "Spanish - Puerto Rico": "es-PR", "Spanish - El Salvador": "es-SV", "German - Luxembourg": "de-LU", "Spanish - Peru": "es-PE", "English - Zimbabwe": "en-ZW", "Syriac - Syria": "syr-SY", "Arabic - Lebanon": "ar-LB", "Spanish - Guatemala": "es-GT", "Norwegian (Nynorsk) - Norway": "nn-NO", "English - Caribbean": "en-CB", "Spanish - Mexico": "es-MX", "Macedonian (FYROM)": "mk-MK", "Faroese - Faroe Islands": "fo-FO", "Marathi - India": "mr-IN", "Icelandic - Iceland": "is-IS", "Spanish - Nicaragua": "es-NI", "Spanish - Panama": "es-PA", "Slovak - Slovakia": "sk-SK", "Spanish - Ecuador": "es-EC", "Japanese - Japan": "ja-JP", "Urdu - Pakistan": "ur-PK", "Czech - Czech Republic": "cs-CZ", "Dutch - Belgium": "nl-BE", "German - Germany": "de-DE", "Farsi - Iran": "fa-IR", "English - United Kingdom": "en-GB", "Portuguese - Brazil": "pt-BR", "Gujarati - India": "gu-IN", "Azeri (Cyrillic) - Azerbaijan": "Cy-az-AZ", "Arabic - Egypt": "ar-EG", "Spanish - Colombia": "es-CO", "English - Australia": "en-AU", "English - Trinidad and Tobago": "en-TT", "Spanish - Bolivia": "es-BO", "Spanish - Argentina": "es-AR", "Chinese (Simplified)": "zh-CHS"};
+
+
+/***/ },
+/* 511 */
+/***/ function(module, exports) {
+
+	module.exports = {"Nicaragua Cordoba": "NIO", "Laos Kip": "LAK", "Malawi Kwacha": "MWK", "Bahamas Dollar": "BSD", "Sierra Leone Leone": "SLL", "Macau Pataca": "MOP", "New Zealand Dollar": "NZD", "Mongolia Tughrik": "MNT", "Iceland Krona": "ISK", "Ghana Cedi": "GHS", "Morocco Dirham": "MAD", "Bhutan Ngultrum": "BTN", "Korea (North) Won": "KPW", "Sri Lanka Rupee": "LKR", "Romania New Leu": "RON", "Russia Ruble": "RUB", "Georgia Lari": "GEL", "Qatar Riyal": "QAR", "Tuvalu Dollar": "TVD", "Albania Lek": "ALL", "Namibia Dollar": "NAD", "Libya Dinar": "LYD", "Ukraine Hryvnia": "UAH", "Iraq Dinar": "IQD", "Iran Rial": "IRR", "Jersey Pound": "JEP", "Djibouti Franc": "DJF", "Euro Member Countries": "EUR", "S\u00e3o Tom\u00e9 and Pr\u00edncipe Dobra": "STD", "Lebanon Pound": "LBP", "Brazil Real": "BRL", "Nepal Rupee": "NPR", "Norway Krone": "NOK", "Saudi Arabia Riyal": "SAR", "Somalia Shilling": "SOS", "Falkland Islands (Malvinas) Pound": "FKP", "El Salvador Colon": "SVC", "Croatia Kuna": "HRK", "Bolivia Bol\u00edviano": "BOB", "Tanzania Shilling": "TZS", "Cambodia Riel": "KHR", "Egypt Pound": "EGP", "Yemen Rial": "YER", "Chile Peso": "CLP", "Denmark Krone": "DKK", "Armenia Dram": "AMD", "Panama Balboa": "PAB", "Australia Dollar": "AUD", "Syria Pound": "SYP", "Uganda Shilling": "UGX", "Uzbekistan Som": "UZS", "Guyana Dollar": "GYD", "Bulgaria Lev": "BGN", "Papua New Guinea Kina": "PGK", "Moldova Leu": "MDL", "Bangladesh Taka": "BDT", "Bermuda Dollar": "BMD", "Jordan Dinar": "JOD", "Uruguay Peso": "UYU", "Argentina Peso": "ARS", "Serbia Dinar": "RSD", "Eritrea Nakfa": "ERN", "Peru Sol": "PEN", "Burundi Franc": "BIF", "Kyrgyzstan Som": "KGS", "Guernsey Pound": "GGP", "Kuwait Dinar": "KWD", "Canada Dollar": "CAD", "Saint Helena Pound": "SHP", "Tonga Pa'anga": "TOP", "Israel Shekel": "ILS", "Ethiopia Birr": "ETB", "Czech Republic Koruna": "CZK", "Mexico Peso": "MXN", "Pakistan Rupee": "PKR", "China Yuan Renminbi": "CNY", "India Rupee": "INR", "Costa Rica Colon": "CRC", "Afghanistan Afghani": "AFN", "Oman Rial": "OMR", "Comoros Franc": "KMF", "Vanuatu Vatu": "VUV", "Sweden Krona": "SEK", "Jamaica Dollar": "JMD", "Cape Verde Escudo": "CVE", "Kenya Shilling": "KES", "Hong Kong Dollar": "HKD", "Guatemala Quetzal": "GTQ", "United Arab Emirates Dirham": "AED", "Venezuela Bolivar": "VEF", "Tajikistan Somoni": "TJS", "Mauritania Ouguiya": "MRO", "Botswana Pula": "BWP", "Bahrain Dinar": "BHD", "Samoa Tala": "WST", "Rwanda Franc": "RWF", "Lesotho Loti": "LSL", "Macedonia Denar": "MKD", "Mozambique Metical": "MZN", "Netherlands Antilles Guilder": "ANG", "Congo/Kinshasa Franc": "CDF", "Korea (South) Won": "KRW", "Communaut\u00e9 Financi\u00e8re Africaine (BEAC) CFA Franc BEAC": "XAF", "Belarus Ruble": "BYR", "Dominican Republic Peso": "DOP", "Solomon Islands Dollar": "SBD", "Cuba Convertible Peso": "CUC", "Suriname Dollar": "SRD", "Swaziland Lilangeni": "SZL", "South Africa Rand": "ZAR", "International Monetary Fund (IMF) Special Drawing Rights": "XDR", "Brunei Darussalam Dollar": "BND", "Seborga Luigino": "SPL", "Azerbaijan New Manat": "AZN", "Communaut\u00e9 Financi\u00e8re Africaine (BCEAO) Franc": "XOF", "Zambia Kwacha": "ZMW", "Kazakhstan Tenge": "KZT", "Nigeria Naira": "NGN", "Poland Zloty": "PLN", "Cuba Peso": "CUP", "Sudan Pound": "SDG", "Viet Nam Dong": "VND", "Comptoirs Fran\u00e7ais du Pacifique (CFP) Franc": "XPF", "Guinea Franc": "GNF", "Belize Dollar": "BZD", "Philippines Peso": "PHP", "Maldives (Maldive Islands) Rufiyaa": "MVR", "Angola Kwanza": "AOA", "Turkey Lira": "TRY", "United Kingdom Pound": "GBP", "Paraguay Guarani": "PYG", "Liberia Dollar": "LRD", "Hungary Forint": "HUF", "Haiti Gourde": "HTG", "Colombia Peso": "COP", "Fiji Dollar": "FJD", "Malaysia Ringgit": "MYR", "Zimbabwe Dollar": "ZWD", "Thailand Baht": "THB", "Mauritius Rupee": "MUR", "Taiwan New Dollar": "TWD", "Gambia Dalasi": "GMD", "Madagascar Ariary": "MGA", "Switzerland Franc": "CHF", "Barbados Dollar": "BBD", "Algeria Dinar": "DZD", "Japan Yen": "JPY", "Bosnia and Herzegovina Convertible Marka": "BAM", "Indonesia Rupiah": "IDR", "Aruba Guilder": "AWG", "Seychelles Rupee": "SCR", "Turkmenistan Manat": "TMT", "Myanmar (Burma) Kyat": "MMK", "Cayman Islands Dollar": "KYD", "Gibraltar Pound": "GIP", "Tunisia Dinar": "TND", "Singapore Dollar": "SGD", "United States Dollar": "USD", "Honduras Lempira": "HNL", "East Caribbean Dollar": "XCD", "Trinidad and Tobago Dollar": "TTD", "Isle of Man Pound": "IMP"};
+
 
 /***/ }
 /******/ ]);

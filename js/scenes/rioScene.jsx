@@ -30,8 +30,9 @@ Cloud.prototype = {
 };
 
 
-var Plane = function(planeSprite) {
-    this.sprite = planeSprite;
+var Plane = function(planeMovieClip) {
+    this.movieClip = planeMovieClip;
+    this.movieClip.play();
     this.moveRight = false;
     this.animatePlane();
 };
@@ -43,17 +44,17 @@ Plane.prototype = {
         this.moveRight = !this.moveRight;
 
         if (this.moveRight) {
-            this.sprite.x = -this.sprite.width;
-            this.sprite.scale.x = 1.0;
+            this.movieClip.x = -this.movieClip.width;
+            this.movieClip.scale.x = 1.0;
             targetX = config.sceneWidth;
         }
         else {
-            this.sprite.x = config.sceneWidth;
-            this.sprite.scale.x = -1.0;
-            targetX = -this.sprite.width;
+            this.movieClip.x = config.sceneWidth;
+            this.movieClip.scale.x = -1.0;
+            targetX = -this.movieClip.width;
         }
-        this.sprite.y = config.rio.plane.YMin + Math.random() * (config.rio.plane.YMax - config.rio.plane.YMin);
-        this.tween = TweenLite.to(this.sprite, config.sceneWidth / config.rio.plane.speed, {
+        this.movieClip.y = config.rio.plane.YMin + Math.random() * (config.rio.plane.YMax - config.rio.plane.YMin);
+        this.tween = TweenLite.to(this.movieClip, config.sceneWidth / config.rio.plane.speed, {
             x: targetX,
             y: config.rio.plane.YMin + Math.random() * (config.rio.plane.YMax - config.rio.plane.YMin),
             ease: "Linear.easeNone",

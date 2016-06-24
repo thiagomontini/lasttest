@@ -8,7 +8,19 @@ module.exports = {
         },
         {
             "id": "plane",
-            "images": ["img/rio/plane.png"],
+            "images": [
+                "img/rio/Rio_Plane_00000.png",
+                "img/rio/Rio_Plane_00001.png",
+                "img/rio/Rio_Plane_00002.png",
+                "img/rio/Rio_Plane_00003.png",
+                "img/rio/Rio_Plane_00004.png",
+                "img/rio/Rio_Plane_00005.png",
+                "img/rio/Rio_Plane_00006.png",
+                "img/rio/Rio_Plane_00007.png",
+                "img/rio/Rio_Plane_00008.png",
+                "img/rio/Rio_Plane_00009.png",
+                "img/rio/Rio_Plane_00010.png"
+            ],
             "position": [1379, 267]
         },
 
