@@ -34,6 +34,10 @@ module.exports = {
                 0.4016484598,
                 0.1639045776
             ]
+        },
+        "seagull": {
+            "amplitude": 100,
+            "duration": 2
         }
     }
 };

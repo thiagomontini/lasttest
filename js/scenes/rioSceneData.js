@@ -6,6 +6,7 @@ module.exports = {
             "images": ["img/rio/background.jpg"],
             "position": [0, 0]
         },
+
         {
             "id": "plane",
             "images": [
@@ -46,6 +47,36 @@ module.exports = {
             "id": "stadium",
             "images": ["img/rio/stadium.png"],
             "position": [1142, 852]
+        },
+
+        {
+            "id": "seagull01",
+            "images": ["img/rio/seagulls_1.png"],
+            "position": [133, 262]
+        },
+
+        {
+            "id": "seagull02",
+            "images": ["img/rio/seagulls_2.png"],
+            "position": [382, 469]
+        },
+
+        {
+            "id": "seagull03",
+            "images": ["img/rio/seagulls_3.png"],
+            "position": [532, 696]
+        },
+
+        {
+            "id": "seagull04",
+            "images": ["img/rio/seagulls_4.png"],
+            "position": [555, 473]
+        },
+
+        {
+            "id": "seagull05",
+            "images": ["img/rio/seagulls_5.png"],
+            "position": [1331, 56]
         },
 
         {

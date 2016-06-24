@@ -1,7 +1,7 @@
 var React = require("react");
 var config = require("../config.js");
 var SceneMixin = require("./sceneMixin.jsx");
-var TweenLite = require("../libs/gsap/TweenLite.js");
+var TweenMax = require("../libs/gsap/TweenMax.js");
 var TimelineMax = require("../libs/gsap/TimelineMax.js");
 
 
@@ -13,7 +13,7 @@ var Cloud = function(cloudSprite) {
 Cloud.prototype = {
     animateCloud: function() {
         var speed = config.rio.cloud.speed * (1.0 + config.rio.cloud.speedVariance * (Math.random() - 0.5));
-        this.tween = TweenLite.to(this.sprite, (this.sprite.x + this.sprite.width) / speed, {
+        this.tween = TweenMax.to(this.sprite, (this.sprite.x + this.sprite.width) / speed, {
             x: -this.sprite.width,
             ease: "Linear.easeNone",
             onComplete: function() {
@@ -54,7 +54,7 @@ Plane.prototype = {
             targetX = -this.movieClip.width;
         }
         this.movieClip.y = config.rio.plane.YMin + Math.random() * (config.rio.plane.YMax - config.rio.plane.YMin);
-        this.tween = TweenLite.to(this.movieClip, config.sceneWidth / config.rio.plane.speed, {
+        this.tween = TweenMax.to(this.movieClip, config.sceneWidth / config.rio.plane.speed, {
             x: targetX,
             y: config.rio.plane.YMin + Math.random() * (config.rio.plane.YMax - config.rio.plane.YMin),
             ease: "Linear.easeNone",
@@ -80,7 +80,7 @@ Glider.prototype = {
         this.sprite.x = 0;
         this.meanY = config.rio.glider.YMin + Math.random() * (config.rio.glider.YMax - config.rio.glider.YMin);
         this.sprite.y = this.meanY;
-        this.tween = TweenLite.to(this.sprite, config.sceneWidth / config.rio.glider.speed, {
+        this.tween = TweenMax.to(this.sprite, config.sceneWidth / config.rio.glider.speed, {
             x: config.sceneWidth + this.sprite.width,
             ease: "Linear.easeNone",
             onUpdate: function() {
@@ -140,7 +140,7 @@ Person.prototype = {
         var angle = 2*Math.PI*Math.random();
         var distance = this.radius*Math.random();
 
-        this.tween = TweenLite.to(this.sprite, 1.5 + Math.random(), {
+        this.tween = TweenMax.to(this.sprite, 1.5 + Math.random(), {
             x: this.centerX + distance*Math.cos(angle),
             y: this.centerY + distance*Math.sin(angle) / 2,
             ease: "Linear.easeNone",
@@ -153,6 +153,27 @@ Person.prototype = {
         this.tween.kill();
     }
 }
+
+
+var Seagull = function(seagullSprite) {
+    this.sprite = seagullSprite;
+
+    var amplitude = config.rio.seagull.amplitude * (0.8 + 0.4*Math.random());
+    this.sprite.y -= amplitude / 2;
+
+    this.tween = TweenMax.to(this.sprite, config.rio.seagull.duration * (0.8 + 0.4*Math.random()), {
+        y: this.sprite.y + amplitude,
+        ease: "Quad.easeInOut"
+    });
+    this.tween.repeat(-1);
+    this.tween.yoyo(true);
+}
+
+Seagull.prototype = {
+    dispose: function() {
+        this.tween.kill();
+    }
+};
 
 
 var RioScene = React.createClass({
@@ -183,6 +204,13 @@ var RioScene = React.createClass({
         this.disposables.push(new Person(this.objects.redeemer_people08));
         this.disposables.push(new Person(this.objects.redeemer_people09));
         this.disposables.push(new Person(this.objects.redeemer_people10));
+
+        // Animates the seagulls
+        this.disposables.push(new Seagull(this.objects.seagull01));
+        this.disposables.push(new Seagull(this.objects.seagull02));
+        this.disposables.push(new Seagull(this.objects.seagull03));
+        this.disposables.push(new Seagull(this.objects.seagull04));
+        this.disposables.push(new Seagull(this.objects.seagull05));
     },
 
     disposeScene: function() {

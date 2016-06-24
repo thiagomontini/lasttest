@@ -4,7 +4,7 @@ var config = require("../config.js");
 
 module.exports = {
     _computeScale: function() {
-        return Math.min(window.innerWidth / config.sceneWidth, window.innerHeight / config.sceneHeight);
+        return Math.max(window.innerWidth / config.sceneWidth, window.innerHeight / config.sceneHeight);
     },
 
     _buildObject: function(objectData) {
@@ -21,6 +21,8 @@ module.exports = {
         var position = objectData.position || [0, 0];
         object.x = position[0];
         object.y = position[1];
+
+        object.anchor.x = object.anchor.y = 0;
 
         return object;
     },
