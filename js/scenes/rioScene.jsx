@@ -1,9 +1,9 @@
 var React = require("react");
 var config = require("../config.js");
+var sceneData = require("./sceneData.js");
 var SceneMixin = require("./sceneMixin.jsx");
 var TweenMax = require("../libs/gsap/TweenMax.js");
 var TimelineMax = require("../libs/gsap/TimelineMax.js");
-
 
 var Cloud = function(cloudSprite) {
     this.sprite = cloudSprite;
@@ -177,6 +177,8 @@ Seagull.prototype = {
 
 
 var RioScene = React.createClass({
+    sceneKey: "rio",
+
     mixins: [SceneMixin],
 
     initScene: function() {

@@ -1,6 +1,8 @@
 var React = require("react");
 var PIXI = require("pixi.js");
 var config = require("../config.js");
+var sceneData = require("./sceneData.js");
+var textureCache = require("../utils/textureCache.js");
 
 module.exports = {
     _computeScale: function() {
@@ -9,8 +11,8 @@ module.exports = {
 
     _buildObject: function(objectData) {
         var textures = objectData.images.map(function(x) {
-            return this.props.textureCache[x];
-        }.bind(this));
+            return textureCache[x];
+        });
         if (textures.length > 1) {
             object = new PIXI.extras.MovieClip(textures);
         }
@@ -47,8 +49,8 @@ module.exports = {
 
         // Builds the objects from the scene
         this.objects = {};
-        for (var i=0; i < this.props.data.objects.length; i++) {
-            var o = this.props.data.objects[i];
+        for (var i=0; i < sceneData[this.sceneKey].objects.length; i++) {
+            var o = sceneData[this.sceneKey].objects[i];
             var newObject = this._buildObject(o);
             this.stage.addChild(newObject);
             this.objects[o.id] = newObject;
@@ -60,7 +62,7 @@ module.exports = {
         }
 
         // Builds the hit areas
-        this.hitAreas = this.props.data.hitAreas.map(function(areaObject) {
+        this.hitAreas = sceneData[this.sceneKey].hitAreas.map(function(areaObject) {
             return {
                 "description": areaObject.description,
                 "object": this.objects[areaObject.object],
@@ -88,6 +90,7 @@ module.exports = {
     },
 
     animationTick: function(timestamp) {
+        console.log("animationTick");
         // Renders the PIXI canvas
         this.renderer.render(this.stage);
 
@@ -103,7 +106,7 @@ module.exports = {
 
     componentWillUnmount: function() {
         // Stops the animation
-        clearAnimationFrame(this.animationId);
+        cancelAnimationFrame(this.animationId);
 
         // Removes the resize listener
         window.removeEventListener("resize", this.onWindowResize);
@@ -121,6 +124,10 @@ module.exports = {
 
         style.WebkitTransform = style.transform;
 
-        return <canvas className="scene" style={style} ref="canvas" />;
+        return (
+            <div className="scene-container">
+                <canvas className="scene" style={style} ref="canvas" />
+            </div>
+        );
     }
 };
