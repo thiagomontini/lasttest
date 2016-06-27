@@ -32,13 +32,18 @@ var InputDate = React.createClass({
 
     render: function() {
         var calendar = null;
+        var today = new Date();
+
         if (this.state.showPicker) {
             calendar = (
                 <InfiniteCalendar
                     className="input-date-picker"
                     width="100%"
                     selectedDate={this.state.date}
-                    afterSelect={this.changeDate} />
+                    afterSelect={this.changeDate}
+                    min={new Date(today.getFullYear(), today.getMonth(), 1)}
+                    max={new Date(today.getFullYear()+1, today.getMonth(), 1)}
+                    layout="landscape" />
             );
         }
         return (
