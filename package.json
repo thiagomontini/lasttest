@@ -7,13 +7,12 @@
     "watch:js": "sh set_title.sh JS WATCHER;webpack --progress --colors --watch",
     "build:css": "lessc --clean-css --source-map less/main.less public/css/main.css",
     "watch:css": "sh set_title.sh CSS WATCHER;autoless --source-map less public/css",
-    "server": "sh set_title.sh SERVER;http-server -p 8000"
+    "server": "sh set_title.sh SERVER;node simpleServer.js"
   },
   "author": "Carlos Zanella",
   "license": "ISC",
   "devDependencies": {
     "autoless": "^0.1.7",
-    "http-server": "^0.9.0",
     "jsx-loader": "^0.13.2",
     "less": "^2.6.1",
     "less-plugin-clean-css": "^1.5.1",
