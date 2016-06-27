@@ -90,7 +90,6 @@ module.exports = {
     },
 
     animationTick: function(timestamp) {
-        console.log("animationTick");
         // Renders the PIXI canvas
         this.renderer.render(this.stage);
 

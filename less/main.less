@@ -12,21 +12,7 @@ html, body {
     width: 100%;
     position: relative;
     font-family: sans-serif;
-}
-
-.scene-link {
-    cursor: pointer;
-
-    &:hover {
-        color: @lightBlue;
-    }
-}
-
-hr {
-    width: 95%;
-    margin: 15px 5% / 2;
-    height: 2px;
-    background-color: @lightGrey;
+    padding: 10px;
     box-sizing: border-box;
 }
 
@@ -45,6 +31,20 @@ button {
     color: @white;
     background-color: @lightBlue;
     cursor: pointer;
+}
+
+ul {
+    list-style: circle inside none;
+    padding-left: 10px;
+    margin: 10px;
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+    background-color: @lightGrey;
+    box-sizing: border-box;
+    margin: 20px 0px;
 }
 
 @import "scene.less";
