@@ -7,13 +7,14 @@
     "watch:js": "sh set_title.sh JS WATCHER;webpack --progress --colors --watch",
     "build:css": "lessc --clean-css --source-map less/main.less public/css/main.css",
     "watch:css": "sh set_title.sh CSS WATCHER;autoless --source-map less public/css",
-    "server": "sh set_title.sh SERVER;http-server -p 8000"
+    "server": "sh set_title.sh SERVER;node simpleServer.js"
   },
   "author": "Carlos Zanella",
   "license": "ISC",
   "devDependencies": {
     "autoless": "^0.1.7",
-    "http-server": "^0.9.0",
+    "exports-loader": "^0.6.3",
+    "imports-loader": "^0.6.5",
     "jsx-loader": "^0.13.2",
     "less": "^2.6.1",
     "less-plugin-clean-css": "^1.5.1",
@@ -21,7 +22,9 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-infinite-calendar": "^1.1.14",
+    "restful.js": "^0.9.6",
     "uglify": "^0.1.5",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "whatwg-fetch": "^1.0.0"
   }
 }

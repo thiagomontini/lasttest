@@ -14,7 +14,8 @@ body {
 }
 input[type='text'],
 .static-input,
-button {
+button,
+select {
   padding: 10px;
   border-radius: 4px;
   font-size: 20px;
@@ -28,6 +29,10 @@ button {
   color: #ffffff;
   background-color: #01b9ff;
   cursor: pointer;
+}
+button.disabled {
+  cursor: auto;
+  opacity: 0.5;
 }
 ul {
   list-style: circle inside none;
@@ -640,5 +645,16 @@ hr {
 }
 .flights-form .form-row {
   margin: 20px 10px;
+}
+.flights-form .result {
+  width: 100%;
+  height: auto;
+  margin: 10px;
+  border: 1px solid #000000;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: Courier;
+  color: #000000;
+  font-size: 18px;
 }
 /*# sourceMappingURL=main.css.map */

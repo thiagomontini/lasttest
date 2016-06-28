@@ -2,6 +2,8 @@ module.exports = {
     "sceneWidth": 2304,
     "sceneHeight": 1440,
 
+    "apiUrl": "http://www.momondo.com/api/3.0/Flights",
+
     "rio": {
         "cloud": {
             "speed": 100,
