@@ -13,6 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "autoless": "^0.1.7",
+    "exports-loader": "^0.6.3",
+    "imports-loader": "^0.6.5",
     "jsx-loader": "^0.13.2",
     "less": "^2.6.1",
     "less-plugin-clean-css": "^1.5.1",
@@ -20,7 +22,9 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-infinite-calendar": "^1.1.14",
+    "restful.js": "^0.9.6",
     "uglify": "^0.1.5",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "whatwg-fetch": "^1.0.0"
   }
 }

@@ -25,6 +25,10 @@ module.exports = {
     devtool: 'source-map',
 
     plugins: [
-        //new webpack.optimize.UglifyJsPlugin()
+        //new webpack.optimize.UglifyJsPlugin(),
+        new webpack.ProvidePlugin({
+            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
+            'Promise': 'imports?this=>global!exports?global.Promise!Promise'
+        })
     ]
 }
