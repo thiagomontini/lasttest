@@ -13,12 +13,20 @@ var InputDate = React.createClass({
         };
     },
 
+    componentDidMount: function() {
+        this.fireChangeEvent();
+    },
+
     changeDate: function(selectedDate) {
         this.setState({
             date: selectedDate.toDate(),
             showPicker: false
         });
 
+        this.fireChangeEvent();
+    },
+
+    fireChangeEvent: function() {
         if (this.props.onChange) {
             this.props.onChange(dateToText(this.state.date));
         }
@@ -38,11 +46,13 @@ var InputDate = React.createClass({
             calendar = (
                 <InfiniteCalendar
                     className="input-date-picker"
-                    width="100%"
                     selectedDate={this.state.date}
                     afterSelect={this.changeDate}
                     min={new Date(today.getFullYear(), today.getMonth(), 1)}
-                    max={new Date(today.getFullYear()+1, today.getMonth(), 1)}
+                    max={new Date(today.getFullYear(), today.getMonth()+6, 1)}
+                    minDate={new Date()}
+                    width={600}
+                    height={330}
                     layout="landscape" />
             );
         }

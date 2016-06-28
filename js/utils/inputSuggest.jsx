@@ -3,7 +3,8 @@ var React = require("react");
 var InputSuggest = React.createClass({
     getDefaultProps: function() {
         return {
-            suggestionDict: {}
+            suggestionDict: {},
+            minForSuggestions: 3
         };
     },
 
@@ -19,7 +20,7 @@ var InputSuggest = React.createClass({
 
         var queryRegEx = new RegExp(text.trim().replace(/\s+/g, '\\s+'), "gi");
 
-        if (text.length >= 3 && !this.props.suggestionDict[text]) {
+        if (text.length >= this.props.minForSuggestions && !this.props.suggestionDict[text]) {
             for (var suggestion in this.props.suggestionDict) {
                 var match = suggestion.match(queryRegEx);
                 if (match) {
@@ -36,7 +37,7 @@ var InputSuggest = React.createClass({
         });
 
         if (this.props.onChange) {
-            this.props.onChange(this.props.suggestionDict[this.state.text]);
+            this.props.onChange(this.props.suggestionDict[text]);
         }
     },
 

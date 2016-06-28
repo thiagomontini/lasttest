@@ -14,7 +14,8 @@ body {
 }
 input[type='text'],
 .static-input,
-button {
+button,
+select {
   padding: 10px;
   border-radius: 4px;
   font-size: 20px;
@@ -637,7 +638,6 @@ hr {
   position: absolute;
   left: 0px;
   top: 100%;
-  width: 600px !important;
 }
 .flights-form .form-row {
   margin: 20px 10px;
