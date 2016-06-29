@@ -6,51 +6,6 @@ import os
 import json
 from collections import defaultdict
 
-def extract_component(pixel_array, width, height, visited, px, py):
-    queue = Queue()
-    visited[px,py] = True
-    queue.put((px, py))
-
-    min_x = px
-    min_y = py
-    max_x = px
-    max_y = py
-
-    pixels = {}
-
-    while not queue.empty():
-        x, y = queue.get()
-        pixel_pos = 4*(x + y*width)
-        pixels[x,y] = map(lambda x:x, pixel_array[pixel_pos:pixel_pos + 4])
-        min_x = min(min_x, x)
-        min_y = min(min_y, y)
-        max_x = max(max_x, x)
-        max_y = max(max_y, y)
-
-        if x > 0 and pixel_array[pixel_pos - 4 + 3] != '\x00' and not visited[x-1,y]:
-            visited[x-1,y] = True
-            queue.put((x-1,y))
-
-        if x < width-1 and pixel_array[pixel_pos + 4 + 3] != '\x00' and not visited[x+1,y]:
-            visited[x+1,y] = True
-            queue.put((x+1,y))
-
-        if y > 0 and pixel_array[pixel_pos - 4*width + 3] != '\x00' and not visited[x,y-1]:
-            visited[x,y-1] = True
-            queue.put((x,y-1))
-
-        if y < height-1 and pixel_array[pixel_pos + 4*width + 3] != '\x00' and not visited[x,y+1]:
-            visited[x,y+1] = True
-            queue.put((x,y+1))
-
-    return {
-        'min_x': min_x,
-        'max_x': max_x,
-        'min_y': min_y,
-        'max_y': max_y,
-        'pixels': pixels
-    }
-
 
 image_formats = ['png', 'jpg']
 

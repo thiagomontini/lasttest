@@ -1,5 +1,7 @@
 module.exports = {
     "name": "Rio de Janeiro",
+    "sceneWidth": 2304,
+    "sceneHeight": 1440,
     "objects": [
         {
             "id": "background",
@@ -87,31 +89,31 @@ module.exports = {
 
         {
             "id": "cloud01",
-            "images": ["img/rio/cloud01.png"],
+            "images": ["img/common/cloud01.png"],
             "position": [-121, 408]
         },
 
         {
             "id": "cloud02",
-            "images": ["img/rio/cloud02.png"],
+            "images": ["img/common/cloud02.png"],
             "position": [31, 128]
         },
 
         {
             "id": "cloud03",
-            "images": ["img/rio/cloud03.png"],
+            "images": ["img/common/cloud03.png"],
             "position": [951, 159]
         },
 
         {
             "id": "cloud04",
-            "images": ["img/rio/cloud04.png"],
+            "images": ["img/common/cloud04.png"],
             "position": [1583, 124]
         },
 
         {
             "id": "cloud05",
-            "images": ["img/rio/cloud05.png"],
+            "images": ["img/common/cloud05.png"],
             "position": [1925, 214]
         },
 

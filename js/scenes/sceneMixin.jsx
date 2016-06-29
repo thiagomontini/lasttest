@@ -1,12 +1,11 @@
 var React = require("react");
 var PIXI = require("pixi.js");
-var config = require("../config.js");
 var sceneData = require("./sceneData.js");
 var textureCache = require("../utils/textureCache.js");
 
 module.exports = {
     _computeScale: function() {
-        return Math.max(window.innerWidth / config.sceneWidth, window.innerHeight / config.sceneHeight);
+        return Math.max(window.innerWidth / sceneData[this.sceneKey].sceneWidth, window.innerHeight / sceneData[this.sceneKey].sceneHeight);
     },
 
     _buildObject: function(objectData) {
@@ -37,7 +36,7 @@ module.exports = {
 
     componentDidMount: function() {
         // Create a renderer instance
-        this.renderer = new PIXI.CanvasRenderer(config.sceneWidth, config.sceneHeight, { // or autoDetectRenderer
+        this.renderer = new PIXI.CanvasRenderer(sceneData[this.sceneKey].sceneWidth, sceneData[this.sceneKey].sceneHeight, { // or autoDetectRenderer
             view: this.refs.canvas
         });
 

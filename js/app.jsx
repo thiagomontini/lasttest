@@ -15,9 +15,14 @@ var App = React.createClass({
 
     componentWillMount: function() {
         // Builds a list of the images to be loaded
+        this.manifest = [];
         for (var sceneKey in sceneData) {
             var objects = sceneData[sceneKey]["objects"];
-            this.manifest = objects.map(function(x) {return x["images"]}).reduce(function(a, b){return a.concat(b);});
+            this.manifest = this.manifest.concat(
+                objects
+                    .map(function(x) { return x["images"] })
+                    .reduce(function(a, b){ return a.concat(b) })
+            );
         }
 
         // Removes the repeated items

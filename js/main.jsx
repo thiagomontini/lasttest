@@ -8,6 +8,7 @@ var browserHistory = require("react-router").browserHistory;
 var App = require("./app.jsx");
 var Home = require("./views/home.jsx");
 var RioScene = require("./scenes/rioScene.jsx");
+var NYScene = require("./scenes/nyScene.jsx");
 var FlightsForm = require("./views/flightsForm.jsx");
 
 ReactDom.render((
@@ -16,6 +17,7 @@ ReactDom.render((
             <IndexRoute component={Home} />
             <Route path="form" component={FlightsForm} />
             <Route path="rio" component={RioScene} />
+            <Route path="ny" component={NYScene} />
         </Route>
     </Router>
 ), document.getElementById("app-container"));
