@@ -28,19 +28,19 @@ module.exports = {
         },
 
         {
-            "id": "sugar-loaf",
+            "id": "sugar_loaf",
             "images": ["img/rio/sugar-loaf.png"],
             "position": [374, 218]
         },
 
         {
-            "id": "cableCar01",
+            "id": "cableCar1",
             "images": ["img/rio/cable-car.png"],
             "position": [954, 373]
         },
 
         {
-            "id": "cableCar02",
+            "id": "cableCar2",
             "images": ["img/rio/cable-car.png"],
             "position": [1288, 664]
         },
@@ -52,31 +52,31 @@ module.exports = {
         },
 
         {
-            "id": "seagull01",
+            "id": "seagull1",
             "images": ["img/rio/seagulls_1.png"],
             "position": [133, 262]
         },
 
         {
-            "id": "seagull02",
+            "id": "seagull2",
             "images": ["img/rio/seagulls_2.png"],
             "position": [382, 469]
         },
 
         {
-            "id": "seagull03",
+            "id": "seagull3",
             "images": ["img/rio/seagulls_3.png"],
             "position": [532, 696]
         },
 
         {
-            "id": "seagull04",
+            "id": "seagull4",
             "images": ["img/rio/seagulls_4.png"],
             "position": [555, 473]
         },
 
         {
-            "id": "seagull05",
+            "id": "seagull5",
             "images": ["img/rio/seagulls_5.png"],
             "position": [1331, 56]
         },
@@ -88,37 +88,37 @@ module.exports = {
         },
 
         {
-            "id": "cloud01",
+            "id": "cloud1",
             "images": ["img/common/cloud01.png"],
             "position": [-121, 408]
         },
 
         {
-            "id": "cloud02",
+            "id": "cloud2",
             "images": ["img/common/cloud02.png"],
             "position": [31, 128]
         },
 
         {
-            "id": "cloud03",
+            "id": "cloud3",
             "images": ["img/common/cloud03.png"],
             "position": [951, 159]
         },
 
         {
-            "id": "cloud04",
+            "id": "cloud4",
             "images": ["img/common/cloud04.png"],
             "position": [1583, 124]
         },
 
         {
-            "id": "cloud05",
+            "id": "cloud5",
             "images": ["img/common/cloud05.png"],
             "position": [1925, 214]
         },
 
         {
-            "id": "bird-hill",
+            "id": "bird_hill",
             "images": ["img/rio/bird-hill.png"],
             "position": [33, 1167]
         },
@@ -136,55 +136,55 @@ module.exports = {
         },
 
         {
-            "id": "redeemer_people01",
+            "id": "redeemer_people1",
             "images": ["img/rio/redeemer_people_1.png"],
             "position": [1469, 1164]
         },
 
         {
-            "id": "redeemer_people02",
+            "id": "redeemer_people2",
             "images": ["img/rio/redeemer_people_2.png"],
             "position": [1518, 1138]
         },
 
         {
-            "id": "redeemer_people03",
+            "id": "redeemer_people3",
             "images": ["img/rio/redeemer_people_3.png"],
             "position": [1538, 1177]
         },
 
         {
-            "id": "redeemer_people04",
+            "id": "redeemer_people4",
             "images": ["img/rio/redeemer_people_4.png"],
             "position": [1545, 1135]
         },
 
         {
-            "id": "redeemer_people05",
+            "id": "redeemer_people5",
             "images": ["img/rio/redeemer_people_5.png"],
             "position": [1594, 1191]
         },
 
         {
-            "id": "redeemer_people06",
+            "id": "redeemer_people6",
             "images": ["img/rio/redeemer_people_6.png"],
             "position": [1596, 1131]
         },
 
         {
-            "id": "redeemer_people07",
+            "id": "redeemer_people7",
             "images": ["img/rio/redeemer_people_7.png"],
             "position": [1597, 1245]
         },
 
         {
-            "id": "redeemer_people08",
+            "id": "redeemer_people8",
             "images": ["img/rio/redeemer_people_8.png"],
             "position": [1646, 1266]
         },
 
         {
-            "id": "redeemer_people09",
+            "id": "redeemer_people9",
             "images": ["img/rio/redeemer_people_9.png"],
             "position": [1653, 1309]
         },
@@ -274,7 +274,7 @@ module.exports = {
         },
         {
             "description": "Sugarloaf Mountain",
-            "object": "sugar-loaf",
+            "object": "sugar_loaf",
             "polygon": [
                 377.070, 743.050,
                 402.660, 682.480,
@@ -343,9 +343,10 @@ module.exports = {
     "config": {
         "cloud": {
             "speed": 100,
-            "YMin": 0,
-            "YMax": 450,
-            "speedVariance": 0.5,
+            "yMin": 0,
+            "yMax": 450,
+            "sceneWidth": 2304,
+            "speedVariance": 0.5
         },
         "plane": {
             "speed": 200,

@@ -4,32 +4,9 @@ var SceneMixin = require("./sceneMixin.jsx");
 var TweenMax = require("../libs/gsap/TweenMax.js");
 var TimelineMax = require("../libs/gsap/TimelineMax.js");
 
+var Cloud = require("../sceneObjects/cloud.js");
+
 var config = sceneData.rio.config;
-
-var Cloud = function(cloudSprite) {
-    this.sprite = cloudSprite;
-    this.animateCloud();
-};
-
-Cloud.prototype = {
-    animateCloud: function() {
-        var speed = config.cloud.speed * (1.0 + config.cloud.speedVariance * (Math.random() - 0.5));
-        this.tween = TweenMax.to(this.sprite, (this.sprite.x + this.sprite.width) / speed, {
-            x: -this.sprite.width,
-            ease: "Linear.easeNone",
-            onComplete: function() {
-                this.sprite.x = sceneData.rio.sceneWidth;
-                this.sprite.y = config.cloud.YMin + Math.random() * (config.cloud.YMax - config.cloud.YMin);
-                this.animateCloud();
-            }.bind(this)
-        });
-    },
-
-    dispose: function() {
-        this.tween.kill();
-    }
-};
-
 
 var Plane = function(planeMovieClip) {
     this.movieClip = planeMovieClip;
@@ -186,9 +163,11 @@ var RioScene = React.createClass({
         this.disposables = [];
 
         // Animates the clouds
-        for (var i=1; i <= 5; i++) {
-            this.disposables.push(new Cloud(this.objects["cloud0" + i]));
-        }
+        this.disposables.push(new Cloud(this.objects.cloud1, config.cloud));
+        this.disposables.push(new Cloud(this.objects.cloud2, config.cloud));
+        this.disposables.push(new Cloud(this.objects.cloud3, config.cloud));
+        this.disposables.push(new Cloud(this.objects.cloud4, config.cloud));
+        this.disposables.push(new Cloud(this.objects.cloud5, config.cloud));
 
         // Animates the plane
         this.disposables.push(new Plane(this.objects.plane));
@@ -197,23 +176,23 @@ var RioScene = React.createClass({
         this.disposables.push(new Glider(this.objects.glider));
 
         // Animates the cable car
-        this.disposables.push(new CableCar(this.objects.cableCar01, 0.5 * Math.random()));
-        this.disposables.push(new CableCar(this.objects.cableCar02, 0.5 * Math.random() + 0.5));
+        this.disposables.push(new CableCar(this.objects.cableCar1, 0.5 * Math.random()));
+        this.disposables.push(new CableCar(this.objects.cableCar2, 0.5 * Math.random() + 0.5));
 
         // Animates the people in the Redeemer statue
-        this.disposables.push(new Person(this.objects.redeemer_people03));
-        this.disposables.push(new Person(this.objects.redeemer_people05));
-        this.disposables.push(new Person(this.objects.redeemer_people07));
-        this.disposables.push(new Person(this.objects.redeemer_people08));
-        this.disposables.push(new Person(this.objects.redeemer_people09));
+        this.disposables.push(new Person(this.objects.redeemer_people3));
+        this.disposables.push(new Person(this.objects.redeemer_people5));
+        this.disposables.push(new Person(this.objects.redeemer_people7));
+        this.disposables.push(new Person(this.objects.redeemer_people8));
+        this.disposables.push(new Person(this.objects.redeemer_people9));
         this.disposables.push(new Person(this.objects.redeemer_people10));
 
         // Animates the seagulls
-        this.disposables.push(new Seagull(this.objects.seagull01));
-        this.disposables.push(new Seagull(this.objects.seagull02));
-        this.disposables.push(new Seagull(this.objects.seagull03));
-        this.disposables.push(new Seagull(this.objects.seagull04));
-        this.disposables.push(new Seagull(this.objects.seagull05));
+        this.disposables.push(new Seagull(this.objects.seagull1));
+        this.disposables.push(new Seagull(this.objects.seagull2));
+        this.disposables.push(new Seagull(this.objects.seagull3));
+        this.disposables.push(new Seagull(this.objects.seagull4));
+        this.disposables.push(new Seagull(this.objects.seagull5));
     },
 
     disposeScene: function() {
