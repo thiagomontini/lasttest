@@ -56063,7 +56063,45 @@
 	                930.540, 864.250                
 	            ]
 	        }
-	    ]
+	    ],
+	    "config": {
+	        "cloud": {
+	            "speed": 100,
+	            "YMin": 0,
+	            "YMax": 450,
+	            "speedVariance": 0.5,
+	        },
+	        "plane": {
+	            "speed": 200,
+	            "YMin": 0,
+	            "YMax": 450
+	        },
+	        "glider": {
+	            "speed": 150,
+	            "YMin": 500,
+	            "YMax": 1000,
+	            "frequency": 0.005,
+	            "amplitude": 90
+	        },
+	        "cableCar": {
+	            "tripDuration": 12,
+	            "points": [
+	                [851.12, 258.50],
+	                [1080.75, 482.62],
+	                [1307.62, 673.75],
+	                [1404.00, 747.00]
+	            ],
+	            "lengths": [
+	                0.4344469626,
+	                0.4016484598,
+	                0.1639045776
+	            ]
+	        },
+	        "seagull": {
+	            "amplitude": 100,
+	            "duration": 2
+	        }
+	    }
 	};
 
 
@@ -56358,11 +56396,12 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
-	var config = __webpack_require__(377);
 	var sceneData = __webpack_require__(369);
 	var SceneMixin = __webpack_require__(378);
 	var TweenMax = __webpack_require__(379);
 	var TimelineMax = __webpack_require__(380);
+	
+	var config = sceneData.rio.config;
 	
 	var Cloud = function(cloudSprite) {
 	    this.sprite = cloudSprite;
@@ -56371,13 +56410,13 @@
 	
 	Cloud.prototype = {
 	    animateCloud: function() {
-	        var speed = config.rio.cloud.speed * (1.0 + config.rio.cloud.speedVariance * (Math.random() - 0.5));
+	        var speed = config.cloud.speed * (1.0 + config.cloud.speedVariance * (Math.random() - 0.5));
 	        this.tween = TweenMax.to(this.sprite, (this.sprite.x + this.sprite.width) / speed, {
 	            x: -this.sprite.width,
 	            ease: "Linear.easeNone",
 	            onComplete: function() {
-	                this.sprite.x = config.sceneWidth;
-	                this.sprite.y = config.rio.cloud.YMin + Math.random() * (config.rio.cloud.YMax - config.rio.cloud.YMin);
+	                this.sprite.x = sceneData.rio.sceneWidth;
+	                this.sprite.y = config.cloud.YMin + Math.random() * (config.cloud.YMax - config.cloud.YMin);
 	                this.animateCloud();
 	            }.bind(this)
 	        });
@@ -56405,17 +56444,17 @@
 	        if (this.moveRight) {
 	            this.movieClip.x = -this.movieClip.width;
 	            this.movieClip.scale.x = 1.0;
-	            targetX = config.sceneWidth;
+	            targetX = sceneData.rio.sceneWidth;
 	        }
 	        else {
-	            this.movieClip.x = config.sceneWidth;
+	            this.movieClip.x = sceneData.rio.sceneWidth;
 	            this.movieClip.scale.x = -1.0;
 	            targetX = -this.movieClip.width;
 	        }
-	        this.movieClip.y = config.rio.plane.YMin + Math.random() * (config.rio.plane.YMax - config.rio.plane.YMin);
-	        this.tween = TweenMax.to(this.movieClip, config.sceneWidth / config.rio.plane.speed, {
+	        this.movieClip.y = config.plane.YMin + Math.random() * (config.plane.YMax - config.plane.YMin);
+	        this.tween = TweenMax.to(this.movieClip, sceneData.rio.sceneWidth / config.plane.speed, {
 	            x: targetX,
-	            y: config.rio.plane.YMin + Math.random() * (config.rio.plane.YMax - config.rio.plane.YMin),
+	            y: config.plane.YMin + Math.random() * (config.plane.YMax - config.plane.YMin),
 	            ease: "Linear.easeNone",
 	            onComplete: this.animatePlane.bind(this)
 	        });
@@ -56437,14 +56476,14 @@
 	Glider.prototype = {
 	    animateGlider: function() {
 	        this.sprite.x = 0;
-	        this.meanY = config.rio.glider.YMin + Math.random() * (config.rio.glider.YMax - config.rio.glider.YMin);
+	        this.meanY = config.glider.YMin + Math.random() * (config.glider.YMax - config.glider.YMin);
 	        this.sprite.y = this.meanY;
-	        this.tween = TweenMax.to(this.sprite, config.sceneWidth / config.rio.glider.speed, {
-	            x: config.sceneWidth + this.sprite.width,
+	        this.tween = TweenMax.to(this.sprite, sceneData.rio.sceneWidth / config.glider.speed, {
+	            x: sceneData.rio.sceneWidth + this.sprite.width,
 	            ease: "Linear.easeNone",
 	            onUpdate: function() {
-	                this.sprite.y = this.meanY + config.rio.glider.amplitude * Math.sin(config.rio.glider.frequency * this.sprite.x);
-	                this.sprite.rotation = Math.atan(config.rio.glider.amplitude * config.rio.glider.frequency * Math.cos(config.rio.glider.frequency * this.sprite.x));
+	                this.sprite.y = this.meanY + config.glider.amplitude * Math.sin(config.glider.frequency * this.sprite.x);
+	                this.sprite.rotation = Math.atan(config.glider.amplitude * config.glider.frequency * Math.cos(config.glider.frequency * this.sprite.x));
 	            }.bind(this),
 	            onComplete: this.animateGlider.bind(this)
 	        });
@@ -56457,8 +56496,8 @@
 	
 	
 	var CableCar = function(cableCarSprite, initialPostion) {
-	    var points = config.rio.cableCar.points;
-	    var lengths = config.rio.cableCar.lengths;
+	    var points = config.cableCar.points;
+	    var lengths = config.cableCar.lengths;
 	
 	    this.sprite = cableCarSprite;
 	    this.sprite.anchor.x = 0.5;
@@ -56467,7 +56506,7 @@
 	    this.timeline = new TimelineMax();
 	    this.timeline.set(this.sprite, {x: points[0][0], y: points[0][1]});
 	    for (var i=0; i < points.length - 1; i++) {
-	        this.timeline.to(this.sprite, lengths[i] * config.rio.cableCar.tripDuration, {
+	        this.timeline.to(this.sprite, lengths[i] * config.cableCar.tripDuration, {
 	            x: points[i+1][0],
 	            y: points[i+1][1],
 	            ease: "Linear.easeNone"
@@ -56517,10 +56556,10 @@
 	var Seagull = function(seagullSprite) {
 	    this.sprite = seagullSprite;
 	
-	    var amplitude = config.rio.seagull.amplitude * (0.8 + 0.4*Math.random());
+	    var amplitude = config.seagull.amplitude * (0.8 + 0.4*Math.random());
 	    this.sprite.y -= amplitude / 2;
 	
-	    this.tween = TweenMax.to(this.sprite, config.rio.seagull.duration * (0.8 + 0.4*Math.random()), {
+	    this.tween = TweenMax.to(this.sprite, config.seagull.duration * (0.8 + 0.4*Math.random()), {
 	        y: this.sprite.y + amplitude,
 	        ease: "Quad.easeInOut"
 	    });
@@ -56590,45 +56629,6 @@
 
 	module.exports = {
 	    "apiUrl": "http://www.momondo.com/api/3.0/Flights",
-	
-	    "rio": {
-	        "cloud": {
-	            "speed": 100,
-	            "YMin": 0,
-	            "YMax": 450,
-	            "speedVariance": 0.5,
-	        },
-	        "plane": {
-	            "speed": 200,
-	            "YMin": 0,
-	            "YMax": 450
-	        },
-	        "glider": {
-	            "speed": 150,
-	            "YMin": 500,
-	            "YMax": 1000,
-	            "frequency": 0.005,
-	            "amplitude": 90
-	        },
-	        "cableCar": {
-	            "tripDuration": 12,
-	            "points": [
-	                [851.12, 258.50],
-	                [1080.75, 482.62],
-	                [1307.62, 673.75],
-	                [1404.00, 747.00]
-	            ],
-	            "lengths": [
-	                0.4344469626,
-	                0.4016484598,
-	                0.1639045776
-	            ]
-	        },
-	        "seagull": {
-	            "amplitude": 100,
-	            "duration": 2
-	        }
-	    }
 	};
 
 
@@ -56643,7 +56643,10 @@
 	
 	module.exports = {
 	    _computeScale: function() {
-	        return Math.max(window.innerWidth / sceneData[this.sceneKey].sceneWidth, window.innerHeight / sceneData[this.sceneKey].sceneHeight);
+	        return Math.max(
+	            window.innerWidth / sceneData[this.sceneKey].sceneWidth,
+	            window.innerHeight / sceneData[this.sceneKey].sceneHeight
+	        );
 	    },
 	
 	    _buildObject: function(objectData) {
