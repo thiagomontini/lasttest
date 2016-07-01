@@ -110,7 +110,10 @@ module.exports = {
         },
         {
             "id": "ship18",
-            "images": ["img/ny/NewYork_Ships_18.png"],
+            "images": [
+                "img/ny/NewYork_Ships_18_a.png",
+                "img/ny/NewYork_Ships_18_b.png"
+            ],
             "position": [1486, 757]
         },
         {
@@ -125,7 +128,10 @@ module.exports = {
         },
         {
             "id": "ship21",
-            "images": ["img/ny/NewYork_Ships_21.png"],
+            "images": [
+                "img/ny/NewYork_Ships_21_a.png",
+                "img/ny/NewYork_Ships_21_b.png"
+            ],
             "position": [1671, 457]
         },
         {
@@ -135,7 +141,10 @@ module.exports = {
         },
         {
             "id": "ship23",
-            "images": ["img/ny/NewYork_Ships_23.png"],
+            "images": [
+                "img/ny/NewYork_Ships_23.png",
+                "img/ny/NewYork_Ships_23.png"
+            ],
             "position": [1769, 249]
         },        
         {
@@ -277,6 +286,21 @@ module.exports = {
             "direction": [45, 9],
             "speed": 15,
             "anchor": [33, 6]
+        },
+        "ship18": {
+            "direction": [45, 9],
+            "speed": 15,
+            "anchor": [158, 25]
+        },
+        "ship21": {
+            "direction": [136, 32],
+            "speed": 15,
+            "anchor": [125, 26]
+        },
+        "ship23": {
+            "direction": [-100, 0],
+            "speed": 15,
+            "anchor": [28, 8]
         }
     }
 };
