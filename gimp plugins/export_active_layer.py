@@ -66,7 +66,7 @@ register(
     ],
     [],
     export_active_layer,
-    menu='<Image>/Image/Cut assets'
+    menu='<Image>/Image/Custom plugins'
 )
 
 main()

@@ -10,7 +10,10 @@ module.exports = {
         },
         {
             "id": "ship1",
-            "images": ["img/ny/NewYork_Ships_1.png"],
+            "images": [
+                "img/ny/NewYork_Ships_1_a.png",
+                "img/ny/NewYork_Ships_1_b.png"
+            ],
             "position": [136, 788]
         },
         {
@@ -237,6 +240,11 @@ module.exports = {
             "direction": [49, 20]
         },
         "helicopterTime": 10,
-        "helicopterTimeVariance": 3
+        "helicopterTimeVariance": 3,
+        "ship1": {
+            "direction": [125, 20],
+            "speed": 20,
+            "anchor": [135, 35]
+        }
     }
 };
