@@ -157,6 +157,10 @@ var NYScene = React.createClass({
 
         // Animates the ships
         this.disposables.push(new Ship(this.objects.ship1, config.ship1.direction, config.ship1.anchor, config.ship1.speed));
+        this.disposables.push(new Ship(this.objects.ship3, config.ship3.direction, config.ship3.anchor, config.ship3.speed));
+        this.disposables.push(new Ship(this.objects.ship4, config.ship4.direction, config.ship4.anchor, config.ship4.speed));
+        this.disposables.push(new Ship(this.objects.ship10, config.ship10.direction, config.ship10.anchor, config.ship10.speed));
+        this.disposables.push(new Ship(this.objects.ship15, config.ship15.direction, config.ship15.anchor, config.ship15.speed));
     },
 
     disposeScene: function() {

@@ -14,7 +14,7 @@ module.exports = {
                 "img/ny/NewYork_Ships_1_a.png",
                 "img/ny/NewYork_Ships_1_b.png"
             ],
-            "position": [136, 788]
+            "position": [56, 828]
         },
         {
             "id": "ship2",
@@ -23,12 +23,18 @@ module.exports = {
         },
         {
             "id": "ship3",
-            "images": ["img/ny/NewYork_Ships_3.png"],
-            "position": [186, 973]
+            "images": [
+                "img/ny/NewYork_Ships_3.png",
+                "img/ny/NewYork_Ships_3.png"
+            ],
+            "position": [386, 973]
         },
         {
             "id": "ship4",
-            "images": ["img/ny/NewYork_Ships_4.png"],
+            "images": [
+                "img/ny/NewYork_Ships_4_a.png",
+                "img/ny/NewYork_Ships_4_b.png"
+            ],
             "position": [378, 870]
         },
         {
@@ -58,7 +64,10 @@ module.exports = {
         },
         {
             "id": "ship10",
-            "images": ["img/ny/NewYork_Ships_10.png"],
+            "images": [
+                "img/ny/NewYork_Ships_10_a.png",
+                "img/ny/NewYork_Ships_10_b.png"
+            ],
             "position": [1271, 164]
         },
         {
@@ -83,7 +92,10 @@ module.exports = {
         },
         {
             "id": "ship15",
-            "images": ["img/ny/NewYork_Ships_15.png"],
+            "images": [
+                "img/ny/NewYork_Ships_15_a.png",
+                "img/ny/NewYork_Ships_15_b.png"
+            ],
             "position": [1344, 157]
         },
         {
@@ -242,9 +254,29 @@ module.exports = {
         "helicopterTime": 10,
         "helicopterTimeVariance": 3,
         "ship1": {
-            "direction": [125, 20],
-            "speed": 20,
+            "direction": [250, 40],
+            "speed": 40,
             "anchor": [135, 35]
+        },
+        "ship3": {
+            "direction": [-200, 0],
+            "speed": 40,
+            "anchor": [147, 13]
+        },
+        "ship4": {
+            "direction": [136, 50],
+            "speed": 40,
+            "anchor": [133, 37]
+        },
+        "ship10": {
+            "direction": [48, 12],
+            "speed": 15,
+            "anchor": [33, 10]
+        },
+        "ship15": {
+            "direction": [45, 9],
+            "speed": 15,
+            "anchor": [33, 6]
         }
     }
 };

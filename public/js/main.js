@@ -56126,7 +56126,7 @@
 	                "img/ny/NewYork_Ships_1_a.png",
 	                "img/ny/NewYork_Ships_1_b.png"
 	            ],
-	            "position": [136, 788]
+	            "position": [56, 828]
 	        },
 	        {
 	            "id": "ship2",
@@ -56135,12 +56135,18 @@
 	        },
 	        {
 	            "id": "ship3",
-	            "images": ["img/ny/NewYork_Ships_3.png"],
-	            "position": [186, 973]
+	            "images": [
+	                "img/ny/NewYork_Ships_3.png",
+	                "img/ny/NewYork_Ships_3.png"
+	            ],
+	            "position": [386, 973]
 	        },
 	        {
 	            "id": "ship4",
-	            "images": ["img/ny/NewYork_Ships_4.png"],
+	            "images": [
+	                "img/ny/NewYork_Ships_4_a.png",
+	                "img/ny/NewYork_Ships_4_b.png"
+	            ],
 	            "position": [378, 870]
 	        },
 	        {
@@ -56170,7 +56176,10 @@
 	        },
 	        {
 	            "id": "ship10",
-	            "images": ["img/ny/NewYork_Ships_10.png"],
+	            "images": [
+	                "img/ny/NewYork_Ships_10_a.png",
+	                "img/ny/NewYork_Ships_10_b.png"
+	            ],
 	            "position": [1271, 164]
 	        },
 	        {
@@ -56195,7 +56204,10 @@
 	        },
 	        {
 	            "id": "ship15",
-	            "images": ["img/ny/NewYork_Ships_15.png"],
+	            "images": [
+	                "img/ny/NewYork_Ships_15_a.png",
+	                "img/ny/NewYork_Ships_15_b.png"
+	            ],
 	            "position": [1344, 157]
 	        },
 	        {
@@ -56354,9 +56366,29 @@
 	        "helicopterTime": 10,
 	        "helicopterTimeVariance": 3,
 	        "ship1": {
-	            "direction": [125, 20],
-	            "speed": 20,
+	            "direction": [250, 40],
+	            "speed": 40,
 	            "anchor": [135, 35]
+	        },
+	        "ship3": {
+	            "direction": [-200, 0],
+	            "speed": 40,
+	            "anchor": [147, 13]
+	        },
+	        "ship4": {
+	            "direction": [136, 50],
+	            "speed": 40,
+	            "anchor": [133, 37]
+	        },
+	        "ship10": {
+	            "direction": [48, 12],
+	            "speed": 15,
+	            "anchor": [33, 10]
+	        },
+	        "ship15": {
+	            "direction": [45, 9],
+	            "speed": 15,
+	            "anchor": [33, 6]
 	        }
 	    }
 	};
@@ -67890,6 +67922,10 @@
 	
 	        // Animates the ships
 	        this.disposables.push(new Ship(this.objects.ship1, config.ship1.direction, config.ship1.anchor, config.ship1.speed));
+	        this.disposables.push(new Ship(this.objects.ship3, config.ship3.direction, config.ship3.anchor, config.ship3.speed));
+	        this.disposables.push(new Ship(this.objects.ship4, config.ship4.direction, config.ship4.anchor, config.ship4.speed));
+	        this.disposables.push(new Ship(this.objects.ship10, config.ship10.direction, config.ship10.anchor, config.ship10.speed));
+	        this.disposables.push(new Ship(this.objects.ship15, config.ship15.direction, config.ship15.anchor, config.ship15.speed));
 	    },
 	
 	    disposeScene: function() {
