@@ -132,7 +132,7 @@ register(
     ],
     [],
     cut_assets,
-    menu='<Image>/Image/Cut assets'
+    menu='<Image>/Image/Custom plugins'
 )
 
 main()

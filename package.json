@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "autoless": "^0.1.7",
+    "es6-promise": "^3.2.1",
     "exports-loader": "^0.6.3",
     "imports-loader": "^0.6.5",
     "jsx-loader": "^0.13.2",

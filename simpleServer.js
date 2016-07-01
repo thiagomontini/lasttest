@@ -14,7 +14,9 @@ var mimeTypes = {
 var viewRoutes = [
     "/",
     "/form",
-    "/rio"
+    "/rio",
+    "/ny",
+    "/rome"
 ];
 
 var port = 8000;
