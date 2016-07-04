@@ -5,8 +5,10 @@
   "scripts": {
     "build:js": "webpack",
     "watch:js": "sh set_title.sh JS WATCHER;webpack --progress --colors --watch",
-    "build:css": "lessc --clean-css --source-map less/main.less public/css/main.css",
+    "deploy:js": "NODE_ENV=production webpack",
+    "build:css": "lessc --source-map less/main.less public/css/main.css",
     "watch:css": "sh set_title.sh CSS WATCHER;autoless --source-map less public/css",
+    "deploy:css": "lessc --clean-css --source-map less/main.less public/css/main.css",
     "server": "sh set_title.sh SERVER;node simpleServer.js"
   },
   "author": "Carlos Zanella",
