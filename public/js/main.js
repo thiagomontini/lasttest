@@ -56281,17 +56281,35 @@
 	        },
 	        {
 	            "id": "helicopter1",
-	            "images": ["img/ny/NewYork_Copters_1.png"],
+	            "images": [
+	                "img/ny/Copter1_0.png",
+	                "img/ny/Copter1_1.png",
+	                "img/ny/Copter1_2.png",
+	                "img/ny/Copter1_3.png",
+	                "img/ny/Copter1_4.png"
+	            ],
 	            "position": [301, 23]
 	        },
 	        {
 	            "id": "helicopter2",
-	            "images": ["img/ny/NewYork_Copters_2.png"],
+	            "images": [
+	                "img/ny/Copter2_0.png",
+	                "img/ny/Copter2_1.png",
+	                "img/ny/Copter2_2.png",
+	                "img/ny/Copter2_3.png",
+	                "img/ny/Copter2_4.png"
+	            ],
 	            "position": [1048, 11]
 	        },
 	        {
 	            "id": "helicopter3",
-	            "images": ["img/ny/NewYork_Copters_3.png"],
+	            "images": [
+	                "img/ny/Copter3_0.png",
+	                "img/ny/Copter3_1.png",
+	                "img/ny/Copter3_2.png",
+	                "img/ny/Copter3_3.png",
+	                "img/ny/Copter3_4.png"
+	            ],
 	            "position": [1507, 85]
 	        },
 	        {
@@ -56364,13 +56382,13 @@
 	            "speedVariance": 0.5
 	        },
 	        "helicopter1": {
-	            "direction": [51, 106]
+	            "direction": [60, 30]
 	        },
 	        "helicopter2": {
-	            "direction": [31, 18]
+	            "direction": [75, 50]
 	        },
 	        "helicopter3": {
-	            "direction": [49, 20]
+	            "direction": [45, 33]
 	        },
 	        "helicopterTime": 10,
 	        "helicopterTimeVariance": 3,
@@ -67797,9 +67815,11 @@
 	
 	var config = sceneData.ny.config;
 	
-	var Helicopter = function(helicopterSprite, direction) {
-	    this.sprite = helicopterSprite;
-	    this.sprite.anchor.x = this.sprite.anchor.y = 0;
+	var Helicopter = function(helicopterMovieClip, direction) {
+	    this.movieClip = helicopterMovieClip;
+	    this.movieClip.anchor.x = this.movieClip.anchor.y = 0;
+	    this.movieClip.animationSpeed = 0.25;
+	    this.movieClip.play();
 	    this.direction = direction;
 	    this.animateHelicopter();
 	}
@@ -67809,17 +67829,17 @@
 	        var inverted = Math.random() < 0.5 ? 1 : -1;
 	        var dirX = this.direction[0] * inverted;
 	        var dirY = this.direction[1];
-	        this.sprite.scale.x = inverted;
+	        this.movieClip.scale.x = inverted;
 	
 	        var initialX, initialY, finalX, finalY, displacement;
 	
 	        if (Math.abs(dirX) > Math.abs(dirY)) {
 	            if (inverted > 0) {
-	                initialX = -this.sprite.width;
+	                initialX = -this.movieClip.width;
 	                finalX = sceneData.ny.sceneWidth;
 	            }
 	            else {
-	                initialX = sceneData.ny.sceneWidth + this.sprite.width;
+	                initialX = sceneData.ny.sceneWidth + this.movieClip.width;
 	                finalX = 0;
 	            }
 	
@@ -67828,7 +67848,7 @@
 	            finalY = initialY + displacement;
 	        }
 	        else {
-	            initialY = -this.sprite.height;
+	            initialY = -this.movieClip.height;
 	            finalY = sceneData.ny.sceneHeight;
 	
 	            displacement = Math.abs(sceneData.ny.sceneHeight * dirX / dirY);
@@ -67840,12 +67860,12 @@
 	            }
 	        }
 	
-	        this.sprite.x = initialX;
-	        this.sprite.y = initialY;
+	        this.movieClip.x = initialX;
+	        this.movieClip.y = initialY;
 	
 	        var heliTime = (config.helicopterTime - config.helicopterTimeVariance) + config.helicopterTimeVariance * Math.random();
 	
-	        this.tween = TweenMax.to(this.sprite, heliTime, {
+	        this.tween = TweenMax.to(this.movieClip, heliTime, {
 	            x: finalX,
 	            y: finalY,
 	            ease: "Linear.easeNone",
@@ -67854,6 +67874,7 @@
 	    },
 	
 	    dispose: function() {
+	        this.movieClip.stop();
 	        this.tween.kill();
 	    }
 	}

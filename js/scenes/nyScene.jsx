@@ -8,9 +8,11 @@ var Cloud = require("../sceneObjects/cloud.js");
 
 var config = sceneData.ny.config;
 
-var Helicopter = function(helicopterSprite, direction) {
-    this.sprite = helicopterSprite;
-    this.sprite.anchor.x = this.sprite.anchor.y = 0;
+var Helicopter = function(helicopterMovieClip, direction) {
+    this.movieClip = helicopterMovieClip;
+    this.movieClip.anchor.x = this.movieClip.anchor.y = 0;
+    this.movieClip.animationSpeed = 0.25;
+    this.movieClip.play();
     this.direction = direction;
     this.animateHelicopter();
 }
@@ -20,17 +22,17 @@ Helicopter.prototype = {
         var inverted = Math.random() < 0.5 ? 1 : -1;
         var dirX = this.direction[0] * inverted;
         var dirY = this.direction[1];
-        this.sprite.scale.x = inverted;
+        this.movieClip.scale.x = inverted;
 
         var initialX, initialY, finalX, finalY, displacement;
 
         if (Math.abs(dirX) > Math.abs(dirY)) {
             if (inverted > 0) {
-                initialX = -this.sprite.width;
+                initialX = -this.movieClip.width;
                 finalX = sceneData.ny.sceneWidth;
             }
             else {
-                initialX = sceneData.ny.sceneWidth + this.sprite.width;
+                initialX = sceneData.ny.sceneWidth + this.movieClip.width;
                 finalX = 0;
             }
 
@@ -39,7 +41,7 @@ Helicopter.prototype = {
             finalY = initialY + displacement;
         }
         else {
-            initialY = -this.sprite.height;
+            initialY = -this.movieClip.height;
             finalY = sceneData.ny.sceneHeight;
 
             displacement = Math.abs(sceneData.ny.sceneHeight * dirX / dirY);
@@ -51,12 +53,12 @@ Helicopter.prototype = {
             }
         }
 
-        this.sprite.x = initialX;
-        this.sprite.y = initialY;
+        this.movieClip.x = initialX;
+        this.movieClip.y = initialY;
 
         var heliTime = (config.helicopterTime - config.helicopterTimeVariance) + config.helicopterTimeVariance * Math.random();
 
-        this.tween = TweenMax.to(this.sprite, heliTime, {
+        this.tween = TweenMax.to(this.movieClip, heliTime, {
             x: finalX,
             y: finalY,
             ease: "Linear.easeNone",
@@ -65,6 +67,7 @@ Helicopter.prototype = {
     },
 
     dispose: function() {
+        this.movieClip.stop();
         this.tween.kill();
     }
 }
