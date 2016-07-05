@@ -1,6 +1,7 @@
 var React = require("react");
 var Link = require("react-router").Link;
 var sceneData = require("../scenes/sceneData.js");
+var config = require("../config.js");
 
 var Home = React.createClass({
     render: function() {
@@ -9,7 +10,7 @@ var Home = React.createClass({
         for (var sceneKey in sceneData) {
             sceneLinks.push(
                 <li key={sceneKey}>
-                    <Link to={"/" + sceneKey}>
+                    <Link to={config.root + "/" + sceneKey}>
                         {sceneData[sceneKey].name}
                     </Link>
                 </li>
@@ -26,7 +27,7 @@ var Home = React.createClass({
                 Other views:
                 <ul>
                     <li>
-                        <Link to="/form">API form</Link>
+                        <Link to={config.root + "/form"}>API form</Link>
                     </li>
                 </ul>
             </span>

@@ -57,9 +57,11 @@
 	var NYScene = __webpack_require__(382);
 	var FlightsForm = __webpack_require__(384);
 	
+	var config = __webpack_require__(606);
+	
 	ReactDom.render((
 	    React.createElement(Router, {history: browserHistory}, 
-	        React.createElement(Route, {path: "/", component: App}, 
+	        React.createElement(Route, {path: config.root + "/", component: App}, 
 	            React.createElement(IndexRoute, {component: Home}), 
 	            React.createElement(Route, {path: "form", component: FlightsForm}), 
 	            React.createElement(Route, {path: "rio", component: RioScene}), 
@@ -56483,6 +56485,7 @@
 	var React = __webpack_require__(1);
 	var Link = __webpack_require__(168).Link;
 	var sceneData = __webpack_require__(369);
+	var config = __webpack_require__(606);
 	
 	var Home = React.createClass({displayName: "Home",
 	    render: function() {
@@ -56491,7 +56494,7 @@
 	        for (var sceneKey in sceneData) {
 	            sceneLinks.push(
 	                React.createElement("li", {key: sceneKey}, 
-	                    React.createElement(Link, {to: "/" + sceneKey}, 
+	                    React.createElement(Link, {to: config.root + "/" + sceneKey}, 
 	                        sceneData[sceneKey].name
 	                    )
 	                )
@@ -56508,7 +56511,7 @@
 	                "Other views:", 
 	                React.createElement("ul", null, 
 	                    React.createElement("li", null, 
-	                        React.createElement(Link, {to: "/form"}, "API form")
+	                        React.createElement(Link, {to: config.root + "/form"}, "API form")
 	                    )
 	                )
 	            )
@@ -56741,7 +56744,7 @@
 	
 	module.exports = {
 	    _computeScale: function() {
-	        return Math.min(
+	        return Math.max(
 	            window.innerWidth / sceneData[this.sceneKey].sceneWidth,
 	            window.innerHeight / sceneData[this.sceneKey].sceneHeight
 	        );
@@ -93039,7 +93042,7 @@
 /* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*** IMPORTS FROM imports-loader ***/
+	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*** IMPORTS FROM imports-loader ***/
 	(function() {
 	
 	/*!
@@ -100730,6 +100733,9 @@
 /***/ function(module, exports) {
 
 	module.exports = {
+	    // The root of the app, for the routing resolver
+	    "root": "/spintheglobe",
+	
 	    // The URL for the API that retrieves the flights information
 	    "apiUrl": "http://www.momondo.com/api/3.0/Flights"
 	};

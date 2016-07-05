@@ -5,7 +5,7 @@ var textureCache = require("../utils/textureCache.js");
 
 module.exports = {
     _computeScale: function() {
-        return Math.min(
+        return Math.max(
             window.innerWidth / sceneData[this.sceneKey].sceneWidth,
             window.innerHeight / sceneData[this.sceneKey].sceneHeight
         );

@@ -11,9 +11,11 @@ var RioScene = require("./scenes/rioScene.jsx");
 var NYScene = require("./scenes/nyScene.jsx");
 var FlightsForm = require("./views/flightsForm.jsx");
 
+var config = require("./config.js");
+
 ReactDom.render((
     <Router history={browserHistory}>
-        <Route path="/" component={App}>
+        <Route path={config.root + "/"} component={App}>
             <IndexRoute component={Home} />
             <Route path="form" component={FlightsForm} />
             <Route path="rio" component={RioScene} />
