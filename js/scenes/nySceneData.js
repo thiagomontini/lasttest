@@ -146,7 +146,7 @@ module.exports = {
                 "img/ny/NewYork_Ships_23.png"
             ],
             "position": [1769, 249]
-        },        
+        },
         {
             "id": "bridges",
             "images": ["img/ny/NewYork_Bridges.png"],
@@ -278,8 +278,7 @@ module.exports = {
         "helicopter3": {
             "direction": [45, 33]
         },
-        "helicopterTime": 10,
-        "helicopterTimeVariance": 3,
+        "helicopterSpeed": [100, 200],
         "ship1": {
             "direction": [250, 40],
             "speed": 40,

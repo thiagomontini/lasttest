@@ -5,6 +5,8 @@ var computeDistance = require("../utils/computeDistance.js");
 var sceneData = require("./sceneData.js");
 var SceneMixin = require("./sceneMixin.jsx");
 var Cloud = require("../sceneObjects/cloud.js");
+var randRange = require("../utils/randRange.js");
+var computeDistance = require("../utils/computeDistance.js");
 
 var config = sceneData.ny.config;
 
@@ -26,39 +28,25 @@ Helicopter.prototype = {
 
         var initialX, initialY, finalX, finalY, displacement;
 
-        if (Math.abs(dirX) > Math.abs(dirY)) {
-            if (inverted > 0) {
-                initialX = -this.movieClip.width;
-                finalX = sceneData.ny.sceneWidth;
-            }
-            else {
-                initialX = sceneData.ny.sceneWidth + this.movieClip.width;
-                finalX = 0;
-            }
+        displacement = sceneData.ny.sceneHeight * this.direction[0] / this.direction[1];
 
-            displacement = Math.abs(sceneData.ny.sceneWidth * dirY / dirX);
-            initialY = (sceneData.ny.sceneHeight - displacement) * Math.random();
-            finalY = initialY + displacement;
-        }
-        else {
-            initialY = -this.movieClip.height;
-            finalY = sceneData.ny.sceneHeight;
+        initialX = randRange(-displacement / 2, sceneData.ny.sceneWidth - displacement / 2);
+        initialY = -this.movieClip.height;
+        finalX = initialX + displacement;
+        finalY = sceneData.ny.sceneHeight;
 
-            displacement = Math.abs(sceneData.ny.sceneHeight * dirX / dirY);
-            initialX = (sceneData.ny.sceneWidth - displacement) * Math.random();
-            finalX = initialX + displacement;
-            if (inverted < 0) {
-                initialX = sceneData.ny.sceneWidth - initialX;
-                finalX = sceneData.ny.sceneWidth - finalX;
-            }
+        if (inverted == -1) {
+            initialX = sceneData.ny.sceneWidth - initialX;
+            finalX = sceneData.ny.sceneWidth - finalX;
         }
 
         this.movieClip.x = initialX;
         this.movieClip.y = initialY;
 
-        var heliTime = (config.helicopterTime - config.helicopterTimeVariance) + config.helicopterTimeVariance * Math.random();
+        var speed = randRange(config.helicopterSpeed[0], config.helicopterSpeed[1]);
+        var time = computeDistance(initialX, initialY, finalX, finalY) / speed;
 
-        this.tween = TweenMax.to(this.movieClip, heliTime, {
+        this.tween = TweenMax.to(this.movieClip, time, {
             x: finalX,
             y: finalY,
             ease: "Linear.easeNone",
