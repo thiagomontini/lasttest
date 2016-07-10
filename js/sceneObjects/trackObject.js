@@ -3,6 +3,8 @@ var TrackObject = function(sprite, track, initialPostion, yoyo) {
 
     this.sprite = sprite;
 
+
+
     this.timeline = new TimelineMax();
     this.timeline.set(this.sprite, track[0]);
     for (var i=1; i < track.length; i++) {
@@ -19,7 +21,7 @@ var TrackObject = function(sprite, track, initialPostion, yoyo) {
     this.timeline.play();
 }
 
-CableCar.prototype = {
+TrackObject.prototype = {
     dispose: function() {
         this.timeline.kill();
         if (this.sprite.stop) {
@@ -27,3 +29,5 @@ CableCar.prototype = {
         }
     }
 };
+
+module.exports = TrackObject;
