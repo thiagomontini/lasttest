@@ -1,15 +1,18 @@
 var React = require("react");
 
 var Preloader = React.createClass({
-    getDefaultProps: function() {
-        return {
-            progress: 0
-        };
-    },
-
     render: function() {
+        var progress;
+
+        if (this.props.progress == undefined) {
+            progress = null;
+        }
+        else {
+            progress = Math.floor(100*this.props.progress) + " %";
+        }
+
         return (
-            <span>Loading: {Math.floor(100*this.props.progress)} %</span>
+            <span>Loading... {progress}</span>
         );
     }
 });

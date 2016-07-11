@@ -26,6 +26,7 @@
     "react-dom": "^15.1.0",
     "react-infinite-calendar": "^1.1.14",
     "restful.js": "^0.9.6",
+    "three": "^0.78.0",
     "uglify": "^0.1.5",
     "webpack": "^1.12.14",
     "whatwg-fetch": "^1.0.0"

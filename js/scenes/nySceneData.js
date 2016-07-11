@@ -1,5 +1,7 @@
 module.exports = {
     "name": "New York",
+    "lat": -74.0058,
+    "lon": 40.7127,
     "sceneWidth": 1890,
     "sceneHeight": 1065,
     "objects": [

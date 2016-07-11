@@ -1,5 +1,7 @@
 module.exports = {
     "name": "Rio de Janeiro",
+    "lat": -43.1963,
+    "lon": -22.9083,
     "sceneWidth": 2304,
     "sceneHeight": 1440,
     "objects": [

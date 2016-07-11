@@ -14,6 +14,7 @@ var mimeTypes = {
 var viewRoutes = [
     "/",
     "/form",
+    "/globe",
     "/rio",
     "/ny",
     "/rome"
