@@ -76,7 +76,7 @@ Glider.prototype = {
 
 
 var CableCar = function(cableCarSprite, initialPostion) {
-    var points = config.cableCar.points;
+    var track = config.cableCar.track;
     var lengths = config.cableCar.lengths;
 
     this.sprite = cableCarSprite;
@@ -84,11 +84,11 @@ var CableCar = function(cableCarSprite, initialPostion) {
     this.sprite.anchor.y = 0.0;
 
     this.timeline = new TimelineMax();
-    this.timeline.set(this.sprite, {x: points[0][0], y: points[0][1]});
-    for (var i=0; i < points.length - 1; i++) {
+    this.timeline.set(this.sprite, {x: track[0].x, y: track[0].y});
+    for (var i=0; i < track.length - 1; i++) {
         this.timeline.to(this.sprite, lengths[i] * config.cableCar.tripDuration, {
-            x: points[i+1][0],
-            y: points[i+1][1],
+            x: track[i+1].x,
+            y: track[i+1].y,
             ease: "Linear.easeNone"
         });
     }

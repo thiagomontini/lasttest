@@ -3,6 +3,8 @@ var http = require("http"),
     path = require("path"),
     fs = require("fs");
 
+var config = require("./js/config.js");
+
 var mimeTypes = {
     "html": "text/html",
     "jpeg": "image/jpeg",
@@ -11,23 +13,26 @@ var mimeTypes = {
     "js": "text/javascript",
     "css": "text/css"};
 
-var viewRoutes = [
-    "/",
-    "/form",
-    "/globe",
-    "/rio",
-    "/ny",
-    "/rome"
-];
-
 var port = 8000;
 
 http.createServer(function(req, res) {
     var uri = url.parse(req.url).pathname;
+
+    if (uri.search(config.root) != 0) {
+        console.log("wrong root, correct is '" + config.root + "'");
+        res.writeHead(404, {"Content-Type": "text/plain"});
+        res.write("404 Not Found\n");
+        res.end();
+        return;
+    }
+    uri = uri.substr(config.root.length);
+
+
     var filename;
 
-    if (viewRoutes.indexOf(uri) >= 0) {
+    if (uri.match(/^\/[^\/]*$/g) || uri == "") {
         filename = path.join(process.cwd(), "public", "index.html");
+        console.log("WOOT!", uri);
     }
     else {
         filename = path.join(process.cwd(), "public", uri);
@@ -36,7 +41,7 @@ http.createServer(function(req, res) {
     fs.access(filename, fs.R_OK, function(err) {
         if(err) {
             console.log("not exists: " + filename);
-            res.writeHead(200, {"Content-Type": "text/plain"});
+            res.writeHead(404, {"Content-Type": "text/plain"});
             res.write("404 Not Found\n");
             res.end();
             return;

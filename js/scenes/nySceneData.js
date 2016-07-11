@@ -148,7 +148,7 @@ module.exports = {
                 "img/ny/NewYork_Ships_23.png"
             ],
             "position": [1769, 249]
-        },        
+        },
         {
             "id": "bridges",
             "images": ["img/ny/NewYork_Bridges.png"],
@@ -171,17 +171,35 @@ module.exports = {
         },
         {
             "id": "helicopter1",
-            "images": ["img/ny/NewYork_Copters_1.png"],
+            "images": [
+                "img/ny/Copter1_0.png",
+                "img/ny/Copter1_1.png",
+                "img/ny/Copter1_2.png",
+                "img/ny/Copter1_3.png",
+                "img/ny/Copter1_4.png"
+            ],
             "position": [301, 23]
         },
         {
             "id": "helicopter2",
-            "images": ["img/ny/NewYork_Copters_2.png"],
+            "images": [
+                "img/ny/Copter2_0.png",
+                "img/ny/Copter2_1.png",
+                "img/ny/Copter2_2.png",
+                "img/ny/Copter2_3.png",
+                "img/ny/Copter2_4.png"
+            ],
             "position": [1048, 11]
         },
         {
             "id": "helicopter3",
-            "images": ["img/ny/NewYork_Copters_3.png"],
+            "images": [
+                "img/ny/Copter3_0.png",
+                "img/ny/Copter3_1.png",
+                "img/ny/Copter3_2.png",
+                "img/ny/Copter3_3.png",
+                "img/ny/Copter3_4.png"
+            ],
             "position": [1507, 85]
         },
         {
@@ -254,16 +272,15 @@ module.exports = {
             "speedVariance": 0.5
         },
         "helicopter1": {
-            "direction": [51, 106]
+            "direction": [60, 30]
         },
         "helicopter2": {
-            "direction": [31, 18]
+            "direction": [75, 50]
         },
         "helicopter3": {
-            "direction": [49, 20]
+            "direction": [45, 33]
         },
-        "helicopterTime": 10,
-        "helicopterTimeVariance": 3,
+        "helicopterSpeed": [100, 200],
         "ship1": {
             "direction": [250, 40],
             "speed": 40,

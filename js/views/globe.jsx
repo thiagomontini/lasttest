@@ -109,7 +109,7 @@ var Globe = React.createClass({
 
     onSpinComplete: function() {
         //this.spinning = false;
-        browserHistory.push("/" + this.selectedSceneKey);
+        browserHistory.push(config.root + "/" + this.selectedSceneKey);
     },
 
     onMouseUp: function() {
