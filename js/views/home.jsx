@@ -26,6 +26,9 @@ var Home = React.createClass({
                 Other views:
                 <ul>
                     <li>
+                        <Link to="/globe">Globe</Link>
+                    </li>
+                    <li>
                         <Link to="/form">API form</Link>
                     </li>
                 </ul>

@@ -6,6 +6,7 @@ var IndexRoute = require("react-router").IndexRoute;
 var browserHistory = require("react-router").browserHistory;
 
 var Home = require("./views/home.jsx");
+var Globe = require("./views/globe.jsx");
 var RioScene = require("./scenes/rioScene.jsx");
 var NYScene = require("./scenes/nyScene.jsx");
 var FlightsForm = require("./views/flightsForm.jsx");
@@ -13,6 +14,7 @@ var FlightsForm = require("./views/flightsForm.jsx");
 ReactDom.render((
     <Router history={browserHistory}>
         <Route path="/" component={Home} />
+        <Route path="/globe" component={Globe} />
         <Route path="/form" component={FlightsForm} />
         <Route path="/rio" component={RioScene} />
         <Route path="/ny" component={NYScene} />
