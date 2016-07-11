@@ -1,7 +1,11 @@
 var React = require("react");
 var THREE = require("three");
+var browserHistory = require("react-router").browserHistory;
+var TweenLite = require("../libs/gsap/TweenMax.js");
 var Preloader = require("./preloader.jsx");
 var config = require("../config.js");
+var sceneData = require("../scenes/sceneData.js");
+var pickRandomKey = require("../utils/pickRandomKey.js");
 
 var Globe = React.createClass({
     getInitialState: function() {
@@ -12,6 +16,7 @@ var Globe = React.createClass({
 
     componentDidMount: function() {
         this.dragging = false;
+        this.spinning = false;
 
         this.scene = new THREE.Scene();
 
@@ -60,15 +65,51 @@ var Globe = React.createClass({
         this.touchY = e.pageY;
         this.initialRotationX = this.earth.rotation.x;
         this.initialRotationY = this.earth.rotation.y;
+        this.previousX = this.touchX;
         this.dragging = true;
     },
 
     onMouseMove: function(e) {
-        if (this.dragging) {
-            this.earth.rotation.x = this.initialRotationX + Math.PI * (e.pageY - this.touchY) / window.innerHeight;
-            this.earth.rotation.x = Math.max(-Math.PI/2, Math.min(Math.PI/2, this.earth.rotation.x));
-            this.earth.rotation.y = this.initialRotationY + Math.PI * (e.pageX - this.touchX) / window.innerWidth;
+        if (!this.dragging || this.spinning) {
+            return;
         }
+        this.earth.rotation.x = this.initialRotationX + Math.PI * (e.pageY - this.touchY) / window.innerHeight;
+        this.earth.rotation.x = Math.max(-Math.PI/2, Math.min(Math.PI/2, this.earth.rotation.x));
+        this.earth.rotation.y = this.initialRotationY + Math.PI * (e.pageX - this.touchX) / window.innerWidth;
+
+        var speedX = e.pageX - this.previousX;
+        this.previousX = e.pageX;
+
+        if (Math.abs(speedX) >= config.spinThresold) {
+            // Picks a city at random
+            this.selectedSceneKey = pickRandomKey(sceneData);
+            var lat = -sceneData[this.selectedSceneKey].lat * Math.PI / 180; 
+            var lon = sceneData[this.selectedSceneKey].lon * Math.PI / 180;
+
+            // Calculates the final rotation lon angles
+            var finalLat;
+            if (speedX < 0) {
+                finalLat = - 2 * Math.PI * config.numberOfSpins + lat;
+            }
+            else {
+                finalLat = 2 * Math.PI * config.numberOfSpins + lat;
+            }
+
+            // Do the animation
+            this.spinning = true;
+            this.dragging = false;
+            TweenLite.to(this.earth.rotation, config.spinDuration, {
+                x: lon,
+                y: finalLat,
+                ease: "Quad.easeOut",
+                onComplete: this.onSpinComplete
+            });
+        }
+    },
+
+    onSpinComplete: function() {
+        //this.spinning = false;
+        browserHistory.push("/" + this.selectedSceneKey);
     },
 
     onMouseUp: function() {
