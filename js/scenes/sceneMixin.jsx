@@ -8,13 +8,14 @@ var loadQueues = require("../utils/loadQueues.js");
 module.exports = {
     getInitialState: function() {
         return {
+            progress: 0,
             loading: !(loadQueues[this.sceneKey] && loadQueues[this.sceneKey].loaded),
             scale: this._computeScale()
         }
     },
 
     _computeScale: function() {
-        return Math.min(
+        return Math.max(
             window.innerWidth / sceneData[this.sceneKey].sceneWidth,
             window.innerHeight / sceneData[this.sceneKey].sceneHeight
         );
@@ -73,8 +74,15 @@ module.exports = {
             this.onLoadingComplete();
         }
         else {
-            loadQueues[this.sceneKey].on("complete", this.onLoadingComplete);
+            this.progressListener = loadQueues[this.sceneKey].on("progress", this.onLoadingProgress);
+            this.completeListener = loadQueues[this.sceneKey].on("complete", this.onLoadingComplete);
         }
+    },
+
+    onLoadingProgress: function() {
+        this.setState({
+            progress: loadQueues[this.sceneKey].progress
+        });
     },
 
     onLoadingComplete: function() {
@@ -151,10 +159,11 @@ module.exports = {
     },
 
     componentWillUnmount: function() {
-        // Clears the listener from the loading queue
+        // Clears the listeners from the loading queue
         // If the route changes while the images are being loaded,
         // the loading can continue but no event should be triggered
-        loadQueues[this.sceneKey].off("complete", this.onLoadingComplete);
+        loadQueues[this.sceneKey].off("progress", this.progressListener);
+        loadQueues[this.sceneKey].off("complete", this.completeListener);
 
         // Stops the animation
         cancelAnimationFrame(this.animationId);
@@ -163,7 +172,7 @@ module.exports = {
         window.removeEventListener("resize", this.onWindowResize);
 
         // Do particular cleanups for a scene, if any
-        if (this.disposeScene) {
+        if (!this.state.loading && this.disposeScene) {
             this.disposeScene();
         }
     },
@@ -171,7 +180,7 @@ module.exports = {
     render: function() {
         var preloader;
         if (this.state.loading) {
-            preloader = <Preloader loadQueue={loadQueues[this.sceneKey]} />;
+            preloader = <Preloader progress={this.state.progress} />;
         }
         else {
             preloader = null;
