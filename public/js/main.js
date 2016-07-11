@@ -56755,6 +56755,10 @@
 	        };
 	    },
 	
+	    componentWillMount: function() {
+	
+	    },
+	
 	    componentDidMount: function() {
 	        // Create a renderer instance
 	        this.renderer = new PIXI.CanvasRenderer(sceneData[this.sceneKey].sceneWidth, sceneData[this.sceneKey].sceneHeight, { // or autoDetectRenderer
@@ -93018,7 +93022,7 @@
 /* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*** IMPORTS FROM imports-loader ***/
+	var require;var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global, module) {/*** IMPORTS FROM imports-loader ***/
 	(function() {
 	
 	/*!
