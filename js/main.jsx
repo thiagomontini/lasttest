@@ -12,10 +12,9 @@ var FlightsForm = require("./views/flightsForm.jsx");
 
 ReactDom.render((
     <Router history={browserHistory}>
-        <Route path="/" component={Home}>
-            <Route path="form" component={FlightsForm} />
-            <Route path="rio" component={RioScene} />
-            <Route path="ny" component={NYScene} />
-        </Route>
+        <Route path="/" component={Home} />
+        <Route path="/form" component={FlightsForm} />
+        <Route path="/rio" component={RioScene} />
+        <Route path="/ny" component={NYScene} />
     </Router>
 ), document.getElementById("app-container"));

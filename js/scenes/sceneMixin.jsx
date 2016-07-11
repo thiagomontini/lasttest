@@ -8,7 +8,7 @@ var loadQueues = require("../utils/loadQueues.js");
 module.exports = {
     getInitialState: function() {
         return {
-            loading: !loadQueues[this.sceneKey].loaded,
+            loading: !(loadQueues[this.sceneKey] && loadQueues[this.sceneKey].loaded),
             scale: this._computeScale()
         }
     },
@@ -24,7 +24,7 @@ module.exports = {
         var object;
         var loadQueue = loadQueues[this.sceneKey];
         var textures = objectData.images.map(function(x) {
-            var imageAsset = loadQueue.getResult(k);
+            var imageAsset = loadQueue.getResult(x);
             return new PIXI.Texture(new PIXI.BaseTexture(imageAsset));
         });
 
@@ -44,7 +44,7 @@ module.exports = {
         return object;
     },
 
-    componentDidMount: function() {
+    componentWillMount: function() {
         if (!loadQueues[this.sceneKey]) {
             // Builds a list of the images to be loaded
             var objects = sceneData[this.sceneKey]["objects"];
@@ -66,12 +66,14 @@ module.exports = {
             loadQueues[this.sceneKey] = new createjs.LoadQueue(true);
             loadQueues[this.sceneKey].loadManifest(manifest);
         }
+    },
 
-        if (loadQueue.loaded) {
+    componentDidMount: function() {
+        if (loadQueues[this.sceneKey].loaded) {
             this.onLoadingComplete();
         }
         else {
-            loadQueue.on("complete", this.onLoadingComplete);
+            loadQueues[this.sceneKey].on("complete", this.onLoadingComplete);
         }
     },
 
@@ -115,6 +117,11 @@ module.exports = {
 
         // What to do when the window resizes
         window.addEventListener("resize", this.onWindowResize);
+
+        // Updates the state
+        this.setState({
+            loading: false
+        });
     },
 
     onStageClick: function(e) {
