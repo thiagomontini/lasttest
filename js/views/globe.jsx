@@ -1,5 +1,6 @@
 var React = require("react");
-var THREE = require("three");
+//var THREE = require("three");
+var THREE = require("three-canvas-renderer");
 var browserHistory = require("react-router").browserHistory;
 var TweenLite = require("../libs/gsap/TweenMax.js");
 var Preloader = require("./preloader.jsx");
@@ -15,6 +16,8 @@ var Globe = React.createClass({
     },
 
     componentDidMount: function() {
+        window.THREE = THREE;
+
         this.dragging = false;
         this.spinning = false;
 
@@ -23,7 +26,12 @@ var Globe = React.createClass({
         this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
         this.camera.position.z = 2;
 
-        this.renderer = new THREE.WebGLRenderer({canvas: this.refs.canvas});
+        if (this.props.params.renderer == 'canvas') {
+            this.renderer = new THREE.CanvasRenderer({canvas: this.refs.canvas});
+        }
+        else {
+            this.renderer = new THREE.WebGLRenderer({canvas: this.refs.canvas});
+        }
         this.renderer.setSize(window.innerWidth, window.innerHeight);
 
         this.imageLoader = new THREE.TextureLoader();
@@ -33,7 +41,7 @@ var Globe = React.createClass({
     },
 
     onModelLoaded: function(texture) {
-        var geometry   = new THREE.SphereGeometry(1, 32, 32);
+        var geometry = new THREE.SphereGeometry(1, 32, 32);
         var material = new THREE.MeshBasicMaterial({ map: texture });
 
         this.earthMesh = new THREE.Mesh(geometry, material)

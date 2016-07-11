@@ -30,6 +30,9 @@ var Home = React.createClass({
                         <Link to={config.root + "/globe"}>Globe</Link>
                     </li>
                     <li>
+                        <Link to={config.root + "/globe/canvas"}>Globe for devices without WebGL</Link>
+                    </li>
+                    <li>
                         <Link to={config.root + "/form"}>API form</Link>
                     </li>
                 </ul>

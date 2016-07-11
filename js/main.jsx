@@ -17,6 +17,7 @@ ReactDom.render((
     <Router history={browserHistory}>
         <Route path={config.root + "/"} component={Home} />
         <Route path={config.root + "/globe"} component={Globe} />
+        <Route path={config.root + "/globe/:renderer"} component={Globe} />
         <Route path={config.root + "/form"} component={FlightsForm} />
         <Route path={config.root + "/rio"} component={RioScene} />
         <Route path={config.root + "/ny"} component={NYScene} />
