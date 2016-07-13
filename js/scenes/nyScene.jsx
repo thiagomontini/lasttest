@@ -1,12 +1,12 @@
 var React = require("react");
 var TweenMax = require("../libs/gsap/TweenMax.js");
 var TimelineMax = require("../libs/gsap/TimelineMax.js");
-var computeDistance = require("../utils/computeDistance.js");
 var sceneData = require("./sceneData.js");
 var SceneMixin = require("./sceneMixin.jsx");
 var Cloud = require("../sceneObjects/cloud.js");
 var randRange = require("../utils/randRange.js");
 var computeDistance = require("../utils/computeDistance.js");
+var computeAngleFrame = require("../utils/computeAngleFrame.js");
 
 var config = sceneData.ny.config;
 
@@ -61,67 +61,46 @@ Helicopter.prototype = {
 }
 
 
-var Ship = function(shipMovieClip, direction, anchor, speed) {
-    this.movieClip = shipMovieClip;
-    this.mainAxis = direction;
-    this.secondaryAxis = [direction[0], -direction[1]];
-    this.p = 0;
-    this.q = 0;
-    this.anchor = [anchor[0] / this.movieClip.width, anchor[1] / this.movieClip.height];
-    this.movieClip.anchor.x = this.anchor[0];
-    this.movieClip.anchor.y = this.anchor[1];
-    this.speed = speed;
-    this.originalX = this.movieClip.x;
-    this.originalY = this.movieClip.y;
-    this.animateShip();
+var Boat = function(boatMovieClip, parameters) {
+    this.movieClip = boatMovieClip;
+    this.centerX = this.movieClip.x;
+    this.centerY = this.movieClip.y;
+    this.previousX = this.movieClip.x;
+    this.previousY = this.movieClip.y;
+    this.f1 = Math.random()*3 + 2;
+    this.f2 = Math.random()*3 + 2;
+    this.width = parameters.width;
+    this.height = parameters.height;
+    this.rotation = parameters.rotation;
+    this.speed = parameters.speed;
+    this.positionShip(0);
+    this.animationLoop = this.animationLoop.bind(this);
+    this.animationId = window.requestAnimationFrame(this.animationLoop);
 }
 
-Ship.prototype = {
-    animateShip: function() {
-        // Generates the new target coordinates
-        var targetX, targetY;
+Boat.prototype = {
+    animationLoop: function() {
+        this.positionShip(this.t + this.speed);
+        this.animationId = window.requestAnimationFrame(this.animationLoop);
+    },
 
-        if (Math.random() < 0.5) {
-            this.p = Math.random();
-        }
-        else {
-            this.q = Math.random();
-        }
-
-        targetX = this.originalX + this.mainAxis[0] * this.p + this.secondaryAxis[0] * this.q;
-        targetY = this.originalY + this.mainAxis[1] * this.p + this.secondaryAxis[1] * this.q;
-
-        // Turns the ship in the right direction
-        if (targetX >= this.movieClip.x) {
-            this.movieClip.scale.x = 1;
-        }
-        else {
-            this.movieClip.scale.x = -1;
-        }
-
-        if (targetY >= this.movieClip.y) {
-            this.movieClip.gotoAndStop(0);
-            this.movieClip.anchor.y = this.anchor[1];
-        }
-        else {
-            this.movieClip.gotoAndStop(1);
-            this.movieClip.anchor.y = 1 - this.anchor[1];
-        }
-
-        // Tweens the ship
-        var distance = computeDistance(this.movieClip.x, this.movieClip.y, targetX, targetY);
-        var tweenTime = distance / this.speed;
-
-        this.tween = TweenMax.to(this.movieClip, tweenTime, {
-            x: targetX,
-            y: targetY,
-            ease: "Linear.easeNone",
-            onComplete: this.animateShip.bind(this)
-        });
+    positionShip: function(t) {
+        this.t = t;
+        this.previousX = this.movieClip.x;
+        this.previousY = this.movieClip.y;
+        this.movieClip.x = this.centerX + this.width*Math.sin(this.f1*this.t);
+        this.movieClip.y = this.centerY + this.height*Math.sin(this.f2*this.t);
+        this.movieClip.gotoAndStop(computeAngleFrame(
+            this.movieClip.totalFrames,
+            this.previousX,
+            this.previousY,
+            this.movieClip.x,
+            this.movieClip.y
+        ));
     },
 
     dispose: function() {
-        this.tween.kill();
+        window.clearAnimationFrame(this.animationId);
     }
 }
 
@@ -147,6 +126,7 @@ var NYScene = React.createClass({
         this.disposables.push(new Helicopter(this.objects.helicopter3, config.helicopter3.direction));
 
         // // Animates the ships
+        this.disposables.push(new Boat(this.objects.boat1, config.boat1));
         // this.disposables.push(new Ship(this.objects.ship1, config.ship1.direction, config.ship1.anchor, config.ship1.speed));
         // this.disposables.push(new Ship(this.objects.ship3, config.ship3.direction, config.ship3.anchor, config.ship3.speed));
         // this.disposables.push(new Ship(this.objects.ship4, config.ship4.direction, config.ship4.anchor, config.ship4.speed));

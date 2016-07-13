@@ -11,79 +11,109 @@ module.exports = {
             "position": [0, 0]
         },
         {
-            "id": "ship2",
+            "id": "staticBoat1",
             "images": ["img/ny/Static_Boat_1.png"],
             "position": [167, 563]
         },
         {
-            "id": "ship5",
+            "id": "staticBoat2",
             "images": ["img/ny/Static_Boat_2.png"],
             "position": [794, 797]
         },
         {
-            "id": "ship6",
+            "id": "staticBoat3",
             "images": ["img/ny/Static_Boat_3.png"],
             "position": [813, 745]
         },
         {
-            "id": "ship7",
+            "id": "staticBoat4",
             "images": ["img/ny/Static_Boat_4.png"],
             "position": [920, 19]
         },
         {
-            "id": "ship8",
+            "id": "staticBoat5",
             "images": ["img/ny/Static_Boat_5.png"],
             "position": [1042, 0]
         },
         {
-            "id": "ship9",
+            "id": "staticBoat6",
             "images": ["img/ny/Static_Boat_6.png"],
             "position": [1052, 134]
         },
         {
-            "id": "ship11",
+            "id": "staticBoat7",
             "images": ["img/ny/Static_Boat_7.png"],
             "position": [1304, 264]
         },
         {
-            "id": "ship12",
+            "id": "staticBoat8",
             "images": ["img/ny/Static_Boat_8.png"],
             "position": [1329, 309]
         },
         {
-            "id": "ship13",
+            "id": "staticBoat9",
             "images": ["img/ny/Static_Boat_9.png"],
             "position": [1334, 315]
         },
         {
-            "id": "ship14",
+            "id": "staticBoat10",
             "images": ["img/ny/Static_Boat_10.png"],
             "position": [1341, 336]
         },
         {
-            "id": "ship16",
+            "id": "staticBoat11",
             "images": ["img/ny/Static_Boat_11.png"],
             "position": [1410, 250]
         },
         {
-            "id": "ship17",
+            "id": "staticBoat12",
             "images": ["img/ny/Static_Boat_12.png"],
             "position": [1475, 635]
         },
         {
-            "id": "ship19",
+            "id": "staticBoat13",
             "images": ["img/ny/Static_Boat_13.png"],
             "position": [1492, 613]
         },
         {
-            "id": "ship20",
+            "id": "staticBoat14",
             "images": ["img/ny/Static_Boat_14.png"],
             "position": [1546, 471]
         },
         {
-            "id": "ship22",
+            "id": "staticBoat15",
             "images": ["img/ny/Static_Boat_15.png"],
             "position": [1690, 333]
+        },
+        {
+            "id": "boat1",
+            "images": [
+                "img/ny/Boat1_00.png",
+                "img/ny/Boat1_01.png",
+                "img/ny/Boat1_02.png",
+                "img/ny/Boat1_03.png",
+                "img/ny/Boat1_04.png",
+                "img/ny/Boat1_05.png",
+                "img/ny/Boat1_06.png",
+                "img/ny/Boat1_07.png",
+                "img/ny/Boat1_08.png",
+                "img/ny/Boat1_09.png",
+                "img/ny/Boat1_10.png",
+                "img/ny/Boat1_11.png",
+                "img/ny/Boat1_12.png",
+                "img/ny/Boat1_13.png",
+                "img/ny/Boat1_14.png",
+                "img/ny/Boat1_15.png",
+                "img/ny/Boat1_16.png",
+                "img/ny/Boat1_17.png",
+                "img/ny/Boat1_18.png",
+                "img/ny/Boat1_19.png",
+                "img/ny/Boat1_20.png",
+                "img/ny/Boat1_21.png",
+                "img/ny/Boat1_22.png",
+                "img/ny/Boat1_23.png"
+            ],
+            position: [200, 820]
         },
         {
             "id": "bridges",
@@ -216,6 +246,14 @@ module.exports = {
         "helicopter3": {
             "direction": [45, 33]
         },
-        "helicopterSpeed": [100, 200]
+        "helicopterSpeed": [100, 200],
+        "boat1": {
+            "width": 100,
+            "height": 100,
+            "rotation": 30,
+            "speed": 0.005,
+            "f1": 6,
+            "f2": 4,
+        }
     }
 };
