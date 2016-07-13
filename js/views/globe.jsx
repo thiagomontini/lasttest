@@ -1,5 +1,4 @@
 var React = require("react");
-//var THREE = require("three");
 var THREE = require("three-canvas-renderer");
 var browserHistory = require("react-router").browserHistory;
 var TweenLite = require("../libs/gsap/TweenMax.js");
