@@ -5,6 +5,7 @@ var sceneData = require("./sceneData.js");
 var SceneMixin = require("./sceneMixin.jsx");
 var Cloud = require("../sceneObjects/cloud.js");
 var randRange = require("../utils/randRange.js");
+var TrackObject = require("../sceneObjects/trackObject.js");
 var computeDistance = require("../utils/computeDistance.js");
 
 var config = sceneData.ny.config;
@@ -80,8 +81,12 @@ var NYScene = React.createClass({
         this.disposables.push(new Helicopter(this.objects.helicopter2, config.helicopter2.direction));
         this.disposables.push(new Helicopter(this.objects.helicopter3, config.helicopter3.direction));
 
-        // // Animates the ships
-        //this.disposables.push(new Boat(this.objects.boat1, config.boat1));
+        // Animates the ships
+        this.disposables.push(new TrackObject(
+            this.objects.boat1,
+            config.boat1.track,
+            config.boat1.duration
+        ));
     },
 
     disposeScene: function() {

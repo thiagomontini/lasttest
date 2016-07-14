@@ -1,7 +1,7 @@
 var computeDistance = require("../utils/computeDistance.js");
 var computeAngleFrame = require("../utils/computeAngleFrame.js");
 
-var TrackObject = function(sprite, track, duration, initialPostion, yoyo) {
+var TrackObject = function(sprite, track, duration, yoyo, initialPostion) {
     // Stores the object itself
     this.sprite = sprite;
     this.previousX = this.sprite.x;
@@ -30,7 +30,7 @@ var TrackObject = function(sprite, track, duration, initialPostion, yoyo) {
         }
         segmentData.ease = "Linear.easeNone";
         if (this.sprite.gotoAndStop) {
-            segmentData.onProgress = this.setFrame.bind(this);
+            segmentData.onUpdate = this.setFrame.bind(this);
         }
         this.timeline.to(this.sprite, duration * trackLengths[i] / totalLength, segmentData);
     }
@@ -42,13 +42,17 @@ var TrackObject = function(sprite, track, duration, initialPostion, yoyo) {
 
 TrackObject.prototype = {
     setFrame: function() {
-        this.sprite.gotoAndStop(computeAngleFrame(
+        var newFrame = computeAngleFrame(
             this.sprite.totalFrames,
             this.previousX,
             this.previousY,
             this.sprite.x,
             this.sprite.y
-        ));
+        );
+
+        if (newFrame != this.sprite.currentFrame) {
+            this.sprite.gotoAndStop(newFrame);
+        }
 
         this.previousX = this.sprite.x;
         this.previousY = this.sprite.y;
