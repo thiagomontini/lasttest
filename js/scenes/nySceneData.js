@@ -16,11 +16,6 @@ module.exports = {
             "position": [167, 563]
         },
         {
-            "id": "staticBoat2",
-            "images": ["img/ny/Static_Boat_2.png"],
-            "position": [794, 797]
-        },
-        {
             "id": "staticBoat3",
             "images": ["img/ny/Static_Boat_3.png"],
             "position": [813, 745]
@@ -81,11 +76,6 @@ module.exports = {
             "position": [1546, 471]
         },
         {
-            "id": "staticBoat15",
-            "images": ["img/ny/Static_Boat_15.png"],
-            "position": [1690, 333]
-        },
-        {
             "id": "boat1",
             "images": [
                 "img/ny/Boat1_00.png",
@@ -112,6 +102,36 @@ module.exports = {
                 "img/ny/Boat1_21.png",
                 "img/ny/Boat1_22.png",
                 "img/ny/Boat1_23.png"
+            ],
+            position: [200, 820]
+        },
+        {
+            "id": "boat2",
+            "images": [
+                "img/ny/Boat2_00.png",
+                "img/ny/Boat2_01.png",
+                "img/ny/Boat2_02.png",
+                "img/ny/Boat2_03.png",
+                "img/ny/Boat2_04.png",
+                "img/ny/Boat2_05.png",
+                "img/ny/Boat2_06.png",
+                "img/ny/Boat2_07.png",
+                "img/ny/Boat2_08.png",
+                "img/ny/Boat2_09.png",
+                "img/ny/Boat2_10.png",
+                "img/ny/Boat2_11.png",
+                "img/ny/Boat2_12.png",
+                "img/ny/Boat2_13.png",
+                "img/ny/Boat2_14.png",
+                "img/ny/Boat2_15.png",
+                "img/ny/Boat2_16.png",
+                "img/ny/Boat2_17.png",
+                "img/ny/Boat2_18.png",
+                "img/ny/Boat2_19.png",
+                "img/ny/Boat2_20.png",
+                "img/ny/Boat2_21.png",
+                "img/ny/Boat2_22.png",
+                "img/ny/Boat2_23.png"
             ],
             position: [200, 820]
         },
@@ -246,14 +266,6 @@ module.exports = {
         "helicopter3": {
             "direction": [45, 33]
         },
-        "helicopterSpeed": [100, 200],
-        "boat1": {
-            "width": 100,
-            "height": 100,
-            "rotation": 30,
-            "speed": 0.005,
-            "f1": 6,
-            "f2": 4,
-        }
+        "helicopterSpeed": [100, 200]
     }
 };

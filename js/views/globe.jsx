@@ -41,7 +41,7 @@ var Globe = React.createClass({
 
     onModelLoaded: function(texture) {
         var geometry = new THREE.SphereGeometry(1, 32, 32);
-        var material = new THREE.MeshBasicMaterial({ map: texture });
+        var material = new THREE.MeshBasicMaterial({ map: texture, overdraw: true });
 
         this.earthMesh = new THREE.Mesh(geometry, material)
         this.earthMesh.rotation.y = - Math.PI / 2;
