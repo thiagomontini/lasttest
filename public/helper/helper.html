@@ -16,11 +16,16 @@
 
             document.getElementById("textarea").value = entrada;
         }
+
+        function limpa() {
+            document.getElementById("textarea").value = "";
+        }
     </script>
 </head>
 <body>
     <textarea id="textarea" style="width: 640px; height: 480px"></textarea>
     <br/>
     <input type="button" onclick="vaiFilhao()" value="Vai filhão" />
+    <input type="button" onclick="limpa()" value="Limpar" />
 </body>
 </html>

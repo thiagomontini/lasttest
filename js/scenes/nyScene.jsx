@@ -82,13 +82,17 @@ var NYScene = React.createClass({
         this.disposables.push(new Helicopter(this.objects.helicopter3, config.helicopter3.direction));
 
         // Animates the ships
-        this.objects.boat1.anchor.x = 0.5;
-        this.objects.boat1.anchor.y = 0.5;
-        this.disposables.push(new TrackObject(
-            this.objects.boat1,
-            config.boat1.track,
-            config.boat1.duration
-        ));
+        var animateBoat = function(boatName) {
+            this.objects[boatName].anchor.x = 0.5;
+            this.objects[boatName].anchor.y = 0.5;
+            this.disposables.push(new TrackObject(
+                this.objects[boatName],
+                config[boatName].track,
+                config[boatName].duration
+            ));
+        }.bind(this);
+        animateBoat("boat1");
+        animateBoat("boat2");
     },
 
     disposeScene: function() {
