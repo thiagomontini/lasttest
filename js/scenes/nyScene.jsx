@@ -94,6 +94,7 @@ var NYScene = React.createClass({
         animateBoat("boat1");
         animateBoat("boat2");
         animateBoat("boat3");
+        animateBoat("boat4");
         animateBoat("boat7");
     },
 
