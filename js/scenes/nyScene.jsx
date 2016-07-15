@@ -82,6 +82,8 @@ var NYScene = React.createClass({
         this.disposables.push(new Helicopter(this.objects.helicopter3, config.helicopter3.direction));
 
         // Animates the ships
+        this.objects.boat1.anchor.x = 0.5;
+        this.objects.boat1.anchor.y = 0.5;
         this.disposables.push(new TrackObject(
             this.objects.boat1,
             config.boat1.track,
