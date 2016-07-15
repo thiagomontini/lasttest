@@ -7,6 +7,7 @@ var Cloud = require("../sceneObjects/cloud.js");
 var randRange = require("../utils/randRange.js");
 var TrackObject = require("../sceneObjects/trackObject.js");
 var computeDistance = require("../utils/computeDistance.js");
+var randomPick = require("../utils/randomPick.js");
 
 var config = sceneData.ny.config;
 
@@ -98,6 +99,31 @@ var NYScene = React.createClass({
         animateBoat("boat5");
         animateBoat("boat6");
         animateBoat("boat7");
+
+        // Animates the cars
+        var carLanes = [config.carLane01, config.carLane02];
+        var animateCar = function(carName, lane) {
+            this.objects[carName].anchor.x = 0.5;
+            this.objects[carName].anchor.y = 0.5;
+
+            this.disposables.push(new TrackObject(
+                this.objects[carName],
+                lane.track,
+                lane.duration,
+                false,
+                Math.random()
+            ));
+        }.bind(this);
+        animateCar("car1", config.carLane02);
+        animateCar("car2", config.carLane02);
+        animateCar("car3", config.carLane02);
+        animateCar("car4", config.carLane02);
+        animateCar("car5", config.carLane02);
+        animateCar("car6", config.carLane01);
+        animateCar("car7", config.carLane01);
+        animateCar("car8", config.carLane01);
+        animateCar("car9", config.carLane01);
+        animateCar("car10", config.carLane01);
     },
 
     disposeScene: function() {

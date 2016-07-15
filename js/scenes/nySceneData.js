@@ -102,8 +102,7 @@ module.exports = {
                 "img/ny/Boat1_21.png",
                 "img/ny/Boat1_22.png",
                 "img/ny/Boat1_23.png"
-            ],
-            position: [200, 820]
+            ]
         },
         {
             "id": "boat2",
@@ -132,8 +131,7 @@ module.exports = {
                 "img/ny/Boat2_21.png",
                 "img/ny/Boat2_22.png",
                 "img/ny/Boat2_23.png"
-            ],
-            position: [200, 820]
+            ]
         },
         {
             "id": "boat3",
@@ -162,8 +160,7 @@ module.exports = {
                 "img/ny/Boat3_21.png",
                 "img/ny/Boat3_22.png",
                 "img/ny/Boat3_23.png"
-            ],
-            position: [200, 820]
+            ]
         },
         {
             "id": "boat4",
@@ -192,8 +189,7 @@ module.exports = {
                 "img/ny/Boat4_21.png",
                 "img/ny/Boat4_22.png",
                 "img/ny/Boat4_23.png"
-            ],
-            position: [200, 820]
+            ]
         },
         {
             "id": "boat5",
@@ -222,8 +218,7 @@ module.exports = {
                 "img/ny/Boat5_21.png",
                 "img/ny/Boat5_22.png",
                 "img/ny/Boat5_23.png"
-            ],
-            position: [200, 820]
+            ]
         },
         {
             "id": "boat6",
@@ -252,8 +247,7 @@ module.exports = {
                 "img/ny/Boat6_21.png",
                 "img/ny/Boat6_22.png",
                 "img/ny/Boat6_23.png"
-            ],
-            position: [200, 820]
+            ]
         },
         {
             "id": "boat7",
@@ -282,8 +276,307 @@ module.exports = {
                 "img/ny/Boat7_21.png",
                 "img/ny/Boat7_22.png",
                 "img/ny/Boat7_23.png"
-            ],
-            position: [200, 820]
+            ]
+        },
+        {
+            "id": "car1",
+            "images": [
+                "img/ny/Car1_00.png",
+                "img/ny/Car1_01.png",
+                "img/ny/Car1_02.png",
+                "img/ny/Car1_03.png",
+                "img/ny/Car1_04.png",
+                "img/ny/Car1_05.png",
+                "img/ny/Car1_06.png",
+                "img/ny/Car1_07.png",
+                "img/ny/Car1_08.png",
+                "img/ny/Car1_09.png",
+                "img/ny/Car1_10.png",
+                "img/ny/Car1_11.png",
+                "img/ny/Car1_12.png",
+                "img/ny/Car1_13.png",
+                "img/ny/Car1_14.png",
+                "img/ny/Car1_15.png",
+                "img/ny/Car1_16.png",
+                "img/ny/Car1_17.png",
+                "img/ny/Car1_18.png",
+                "img/ny/Car1_19.png",
+                "img/ny/Car1_20.png",
+                "img/ny/Car1_21.png",
+                "img/ny/Car1_22.png",
+                "img/ny/Car1_23.png",
+                "img/ny/Car1_24.png"
+            ]
+        },
+        {
+            "id": "car2",
+            "images": [
+                "img/ny/Car2_00.png",
+                "img/ny/Car2_01.png",
+                "img/ny/Car2_02.png",
+                "img/ny/Car2_03.png",
+                "img/ny/Car2_04.png",
+                "img/ny/Car2_05.png",
+                "img/ny/Car2_06.png",
+                "img/ny/Car2_07.png",
+                "img/ny/Car2_08.png",
+                "img/ny/Car2_09.png",
+                "img/ny/Car2_10.png",
+                "img/ny/Car2_11.png",
+                "img/ny/Car2_12.png",
+                "img/ny/Car2_13.png",
+                "img/ny/Car2_14.png",
+                "img/ny/Car2_15.png",
+                "img/ny/Car2_16.png",
+                "img/ny/Car2_17.png",
+                "img/ny/Car2_18.png",
+                "img/ny/Car2_19.png",
+                "img/ny/Car2_20.png",
+                "img/ny/Car2_21.png",
+                "img/ny/Car2_22.png",
+                "img/ny/Car2_23.png",
+                "img/ny/Car2_24.png"
+            ]
+        },
+        {
+            "id": "car3",
+            "images": [
+                "img/ny/Car3_00.png",
+                "img/ny/Car3_01.png",
+                "img/ny/Car3_02.png",
+                "img/ny/Car3_03.png",
+                "img/ny/Car3_04.png",
+                "img/ny/Car3_05.png",
+                "img/ny/Car3_06.png",
+                "img/ny/Car3_07.png",
+                "img/ny/Car3_08.png",
+                "img/ny/Car3_09.png",
+                "img/ny/Car3_10.png",
+                "img/ny/Car3_11.png",
+                "img/ny/Car3_12.png",
+                "img/ny/Car3_13.png",
+                "img/ny/Car3_14.png",
+                "img/ny/Car3_15.png",
+                "img/ny/Car3_16.png",
+                "img/ny/Car3_17.png",
+                "img/ny/Car3_18.png",
+                "img/ny/Car3_19.png",
+                "img/ny/Car3_20.png",
+                "img/ny/Car3_21.png",
+                "img/ny/Car3_22.png",
+                "img/ny/Car3_23.png",
+                "img/ny/Car3_24.png"
+            ]
+        },
+        {
+            "id": "car4",
+            "images": [
+                "img/ny/Car4_00.png",
+                "img/ny/Car4_01.png",
+                "img/ny/Car4_02.png",
+                "img/ny/Car4_03.png",
+                "img/ny/Car4_04.png",
+                "img/ny/Car4_05.png",
+                "img/ny/Car4_06.png",
+                "img/ny/Car4_07.png",
+                "img/ny/Car4_08.png",
+                "img/ny/Car4_09.png",
+                "img/ny/Car4_10.png",
+                "img/ny/Car4_11.png",
+                "img/ny/Car4_12.png",
+                "img/ny/Car4_13.png",
+                "img/ny/Car4_14.png",
+                "img/ny/Car4_15.png",
+                "img/ny/Car4_16.png",
+                "img/ny/Car4_17.png",
+                "img/ny/Car4_18.png",
+                "img/ny/Car4_19.png",
+                "img/ny/Car4_20.png",
+                "img/ny/Car4_21.png",
+                "img/ny/Car4_22.png",
+                "img/ny/Car4_23.png",
+                "img/ny/Car4_24.png"
+            ]
+        },
+        {
+            "id": "car5",
+            "images": [
+                "img/ny/Car5_00.png",
+                "img/ny/Car5_01.png",
+                "img/ny/Car5_02.png",
+                "img/ny/Car5_03.png",
+                "img/ny/Car5_04.png",
+                "img/ny/Car5_05.png",
+                "img/ny/Car5_06.png",
+                "img/ny/Car5_07.png",
+                "img/ny/Car5_08.png",
+                "img/ny/Car5_09.png",
+                "img/ny/Car5_10.png",
+                "img/ny/Car5_11.png",
+                "img/ny/Car5_12.png",
+                "img/ny/Car5_13.png",
+                "img/ny/Car5_14.png",
+                "img/ny/Car5_15.png",
+                "img/ny/Car5_16.png",
+                "img/ny/Car5_17.png",
+                "img/ny/Car5_18.png",
+                "img/ny/Car5_19.png",
+                "img/ny/Car5_20.png",
+                "img/ny/Car5_21.png",
+                "img/ny/Car5_22.png",
+                "img/ny/Car5_23.png",
+                "img/ny/Car5_24.png"
+            ]
+        },
+        {
+            "id": "car6",
+            "images": [
+                "img/ny/Car6_00.png",
+                "img/ny/Car6_01.png",
+                "img/ny/Car6_02.png",
+                "img/ny/Car6_03.png",
+                "img/ny/Car6_04.png",
+                "img/ny/Car6_05.png",
+                "img/ny/Car6_06.png",
+                "img/ny/Car6_07.png",
+                "img/ny/Car6_08.png",
+                "img/ny/Car6_09.png",
+                "img/ny/Car6_10.png",
+                "img/ny/Car6_11.png",
+                "img/ny/Car6_12.png",
+                "img/ny/Car6_13.png",
+                "img/ny/Car6_14.png",
+                "img/ny/Car6_15.png",
+                "img/ny/Car6_16.png",
+                "img/ny/Car6_17.png",
+                "img/ny/Car6_18.png",
+                "img/ny/Car6_19.png",
+                "img/ny/Car6_20.png",
+                "img/ny/Car6_21.png",
+                "img/ny/Car6_22.png",
+                "img/ny/Car6_23.png",
+                "img/ny/Car6_24.png"
+            ]
+        },
+        {
+            "id": "car7",
+            "images": [
+                "img/ny/Car7_00.png",
+                "img/ny/Car7_01.png",
+                "img/ny/Car7_02.png",
+                "img/ny/Car7_03.png",
+                "img/ny/Car7_04.png",
+                "img/ny/Car7_05.png",
+                "img/ny/Car7_06.png",
+                "img/ny/Car7_07.png",
+                "img/ny/Car7_08.png",
+                "img/ny/Car7_09.png",
+                "img/ny/Car7_10.png",
+                "img/ny/Car7_11.png",
+                "img/ny/Car7_12.png",
+                "img/ny/Car7_13.png",
+                "img/ny/Car7_14.png",
+                "img/ny/Car7_15.png",
+                "img/ny/Car7_16.png",
+                "img/ny/Car7_17.png",
+                "img/ny/Car7_18.png",
+                "img/ny/Car7_19.png",
+                "img/ny/Car7_20.png",
+                "img/ny/Car7_21.png",
+                "img/ny/Car7_22.png",
+                "img/ny/Car7_23.png",
+                "img/ny/Car7_24.png"
+            ]
+        },
+        {
+            "id": "car8",
+            "images": [
+                "img/ny/Car8_00.png",
+                "img/ny/Car8_01.png",
+                "img/ny/Car8_02.png",
+                "img/ny/Car8_03.png",
+                "img/ny/Car8_04.png",
+                "img/ny/Car8_05.png",
+                "img/ny/Car8_06.png",
+                "img/ny/Car8_07.png",
+                "img/ny/Car8_08.png",
+                "img/ny/Car8_09.png",
+                "img/ny/Car8_10.png",
+                "img/ny/Car8_11.png",
+                "img/ny/Car8_12.png",
+                "img/ny/Car8_13.png",
+                "img/ny/Car8_14.png",
+                "img/ny/Car8_15.png",
+                "img/ny/Car8_16.png",
+                "img/ny/Car8_17.png",
+                "img/ny/Car8_18.png",
+                "img/ny/Car8_19.png",
+                "img/ny/Car8_20.png",
+                "img/ny/Car8_21.png",
+                "img/ny/Car8_22.png",
+                "img/ny/Car8_23.png",
+                "img/ny/Car8_24.png"
+            ]
+        },
+        {
+            "id": "car9",
+            "images": [
+                "img/ny/Car9_00.png",
+                "img/ny/Car9_01.png",
+                "img/ny/Car9_02.png",
+                "img/ny/Car9_03.png",
+                "img/ny/Car9_04.png",
+                "img/ny/Car9_05.png",
+                "img/ny/Car9_06.png",
+                "img/ny/Car9_07.png",
+                "img/ny/Car9_08.png",
+                "img/ny/Car9_09.png",
+                "img/ny/Car9_10.png",
+                "img/ny/Car9_11.png",
+                "img/ny/Car9_12.png",
+                "img/ny/Car9_13.png",
+                "img/ny/Car9_14.png",
+                "img/ny/Car9_15.png",
+                "img/ny/Car9_16.png",
+                "img/ny/Car9_17.png",
+                "img/ny/Car9_18.png",
+                "img/ny/Car9_19.png",
+                "img/ny/Car9_20.png",
+                "img/ny/Car9_21.png",
+                "img/ny/Car9_22.png",
+                "img/ny/Car9_23.png",
+                "img/ny/Car9_24.png"
+            ]
+        },
+        {
+            "id": "car10",
+            "images": [
+                "img/ny/Car10_00.png",
+                "img/ny/Car10_01.png",
+                "img/ny/Car10_02.png",
+                "img/ny/Car10_03.png",
+                "img/ny/Car10_04.png",
+                "img/ny/Car10_05.png",
+                "img/ny/Car10_06.png",
+                "img/ny/Car10_07.png",
+                "img/ny/Car10_08.png",
+                "img/ny/Car10_09.png",
+                "img/ny/Car10_10.png",
+                "img/ny/Car10_11.png",
+                "img/ny/Car10_12.png",
+                "img/ny/Car10_13.png",
+                "img/ny/Car10_14.png",
+                "img/ny/Car10_15.png",
+                "img/ny/Car10_16.png",
+                "img/ny/Car10_17.png",
+                "img/ny/Car10_18.png",
+                "img/ny/Car10_19.png",
+                "img/ny/Car10_20.png",
+                "img/ny/Car10_21.png",
+                "img/ny/Car10_22.png",
+                "img/ny/Car10_23.png",
+                "img/ny/Car10_24.png"
+            ]
         },
         {
             "id": "bridges",
@@ -634,6 +927,40 @@ module.exports = {
                 { x: 110.000, y: 861.210 }
             ],
             "duration": 15
-        }
+        },
+        "carLane01": {
+            "track": [
+                { x: 653.130, y: 557.740 },
+                { x: 806.880, y: 695.780 },
+                { x: 888.800, y: 719.340 },
+                { x: 1357.890, y: 657.620 },
+                { x: 1438.690, y: 588.040 },
+                { x: 1464.500, y: 499.390 },
+                { x: 1418.490, y: 388.290 },
+                { x: 1296.170, y: 395.020 },
+                { x: 1264.740, y: 291.780 },
+                { x: 1206.390, y: 261.480 },
+                { x: 1021.220, y: 228.930 },
+                { x: 653.130, y: 557.740 }
+            ],
+            "duration": 40
+        },
+        "carLane02": {
+            "track": [
+                { x: 1036.930, y: 235.670 },
+                { x: 1205.270, y: 265.970 },
+                { x: 1251.280, y: 292.900 },
+                { x: 1282.700, y: 407.370 },
+                { x: 1401.660, y: 397.270 },
+                { x: 1440.930, y: 493.780 },
+                { x: 1416.240, y: 577.940 },
+                { x: 1342.180, y: 646.400 },
+                { x: 896.660, y: 705.880 },
+                { x: 821.470, y: 683.430 },
+                { x: 678.940, y: 555.500 },
+                { x: 1036.930, y: 235.670 }
+            ],
+            "duration": 32
+        },
     }
 };
