@@ -93,6 +93,8 @@ var NYScene = React.createClass({
         }.bind(this);
         animateBoat("boat1");
         animateBoat("boat2");
+        animateBoat("boat3");
+        animateBoat("boat7");
     },
 
     disposeScene: function() {
