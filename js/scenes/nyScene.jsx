@@ -92,13 +92,13 @@ var NYScene = React.createClass({
                 config[boatName].duration
             ));
         }.bind(this);
-        animateBoat("boat1");
-        animateBoat("boat2");
-        animateBoat("boat3");
-        animateBoat("boat4");
-        animateBoat("boat5");
-        animateBoat("boat6");
-        animateBoat("boat7");
+        // animateBoat("boat1");
+        // animateBoat("boat2");
+        // animateBoat("boat3");
+        // animateBoat("boat4");
+        // animateBoat("boat5");
+        // animateBoat("boat6");
+        // animateBoat("boat7");
 
         // Animates the cars
         var carLanes = [config.carLane01, config.carLane02];
@@ -110,20 +110,19 @@ var NYScene = React.createClass({
                 this.objects[carName],
                 lane.track,
                 lane.duration,
-                false,
-                Math.random()
+                { initialPosition: 0 /*Math.random()*/ }
             ));
         }.bind(this);
-        animateCar("car1", config.carLane02);
-        animateCar("car2", config.carLane02);
-        animateCar("car3", config.carLane02);
-        animateCar("car4", config.carLane02);
-        animateCar("car5", config.carLane02);
-        animateCar("car6", config.carLane01);
-        animateCar("car7", config.carLane01);
-        animateCar("car8", config.carLane01);
-        animateCar("car9", config.carLane01);
-        animateCar("car10", config.carLane01);
+        // animateCar("car1", config.carLane);
+        // animateCar("car2", config.carLane);
+        // animateCar("car3", config.carLane);
+        // animateCar("car4", config.carLane);
+        // animateCar("car5", config.carLane);
+        // animateCar("car6", config.carLane);
+        // animateCar("car7", config.carLane);
+        // animateCar("car8", config.carLane);
+        animateCar("car9", config.carLane);
+        // animateCar("car10", config.carLane);
     },
 
     disposeScene: function() {

@@ -1,11 +1,13 @@
 var computeDistance = require("../utils/computeDistance.js");
 var computeAngleFrame = require("../utils/computeAngleFrame.js");
 
-var TrackObject = function(sprite, track, duration, yoyo, initialPostion) {
+var TrackObject = function(sprite, track, duration, params) {
+    this.params = params || {};
+    this.params.yoyo = !!params.yoyo;
+    this.params.initialPosition = params.initialPosition || 0;
+
     // Stores the object itself
     this.sprite = sprite;
-    this.previousX = this.sprite.x;
-    this.previousY = this.sprite.y;
 
     // Computes the total length
     var trackLengths = track.map(function(x, index, array) {
@@ -22,42 +24,27 @@ var TrackObject = function(sprite, track, duration, yoyo, initialPostion) {
 
     // Builds the timeline
     this.timeline = new TimelineMax();
-    this.timeline.set(this.sprite, track[0]);
+    this.timeline.set(this.sprite, {x: track[0].x, y: track[0].y});
+    if (track[0].frame != undefined) {
+        this.timeline.addCallback(this.sprite.gotoAndStop.bind(this.sprite, track[0].frame));
+    }
     for (var i=1; i < track.length; i++) {
-        var segmentData = {};
-        for (var key in track[i]) {
-            segmentData[key] = track[i][key];
+        this.timeline.to(this.sprite, duration * trackLengths[i] / totalLength, {
+            x: track[i].x,
+            y: track[i].y,
+            ease: "Linear.easeNone"
+        });
+        if (track[i].frame != undefined) {
+            this.timeline.addCallback(this.sprite.gotoAndStop.bind(this.sprite, track[i].frame));
         }
-        segmentData.ease = "Linear.easeNone";
-        if (this.sprite.gotoAndStop) {
-            segmentData.onUpdate = this.setFrame.bind(this);
-        }
-        this.timeline.to(this.sprite, duration * trackLengths[i] / totalLength, segmentData);
     }
     this.timeline.repeat(-1);
-    this.timeline.yoyo(!!yoyo);
-    this.timeline.progress(initialPostion || 0);
+    this.timeline.yoyo(this.params.yoyo);
+    this.timeline.progress(this.params.initialPosition);
     this.timeline.play();
 }
 
 TrackObject.prototype = {
-    setFrame: function() {
-        var newFrame = computeAngleFrame(
-            this.sprite.totalFrames,
-            this.previousX,
-            this.previousY,
-            this.sprite.x,
-            this.sprite.y
-        );
-
-        if (newFrame != this.sprite.currentFrame) {
-            this.sprite.gotoAndStop(newFrame);
-        }
-
-        this.previousX = this.sprite.x;
-        this.previousY = this.sprite.y;
-    },
-
     dispose: function() {
         this.timeline.kill();
         if (this.sprite.stop) {
