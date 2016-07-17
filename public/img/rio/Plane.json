@@ -1,0 +1,97 @@
+{
+	"meta": {
+		"image": "Plane.png",
+		"size": {"w":440,"h":330},
+		"scale": "1"
+	},
+	"frames": {
+		"img/rio/Rio_Plane_00000.png":
+		{
+			"frame": {"x":110,"y":0,"w":110,"h":110},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":110,"h":110},
+			"sourceSize": {"w":110,"h":110}
+		},
+		"img/rio/Rio_Plane_00005.png":
+		{
+			"frame": {"x":0,"y":0,"w":110,"h":110},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":110,"h":110},
+			"sourceSize": {"w":110,"h":110}
+		},
+		"img/rio/Rio_Plane_00002.png":
+		{
+			"frame": {"x":0,"y":110,"w":110,"h":110},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":110,"h":110},
+			"sourceSize": {"w":110,"h":110}
+		},
+		"img/rio/Rio_Plane_00003.png":
+		{
+			"frame": {"x":110,"y":110,"w":110,"h":110},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":110,"h":110},
+			"sourceSize": {"w":110,"h":110}
+		},
+		"img/rio/Rio_Plane_00004.png":
+		{
+			"frame": {"x":220,"y":0,"w":110,"h":110},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":110,"h":110},
+			"sourceSize": {"w":110,"h":110}
+		},
+		"img/rio/Rio_Plane_00010.png":
+		{
+			"frame": {"x":330,"y":110,"w":110,"h":110},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":110,"h":110},
+			"sourceSize": {"w":110,"h":110}
+		},
+		"img/rio/Rio_Plane_00006.png":
+		{
+			"frame": {"x":0,"y":220,"w":110,"h":110},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":110,"h":110},
+			"sourceSize": {"w":110,"h":110}
+		},
+		"img/rio/Rio_Plane_00007.png":
+		{
+			"frame": {"x":110,"y":220,"w":110,"h":110},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":110,"h":110},
+			"sourceSize": {"w":110,"h":110}
+		},
+		"img/rio/Rio_Plane_00008.png":
+		{
+			"frame": {"x":220,"y":220,"w":110,"h":110},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":110,"h":110},
+			"sourceSize": {"w":110,"h":110}
+		},
+		"img/rio/Rio_Plane_00009.png":
+		{
+			"frame": {"x":330,"y":0,"w":110,"h":110},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":110,"h":110},
+			"sourceSize": {"w":110,"h":110}
+		},
+		"img/rio/Rio_Plane_00001.png":
+		{
+			"frame": {"x":220,"y":110,"w":110,"h":110},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":110,"h":110},
+			"sourceSize": {"w":110,"h":110}
+		}
+	}
+}

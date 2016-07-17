@@ -1,15 +1,15 @@
 var React = require("react");
 var PIXI = require("pixi.js");
 var Preloader = require("../views/preloader.jsx");
-var createjs = require("../libs/createjs/createjs.js");
 var sceneData = require("./sceneData.js");
-var loadQueues = require("../utils/loadQueues.js");
+
+
 
 module.exports = {
     getInitialState: function() {
         return {
             progress: 0,
-            loading: !(loadQueues[this.sceneKey] && loadQueues[this.sceneKey].loaded),
+            loading: true,
             scale: this._computeScale()
         }
     },
@@ -22,18 +22,11 @@ module.exports = {
     },
 
     _buildObject: function(objectData) {
-        var object;
-        var loadQueue = loadQueues[this.sceneKey];
-        var textures = objectData.images.map(function(x) {
-            var imageAsset = loadQueue.getResult(x);
-            return new PIXI.Texture(new PIXI.BaseTexture(imageAsset));
-        });
-
-        if (textures.length > 1) {
-            object = new PIXI.extras.MovieClip(textures);
+        if (objectData.frames) {
+            object = PIXI.extras.MovieClip.fromFrames(objectData.frames);
         }
         else {
-            object = new PIXI.Sprite(textures[0]);
+            object = PIXI.Sprite.fromFrame(objectData.image);
         }
 
         var position = objectData.position || [0, 0];
@@ -46,42 +39,33 @@ module.exports = {
     },
 
     componentWillMount: function() {
-        if (!loadQueues[this.sceneKey]) {
-            // Builds a list of the images to be loaded
-            var objects = sceneData[this.sceneKey]["objects"];
-            var manifest = objects
-                    .map(function(x) { return x["images"] })
-                    .reduce(function(a, b){ return a.concat(b) })
-
-            // Removes the repeated items
-            manifest.sort();
-            var m = [];
-            for (var i=0; i < manifest.length; i++) {
-                if (i==0 || manifest[i-1] != manifest[i]) {
-                    m.push(manifest[i]);
-                }
+        this.needsLoading = false;
+        var objects = sceneData[this.sceneKey].objects;
+        objects.forEach(function(object) {
+            if (!PIXI.loader.resources[object.image]) {
+                PIXI.loader.add(object.image);
+                this.needsLoading = true;
             }
-            manifest = m;
+        }.bind(this));
 
-            // Builds the image loader and loads the images
-            loadQueues[this.sceneKey] = new createjs.LoadQueue(true);
-            loadQueues[this.sceneKey].loadManifest(manifest);
+        if (this.needsLoading) {
+            PIXI.loader.load();
         }
     },
 
     componentDidMount: function() {
-        if (loadQueues[this.sceneKey].loaded) {
+        if (!this.needsLoading) {
             this.onLoadingComplete();
         }
         else {
-            this.progressListener = loadQueues[this.sceneKey].on("progress", this.onLoadingProgress);
-            this.completeListener = loadQueues[this.sceneKey].on("complete", this.onLoadingComplete);
+            PIXI.loader.on("progress", this.onLoadingProgress);
+            PIXI.loader.on("complete", this.onLoadingComplete);
         }
     },
 
     onLoadingProgress: function() {
         this.setState({
-            progress: loadQueues[this.sceneKey].progress
+            progress: PIXI.loader.progress / 100
         });
     },
 
@@ -160,10 +144,8 @@ module.exports = {
 
     componentWillUnmount: function() {
         // Clears the listeners from the loading queue
-        // If the route changes while the images are being loaded,
-        // the loading can continue but no event should be triggered
-        loadQueues[this.sceneKey].off("progress", this.progressListener);
-        loadQueues[this.sceneKey].off("complete", this.completeListener);
+        PIXI.loader.on("progress", this.onLoadingProgress);
+        PIXI.loader.on("complete", this.onLoadingComplete);
 
         // Stops the animation
         cancelAnimationFrame(this.animationId);
