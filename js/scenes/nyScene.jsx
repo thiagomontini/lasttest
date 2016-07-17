@@ -110,7 +110,7 @@ var NYScene = React.createClass({
                 this.objects[carName],
                 lane.track,
                 lane.duration,
-                { initialPosition: 0 /*Math.random()*/ }
+                { initialPosition: Math.random() }
             ));
         }.bind(this);
         // animateCar("car1", config.carLane);

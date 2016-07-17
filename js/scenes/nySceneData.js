@@ -657,7 +657,7 @@ module.exports = {
         {
             "id": "park",
             "images": ["img/ny/NewYork_Park.png"],
-            "position": [702, 127]
+            "position": [642, 127]
         },
         {
             "id": "island",
