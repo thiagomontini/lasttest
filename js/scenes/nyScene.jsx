@@ -1,12 +1,15 @@
 var React = require("react");
+var PIXI = require("pixi.js");
 var TweenMax = require("../libs/gsap/TweenMax.js");
 var TimelineMax = require("../libs/gsap/TimelineMax.js");
-var computeDistance = require("../utils/computeDistance.js");
 var sceneData = require("./sceneData.js");
 var SceneMixin = require("./sceneMixin.jsx");
 var Cloud = require("../sceneObjects/cloud.js");
 var randRange = require("../utils/randRange.js");
+var TrackObject = require("../sceneObjects/trackObject.js");
+var computeAngleFrame = require("../utils/computeAngleFrame.js");
 var computeDistance = require("../utils/computeDistance.js");
+var randomPick = require("../utils/randomPick.js");
 
 var config = sceneData.ny.config;
 
@@ -61,69 +64,85 @@ Helicopter.prototype = {
 }
 
 
-var Ship = function(shipMovieClip, direction, anchor, speed) {
-    this.movieClip = shipMovieClip;
-    this.mainAxis = direction;
-    this.secondaryAxis = [direction[0], -direction[1]];
-    this.p = 0;
-    this.q = 0;
-    this.anchor = [anchor[0] / this.movieClip.width, anchor[1] / this.movieClip.height];
-    this.movieClip.anchor.x = this.anchor[0];
-    this.movieClip.anchor.y = this.anchor[1];
-    this.speed = speed;
-    this.originalX = this.movieClip.x;
-    this.originalY = this.movieClip.y;
-    this.animateShip();
+var Boat = function(movieClip, track, duration, waterTrail) {
+    // Stores the object itself
+    this.movieClip = movieClip;
+    this.movieClip.anchor.x = this.movieClip.anchor.y = 0.5;
+    this.previousX = this.movieClip.x;
+    this.previousY = this.movieClip.y;
+
+    // Clones the water trail object
+    this.waterTrail = new PIXI.Sprite(waterTrail.texture);
+    this.waterTrail.anchor.x = 0.1;
+    this.waterTrail.anchor.y = 0.5;
+    this.waterTrail.scale.x = 0.6;
+    this.waterTrail.scale.y = 0.6;
+
+    // Assembles the container
+    this.container = new PIXI.Sprite();
+    this.container.x = this.movieClip.x;
+    this.container.y = this.movieClip.y;
+    this.movieClip.x = 0;
+    this.movieClip.y = 0;
+    this.movieClip.parent.addChildAt(
+        this.container,
+        this.movieClip.parent.getChildIndex(this.movieClip)
+    );
+    this.container.addChild(this.waterTrail);
+    this.container.addChild(this.movieClip);
+
+    // Computes the total length
+    var trackLengths = track.map(function(x, index, array) {
+        if (index == 0) {
+            return 0;
+        }
+
+        return computeDistance(array[index].x, array[index].y, array[index-1].x, array[index-1].y);
+    });
+
+    var totalLength = trackLengths.reduce(function(a, b) {
+        return a + b;
+    });
+
+    // Builds the timeline
+    this.timeline = new TimelineMax();
+    this.timeline.set(this.container, {
+        x: track[0].x,
+        y: track[0].y
+    });
+    for (var i=1; i < track.length; i++) {
+        this.timeline.to(this.container, duration * trackLengths[i] / totalLength, {
+            x: track[i].x,
+            y: track[i].y,
+            ease: "Linear.easeNone",
+            onUpdate: this.setFrame.bind(this)
+        });
+    }
+    this.timeline.repeat(-1);
+    this.timeline.play();
 }
 
-Ship.prototype = {
-    animateShip: function() {
-        // Generates the new target coordinates
-        var targetX, targetY;
+Boat.prototype = {
+    setFrame: function() {
+        var angleFrame = computeAngleFrame(
+            this.movieClip.totalFrames,
+            this.previousX,
+            this.previousY,
+            this.container.x,
+            this.container.y
+        );
+        this.movieClip.gotoAndStop(angleFrame);
+        this.previousX = this.container.x;
+        this.previousY = this.container.y;
 
-        if (Math.random() < 0.5) {
-            this.p = Math.random();
-        }
-        else {
-            this.q = Math.random();
-        }
-
-        targetX = this.originalX + this.mainAxis[0] * this.p + this.secondaryAxis[0] * this.q;
-        targetY = this.originalY + this.mainAxis[1] * this.p + this.secondaryAxis[1] * this.q;
-
-        // Turns the ship in the right direction
-        if (targetX >= this.movieClip.x) {
-            this.movieClip.scale.x = 1;
-        }
-        else {
-            this.movieClip.scale.x = -1;
-        }
-
-        if (targetY >= this.movieClip.y) {
-            this.movieClip.gotoAndStop(0);
-            this.movieClip.anchor.y = this.anchor[1];
-        }
-        else {
-            this.movieClip.gotoAndStop(1);
-            this.movieClip.anchor.y = 1 - this.anchor[1];
-        }
-
-        // Tweens the ship
-        var distance = computeDistance(this.movieClip.x, this.movieClip.y, targetX, targetY);
-        var tweenTime = distance / this.speed;
-
-        this.tween = TweenMax.to(this.movieClip, tweenTime, {
-            x: targetX,
-            y: targetY,
-            ease: "Linear.easeNone",
-            onComplete: this.animateShip.bind(this)
-        });
+        this.waterTrail.rotation = -2 * Math.PI * angleFrame / this.movieClip.totalFrames;
     },
 
     dispose: function() {
-        this.tween.kill();
+        this.timeline.kill();
     }
-}
+};
+
 
 
 var NYScene = React.createClass({
@@ -147,14 +166,46 @@ var NYScene = React.createClass({
         this.disposables.push(new Helicopter(this.objects.helicopter3, config.helicopter3.direction));
 
         // Animates the ships
-        this.disposables.push(new Ship(this.objects.ship1, config.ship1.direction, config.ship1.anchor, config.ship1.speed));
-        this.disposables.push(new Ship(this.objects.ship3, config.ship3.direction, config.ship3.anchor, config.ship3.speed));
-        this.disposables.push(new Ship(this.objects.ship4, config.ship4.direction, config.ship4.anchor, config.ship4.speed));
-        this.disposables.push(new Ship(this.objects.ship10, config.ship10.direction, config.ship10.anchor, config.ship10.speed));
-        this.disposables.push(new Ship(this.objects.ship15, config.ship15.direction, config.ship15.anchor, config.ship15.speed));
-        this.disposables.push(new Ship(this.objects.ship18, config.ship18.direction, config.ship18.anchor, config.ship18.speed));
-        this.disposables.push(new Ship(this.objects.ship21, config.ship21.direction, config.ship21.anchor, config.ship21.speed));
-        this.disposables.push(new Ship(this.objects.ship23, config.ship23.direction, config.ship23.anchor, config.ship23.speed));
+        this.objects.waterTrail.parent.removeChild(this.objects.waterTrail);
+        var animateBoat = function(boatName) {
+            this.disposables.push(new Boat(
+                this.objects[boatName],
+                config[boatName].track,
+                config[boatName].duration,
+                this.objects.waterTrail
+            ));
+        }.bind(this);
+        animateBoat("boat1");
+        animateBoat("boat2");
+        animateBoat("boat3");
+        animateBoat("boat4");
+        animateBoat("boat5");
+        animateBoat("boat6");
+        animateBoat("boat7");
+
+        // Animates the cars
+        var carLanes = [config.carLane01, config.carLane02];
+        var animateCar = function(carName, lane) {
+            this.objects[carName].anchor.x = 0.5;
+            this.objects[carName].anchor.y = 0.5;
+
+            this.disposables.push(new TrackObject(
+                this.objects[carName],
+                lane.track,
+                lane.duration,
+                { initialPosition: Math.random() }
+            ));
+        }.bind(this);
+        // animateCar("car1", config.carLane);
+        // animateCar("car2", config.carLane);
+        // animateCar("car3", config.carLane);
+        // animateCar("car4", config.carLane);
+        // animateCar("car5", config.carLane);
+        // animateCar("car6", config.carLane);
+        // animateCar("car7", config.carLane);
+        // animateCar("car8", config.carLane);
+        animateCar("car9", config.carLane);
+        // animateCar("car10", config.carLane);
     },
 
     disposeScene: function() {

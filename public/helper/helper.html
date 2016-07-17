@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Helper</title>
+    <script language="javascript">
+        function vaiFilhao() {
+            var entrada = document.getElementById("textarea").value;
+
+            entrada = entrada.split(", ");
+            entrada = entrada.map(function(x) {
+                var elems = x.split(" ");
+                return "                { x: " + elems[0] + ", y: " + elems[1] + " }";
+            });
+
+            entrada = entrada.join(",\n");
+
+            document.getElementById("textarea").value = entrada;
+        }
+
+        function limpa() {
+            document.getElementById("textarea").value = "";
+        }
+    </script>
+</head>
+<body>
+    <textarea id="textarea" style="width: 640px; height: 480px"></textarea>
+    <br/>
+    <input type="button" onclick="vaiFilhao()" value="Vai filhão" />
+    <input type="button" onclick="limpa()" value="Limpar" />
+</body>
+</html>

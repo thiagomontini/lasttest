@@ -1,23 +1,46 @@
-var TrackObject = function(sprite, track, initialPostion, yoyo) {
-    var lengths = config.cableCar.lengths;
+var computeDistance = require("../utils/computeDistance.js");
+var computeAngleFrame = require("../utils/computeAngleFrame.js");
 
+var TrackObject = function(sprite, track, duration, params) {
+    this.params = params || {};
+    this.params.yoyo = !!params.yoyo;
+    this.params.initialPosition = params.initialPosition || 0;
+
+    // Stores the object itself
     this.sprite = sprite;
 
-
-
-    this.timeline = new TimelineMax();
-    this.timeline.set(this.sprite, track[0]);
-    for (var i=1; i < track.length; i++) {
-        var segmentData = {};
-        for (var key in track[i]) {
-            segmentData[key] = track[i][key];
+    // Computes the total length
+    var trackLengths = track.map(function(x, index, array) {
+        if (index == 0) {
+            return 0;
         }
-        segmentData.ease = "Linear.easeNone";
-        this.timeline.to(this.sprite, lengths[i] * config.cableCar.tripDuration, segmentData);
+
+        return computeDistance(array[index].x, array[index].y, array[index-1].x, array[index-1].y);
+    });
+
+    var totalLength = trackLengths.reduce(function(a, b) {
+        return a + b;
+    });
+
+    // Builds the timeline
+    this.timeline = new TimelineMax();
+    this.timeline.set(this.sprite, {x: track[0].x, y: track[0].y});
+    if (track[0].frame != undefined) {
+        this.timeline.addCallback(this.sprite.gotoAndStop.bind(this.sprite, track[0].frame));
+    }
+    for (var i=1; i < track.length; i++) {
+        this.timeline.to(this.sprite, duration * trackLengths[i] / totalLength, {
+            x: track[i].x,
+            y: track[i].y,
+            ease: "Linear.easeNone"
+        });
+        if (track[i].frame != undefined) {
+            this.timeline.addCallback(this.sprite.gotoAndStop.bind(this.sprite, track[i].frame));
+        }
     }
     this.timeline.repeat(-1);
-    this.timeline.yoyo(!!yoyo);
-    this.timeline.progress(initialPostion || 0);
+    this.timeline.yoyo(this.params.yoyo);
+    this.timeline.progress(this.params.initialPosition);
     this.timeline.play();
 }
 
