@@ -726,6 +726,10 @@ module.exports = {
             "id": "cloud5",
             "images": ["img/common/cloud05.png"],
             "position": [1925, 214]
+        },
+        {
+            "id": "waterTrail",
+            "images": ["img/ny/Water_00.png"]
         }
     ],
     "hitAreas": [

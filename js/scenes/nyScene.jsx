@@ -1,4 +1,5 @@
 var React = require("react");
+var PIXI = require("pixi.js");
 var TweenMax = require("../libs/gsap/TweenMax.js");
 var TimelineMax = require("../libs/gsap/TimelineMax.js");
 var sceneData = require("./sceneData.js");
@@ -6,6 +7,7 @@ var SceneMixin = require("./sceneMixin.jsx");
 var Cloud = require("../sceneObjects/cloud.js");
 var randRange = require("../utils/randRange.js");
 var TrackObject = require("../sceneObjects/trackObject.js");
+var computeAngleFrame = require("../utils/computeAngleFrame.js");
 var computeDistance = require("../utils/computeDistance.js");
 var randomPick = require("../utils/randomPick.js");
 
@@ -62,6 +64,87 @@ Helicopter.prototype = {
 }
 
 
+var Boat = function(movieClip, track, duration, waterTrail) {
+    // Stores the object itself
+    this.movieClip = movieClip;
+    this.movieClip.anchor.x = this.movieClip.anchor.y = 0.5;
+    this.previousX = this.movieClip.x;
+    this.previousY = this.movieClip.y;
+
+    // Clones the water trail object
+    this.waterTrail = new PIXI.Sprite(waterTrail.texture);
+    this.waterTrail.anchor.x = 0.1;
+    this.waterTrail.anchor.y = 0.5;
+    this.waterTrail.scale.x = 0.6;
+    this.waterTrail.scale.y = 0.6;
+
+    // Assembles the container
+    this.container = new PIXI.Sprite();
+    this.container.x = this.movieClip.x;
+    this.container.y = this.movieClip.y;
+    this.movieClip.x = 0;
+    this.movieClip.y = 0;
+    this.movieClip.parent.addChildAt(
+        this.container,
+        this.movieClip.parent.getChildIndex(this.movieClip)
+    );
+    this.container.addChild(this.waterTrail);
+    this.container.addChild(this.movieClip);
+
+    // Computes the total length
+    var trackLengths = track.map(function(x, index, array) {
+        if (index == 0) {
+            return 0;
+        }
+
+        return computeDistance(array[index].x, array[index].y, array[index-1].x, array[index-1].y);
+    });
+
+    var totalLength = trackLengths.reduce(function(a, b) {
+        return a + b;
+    });
+
+    // Builds the timeline
+    this.timeline = new TimelineMax();
+    this.timeline.set(this.container, {
+        x: track[0].x,
+        y: track[0].y
+    });
+    for (var i=1; i < track.length; i++) {
+        this.timeline.to(this.container, duration * trackLengths[i] / totalLength, {
+            x: track[i].x,
+            y: track[i].y,
+            ease: "Linear.easeNone",
+            onUpdate: this.setFrame.bind(this)
+        });
+    }
+    this.timeline.repeat(-1);
+    this.timeline.play();
+}
+
+Boat.prototype = {
+    setFrame: function() {
+        var angleFrame = computeAngleFrame(
+            this.movieClip.totalFrames,
+            this.previousX,
+            this.previousY,
+            this.container.x,
+            this.container.y
+        );
+        this.movieClip.gotoAndStop(angleFrame);
+        this.previousX = this.container.x;
+        this.previousY = this.container.y;
+
+        this.waterTrail.rotation = -2 * Math.PI * angleFrame / this.movieClip.totalFrames;
+    },
+
+    dispose: function() {
+        this.timeline.kill();
+    }
+};
+
+
+
 var NYScene = React.createClass({
     sceneKey: "ny",
 
@@ -83,22 +166,22 @@ var NYScene = React.createClass({
         this.disposables.push(new Helicopter(this.objects.helicopter3, config.helicopter3.direction));
 
         // Animates the ships
+        this.objects.waterTrail.parent.removeChild(this.objects.waterTrail);
         var animateBoat = function(boatName) {
-            this.objects[boatName].anchor.x = 0.5;
-            this.objects[boatName].anchor.y = 0.5;
-            this.disposables.push(new TrackObject(
+            this.disposables.push(new Boat(
                 this.objects[boatName],
                 config[boatName].track,
-                config[boatName].duration
+                config[boatName].duration,
+                this.objects.waterTrail
             ));
         }.bind(this);
-        // animateBoat("boat1");
-        // animateBoat("boat2");
-        // animateBoat("boat3");
-        // animateBoat("boat4");
-        // animateBoat("boat5");
-        // animateBoat("boat6");
-        // animateBoat("boat7");
+        animateBoat("boat1");
+        animateBoat("boat2");
+        animateBoat("boat3");
+        animateBoat("boat4");
+        animateBoat("boat5");
+        animateBoat("boat6");
+        animateBoat("boat7");
 
         // Animates the cars
         var carLanes = [config.carLane01, config.carLane02];
