@@ -144,8 +144,8 @@ module.exports = {
 
     componentWillUnmount: function() {
         // Clears the listeners from the loading queue
-        PIXI.loader.on("progress", this.onLoadingProgress);
-        PIXI.loader.on("complete", this.onLoadingComplete);
+        PIXI.loader.off("progress", this.onLoadingProgress);
+        PIXI.loader.off("complete", this.onLoadingComplete);
 
         // Stops the animation
         cancelAnimationFrame(this.animationId);
