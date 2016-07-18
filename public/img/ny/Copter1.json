@@ -1,0 +1,49 @@
+{
+	"meta": {
+		"image": "Copter1.png",
+		"size": {"w":450,"h":300},
+		"scale": "1"
+	},
+	"frames": {
+		"img/ny/Copter1_0.png":
+		{
+			"frame": {"x":0,"y":0,"w":150,"h":150},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+			"sourceSize": {"w":150,"h":150}
+		},
+		"img/ny/Copter1_1.png":
+		{
+			"frame": {"x":150,"y":0,"w":150,"h":150},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+			"sourceSize": {"w":150,"h":150}
+		},
+		"img/ny/Copter1_2.png":
+		{
+			"frame": {"x":0,"y":150,"w":150,"h":150},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+			"sourceSize": {"w":150,"h":150}
+		},
+		"img/ny/Copter1_3.png":
+		{
+			"frame": {"x":150,"y":150,"w":150,"h":150},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+			"sourceSize": {"w":150,"h":150}
+		},
+		"img/ny/Copter1_4.png":
+		{
+			"frame": {"x":300,"y":0,"w":150,"h":150},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+			"sourceSize": {"w":150,"h":150}
+		}
+	}
+}

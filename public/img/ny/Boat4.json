@@ -1,0 +1,201 @@
+{
+	"meta": {
+		"image": "Boat4.png",
+		"size": {"w":500,"h":500},
+		"scale": "1"
+	},
+	"frames": {
+		"img/ny/Boat4_00.png":
+		{
+			"frame": {"x":100,"y":0,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_12.png":
+		{
+			"frame": {"x":0,"y":0,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_02.png":
+		{
+			"frame": {"x":0,"y":100,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_03.png":
+		{
+			"frame": {"x":100,"y":100,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_04.png":
+		{
+			"frame": {"x":200,"y":0,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_05.png":
+		{
+			"frame": {"x":200,"y":100,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_06.png":
+		{
+			"frame": {"x":0,"y":200,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_07.png":
+		{
+			"frame": {"x":100,"y":200,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_08.png":
+		{
+			"frame": {"x":200,"y":200,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_09.png":
+		{
+			"frame": {"x":300,"y":0,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_10.png":
+		{
+			"frame": {"x":300,"y":100,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_11.png":
+		{
+			"frame": {"x":300,"y":200,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_23.png":
+		{
+			"frame": {"x":300,"y":400,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_13.png":
+		{
+			"frame": {"x":100,"y":300,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_14.png":
+		{
+			"frame": {"x":200,"y":300,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_15.png":
+		{
+			"frame": {"x":300,"y":300,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_16.png":
+		{
+			"frame": {"x":400,"y":0,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_17.png":
+		{
+			"frame": {"x":400,"y":100,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_18.png":
+		{
+			"frame": {"x":400,"y":200,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_19.png":
+		{
+			"frame": {"x":400,"y":300,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_20.png":
+		{
+			"frame": {"x":0,"y":400,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_21.png":
+		{
+			"frame": {"x":100,"y":400,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_22.png":
+		{
+			"frame": {"x":200,"y":400,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		},
+		"img/ny/Boat4_01.png":
+		{
+			"frame": {"x":0,"y":300,"w":100,"h":100},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":100,"h":100},
+			"sourceSize": {"w":100,"h":100}
+		}
+	}
+}
