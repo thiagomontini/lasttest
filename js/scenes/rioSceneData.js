@@ -7,13 +7,14 @@ module.exports = {
     "objects": [
         {
             "id": "background",
-            "images": ["img/rio/background.jpg"],
+            "image": "img/rio/background.jpg",
             "position": [0, 0]
         },
 
         {
             "id": "plane",
-            "images": [
+            "image": "img/rio/Plane.json",
+            "frames": [
                 "img/rio/Rio_Plane_00000.png",
                 "img/rio/Rio_Plane_00001.png",
                 "img/rio/Rio_Plane_00002.png",
@@ -31,181 +32,181 @@ module.exports = {
 
         {
             "id": "sugar_loaf",
-            "images": ["img/rio/sugar-loaf.png"],
+            "image": "img/rio/sugar-loaf.png",
             "position": [374, 218]
         },
 
         {
             "id": "cableCar1",
-            "images": ["img/rio/cable-car.png"],
+            "image": "img/rio/cable-car.png",
             "position": [954, 373]
         },
 
         {
             "id": "cableCar2",
-            "images": ["img/rio/cable-car.png"],
+            "image": "img/rio/cable-car.png",
             "position": [1288, 664]
         },
 
         {
             "id": "stadium",
-            "images": ["img/rio/stadium.png"],
+            "image": "img/rio/stadium.png",
             "position": [1142, 852]
         },
 
         {
             "id": "seagull1",
-            "images": ["img/rio/seagulls_1.png"],
+            "image": "img/rio/seagulls_1.png",
             "position": [133, 262]
         },
 
         {
             "id": "seagull2",
-            "images": ["img/rio/seagulls_2.png"],
+            "image": "img/rio/seagulls_2.png",
             "position": [382, 469]
         },
 
         {
             "id": "seagull3",
-            "images": ["img/rio/seagulls_3.png"],
+            "image": "img/rio/seagulls_3.png",
             "position": [532, 696]
         },
 
         {
             "id": "seagull4",
-            "images": ["img/rio/seagulls_4.png"],
+            "image": "img/rio/seagulls_4.png",
             "position": [555, 473]
         },
 
         {
             "id": "seagull5",
-            "images": ["img/rio/seagulls_5.png"],
+            "image": "img/rio/seagulls_5.png",
             "position": [1331, 56]
         },
 
         {
             "id": "glider",
-            "images": ["img/rio/glider.png"],
+            "image": "img/rio/glider.png",
             "position": [106, 804]
         },
 
         {
             "id": "cloud1",
-            "images": ["img/common/cloud01.png"],
+            "image": "img/common/cloud01.png",
             "position": [-121, 408]
         },
 
         {
             "id": "cloud2",
-            "images": ["img/common/cloud02.png"],
+            "image": "img/common/cloud02.png",
             "position": [31, 128]
         },
 
         {
             "id": "cloud3",
-            "images": ["img/common/cloud03.png"],
+            "image": "img/common/cloud03.png",
             "position": [951, 159]
         },
 
         {
             "id": "cloud4",
-            "images": ["img/common/cloud04.png"],
+            "image": "img/common/cloud04.png",
             "position": [1583, 124]
         },
 
         {
             "id": "cloud5",
-            "images": ["img/common/cloud05.png"],
+            "image": "img/common/cloud05.png",
             "position": [1925, 214]
         },
 
         {
             "id": "bird_hill",
-            "images": ["img/rio/bird-hill.png"],
+            "image": "img/rio/bird-hill.png",
             "position": [33, 1167]
         },
 
         {
             "id": "bird",
-            "images": ["img/rio/bird.png"],
+            "image": "img/rio/bird.png",
             "position": [214, 1210]
         },
 
         {
             "id": "redeemer",
-            "images": ["img/rio/redeemer.png"],
+            "image": "img/rio/redeemer.png",
             "position": [1106, 624]
         },
 
         {
             "id": "redeemer_people1",
-            "images": ["img/rio/redeemer_people_1.png"],
+            "image": "img/rio/redeemer_people_1.png",
             "position": [1469, 1164]
         },
 
         {
             "id": "redeemer_people2",
-            "images": ["img/rio/redeemer_people_2.png"],
+            "image": "img/rio/redeemer_people_2.png",
             "position": [1518, 1138]
         },
 
         {
             "id": "redeemer_people3",
-            "images": ["img/rio/redeemer_people_3.png"],
+            "image": "img/rio/redeemer_people_3.png",
             "position": [1538, 1177]
         },
 
         {
             "id": "redeemer_people4",
-            "images": ["img/rio/redeemer_people_4.png"],
+            "image": "img/rio/redeemer_people_4.png",
             "position": [1545, 1135]
         },
 
         {
             "id": "redeemer_people5",
-            "images": ["img/rio/redeemer_people_5.png"],
+            "image": "img/rio/redeemer_people_5.png",
             "position": [1594, 1191]
         },
 
         {
             "id": "redeemer_people6",
-            "images": ["img/rio/redeemer_people_6.png"],
+            "image": "img/rio/redeemer_people_6.png",
             "position": [1596, 1131]
         },
 
         {
             "id": "redeemer_people7",
-            "images": ["img/rio/redeemer_people_7.png"],
+            "image": "img/rio/redeemer_people_7.png",
             "position": [1597, 1245]
         },
 
         {
             "id": "redeemer_people8",
-            "images": ["img/rio/redeemer_people_8.png"],
+            "image": "img/rio/redeemer_people_8.png",
             "position": [1646, 1266]
         },
 
         {
             "id": "redeemer_people9",
-            "images": ["img/rio/redeemer_people_9.png"],
+            "image": "img/rio/redeemer_people_9.png",
             "position": [1653, 1309]
         },
 
         {
             "id": "redeemer_people10",
-            "images": ["img/rio/redeemer_people_10.png"],
+            "image": "img/rio/redeemer_people_10.png",
             "position": [1746, 1329]
         },
 
         {
             "id": "redeemer_people11",
-            "images": ["img/rio/redeemer_people_11.png"],
+            "image": "img/rio/redeemer_people_11.png",
             "position": [1908, 1240]
         },
 
         {
             "id": "redeemer_people12",
-            "images": ["img/rio/redeemer_people_11.png"],
+            "image": "img/rio/redeemer_people_11.png",
             "position": [1927, 1262]
         }
     ],

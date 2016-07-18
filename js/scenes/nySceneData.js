@@ -7,77 +7,78 @@ module.exports = {
     "objects": [
         {
             "id": "background",
-            "images": ["img/ny/NewYork_Back.jpg"],
+            "image": "img/ny/NewYork_Back.jpg",
             "position": [0, 0]
         },
         {
             "id": "staticBoat1",
-            "images": ["img/ny/Static_Boat_1.png"],
+            "image": "img/ny/Static_Boat_1.png",
             "position": [167, 563]
         },
         {
             "id": "staticBoat3",
-            "images": ["img/ny/Static_Boat_3.png"],
+            "image": "img/ny/Static_Boat_3.png",
             "position": [813, 745]
         },
         {
             "id": "staticBoat4",
-            "images": ["img/ny/Static_Boat_4.png"],
+            "image": "img/ny/Static_Boat_4.png",
             "position": [920, 19]
         },
         {
             "id": "staticBoat5",
-            "images": ["img/ny/Static_Boat_5.png"],
+            "image": "img/ny/Static_Boat_5.png",
             "position": [1042, 0]
         },
         {
             "id": "staticBoat6",
-            "images": ["img/ny/Static_Boat_6.png"],
+            "image": "img/ny/Static_Boat_6.png",
             "position": [1052, 134]
         },
         {
             "id": "staticBoat7",
-            "images": ["img/ny/Static_Boat_7.png"],
+            "image": "img/ny/Static_Boat_7.png",
             "position": [1304, 264]
         },
         {
             "id": "staticBoat8",
-            "images": ["img/ny/Static_Boat_8.png"],
+            "image": "img/ny/Static_Boat_8.png",
             "position": [1329, 309]
         },
         {
             "id": "staticBoat9",
-            "images": ["img/ny/Static_Boat_9.png"],
+            "image": "img/ny/Static_Boat_9.png",
             "position": [1334, 315]
         },
         {
             "id": "staticBoat10",
-            "images": ["img/ny/Static_Boat_10.png"],
+            "image": "img/ny/Static_Boat_10.png",
             "position": [1341, 336]
         },
         {
             "id": "staticBoat11",
-            "images": ["img/ny/Static_Boat_11.png"],
+            "image": "img/ny/Static_Boat_11.png",
             "position": [1410, 250]
         },
         {
             "id": "staticBoat12",
-            "images": ["img/ny/Static_Boat_12.png"],
+            "image": "img/ny/Static_Boat_12.png",
             "position": [1475, 635]
         },
         {
             "id": "staticBoat13",
-            "images": ["img/ny/Static_Boat_13.png"],
+            "image": "img/ny/Static_Boat_13.png",
             "position": [1492, 613]
         },
         {
             "id": "staticBoat14",
-            "images": ["img/ny/Static_Boat_14.png"],
+            "image": "img/ny/Static_Boat_14.png",
             "position": [1546, 471]
         },
         {
             "id": "boat1",
-            "images": [
+            "image": "img/ny/Boat1.json",
+            "frames": [
                 "img/ny/Boat1_00.png",
                 "img/ny/Boat1_01.png",
                 "img/ny/Boat1_02.png",
@@ -106,7 +107,8 @@ module.exports = {
         },
         {
             "id": "boat2",
-            "images": [
+            "image": "img/ny/Boat2.json",
+            "frames": [
                 "img/ny/Boat2_00.png",
                 "img/ny/Boat2_01.png",
                 "img/ny/Boat2_02.png",
@@ -135,7 +137,8 @@ module.exports = {
         },
         {
             "id": "boat3",
-            "images": [
+            "image": "img/ny/Boat3.json",
+            "frames": [
                 "img/ny/Boat3_00.png",
                 "img/ny/Boat3_01.png",
                 "img/ny/Boat3_02.png",
@@ -164,7 +167,8 @@ module.exports = {
         },
         {
             "id": "boat4",
-            "images": [
+            "image": "img/ny/Boat4.json",
+            "frames": [
                 "img/ny/Boat4_00.png",
                 "img/ny/Boat4_01.png",
                 "img/ny/Boat4_02.png",
@@ -193,7 +197,8 @@ module.exports = {
         },
         {
             "id": "boat5",
-            "images": [
+            "image": "img/ny/Boat5.json",
+            "frames": [
                 "img/ny/Boat5_00.png",
                 "img/ny/Boat5_01.png",
                 "img/ny/Boat5_02.png",
@@ -222,7 +227,8 @@ module.exports = {
         },
         {
             "id": "boat6",
-            "images": [
+            "image": "img/ny/Boat6.json",
+            "frames": [
                 "img/ny/Boat6_00.png",
                 "img/ny/Boat6_01.png",
                 "img/ny/Boat6_02.png",
@@ -251,7 +257,8 @@ module.exports = {
         },
         {
             "id": "boat7",
-            "images": [
+            "image": "img/ny/Boat7.json",
+            "frames": [
                 "img/ny/Boat7_00.png",
                 "img/ny/Boat7_01.png",
                 "img/ny/Boat7_02.png",
@@ -279,248 +286,9 @@ module.exports = {
             ]
         },
         {
-            "id": "car1",
-            "images": [
-                "img/ny/Car1_00.png",
-                "img/ny/Car1_01.png",
-                "img/ny/Car1_02.png",
-                "img/ny/Car1_03.png",
-                "img/ny/Car1_04.png",
-                "img/ny/Car1_05.png",
-                "img/ny/Car1_06.png",
-                "img/ny/Car1_07.png",
-                "img/ny/Car1_08.png",
-                "img/ny/Car1_09.png",
-                "img/ny/Car1_10.png",
-                "img/ny/Car1_11.png",
-                "img/ny/Car1_12.png",
-                "img/ny/Car1_13.png",
-                "img/ny/Car1_14.png",
-                "img/ny/Car1_15.png",
-                "img/ny/Car1_16.png",
-                "img/ny/Car1_17.png",
-                "img/ny/Car1_18.png",
-                "img/ny/Car1_19.png",
-                "img/ny/Car1_20.png",
-                "img/ny/Car1_21.png",
-                "img/ny/Car1_22.png",
-                "img/ny/Car1_23.png",
-                "img/ny/Car1_24.png"
-            ]
-        },
-        {
-            "id": "car2",
-            "images": [
-                "img/ny/Car2_00.png",
-                "img/ny/Car2_01.png",
-                "img/ny/Car2_02.png",
-                "img/ny/Car2_03.png",
-                "img/ny/Car2_04.png",
-                "img/ny/Car2_05.png",
-                "img/ny/Car2_06.png",
-                "img/ny/Car2_07.png",
-                "img/ny/Car2_08.png",
-                "img/ny/Car2_09.png",
-                "img/ny/Car2_10.png",
-                "img/ny/Car2_11.png",
-                "img/ny/Car2_12.png",
-                "img/ny/Car2_13.png",
-                "img/ny/Car2_14.png",
-                "img/ny/Car2_15.png",
-                "img/ny/Car2_16.png",
-                "img/ny/Car2_17.png",
-                "img/ny/Car2_18.png",
-                "img/ny/Car2_19.png",
-                "img/ny/Car2_20.png",
-                "img/ny/Car2_21.png",
-                "img/ny/Car2_22.png",
-                "img/ny/Car2_23.png",
-                "img/ny/Car2_24.png"
-            ]
-        },
-        {
-            "id": "car3",
-            "images": [
-                "img/ny/Car3_00.png",
-                "img/ny/Car3_01.png",
-                "img/ny/Car3_02.png",
-                "img/ny/Car3_03.png",
-                "img/ny/Car3_04.png",
-                "img/ny/Car3_05.png",
-                "img/ny/Car3_06.png",
-                "img/ny/Car3_07.png",
-                "img/ny/Car3_08.png",
-                "img/ny/Car3_09.png",
-                "img/ny/Car3_10.png",
-                "img/ny/Car3_11.png",
-                "img/ny/Car3_12.png",
-                "img/ny/Car3_13.png",
-                "img/ny/Car3_14.png",
-                "img/ny/Car3_15.png",
-                "img/ny/Car3_16.png",
-                "img/ny/Car3_17.png",
-                "img/ny/Car3_18.png",
-                "img/ny/Car3_19.png",
-                "img/ny/Car3_20.png",
-                "img/ny/Car3_21.png",
-                "img/ny/Car3_22.png",
-                "img/ny/Car3_23.png",
-                "img/ny/Car3_24.png"
-            ]
-        },
-        {
-            "id": "car4",
-            "images": [
-                "img/ny/Car4_00.png",
-                "img/ny/Car4_01.png",
-                "img/ny/Car4_02.png",
-                "img/ny/Car4_03.png",
-                "img/ny/Car4_04.png",
-                "img/ny/Car4_05.png",
-                "img/ny/Car4_06.png",
-                "img/ny/Car4_07.png",
-                "img/ny/Car4_08.png",
-                "img/ny/Car4_09.png",
-                "img/ny/Car4_10.png",
-                "img/ny/Car4_11.png",
-                "img/ny/Car4_12.png",
-                "img/ny/Car4_13.png",
-                "img/ny/Car4_14.png",
-                "img/ny/Car4_15.png",
-                "img/ny/Car4_16.png",
-                "img/ny/Car4_17.png",
-                "img/ny/Car4_18.png",
-                "img/ny/Car4_19.png",
-                "img/ny/Car4_20.png",
-                "img/ny/Car4_21.png",
-                "img/ny/Car4_22.png",
-                "img/ny/Car4_23.png",
-                "img/ny/Car4_24.png"
-            ]
-        },
-        {
-            "id": "car5",
-            "images": [
-                "img/ny/Car5_00.png",
-                "img/ny/Car5_01.png",
-                "img/ny/Car5_02.png",
-                "img/ny/Car5_03.png",
-                "img/ny/Car5_04.png",
-                "img/ny/Car5_05.png",
-                "img/ny/Car5_06.png",
-                "img/ny/Car5_07.png",
-                "img/ny/Car5_08.png",
-                "img/ny/Car5_09.png",
-                "img/ny/Car5_10.png",
-                "img/ny/Car5_11.png",
-                "img/ny/Car5_12.png",
-                "img/ny/Car5_13.png",
-                "img/ny/Car5_14.png",
-                "img/ny/Car5_15.png",
-                "img/ny/Car5_16.png",
-                "img/ny/Car5_17.png",
-                "img/ny/Car5_18.png",
-                "img/ny/Car5_19.png",
-                "img/ny/Car5_20.png",
-                "img/ny/Car5_21.png",
-                "img/ny/Car5_22.png",
-                "img/ny/Car5_23.png",
-                "img/ny/Car5_24.png"
-            ]
-        },
-        {
-            "id": "car6",
-            "images": [
-                "img/ny/Car6_00.png",
-                "img/ny/Car6_01.png",
-                "img/ny/Car6_02.png",
-                "img/ny/Car6_03.png",
-                "img/ny/Car6_04.png",
-                "img/ny/Car6_05.png",
-                "img/ny/Car6_06.png",
-                "img/ny/Car6_07.png",
-                "img/ny/Car6_08.png",
-                "img/ny/Car6_09.png",
-                "img/ny/Car6_10.png",
-                "img/ny/Car6_11.png",
-                "img/ny/Car6_12.png",
-                "img/ny/Car6_13.png",
-                "img/ny/Car6_14.png",
-                "img/ny/Car6_15.png",
-                "img/ny/Car6_16.png",
-                "img/ny/Car6_17.png",
-                "img/ny/Car6_18.png",
-                "img/ny/Car6_19.png",
-                "img/ny/Car6_20.png",
-                "img/ny/Car6_21.png",
-                "img/ny/Car6_22.png",
-                "img/ny/Car6_23.png",
-                "img/ny/Car6_24.png"
-            ]
-        },
-        {
-            "id": "car7",
-            "images": [
-                "img/ny/Car7_00.png",
-                "img/ny/Car7_01.png",
-                "img/ny/Car7_02.png",
-                "img/ny/Car7_03.png",
-                "img/ny/Car7_04.png",
-                "img/ny/Car7_05.png",
-                "img/ny/Car7_06.png",
-                "img/ny/Car7_07.png",
-                "img/ny/Car7_08.png",
-                "img/ny/Car7_09.png",
-                "img/ny/Car7_10.png",
-                "img/ny/Car7_11.png",
-                "img/ny/Car7_12.png",
-                "img/ny/Car7_13.png",
-                "img/ny/Car7_14.png",
-                "img/ny/Car7_15.png",
-                "img/ny/Car7_16.png",
-                "img/ny/Car7_17.png",
-                "img/ny/Car7_18.png",
-                "img/ny/Car7_19.png",
-                "img/ny/Car7_20.png",
-                "img/ny/Car7_21.png",
-                "img/ny/Car7_22.png",
-                "img/ny/Car7_23.png",
-                "img/ny/Car7_24.png"
-            ]
-        },
-        {
-            "id": "car8",
-            "images": [
-                "img/ny/Car8_00.png",
-                "img/ny/Car8_01.png",
-                "img/ny/Car8_02.png",
-                "img/ny/Car8_03.png",
-                "img/ny/Car8_04.png",
-                "img/ny/Car8_05.png",
-                "img/ny/Car8_06.png",
-                "img/ny/Car8_07.png",
-                "img/ny/Car8_08.png",
-                "img/ny/Car8_09.png",
-                "img/ny/Car8_10.png",
-                "img/ny/Car8_11.png",
-                "img/ny/Car8_12.png",
-                "img/ny/Car8_13.png",
-                "img/ny/Car8_14.png",
-                "img/ny/Car8_15.png",
-                "img/ny/Car8_16.png",
-                "img/ny/Car8_17.png",
-                "img/ny/Car8_18.png",
-                "img/ny/Car8_19.png",
-                "img/ny/Car8_20.png",
-                "img/ny/Car8_21.png",
-                "img/ny/Car8_22.png",
-                "img/ny/Car8_23.png",
-                "img/ny/Car8_24.png"
-            ]
-        },
-        {
             "id": "car9",
-            "images": [
+            "image": "img/ny/Car9.json",
+            "frames": [
                 "img/ny/Car9_00.png",
                 "img/ny/Car9_01.png",
                 "img/ny/Car9_02.png",
@@ -620,58 +388,29 @@ module.exports = {
             ]
         },
         {
-            "id": "car10",
-            "images": [
-                "img/ny/Car10_00.png",
-                "img/ny/Car10_01.png",
-                "img/ny/Car10_02.png",
-                "img/ny/Car10_03.png",
-                "img/ny/Car10_04.png",
-                "img/ny/Car10_05.png",
-                "img/ny/Car10_06.png",
-                "img/ny/Car10_07.png",
-                "img/ny/Car10_08.png",
-                "img/ny/Car10_09.png",
-                "img/ny/Car10_10.png",
-                "img/ny/Car10_11.png",
-                "img/ny/Car10_12.png",
-                "img/ny/Car10_13.png",
-                "img/ny/Car10_14.png",
-                "img/ny/Car10_15.png",
-                "img/ny/Car10_16.png",
-                "img/ny/Car10_17.png",
-                "img/ny/Car10_18.png",
-                "img/ny/Car10_19.png",
-                "img/ny/Car10_20.png",
-                "img/ny/Car10_21.png",
-                "img/ny/Car10_22.png",
-                "img/ny/Car10_23.png",
-                "img/ny/Car10_24.png"
-            ]
-        },
-        {
             "id": "bridges",
-            "images": ["img/ny/NewYork_Bridges.png"],
+            "image": "img/ny/NewYork_Bridges.png",
             "position": [670, 0]
         },
         {
             "id": "park",
-            "images": ["img/ny/NewYork_Park.png"],
+            "image": "img/ny/NewYork_Park.png",
             "position": [642, 127]
         },
         {
             "id": "island",
-            "images": ["img/ny/NewYork_Island.png"],
+            "image": "img/ny/NewYork_Island.png",
             "position": [751, 802]
         },
         {
             "id": "statue_of_liberty",
-            "images": ["img/ny/NewYork_Statue_of_Liberty.png"],
+            "image": "img/ny/NewYork_Statue_of_Liberty.png",
             "position": [918, 337]
         },
         {
             "id": "helicopter1",
-            "images": [
+            "image": "img/ny/Copter1.json",
+            "frames": [
                 "img/ny/Copter1_0.png",
                 "img/ny/Copter1_1.png",
                 "img/ny/Copter1_2.png",
@@ -682,7 +421,8 @@ module.exports = {
         },
         {
             "id": "helicopter2",
-            "images": [
+            "image": "img/ny/Copter2.json",
+            "frames": [
                 "img/ny/Copter2_0.png",
                 "img/ny/Copter2_1.png",
                 "img/ny/Copter2_2.png",
@@ -693,7 +433,8 @@ module.exports = {
         },
         {
             "id": "helicopter3",
-            "images": [
+            "image": "img/ny/Copter3.json",
+            "frames": [
                 "img/ny/Copter3_0.png",
                 "img/ny/Copter3_1.png",
                 "img/ny/Copter3_2.png",
@@ -704,32 +445,32 @@ module.exports = {
         },
         {
             "id": "cloud1",
-            "images": ["img/common/cloud01.png"],
+            "image": "img/common/cloud01.png",
             "position": [-121, 408]
         },
         {
             "id": "cloud2",
-            "images": ["img/common/cloud02.png"],
+            "image": "img/common/cloud02.png",
             "position": [31, 128]
         },
         {
             "id": "cloud3",
-            "images": ["img/common/cloud03.png"],
+            "image": "img/common/cloud03.png",
             "position": [951, 159]
         },
         {
             "id": "cloud4",
-            "images": ["img/common/cloud04.png"],
+            "image": "img/common/cloud04.png",
             "position": [1583, 124]
         },
         {
             "id": "cloud5",
-            "images": ["img/common/cloud05.png"],
+            "image": "img/common/cloud05.png",
             "position": [1925, 214]
         },
         {
             "id": "waterTrail",
-            "images": ["img/ny/Water_00.png"]
+            "image": "img/ny/Water_00.png"
         }
     ],
     "hitAreas": [
