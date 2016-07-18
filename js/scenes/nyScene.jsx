@@ -64,19 +64,12 @@ Helicopter.prototype = {
 }
 
 
-var Boat = function(movieClip, track, duration, waterTrail) {
+var Boat = function(movieClip, track, duration) {
     // Stores the object itself
     this.movieClip = movieClip;
     this.movieClip.anchor.x = this.movieClip.anchor.y = 0.5;
     this.previousX = this.movieClip.x;
     this.previousY = this.movieClip.y;
-
-    // Clones the water trail object
-    this.waterTrail = new PIXI.Sprite(waterTrail.texture);
-    this.waterTrail.anchor.x = 0.1;
-    this.waterTrail.anchor.y = 0.5;
-    this.waterTrail.scale.x = 0.6;
-    this.waterTrail.scale.y = 0.6;
 
     // Assembles the container
     this.container = new PIXI.Sprite();
@@ -88,7 +81,6 @@ var Boat = function(movieClip, track, duration, waterTrail) {
         this.container,
         this.movieClip.parent.getChildIndex(this.movieClip)
     );
-    this.container.addChild(this.waterTrail);
     this.container.addChild(this.movieClip);
 
     // Computes the total length
@@ -134,8 +126,6 @@ Boat.prototype = {
         this.movieClip.gotoAndStop(angleFrame);
         this.previousX = this.container.x;
         this.previousY = this.container.y;
-
-        this.waterTrail.rotation = -2 * Math.PI * angleFrame / this.movieClip.totalFrames;
     },
 
     dispose: function() {
@@ -166,13 +156,11 @@ var NYScene = React.createClass({
         this.disposables.push(new Helicopter(this.objects.helicopter3, config.helicopter3.direction));
 
         // Animates the ships
-        this.objects.waterTrail.parent.removeChild(this.objects.waterTrail);
         var animateBoat = function(boatName) {
             this.disposables.push(new Boat(
                 this.objects[boatName],
                 config[boatName].track,
-                config[boatName].duration,
-                this.objects.waterTrail
+                config[boatName].duration
             ));
         }.bind(this);
         animateBoat("boat1");
@@ -196,16 +184,16 @@ var NYScene = React.createClass({
                 { initialPosition: Math.random() }
             ));
         }.bind(this);
-        // animateCar("car1", config.carLane);
-        // animateCar("car2", config.carLane);
-        // animateCar("car3", config.carLane);
+        animateCar("car1", config.carLane);
+        animateCar("car2", config.carLane);
+        animateCar("car3", config.carLane);
         // animateCar("car4", config.carLane);
-        // animateCar("car5", config.carLane);
-        // animateCar("car6", config.carLane);
-        // animateCar("car7", config.carLane);
-        // animateCar("car8", config.carLane);
+        animateCar("car5", config.carLane);
+        animateCar("car6", config.carLane);
+        animateCar("car7", config.carLane);
+        animateCar("car8", config.carLane);
         animateCar("car9", config.carLane);
-        // animateCar("car10", config.carLane);
+        animateCar("car10", config.carLane);
     },
 
     disposeScene: function() {

@@ -1,0 +1,785 @@
+{
+	"meta": {
+		"image": "Car1.png",
+		"size": {"w":750,"h":750},
+		"scale": "1"
+	},
+	"frames": {
+		"img/ny/Car1/Car1_00.png":
+		{
+			"frame": {"x":75,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_48.png":
+		{
+			"frame": {"x":0,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_02.png":
+		{
+			"frame": {"x":0,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_03.png":
+		{
+			"frame": {"x":75,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_04.png":
+		{
+			"frame": {"x":150,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_05.png":
+		{
+			"frame": {"x":150,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_06.png":
+		{
+			"frame": {"x":0,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_07.png":
+		{
+			"frame": {"x":75,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_08.png":
+		{
+			"frame": {"x":150,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_09.png":
+		{
+			"frame": {"x":225,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_10.png":
+		{
+			"frame": {"x":225,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_11.png":
+		{
+			"frame": {"x":225,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_12.png":
+		{
+			"frame": {"x":0,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_13.png":
+		{
+			"frame": {"x":75,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_14.png":
+		{
+			"frame": {"x":150,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_15.png":
+		{
+			"frame": {"x":225,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_16.png":
+		{
+			"frame": {"x":300,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_17.png":
+		{
+			"frame": {"x":300,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_18.png":
+		{
+			"frame": {"x":300,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_19.png":
+		{
+			"frame": {"x":300,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_20.png":
+		{
+			"frame": {"x":0,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_21.png":
+		{
+			"frame": {"x":75,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_22.png":
+		{
+			"frame": {"x":150,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_23.png":
+		{
+			"frame": {"x":225,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_24.png":
+		{
+			"frame": {"x":300,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_25.png":
+		{
+			"frame": {"x":375,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_26.png":
+		{
+			"frame": {"x":375,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_27.png":
+		{
+			"frame": {"x":375,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_28.png":
+		{
+			"frame": {"x":375,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_29.png":
+		{
+			"frame": {"x":375,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_30.png":
+		{
+			"frame": {"x":0,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_31.png":
+		{
+			"frame": {"x":75,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_32.png":
+		{
+			"frame": {"x":150,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_33.png":
+		{
+			"frame": {"x":225,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_34.png":
+		{
+			"frame": {"x":300,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_35.png":
+		{
+			"frame": {"x":375,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_36.png":
+		{
+			"frame": {"x":450,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_37.png":
+		{
+			"frame": {"x":450,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_38.png":
+		{
+			"frame": {"x":450,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_39.png":
+		{
+			"frame": {"x":450,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_40.png":
+		{
+			"frame": {"x":450,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_41.png":
+		{
+			"frame": {"x":450,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_42.png":
+		{
+			"frame": {"x":0,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_43.png":
+		{
+			"frame": {"x":75,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_44.png":
+		{
+			"frame": {"x":150,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_45.png":
+		{
+			"frame": {"x":225,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_46.png":
+		{
+			"frame": {"x":300,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_47.png":
+		{
+			"frame": {"x":375,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_96.png":
+		{
+			"frame": {"x":450,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_49.png":
+		{
+			"frame": {"x":525,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_50.png":
+		{
+			"frame": {"x":525,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_51.png":
+		{
+			"frame": {"x":525,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_52.png":
+		{
+			"frame": {"x":525,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_53.png":
+		{
+			"frame": {"x":525,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_54.png":
+		{
+			"frame": {"x":525,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_55.png":
+		{
+			"frame": {"x":525,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_56.png":
+		{
+			"frame": {"x":0,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_57.png":
+		{
+			"frame": {"x":75,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_58.png":
+		{
+			"frame": {"x":150,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_59.png":
+		{
+			"frame": {"x":225,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_60.png":
+		{
+			"frame": {"x":300,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_61.png":
+		{
+			"frame": {"x":375,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_62.png":
+		{
+			"frame": {"x":450,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_63.png":
+		{
+			"frame": {"x":525,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_64.png":
+		{
+			"frame": {"x":600,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_65.png":
+		{
+			"frame": {"x":600,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_66.png":
+		{
+			"frame": {"x":600,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_67.png":
+		{
+			"frame": {"x":600,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_68.png":
+		{
+			"frame": {"x":600,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_69.png":
+		{
+			"frame": {"x":600,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_70.png":
+		{
+			"frame": {"x":600,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_71.png":
+		{
+			"frame": {"x":600,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_72.png":
+		{
+			"frame": {"x":0,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_73.png":
+		{
+			"frame": {"x":75,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_74.png":
+		{
+			"frame": {"x":150,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_75.png":
+		{
+			"frame": {"x":225,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_76.png":
+		{
+			"frame": {"x":300,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_77.png":
+		{
+			"frame": {"x":375,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_78.png":
+		{
+			"frame": {"x":450,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_79.png":
+		{
+			"frame": {"x":525,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_80.png":
+		{
+			"frame": {"x":600,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_81.png":
+		{
+			"frame": {"x":675,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_82.png":
+		{
+			"frame": {"x":675,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_83.png":
+		{
+			"frame": {"x":675,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_84.png":
+		{
+			"frame": {"x":675,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_85.png":
+		{
+			"frame": {"x":675,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_86.png":
+		{
+			"frame": {"x":675,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_87.png":
+		{
+			"frame": {"x":675,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_88.png":
+		{
+			"frame": {"x":675,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_89.png":
+		{
+			"frame": {"x":675,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_90.png":
+		{
+			"frame": {"x":0,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_91.png":
+		{
+			"frame": {"x":75,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_92.png":
+		{
+			"frame": {"x":150,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_93.png":
+		{
+			"frame": {"x":225,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_94.png":
+		{
+			"frame": {"x":300,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_95.png":
+		{
+			"frame": {"x":375,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/ny/Car1/Car1_01.png":
+		{
+			"frame": {"x":450,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		}
+	}
+}
