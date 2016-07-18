@@ -3,8 +3,8 @@ var computeAngleFrame = require("../utils/computeAngleFrame.js");
 
 var TrackObject = function(sprite, track, duration, params) {
     this.params = params || {};
-    this.params.yoyo = !!params.yoyo;
-    this.params.initialPosition = params.initialPosition || 0;
+    this.params.yoyo = !!this.params.yoyo;
+    this.params.initialPosition = this.params.initialPosition || 0;
 
     // Stores the object itself
     this.sprite = sprite;

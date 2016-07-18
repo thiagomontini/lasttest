@@ -6,6 +6,7 @@ var sceneData = require("./sceneData.js");
 var SceneMixin = require("./sceneMixin.jsx");
 var Cloud = require("../sceneObjects/cloud.js");
 var randRange = require("../utils/randRange.js");
+var shuffleArray = require("../utils/shuffleArray.js");
 var TrackObject = require("../sceneObjects/trackObject.js");
 var computeAngleFrame = require("../utils/computeAngleFrame.js");
 var computeDistance = require("../utils/computeDistance.js");
@@ -64,77 +65,6 @@ Helicopter.prototype = {
 }
 
 
-var Boat = function(movieClip, track, duration) {
-    // Stores the object itself
-    this.movieClip = movieClip;
-    this.movieClip.anchor.x = this.movieClip.anchor.y = 0.5;
-    this.previousX = this.movieClip.x;
-    this.previousY = this.movieClip.y;
-
-    // Assembles the container
-    this.container = new PIXI.Sprite();
-    this.container.x = this.movieClip.x;
-    this.container.y = this.movieClip.y;
-    this.movieClip.x = 0;
-    this.movieClip.y = 0;
-    this.movieClip.parent.addChildAt(
-        this.container,
-        this.movieClip.parent.getChildIndex(this.movieClip)
-    );
-    this.container.addChild(this.movieClip);
-
-    // Computes the total length
-    var trackLengths = track.map(function(x, index, array) {
-        if (index == 0) {
-            return 0;
-        }
-
-        return computeDistance(array[index].x, array[index].y, array[index-1].x, array[index-1].y);
-    });
-
-    var totalLength = trackLengths.reduce(function(a, b) {
-        return a + b;
-    });
-
-    // Builds the timeline
-    this.timeline = new TimelineMax();
-    this.timeline.set(this.container, {
-        x: track[0].x,
-        y: track[0].y
-    });
-    for (var i=1; i < track.length; i++) {
-        this.timeline.to(this.container, duration * trackLengths[i] / totalLength, {
-            x: track[i].x,
-            y: track[i].y,
-            ease: "Linear.easeNone",
-            onUpdate: this.setFrame.bind(this)
-        });
-    }
-    this.timeline.repeat(-1);
-    this.timeline.play();
-}
-
-Boat.prototype = {
-    setFrame: function() {
-        var angleFrame = computeAngleFrame(
-            this.movieClip.totalFrames,
-            this.previousX,
-            this.previousY,
-            this.container.x,
-            this.container.y
-        );
-        this.movieClip.gotoAndStop(angleFrame);
-        this.previousX = this.container.x;
-        this.previousY = this.container.y;
-    },
-
-    dispose: function() {
-        this.timeline.kill();
-    }
-};
-
-
-
 var NYScene = React.createClass({
     sceneKey: "ny",
 
@@ -157,7 +87,19 @@ var NYScene = React.createClass({
 
         // Animates the ships
         var animateBoat = function(boatName) {
-            this.disposables.push(new Boat(
+            this.objects[boatName].anchor.x = 0.5;
+            this.objects[boatName].anchor.y = 0.5;
+            var track = config[boatName].track;
+            for (var i=0; i < track.length - 1; i++) {
+                track[i].frame = computeAngleFrame(
+                    this.objects[boatName].totalFrames,
+                    track[i].x,
+                    track[i].y,
+                    track[i+1].x,
+                    track[i+1].y
+                );
+            }
+            this.disposables.push(new TrackObject(
                 this.objects[boatName],
                 config[boatName].track,
                 config[boatName].duration
@@ -172,8 +114,15 @@ var NYScene = React.createClass({
         animateBoat("boat7");
 
         // Animates the cars
-        var carLanes = [config.carLane01, config.carLane02];
-        var animateCar = function(carName, lane) {
+        var nCars = 11;
+        var carStep = 1.0 / nCars;
+        var carPositions = [];
+        for (var i=0; i < nCars; i++) {
+            carPositions.push(i * carStep + 0.5 * Math.random() * carStep);
+        }
+        shuffleArray(carPositions);
+
+        var animateCar = function(carName, lane, initialPosition) {
             this.objects[carName].anchor.x = 0.5;
             this.objects[carName].anchor.y = 0.5;
 
@@ -181,19 +130,20 @@ var NYScene = React.createClass({
                 this.objects[carName],
                 lane.track,
                 lane.duration,
-                { initialPosition: Math.random() }
+                { initialPosition: initialPosition }
             ));
         }.bind(this);
-        animateCar("car1", config.carLane);
-        animateCar("car2", config.carLane);
-        animateCar("car3", config.carLane);
-        // animateCar("car4", config.carLane);
-        animateCar("car5", config.carLane);
-        animateCar("car6", config.carLane);
-        animateCar("car7", config.carLane);
-        animateCar("car8", config.carLane);
-        animateCar("car9", config.carLane);
-        animateCar("car10", config.carLane);
+        animateCar("car1", config.carLane, carPositions[0]);
+        animateCar("car2", config.carLane, carPositions[1]);
+        animateCar("car3", config.carLane, carPositions[2]);
+        // animateCar("car4", config.carLane, carPositions[3]);
+        animateCar("car5", config.carLane, carPositions[4]);
+        animateCar("car6", config.carLane, carPositions[5]);
+        animateCar("car7", config.carLane, carPositions[6]);
+        animateCar("car8", config.carLane, carPositions[7]);
+        animateCar("car9", config.carLane, carPositions[8]);
+        animateCar("car10", config.carLane, carPositions[9]);
+        animateCar("car11", config.carLane, carPositions[10]);
     },
 
     disposeScene: function() {
