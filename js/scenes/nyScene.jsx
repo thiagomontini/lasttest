@@ -136,7 +136,7 @@ var NYScene = React.createClass({
         animateCar("car1", config.carLane, carPositions[0]);
         animateCar("car2", config.carLane, carPositions[1]);
         animateCar("car3", config.carLane, carPositions[2]);
-        // animateCar("car4", config.carLane, carPositions[3]);
+        animateCar("car4", config.carLane, carPositions[3]);
         animateCar("car5", config.carLane, carPositions[4]);
         animateCar("car6", config.carLane, carPositions[5]);
         animateCar("car7", config.carLane, carPositions[6]);
