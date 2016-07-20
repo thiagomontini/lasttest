@@ -1492,7 +1492,6 @@ module.exports = {
     "hitAreas": [
         {
             "description": "Statue of Liberty",
-            "object": "statue_of_liberty",
             "polygon": [
                 1411.420, 337.110,
                 1391.530, 375.790,

@@ -214,7 +214,6 @@ module.exports = {
     "hitAreas": [
         {
             "description": "Christ the Redeemer",
-            "object": "redeemer",
             "polygon": [
                 1713.390, 1338.940,
                 1669.180, 1271.230,
@@ -251,7 +250,6 @@ module.exports = {
         },
         {
             "description": "Maracanã Stadium",
-            "object": "stadium",
             "polygon": [
                 1141.970, 913.950,
                 1156.260, 890.340,
@@ -277,7 +275,6 @@ module.exports = {
         },
         {
             "description": "Sugarloaf Mountain",
-            "object": "sugar_loaf",
             "polygon": [
                 377.070, 743.050,
                 402.660, 682.480,
@@ -311,7 +308,6 @@ module.exports = {
         },
         {
             "description": "Copacabana Beach",
-            "object": "background",
             "polygon": [
                 930.540, 864.250,
                 1056.740, 915.240,

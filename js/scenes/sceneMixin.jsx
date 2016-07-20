@@ -99,7 +99,6 @@ module.exports = {
         this.hitAreas = sceneData[this.sceneKey].hitAreas.map(function(areaObject) {
             return {
                 "description": areaObject.description,
-                "object": this.objects[areaObject.object],
                 "polygon": new PIXI.Polygon(areaObject.polygon)
             }
         }.bind(this));
