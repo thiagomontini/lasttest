@@ -9,7 +9,7 @@
             entrada = entrada.split(", ");
             entrada = entrada.map(function(x) {
                 var elems = x.split(" ");
-                return "                { x: " + elems[0] + ", y: " + elems[1] + " }";
+                return "                { \"x\": " + elems[0] + ", \"y\": " + elems[1] + " }";
             });
 
             entrada = entrada.join(",\n");

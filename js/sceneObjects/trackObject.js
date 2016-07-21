@@ -28,6 +28,9 @@ var TrackObject = function(sprite, track, duration, params) {
     if (track[0].frame != undefined) {
         this.timeline.addCallback(this.sprite.gotoAndStop.bind(this.sprite, track[0].frame));
     }
+    if (track[0].scale != undefined) {
+        this.timeline.set(this.sprite.scale, {x: track[0].scale, y: track[0].scale});
+    }
     for (var i=1; i < track.length; i++) {
         this.timeline.to(this.sprite, duration * trackLengths[i] / totalLength, {
             x: track[i].x,
@@ -36,6 +39,9 @@ var TrackObject = function(sprite, track, duration, params) {
         });
         if (track[i].frame != undefined) {
             this.timeline.addCallback(this.sprite.gotoAndStop.bind(this.sprite, track[i].frame));
+        }
+        if (track[i].scale != undefined) {
+            this.timeline.set(this.sprite.scale, {x: track[i].scale, y: track[i].scale});
         }
     }
     this.timeline.repeat(-1);
