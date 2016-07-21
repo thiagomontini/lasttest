@@ -5,6 +5,7 @@ var TimelineMax = require("../libs/gsap/TimelineMax.js");
 var sceneData = require("./sceneData.js");
 var SceneMixin = require("./sceneMixin.jsx");
 var TrackObject = require("../sceneObjects/trackObject.js");
+var Cloud = require("../sceneObjects/cloud.js");
 var randomPick = require("../utils/randomPick.js");
 var shuffleArray = require("../utils/shuffleArray.js");
 
@@ -17,6 +18,13 @@ var RomeScene = React.createClass({
 
     initScene: function() {
         this.disposables = [];
+
+        // Animates the clouds
+        this.disposables.push(new Cloud(this.objects.cloud1, config.cloud));
+        this.disposables.push(new Cloud(this.objects.cloud2, config.cloud));
+        this.disposables.push(new Cloud(this.objects.cloud3, config.cloud));
+        this.disposables.push(new Cloud(this.objects.cloud4, config.cloud));
+        this.disposables.push(new Cloud(this.objects.cloud5, config.cloud));
 
         // Animates the cars
         var cars = [

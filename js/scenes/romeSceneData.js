@@ -1,8 +1,10 @@
+var sceneWidth = 2304;
+
 module.exports = {
     "name": "Rome",
     "lat": 41.909986,
     "lon": 12.395912,
-    "sceneWidth": 2304,
+    "sceneWidth": sceneWidth,
     "sceneHeight": 1440,
     "objects": [
         {
@@ -626,7 +628,36 @@ module.exports = {
             "id": "front",
             "image": "img/rome/rome-front.png",
             "position": [0, 0]
-        }
+        },
+        {
+            "id": "cloud1",
+            "image": "img/common/cloud01.png",
+            "position": [-121, 408]
+        },
+
+        {
+            "id": "cloud2",
+            "image": "img/common/cloud02.png",
+            "position": [31, 128]
+        },
+
+        {
+            "id": "cloud3",
+            "image": "img/common/cloud03.png",
+            "position": [951, 159]
+        },
+
+        {
+            "id": "cloud4",
+            "image": "img/common/cloud04.png",
+            "position": [1583, 124]
+        },
+
+        {
+            "id": "cloud5",
+            "image": "img/common/cloud05.png",
+            "position": [1925, 214]
+        },
     ],
     "hitAreas": [
         {
@@ -698,6 +729,13 @@ module.exports = {
         }
     ],
     "config": {
+        "cloud": {
+            "speed": 100,
+            "yMin": 0,
+            "yMax": 300,
+            "sceneWidth": sceneWidth,
+            "speedVariance": 0.5
+        },
         "road1": {
             "track": [
                 { "x": -48.220, "y": 1019.100, "frame": 43, "scale": 1 },

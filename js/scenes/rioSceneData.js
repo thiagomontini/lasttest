@@ -1,8 +1,10 @@
+var sceneWidth = 2304;
+
 module.exports = {
     "name": "Rio de Janeiro",
     "lat": -43.1963,
     "lon": -22.9083,
-    "sceneWidth": 2304,
+    "sceneWidth": sceneWidth,
     "sceneHeight": 1440,
     "objects": [
         {
@@ -344,7 +346,7 @@ module.exports = {
             "speed": 100,
             "yMin": 0,
             "yMax": 450,
-            "sceneWidth": 2304,
+            "sceneWidth": sceneWidth,
             "speedVariance": 0.5
         },
         "plane": {
