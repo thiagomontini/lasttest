@@ -2,8 +2,8 @@ var sceneWidth = 2304;
 
 module.exports = {
     "name": "Rome",
-    "lat": 41.909986,
-    "lon": 12.395912,
+    "lat": 12.395912,
+    "lon": 41.909986,
     "sceneWidth": sceneWidth,
     "sceneHeight": 1440,
     "objects": [
