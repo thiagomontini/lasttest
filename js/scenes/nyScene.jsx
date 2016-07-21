@@ -114,12 +114,23 @@ var NYScene = React.createClass({
         animateBoat("boat7");
 
         // Animates the cars
-        var nCars = 11;
-        var carStep = 1.0 / nCars;
-        var carPositions = [];
-        for (var i=0; i < nCars; i++) {
-            carPositions.push(i * carStep + 0.5 * Math.random() * carStep);
-        }
+        var cars = [
+            this.objects.car1,
+            this.objects.car2,
+            this.objects.car3,
+            this.objects.car4,
+            this.objects.car5,
+            this.objects.car6,
+            this.objects.car7,
+            this.objects.car8,
+            this.objects.car9,
+            this.objects.car10,
+            this.objects.car11
+        ];
+        var carStep = 1.0 / cars.length;
+        var carPositions = cars.map(function(car, i) {
+            return i * carStep + 0.5 * Math.random() * carStep;
+        });
         shuffleArray(carPositions);
 
         var animateCar = function(carName, lane, initialPosition) {
