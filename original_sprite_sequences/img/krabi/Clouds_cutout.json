@@ -1,7 +1,7 @@
 [
     {
         "file_name": "Clouds_1.png",
-        "full_path": "/home/carlos/Downloads/Scene_Krabi/Clouds_1.png",
+        "full_path": "img/krabi/Clouds_1.png",
         "global_coords": [
             91,
             62
@@ -13,7 +13,7 @@
     },
     {
         "file_name": "Clouds_2.png",
-        "full_path": "/home/carlos/Downloads/Scene_Krabi/Clouds_2.png",
+        "full_path": "img/krabi/Clouds_2.png",
         "global_coords": [
             453,
             119
@@ -25,7 +25,7 @@
     },
     {
         "file_name": "Clouds_3.png",
-        "full_path": "/home/carlos/Downloads/Scene_Krabi/Clouds_3.png",
+        "full_path": "img/krabi/Clouds_3.png",
         "global_coords": [
             518,
             59
@@ -37,7 +37,7 @@
     },
     {
         "file_name": "Clouds_4.png",
-        "full_path": "/home/carlos/Downloads/Scene_Krabi/Clouds_4.png",
+        "full_path": "img/krabi/Clouds_4.png",
         "global_coords": [
             1045,
             9
@@ -49,7 +49,7 @@
     },
     {
         "file_name": "Clouds_5.png",
-        "full_path": "/home/carlos/Downloads/Scene_Krabi/Clouds_5.png",
+        "full_path": "img/krabi/Clouds_5.png",
         "global_coords": [
             1327,
             70
@@ -61,7 +61,7 @@
     },
     {
         "file_name": "Clouds_6.png",
-        "full_path": "/home/carlos/Downloads/Scene_Krabi/Clouds_6.png",
+        "full_path": "img/krabi/Clouds_6.png",
         "global_coords": [
             1431,
             72
@@ -73,7 +73,7 @@
     },
     {
         "file_name": "Clouds_7.png",
-        "full_path": "/home/carlos/Downloads/Scene_Krabi/Clouds_7.png",
+        "full_path": "img/krabi/Clouds_7.png",
         "global_coords": [
             1692,
             25
@@ -85,7 +85,7 @@
     },
     {
         "file_name": "Clouds_8.png",
-        "full_path": "/home/carlos/Downloads/Scene_Krabi/Clouds_8.png",
+        "full_path": "img/krabi/Clouds_8.png",
         "global_coords": [
             1705,
             64
@@ -97,7 +97,7 @@
     },
     {
         "file_name": "Clouds_9.png",
-        "full_path": "/home/carlos/Downloads/Scene_Krabi/Clouds_9.png",
+        "full_path": "img/krabi/Clouds_9.png",
         "global_coords": [
             1806,
             19
@@ -109,7 +109,7 @@
     },
     {
         "file_name": "Clouds_10.png",
-        "full_path": "/home/carlos/Downloads/Scene_Krabi/Clouds_10.png",
+        "full_path": "img/krabi/Clouds_10.png",
         "global_coords": [
             2022,
             67
