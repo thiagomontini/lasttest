@@ -13,6 +13,96 @@ module.exports = {
             "position": [0, 0]
         },
         {
+            "id": "bird1",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_1.png"],
+            "position": [85, 273]
+        },
+        {
+            "id": "bird2",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_2.png"],
+            "position": [296, 81]
+        },
+        {
+            "id": "bird3",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_3.png"],
+            "position": [368, 72]
+        },
+        {
+            "id": "bird4",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_4.png"],
+            "position": [375, 414]
+        },
+        {
+            "id": "bird5",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_5.png"],
+            "position": [527, 82]
+        },
+        {
+            "id": "bird6",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_6.png"],
+            "position": [601, 255]
+        },
+        {
+            "id": "bird7",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_7.png"],
+            "position": [684, 622]
+        },
+        {
+            "id": "bird8",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_8.png"],
+            "position": [702, 573]
+        },
+        {
+            "id": "bird9",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_9.png"],
+            "position": [841, 1141]
+        },
+        {
+            "id": "bird10",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_10.png"],
+            "position": [1395, 284]
+        },
+        {
+            "id": "bird11",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_11.png"],
+            "position": [1535, 548]
+        },
+        {
+            "id": "bird12",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_12.png"],
+            "position": [1612, 443]
+        },
+        {
+            "id": "bird13",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_13.png"],
+            "position": [1747, 386]
+        },
+        {
+            "id": "bird14",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_14.png"],
+            "position": [2144, 136]
+        },
+        {
+            "id": "bird15",
+            "image": "img/krabi/Birds.json",
+            "frames": ["img/krabi/Birds_15.png"],
+            "position": [2152, 295]
+        },
+        {
             "id": "cloud1",
             "image": "img/krabi/Clouds.json",
             "frames": ["img/krabi/Clouds_1.png"],
@@ -81,6 +171,10 @@ module.exports = {
             "yMax": 350,
             "sceneWidth": sceneWidth,
             "speedVariance": 0.5
+        },
+        "birds": {
+            "amplitude": 100,
+            "duration": 2
         }
     }
 };

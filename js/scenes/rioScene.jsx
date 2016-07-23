@@ -167,31 +167,13 @@ var RioScene = React.createClass({
         this.disposables.push(new Person(this.objects.redeemer_people10));
 
         // Animates the seagulls
-        this.disposables.push(new Floater(
-            this.objects.seagull1,
-            config.seagull.amplitude * (0.8 + 0.4*Math.random()),
-            config.seagull.duration * (0.8 + 0.4*Math.random())
-        ));
-        this.disposables.push(new Floater(
-            this.objects.seagull2,
-            config.seagull.amplitude * (0.8 + 0.4*Math.random()),
-            config.seagull.duration * (0.8 + 0.4*Math.random())
-        ));
-        this.disposables.push(new Floater(
-            this.objects.seagull3,
-            config.seagull.amplitude * (0.8 + 0.4*Math.random()),
-            config.seagull.duration * (0.8 + 0.4*Math.random())
-        ));
-        this.disposables.push(new Floater(
-            this.objects.seagull4,
-            config.seagull.amplitude * (0.8 + 0.4*Math.random()),
-            config.seagull.duration * (0.8 + 0.4*Math.random())
-        ));
-        this.disposables.push(new Floater(
-            this.objects.seagull5,
-            config.seagull.amplitude * (0.8 + 0.4*Math.random()),
-            config.seagull.duration * (0.8 + 0.4*Math.random())
-        ));
+        for (var i=1; i <= 5; i++) {
+            this.disposables.push(new Floater(
+                this.objects["seagull" + i],
+                config.seagull.amplitude * (0.8 + 0.4*Math.random()),
+                config.seagull.duration * (0.8 + 0.4*Math.random())
+            ));
+        }
     },
 
     disposeScene: function() {

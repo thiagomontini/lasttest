@@ -1,0 +1,129 @@
+{
+	"meta": {
+		"image": "Birds.png",
+		"size": {"w":106,"h":79},
+		"scale": "1"
+	},
+	"frames": {
+		"img/krabi/Birds_11.png":
+		{
+			"frame": {"x":0,"y":17,"w":56,"h":17},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":56,"h":17},
+			"sourceSize": {"w":56,"h":17}
+		},
+		"img/krabi/Birds_4.png":
+		{
+			"frame": {"x":0,"y":0,"w":63,"h":17},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":63,"h":17},
+			"sourceSize": {"w":63,"h":17}
+		},
+		"img/krabi/Birds_13.png":
+		{
+			"frame": {"x":0,"y":34,"w":47,"h":15},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":47,"h":15},
+			"sourceSize": {"w":47,"h":15}
+		},
+		"img/krabi/Birds_7.png":
+		{
+			"frame": {"x":63,"y":0,"w":43,"h":24},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":43,"h":24},
+			"sourceSize": {"w":43,"h":24}
+		},
+		"img/krabi/Birds_9.png":
+		{
+			"frame": {"x":63,"y":24,"w":42,"h":19},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":42,"h":19},
+			"sourceSize": {"w":42,"h":19}
+		},
+		"img/krabi/Birds_15.png":
+		{
+			"frame": {"x":0,"y":49,"w":39,"h":16},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":39,"h":16},
+			"sourceSize": {"w":39,"h":16}
+		},
+		"img/krabi/Birds_12.png":
+		{
+			"frame": {"x":39,"y":49,"w":35,"h":11},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":35,"h":11},
+			"sourceSize": {"w":35,"h":11}
+		},
+		"img/krabi/Birds_8.png":
+		{
+			"frame": {"x":98,"y":43,"w":6,"h":2},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":6,"h":2},
+			"sourceSize": {"w":6,"h":2}
+		},
+		"img/krabi/Birds_10.png":
+		{
+			"frame": {"x":74,"y":49,"w":23,"h":8},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":23,"h":8},
+			"sourceSize": {"w":23,"h":8}
+		},
+		"img/krabi/Birds_6.png":
+		{
+			"frame": {"x":29,"y":65,"w":23,"h":7},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":23,"h":7},
+			"sourceSize": {"w":23,"h":7}
+		},
+		"img/krabi/Birds_14.png":
+		{
+			"frame": {"x":63,"y":43,"w":12,"h":5},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":12,"h":5},
+			"sourceSize": {"w":12,"h":5}
+		},
+		"img/krabi/Birds_5.png":
+		{
+			"frame": {"x":75,"y":43,"w":8,"h":3},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":8,"h":3},
+			"sourceSize": {"w":8,"h":3}
+		},
+		"img/krabi/Birds_2.png":
+		{
+			"frame": {"x":83,"y":43,"w":8,"h":3},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":8,"h":3},
+			"sourceSize": {"w":8,"h":3}
+		},
+		"img/krabi/Birds_3.png":
+		{
+			"frame": {"x":91,"y":43,"w":7,"h":3},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":7,"h":3},
+			"sourceSize": {"w":7,"h":3}
+		},
+		"img/krabi/Birds_1.png":
+		{
+			"frame": {"x":0,"y":65,"w":29,"h":14},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":29,"h":14},
+			"sourceSize": {"w":29,"h":14}
+		}
+	}
+}
