@@ -1,0 +1,785 @@
+{
+	"meta": {
+		"image": "movingBoat1.png",
+		"size": {"w":2000,"h":2000},
+		"scale": "1"
+	},
+	"frames": {
+		"img/krabi/movingBoat1/movingBoat1_00.png":
+		{
+			"frame": {"x":200,"y":0,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_48.png":
+		{
+			"frame": {"x":0,"y":0,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_02.png":
+		{
+			"frame": {"x":0,"y":200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_03.png":
+		{
+			"frame": {"x":200,"y":200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_04.png":
+		{
+			"frame": {"x":400,"y":0,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_05.png":
+		{
+			"frame": {"x":400,"y":200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_06.png":
+		{
+			"frame": {"x":0,"y":400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_07.png":
+		{
+			"frame": {"x":200,"y":400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_08.png":
+		{
+			"frame": {"x":400,"y":400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_09.png":
+		{
+			"frame": {"x":600,"y":0,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_10.png":
+		{
+			"frame": {"x":600,"y":200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_11.png":
+		{
+			"frame": {"x":600,"y":400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_12.png":
+		{
+			"frame": {"x":0,"y":600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_13.png":
+		{
+			"frame": {"x":200,"y":600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_14.png":
+		{
+			"frame": {"x":400,"y":600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_15.png":
+		{
+			"frame": {"x":600,"y":600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_16.png":
+		{
+			"frame": {"x":800,"y":0,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_17.png":
+		{
+			"frame": {"x":800,"y":200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_18.png":
+		{
+			"frame": {"x":800,"y":400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_19.png":
+		{
+			"frame": {"x":800,"y":600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_20.png":
+		{
+			"frame": {"x":0,"y":800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_21.png":
+		{
+			"frame": {"x":200,"y":800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_22.png":
+		{
+			"frame": {"x":400,"y":800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_23.png":
+		{
+			"frame": {"x":600,"y":800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_24.png":
+		{
+			"frame": {"x":800,"y":800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_25.png":
+		{
+			"frame": {"x":1000,"y":0,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_26.png":
+		{
+			"frame": {"x":1000,"y":200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_27.png":
+		{
+			"frame": {"x":1000,"y":400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_28.png":
+		{
+			"frame": {"x":1000,"y":600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_29.png":
+		{
+			"frame": {"x":1000,"y":800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_30.png":
+		{
+			"frame": {"x":0,"y":1000,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_31.png":
+		{
+			"frame": {"x":200,"y":1000,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_32.png":
+		{
+			"frame": {"x":400,"y":1000,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_33.png":
+		{
+			"frame": {"x":600,"y":1000,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_34.png":
+		{
+			"frame": {"x":800,"y":1000,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_35.png":
+		{
+			"frame": {"x":1000,"y":1000,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_36.png":
+		{
+			"frame": {"x":1200,"y":0,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_37.png":
+		{
+			"frame": {"x":1200,"y":200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_38.png":
+		{
+			"frame": {"x":1200,"y":400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_39.png":
+		{
+			"frame": {"x":1200,"y":600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_40.png":
+		{
+			"frame": {"x":1200,"y":800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_41.png":
+		{
+			"frame": {"x":1200,"y":1000,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_42.png":
+		{
+			"frame": {"x":0,"y":1200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_43.png":
+		{
+			"frame": {"x":200,"y":1200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_44.png":
+		{
+			"frame": {"x":400,"y":1200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_45.png":
+		{
+			"frame": {"x":600,"y":1200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_46.png":
+		{
+			"frame": {"x":800,"y":1200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_47.png":
+		{
+			"frame": {"x":1000,"y":1200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_96.png":
+		{
+			"frame": {"x":1200,"y":1800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_49.png":
+		{
+			"frame": {"x":1400,"y":0,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_50.png":
+		{
+			"frame": {"x":1400,"y":200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_51.png":
+		{
+			"frame": {"x":1400,"y":400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_52.png":
+		{
+			"frame": {"x":1400,"y":600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_53.png":
+		{
+			"frame": {"x":1400,"y":800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_54.png":
+		{
+			"frame": {"x":1400,"y":1000,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_55.png":
+		{
+			"frame": {"x":1400,"y":1200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_56.png":
+		{
+			"frame": {"x":0,"y":1400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_57.png":
+		{
+			"frame": {"x":200,"y":1400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_58.png":
+		{
+			"frame": {"x":400,"y":1400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_59.png":
+		{
+			"frame": {"x":600,"y":1400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_60.png":
+		{
+			"frame": {"x":800,"y":1400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_61.png":
+		{
+			"frame": {"x":1000,"y":1400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_62.png":
+		{
+			"frame": {"x":1200,"y":1400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_63.png":
+		{
+			"frame": {"x":1400,"y":1400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_64.png":
+		{
+			"frame": {"x":1600,"y":0,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_65.png":
+		{
+			"frame": {"x":1600,"y":200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_66.png":
+		{
+			"frame": {"x":1600,"y":400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_67.png":
+		{
+			"frame": {"x":1600,"y":600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_68.png":
+		{
+			"frame": {"x":1600,"y":800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_69.png":
+		{
+			"frame": {"x":1600,"y":1000,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_70.png":
+		{
+			"frame": {"x":1600,"y":1200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_71.png":
+		{
+			"frame": {"x":1600,"y":1400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_72.png":
+		{
+			"frame": {"x":0,"y":1600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_73.png":
+		{
+			"frame": {"x":200,"y":1600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_74.png":
+		{
+			"frame": {"x":400,"y":1600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_75.png":
+		{
+			"frame": {"x":600,"y":1600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_76.png":
+		{
+			"frame": {"x":800,"y":1600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_77.png":
+		{
+			"frame": {"x":1000,"y":1600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_78.png":
+		{
+			"frame": {"x":1200,"y":1600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_79.png":
+		{
+			"frame": {"x":1400,"y":1600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_80.png":
+		{
+			"frame": {"x":1600,"y":1600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_81.png":
+		{
+			"frame": {"x":1800,"y":0,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_82.png":
+		{
+			"frame": {"x":1800,"y":200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_83.png":
+		{
+			"frame": {"x":1800,"y":400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_84.png":
+		{
+			"frame": {"x":1800,"y":600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_85.png":
+		{
+			"frame": {"x":1800,"y":800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_86.png":
+		{
+			"frame": {"x":1800,"y":1000,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_87.png":
+		{
+			"frame": {"x":1800,"y":1200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_88.png":
+		{
+			"frame": {"x":1800,"y":1400,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_89.png":
+		{
+			"frame": {"x":1800,"y":1600,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_90.png":
+		{
+			"frame": {"x":0,"y":1800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_91.png":
+		{
+			"frame": {"x":200,"y":1800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_92.png":
+		{
+			"frame": {"x":400,"y":1800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_93.png":
+		{
+			"frame": {"x":600,"y":1800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_94.png":
+		{
+			"frame": {"x":800,"y":1800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_95.png":
+		{
+			"frame": {"x":1000,"y":1800,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		},
+		"img/krabi/movingBoat1/movingBoat1_01.png":
+		{
+			"frame": {"x":1200,"y":1200,"w":200,"h":200},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":200,"h":200},
+			"sourceSize": {"w":200,"h":200}
+		}
+	}
+}

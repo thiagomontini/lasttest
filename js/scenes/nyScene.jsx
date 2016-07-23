@@ -85,7 +85,7 @@ var NYScene = React.createClass({
         this.disposables.push(new Helicopter(this.objects.helicopter2, config.helicopter2.direction));
         this.disposables.push(new Helicopter(this.objects.helicopter3, config.helicopter3.direction));
 
-        // Animates the ships
+        // Animates the boats
         var animateBoat = function(boatName) {
             this.objects[boatName].anchor.x = 0.5;
             this.objects[boatName].anchor.y = 0.5;
