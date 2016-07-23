@@ -1,5 +1,11 @@
 var React = require("react");
-var THREE = require("three-canvas-renderer");
+
+var THREE = require("three");
+require("../libs/three/THREEProjector.js")(THREE);
+require("../libs/three/THREECanvasRenderer.js")(THREE);
+require("../libs/three/THREEObjLoader.js")(THREE);
+require("../libs/three/THREEMtlLoader.js")(THREE);
+
 var browserHistory = require("react-router").browserHistory;
 var TweenLite = require("../libs/gsap/TweenMax.js");
 var Preloader = require("./preloader.jsx");
@@ -22,8 +28,15 @@ var Globe = React.createClass({
 
         this.scene = new THREE.Scene();
 
+        this.ambientLight = new THREE.AmbientLight(0x444444);
+        this.scene.add(this.ambientLight);
+
+        this.directionalLight = new THREE.DirectionalLight( 0xffeedd );
+        this.directionalLight.position.set( 0, 0, 1 ).normalize();
+        this.scene.add( this.directionalLight );
+
         this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-        this.camera.position.z = 2;
+        this.camera.position.z = 3500;
 
         if (this.props.params.renderer == 'canvas') {
             this.renderer = new THREE.CanvasRenderer({canvas: this.refs.canvas});
@@ -33,17 +46,38 @@ var Globe = React.createClass({
         }
         this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-        this.imageLoader = new THREE.TextureLoader();
-        this.imageLoader.load(config.globeMapUrl, this.onModelLoaded);
+        // this.textureLoader = new THREE.TextureLoader();
+        // this.textureLoader.load(config.globeMapUrl, this.onTextureLoaded);
+
+        this.mtlLoader = new THREE.MTLLoader();
+        this.mtlLoader.load(config.globeMtlUrl, this.onMtlLoaded);
 
         window.addEventListener("resize", this.onWindowResize);
     },
 
-    onModelLoaded: function(texture) {
+    onTextureLoaded: function(texture) {
         var geometry = new THREE.SphereGeometry(1, 32, 32);
         var material = new THREE.MeshBasicMaterial({ map: texture, overdraw: true });
 
-        this.earthMesh = new THREE.Mesh(geometry, material)
+        this.earthMesh = new THREE.Mesh(geometry, material);
+        this.init();
+    },
+
+    onMtlLoaded: function(materials) {
+        materials.preload();
+
+        this.objLoader = new THREE.OBJLoader();
+        this.objLoader.setMaterials(materials);
+        this.objLoader.load(config.globeObjUrl, this.onObjLoaded);
+    },
+
+    onObjLoaded: function(object) {
+        this.earthMesh = object;
+        this.earthMesh.scale.set(0.1, 0.1, 0.1);
+        this.init();
+    },
+
+    init: function() {
         this.earthMesh.rotation.y = - Math.PI / 2;
 
         this.earth = new THREE.Object3D();
