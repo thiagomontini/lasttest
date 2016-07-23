@@ -1,0 +1,362 @@
+[
+    {
+        "file_name": "Boats_1.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_1.png",
+        "global_coords": [
+            379,
+            1032
+        ],
+        "layer_coords": [
+            0,
+            761
+        ]
+    },
+    {
+        "file_name": "Boats_2.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_2.png",
+        "global_coords": [
+            430,
+            1078
+        ],
+        "layer_coords": [
+            51,
+            807
+        ]
+    },
+    {
+        "file_name": "Boats_3.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_3.png",
+        "global_coords": [
+            518,
+            281
+        ],
+        "layer_coords": [
+            139,
+            10
+        ]
+    },
+    {
+        "file_name": "Boats_4.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_4.png",
+        "global_coords": [
+            644,
+            404
+        ],
+        "layer_coords": [
+            265,
+            133
+        ]
+    },
+    {
+        "file_name": "Boats_5.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_5.png",
+        "global_coords": [
+            645,
+            400
+        ],
+        "layer_coords": [
+            266,
+            129
+        ]
+    },
+    {
+        "file_name": "Boats_6.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_6.png",
+        "global_coords": [
+            687,
+            309
+        ],
+        "layer_coords": [
+            308,
+            38
+        ]
+    },
+    {
+        "file_name": "Boats_7.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_7.png",
+        "global_coords": [
+            722,
+            1186
+        ],
+        "layer_coords": [
+            343,
+            915
+        ]
+    },
+    {
+        "file_name": "Boats_8.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_8.png",
+        "global_coords": [
+            744,
+            491
+        ],
+        "layer_coords": [
+            365,
+            220
+        ]
+    },
+    {
+        "file_name": "Boats_9.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_9.png",
+        "global_coords": [
+            779,
+            610
+        ],
+        "layer_coords": [
+            400,
+            339
+        ]
+    },
+    {
+        "file_name": "Boats_10.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_10.png",
+        "global_coords": [
+            819,
+            819
+        ],
+        "layer_coords": [
+            440,
+            548
+        ]
+    },
+    {
+        "file_name": "Boats_11.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_11.png",
+        "global_coords": [
+            854,
+            1233
+        ],
+        "layer_coords": [
+            475,
+            962
+        ]
+    },
+    {
+        "file_name": "Boats_12.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_12.png",
+        "global_coords": [
+            856,
+            810
+        ],
+        "layer_coords": [
+            477,
+            539
+        ]
+    },
+    {
+        "file_name": "Boats_13.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_13.png",
+        "global_coords": [
+            863,
+            816
+        ],
+        "layer_coords": [
+            484,
+            545
+        ]
+    },
+    {
+        "file_name": "Boats_14.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_14.png",
+        "global_coords": [
+            871,
+            1227
+        ],
+        "layer_coords": [
+            492,
+            956
+        ]
+    },
+    {
+        "file_name": "Boats_15.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_15.png",
+        "global_coords": [
+            926,
+            950
+        ],
+        "layer_coords": [
+            547,
+            679
+        ]
+    },
+    {
+        "file_name": "Boats_16.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_16.png",
+        "global_coords": [
+            1016,
+            1144
+        ],
+        "layer_coords": [
+            637,
+            873
+        ]
+    },
+    {
+        "file_name": "Boats_17.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_17.png",
+        "global_coords": [
+            1071,
+            582
+        ],
+        "layer_coords": [
+            692,
+            311
+        ]
+    },
+    {
+        "file_name": "Boats_18.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_18.png",
+        "global_coords": [
+            1151,
+            440
+        ],
+        "layer_coords": [
+            772,
+            169
+        ]
+    },
+    {
+        "file_name": "Boats_19.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_19.png",
+        "global_coords": [
+            1160,
+            440
+        ],
+        "layer_coords": [
+            781,
+            169
+        ]
+    },
+    {
+        "file_name": "Boats_20.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_20.png",
+        "global_coords": [
+            1301,
+            792
+        ],
+        "layer_coords": [
+            922,
+            521
+        ]
+    },
+    {
+        "file_name": "Boats_21.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_21.png",
+        "global_coords": [
+            1319,
+            514
+        ],
+        "layer_coords": [
+            940,
+            243
+        ]
+    },
+    {
+        "file_name": "Boats_22.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_22.png",
+        "global_coords": [
+            1336,
+            507
+        ],
+        "layer_coords": [
+            957,
+            236
+        ]
+    },
+    {
+        "file_name": "Boats_23.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_23.png",
+        "global_coords": [
+            1435,
+            709
+        ],
+        "layer_coords": [
+            1056,
+            438
+        ]
+    },
+    {
+        "file_name": "Boats_24.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_24.png",
+        "global_coords": [
+            1441,
+            348
+        ],
+        "layer_coords": [
+            1062,
+            77
+        ]
+    },
+    {
+        "file_name": "Boats_25.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_25.png",
+        "global_coords": [
+            1445,
+            703
+        ],
+        "layer_coords": [
+            1066,
+            432
+        ]
+    },
+    {
+        "file_name": "Boats_26.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_26.png",
+        "global_coords": [
+            1560,
+            1072
+        ],
+        "layer_coords": [
+            1181,
+            801
+        ]
+    },
+    {
+        "file_name": "Boats_27.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_27.png",
+        "global_coords": [
+            1591,
+            313
+        ],
+        "layer_coords": [
+            1212,
+            42
+        ]
+    },
+    {
+        "file_name": "Boats_28.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_28.png",
+        "global_coords": [
+            1611,
+            783
+        ],
+        "layer_coords": [
+            1232,
+            512
+        ]
+    },
+    {
+        "file_name": "Boats_29.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_29.png",
+        "global_coords": [
+            1630,
+            786
+        ],
+        "layer_coords": [
+            1251,
+            515
+        ]
+    },
+    {
+        "file_name": "Boats_30.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Boats_30.png",
+        "global_coords": [
+            1992,
+            271
+        ],
+        "layer_coords": [
+            1613,
+            0
+        ]
+    }
+]

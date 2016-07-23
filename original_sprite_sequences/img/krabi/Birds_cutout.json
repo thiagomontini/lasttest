@@ -1,0 +1,182 @@
+[
+    {
+        "file_name": "Birds_1.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_1.png",
+        "global_coords": [
+            85,
+            273
+        ],
+        "layer_coords": [
+            0,
+            201
+        ]
+    },
+    {
+        "file_name": "Birds_2.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_2.png",
+        "global_coords": [
+            296,
+            81
+        ],
+        "layer_coords": [
+            211,
+            9
+        ]
+    },
+    {
+        "file_name": "Birds_3.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_3.png",
+        "global_coords": [
+            368,
+            72
+        ],
+        "layer_coords": [
+            283,
+            0
+        ]
+    },
+    {
+        "file_name": "Birds_4.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_4.png",
+        "global_coords": [
+            375,
+            414
+        ],
+        "layer_coords": [
+            290,
+            342
+        ]
+    },
+    {
+        "file_name": "Birds_5.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_5.png",
+        "global_coords": [
+            527,
+            82
+        ],
+        "layer_coords": [
+            442,
+            10
+        ]
+    },
+    {
+        "file_name": "Birds_6.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_6.png",
+        "global_coords": [
+            601,
+            255
+        ],
+        "layer_coords": [
+            516,
+            183
+        ]
+    },
+    {
+        "file_name": "Birds_7.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_7.png",
+        "global_coords": [
+            684,
+            622
+        ],
+        "layer_coords": [
+            599,
+            550
+        ]
+    },
+    {
+        "file_name": "Birds_8.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_8.png",
+        "global_coords": [
+            702,
+            573
+        ],
+        "layer_coords": [
+            617,
+            501
+        ]
+    },
+    {
+        "file_name": "Birds_9.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_9.png",
+        "global_coords": [
+            841,
+            1141
+        ],
+        "layer_coords": [
+            756,
+            1069
+        ]
+    },
+    {
+        "file_name": "Birds_10.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_10.png",
+        "global_coords": [
+            1395,
+            284
+        ],
+        "layer_coords": [
+            1310,
+            212
+        ]
+    },
+    {
+        "file_name": "Birds_11.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_11.png",
+        "global_coords": [
+            1535,
+            548
+        ],
+        "layer_coords": [
+            1450,
+            476
+        ]
+    },
+    {
+        "file_name": "Birds_12.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_12.png",
+        "global_coords": [
+            1612,
+            443
+        ],
+        "layer_coords": [
+            1527,
+            371
+        ]
+    },
+    {
+        "file_name": "Birds_13.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_13.png",
+        "global_coords": [
+            1747,
+            386
+        ],
+        "layer_coords": [
+            1662,
+            314
+        ]
+    },
+    {
+        "file_name": "Birds_14.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_14.png",
+        "global_coords": [
+            2144,
+            136
+        ],
+        "layer_coords": [
+            2059,
+            64
+        ]
+    },
+    {
+        "file_name": "Birds_15.png",
+        "full_path": "/home/carlos/Downloads/Scene_Krabi/Birds_15.png",
+        "global_coords": [
+            2152,
+            295
+        ],
+        "layer_coords": [
+            2067,
+            223
+        ]
+    }
+]

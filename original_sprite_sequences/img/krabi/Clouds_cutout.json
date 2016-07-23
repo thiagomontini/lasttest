@@ -1,0 +1,122 @@
+[
+    {
+        "file_name": "Clouds_1.png",
+        "full_path": "img/krabi/Clouds_1.png",
+        "global_coords": [
+            91,
+            62
+        ],
+        "layer_coords": [
+            0,
+            53
+        ]
+    },
+    {
+        "file_name": "Clouds_2.png",
+        "full_path": "img/krabi/Clouds_2.png",
+        "global_coords": [
+            453,
+            119
+        ],
+        "layer_coords": [
+            362,
+            110
+        ]
+    },
+    {
+        "file_name": "Clouds_3.png",
+        "full_path": "img/krabi/Clouds_3.png",
+        "global_coords": [
+            518,
+            59
+        ],
+        "layer_coords": [
+            427,
+            50
+        ]
+    },
+    {
+        "file_name": "Clouds_4.png",
+        "full_path": "img/krabi/Clouds_4.png",
+        "global_coords": [
+            1045,
+            9
+        ],
+        "layer_coords": [
+            954,
+            0
+        ]
+    },
+    {
+        "file_name": "Clouds_5.png",
+        "full_path": "img/krabi/Clouds_5.png",
+        "global_coords": [
+            1327,
+            70
+        ],
+        "layer_coords": [
+            1236,
+            61
+        ]
+    },
+    {
+        "file_name": "Clouds_6.png",
+        "full_path": "img/krabi/Clouds_6.png",
+        "global_coords": [
+            1431,
+            72
+        ],
+        "layer_coords": [
+            1340,
+            63
+        ]
+    },
+    {
+        "file_name": "Clouds_7.png",
+        "full_path": "img/krabi/Clouds_7.png",
+        "global_coords": [
+            1692,
+            25
+        ],
+        "layer_coords": [
+            1601,
+            16
+        ]
+    },
+    {
+        "file_name": "Clouds_8.png",
+        "full_path": "img/krabi/Clouds_8.png",
+        "global_coords": [
+            1705,
+            64
+        ],
+        "layer_coords": [
+            1614,
+            55
+        ]
+    },
+    {
+        "file_name": "Clouds_9.png",
+        "full_path": "img/krabi/Clouds_9.png",
+        "global_coords": [
+            1806,
+            19
+        ],
+        "layer_coords": [
+            1715,
+            10
+        ]
+    },
+    {
+        "file_name": "Clouds_10.png",
+        "full_path": "img/krabi/Clouds_10.png",
+        "global_coords": [
+            2022,
+            67
+        ],
+        "layer_coords": [
+            1931,
+            58
+        ]
+    }
+]

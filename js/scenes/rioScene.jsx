@@ -3,8 +3,8 @@ var sceneData = require("./sceneData.js");
 var SceneMixin = require("./sceneMixin.jsx");
 var TweenMax = require("../libs/gsap/TweenMax.js");
 var TimelineMax = require("../libs/gsap/TimelineMax.js");
-
 var Cloud = require("../sceneObjects/cloud.js");
+var Floater = require("../sceneObjects/floater.js");
 
 var config = sceneData.rio.config;
 
@@ -133,27 +133,6 @@ Person.prototype = {
 }
 
 
-var Seagull = function(seagullSprite) {
-    this.sprite = seagullSprite;
-
-    var amplitude = config.seagull.amplitude * (0.8 + 0.4*Math.random());
-    this.sprite.y -= amplitude / 2;
-
-    this.tween = TweenMax.to(this.sprite, config.seagull.duration * (0.8 + 0.4*Math.random()), {
-        y: this.sprite.y + amplitude,
-        ease: "Quad.easeInOut"
-    });
-    this.tween.repeat(-1);
-    this.tween.yoyo(true);
-}
-
-Seagull.prototype = {
-    dispose: function() {
-        this.tween.kill();
-    }
-};
-
-
 var RioScene = React.createClass({
     sceneKey: "rio",
 
@@ -188,11 +167,13 @@ var RioScene = React.createClass({
         this.disposables.push(new Person(this.objects.redeemer_people10));
 
         // Animates the seagulls
-        this.disposables.push(new Seagull(this.objects.seagull1));
-        this.disposables.push(new Seagull(this.objects.seagull2));
-        this.disposables.push(new Seagull(this.objects.seagull3));
-        this.disposables.push(new Seagull(this.objects.seagull4));
-        this.disposables.push(new Seagull(this.objects.seagull5));
+        for (var i=1; i <= 5; i++) {
+            this.disposables.push(new Floater(
+                this.objects["seagull" + i],
+                config.seagull.amplitude * (0.8 + 0.4*Math.random()),
+                config.seagull.duration * (0.8 + 0.4*Math.random())
+            ));
+        }
     },
 
     disposeScene: function() {
