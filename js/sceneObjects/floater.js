@@ -11,6 +11,7 @@ var Floater = function(sprite, amplitude, duration) {
     });
     this.tween.repeat(-1);
     this.tween.yoyo(true);
+    this.tween.progress(Math.random());
 }
 
 Floater.prototype = {

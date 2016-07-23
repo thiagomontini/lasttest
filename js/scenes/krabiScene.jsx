@@ -30,6 +30,20 @@ var KrabiScene = React.createClass({
                 config.birds.duration * (0.8 + 0.4*Math.random())
             ));
         }
+
+        // Animates the boats
+        var boatIds = [
+            "boat1", "boat2", "boat3", "boat4", "boat6", "boat7", "boat8",
+            "boat9", "boat10", "boat11", "boat15", "boat16", "boat17", "boat18",
+            "boat20", "boat21", "boat23", "boat24", /*"boat26",*/ "boat27", "boat28", "boat30"
+        ];
+        boatIds.forEach(function(boatId) {
+            this.disposables.push(new Floater(
+                this.objects[boatId],
+                config.boats.amplitude * (0.8 + 0.4*Math.random()),
+                config.boats.duration * (0.8 + 0.4*Math.random())
+            ));
+        }.bind(this));
     },
 
     disposeScene: function() {
