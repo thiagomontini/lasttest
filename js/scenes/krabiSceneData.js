@@ -78,7 +78,7 @@ module.exports = {
         "cloud": {
             "speed": 70,
             "yMin": 0,
-            "yMax": 250,
+            "yMax": 350,
             "sceneWidth": sceneWidth,
             "speedVariance": 0.5
         }
