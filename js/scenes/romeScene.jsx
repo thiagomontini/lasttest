@@ -26,7 +26,7 @@ var RomeScene = React.createClass({
         this.disposables.push(new Cloud(this.objects.cloud4, config.cloud));
         this.disposables.push(new Cloud(this.objects.cloud5, config.cloud));
 
-        // Animates the cars
+        // Animates the vehicles
         var vehicles = [
             this.objects.car1,
             this.objects.car2,
@@ -46,6 +46,10 @@ var RomeScene = React.createClass({
             this.objects.vespa2,
             this.objects.vespa3
         ];
+
+        this.objects.bicycle1.scale.x = this.objects.bicycle1.scale.y = 2.5;
+        this.objects.bicycle2.scale.x = this.objects.bicycle2.scale.y = 2.5;
+        this.objects.bicycle3.scale.x = this.objects.bicycle3.scale.y = 2.5;
 
         vehicles.forEach(function(car) {
             car.parent.removeChild(car);
