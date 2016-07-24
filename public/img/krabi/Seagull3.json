@@ -1,0 +1,409 @@
+{
+	"meta": {
+		"image": "Seagull3.png",
+		"size": {"w":400,"h":350},
+		"scale": "1"
+	},
+	"frames": {
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_00.png":
+		{
+			"frame": {"x":50,"y":0,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_25.png":
+		{
+			"frame": {"x":0,"y":0,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_02.png":
+		{
+			"frame": {"x":0,"y":50,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_03.png":
+		{
+			"frame": {"x":50,"y":50,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_04.png":
+		{
+			"frame": {"x":100,"y":0,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_05.png":
+		{
+			"frame": {"x":100,"y":50,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_06.png":
+		{
+			"frame": {"x":0,"y":100,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_07.png":
+		{
+			"frame": {"x":50,"y":100,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_08.png":
+		{
+			"frame": {"x":100,"y":100,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_09.png":
+		{
+			"frame": {"x":150,"y":0,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_10.png":
+		{
+			"frame": {"x":150,"y":50,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_11.png":
+		{
+			"frame": {"x":150,"y":100,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_12.png":
+		{
+			"frame": {"x":0,"y":150,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_13.png":
+		{
+			"frame": {"x":50,"y":150,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_14.png":
+		{
+			"frame": {"x":100,"y":150,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_15.png":
+		{
+			"frame": {"x":150,"y":150,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_16.png":
+		{
+			"frame": {"x":200,"y":0,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_17.png":
+		{
+			"frame": {"x":200,"y":50,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_18.png":
+		{
+			"frame": {"x":200,"y":100,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_19.png":
+		{
+			"frame": {"x":200,"y":150,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_20.png":
+		{
+			"frame": {"x":0,"y":200,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_21.png":
+		{
+			"frame": {"x":50,"y":200,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_22.png":
+		{
+			"frame": {"x":100,"y":200,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_23.png":
+		{
+			"frame": {"x":150,"y":200,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_24.png":
+		{
+			"frame": {"x":200,"y":200,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_49.png":
+		{
+			"frame": {"x":350,"y":0,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_26.png":
+		{
+			"frame": {"x":250,"y":50,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_27.png":
+		{
+			"frame": {"x":250,"y":100,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_28.png":
+		{
+			"frame": {"x":250,"y":150,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_29.png":
+		{
+			"frame": {"x":250,"y":200,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_30.png":
+		{
+			"frame": {"x":0,"y":250,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_31.png":
+		{
+			"frame": {"x":50,"y":250,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_32.png":
+		{
+			"frame": {"x":100,"y":250,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_33.png":
+		{
+			"frame": {"x":150,"y":250,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_34.png":
+		{
+			"frame": {"x":200,"y":250,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_35.png":
+		{
+			"frame": {"x":250,"y":250,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_36.png":
+		{
+			"frame": {"x":300,"y":0,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_37.png":
+		{
+			"frame": {"x":300,"y":50,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_38.png":
+		{
+			"frame": {"x":300,"y":100,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_39.png":
+		{
+			"frame": {"x":300,"y":150,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_40.png":
+		{
+			"frame": {"x":300,"y":200,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_41.png":
+		{
+			"frame": {"x":300,"y":250,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_42.png":
+		{
+			"frame": {"x":0,"y":300,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_43.png":
+		{
+			"frame": {"x":50,"y":300,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_44.png":
+		{
+			"frame": {"x":100,"y":300,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_45.png":
+		{
+			"frame": {"x":150,"y":300,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_46.png":
+		{
+			"frame": {"x":200,"y":300,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_47.png":
+		{
+			"frame": {"x":250,"y":300,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_48.png":
+		{
+			"frame": {"x":300,"y":300,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		},
+		"img/krabi/Krabi_Gull3/Krabi_Gull3_01.png":
+		{
+			"frame": {"x":250,"y":0,"w":50,"h":50},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":50,"h":50},
+			"sourceSize": {"w":50,"h":50}
+		}
+	}
+}

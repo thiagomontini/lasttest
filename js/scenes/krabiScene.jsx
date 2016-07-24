@@ -26,6 +26,10 @@ var KrabiScene = React.createClass({
 
         // Animates the birds
         for (var i=1; i <= 15; i++) {
+            this.objects["bird" + i].play();
+            if (Math.random() < 0.5) {
+                this.objects["bird" + i].scale.x = -1;
+            }
             this.disposables.push(new Floater(
                 this.objects["bird" + i],
                 config.birds.amplitude * (0.8 + 0.4*Math.random()),
@@ -84,6 +88,9 @@ var KrabiScene = React.createClass({
         this.disposables.forEach(function(disposable) {
             disposable.dispose();
         });
+        for (var i=1; i <= 15; i++) {
+            this.objects["bird" + i].stop();
+        }
     }
 });
 
