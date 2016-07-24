@@ -27,16 +27,21 @@ var RomeScene = React.createClass({
         this.disposables.push(new Cloud(this.objects.cloud5, config.cloud));
 
         // Animates the cars
-        var cars = [
+        var vehicles = [
             this.objects.car1,
             this.objects.car2,
             this.objects.car3,
             this.objects.car4,
+            this.objects.car5,
+            this.objects.car6,
+            this.objects.car7,
+            this.objects.car8,
+            this.objects.car9,
             this.objects.car10,
             this.objects.car11
         ];
 
-        cars.forEach(function(car) {
+        vehicles.forEach(function(car) {
             car.parent.removeChild(car);
         });
 
@@ -65,7 +70,7 @@ var RomeScene = React.createClass({
             };
             shuffleArray(carPositions);
             for (var i=0; i < roadConfig.cars; i++) {
-                animateCar(randomPick(cars), roadConfig, carPositions[i]);
+                animateCar(randomPick(vehicles), roadConfig, carPositions[i]);
             }
         }
     },
