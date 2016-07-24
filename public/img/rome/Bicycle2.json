@@ -1,0 +1,785 @@
+{
+	"meta": {
+		"image": "Bicycle2.png",
+		"size": {"w":750,"h":750},
+		"scale": "1"
+	},
+	"frames": {
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_00.png":
+		{
+			"frame": {"x":75,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_48.png":
+		{
+			"frame": {"x":0,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_02.png":
+		{
+			"frame": {"x":0,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_03.png":
+		{
+			"frame": {"x":75,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_04.png":
+		{
+			"frame": {"x":150,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_05.png":
+		{
+			"frame": {"x":150,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_06.png":
+		{
+			"frame": {"x":0,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_07.png":
+		{
+			"frame": {"x":75,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_08.png":
+		{
+			"frame": {"x":150,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_09.png":
+		{
+			"frame": {"x":225,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_10.png":
+		{
+			"frame": {"x":225,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_11.png":
+		{
+			"frame": {"x":225,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_12.png":
+		{
+			"frame": {"x":0,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_13.png":
+		{
+			"frame": {"x":75,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_14.png":
+		{
+			"frame": {"x":150,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_15.png":
+		{
+			"frame": {"x":225,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_16.png":
+		{
+			"frame": {"x":300,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_17.png":
+		{
+			"frame": {"x":300,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_18.png":
+		{
+			"frame": {"x":300,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_19.png":
+		{
+			"frame": {"x":300,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_20.png":
+		{
+			"frame": {"x":0,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_21.png":
+		{
+			"frame": {"x":75,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_22.png":
+		{
+			"frame": {"x":150,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_23.png":
+		{
+			"frame": {"x":225,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_24.png":
+		{
+			"frame": {"x":300,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_25.png":
+		{
+			"frame": {"x":375,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_26.png":
+		{
+			"frame": {"x":375,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_27.png":
+		{
+			"frame": {"x":375,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_28.png":
+		{
+			"frame": {"x":375,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_29.png":
+		{
+			"frame": {"x":375,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_30.png":
+		{
+			"frame": {"x":0,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_31.png":
+		{
+			"frame": {"x":75,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_32.png":
+		{
+			"frame": {"x":150,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_33.png":
+		{
+			"frame": {"x":225,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_34.png":
+		{
+			"frame": {"x":300,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_35.png":
+		{
+			"frame": {"x":375,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_36.png":
+		{
+			"frame": {"x":450,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_37.png":
+		{
+			"frame": {"x":450,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_38.png":
+		{
+			"frame": {"x":450,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_39.png":
+		{
+			"frame": {"x":450,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_40.png":
+		{
+			"frame": {"x":450,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_41.png":
+		{
+			"frame": {"x":450,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_42.png":
+		{
+			"frame": {"x":0,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_43.png":
+		{
+			"frame": {"x":75,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_44.png":
+		{
+			"frame": {"x":150,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_45.png":
+		{
+			"frame": {"x":225,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_46.png":
+		{
+			"frame": {"x":300,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_47.png":
+		{
+			"frame": {"x":375,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_96.png":
+		{
+			"frame": {"x":450,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_49.png":
+		{
+			"frame": {"x":525,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_50.png":
+		{
+			"frame": {"x":525,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_51.png":
+		{
+			"frame": {"x":525,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_52.png":
+		{
+			"frame": {"x":525,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_53.png":
+		{
+			"frame": {"x":525,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_54.png":
+		{
+			"frame": {"x":525,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_55.png":
+		{
+			"frame": {"x":525,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_56.png":
+		{
+			"frame": {"x":0,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_57.png":
+		{
+			"frame": {"x":75,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_58.png":
+		{
+			"frame": {"x":150,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_59.png":
+		{
+			"frame": {"x":225,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_60.png":
+		{
+			"frame": {"x":300,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_61.png":
+		{
+			"frame": {"x":375,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_62.png":
+		{
+			"frame": {"x":450,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_63.png":
+		{
+			"frame": {"x":525,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_64.png":
+		{
+			"frame": {"x":600,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_65.png":
+		{
+			"frame": {"x":600,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_66.png":
+		{
+			"frame": {"x":600,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_67.png":
+		{
+			"frame": {"x":600,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_68.png":
+		{
+			"frame": {"x":600,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_69.png":
+		{
+			"frame": {"x":600,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_70.png":
+		{
+			"frame": {"x":600,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_71.png":
+		{
+			"frame": {"x":600,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_72.png":
+		{
+			"frame": {"x":0,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_73.png":
+		{
+			"frame": {"x":75,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_74.png":
+		{
+			"frame": {"x":150,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_75.png":
+		{
+			"frame": {"x":225,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_76.png":
+		{
+			"frame": {"x":300,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_77.png":
+		{
+			"frame": {"x":375,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_78.png":
+		{
+			"frame": {"x":450,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_79.png":
+		{
+			"frame": {"x":525,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_80.png":
+		{
+			"frame": {"x":600,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_81.png":
+		{
+			"frame": {"x":675,"y":0,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_82.png":
+		{
+			"frame": {"x":675,"y":75,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_83.png":
+		{
+			"frame": {"x":675,"y":150,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_84.png":
+		{
+			"frame": {"x":675,"y":225,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_85.png":
+		{
+			"frame": {"x":675,"y":300,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_86.png":
+		{
+			"frame": {"x":675,"y":375,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_87.png":
+		{
+			"frame": {"x":675,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_88.png":
+		{
+			"frame": {"x":675,"y":525,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_89.png":
+		{
+			"frame": {"x":675,"y":600,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_90.png":
+		{
+			"frame": {"x":0,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_91.png":
+		{
+			"frame": {"x":75,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_92.png":
+		{
+			"frame": {"x":150,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_93.png":
+		{
+			"frame": {"x":225,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_94.png":
+		{
+			"frame": {"x":300,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_95.png":
+		{
+			"frame": {"x":375,"y":675,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		},
+		"img/rome/Rome_Bicycle2/Rome_Bicycle2_01.png":
+		{
+			"frame": {"x":450,"y":450,"w":75,"h":75},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":75,"h":75},
+			"sourceSize": {"w":75,"h":75}
+		}
+	}
+}
