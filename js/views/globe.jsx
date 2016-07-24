@@ -36,7 +36,7 @@ var Globe = React.createClass({
         this.scene.add( this.directionalLight );
 
         this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-        this.camera.position.z = 3500;
+        this.camera.position.z = 4000;
 
         if (this.props.params.renderer == 'canvas') {
             this.renderer = new THREE.CanvasRenderer({canvas: this.refs.canvas});
@@ -73,6 +73,7 @@ var Globe = React.createClass({
 
     onObjLoaded: function(object) {
         this.earthMesh = object;
+        this.earthMesh.position.setX(1000);
         this.earthMesh.scale.set(0.1, 0.1, 0.1);
         this.init();
     },
