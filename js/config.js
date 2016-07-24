@@ -14,7 +14,7 @@ module.exports = {
 
     // A threshold value to trigger the globe spinning. The smaller it is,
     // the easier it is to trigger the spin
-    "spinThresold": 150,
+    "spinThresold": 1500,
 
     // The number of times the globe spins when the user moves it
     "numberOfSpins": 3,
