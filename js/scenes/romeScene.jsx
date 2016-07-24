@@ -38,7 +38,13 @@ var RomeScene = React.createClass({
             this.objects.car8,
             this.objects.car9,
             this.objects.car10,
-            this.objects.car11
+            this.objects.car11,
+            this.objects.bicycle1,
+            this.objects.bicycle2,
+            this.objects.bicycle3,
+            this.objects.vespa1,
+            this.objects.vespa2,
+            this.objects.vespa3
         ];
 
         vehicles.forEach(function(car) {
