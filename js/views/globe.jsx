@@ -75,6 +75,7 @@ var Globe = React.createClass({
         this.earthMesh = object;
         this.earthMesh.position.setX(1000);
         this.earthMesh.scale.set(0.1, 0.1, 0.1);
+        // this.earthMesh.rotation.set(0, 0, Math.PI);
         this.init();
     },
 
