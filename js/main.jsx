@@ -11,6 +11,7 @@ var RioScene = require("./scenes/rioScene.jsx");
 var NYScene = require("./scenes/nyScene.jsx");
 var RomeScene = require("./scenes/romeScene.jsx");
 var KrabiScene = require("./scenes/krabiScene.jsx");
+var VictoriaScene = require("./scenes/victoriaScene.jsx");
 var FlightsForm = require("./views/flightsForm.jsx");
 
 var config = require("./config.js");
@@ -25,5 +26,6 @@ ReactDom.render((
         <Route path={config.root + "/ny"} component={NYScene} />
         <Route path={config.root + "/rome"} component={RomeScene} />
         <Route path={config.root + "/krabi"} component={KrabiScene} />
+        <Route path={config.root + "/victoria"} component={VictoriaScene} />
     </Router>
 ), document.getElementById("app-container"));

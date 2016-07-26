@@ -1,0 +1,194 @@
+[
+    {
+        "file_name": "birds_1.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_1.png",
+        "global_coords": [
+            493,
+            449
+        ],
+        "layer_coords": [
+            0,
+            363
+        ]
+    },
+    {
+        "file_name": "birds_2.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_2.png",
+        "global_coords": [
+            1279,
+            785
+        ],
+        "layer_coords": [
+            786,
+            699
+        ]
+    },
+    {
+        "file_name": "birds_3.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_3.png",
+        "global_coords": [
+            1296,
+            136
+        ],
+        "layer_coords": [
+            803,
+            50
+        ]
+    },
+    {
+        "file_name": "birds_4.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_4.png",
+        "global_coords": [
+            1349,
+            621
+        ],
+        "layer_coords": [
+            856,
+            535
+        ]
+    },
+    {
+        "file_name": "birds_5.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_5.png",
+        "global_coords": [
+            1390,
+            251
+        ],
+        "layer_coords": [
+            897,
+            165
+        ]
+    },
+    {
+        "file_name": "birds_6.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_6.png",
+        "global_coords": [
+            1394,
+            747
+        ],
+        "layer_coords": [
+            901,
+            661
+        ]
+    },
+    {
+        "file_name": "birds_7.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_7.png",
+        "global_coords": [
+            1396,
+            433
+        ],
+        "layer_coords": [
+            903,
+            347
+        ]
+    },
+    {
+        "file_name": "birds_8.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_8.png",
+        "global_coords": [
+            1436,
+            715
+        ],
+        "layer_coords": [
+            943,
+            629
+        ]
+    },
+    {
+        "file_name": "birds_9.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_9.png",
+        "global_coords": [
+            1519,
+            768
+        ],
+        "layer_coords": [
+            1026,
+            682
+        ]
+    },
+    {
+        "file_name": "birds_10.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_10.png",
+        "global_coords": [
+            1543,
+            904
+        ],
+        "layer_coords": [
+            1050,
+            818
+        ]
+    },
+    {
+        "file_name": "birds_11.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_11.png",
+        "global_coords": [
+            1684,
+            637
+        ],
+        "layer_coords": [
+            1191,
+            551
+        ]
+    },
+    {
+        "file_name": "birds_12.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_12.png",
+        "global_coords": [
+            1873,
+            469
+        ],
+        "layer_coords": [
+            1380,
+            383
+        ]
+    },
+    {
+        "file_name": "birds_13.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_13.png",
+        "global_coords": [
+            1898,
+            203
+        ],
+        "layer_coords": [
+            1405,
+            117
+        ]
+    },
+    {
+        "file_name": "birds_14.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_14.png",
+        "global_coords": [
+            1958,
+            86
+        ],
+        "layer_coords": [
+            1465,
+            0
+        ]
+    },
+    {
+        "file_name": "birds_15.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_15.png",
+        "global_coords": [
+            2076,
+            116
+        ],
+        "layer_coords": [
+            1583,
+            30
+        ]
+    },
+    {
+        "file_name": "birds_16.png",
+        "full_path": "/home/carlos/wmlabs_projects/assets/victoria/birds_16.png",
+        "global_coords": [
+            2121,
+            1148
+        ],
+        "layer_coords": [
+            1628,
+            1062
+        ]
+    }
+]

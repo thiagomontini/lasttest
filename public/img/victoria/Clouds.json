@@ -1,0 +1,89 @@
+{
+	"meta": {
+		"image": "Clouds.png",
+		"size": {"w":616,"h":272},
+		"scale": "1"
+	},
+	"frames": {
+		"img/victoria/cloud_6.png":
+		{
+			"frame": {"x":0,"y":0,"w":616,"h":106},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":616,"h":106},
+			"sourceSize": {"w":616,"h":106}
+		},
+		"img/victoria/cloud_10.png":
+		{
+			"frame": {"x":0,"y":106,"w":481,"h":104},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":481,"h":104},
+			"sourceSize": {"w":481,"h":104}
+		},
+		"img/victoria/cloud_5.png":
+		{
+			"frame": {"x":0,"y":210,"w":331,"h":62},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":331,"h":62},
+			"sourceSize": {"w":331,"h":62}
+		},
+		"img/victoria/cloud_1.png":
+		{
+			"frame": {"x":331,"y":210,"w":216,"h":28},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":216,"h":28},
+			"sourceSize": {"w":216,"h":28}
+		},
+		"img/victoria/cloud_2.png":
+		{
+			"frame": {"x":481,"y":106,"w":127,"h":32},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":127,"h":32},
+			"sourceSize": {"w":127,"h":32}
+		},
+		"img/victoria/cloud_4.png":
+		{
+			"frame": {"x":481,"y":138,"w":86,"h":17},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":86,"h":17},
+			"sourceSize": {"w":86,"h":17}
+		},
+		"img/victoria/cloud_9.png":
+		{
+			"frame": {"x":481,"y":155,"w":85,"h":11},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":85,"h":11},
+			"sourceSize": {"w":85,"h":11}
+		},
+		"img/victoria/cloud_8.png":
+		{
+			"frame": {"x":481,"y":166,"w":73,"h":11},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":73,"h":11},
+			"sourceSize": {"w":73,"h":11}
+		},
+		"img/victoria/cloud_7.png":
+		{
+			"frame": {"x":567,"y":138,"w":45,"h":11},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":45,"h":11},
+			"sourceSize": {"w":45,"h":11}
+		},
+		"img/victoria/cloud_3.png":
+		{
+			"frame": {"x":566,"y":155,"w":33,"h":10},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":33,"h":10},
+			"sourceSize": {"w":33,"h":10}
+		}
+	}
+}

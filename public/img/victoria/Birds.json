@@ -1,0 +1,137 @@
+{
+	"meta": {
+		"image": "Birds.png",
+		"size": {"w":92,"h":78},
+		"scale": "1"
+	},
+	"frames": {
+		"img/victoria/birds_9.png":
+		{
+			"frame": {"x":0,"y":20,"w":45,"h":13},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":45,"h":13},
+			"sourceSize": {"w":45,"h":13}
+		},
+		"img/victoria/birds_3.png":
+		{
+			"frame": {"x":0,"y":0,"w":61,"h":20},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":61,"h":20},
+			"sourceSize": {"w":61,"h":20}
+		},
+		"img/victoria/birds_14.png":
+		{
+			"frame": {"x":0,"y":33,"w":41,"h":14},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":41,"h":14},
+			"sourceSize": {"w":41,"h":14}
+		},
+		"img/victoria/birds_15.png":
+		{
+			"frame": {"x":0,"y":47,"w":32,"h":10},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":32,"h":10},
+			"sourceSize": {"w":32,"h":10}
+		},
+		"img/victoria/birds_13.png":
+		{
+			"frame": {"x":61,"y":0,"w":31,"h":11},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":31,"h":11},
+			"sourceSize": {"w":31,"h":11}
+		},
+		"img/victoria/birds_5.png":
+		{
+			"frame": {"x":61,"y":11,"w":27,"h":9},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":27,"h":9},
+			"sourceSize": {"w":27,"h":9}
+		},
+		"img/victoria/birds_16.png":
+		{
+			"frame": {"x":61,"y":20,"w":16,"h":26},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":16,"h":26},
+			"sourceSize": {"w":16,"h":26}
+		},
+		"img/victoria/birds_2.png":
+		{
+			"frame": {"x":0,"y":57,"w":19,"h":21},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":19,"h":21},
+			"sourceSize": {"w":19,"h":21}
+		},
+		"img/victoria/birds_12.png":
+		{
+			"frame": {"x":84,"y":40,"w":6,"h":3},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":6,"h":3},
+			"sourceSize": {"w":6,"h":3}
+		},
+		"img/victoria/birds_6.png":
+		{
+			"frame": {"x":77,"y":20,"w":14,"h":16},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":14,"h":16},
+			"sourceSize": {"w":14,"h":16}
+		},
+		"img/victoria/birds_4.png":
+		{
+			"frame": {"x":41,"y":33,"w":16,"h":14},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":16,"h":14},
+			"sourceSize": {"w":16,"h":14}
+		},
+		"img/victoria/birds_11.png":
+		{
+			"frame": {"x":45,"y":20,"w":14,"h":12},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":14,"h":12},
+			"sourceSize": {"w":14,"h":12}
+		},
+		"img/victoria/birds_1.png":
+		{
+			"frame": {"x":77,"y":36,"w":12,"h":4},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":12,"h":4},
+			"sourceSize": {"w":12,"h":4}
+		},
+		"img/victoria/birds_10.png":
+		{
+			"frame": {"x":61,"y":46,"w":11,"h":11},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":11,"h":11},
+			"sourceSize": {"w":11,"h":11}
+		},
+		"img/victoria/birds_7.png":
+		{
+			"frame": {"x":77,"y":40,"w":7,"h":3},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":7,"h":3},
+			"sourceSize": {"w":7,"h":3}
+		},
+		"img/victoria/birds_8.png":
+		{
+			"frame": {"x":19,"y":57,"w":19,"h":18},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":19,"h":18},
+			"sourceSize": {"w":19,"h":18}
+		}
+	}
+}
