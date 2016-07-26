@@ -36,7 +36,8 @@ var Globe = React.createClass({
         this.scene.add( this.directionalLight );
 
         this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-        this.camera.position.z = 4000;
+        this.camera.position.z = 3500;
+        this.camera.up = new THREE.Vector3(0, 0, 1);
 
         if (this.props.params.renderer == 'canvas') {
             this.renderer = new THREE.CanvasRenderer({canvas: this.refs.canvas});
