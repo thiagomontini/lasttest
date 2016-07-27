@@ -2,8 +2,8 @@ var sceneWidth = 2304;
 
 module.exports = {
     "name": "Rio de Janeiro",
-    "lat": -43.1963,
-    "lon": -22.9083,
+    "lat": -59.64243146603097, //-43.1963,
+    "lon": -32.887438825448605, //-22.9083,
     "sceneWidth": sceneWidth,
     "sceneHeight": 1440,
     "objects": [

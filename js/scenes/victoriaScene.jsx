@@ -19,12 +19,10 @@ var Glider = function(sprite, amplitude, duration) {
     this.floatTween.yoyo(true);
     this.floatTween.progress(Math.random());
 
-    this.tiltTween = TweenMax.to(this.sprite, 8,
-        {
-            rotation: 40 * Math.PI / 180,
-            ease: "Quad.easeInOut"
-        }
-    );
+    this.tiltTween = TweenMax.to(this.sprite, 8, {
+        rotation: 40 * Math.PI / 180,
+        ease: "Quad.easeInOut"
+    });
     this.tiltTween.repeat(-1);
     this.tiltTween.yoyo(true);
 };
@@ -32,7 +30,7 @@ var Glider = function(sprite, amplitude, duration) {
 Glider.prototype = {
     dispose: function() {
         this.floatTween.kill();
-        this.tilsTween.kill();
+        this.tiltTween.kill();
     }
 };
 

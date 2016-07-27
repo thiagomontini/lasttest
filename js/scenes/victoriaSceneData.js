@@ -2,8 +2,8 @@ var sceneWidth = 2304;
 
 module.exports = {
     "name": "Victoria Falls",
-    "lat": -9.8737401,
-    "lon": -11.9722519,
+    "lat": 9.010727056019084, //-9.8737401,
+    "lon": -10.864600326264267 , //-11.9722519,
     "sceneWidth": sceneWidth,
     "sceneHeight": 1440,
     "objects": [

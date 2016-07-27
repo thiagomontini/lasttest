@@ -13,6 +13,40 @@ var config = require("../config.js");
 var sceneData = require("../scenes/sceneData.js");
 var pickRandomKey = require("../utils/pickRandomKey.js");
 
+function buildAxis( src, dst, colorHex, dashed ) {
+        var geom = new THREE.Geometry(),
+            mat;
+
+        if(dashed) {
+                mat = new THREE.LineDashedMaterial({ linewidth: 3, color: colorHex, dashSize: 3, gapSize: 3 });
+        } else {
+                mat = new THREE.LineBasicMaterial({ linewidth: 3, color: colorHex });
+        }
+
+        geom.vertices.push( src.clone() );
+        geom.vertices.push( dst.clone() );
+        geom.computeLineDistances(); // This one is SUPER important, otherwise dashed lines will appear as simple plain lines
+
+        var axis = new THREE.Line( geom, mat, THREE.LinePieces );
+
+        return axis;
+
+}
+
+function buildAxes( length ) {
+        var axes = new THREE.Object3D();
+
+        axes.add( buildAxis( new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3( length, 0, 0 ), 0xFF0000, false ) ); // +X
+        axes.add( buildAxis( new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3( -length, 0, 0 ), 0xFF0000, true) ); // -X
+        axes.add( buildAxis( new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3( 0, length, 0 ), 0x00FF00, false ) ); // +Y
+        axes.add( buildAxis( new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3( 0, -length, 0 ), 0x00FF00, true ) ); // -Y
+        axes.add( buildAxis( new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3( 0, 0, length ), 0x0000FF, false ) ); // +Z
+        axes.add( buildAxis( new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3( 0, 0, -length ), 0x0000FF, true ) ); // -Z
+
+        return axes;
+
+}
+
 var Globe = React.createClass({
     getInitialState: function() {
         return {
@@ -36,8 +70,7 @@ var Globe = React.createClass({
         this.scene.add( this.directionalLight );
 
         this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-        this.camera.position.z = 3500;
-        this.camera.up = new THREE.Vector3(0, 0, 1);
+        this.camera.position.z = 4500;
 
         if (this.props.params.renderer == 'canvas') {
             this.renderer = new THREE.CanvasRenderer({canvas: this.refs.canvas});
@@ -73,10 +106,9 @@ var Globe = React.createClass({
     },
 
     onObjLoaded: function(object) {
-        this.earthMesh = object;
-        this.earthMesh.position.setX(1000);
+        this.earthMesh = window.earthMesh = object;
+        this.earthMesh.position.set(320, 100, -350);
         this.earthMesh.scale.set(0.1, 0.1, 0.1);
-        // this.earthMesh.rotation.set(0, 0, Math.PI);
         this.init();
     },
 
@@ -85,6 +117,7 @@ var Globe = React.createClass({
 
         this.earth = new THREE.Object3D();
         this.earth.add(this.earthMesh);
+        // this.earth.add(buildAxes(5000));
 
         this.scene.add(this.earth);
         this.animate();
@@ -133,13 +166,15 @@ var Globe = React.createClass({
             // Calculates the final rotation lon angles
             var finalLat;
             if (speedX < 0) {
-                finalLat = - 2 * Math.PI * config.numberOfSpins + lat;
+                finalLat = - 2 * Math.PI * (config.numberOfSpins + 1) + lat;
             }
             else {
                 finalLat = 2 * Math.PI * config.numberOfSpins + lat;
             }
 
             // Do the animation
+            this.earth.rotation.x %= 2 * Math.PI;
+            this.earth.rotation.y %= 2 * Math.PI;
             this.spinning = true;
             this.dragging = false;
             TweenLite.to(this.earth.rotation, config.spinDuration, {

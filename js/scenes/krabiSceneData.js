@@ -2,8 +2,8 @@ var sceneWidth = 2304;
 
 module.exports = {
     "name": "Krabi",
-    "lat": 98.4334108,
-    "lon": 8.0404036,
+    "lat": 124.86293206197857, //98.4334108,
+    "lon": -13.800978792822178 , //8.0404036,
     "sceneWidth": sceneWidth,
     "sceneHeight": 1440,
     "objects": [
